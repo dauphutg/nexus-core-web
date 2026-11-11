@@ -2,9 +2,9 @@
   "days": [
     {
       "date": "2026-11-11",
-      "bias": "TWO_WAY",
-      "lean": "SELL",
-      "main_zone": "4058–4068",
+      "bias": "SELL",
+      "lean": null,
+      "main_zone": "4048.4–4056.2",
       "result": null,
       "r": null,
       "note": {
