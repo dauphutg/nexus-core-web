@@ -21,8 +21,8 @@
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="style.css">
-<script src="theme.js"></script>
+<link rel="stylesheet" href="style.css?v=20261111c">
+<script src="theme.js?v=20261111c"></script>
 </head>
 <body>
 <a class="skip" href="#app" data-i18n="skip"></a>
@@ -78,6 +78,14 @@
       <div class="hero-keys" id="hero-keys"></div>
     </div>
 
+    <div class="card notify" id="notify" hidden>
+      <div class="notify-t"><strong data-i18n="nt_title"></strong><span id="notify-sub"></span></div>
+      <button type="button" class="btn big" id="notify-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2zM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="notify-btn-t"></span>
+      </button>
+    </div>
+
     <div class="layout">
       <div class="stack">
         <figure class="chart" id="chart-box" hidden>
@@ -101,12 +109,6 @@
 
         <div class="card next" id="next"></div>
       </div>
-    </div>
-
-    <div class="card notify" id="notify" hidden>
-      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2zM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <div class="notify-t"><strong data-i18n="nt_title"></strong><span id="notify-sub"></span></div>
-      <button type="button" class="btn" id="notify-btn"></button>
     </div>
 
     <div class="card wl" id="waitlist" hidden>
@@ -168,6 +170,6 @@
   </div>
 </footer>
 
-<script src="app.js"></script>
+<script src="app.js?v=20261111c"></script>
 </body>
 </html>

@@ -193,3 +193,12 @@ html[data-theme="light"] .imp.high{background:#C62828} html[data-theme="light"] 
 .wl-note{font-size:12px}
 .hp{position:absolute;inset-inline-start:-9999px;width:1px;height:1px;opacity:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* big alerts button */
+.notify{padding:18px 20px}
+.notify-t strong{font-size:18px}
+.btn.big{display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 28px;border-radius:14px;font-size:18px;font-weight:700;background:var(--gold);border-color:var(--gold);color:#14110A;flex:0 0 auto}
+.btn.big:hover{background:#F0C866}
+.btn.big.on{background:transparent;color:var(--gold-ink);border-color:var(--gold-line);font-weight:600}
+.btn.big svg{flex:none;color:inherit}
+@media (max-width:640px){.btn.big{flex:1 1 100%}}
