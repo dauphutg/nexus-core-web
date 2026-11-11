@@ -27,7 +27,8 @@ p{margin:0}
 .top{position:sticky;top:0;z-index:5;background:rgba(250,248,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top-row{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:8px;gap:12px}
 .brand{display:flex;align-items:center;gap:8px;color:var(--ink);font-weight:700;font-size:20px;letter-spacing:.02em}
-.brand em{color:var(--gold)}
+.brand{background:#0C2237;border-radius:12px;padding:7px 12px}
+.brand img{display:block;height:28px;width:auto}
 .top-right{display:flex;align-items:center;gap:10px}
 .live{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--up-bg);border:1px solid #BFE3CA;color:var(--up);font-size:12px;font-weight:600;letter-spacing:.08em}
 .live .dot{width:7px;height:7px;border-radius:50%;background:#1B8A43}
@@ -99,3 +100,7 @@ section{display:flex;flex-direction:column;gap:14px}
 
 .foot{padding-top:12px;padding-bottom:40px;font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line)}
 @media (max-width:420px){.bias-val{font-size:26px}.brand{font-size:18px}}
+
+.chart{margin:0;padding:0;overflow:hidden;background:#fff}
+.chart img{display:block;width:100%;height:auto}
+@media (max-width:420px){.brand img{height:22px}}

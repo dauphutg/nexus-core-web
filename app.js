@@ -89,6 +89,15 @@
     document.getElementById('plan-title').textContent = t('plan_of') + ' ' + d[2] + '/' + d[1];
     document.getElementById('plan-meta').textContent = p.symbol + ' · ' + (t('edition')[p.edition] || p.edition) + ' · ' + t('updated') + ' ' + p.updated_vn.slice(11) + ' VN · ' + dateStr;
 
+    var cb = document.getElementById('chart-box');
+    var src = p.chart && L(p.chart);
+    if (src) {
+      cb.hidden = false;
+      var im = document.getElementById('chart-img');
+      im.src = src; im.alt = 'XAUUSD H1 – ' + document.getElementById('plan-title').textContent;
+      document.getElementById('chart-link').href = src;
+    } else cb.hidden = true;
+
     var al = document.getElementById('alert');
     if (p.alert && L(p.alert)) { al.hidden = false; document.getElementById('alert-text').textContent = L(p.alert); } else al.hidden = true;
 

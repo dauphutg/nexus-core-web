@@ -5,7 +5,10 @@
   "symbol": "XAUUSD",
   "bias": "TWO_WAY",
   "lean": "SELL",
-  "day_type": { "vi": "Thường – sideway biên rộng", "en": "Normal day – wide-range sideways" },
+  "day_type": {
+    "vi": "Thường – sideway biên rộng",
+    "en": "Normal day – wide-range sideways"
+  },
   "headline": {
     "vi": "Sideway 2 chiều, nghiêng BÁN ở cản H4 4058–4068",
     "en": "Two-way range, leaning SELL at the H4 resistance 4058–4068"
@@ -15,49 +18,180 @@
     "en": "US bank holiday (Veterans Day): thin liquidity, price may drift sideways or fake out."
   },
   "context": [
-    { "k": { "vi": "Phía D1", "en": "D1 side" }, "v": { "vi": "Giảm", "en": "Bearish" } },
-    { "k": { "vi": "Dow H4", "en": "Dow H4" }, "v": { "vi": "Giảm", "en": "Bearish" } },
-    { "k": { "vi": "Giá so EMA89 H1", "en": "Price vs EMA89 H1" }, "v": { "vi": "Dưới (4069,1)", "en": "Below (4069.1)" } },
-    { "k": { "vi": "ADR10", "en": "ADR10" }, "v": { "vi": "97,7 (đã chạy 39,5)", "en": "97.7 (39.5 used)" } }
+    {
+      "k": {
+        "vi": "Phía D1",
+        "en": "D1 side"
+      },
+      "v": {
+        "vi": "Giảm",
+        "en": "Bearish"
+      }
+    },
+    {
+      "k": {
+        "vi": "Dow H4",
+        "en": "Dow H4"
+      },
+      "v": {
+        "vi": "Giảm",
+        "en": "Bearish"
+      }
+    },
+    {
+      "k": {
+        "vi": "Giá so EMA89 H1",
+        "en": "Price vs EMA89 H1"
+      },
+      "v": {
+        "vi": "Dưới (4069,1)",
+        "en": "Below (4069.1)"
+      }
+    },
+    {
+      "k": {
+        "vi": "ADR10",
+        "en": "ADR10"
+      },
+      "v": {
+        "vi": "97,7 (đã chạy 39,5)",
+        "en": "97.7 (39.5 used)"
+      }
+    }
   ],
-  "main_zone": { "side": "SELL", "lo": 4058, "hi": 4068, "grade": "A" },
+  "main_zone": {
+    "side": "SELL",
+    "lo": 4058,
+    "hi": 4068,
+    "grade": "A"
+  },
   "invalidation": {
     "vi": "M15 đóng trên 4070 → chuyển sang vùng B 4071–4081,3. M15/H4 đóng trên 4084 → hết phía bán, mục tiêu trên 4100,6.",
     "en": "M15 close above 4070 → switch to zone B 4071–4081.3. M15/H4 close above 4084 → sell side void, upside target 4100.6."
   },
   "targets": [
-    { "label": "T1", "lo": 4044, "hi": 4047 },
-    { "label": "T2", "lo": 4027, "hi": 4027 },
-    { "label": "T3", "lo": 4013.6, "hi": 4013.6 }
+    {
+      "label": "T1",
+      "lo": 4044,
+      "hi": 4047
+    },
+    {
+      "label": "T2",
+      "lo": 4027,
+      "hi": 4027
+    },
+    {
+      "label": "T3",
+      "lo": 4013.6,
+      "hi": 4013.6
+    }
   ],
   "zones": [
-    { "side": "SELL", "lo": 4058, "hi": 4068, "grade": "A", "status": { "vi": "Đã chạm 12:15–12:30, phản ứng ~12 giá – còn hiệu lực", "en": "Touched 12:15–12:30, ~$12 reaction – still valid" } },
-    { "side": "SELL", "lo": 4071, "hi": 4081.3, "grade": "B", "status": { "vi": "Chưa chạm – chỉ dùng khi vùng A bị phá", "en": "Not touched – only if zone A breaks" } },
-    { "side": "SELL", "lo": 4010, "hi": 4013.6, "grade": "B breakout", "status": { "vi": "Chưa kích hoạt – bán khi hồi lại sau khi M15 đóng dưới 4013,6", "en": "Not triggered – sell the retest after an M15 close below 4013.6" } },
-    { "side": "BUY", "lo": 4043, "hi": 4047, "grade": "C", "status": { "vi": "Chỉ theo dõi", "en": "Watch only" } },
-    { "side": "BUY", "lo": 4019.7, "hi": 4027.7, "grade": "C", "status": { "vi": "Chỉ theo dõi", "en": "Watch only" } }
+    {
+      "side": "SELL",
+      "lo": 4058,
+      "hi": 4068,
+      "grade": "A",
+      "status": {
+        "vi": "Đã chạm 12:15–12:30, phản ứng ~12 giá – còn hiệu lực",
+        "en": "Touched 12:15–12:30, ~$12 reaction – still valid"
+      }
+    },
+    {
+      "side": "SELL",
+      "lo": 4071,
+      "hi": 4081.3,
+      "grade": "B",
+      "status": {
+        "vi": "Chưa chạm – chỉ dùng khi vùng A bị phá",
+        "en": "Not touched – only if zone A breaks"
+      }
+    },
+    {
+      "side": "SELL",
+      "lo": 4010,
+      "hi": 4013.6,
+      "grade": "B breakout",
+      "status": {
+        "vi": "Chưa kích hoạt – bán khi hồi lại sau khi M15 đóng dưới 4013,6",
+        "en": "Not triggered – sell the retest after an M15 close below 4013.6"
+      }
+    },
+    {
+      "side": "BUY",
+      "lo": 4043,
+      "hi": 4047,
+      "grade": "C",
+      "status": {
+        "vi": "Chỉ theo dõi",
+        "en": "Watch only"
+      }
+    },
+    {
+      "side": "BUY",
+      "lo": 4019.7,
+      "hi": 4027.7,
+      "grade": "C",
+      "status": {
+        "vi": "Chỉ theo dõi",
+        "en": "Watch only"
+      }
+    }
   ],
   "scenarios": [
     {
-      "side": "SELL", "prob": 55,
+      "side": "SELL",
+      "prob": 55,
       "text": {
         "vi": "Phiên Á/Âu (14:00–17:00) giá giữ dưới 4066–4070, Dow M15 đảo giảm dưới 4053,9 → về 4044–4047 rồi 4027.",
         "en": "Asia/Europe session (14:00–17:00 VN) holds below 4066–4070 and the M15 Dow turns down below 4053.9 → 4044–4047, then 4027."
       }
     },
     {
-      "side": "BUY", "prob": 45,
+      "side": "BUY",
+      "prob": 45,
       "text": {
         "vi": "M15 đóng trên 4070 → giá lên vùng B 4071–4081,3 (bán lần 2, mục tiêu 4058).",
         "en": "M15 closes above 4070 → price runs into zone B 4071–4081.3 (second sell, target 4058)."
       }
     }
   ],
-  "range": { "lo": 4013.6, "hi": 4081.3 },
+  "range": {
+    "lo": 4013.6,
+    "hi": 4081.3
+  },
   "news": [
-    { "time": "11/11", "impact": "holiday", "text": { "vi": "USD Bank Holiday – không có tin đỏ USD hôm nay", "en": "USD Bank Holiday – no high-impact USD news today" } },
-    { "time": "12/11 20:30", "impact": "medium", "text": { "vi": "Đơn xin trợ cấp thất nghiệp Mỹ", "en": "US Unemployment Claims" } },
-    { "time": "13/11 20:30", "impact": "high", "text": { "vi": "PPI + Core PPI Mỹ", "en": "US PPI + Core PPI" } }
+    {
+      "time": "11/11",
+      "impact": "holiday",
+      "text": {
+        "vi": "USD Bank Holiday – không có tin đỏ USD hôm nay",
+        "en": "USD Bank Holiday – no high-impact USD news today"
+      }
+    },
+    {
+      "time": "12/11 20:30",
+      "impact": "medium",
+      "text": {
+        "vi": "Đơn xin trợ cấp thất nghiệp Mỹ",
+        "en": "US Unemployment Claims"
+      }
+    },
+    {
+      "time": "13/11 20:30",
+      "impact": "high",
+      "text": {
+        "vi": "PPI + Core PPI Mỹ",
+        "en": "US PPI + Core PPI"
+      }
+    }
   ],
-  "next_update": { "vi": "Plan tối 19:30 VN", "en": "Evening plan 19:30 VN time" }
+  "next_update": {
+    "vi": "Plan tối 19:30 VN",
+    "en": "Evening plan 19:30 VN time"
+  },
+  "chart": {
+    "vi": "data/charts/2026-11-11-1345-vi.png",
+    "en": "data/charts/2026-11-11-1345-en.png"
+  }
 }

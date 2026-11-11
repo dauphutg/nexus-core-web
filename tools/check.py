@@ -53,6 +53,11 @@ if p:
     for i, n in enumerate(p.get('news') or []):
         if n.get('impact') not in ('high', 'medium', 'low', 'holiday'): errs.append(f'news[{i}].impact sai')
         bi(n.get('text'), f'news[{i}].text')
+    if p.get('chart') is not None:
+        bi(p['chart'], 'chart')
+        for lg in ('vi', 'en'):
+            f = (p['chart'] or {}).get(lg)
+            if f and not os.path.isfile(os.path.join(root, f)): errs.append(f'chart.{lg}: không có file {f}')
     if p.get('range'):
         num(p['range'].get('lo'), 'range.lo'); num(p['range'].get('hi'), 'range.hi')
 
