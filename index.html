@@ -109,6 +109,18 @@
       <button type="button" class="btn" id="notify-btn"></button>
     </div>
 
+    <div class="card wl" id="waitlist" hidden>
+      <div class="wl-t"><strong data-i18n="wl_title"></strong><span data-i18n="wl_sub"></span></div>
+      <form id="wl-form" novalidate>
+        <label class="sr" for="wl-email" data-i18n="wl_label"></label>
+        <input type="email" id="wl-email" name="email" autocomplete="email" inputmode="email" maxlength="254" required>
+        <input type="text" id="wl-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+        <button type="submit" class="btn solid" id="wl-btn" data-i18n="wl_btn"></button>
+      </form>
+      <p class="wl-msg" id="wl-msg" role="status" aria-live="polite"></p>
+      <p class="wl-note muted" data-i18n="wl_privacy"></p>
+    </div>
+
     <a class="cta" id="tg-cta" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">
       <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       <span><strong data-i18n="tg_title"></strong><span data-i18n="tg_sub"></span></span>

@@ -4,6 +4,8 @@
 //   • GET  /key          → public VAPID key (generated once, kept in KV)
 //   • POST /subscribe    → store a browser push subscription  {sub, lang}
 //   • POST /unsubscribe  → remove it                          {endpoint}
+//   • POST /waitlist     → store a waitlist email             {email, lang}
+//       (read the list in the Cloudflare dashboard: KV namespace → keys starting with  w: )
 //   • every 2 minutes (Cron Trigger): reads https://nexuscore.trade/data/latest.json;
 //     when a new plan edition appears it sends one notification to every subscriber.
 //
@@ -155,6 +157,20 @@ export default {
         if (!/^[A-Za-z0-9_-]{80,100}$/.test(k.p256dh || '') || !/^[A-Za-z0-9_-]{16,32}$/.test(k.auth || '')) return reply(400, 'bad keys');
         const lang = ['en', 'ar', 'vi'].includes(d.lang) ? d.lang : 'en';
         await env.SUBS.put(id, JSON.stringify({ e: endpoint, p: k.p256dh, a: k.auth, l: lang }));
+        return reply(201, 'ok');
+      }
+      if (req.method === 'POST' && url.pathname === '/waitlist') {
+        if (req.headers.get('Origin') !== SITE) return reply(403, 'forbidden');
+        const raw = await req.text();
+        if (raw.length > 1000) return reply(413, 'too large');
+        const d = JSON.parse(raw);
+        if (d.website) return reply(200, 'ok');                       // hidden field: only bots fill it in
+        const email = String(d.email || '').trim().toLowerCase();
+        if (email.length > 254 || !/^[a-z0-9._%+-]{1,64}@[a-z0-9.-]{1,180}\.[a-z]{2,24}$/.test(email)) return reply(400, 'bad email');
+        const key = 'w:' + email;
+        if (!(await env.SUBS.get(key))) {
+          await env.SUBS.put(key, JSON.stringify({ l: ['en', 'ar', 'vi'].includes(d.lang) ? d.lang : 'en', t: new Date().toISOString() }));
+        }
         return reply(201, 'ok');
       }
       return reply(404, 'not found');
