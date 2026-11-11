@@ -41,9 +41,9 @@ p{margin:0}
 .live.stale{background:var(--soft);border-color:var(--line);color:var(--ink3)}
 .live.stale .dot{background:var(--ink3)}
 .lang{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:3px}
-.lang button{min-width:44px;min-height:38px;padding:0 10px;border:0;border-radius:9px;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer}
-.lang button[lang="ar"]{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:14px}
-.lang button[aria-pressed="true"]{background:var(--gold);color:#14110A}
+.lang button,.lang a{display:flex;align-items:center;justify-content:center;text-decoration:none;min-width:44px;min-height:38px;padding:0 10px;border:0;border-radius:9px;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer}
+.lang [lang="ar"]{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:14px}
+.lang [aria-pressed="true"]{background:var(--gold);color:#14110A}
 .tabs{display:flex;gap:4px;overflow-x:auto}
 .tabs a{padding:10px 16px;color:var(--ink2);font-weight:500;white-space:nowrap;min-height:44px;display:flex;align-items:center;border-bottom:2px solid transparent}
 .tabs a:hover{color:var(--ink)}
@@ -144,7 +144,7 @@ section{display:flex;flex-direction:column;gap:16px}
 .foot-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px}
 .social{display:flex;gap:6px}
 .social a{padding:10px 12px;min-height:44px;display:flex;align-items:center}
-@media (max-width:480px){.brand img{height:26px}.live{display:none}.lang button{min-width:40px;padding:0 8px}}
+@media (max-width:480px){.brand img{height:26px}.live{display:none}.lang button,.lang a{min-width:40px;padding:0 8px}}
 
 /* theme switch – header and footer stay navy (the logo sits on navy); the page body changes */
 .theme{width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--gold-ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
@@ -207,3 +207,7 @@ html[data-theme="light"] .imp.high{background:#C62828} html[data-theme="light"] 
 .alt-ch .muted{flex:1 1 100%}
 .btn.alt{display:inline-flex;align-items:center;gap:8px;text-decoration:none;flex:1 1 160px;justify-content:center}
 .btn.alt:hover{color:var(--gold-ink)}
+
+/* prerendered scenario bars (no inline styles under the CSP) */
+.bar i.w0{width:0%}.bar i.w5{width:5%}.bar i.w10{width:10%}.bar i.w15{width:15%}.bar i.w20{width:20%}.bar i.w25{width:25%}.bar i.w30{width:30%}.bar i.w35{width:35%}.bar i.w40{width:40%}.bar i.w45{width:45%}.bar i.w50{width:50%}.bar i.w55{width:55%}.bar i.w60{width:60%}.bar i.w65{width:65%}.bar i.w70{width:70%}.bar i.w75{width:75%}.bar i.w80{width:80%}.bar i.w85{width:85%}.bar i.w90{width:90%}.bar i.w95{width:95%}.bar i.w100{width:100%}
+html:not([data-theme]) .i-sun{display:none}

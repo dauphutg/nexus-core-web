@@ -1,0 +1,35 @@
+# NEXUS CORE
+
+> Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong — refreshed before the Asia, London and New York sessions, every plan graded in public.
+
+NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three times each trading day: before the Asia session (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). Each plan gives the bias, the main zone, targets, the level that invalidates the view, scenarios with rough probabilities, and the economic calendar. Plans are graded in public after the daily close. Analysis only, not financial advice.
+
+## Latest plan (2026-11-11, Pre-New York plan, updated 2026-11-11 19:40 GMT+7)
+
+- Bias: SELL
+- Summary: SELL bias at the 4048–4056 resistance; void on an M15 close above 4083
+- Main zone: SELL 4048.4–4056.2
+- Target T1: 4026.6
+- Target T2: 4013.6
+- Target T3: 4000
+- Expected range: 4000–4083
+- View is wrong if: M15 close above 4083 (through the 4081.0 Dow level) → sell side off; buys only on a pullback to 4067–4071.
+- Main scenario (~55%, SELL): Bounce into 4050–4060 gets rejected, then down to 4027; a break opens 4014.
+- Alternate scenario (~30%, SELL): Straight drop through 4036 toward 4027–4014.
+- Alternate scenario (~15%, BUY): Breaks 4069 and an M15 close above 4083 → 4100.
+
+## Pages
+
+- [Today's gold plan (English)](https://nexuscore.trade/): latest XAUUSD plan with chart, zones and scenarios
+- [خطة الذهب اليوم (العربية)](https://nexuscore.trade/ar/): the same plan in Arabic
+- [Plan vàng hôm nay (Tiếng Việt)](https://nexuscore.trade/vi/): the same plan in Vietnamese
+- [Plan data (JSON)](https://nexuscore.trade/data/latest.json): machine-readable latest plan
+- [Track record (JSON)](https://nexuscore.trade/data/history.json): every plan and its grade
+
+## Optional
+
+- [Telegram channel](https://t.me/nexuscorefx): every plan as it is published
+- [X @XAU_CRYPTO](https://x.com/XAU_CRYPTO)
+- [YouTube @nexuscorefx](https://www.youtube.com/@nexuscorefx)
+
+Risk: Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.

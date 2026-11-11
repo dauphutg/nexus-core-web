@@ -94,7 +94,23 @@
   var saved = null;
   try { saved = localStorage.getItem('nc_lang'); } catch (e) {}
   var nav = (navigator.language || '').toLowerCase();
-  var lang = T[saved] ? saved : 'en';   // English by default; a visitor's own choice is remembered
+  // The address decides the language: /  = English, /ar/ = Arabic, /vi/ = Vietnamese (each is its own page for search engines).
+  // Where a visitor came from (?src=x / utm_source, else the referring site) and which page they signed up on – stored with email/alerts.
+  var SRC = '', PAGE = location.pathname.slice(0, 80);
+  try {
+    var qs = new URLSearchParams(location.search);
+    var s0 = (qs.get('src') || qs.get('utm_source') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
+    if (!s0 && document.referrer) { try { var rh = new URL(document.referrer).hostname.replace(/^www\./, ''); if (rh && rh !== location.hostname) s0 = rh.replace(/[^a-z0-9.-]/g, '').slice(0, 40); } catch (e) {} }
+    SRC = s0 || sessionStorage.getItem('nc_src') || 'direct';
+    if (s0) sessionStorage.setItem('nc_src', s0);
+  } catch (e) { SRC = SRC || 'direct'; }
+  var PATH_LANG = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : 'en';
+  function langPath(l) { return l === 'en' ? '/' : '/' + l + '/'; }
+  // a returning visitor who picked Arabic/Vietnamese and lands on the English home page goes to their language
+  if (PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi') && (location.pathname === '/' || location.pathname === '/index.html')) {
+    location.replace(langPath(saved) + location.search + location.hash);
+  }
+  var lang = PATH_LANG;
   var data = { plan: null, signals: null, history: null };
   var seg = 'active';
 
@@ -153,7 +169,7 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('[data-i18n]').forEach(function (n) { n.textContent = t(n.getAttribute('data-i18n')); });
-    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
+    document.querySelectorAll('.lang [data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
     var tg = LINKS.tg[lang] || LINKS.tg._, x = LINKS.x[lang] || LINKS.x._;
     ['tg-cta', 'tg-link', 's-tg', 'nt-tg'].forEach(function (id) { document.getElementById(id).href = tg; });
     document.getElementById('s-x').href = x;
@@ -182,8 +198,8 @@
     if (src) {
       cb.hidden = false;
       var im = document.getElementById('chart-img');
-      im.src = src; im.alt = 'XAUUSD H1 – ' + document.getElementById('plan-title').textContent;
-      document.getElementById('chart-link').href = src;
+      im.src = '/' + src; im.alt = 'XAUUSD H1 – ' + document.getElementById('plan-title').textContent;
+      document.getElementById('chart-link').href = '/' + src;
     } else cb.hidden = true;
 
     var al = document.getElementById('alert');
@@ -304,12 +320,13 @@
 
   function renderAll() { renderStatic(); renderPlan(); renderSignals(); renderHistory(); route(); }
 
-  document.querySelectorAll('.lang button').forEach(function (b) {
-    b.addEventListener('click', function () {
-      lang = b.dataset.lang;
-      try { localStorage.setItem('nc_lang', lang); } catch (e) {}
-      renderAll();
-      notifyLang();
+  document.querySelectorAll('.lang [data-lang]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      var l = b.dataset.lang;
+      try { localStorage.setItem('nc_lang', l); } catch (x) {}
+      if (l !== PATH_LANG) { location.href = langPath(l) + location.search + location.hash; return; }
+      lang = l; renderAll(); notifyLang();
     });
   });
   document.querySelectorAll('.seg button').forEach(function (b) {
@@ -398,8 +415,8 @@
         sub = push.reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(push.key) });   // shows the iOS "Allow notifications" prompt
       } catch (e) { sub = Promise.reject(e); }
       job = sub.then(function (s) { return s; }, function (e) { try { e.step = 'allow'; } catch (x) {} throw e; })
-               .then(function (s) { return post('/subscribe', { sub: s.toJSON(), lang: lang }); })
-               .then(function () { push.state = 'on'; });
+               .then(function (s) { return post('/subscribe', { sub: s.toJSON(), lang: lang, src: SRC, page: PAGE }); })
+               .then(function () { push.state = 'on'; try { localStorage.setItem('nc_push_lang', lang); } catch (e) {} });
     } else {
       // service not reachable yet: retry setup, then ask the user to tap again
       job = pushInit().then(function () { throw new Error('retry'); }, function (e) { try { e.step = 'connect'; } catch (x) {} throw e; });
@@ -412,6 +429,9 @@
   }
   function notifyLang() {   // keep the alert language in step with the page language
     if (push.state !== 'on' || !push.reg) return;
+    var had = null; try { had = localStorage.getItem('nc_push_lang'); } catch (e) {}
+    if (had === lang) return;
+    try { localStorage.setItem('nc_push_lang', lang); } catch (e) {}
     push.reg.pushManager.getSubscription().then(function (s) { if (s) return post('/subscribe', { sub: s.toJSON(), lang: lang }); }).catch(function () {});
   }
   document.getElementById('notify-btn').addEventListener('click', notifyToggle);
@@ -435,7 +455,7 @@
     var email = document.getElementById('wl-email').value.trim();
     if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,24}$/.test(email)) { wl.state = 'bad'; wlRender(); return; }
     wl.state = 'busy'; wlRender();
-    post('/waitlist', { email: email, lang: lang, website: document.getElementById('wl-hp').value })
+    post('/waitlist', { email: email, lang: lang, src: SRC, page: PAGE, website: document.getElementById('wl-hp').value })
       .then(function () { wl.state = 'ok'; }, function () { wl.state = 'err'; }).then(wlRender);
   });
   function pushInit() {   // fetch the service key and register the service worker (retried on demand)
@@ -444,10 +464,10 @@
       if (!/^[A-Za-z0-9_-]{80,100}$/.test(k)) throw 0;
       push.key = k; push.ready = true;
       if (!canPush) return;
-      return navigator.serviceWorker.register('sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
+      return navigator.serviceWorker.register('/sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
         push.reg = reg;
         return reg.pushManager.getSubscription();
-      }).then(function (s) { push.state = s ? 'on' : 'off'; });
+      }).then(function (s) { push.state = s ? 'on' : 'off'; notifyLang(); });
     });
     push.init.catch(function () { push.init = null; });
     return push.init;
@@ -455,7 +475,7 @@
   pushInit().catch(function () {}).then(function () { notifyRender(); wlRender(); });
 
   renderStatic();
-  Promise.all([load('data/latest.json'), load('data/signals.json').catch(function () { return null; }), load('data/history.json').catch(function () { return null; })])
+  Promise.all([load('/data/latest.json'), load('/data/signals.json').catch(function () { return null; }), load('/data/history.json').catch(function () { return null; })])
     .then(function (r) {
       data.plan = r[0]; data.signals = r[1]; data.history = r[2];
       document.getElementById('loading').hidden = true;

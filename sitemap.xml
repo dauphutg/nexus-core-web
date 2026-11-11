@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://nexuscore.trade/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/vi/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/"/>
+  </url>
+</urlset>

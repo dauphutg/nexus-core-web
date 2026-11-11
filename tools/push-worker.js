@@ -4,7 +4,7 @@
 //   • GET  /key          → public VAPID key (generated once, kept in KV)
 //   • POST /subscribe    → store a browser push subscription  {sub, lang}
 //   • POST /unsubscribe  → remove it                          {endpoint}
-//   • POST /waitlist     → store a waitlist email             {email, lang}
+//   • POST /waitlist     → store a waitlist email             {email, lang, src, page}
 //       (read the list in the Cloudflare dashboard: KV namespace → keys starting with  w: )
 //   • every 2 minutes (Cron Trigger): reads https://nexuscore.trade/data/latest.json;
 //     when a new plan edition appears it sends one notification to every subscriber.
@@ -27,6 +27,8 @@ const TXT = {
         b: { SELL: 'Xu hướng BÁN', BUY: 'Xu hướng MUA', TWO_WAY: '2 chiều', STAND_ASIDE: 'Đứng ngoài' }, lean: 'nghiêng', s: { SELL: 'BÁN', BUY: 'MUA' }, zone: 'Vùng chính' },
 };
 
+const cleanSrc = (s) => { s = String(s || '').toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 40); return s || 'direct'; };
+const cleanPage = (s) => { s = String(s || '/'); return /^\/[A-Za-z0-9\/_.-]{0,80}$/.test(s) ? s : '/'; };
 const enc = new TextEncoder();
 const b64u = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const unb64u = (s) => Uint8Array.from(atob(String(s).replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0));
@@ -162,7 +164,9 @@ export default {
         const k = (d.sub && d.sub.keys) || {};
         if (!/^[A-Za-z0-9_-]{80,100}$/.test(k.p256dh || '') || !/^[A-Za-z0-9_-]{16,32}$/.test(k.auth || '')) return reply(400, 'bad keys');
         const lang = ['en', 'ar', 'vi'].includes(d.lang) ? d.lang : 'en';
-        await env.SUBS.put(id, JSON.stringify({ e: endpoint, p: k.p256dh, a: k.auth, l: lang }));
+        const old = await env.SUBS.get(id, 'json');   // keep where the visitor first came from
+        await env.SUBS.put(id, JSON.stringify({ e: endpoint, p: k.p256dh, a: k.auth, l: lang,
+          src: (old && old.src) || cleanSrc(d.src), pg: (old && old.pg) || cleanPage(d.page), t: (old && old.t) || new Date().toISOString() }));
         return reply(201, 'ok');
       }
       if (req.method === 'POST' && url.pathname === '/waitlist') {
@@ -175,7 +179,7 @@ export default {
         if (email.length > 254 || !/^[a-z0-9._%+-]{1,64}@[a-z0-9.-]{1,180}\.[a-z]{2,24}$/.test(email)) return reply(400, 'bad email');
         const key = 'w:' + email;
         if (!(await env.SUBS.get(key))) {
-          await env.SUBS.put(key, JSON.stringify({ l: ['en', 'ar', 'vi'].includes(d.lang) ? d.lang : 'en', t: new Date().toISOString() }));
+          await env.SUBS.put(key, JSON.stringify({ l: ['en', 'ar', 'vi'].includes(d.lang) ? d.lang : 'en', t: new Date().toISOString(), src: cleanSrc(d.src), pg: cleanPage(d.page) }));
         }
         return reply(201, 'ok');
       }
