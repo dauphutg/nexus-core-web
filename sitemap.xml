@@ -8,6 +8,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/"/>
   </url>
   <url>
@@ -18,6 +19,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/"/>
   </url>
   <url>
@@ -28,6 +30,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/"/>
   </url>
   <url>
@@ -38,6 +52,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/track-record/2026-11/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/track-record/2026-11/"/>
   </url>
   <url>
@@ -48,6 +63,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/track-record/2026-11/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/track-record/2026-11/"/>
   </url>
   <url>
@@ -58,6 +74,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/track-record/2026-11/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/track-record/2026-11/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/track-record/2026-11/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/track-record/2026-11/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/track-record/2026-11/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/track-record/2026-11/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/track-record/2026-11/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/track-record/2026-11/"/>
   </url>
   <url>
@@ -67,6 +95,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/signals/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/signals/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/signals/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/signals/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/signals/"/>
   </url>
   <url>
@@ -76,6 +105,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/signals/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/signals/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/signals/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/signals/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/signals/"/>
   </url>
   <url>
@@ -85,6 +115,17 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/signals/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/signals/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/signals/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/signals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/signals/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/signals/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/signals/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/signals/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/signals/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/signals/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/signals/"/>
   </url>
   <url>
@@ -94,6 +135,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/plan/2026-11-11-newyork/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
   </url>
   <url>
@@ -103,6 +145,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/plan/2026-11-11-newyork/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
   </url>
   <url>
@@ -112,6 +155,17 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/plan/2026-11-11-newyork/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/plan/2026-11-11-newyork/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/plan/2026-11-11-newyork/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-11-newyork/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/plan/2026-11-11-newyork/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
   </url>
   <url>
@@ -120,6 +174,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/"/>
   </url>
   <url>
@@ -128,12 +183,16 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/what-is-xauusd/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/en/learn/how-to-trade-gold/</loc>
     <lastmod>2026-11-11T08:00:00+07:00</lastmod>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/how-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/how-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/how-to-trade-gold/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/en/learn/gold-support-and-resistance/</loc>
@@ -144,6 +203,9 @@
     <loc>https://nexuscore.trade/en/learn/best-time-to-trade-gold/</loc>
     <lastmod>2026-11-11T08:00:00+07:00</lastmod>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/best-time-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/best-time-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/best-time-to-trade-gold/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/</loc>
@@ -179,6 +241,7 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/"/>
   </url>
   <url>
@@ -187,6 +250,7 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/what-is-xauusd/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
   </url>
   <url>
@@ -201,5 +265,39 @@
     <loc>https://nexuscore.trade/ar/learn/gold-weekly-outlook/</loc>
     <lastmod>2026-11-12T08:00:00+07:00</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/learn/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/learn/what-is-xauusd/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/learn/how-to-trade-gold/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/how-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/how-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/how-to-trade-gold/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/learn/best-time-to-trade-gold/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/best-time-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/best-time-to-trade-gold/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/best-time-to-trade-gold/"/>
   </url>
 </urlset>

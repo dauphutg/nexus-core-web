@@ -25,7 +25,11 @@ const TXT = {
         b: { SELL: 'الاتجاه بيع', BUY: 'الاتجاه شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق' }, lean: 'ميل إلى', s: { SELL: 'بيع', BUY: 'شراء' }, zone: 'المنطقة الرئيسية' },
   vi: { ed: { '0700': 'Plan phiên Á', '1345': 'Cập nhật trước phiên Âu', '1930': 'Plan trước phiên Mỹ' }, plan: 'Plan vàng',
         b: { SELL: 'Xu hướng BÁN', BUY: 'Xu hướng MUA', TWO_WAY: '2 chiều', STAND_ASIDE: 'Đứng ngoài' }, lean: 'nghiêng', s: { SELL: 'BÁN', BUY: 'MUA' }, zone: 'Vùng chính' },
+  'zh-hant': { ed: { '0700': '亞洲盤計畫', '1345': '倫敦盤前更新', '1930': '紐約盤前計畫' }, plan: '黃金計畫',
+        b: { SELL: '方向：偏空', BUY: '方向：偏多', TWO_WAY: '雙向', STAND_ASIDE: '觀望' }, lean: '傾向', s: { SELL: '偏空', BUY: '偏多' }, zone: '主要區域' },
 };
+const LANGS = ['en', 'ar', 'vi', 'zh-hant'];
+const HOME = { en: '/', ar: '/ar/', vi: '/vi/', 'zh-hant': '/zh-hant/' };
 
 const cleanSrc = (s) => { s = String(s || '').toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 40); return s || 'direct'; };
 const cleanPage = (s) => { s = String(s || '/'); return /^\/[A-Za-z0-9\/_.-]{0,80}$/.test(s) ? s : '/'; };
@@ -93,14 +97,14 @@ async function pushOne(v, s, payload, cache) {
 function rng(lo, hi, vi) { const f = (n) => (vi ? String(n).replace('.', ',') : String(n)); return lo === hi ? f(lo) : f(lo) + '–' + f(hi); }
 function buildPayloads(p) {
   const out = {};
-  for (const lang of ['en', 'ar', 'vi']) {
+  for (const lang of LANGS) {
     const t = TXT[lang];
     let bias = t.b[p.bias] || '';
     if (p.bias === 'TWO_WAY' && p.lean && t.s[p.lean]) bias += ' · ' + t.lean + ' ' + t.s[p.lean];
     const parts = [bias];
     if (p.main_zone) parts.push(t.zone + ' ' + (t.s[p.main_zone.side] || '') + ' ' + rng(p.main_zone.lo, p.main_zone.hi, lang === 'vi'));
     const body = parts.filter(Boolean).join(' — ');
-    out[lang] = { title: t.plan + ' · ' + (t.ed[p.edition] || ''), body, url: '/#plan', tag: 'plan', lang, dir: lang === 'ar' ? 'rtl' : 'ltr' };
+    out[lang] = { title: t.plan + ' · ' + (t.ed[p.edition] || ''), body, url: HOME[lang], tag: 'plan', lang: lang === 'zh-hant' ? 'zh-Hant' : lang, dir: lang === 'ar' ? 'rtl' : 'ltr' };
   }
   return out;
 }
@@ -163,7 +167,7 @@ export default {
         if (url.pathname === '/unsubscribe') { await env.SUBS.delete(id); return reply(200, 'ok'); }
         const k = (d.sub && d.sub.keys) || {};
         if (!/^[A-Za-z0-9_-]{80,100}$/.test(k.p256dh || '') || !/^[A-Za-z0-9_-]{16,32}$/.test(k.auth || '')) return reply(400, 'bad keys');
-        const lang = ['en', 'ar', 'vi'].includes(d.lang) ? d.lang : 'en';
+        const lang = LANGS.includes(d.lang) ? d.lang : 'en';
         const old = await env.SUBS.get(id, 'json');   // keep where the visitor first came from
         await env.SUBS.put(id, JSON.stringify({ e: endpoint, p: k.p256dh, a: k.auth, l: lang,
           src: (old && old.src) || cleanSrc(d.src), pg: (old && old.pg) || cleanPage(d.page), t: (old && old.t) || new Date().toISOString() }));
@@ -179,7 +183,7 @@ export default {
         if (email.length > 254 || !/^[a-z0-9._%+-]{1,64}@[a-z0-9.-]{1,180}\.[a-z]{2,24}$/.test(email)) return reply(400, 'bad email');
         const key = 'w:' + email;
         if (!(await env.SUBS.get(key))) {
-          await env.SUBS.put(key, JSON.stringify({ l: ['en', 'ar', 'vi'].includes(d.lang) ? d.lang : 'en', t: new Date().toISOString(), src: cleanSrc(d.src), pg: cleanPage(d.page) }));
+          await env.SUBS.put(key, JSON.stringify({ l: LANGS.includes(d.lang) ? d.lang : 'en', t: new Date().toISOString(), src: cleanSrc(d.src), pg: cleanPage(d.page) }));
         }
         return reply(201, 'ok');
       }

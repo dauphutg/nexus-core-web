@@ -15,6 +15,11 @@ def bi(o, where):
     if where.startswith('chart'): return
     if not (isinstance(o.get('ar'), str) and o['ar'].strip()):
         errs.append(f'{where}: thiếu bản tiếng Ả Rập "ar"')
+    # Traditional Chinese (/zh-hant/, from 12/11/2026): required in latest.json, optional elsewhere
+    if 'zh' in o and not (isinstance(o['zh'], str) and o['zh'].strip()):
+        errs.append(f'{where}: "zh" rỗng')
+    if not where.startswith('moves/') and not (isinstance(o.get('zh'), str) and o['zh'].strip()):
+        errs.append(f'{where}: thiếu bản tiếng Hoa phồn thể "zh"')
 
 def num(x, where):
     if not isinstance(x, (int, float)) or not (1000 < x < 20000):
@@ -99,7 +104,7 @@ if s is not None:
 # Q&A pages (data/learn/<en|ar>.json) and "why gold moved" (data/moves/<date>.json)
 LEARN_EX = {'plan', 'zone', 'invalidation', 'session', 'track', 'context', 'news', 'scenarios'}
 learn = {}
-for lg in ('en', 'ar'):
+for lg in ('en', 'ar', 'zh-hant'):
     fp = os.path.join(root, 'data', 'learn', lg + '.json')
     if not os.path.isfile(fp): continue
     try: learn[lg] = json.load(open(fp, encoding='utf-8'))

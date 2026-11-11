@@ -136,6 +136,51 @@
       sg_note: 'Tín hiệu chỉ là ý tưởng giao dịch để tham khảo, không phải lời khuyên cá nhân. Có thể chưa mở ở một số quốc gia.',
       risk_title: 'Cảnh báo rủi ro',
       disclaimer: 'Nội dung chỉ để tham khảo, không phải lời khuyên đầu tư hay lời mời giao dịch. Sản phẩm có đòn bẩy như vàng CFD có rủi ro mất tiền nhanh. Kết quả quá khứ không đảm bảo tương lai. Chỉ giao dịch bằng số tiền bạn chấp nhận mất.'
+    },
+    'zh-hant': {
+      pp_best: '觸及區域後的最大順向波動', pp_best_note: '價格觸及區域後朝計畫方向走得最遠的距離——反映判讀的準確度，並非交易結果（結果以上方評分為準）。', tr_best: '平均最大順向波動',
+      chart_hint: '點擊圖表可全螢幕檢視', lb_hint: '點擊任意處關閉 · 雙指可放大',
+      tab_learn: '學習', ln_eyebrow: '黃金交易問答', ln_short: '簡短回答', ln_example: '最新 NEXUS CORE 計畫的即時範例', ln_faq: '快速問答', ln_related: '相關問題', ln_updated: '更新於', see_plan: '查看完整計畫 →', see_track: '查看成績紀錄 →',
+      ln_index_h1: '學會解讀黃金市場', ln_index_lede: '用白話回答黃金交易者最常問的問題——每一題都對應一份真實、已公開評分的 NEXUS CORE 計畫。', ln_all: '全部問題', ln_sessions_note: '計畫發布時間：亞洲盤 08:00 · 倫敦盤前 14:45 · 紐約盤前 20:30（台北／香港時間）。',
+      mv_eyebrow: '黃金為何波動', mv_h1: '黃金為何波動', mv_change: '當日漲跌', mv_oc: '開盤 → 收盤', mv_hl: '最高 / 最低', mv_big: '單小時最大波動', mv_reasons: '波動原因', mv_sources: '資料來源', mv_method: '數據來自 XAUUSD 15 分鐘 K 線（OANDA）。交易日 = 紐約時間 17:00 至隔日 17:00。原因僅取自已公布的新聞與數據；找不到明確原因時會如實說明。', mv_plans: '當日計畫', mv_recent: '黃金為何波動——近期',
+      skip: '跳至內容', to_light: '切換為淺色主題', to_dark: '切換為深色主題', tab_plan: '每日計畫', tab_signals: '訊號', tab_history: '成績紀錄',
+      lede: 'AI 輔助製作的黃金（XAUUSD）交易計畫：關鍵區域、情境推演，以及判斷觀點失效的價位——於亞洲、倫敦、紐約盤前更新。',
+      bias: '方向', levels: '關鍵價位', scenarios: '情境', zones: '圖表上的區域', news: '經濟日曆',
+      main_zone: '主要區域', invalid: '觀點失效條件', range: '預期區間', target: '目標',
+      plan_of: '黃金計畫', ed: { '0700': '亞洲盤計畫', '1345': '倫敦盤前更新', '1930': '紐約盤前計畫' },
+      ed_short: { '0700': '亞洲盤', '1345': '倫敦盤', '1930': '紐約盤' },
+      updated: '更新於', next: '下次更新', main: '主要', alt: '備選', key: '主要區域',
+      tz: '所有時間皆以您的當地時間顯示', your_time: '您的時間',
+      tg_title: '在 Telegram 接收每一份計畫', tg_sub: '免費頻道 · 無需註冊',
+      SELL: '偏空', BUY: '偏多', TWO_WAY: '雙向', STAND_ASIDE: '觀望', lean: '傾向',
+      live: 'LIVE', stale: '最新計畫', err: '資料載入失敗，請重新整理頁面。',
+      cta_title: '在倫敦開盤前收到下一份計畫', cta_sub: '每份計畫發布時立即免費通知——亞洲、倫敦、紐約盤。五秒完成設定。', cta_push: '在此裝置接收通知',
+      nt_title: '新計畫通知', nt_sub: '新計畫發布時，立即在此裝置收到通知。', nt_on_btn: '開啟通知', nt_off_btn: '關閉通知', nt_on: '此裝置已開啟通知。', nt_denied: '瀏覽器已封鎖本站通知，請在瀏覽器設定中允許後再開啟。', nt_ios: 'iPhone：點擊「分享」，選擇「加入主畫面」，再從主畫面開啟 NEXUS CORE 並開啟通知。', nt_err: '無法變更通知設定，請再試一次。',
+      wl_title: '或以電子郵件接收', wl_sub: '每份新計畫寄到您的信箱，並優先取得 NEXUS CORE App。不寄垃圾郵件，可隨時取消。', wl_label: '電子郵件', wl_btn: '加入名單', wl_ok: '您已加入名單。', wl_bad: '請輸入有效的電子郵件地址。', wl_err: '登記失敗，請再試一次。', wl_privacy: '您的電子郵件僅用於 NEXUS CORE 通知，絕不分享給他人，可隨時要求刪除。',
+      nt_old_ios: '通知功能需要 iOS 16.4 以上。請至「設定 → 一般 → 軟體更新」更新後再開啟。', nt_unsup: '此瀏覽器不支援通知。請使用 Chrome、Edge、Firefox 或 Safari 開啟本站，或追蹤 Telegram 頻道。',
+      nt_retry: '連線中……請再點一次按鈕。',
+      nt_alt: '所有手機皆可使用，包括舊款 iPhone：', nt_tg: '透過 Telegram 接收', nt_mail: '透過電子郵件接收',
+      permalink: '此計畫的永久連結',
+      res_hit: '達到目標 1', res_void: '觀點失效', res_no_touch: '價格未觸及區域', res_expired: '未延續', res_aside: '觀望', pending: '待評分',
+      res_pending_note: '於每日收盤（紐約時間 17:00）後評分。',
+      pp_result: '本計畫的結果', pp_touched: '觸及區域', pp_event: '結果判定時間', pp_window: '評分時段', pp_hl: '時段內最高 / 最低', pp_last: '時段結束價', pp_t1: '目標 1', pp_void: '失效價位',
+      prev_plan: '← 上一份計畫', next_plan: '下一份計畫 →', today_plan: '今日計畫', all_month: '本月所有計畫',
+      tr_h1: '黃金計畫成績紀錄', tr_lede: '本月每一份 NEXUS CORE 黃金計畫及其結果。對、錯、未觸發都保留在紀錄上——不刪除任何一筆。',
+      tr_plans: '已發布計畫', tr_graded: '已評分', tr_reached: '觸及區域', tr_hit: '達到目標 1', tr_void: '觀點失效', tr_r: '累計 R',
+      tr_list: '每一份計畫', tr_none: '本月尚無計畫。', tr_method: '評分方式', tr_prev_m: '← 上個月', tr_next_m: '下個月 →', view: '查看計畫',
+      tr_m: ['每份計畫以 XAUUSD 15 分鐘 K 線（OANDA）評分，時段從發布起，至下一份計畫取代或每日收盤（紐約時間 17:00）為止，以較早者為準。',
+        '觸及區域：有 K 線進入主要區域。若始終未觸及，標記為「價格未觸及區域」，計 0R。',
+        '觸及區域後，以先發生者判定：達到目標 1 →「達到目標 1」；15 分鐘 K 線收在失效價位之外 →「觀點失效」（−1R）。',
+        '時段結束前兩者皆未發生 →「未延續」，以最後價格計算。',
+        'R = 區域邊緣到目標 1（或最後價格）的距離，除以區域邊緣到失效價位的距離。兩者在同一根 K 線發生時，以不利於計畫的方式計算。',
+        '「觀望」計畫不計分。',
+        '「觸及區域後的最大順向波動」另行顯示：從觸及起至失效或時段結束，價格自區域邊緣朝計畫方向走得最遠的距離。它反映判讀品質，不計入 R。'],
+      sg_h1: 'NEXUS CORE 訊號', sg_lede: '以每日計畫為基礎的精確交易訊號——僅限會員。每日計畫永久免費。', sg_soon: '僅限會員 · 即將推出', sg_what: '會員可獲得',
+      sg_b: ['價格進入計畫區域且型態確認時即時通知——進場、停損與目標。', '每個訊號都對應當時有效的計畫，清楚知道訊號的依據。', 'App 內優先通知與專屬 Telegram 群組。', '每個訊號都會記錄並評分，無論盈虧。'],
+      sg_wl_title: '加入訊號等候名單', sg_wl_sub: '訊號開放時第一時間通知您，並享早鳥價格。不寄垃圾郵件。', sg_free: '只需要免費計畫？', sg_free_link: '查看今日黃金計畫 →',
+      sg_note: '訊號僅為交易想法，供參考之用，並非個人化建議。部分國家或地區可能無法提供。',
+      risk_title: '風險警示',
+      disclaimer: '僅供分析，不構成投資建議或交易邀約。黃金差價合約等槓桿產品具有快速虧損的高風險。過往績效不保證未來結果。請僅以可承受損失的資金進行交易。'
     }
   };
   var LINKS = {
@@ -160,9 +205,9 @@
     if (s0) sessionStorage.setItem('nc_src', s0);
   } catch (e) { SRC = SRC || 'direct'; }
   // The address decides the language: / and /en/… = English, /ar/… = Arabic, /vi/… = Vietnamese.
-  var PATH_LANG = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : 'en';
+  var PATH_LANG = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : /^\/zh-hant(\/|$)/.test(location.pathname) ? 'zh-hant' : 'en';
   // a returning visitor who picked Arabic/Vietnamese and lands on the English home page goes to their language
-  if (KIND === 'home' && PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
+  if (KIND === 'home' && PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi' || saved === 'zh-hant') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
     location.replace('/' + saved + location.pathname.replace(/^\/(index\.html)?/, '/').replace(/^\/\//, '/') + location.search + location.hash);
   }
   // old in-page tabs (#signals, #history) now have their own pages
@@ -177,12 +222,12 @@
   function t(k) { return T[lang][k] != null ? T[lang][k] : k; }
   function L(o) {
     if (o == null) return '';
-    var s = typeof o === 'string' ? o : (o[lang] || o.en || o.vi || '');
+    var s = typeof o === 'string' ? o : (o[lang === 'zh-hant' ? 'zh' : lang] || o.en || o.vi || '');
     // keep price ranges left-to-right inside Arabic sentences (4058–4068, not 4068–4058)
     if (lang === 'ar') s = s.replace(/(\d[\d.,:]*)\s*[–-]\s*(\d[\d.,:]*)/g, '⁦$1–$2⁩');
     return s;
   }
-  function locale() { return lang === 'vi' ? 'vi-VN' : lang === 'ar' ? 'ar-u-nu-latn' : (nav.indexOf('en') === 0 ? navigator.language : 'en-GB'); }
+  function locale() { return lang === 'vi' ? 'vi-VN' : lang === 'ar' ? 'ar-u-nu-latn' : lang === 'zh-hant' ? 'zh-Hant' : (nav.indexOf('en') === 0 ? navigator.language : 'en-GB'); }
   function fmt(n) { if (n == null || n === '') return ''; var s = String(n); return lang === 'vi' ? s.replace('.', ',') : s; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -226,7 +271,7 @@
   }
 
   function renderStatic() {
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang === 'zh-hant' ? 'zh-Hant' : lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     each('[data-i18n]', function (n) { var v = t(n.getAttribute('data-i18n')); if (typeof v === 'string') n.textContent = v; });
     each('.lang [data-lang]', function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });

@@ -19,11 +19,12 @@ ZoneInfoNY = ZoneInfo('America/New_York')
 
 ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), '..'))
 SITE = 'https://nexuscore.trade'
-LANGS = ['en', 'ar', 'vi']
-PATH = {'en': '/', 'ar': '/ar/', 'vi': '/vi/'}
-PFX = {'en': '/en', 'ar': '/ar', 'vi': '/vi'}
+LANGS = ['en', 'ar', 'vi', 'zh-hant']
+HL = {'en': 'en', 'ar': 'ar', 'vi': 'vi', 'zh-hant': 'zh-Hant'}   # html lang / hreflang code
+PATH = {'en': '/', 'ar': '/ar/', 'vi': '/vi/', 'zh-hant': '/zh-hant/'}
+PFX = {'en': '/en', 'ar': '/ar', 'vi': '/vi', 'zh-hant': '/zh-hant'}
 SESSION = {'0700': 'asia', '1345': 'london', '1930': 'newyork'}
-LOCALE = {'en': 'en_US', 'ar': 'ar_AR', 'vi': 'vi_VN'}
+LOCALE = {'en': 'en_US', 'ar': 'ar_AR', 'vi': 'vi_VN', 'zh-hant': 'zh_TW'}
 ED_TIME = {'0700': '07:00', '1345': '13:45', '1930': '19:30'}
 ED_ORDER = ['0700', '1345', '1930']
 TZ_VN = dt.timezone(dt.timedelta(hours=7))
@@ -31,18 +32,21 @@ MON_FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Aug
 MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 DAY = {'en': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
        'vi': ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'CN'],
-       'ar': ['الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت', 'الأحد']}
+       'ar': ['الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت', 'الأحد'],
+       'zh-hant': ['週一', '週二', '週三', '週四', '週五', '週六', '週日']}
 MON_AR = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
-VN_TZ_LABEL = {'en': 'GMT+7', 'ar': 'غرينتش+7', 'vi': 'giờ VN'}
+VN_TZ_LABEL = {'en': 'GMT+7', 'ar': 'غرينتش+7', 'vi': 'giờ VN', 'zh-hant': 'GMT+7'}
 FAQ = {
     'en': ('What is the gold (XAUUSD) bias today?', 'Where is the main gold zone today?', 'What would make today\'s gold view wrong?'),
     'ar': ('ما اتجاه الذهب (XAUUSD) اليوم؟', 'أين المنطقة الرئيسية للذهب اليوم؟', 'ما الذي يُلغي نظرة اليوم على الذهب؟'),
     'vi': ('Xu hướng vàng (XAUUSD) hôm nay thế nào?', 'Vùng giá chính của vàng hôm nay ở đâu?', 'Khi nào nhận định vàng hôm nay sai?'),
+    'zh-hant': ('今日黃金（XAUUSD）方向如何？', '今日黃金的主要區域在哪裡？', '什麼情況代表今日的黃金觀點失效？'),
 }
 SITE_DESC = {
     'en': 'Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong — refreshed before the Asia, London and New York sessions, every plan graded in public.',
     'ar': 'خطة مجانية للذهب (XAUUSD) مبنية بالذكاء الاصطناعي: مناطق رئيسية وسيناريوهات ومستوى إلغاء الفكرة — تُحدَّث قبل جلسات آسيا ولندن ونيويورك وتُقيَّم كل خطة علنًا.',
     'vi': 'Plan vàng (XAUUSD) miễn phí do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai — cập nhật trước phiên Á, Âu và Mỹ, mọi plan được chấm công khai.',
+    'zh-hant': '免費的 AI 輔助黃金（XAUUSD）交易計畫：關鍵區域、情境推演與觀點失效價位——於亞洲、倫敦、紐約盤前更新，每份計畫皆公開評分。',
 }
 SAME_AS = ['https://t.me/nexuscorefx', 'https://x.com/XAU_CRYPTO', 'https://www.youtube.com/@nexuscorefx']
 
@@ -74,7 +78,7 @@ esc = lambda s: html.escape(str(s), quote=True)
 def L(o, lang):
     if o is None: return ''
     if isinstance(o, str): return o
-    return o.get(lang) or o.get('en') or o.get('vi') or ''
+    return o.get('zh' if lang == 'zh-hant' else lang) or o.get('en') or o.get('vi') or ''
 
 
 def fmt(n, lang):
@@ -100,6 +104,7 @@ def side_cls(s): return 'sell' if s == 'SELL' else 'buy' if s == 'BUY' else 'neu
 def day_label(d, lang):
     if lang == 'en': return f"{DAY['en'][d.weekday()]}, {MON[d.month-1]} {d.day}"
     if lang == 'vi': return f"{DAY['vi'][d.weekday()]}, {d.day:02d}/{d.month:02d}"
+    if lang == 'zh-hant': return f"{d.month}月{d.day}日（{DAY['zh-hant'][d.weekday()]}）"
     return f"{DAY['ar'][d.weekday()]}، {d.day} {MON_AR[d.month-1]}"
 
 
@@ -244,7 +249,8 @@ def move_path(lang, m): return f"{PFX[lang]}/why-gold-moved/{m['date']}-{m['tag'
 
 # ---------- learn (Q&A) pages: data/learn/<en|ar>.json, each page goes live on its "publish" date (GMT+7) ----------
 TODAY_VN = os.environ.get('NC_TODAY') or dt.datetime.now(TZ_VN).date().isoformat()   # NC_TODAY: preview future pages locally
-LEARN_LANGS = ['en', 'ar']
+LEARN_LANGS = ['en', 'ar', 'zh-hant']
+def learn_home(lang): return learn_index_path(lang if lang in LEARN_LANGS else 'en')
 SLUG_RE = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+){0,8}')
 
 
@@ -275,8 +281,8 @@ def load_moves():
     for f in sorted(glob.glob(os.path.join(ROOT, 'data', 'moves', '*.json'))):
         try: m = json.load(open(f, encoding='utf-8'))
         except Exception: continue
-        ok = (m.get('tag') in MOVE_TAGS and isinstance(m.get('headline'), dict) and all(m['headline'].get(l) for l in LANGS)
-              and m.get('reasons') and all(isinstance(r, dict) and all(r.get(l) for l in LANGS) for r in m['reasons'])
+        ok = (m.get('tag') in MOVE_TAGS and isinstance(m.get('headline'), dict) and all(m['headline'].get(l) for l in ('en', 'ar', 'vi'))
+              and m.get('reasons') and all(isinstance(r, dict) and all(r.get(l) for l in ('en', 'ar', 'vi')) for r in m['reasons'])
               and re.fullmatch(r'\d{4}-\d{2}-\d{2}', m.get('date', '')) and os.path.basename(f) == m['date'] + '.json')
         if ok: out.append(m)
     return out
@@ -291,6 +297,7 @@ MONTHS = sorted({k[:7] for k in KEYS} | {CUR_MONTH})
 
 def month_label(ym, lang):
     y, m = int(ym[:4]), int(ym[5:])
+    if lang == 'zh-hant': return f"{y}年{m}月"
     return f"{MON_FULL[m-1]} {y}" if lang == 'en' else f"{MON_AR[m-1]} {y}" if lang == 'ar' else f"Tháng {m}/{y}"
 
 
@@ -332,9 +339,9 @@ def side_of(p): return (p.get('lean') or '') if p['bias'] in ('TWO_WAY', 'STAND_
 def shell(lang, kind, paths):
     """Template with texts, tabs and language links filled in. paths = this page's address in each language."""
     doc = read('template.html')
-    doc = (doc.replace('{{LANG}}', lang).replace('{{DIR}}', 'rtl' if lang == 'ar' else 'ltr').replace('{{HOME}}', PATH[lang])
+    doc = (doc.replace('{{LANG}}', HL[lang]).replace('{{DIR}}', 'rtl' if lang == 'ar' else 'ltr').replace('{{HOME}}', PATH[lang])
            .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{KIND}}', kind)
-           .replace('{{LEARN}}', learn_index_path('ar' if lang == 'ar' else 'en')))
+           .replace('{{LEARN}}', learn_home(lang)))
     for k, v in T[lang].items():
         if isinstance(v, str):
             doc = re.sub(r'(data-i18n="%s"[^>]*>)(</)' % re.escape(k), lambda m: m.group(1) + esc(v) + m.group(2), doc)
@@ -368,7 +375,7 @@ def head_tags(lang, title, desc, paths, img, pub=None, mod=None, og='article', l
     langs = langs or LANGS
     alts = ''
     if len(langs) > 1:
-        alts = ''.join(f'\n<link rel="alternate" hreflang="{l}" href="{SITE}{paths[l]}">' for l in langs)
+        alts = ''.join(f'\n<link rel="alternate" hreflang="{HL[l]}" href="{SITE}{paths[l]}">' for l in langs)
         alts += f'\n<link rel="alternate" hreflang="x-default" href="{SITE}{paths["en" if "en" in langs else langs[0]]}">'
     og_alt = ''.join(f'\n<meta property="og:locale:alternate" content="{LOCALE[l]}">' for l in langs if l != lang)
     times = (f'\n<meta property="article:published_time" content="{pub.isoformat()}">'
@@ -395,7 +402,7 @@ def head_tags(lang, title, desc, paths, img, pub=None, mod=None, og='article', l
 ORG = {'@type': 'Organization', '@id': SITE + '/#org', 'name': 'NEXUS CORE AI', 'url': SITE + '/',
        'logo': {'@type': 'ImageObject', 'url': SITE + '/assets/icon-512.png', 'width': 512, 'height': 512}, 'sameAs': SAME_AS}
 WEBSITE = {'@type': 'WebSite', '@id': SITE + '/#website', 'name': 'NEXUS CORE', 'url': SITE + '/', 'publisher': {'@id': SITE + '/#org'},
-           'inLanguage': LANGS, 'description': SITE_DESC['en']}
+           'inLanguage': [HL[l] for l in LANGS], 'description': SITE_DESC['en']}
 
 
 def ld(*items):
@@ -481,13 +488,13 @@ def home_page(lang):
     url = SITE + PATH[lang]
     mz = P.get('main_zone')
     art = {'@type': 'Article', '@id': url + '#plan', 'headline': title[:110], 'description': desc, 'image': [img],
-           'datePublished': upd.isoformat(), 'dateModified': upd.isoformat(), 'inLanguage': lang,
+           'datePublished': upd.isoformat(), 'dateModified': upd.isoformat(), 'inLanguage': HL[lang],
            'author': {'@id': SITE + '/#org'}, 'publisher': {'@id': SITE + '/#org'}, 'mainEntityOfPage': url,
            'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'}, 'isAccessibleForFree': True}
     qa = [(FAQ[lang][0], bias_label(P, lang) + ' — ' + L(P.get('headline'), lang))]
     if mz: qa.append((FAQ[lang][1], f"{t(lang, mz['side'])} {rng(mz['lo'], mz['hi'], lang)} ({t(lang, 'ed').get(P['edition'], '')})"))
     if P.get('invalidation'): qa.append((FAQ[lang][2], L(P['invalidation'], lang)))
-    faq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': lang, 'mainEntity': [
+    faq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': HL[lang], 'mainEntity': [
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a + ' ' + t(lang, 'disclaimer').split('.')[0] + '.'}} for q, a in qa]}
     return finish(doc, head_tags(lang, title, desc, PATH, img, upd), ld(art, faq))
 
@@ -504,7 +511,7 @@ def plan_page(k, lang):
     mod = dt.datetime.strptime(g['graded_utc'], '%Y-%m-%dT%H:%MZ').replace(tzinfo=dt.timezone.utc) if g and g.get('graded_utc') else upd
     url = SITE + paths[lang]
     art = {'@type': 'Article', '@id': url + '#plan', 'headline': title[:110], 'description': desc, 'image': [img],
-           'datePublished': upd.isoformat(), 'dateModified': mod.isoformat(), 'inLanguage': lang,
+           'datePublished': upd.isoformat(), 'dateModified': mod.isoformat(), 'inLanguage': HL[lang],
            'author': {'@id': SITE + '/#org'}, 'publisher': {'@id': SITE + '/#org'}, 'mainEntityOfPage': url,
            'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'}, 'isAccessibleForFree': True}
     bc = crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'tab_history') + ' · ' + month_label(k[:7], lang), track_path(lang, k[:7])),
@@ -565,7 +572,7 @@ def track_page(ym, lang):
     desc = (f"{t(lang, 'tr_lede')} {t(lang, 'tr_plans')}: {n} · {t(lang, 'tr_hit')}: {hit}/{nr} · {t(lang, 'tr_r')}: {r_text(tot, lang, 1)}." if nr
             else f"{t(lang, 'tr_lede')} {t(lang, 'tr_plans')}: {n}.")[:300]
     url = SITE + paths[lang]
-    page_ld = {'@type': 'CollectionPage', '@id': url, 'name': h1, 'description': desc, 'inLanguage': lang, 'isPartOf': {'@id': SITE + '/#website'},
+    page_ld = {'@type': 'CollectionPage', '@id': url, 'name': h1, 'description': desc, 'inLanguage': HL[lang], 'isPartOf': {'@id': SITE + '/#website'},
                'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'},
                'mainEntity': {'@type': 'ItemList', 'numberOfItems': n, 'itemListElement': [
                    {'@type': 'ListItem', 'position': j + 1, 'url': SITE + plan_path(lang, k)} for j, k in enumerate(reversed(keys))]}}
@@ -596,7 +603,7 @@ def signals_page(lang):
     title = f"{t(lang, 'sg_h1')} — {t(lang, 'sg_soon')} | NEXUS CORE"
     desc = t(lang, 'sg_lede')
     url = SITE + paths[lang]
-    page_ld = {'@type': 'WebPage', '@id': url, 'name': t(lang, 'sg_h1'), 'description': desc, 'inLanguage': lang, 'isPartOf': {'@id': SITE + '/#website'}}
+    page_ld = {'@type': 'WebPage', '@id': url, 'name': t(lang, 'sg_h1'), 'description': desc, 'inLanguage': HL[lang], 'isPartOf': {'@id': SITE + '/#website'}}
     return finish(doc, head_tags(lang, title, desc, paths, SITE + '/assets/logo-banner.png', og='website'), ld(page_ld, crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'sg_h1'), paths[lang])])))
 
 
@@ -644,7 +651,7 @@ def example_box(kind, lang):
 def learn_page(lang, slug):
     x = LEARN[lang][slug]
     pair = learn_pair(lang, slug)
-    paths = {l: pair.get(l) or learn_index_path('ar' if l == 'ar' else 'en') if l != 'vi' else PATH['vi'] for l in LANGS}
+    paths = {l: pair.get(l) or (learn_index_path(l) if l in LEARN_LANGS else PATH[l]) for l in LANGS}
     paths[lang] = learn_path(lang, slug)
     doc = shell(lang, 'learn', paths)
     secs = []
@@ -671,11 +678,11 @@ def learn_page(lang, slug):
     desc = (x.get('desc') or x['answer'])[:300]
     url = SITE + paths[lang]
     pub = dt.datetime.fromisoformat(x['publish'] + 'T08:00:00+07:00')
-    art = {'@type': 'Article', '@id': url + '#article', 'headline': x['q'][:110], 'description': desc, 'inLanguage': lang,
+    art = {'@type': 'Article', '@id': url + '#article', 'headline': x['q'][:110], 'description': desc, 'inLanguage': HL[lang],
            'datePublished': pub.isoformat(), 'dateModified': updated_dt(P).isoformat() if updated_dt(P) > pub else pub.isoformat(),
            'author': {'@id': SITE + '/#org'}, 'publisher': {'@id': SITE + '/#org'}, 'mainEntityOfPage': url, 'image': [img_for(P, 'en')],
            'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD) trading'}}
-    fq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': lang, 'mainEntity': [
+    fq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': HL[lang], 'mainEntity': [
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in [(x['q'], x['answer'])] + [(f['q'], f['a']) for f in faq]]}
     bc = crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'ln_eyebrow'), learn_index_path(lang)), (x['q'], paths[lang])])
     langs = [l for l in LEARN_LANGS if l in pair]
@@ -701,7 +708,7 @@ def move_page(lang, m):
     others = [x for x in reversed(MOVES) if x['date'] != m['date']][:5]
     oth = ''.join(f'<a class="card rel" href="{move_path(lang, x)}">{esc(day_label(dt.date.fromisoformat(x["date"]), lang))} · {esc(L(x["headline"], lang))}</a>' for x in others)
     h1 = f"{t(lang, 'mv_h1')} · {day_label(d0, lang)}"
-    body = (f'  <section id="view-move">\n    <div class="plan-head"><div><p class="eyebrow"><a href="{learn_index_path("ar" if lang == "ar" else "en")}">XAUUSD · {esc(t(lang, "mv_eyebrow"))}</a></p>'
+    body = (f'  <section id="view-move">\n    <div class="plan-head"><div><p class="eyebrow"><a href="{learn_home(lang)}">XAUUSD · {esc(t(lang, "mv_eyebrow"))}</a></p>'
             f'<h1>{esc(h1)}</h1><p class="lede">{esc(L(m["headline"], lang))}</p></div></div>\n'
             f'    <div class="stats">{stats}</div>\n'
             f'    <div class="layout"><article class="stack prose"><h2 class="ah">{esc(t(lang, "mv_reasons"))}</h2><ul>{reasons}</ul>'
@@ -715,16 +722,15 @@ def move_page(lang, m):
     desc = desc[:300]
     url = SITE + paths[lang]
     pub = dt.datetime.combine(d0, dt.time(17, 0), tzinfo=ZoneInfoNY)
-    art = {'@type': 'Article', '@id': url + '#article', 'headline': h1[:110], 'description': desc, 'inLanguage': lang,
+    art = {'@type': 'Article', '@id': url + '#article', 'headline': h1[:110], 'description': desc, 'inLanguage': HL[lang],
            'datePublished': pub.isoformat(), 'author': {'@id': SITE + '/#org'}, 'publisher': {'@id': SITE + '/#org'}, 'mainEntityOfPage': url,
            'image': [img_for(P, 'en')], 'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'}}
-    bc = crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'mv_eyebrow'), learn_index_path('ar' if lang == 'ar' else 'en')), (h1, paths[lang])])
+    bc = crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'mv_eyebrow'), learn_home(lang)), (h1, paths[lang])])
     return finish(doc, head_tags(lang, title, desc, paths, img_for(P, 'en'), pub, og='article'), ld(art, bc))
 
 
 def learn_index(lang):
-    paths = {l: learn_index_path('ar' if l == 'ar' else 'en') for l in LANGS}
-    paths['vi'] = PATH['vi']
+    paths = {l: (learn_index_path(l) if l in LEARN_LANGS else PATH[l]) for l in LANGS}
     doc = shell(lang, 'learn', paths)
     items = sorted(LEARN[lang].values(), key=lambda x: (x['publish'], x.get('order', 0)), reverse=True)
     ql = ''.join(f'<a class="card rel" href="{learn_path(lang, x["slug"])}"><strong>{esc(x["q"])}</strong><span class="muted">{esc(x["answer"][:150])}…</span></a>' for x in items)
@@ -736,10 +742,10 @@ def learn_index(lang):
     doc = set_view(doc, body)
     title = f"{t(lang, 'ln_index_h1')} — XAUUSD Q&A | NEXUS CORE"
     url = SITE + paths[lang]
-    page_ld = {'@type': 'CollectionPage', '@id': url, 'name': t(lang, 'ln_index_h1'), 'description': t(lang, 'ln_index_lede'), 'inLanguage': lang,
+    page_ld = {'@type': 'CollectionPage', '@id': url, 'name': t(lang, 'ln_index_h1'), 'description': t(lang, 'ln_index_lede'), 'inLanguage': HL[lang],
                'isPartOf': {'@id': SITE + '/#website'}, 'mainEntity': {'@type': 'ItemList', 'numberOfItems': len(items), 'itemListElement': [
                    {'@type': 'ListItem', 'position': i + 1, 'url': SITE + learn_path(lang, x['slug'])} for i, x in enumerate(items)]}}
-    return finish(doc, head_tags(lang, title, t(lang, 'ln_index_lede'), paths, SITE + '/assets/logo-banner.png', og='website', langs=['en', 'ar']), ld(page_ld))
+    return finish(doc, head_tags(lang, title, t(lang, 'ln_index_lede'), paths, SITE + '/assets/logo-banner.png', og='website', langs=LEARN_LANGS), ld(page_ld))
 
 
 EN_ROOT = '''<!doctype html>
@@ -763,7 +769,7 @@ def sitemap():
             if freq: s += f'\n    <changefreq>{freq}</changefreq>'
             if prio: s += f'\n    <priority>{prio}</priority>'
             out.append(s)
-            for l in LANGS: out.append(f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{paths[l]}"/>')
+            for l in LANGS: out.append(f'    <xhtml:link rel="alternate" hreflang="{HL[l]}" href="{SITE}{paths[l]}"/>')
             out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{paths["en"]}"/>\n  </url>')
 
     def mod(k):
@@ -784,7 +790,7 @@ def sitemap():
         s_ = f'  <url>\n    <loc>{SITE}{path}</loc>\n    <lastmod>{lastmod}</lastmod>\n    <priority>{prio}</priority>'
         out.append(s_)
         if len(alts) > 1:
-            for l, pth in alts.items(): out.append(f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{pth}"/>')
+            for l, pth in alts.items(): out.append(f'    <xhtml:link rel="alternate" hreflang="{HL[l]}" href="{SITE}{pth}"/>')
             out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{alts.get("en", path)}"/>')
         out.append('  </url>')
     for lang in LEARN_LANGS:
@@ -837,6 +843,7 @@ def llms():
               f'- [Today\'s gold plan (English)]({SITE}/): latest XAUUSD plan with chart, zones and scenarios',
               f'- [خطة الذهب اليوم (العربية)]({SITE}/ar/): the same plan in Arabic',
               f'- [Plan vàng hôm nay (Tiếng Việt)]({SITE}/vi/): the same plan in Vietnamese',
+              f'- [今日黃金計畫（繁體中文）]({SITE}/zh-hant/): the same plan in Traditional Chinese',
               f'- [Track record]({SITE}{track_path("en", CUR_MONTH)}): every plan this month and how it played out',
               f'- [Signals]({SITE}{signals_path("en")}): members-only trade signals (waitlist)',
               f'- [Plan data (JSON)]({SITE}/data/latest.json): machine-readable latest plan',
@@ -869,4 +876,4 @@ if __name__ == '__main__':
     write('en/index.html', EN_ROOT)
     write('sitemap.xml', sitemap())
     write('llms.txt', llms())
-    print(f'built: home + today, {len(KEYS)} plan page(s) x3, {len(MONTHS)} track-record month(s) x3, signals x3, {len(LEARN['en'])}+{len(LEARN['ar'])} learn page(s) live, {len(MOVES)} why-gold-moved x3, sitemap.xml, llms.txt –', P['date'], P['edition'])
+    print(f'built: home + today, {len(KEYS)} plan page(s) x{len(LANGS)}, {len(MONTHS)} track-record month(s) x{len(LANGS)}, signals x{len(LANGS)}, {'+'.join(str(len(LEARN[l])) for l in LEARN_LANGS)} learn page(s) live (en+ar+zh), {len(MOVES)} why-gold-moved x{len(LANGS)}, sitemap.xml, llms.txt –', P['date'], P['edition'])

@@ -45,6 +45,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [Today's gold plan (English)](https://nexuscore.trade/): latest XAUUSD plan with chart, zones and scenarios
 - [خطة الذهب اليوم (العربية)](https://nexuscore.trade/ar/): the same plan in Arabic
 - [Plan vàng hôm nay (Tiếng Việt)](https://nexuscore.trade/vi/): the same plan in Vietnamese
+- [今日黃金計畫（繁體中文）](https://nexuscore.trade/zh-hant/): the same plan in Traditional Chinese
 - [Track record](https://nexuscore.trade/en/track-record/2026-11/): every plan this month and how it played out
 - [Signals](https://nexuscore.trade/en/signals/): members-only trade signals (waitlist)
 - [Plan data (JSON)](https://nexuscore.trade/data/latest.json): machine-readable latest plan
