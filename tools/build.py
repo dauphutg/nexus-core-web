@@ -5,6 +5,7 @@
 
 Reads template.html + data/latest.json + data/history.json and the texts in app.js, then writes
   index.html (English), ar/index.html, vi/index.html  – plan already written into the HTML,
+  today/index.html (+ ar/, vi/) – the same page for bio links,
   sitemap.xml, llms.txt.
 app.js still runs on top for visitors (local time, alerts, tabs). Run after every data change.
 """
@@ -315,7 +316,10 @@ def llms():
 
 if __name__ == '__main__':
     for lang in LANGS:
-        write(('' if lang == 'en' else lang + '/') + 'index.html', page(lang))
+        html_doc = page(lang)
+        write(('' if lang == 'en' else lang + '/') + 'index.html', html_doc)
+        # /today (bio links on TikTok/Instagram/YouTube) = same page; canonical stays on the language home
+        write(('' if lang == 'en' else lang + '/') + 'today/index.html', html_doc)
     write('sitemap.xml', sitemap())
     write('llms.txt', llms())
-    print('built: index.html ar/index.html vi/index.html sitemap.xml llms.txt –', P['date'], P['edition'])
+    print('built: index.html ar/ vi/ today/ sitemap.xml llms.txt –', P['date'], P['edition'])

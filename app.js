@@ -107,7 +107,7 @@
   var PATH_LANG = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : 'en';
   function langPath(l) { return l === 'en' ? '/' : '/' + l + '/'; }
   // a returning visitor who picked Arabic/Vietnamese and lands on the English home page goes to their language
-  if (PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi') && (location.pathname === '/' || location.pathname === '/index.html')) {
+  if (PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
     location.replace(langPath(saved) + location.search + location.hash);
   }
   var lang = PATH_LANG;
