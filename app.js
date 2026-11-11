@@ -340,9 +340,14 @@
     for (var i = 0; i < b.length; i++) o[i] = b.charCodeAt(i);
     return o;
   }
-  function post(path, body) {
+  function post(path, body, tries) {   // retries: the first request to a sleeping worker can drop on mobile networks
+    tries = tries == null ? 3 : tries;
     return fetch(PUSH_API + path, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body) })
-      .then(function (r) { if (!r.ok) throw new Error(path); });
+      .then(function (r) { if (!r.ok) { var e = new Error('HTTP ' + r.status); e.name = 'Server'; throw e; } })
+      .catch(function (e) {
+        if (tries <= 1 || (e && e.name === 'Server')) { try { e.step = 'save'; } catch (x) {} throw e; }
+        return new Promise(function (ok) { setTimeout(ok, 1200); }).then(function () { return post(path, body, tries - 1); });
+      });
   }
   function notifyRender() {
     var card = document.getElementById('notify'), sub = document.getElementById('notify-sub'), btn = document.getElementById('notify-btn');
@@ -379,7 +384,8 @@
       try {
         sub = push.reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(push.key) });   // shows the iOS "Allow notifications" prompt
       } catch (e) { sub = Promise.reject(e); }
-      job = sub.then(function (s) { return post('/subscribe', { sub: s.toJSON(), lang: lang }); })
+      job = sub.then(function (s) { return s; }, function (e) { try { e.step = 'allow'; } catch (x) {} throw e; })
+               .then(function (s) { return post('/subscribe', { sub: s.toJSON(), lang: lang }); })
                .then(function () { push.state = 'on'; });
     } else {
       // service not reachable yet: retry setup, then ask the user to tap again
@@ -388,8 +394,7 @@
     push.busy = true; notifyRender();
     job.catch(function (e) {
       push.err = true;
-      push.errName = (e && (e.name || e.message)) || '';
-      if (push.errName === 'Error') push.errName = (e && e.message) || '';
+      push.errName = ((e && e.step) ? e.step + ' · ' : '') + ((e && e.name) || '') + (e && e.message ? ': ' + String(e.message).slice(0, 80) : '');
     }).then(function () { push.busy = false; notifyRender(); });
   }
   function notifyLang() {   // keep the alert language in step with the page language
