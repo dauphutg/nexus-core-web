@@ -159,6 +159,11 @@ def plan_html(doc, p, lang):
         alt = f"XAUUSD H1 – {t(lang, 'plan_of')} · {day_label(d0, lang)}"
         doc = doc.replace('<a id="chart-link" href="#"', f'<a id="chart-link" href="/{src}"', 1)
         doc = doc.replace('<img id="chart-img" alt=""', f'<img id="chart-img" src="/{src}" alt="{esc(alt)}"', 1)
+        msrc = src[:-4] + '-m.png'
+        if os.path.isfile(os.path.join(ROOT, msrc)):
+            doc = doc.replace('<source id="chart-m"', f'<source id="chart-m" srcset="/{msrc}"', 1)
+        else:
+            doc = doc.replace('<source id="chart-m" media="(max-width: 640px)" width="1200" height="1500">', '', 1)
     rows = []
     row = lambda k, v, cls='', text=False: (f'<div class="row{" text" if text else ""}"><span class="k">{esc(k)}</span>'
                                             f'<span class="v{"" if text else " num"}{(" " + cls) if cls else ""}"{"" if text else " dir=\"ltr\""}>{esc(v)}</span></div>')

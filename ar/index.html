@@ -40,8 +40,8 @@
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261112b">
-<script src="/theme.js?v=20261112b"></script>
+<link rel="stylesheet" href="/style.css?v=20261112c">
+<script src="/theme.js?v=20261112c"></script>
 </head>
 <body data-page="home" data-plan="2026-11-11-1930">
 <a class="skip" href="#app" data-i18n="skip">انتقل إلى المحتوى</a>
@@ -118,27 +118,33 @@
 
     <div class="layout">
       <div class="stack">
-        <figure class="chart" id="chart-box">
-          <a id="chart-link" href="/data/charts/2026-11-11-1930-en.png" target="_blank" rel="noopener noreferrer"><img id="chart-img" src="/data/charts/2026-11-11-1930-en.png" alt="XAUUSD H1 – خطة الذهب · الأربعاء، 11 نوفمبر" loading="lazy" width="1800" height="1110"></a>
+        <figure class="chart b-chart" id="chart-box">
+          <a id="chart-link" href="/data/charts/2026-11-11-1930-en.png" target="_blank" rel="noopener noreferrer"><picture><img id="chart-img" src="/data/charts/2026-11-11-1930-en.png" alt="XAUUSD H1 – خطة الذهب · الأربعاء، 11 نوفمبر" loading="lazy" width="1800" height="1110"></picture></a>
+          <figcaption class="chart-hint" data-i18n="chart_hint">اضغط على الرسم لعرضه بملء الشاشة</figcaption>
         </figure>
-        <h2 data-i18n="zones">المناطق على الرسم</h2>
-        <div id="zones" class="stack-sm"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4048.4–4056.2</span></div><span class="s">المنطقة الرئيسية – السعر يعيد اختبارها من الأسفل، صالحة خلال جلسة نيويورك</span></div><span class="g">منطقة رئيسية</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4059.5–4069.2</span></div><span class="s">رفضت السعر عند 4067 في جلسة آسيا – ما زالت صالحة، وتُلغى بإغلاق M15 فوق 4071</span></div><span class="g">A</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4071–4081.3</span></div><span class="s">لم تُلمس – صالحة من جلسة نيويورك حتى آسيا</span></div><span class="g">A-H1</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4024.6–4026.6</span></div><span class="s">غير مفعّلة بعد – تصبح فعّالة فقط بعد كسر 4024.5</span></div><span class="g">B breakout</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">شراء</span><span class="num" dir="ltr">4036.7–4043.6</span></div><span class="s">للمراقبة فقط – لا دخول</span></div><span class="g">C</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">شراء</span><span class="num" dir="ltr">4009.7–4013.6</span></div><span class="s">للمراقبة فقط – لا دخول</span></div><span class="g">C</span></div></div>
+        <div class="blk b-zones">
+          <h2 data-i18n="zones">المناطق على الرسم</h2>
+          <div id="zones" class="stack-sm"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4048.4–4056.2</span></div><span class="s">المنطقة الرئيسية – السعر يعيد اختبارها من الأسفل، صالحة خلال جلسة نيويورك</span></div><span class="g">منطقة رئيسية</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4059.5–4069.2</span></div><span class="s">رفضت السعر عند 4067 في جلسة آسيا – ما زالت صالحة، وتُلغى بإغلاق M15 فوق 4071</span></div><span class="g">A</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4071–4081.3</span></div><span class="s">لم تُلمس – صالحة من جلسة نيويورك حتى آسيا</span></div><span class="g">A-H1</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">بيع</span><span class="num" dir="ltr">4024.6–4026.6</span></div><span class="s">غير مفعّلة بعد – تصبح فعّالة فقط بعد كسر 4024.5</span></div><span class="g">B breakout</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">شراء</span><span class="num" dir="ltr">4036.7–4043.6</span></div><span class="s">للمراقبة فقط – لا دخول</span></div><span class="g">C</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">شراء</span><span class="num" dir="ltr">4009.7–4013.6</span></div><span class="s">للمراقبة فقط – لا دخول</span></div><span class="g">C</span></div></div>
+        </div>
       </div>
 
       <div class="stack">
-        <h2 data-i18n="levels">المستويات الرئيسية</h2>
-        <div class="card list" id="levels"><div class="row"><span class="k">المنطقة الرئيسية (بيع)</span><span class="v num main" dir="ltr">4048.4–4056.2</span></div><div class="row"><span class="k">الهدف T1</span><span class="v num" dir="ltr">4026.6</span></div><div class="row"><span class="k">الهدف T2</span><span class="v num" dir="ltr">4013.6</span></div><div class="row"><span class="k">الهدف T3</span><span class="v num" dir="ltr">4000</span></div><div class="row"><span class="k">النطاق المتوقع</span><span class="v num" dir="ltr">4000–4083</span></div><div class="row text"><span class="k">تُلغى الفكرة إذا</span><span class="v bad">إغلاق M15 فوق 4083 ← تُلغى فكرة البيع، والشراء يُنظر فيه فقط حول 4067–4071.</span></div></div>
-        <div class="stats" id="context"><div class="stat"><span class="k">اتجاه D1</span><span class="v">هابط – شمعة يومية حمراء قوية في 10/11 أغلقت عند 4032.5 أسفل المتوسط قصير الأجل</span></div><div class="stat"><span class="k">هيكل H4</span><span class="v">عرضي، والسعر أسفل متوسط الاتجاه على H4</span></div><div class="stat"><span class="k">هيكل H1</span><span class="v">هابط – رُفض الارتداد عند 4067.1</span></div><div class="stat"><span class="k">زخم H1</span><span class="v">ضعيف – السعر أسفل متوسط الاتجاه</span></div><div class="stat"><span class="k">مستوى اليوم</span><span class="v">افتتاح اليوم 4035.4</span></div></div>
-
-        <h2 data-i18n="scenarios">السيناريوهات</h2>
-        <div id="scenarios" class="stack-sm"><div class="card scen sell"><div class="t"><span>الرئيسي · بيع</span><span class="num muted">~55%</span></div><p>ارتداد إلى 4050–4060 يُرفض ثم هبوط إلى 4027، وكسره يفتح الطريق إلى 4014.</p><div class="bar"><i class="w55"></i></div></div><div class="card scen sell"><div class="t"><span>البديل · بيع</span><span class="num muted">~30%</span></div><p>هبوط مباشر يكسر 4036 نحو 4027–4014.</p><div class="bar"><i class="w30"></i></div></div><div class="card scen buy"><div class="t"><span>البديل · شراء</span><span class="num muted">~15%</span></div><p>اختراق 4069 ثم إغلاق M15 فوق 4083 ← الصعود إلى 4100.</p><div class="bar"><i class="w15"></i></div></div></div>
-
-        <h2 data-i18n="news">المفكرة الاقتصادية</h2>
-        <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp holiday"></span><span>يوم المحاربين القدامى الأمريكي – لا أخبار مهمة للدولار حتى نهاية جلسة نيويورك</span></span><span class="v">11/11 </span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>طلبات إعانة البطالة الأمريكية</span></span><span class="v">12/11 20:30 غرينتش+7</span></div><div class="row news-row"><span class="k"><span class="imp high"></span><span>مؤشر أسعار المنتجين الأمريكي PPI و Core PPI</span></span><span class="v">13/11 20:30 غرينتش+7</span></div></div>
-        <p class="tznote muted" id="tznote"></p>
-
-        <div class="card result" id="result" hidden></div>
-        <div class="card next" id="next"><strong>التحديث القادم</strong><span>خطة الصباح يوم الخميس 12/11 الساعة 07:00 بتوقيت فيتنام</span></div>
+        <div class="blk b-levels">
+          <h2 data-i18n="levels">المستويات الرئيسية</h2>
+          <div class="card list" id="levels"><div class="row"><span class="k">المنطقة الرئيسية (بيع)</span><span class="v num main" dir="ltr">4048.4–4056.2</span></div><div class="row"><span class="k">الهدف T1</span><span class="v num" dir="ltr">4026.6</span></div><div class="row"><span class="k">الهدف T2</span><span class="v num" dir="ltr">4013.6</span></div><div class="row"><span class="k">الهدف T3</span><span class="v num" dir="ltr">4000</span></div><div class="row"><span class="k">النطاق المتوقع</span><span class="v num" dir="ltr">4000–4083</span></div><div class="row text"><span class="k">تُلغى الفكرة إذا</span><span class="v bad">إغلاق M15 فوق 4083 ← تُلغى فكرة البيع، والشراء يُنظر فيه فقط حول 4067–4071.</span></div></div>
+        </div>
+        <div class="stats b-context" id="context"><div class="stat"><span class="k">اتجاه D1</span><span class="v">هابط – شمعة يومية حمراء قوية في 10/11 أغلقت عند 4032.5 أسفل المتوسط قصير الأجل</span></div><div class="stat"><span class="k">هيكل H4</span><span class="v">عرضي، والسعر أسفل متوسط الاتجاه على H4</span></div><div class="stat"><span class="k">هيكل H1</span><span class="v">هابط – رُفض الارتداد عند 4067.1</span></div><div class="stat"><span class="k">زخم H1</span><span class="v">ضعيف – السعر أسفل متوسط الاتجاه</span></div><div class="stat"><span class="k">مستوى اليوم</span><span class="v">افتتاح اليوم 4035.4</span></div></div>
+        <div class="blk b-scen">
+          <h2 data-i18n="scenarios">السيناريوهات</h2>
+          <div id="scenarios" class="stack-sm"><div class="card scen sell"><div class="t"><span>الرئيسي · بيع</span><span class="num muted">~55%</span></div><p>ارتداد إلى 4050–4060 يُرفض ثم هبوط إلى 4027، وكسره يفتح الطريق إلى 4014.</p><div class="bar"><i class="w55"></i></div></div><div class="card scen sell"><div class="t"><span>البديل · بيع</span><span class="num muted">~30%</span></div><p>هبوط مباشر يكسر 4036 نحو 4027–4014.</p><div class="bar"><i class="w30"></i></div></div><div class="card scen buy"><div class="t"><span>البديل · شراء</span><span class="num muted">~15%</span></div><p>اختراق 4069 ثم إغلاق M15 فوق 4083 ← الصعود إلى 4100.</p><div class="bar"><i class="w15"></i></div></div></div>
+        </div>
+        <div class="blk b-news">
+          <h2 data-i18n="news">المفكرة الاقتصادية</h2>
+          <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp holiday"></span><span>يوم المحاربين القدامى الأمريكي – لا أخبار مهمة للدولار حتى نهاية جلسة نيويورك</span></span><span class="v">11/11 </span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>طلبات إعانة البطالة الأمريكية</span></span><span class="v">12/11 20:30 غرينتش+7</span></div><div class="row news-row"><span class="k"><span class="imp high"></span><span>مؤشر أسعار المنتجين الأمريكي PPI و Core PPI</span></span><span class="v">13/11 20:30 غرينتش+7</span></div></div>
+          <p class="tznote muted" id="tznote"></p>
+        </div>
+        <div class="card result b-result" id="result" hidden></div>
+        <div class="card next b-next" id="next"><strong>التحديث القادم</strong><span>خطة الصباح يوم الخميس 12/11 الساعة 07:00 بتوقيت فيتنام</span></div>
       </div>
     </div>
 
@@ -197,7 +203,13 @@
   </div>
 </footer>
 
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Chart">
+  <button type="button" class="lb-x" id="lb-x" aria-label="Close">×</button>
+  <img id="lb-img" alt="">
+  <p class="lb-hint" data-i18n="lb_hint">اضغط في أي مكان للإغلاق · كبّر بإصبعين</p>
+</div>
+
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nexuscore.trade/#org","name":"NEXUS CORE AI","url":"https://nexuscore.trade/","logo":{"@type":"ImageObject","url":"https://nexuscore.trade/assets/icon-512.png","width":512,"height":512},"sameAs":["https://t.me/nexuscorefx","https://x.com/XAU_CRYPTO","https://www.youtube.com/@nexuscorefx"]},{"@type":"WebSite","@id":"https://nexuscore.trade/#website","name":"NEXUS CORE","url":"https://nexuscore.trade/","publisher":{"@id":"https://nexuscore.trade/#org"},"inLanguage":["en","ar","vi"],"description":"Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong — refreshed before the Asia, London and New York sessions, every plan graded in public."},{"@type":"Article","@id":"https://nexuscore.trade/ar/#plan","headline":"خطة الذهب الأربعاء، 11 نوفمبر · خطة ما قبل نيويورك · بيع — XAUUSD | NEXUS CORE","description":"الأفضلية للبيع عند مقاومة 4048–4056؛ يُلغى بإغلاق M15 فوق 4083 — المنطقة الرئيسية: 4048.4–4056.2. خطة ما قبل نيويورك.","image":["https://nexuscore.trade/data/charts/2026-11-11-1930-en.png"],"datePublished":"2026-11-11T19:40:00+07:00","dateModified":"2026-11-11T19:40:00+07:00","inLanguage":"ar","author":{"@id":"https://nexuscore.trade/#org"},"publisher":{"@id":"https://nexuscore.trade/#org"},"mainEntityOfPage":"https://nexuscore.trade/ar/","isPartOf":{"@id":"https://nexuscore.trade/#website"},"about":{"@type":"Thing","name":"Gold (XAUUSD)"},"isAccessibleForFree":true},{"@type":"FAQPage","@id":"https://nexuscore.trade/ar/#faq","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"ما اتجاه الذهب (XAUUSD) اليوم؟","acceptedAnswer":{"@type":"Answer","text":"بيع — الأفضلية للبيع عند مقاومة 4048–4056؛ يُلغى بإغلاق M15 فوق 4083 تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول."}},{"@type":"Question","name":"أين المنطقة الرئيسية للذهب اليوم؟","acceptedAnswer":{"@type":"Answer","text":"بيع 4048.4–4056.2 (خطة ما قبل نيويورك) تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول."}},{"@type":"Question","name":"ما الذي يُلغي نظرة اليوم على الذهب؟","acceptedAnswer":{"@type":"Answer","text":"إغلاق M15 فوق 4083 ← تُلغى فكرة البيع، والشراء يُنظر فيه فقط حول 4067–4071. تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول."}}]}]}</script>
-<script src="/app.js?v=20261112b"></script>
+<script src="/app.js?v=20261112c"></script>
 </body>
 </html>

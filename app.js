@@ -3,6 +3,7 @@
 
   var T = {
     en: {
+      chart_hint: 'Tap the chart to view it full screen', lb_hint: 'Tap anywhere to close · pinch to zoom', 
       tab_learn: 'Learn', ln_eyebrow: 'Gold trading Q&A', ln_short: 'Short answer', ln_example: 'Live example from the latest NEXUS CORE plan', ln_faq: 'Quick answers', ln_related: 'Related questions', ln_updated: 'Updated', see_plan: 'See the full plan →', see_track: 'See the track record →',
       ln_index_h1: 'Learn to read the gold market', ln_index_lede: 'Plain answers to the questions gold traders actually ask — each one tied to a real, graded NEXUS CORE plan.', ln_all: 'All questions', ln_sessions_note: 'Plan times: Asia 00:00 UTC · London update 06:45 UTC · New York 12:30 UTC.',
       mv_eyebrow: 'Why gold moved', mv_h1: 'Why gold moved', mv_change: 'Day change', mv_oc: 'Open → close', mv_hl: 'High / low', mv_big: 'Biggest hourly move', mv_reasons: 'What moved it', mv_sources: 'Sources', mv_method: 'Numbers from 15-minute XAUUSD candles (OANDA feed). Trading day = 17:00 New York to 17:00 New York. Reasons come only from published news and data; when none fits, we say so.', mv_plans: 'Plans for this day', mv_recent: 'Why gold moved – recent days',
@@ -45,6 +46,7 @@
       disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
     ar: {
+      chart_hint: 'اضغط على الرسم لعرضه بملء الشاشة', lb_hint: 'اضغط في أي مكان للإغلاق · كبّر بإصبعين', 
       tab_learn: 'تعلّم', ln_eyebrow: 'أسئلة وأجوبة تداول الذهب', ln_short: 'الإجابة المختصرة', ln_example: 'مثال حي من أحدث خطة NEXUS CORE', ln_faq: 'إجابات سريعة', ln_related: 'أسئلة ذات صلة', ln_updated: 'آخر تحديث', see_plan: 'شاهد الخطة كاملة', see_track: 'شاهد سجل النتائج',
       ln_index_h1: 'تعلّم قراءة سوق الذهب', ln_index_lede: 'إجابات واضحة عن الأسئلة التي يطرحها متداولو الذهب فعلًا — كل إجابة مرتبطة بخطة حقيقية من NEXUS CORE وتم تقييمها.', ln_all: 'كل الأسئلة', ln_sessions_note: 'أوقات الخطط: آسيا 00:00 UTC · تحديث لندن 06:45 UTC · نيويورك 12:30 UTC.',
       mv_eyebrow: 'لماذا تحرك الذهب', mv_h1: 'لماذا تحرك الذهب', mv_change: 'تغيّر اليوم', mv_oc: 'الافتتاح ← الإغلاق', mv_hl: 'أعلى / أدنى', mv_big: 'أكبر حركة في ساعة', mv_reasons: 'ما الذي حرّكه', mv_sources: 'المصادر', mv_method: 'الأرقام من شموع XAUUSD لفترة 15 دقيقة (بيانات OANDA). يوم التداول = من 17:00 إلى 17:00 بتوقيت نيويورك. الأسباب من الأخبار والبيانات المنشورة فقط؛ وإن لم يوجد سبب واضح نقول ذلك.', mv_plans: 'خطط هذا اليوم', mv_recent: 'لماذا تحرك الذهب – الأيام الأخيرة',
@@ -87,6 +89,7 @@
       disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
     vi: {
+      chart_hint: 'Chạm vào chart để xem toàn màn hình', lb_hint: 'Chạm bất kỳ đâu để đóng · dùng 2 ngón để phóng to', 
       tab_learn: 'Kiến thức', ln_eyebrow: 'Hỏi đáp giao dịch vàng', ln_short: 'Trả lời ngắn', ln_example: 'Ví dụ thật từ plan NEXUS CORE mới nhất', ln_faq: 'Trả lời nhanh', ln_related: 'Câu hỏi liên quan', ln_updated: 'Cập nhật', see_plan: 'Xem plan đầy đủ →', see_track: 'Xem kết quả chấm →',
       ln_index_h1: 'Học cách đọc thị trường vàng', ln_index_lede: 'Trả lời rõ ràng cho những câu người giao dịch vàng hay hỏi — mỗi câu gắn với plan NEXUS CORE thật đã được chấm.', ln_all: 'Mọi câu hỏi', ln_sessions_note: 'Giờ plan: phiên Á 00:00 UTC · cập nhật phiên Âu 06:45 UTC · phiên Mỹ 12:30 UTC.',
       mv_eyebrow: 'Vì sao vàng chạy', mv_h1: 'Vì sao vàng chạy', mv_change: 'Thay đổi trong ngày', mv_oc: 'Mở → đóng', mv_hl: 'Cao / thấp', mv_big: 'Giờ chạy mạnh nhất', mv_reasons: 'Nguyên nhân', mv_sources: 'Nguồn', mv_method: 'Số liệu từ nến 15 phút XAUUSD (dữ liệu OANDA). Ngày giao dịch = 17:00 tới 17:00 giờ New York. Nguyên nhân chỉ lấy từ tin và số liệu đã công bố; không có lý do rõ thì ghi đúng như vậy.', mv_plans: 'Plan của ngày này', mv_recent: 'Vì sao vàng chạy – các ngày gần đây',
@@ -254,6 +257,9 @@
       var im = document.getElementById('chart-img');
       im.src = '/' + src; im.alt = 'XAUUSD H1 – ' + document.getElementById('plan-title').textContent;
       document.getElementById('chart-link').href = '/' + src;
+      // the portrait phone chart (…-m.png) exists for plans the site built itself; for a newer plan than this page, use the wide one
+      var cm = document.getElementById('chart-m');
+      if (cm && !same) cm.removeAttribute('srcset');
     } else cb.hidden = true;
 
     var al = document.getElementById('alert');
@@ -341,6 +347,24 @@
     try { localStorage.setItem('nc_theme', next); } catch (e) {}
     themeLabel();
   });
+
+  // ---- chart viewer: full screen inside the app instead of opening the image in a new tab ----
+  var lb = document.getElementById('lb');
+  function lbClose() { if (!lb || lb.hidden) return; lb.hidden = true; document.documentElement.classList.remove('lb-open'); }
+  var cl = document.getElementById('chart-link');
+  if (cl && lb) {
+    cl.addEventListener('click', function (e) {
+      var href = cl.getAttribute('href') || '';
+      if (!/^\/data\/charts\/[0-9]{4}-[0-9]{2}-[0-9]{2}-(0700|1345|1930)-(vi|en)\.png$/.test(href)) return;
+      e.preventDefault();
+      document.getElementById('lb-img').src = href;
+      document.getElementById('lb-img').alt = document.getElementById('chart-img').alt;
+      lb.hidden = false; document.documentElement.classList.add('lb-open');
+      document.getElementById('lb-x').focus();
+    });
+    lb.addEventListener('click', lbClose);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lbClose(); });
+  }
 
   // ---- new-plan alerts (web push) – every .js-notify block on the page shares one state ----
   // Several addresses for the same service: if a phone or network cannot reach the first one

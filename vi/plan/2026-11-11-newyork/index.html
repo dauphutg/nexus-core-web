@@ -40,8 +40,8 @@
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261112b">
-<script src="/theme.js?v=20261112b"></script>
+<link rel="stylesheet" href="/style.css?v=20261112c">
+<script src="/theme.js?v=20261112c"></script>
 </head>
 <body data-page="plan">
 <a class="skip" href="#app" data-i18n="skip">Tới nội dung</a>
@@ -118,27 +118,33 @@
 
     <div class="layout">
       <div class="stack">
-        <figure class="chart" id="chart-box">
-          <a id="chart-link" href="/data/charts/2026-11-11-1930-vi.png" target="_blank" rel="noopener noreferrer"><img id="chart-img" src="/data/charts/2026-11-11-1930-vi.png" alt="XAUUSD H1 – Plan vàng · Thứ 4, 11/11" loading="lazy" width="1800" height="1110"></a>
+        <figure class="chart b-chart" id="chart-box">
+          <a id="chart-link" href="/data/charts/2026-11-11-1930-vi.png" target="_blank" rel="noopener noreferrer"><picture><img id="chart-img" src="/data/charts/2026-11-11-1930-vi.png" alt="XAUUSD H1 – Plan vàng · Thứ 4, 11/11" loading="lazy" width="1800" height="1110"></picture></a>
+          <figcaption class="chart-hint" data-i18n="chart_hint">Chạm vào chart để xem toàn màn hình</figcaption>
         </figure>
-        <h2 data-i18n="zones">Các vùng trên chart</h2>
-        <div id="zones" class="stack-sm"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4048,4–4056,2</span></div><span class="s">Vùng chính – giá đang test lại từ dưới, còn hiệu lực phiên Mỹ</span></div><span class="g">Vùng chính</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4059,5–4069,2</span></div><span class="s">Đã từ chối giá ở 4067 phiên Á – còn hiệu lực, huỷ nếu M15 đóng trên 4071</span></div><span class="g">A</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4071–4081,3</span></div><span class="s">Chưa chạm – hiệu lực phiên Mỹ sang Á</span></div><span class="g">A-H1</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4024,6–4026,6</span></div><span class="s">Chưa kích hoạt – chỉ có hiệu lực khi giá thủng 4024.5</span></div><span class="g">B breakout</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">MUA</span><span class="num" dir="ltr">4036,7–4043,6</span></div><span class="s">Chỉ theo dõi – không vào</span></div><span class="g">C</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">MUA</span><span class="num" dir="ltr">4009,7–4013,6</span></div><span class="s">Chỉ theo dõi – không vào</span></div><span class="g">C</span></div></div>
+        <div class="blk b-zones">
+          <h2 data-i18n="zones">Các vùng trên chart</h2>
+          <div id="zones" class="stack-sm"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4048,4–4056,2</span></div><span class="s">Vùng chính – giá đang test lại từ dưới, còn hiệu lực phiên Mỹ</span></div><span class="g">Vùng chính</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4059,5–4069,2</span></div><span class="s">Đã từ chối giá ở 4067 phiên Á – còn hiệu lực, huỷ nếu M15 đóng trên 4071</span></div><span class="g">A</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4071–4081,3</span></div><span class="s">Chưa chạm – hiệu lực phiên Mỹ sang Á</span></div><span class="g">A-H1</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">BÁN</span><span class="num" dir="ltr">4024,6–4026,6</span></div><span class="s">Chưa kích hoạt – chỉ có hiệu lực khi giá thủng 4024.5</span></div><span class="g">B breakout</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">MUA</span><span class="num" dir="ltr">4036,7–4043,6</span></div><span class="s">Chỉ theo dõi – không vào</span></div><span class="g">C</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">MUA</span><span class="num" dir="ltr">4009,7–4013,6</span></div><span class="s">Chỉ theo dõi – không vào</span></div><span class="g">C</span></div></div>
+        </div>
       </div>
 
       <div class="stack">
-        <h2 data-i18n="levels">Mức giá chính</h2>
-        <div class="card list" id="levels"><div class="row"><span class="k">Vùng chính (BÁN)</span><span class="v num main" dir="ltr">4048,4–4056,2</span></div><div class="row"><span class="k">Mục tiêu T1</span><span class="v num" dir="ltr">4026,6</span></div><div class="row"><span class="k">Mục tiêu T2</span><span class="v num" dir="ltr">4013,6</span></div><div class="row"><span class="k">Mục tiêu T3</span><span class="v num" dir="ltr">4000</span></div><div class="row"><span class="k">Vùng giá dự kiến</span><span class="v num" dir="ltr">4000–4083</span></div><div class="row text"><span class="k">Sai khi</span><span class="v bad">M15 đóng trên 4083 → thôi bán; phía mua chỉ cân nhắc ở vùng 4067–4071.</span></div></div>
-        <div class="stats" id="context"><div class="stat"><span class="k">Xu hướng D1</span><span class="v">Giảm – nến ngày 10/11 đỏ mạnh, đóng 4032.5 dưới đường trung bình ngắn hạn</span></div><div class="stat"><span class="k">Cấu trúc H4</span><span class="v">Đi ngang, giá nằm dưới đường xu hướng H4</span></div><div class="stat"><span class="k">Cấu trúc H1</span><span class="v">Giảm – nhịp hồi lên 4067.1 bị từ chối</span></div><div class="stat"><span class="k">Động lượng H1</span><span class="v">Yếu – giá dưới đường xu hướng</span></div><div class="stat"><span class="k">Mốc trong ngày</span><span class="v">Giá mở cửa ngày 4035.4</span></div></div>
-
-        <h2 data-i18n="scenarios">Kịch bản</h2>
-        <div id="scenarios" class="stack-sm"><div class="card scen sell"><div class="t"><span>Chính · BÁN</span><span class="num muted">~55%</span></div><p>Hồi lên 4050–4060 bị từ chối rồi giảm về 4027, thủng thì 4014.</p><div class="bar"><i class="w55"></i></div></div><div class="card scen sell"><div class="t"><span>Phụ · BÁN</span><span class="num muted">~30%</span></div><p>Giảm luôn, thủng 4036 về 4027–4014.</p><div class="bar"><i class="w30"></i></div></div><div class="card scen buy"><div class="t"><span>Phụ · MUA</span><span class="num muted">~15%</span></div><p>Vượt 4069, M15 đóng trên 4083 → lên 4100.</p><div class="bar"><i class="w15"></i></div></div></div>
-
-        <h2 data-i18n="news">Lịch tin</h2>
-        <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp holiday"></span><span>Mỹ nghỉ lễ Veterans Day – không có tin USD mạnh tới hết phiên Mỹ</span></span><span class="v">11/11 </span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>Đơn xin trợ cấp thất nghiệp Mỹ</span></span><span class="v">12/11 20:30 giờ VN</span></div><div class="row news-row"><span class="k"><span class="imp high"></span><span>PPI + Core PPI Mỹ</span></span><span class="v">13/11 20:30 giờ VN</span></div></div>
-        <p class="tznote muted" id="tznote"></p>
-
-        <div class="card result" id="result"><h2>Kết quả của plan này</h2><div class="res-top"><span class="pill neutral">Chờ chấm</span></div><p class="muted">Chấm sau khi nến ngày đóng (17:00 giờ New York).</p><p class="small"><a href="/vi/track-record/2026-11/#method">Cách chấm plan</a></p></div>
-        <div class="card next" id="next" hidden><strong>Lần cập nhật tới</strong><span>Plan sáng 07:00 VN thứ Năm 12/11</span></div>
+        <div class="blk b-levels">
+          <h2 data-i18n="levels">Mức giá chính</h2>
+          <div class="card list" id="levels"><div class="row"><span class="k">Vùng chính (BÁN)</span><span class="v num main" dir="ltr">4048,4–4056,2</span></div><div class="row"><span class="k">Mục tiêu T1</span><span class="v num" dir="ltr">4026,6</span></div><div class="row"><span class="k">Mục tiêu T2</span><span class="v num" dir="ltr">4013,6</span></div><div class="row"><span class="k">Mục tiêu T3</span><span class="v num" dir="ltr">4000</span></div><div class="row"><span class="k">Vùng giá dự kiến</span><span class="v num" dir="ltr">4000–4083</span></div><div class="row text"><span class="k">Sai khi</span><span class="v bad">M15 đóng trên 4083 → thôi bán; phía mua chỉ cân nhắc ở vùng 4067–4071.</span></div></div>
+        </div>
+        <div class="stats b-context" id="context"><div class="stat"><span class="k">Xu hướng D1</span><span class="v">Giảm – nến ngày 10/11 đỏ mạnh, đóng 4032.5 dưới đường trung bình ngắn hạn</span></div><div class="stat"><span class="k">Cấu trúc H4</span><span class="v">Đi ngang, giá nằm dưới đường xu hướng H4</span></div><div class="stat"><span class="k">Cấu trúc H1</span><span class="v">Giảm – nhịp hồi lên 4067.1 bị từ chối</span></div><div class="stat"><span class="k">Động lượng H1</span><span class="v">Yếu – giá dưới đường xu hướng</span></div><div class="stat"><span class="k">Mốc trong ngày</span><span class="v">Giá mở cửa ngày 4035.4</span></div></div>
+        <div class="blk b-scen">
+          <h2 data-i18n="scenarios">Kịch bản</h2>
+          <div id="scenarios" class="stack-sm"><div class="card scen sell"><div class="t"><span>Chính · BÁN</span><span class="num muted">~55%</span></div><p>Hồi lên 4050–4060 bị từ chối rồi giảm về 4027, thủng thì 4014.</p><div class="bar"><i class="w55"></i></div></div><div class="card scen sell"><div class="t"><span>Phụ · BÁN</span><span class="num muted">~30%</span></div><p>Giảm luôn, thủng 4036 về 4027–4014.</p><div class="bar"><i class="w30"></i></div></div><div class="card scen buy"><div class="t"><span>Phụ · MUA</span><span class="num muted">~15%</span></div><p>Vượt 4069, M15 đóng trên 4083 → lên 4100.</p><div class="bar"><i class="w15"></i></div></div></div>
+        </div>
+        <div class="blk b-news">
+          <h2 data-i18n="news">Lịch tin</h2>
+          <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp holiday"></span><span>Mỹ nghỉ lễ Veterans Day – không có tin USD mạnh tới hết phiên Mỹ</span></span><span class="v">11/11 </span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>Đơn xin trợ cấp thất nghiệp Mỹ</span></span><span class="v">12/11 20:30 giờ VN</span></div><div class="row news-row"><span class="k"><span class="imp high"></span><span>PPI + Core PPI Mỹ</span></span><span class="v">13/11 20:30 giờ VN</span></div></div>
+          <p class="tznote muted" id="tznote"></p>
+        </div>
+        <div class="card result b-result" id="result"><h2>Kết quả của plan này</h2><div class="res-top"><span class="pill neutral">Chờ chấm</span></div><p class="muted">Chấm sau khi nến ngày đóng (17:00 giờ New York).</p><p class="small"><a href="/vi/track-record/2026-11/#method">Cách chấm plan</a></p></div>
+        <div class="card next b-next" id="next" hidden><strong>Lần cập nhật tới</strong><span>Plan sáng 07:00 VN thứ Năm 12/11</span></div>
       </div>
     </div>
 
@@ -197,7 +203,13 @@
   </div>
 </footer>
 
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Chart">
+  <button type="button" class="lb-x" id="lb-x" aria-label="Close">×</button>
+  <img id="lb-img" alt="">
+  <p class="lb-hint" data-i18n="lb_hint">Chạm bất kỳ đâu để đóng · dùng 2 ngón để phóng to</p>
+</div>
+
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nexuscore.trade/#org","name":"NEXUS CORE AI","url":"https://nexuscore.trade/","logo":{"@type":"ImageObject","url":"https://nexuscore.trade/assets/icon-512.png","width":512,"height":512},"sameAs":["https://t.me/nexuscorefx","https://x.com/XAU_CRYPTO","https://www.youtube.com/@nexuscorefx"]},{"@type":"WebSite","@id":"https://nexuscore.trade/#website","name":"NEXUS CORE","url":"https://nexuscore.trade/","publisher":{"@id":"https://nexuscore.trade/#org"},"inLanguage":["en","ar","vi"],"description":"Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong — refreshed before the Asia, London and New York sessions, every plan graded in public."},{"@type":"Article","@id":"https://nexuscore.trade/vi/plan/2026-11-11-newyork/#plan","headline":"Plan vàng Thứ 4, 11/11 · Plan trước phiên Mỹ · BÁN — XAUUSD | NEXUS CORE","description":"Ưu tiên BÁN ở cản 4048–4056; sai nếu M15 đóng trên 4083 — Vùng chính: 4048,4–4056,2. Plan trước phiên Mỹ.","image":["https://nexuscore.trade/data/charts/2026-11-11-1930-vi.png"],"datePublished":"2026-11-11T19:40:00+07:00","dateModified":"2026-11-11T19:40:00+07:00","inLanguage":"vi","author":{"@id":"https://nexuscore.trade/#org"},"publisher":{"@id":"https://nexuscore.trade/#org"},"mainEntityOfPage":"https://nexuscore.trade/vi/plan/2026-11-11-newyork/","isPartOf":{"@id":"https://nexuscore.trade/#website"},"about":{"@type":"Thing","name":"Gold (XAUUSD)"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"NEXUS CORE","item":"https://nexuscore.trade/vi/"},{"@type":"ListItem","position":2,"name":"Kết quả · Tháng 11/2026","item":"https://nexuscore.trade/vi/track-record/2026-11/"},{"@type":"ListItem","position":3,"name":"Thứ 4, 11/11 · Phiên Mỹ","item":"https://nexuscore.trade/vi/plan/2026-11-11-newyork/"}]}]}</script>
-<script src="/app.js?v=20261112b"></script>
+<script src="/app.js?v=20261112c"></script>
 </body>
 </html>

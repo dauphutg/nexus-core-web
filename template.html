@@ -15,8 +15,8 @@
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261112b">
-<script src="/theme.js?v=20261112b"></script>
+<link rel="stylesheet" href="/style.css?v=20261112c">
+<script src="/theme.js?v=20261112c"></script>
 </head>
 <body data-page="{{KIND}}">
 <a class="skip" href="#app" data-i18n="skip"></a>
@@ -93,27 +93,33 @@
 
     <div class="layout">
       <div class="stack">
-        <figure class="chart" id="chart-box" hidden>
-          <a id="chart-link" href="#" target="_blank" rel="noopener noreferrer"><img id="chart-img" alt="" loading="lazy" width="1800" height="1110"></a>
+        <figure class="chart b-chart" id="chart-box" hidden>
+          <a id="chart-link" href="#" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" alt="" loading="lazy" width="1800" height="1110"></picture></a>
+          <figcaption class="chart-hint" data-i18n="chart_hint"></figcaption>
         </figure>
-        <h2 data-i18n="zones"></h2>
-        <div id="zones" class="stack-sm"></div>
+        <div class="blk b-zones">
+          <h2 data-i18n="zones"></h2>
+          <div id="zones" class="stack-sm"></div>
+        </div>
       </div>
 
       <div class="stack">
-        <h2 data-i18n="levels"></h2>
-        <div class="card list" id="levels"></div>
-        <div class="stats" id="context"></div>
-
-        <h2 data-i18n="scenarios"></h2>
-        <div id="scenarios" class="stack-sm"></div>
-
-        <h2 data-i18n="news"></h2>
-        <div class="card list" id="news"></div>
-        <p class="tznote muted" id="tznote"></p>
-
-        <div class="card result" id="result" hidden></div>
-        <div class="card next" id="next"></div>
+        <div class="blk b-levels">
+          <h2 data-i18n="levels"></h2>
+          <div class="card list" id="levels"></div>
+        </div>
+        <div class="stats b-context" id="context"></div>
+        <div class="blk b-scen">
+          <h2 data-i18n="scenarios"></h2>
+          <div id="scenarios" class="stack-sm"></div>
+        </div>
+        <div class="blk b-news">
+          <h2 data-i18n="news"></h2>
+          <div class="card list" id="news"></div>
+          <p class="tznote muted" id="tznote"></p>
+        </div>
+        <div class="card result b-result" id="result" hidden></div>
+        <div class="card next b-next" id="next"></div>
       </div>
     </div>
 
@@ -172,7 +178,13 @@
   </div>
 </footer>
 
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Chart">
+  <button type="button" class="lb-x" id="lb-x" aria-label="Close">×</button>
+  <img id="lb-img" alt="">
+  <p class="lb-hint" data-i18n="lb_hint"></p>
+</div>
+
 {{JSONLD}}
-<script src="/app.js?v=20261112b"></script>
+<script src="/app.js?v=20261112c"></script>
 </body>
 </html>
