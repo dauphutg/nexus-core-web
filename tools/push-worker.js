@@ -10,7 +10,8 @@
 //     when a new plan edition appears it sends one notification to every subscriber.
 //
 // Setup (Cloudflare dashboard): KV namespace bound as  SUBS , Cron Trigger  */2 * * * * ,
-// custom domain  push.nexuscore.trade . No secrets to copy: the signing key is created on first run.
+// custom domain  push.nexuscore.trade , and route  nexuscore.trade/api/*  (same-domain address:
+// any phone that can open the site can reach the service). No secrets to copy: the signing key is created on first run.
 
 const SITE = 'https://nexuscore.trade';
 const BATCH = 40;                       // pushes per run (free plan allows 50 outgoing requests)
@@ -139,6 +140,11 @@ async function tick(env) {
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.hostname === 'nexuscore.trade' || url.hostname === 'www.nexuscore.trade') {
+      // reached through the route nexuscore.trade/api/* – anything else on the site is not ours to answer
+      if (!url.pathname.startsWith('/api/')) return fetch(req);
+      url.pathname = url.pathname.slice(4);
+    }
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors() });
     try {
       if (req.method === 'GET' && url.pathname === '/key') return reply(200, (await vapid(env)).pub);

@@ -332,15 +332,17 @@
   // ---- new-plan alerts (web push) ----
   // Several addresses for the same service: if a phone or network cannot reach the first one
   // (DNS not refreshed yet, blocked by a filter…), the next one is tried automatically.
-  var PUSH_APIS = ['https://push.nexuscore.trade'];
+  var PUSH_APIS = ['/api', 'https://push.nexuscore.trade'];
   var PUSH_API = PUSH_APIS[0];
   function apiFetch(path, opt, i) {
     i = i || 0;
     var base = i === 0 ? PUSH_API : PUSH_APIS[(PUSH_APIS.indexOf(PUSH_API) + i) % PUSH_APIS.length];
-    return fetch(base + path, opt).then(function (r) { PUSH_API = base; return r; }, function (e) {
-      if (i + 1 >= PUSH_APIS.length) throw e;
-      return apiFetch(path, opt, i + 1);
-    });
+    function next(e) { if (i + 1 >= PUSH_APIS.length) throw e; return apiFetch(path, opt, i + 1); }
+    return fetch(base + path, opt).then(function (r) {
+      // 404/405/5xx = this address does not lead to the service (yet): try the next one
+      if (r.status === 404 || r.status === 405 || r.status >= 500) { if (i + 1 < PUSH_APIS.length) return next(new Error('HTTP ' + r.status)); }
+      PUSH_API = base; return r;
+    }, next);
   }
   var push = { ready: false, key: '', state: 'off', busy: false, err: false, reg: null };
   var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
