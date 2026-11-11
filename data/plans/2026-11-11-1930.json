@@ -22,60 +22,60 @@
  "context": [
   {
    "k": {
-    "vi": "Phía D1",
-    "en": "D1 side",
+    "vi": "Xu hướng D1",
+    "en": "D1 trend",
     "ar": "اتجاه D1"
    },
    "v": {
-    "vi": "Giảm – nến D 10/11 đỏ mạnh, đóng 4032.5 dưới EMA13 D",
-    "en": "Bearish – strong red D1 candle on 10/11, closed 4032.5 below the D1 EMA13",
-    "ar": "هابط – شمعة D1 حمراء قوية في 10/11 أغلقت عند 4032.5 أسفل EMA13 اليومي"
+    "vi": "Giảm – nến ngày 10/11 đỏ mạnh, đóng 4032.5 dưới đường trung bình ngắn hạn",
+    "en": "Bearish – strong red daily candle on 10/11, closed 4032.5 below the short-term average",
+    "ar": "هابط – شمعة يومية حمراء قوية في 10/11 أغلقت عند 4032.5 أسفل المتوسط قصير الأجل"
    }
   },
   {
    "k": {
-    "vi": "H4",
-    "en": "H4",
-    "ar": "H4"
+    "vi": "Cấu trúc H4",
+    "en": "H4 structure",
+    "ar": "هيكل H4"
    },
    "v": {
-    "vi": "Đi ngang, giá dưới EMA89 H4 (4059.5)",
-    "en": "Flat, price below EMA89 H4 (4059.5)",
-    "ar": "عرضي، والسعر أسفل EMA89 H4 (4059.5)"
+    "vi": "Đi ngang, giá nằm dưới đường xu hướng H4",
+    "en": "Sideways, price below the H4 trend average",
+    "ar": "عرضي، والسعر أسفل متوسط الاتجاه على H4"
    }
   },
   {
    "k": {
-    "vi": "Dow H1",
-    "en": "Dow H1",
-    "ar": "داو H1"
+    "vi": "Cấu trúc H1",
+    "en": "H1 structure",
+    "ar": "هيكل H1"
    },
    "v": {
-    "vi": "Giảm – hồi lên 4067.1 bị từ chối",
+    "vi": "Giảm – nhịp hồi lên 4067.1 bị từ chối",
     "en": "Bearish – bounce to 4067.1 rejected",
     "ar": "هابط – رُفض الارتداد عند 4067.1"
    }
   },
   {
    "k": {
-    "vi": "Giá so EMA89 H1",
-    "en": "Price vs EMA89 H1",
-    "ar": "السعر مقابل EMA89 H1"
+    "vi": "Động lượng H1",
+    "en": "H1 momentum",
+    "ar": "زخم H1"
    },
    "v": {
-    "vi": "Dưới (4067.2)",
-    "en": "Below (4067.2)",
-    "ar": "أسفل (4067.2)"
+    "vi": "Yếu – giá dưới đường xu hướng",
+    "en": "Weak – price below the trend average",
+    "ar": "ضعيف – السعر أسفل متوسط الاتجاه"
    }
   },
   {
    "k": {
-    "vi": "Trục ngày",
-    "en": "Daily pivot",
-    "ar": "المحور اليومي"
+    "vi": "Mốc trong ngày",
+    "en": "Intraday level",
+    "ar": "مستوى اليوم"
    },
    "v": {
-    "vi": "Open D 4035.4",
+    "vi": "Giá mở cửa ngày 4035.4",
     "en": "Daily open 4035.4",
     "ar": "افتتاح اليوم 4035.4"
    }
@@ -88,9 +88,9 @@
   "grade": "A"
  },
  "invalidation": {
-  "vi": "M15 đóng trên 4083 (qua mức Dow 4081.0) → thôi bán; phía mua chỉ vào ở vùng hồi 4067–4071.",
-  "en": "M15 close above 4083 (through the 4081.0 Dow level) → sell side off; buys only on a pullback to 4067–4071.",
-  "ar": "إغلاق M15 فوق 4083 (تجاوز مستوى داو 4081.0) ← إلغاء البيع، والشراء فقط عند الارتداد إلى 4067–4071."
+  "vi": "M15 đóng trên 4083 → thôi bán; phía mua chỉ cân nhắc ở vùng 4067–4071.",
+  "en": "M15 close above 4083 → sell view off; buyers only in play around 4067–4071.",
+  "ar": "إغلاق M15 فوق 4083 ← تُلغى فكرة البيع، والشراء يُنظر فيه فقط حول 4067–4071."
  },
  "targets": [
   {
@@ -149,9 +149,9 @@
    "hi": 4026.6,
    "grade": "B breakout",
    "status": {
-    "vi": "Chưa kích hoạt – bán khi hồi lại sau khi M15 đóng dưới 4024.5",
-    "en": "Not triggered – sell the retest after an M15 close below 4024.5",
-    "ar": "لم تتفعّل – البيع عند إعادة الاختبار بعد إغلاق M15 أسفل 4024.5"
+    "vi": "Chưa kích hoạt – chỉ có hiệu lực khi giá thủng 4024.5",
+    "en": "Not active yet – only in play after a break below 4024.5",
+    "ar": "غير مفعّلة بعد – تصبح فعّالة فقط بعد كسر 4024.5"
    }
   },
   {

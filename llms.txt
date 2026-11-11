@@ -14,7 +14,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - Target T2: 4013.6
 - Target T3: 4000
 - Expected range: 4000–4083
-- View is wrong if: M15 close above 4083 (through the 4081.0 Dow level) → sell side off; buys only on a pullback to 4067–4071.
+- View is wrong if: M15 close above 4083 → sell view off; buyers only in play around 4067–4071.
 - Main scenario (~55%, SELL): Bounce into 4050–4060 gets rejected, then down to 4027; a break opens 4014.
 - Alternate scenario (~30%, SELL): Straight drop through 4036 toward 4027–4014.
 - Alternate scenario (~15%, BUY): Breaks 4069 and an M15 close above 4083 → 4100.
