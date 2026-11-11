@@ -3,7 +3,7 @@
 
   var T = {
     en: {
-      skip: 'Skip to content', to_light: 'Switch to light theme', to_dark: 'Switch to dark theme', loading: 'Loading plan…', tab_plan: 'Daily plan', tab_signals: 'Signals', tab_history: 'Track record',
+      skip: 'Skip to content', to_light: 'Switch to light theme', to_dark: 'Switch to dark theme', tab_plan: 'Daily plan', tab_signals: 'Signals', tab_history: 'Track record',
       lede: 'AI-built game plan for gold (XAUUSD): key zones, scenarios and the level that proves the view wrong — refreshed before Asia, London and New York.',
       bias: 'Bias', levels: 'Key levels', scenarios: 'Scenarios', zones: 'Zones on the chart', news: 'Economic calendar',
       main_zone: 'Main zone', invalid: 'View is wrong if', range: 'Expected range', target: 'Target',
@@ -11,26 +11,38 @@
       ed_short: { '0700': 'Asia', '1345': 'London', '1930': 'New York' },
       updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', key: 'Key zone',
       tz: 'All times shown in your local time', your_time: 'your time',
-      active: 'Active', closed: 'Closed',
-      signals_sub: 'Every signal is tied to the plan in force and posted here and on Telegram at the same moment.',
-      no_active: 'No live signal right now — the next one lands here when price reaches a plan zone.',
-      no_closed: 'No closed signals yet.', entry: 'Entry', sl: 'Stop', tp: 'Target',
-      tg_title: 'Get every plan and signal on Telegram', tg_sub: 'Free channel · no sign-up',
-      history_sub: 'Every plan is graded in public at the daily close — right or wrong, it stays on the record.',
-      h_days: 'Days graded', h_right: 'Direction right', h_r: 'Total R', pending: 'Pending',
-      right: 'Right', wrong: 'Wrong', void: 'Void / stood aside',
+      tg_title: 'Get every plan on Telegram', tg_sub: 'Free channel · no sign-up',
       SELL: 'SELL', BUY: 'BUY', TWO_WAY: 'TWO-WAY', STAND_ASIDE: 'STAND ASIDE', lean: 'leaning',
       live: 'LIVE', stale: 'LAST PLAN', err: 'Could not load data. Please reload the page.',
+      cta_title: 'Get the next plan before London opens', cta_sub: 'A free alert the moment each plan is published — Asia, London and New York. Takes five seconds.', cta_push: 'Alert on this device',
       nt_title: 'New-plan alerts', nt_sub: 'Get a notification on this device the moment a new plan is published.', nt_on_btn: 'Turn on alerts', nt_off_btn: 'Turn off alerts', nt_on: 'Alerts are on for this device.', nt_denied: 'Notifications are blocked for this site. Allow them in your browser settings to turn alerts on.', nt_ios: 'On iPhone: tap the Share button, choose “Add to Home Screen”, then open NEXUS CORE from your home screen and turn on alerts.', nt_err: 'Could not change alerts. Please try again.',
-      wl_title: 'Email alerts & waitlist', wl_sub: 'Get new plans by email and be first to get the NEXUS CORE app. No spam, unsubscribe any time.', wl_label: 'Email address', wl_btn: 'Join waitlist', wl_ok: 'You are on the list.', wl_bad: 'Please enter a valid email address.', wl_err: 'Could not sign you up. Please try again.', wl_privacy: 'We use your email only for NEXUS CORE updates and never share it. You can ask to be removed at any time.',
+      wl_title: 'Or get it by email', wl_sub: 'A copy of every new plan in your inbox, plus first access to the NEXUS CORE app. No spam, unsubscribe any time.', wl_label: 'Email address', wl_btn: 'Join waitlist', wl_ok: 'You are on the list.', wl_bad: 'Please enter a valid email address.', wl_err: 'Could not sign you up. Please try again.', wl_privacy: 'We use your email only for NEXUS CORE updates and never share it. You can ask to be removed at any time.',
       nt_old_ios: 'Alerts need iOS 16.4 or later. Update your iPhone in Settings → General → Software Update, then turn alerts on here.', nt_unsup: 'This browser cannot show alerts. Open the site in Chrome, Edge, Firefox or Safari — or follow the Telegram channel.',
       nt_retry: 'Connecting… please tap the button again.',
       nt_alt: 'Works on every phone, including older iPhones:', nt_tg: 'Alerts on Telegram', nt_mail: 'Alerts by email',
+      permalink: 'Permanent link to this plan',
+      res_hit: 'Target 1 reached', res_void: 'Invalidated', res_no_touch: 'Zone not reached', res_expired: 'No follow-through', res_aside: 'Stood aside', pending: 'Pending',
+      res_pending_note: 'Graded after the daily close (17:00 New York).',
+      pp_result: 'How this plan played out', pp_touched: 'Zone reached', pp_event: 'Decided at', pp_window: 'Graded window', pp_hl: 'High / low in window', pp_last: 'Last price in window', pp_t1: 'Target 1', pp_void: 'Invalidation level',
+      prev_plan: '← Previous plan', next_plan: 'Next plan →', today_plan: 'Today’s plan', all_month: 'All plans this month',
+      tr_h1: 'Gold plan track record', tr_lede: 'Every NEXUS CORE gold plan this month and how it played out. Wins, losses and misses all stay on the record — nothing is deleted.',
+      tr_plans: 'Plans published', tr_graded: 'Graded', tr_reached: 'Zone reached', tr_hit: 'Target 1 reached', tr_void: 'Invalidated', tr_r: 'Total R',
+      tr_list: 'Every plan', tr_none: 'No plans yet this month.', tr_method: 'How plans are graded', tr_prev_m: '← Previous month', tr_next_m: 'Next month →', view: 'View plan',
+      tr_m: ['Each plan is graded on 15-minute XAUUSD candles (OANDA feed) from the moment it is published until the next plan replaces it, or the daily close (17:00 New York) — whichever comes first.',
+        'Zone reached: a candle trades into the main zone. If it never does, the plan is marked “Zone not reached” and scores 0R.',
+        'Once the zone is reached, whichever comes first decides: Target 1 → “Target 1 reached”; a 15-minute close beyond the invalidation level → “Invalidated” (−1R).',
+        'If neither happens before the window ends → “No follow-through”, scored at the last price.',
+        'R = distance from the zone edge to Target 1 (or the last price) divided by the distance from the zone edge to the invalidation level. When both happen in the same candle, it counts against the plan.',
+        'Stand-aside plans are not scored.'],
+      sg_h1: 'NEXUS CORE Signals', sg_lede: 'Exact trade signals built on the daily plan — for members only. The daily plan stays free for everyone.', sg_soon: 'Members only · launching soon', sg_what: 'What members get',
+      sg_b: ['A real-time alert when price reaches a plan zone and the setup confirms — entry, stop and targets.', 'Every signal tied to the plan in force, so you always know why it exists.', 'Priority alerts in the app and a private Telegram group.', 'Every signal recorded and graded, win or loss.'],
+      sg_wl_title: 'Join the Signals waitlist', sg_wl_sub: 'Be first to know when Signals opens, with early-member pricing. No spam.', sg_free: 'Only need the free plan?', sg_free_link: 'See today’s gold plan →',
+      sg_note: 'Signals are trade ideas for information only, not personal advice. Availability may depend on your country.',
       risk_title: 'Risk warning',
       disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
     ar: {
-      skip: 'انتقل إلى المحتوى', to_light: 'التبديل إلى الوضع الفاتح', to_dark: 'التبديل إلى الوضع الداكن', loading: 'جارٍ تحميل الخطة…', tab_plan: 'الخطة اليومية', tab_signals: 'الإشارات', tab_history: 'سجل النتائج',
+      skip: 'انتقل إلى المحتوى', to_light: 'التبديل إلى الوضع الفاتح', to_dark: 'التبديل إلى الوضع الداكن', tab_plan: 'الخطة اليومية', tab_signals: 'الإشارات', tab_history: 'سجل النتائج',
       lede: 'خطة للذهب (XAUUSD) مبنية بالذكاء الاصطناعي: مناطق رئيسية، سيناريوهات، والمستوى الذي يُلغي الفكرة — تُحدَّث قبل جلسات آسيا ولندن ونيويورك.',
       bias: 'الاتجاه', levels: 'المستويات الرئيسية', scenarios: 'السيناريوهات', zones: 'المناطق على الرسم', news: 'المفكرة الاقتصادية',
       main_zone: 'المنطقة الرئيسية', invalid: 'تُلغى الفكرة إذا', range: 'النطاق المتوقع', target: 'الهدف',
@@ -38,26 +50,38 @@
       ed_short: { '0700': 'آسيا', '1345': 'لندن', '1930': 'نيويورك' },
       updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', key: 'منطقة رئيسية',
       tz: 'جميع الأوقات بتوقيتك المحلي', your_time: 'بتوقيتك',
-      active: 'نشطة', closed: 'مغلقة',
-      signals_sub: 'كل إشارة مرتبطة بالخطة السارية وتُنشر هنا وعلى تيليجرام في اللحظة نفسها.',
-      no_active: 'لا توجد إشارة نشطة الآن — ستظهر الإشارة التالية هنا عند وصول السعر إلى منطقة الخطة.',
-      no_closed: 'لا توجد إشارات مغلقة بعد.', entry: 'الدخول', sl: 'الوقف', tp: 'الهدف',
-      tg_title: 'استلم كل خطة وإشارة عبر تيليجرام', tg_sub: 'قناة مجانية · بدون تسجيل',
-      history_sub: 'تُقيَّم كل خطة علنًا عند الإغلاق اليومي — صحيحة كانت أم خاطئة، تبقى في السجل.',
-      h_days: 'أيام مُقيَّمة', h_right: 'اتجاه صحيح', h_r: 'مجموع R', pending: 'قيد التقييم',
-      right: 'صحيحة', wrong: 'خاطئة', void: 'ملغاة / خارج السوق',
+      tg_title: 'استلم كل خطة عبر تيليجرام', tg_sub: 'قناة مجانية · بدون تسجيل',
       SELL: 'بيع', BUY: 'شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق', lean: 'ميل إلى',
       live: 'مباشر', stale: 'آخر خطة', err: 'تعذّر تحميل البيانات. يرجى إعادة تحميل الصفحة.',
+      cta_title: 'احصل على الخطة القادمة قبل افتتاح لندن', cta_sub: 'تنبيه مجاني لحظة نشر كل خطة — آسيا ولندن ونيويورك. التفعيل في خمس ثوانٍ.', cta_push: 'تنبيه على هذا الجهاز',
       nt_title: 'تنبيهات الخطة الجديدة', nt_sub: 'استلم إشعارًا على هذا الجهاز فور نشر خطة جديدة.', nt_on_btn: 'تفعيل التنبيهات', nt_off_btn: 'إيقاف التنبيهات', nt_on: 'التنبيهات مفعّلة على هذا الجهاز.', nt_denied: 'الإشعارات محظورة لهذا الموقع. اسمح بها من إعدادات المتصفح لتفعيل التنبيهات.', nt_ios: 'على الآيفون: اضغط زر المشاركة، اختر «إضافة إلى الشاشة الرئيسية»، ثم افتح NEXUS CORE من الشاشة الرئيسية وفعّل التنبيهات.', nt_err: 'تعذّر تغيير التنبيهات. حاول مرة أخرى.',
-      wl_title: 'تنبيهات البريد وقائمة الانتظار', wl_sub: 'استلم الخطط الجديدة عبر البريد وكن أول من يحصل على تطبيق NEXUS CORE. بلا إزعاج، ويمكنك إلغاء الاشتراك متى شئت.', wl_label: 'البريد الإلكتروني', wl_btn: 'انضم الآن', wl_ok: 'تم تسجيلك في القائمة.', wl_bad: 'يرجى إدخال بريد إلكتروني صحيح.', wl_err: 'تعذّر التسجيل. حاول مرة أخرى.', wl_privacy: 'نستخدم بريدك لتحديثات NEXUS CORE فقط ولا نشاركه مع أحد. يمكنك طلب الحذف في أي وقت.',
+      wl_title: 'أو استلمها بالبريد', wl_sub: 'نسخة من كل خطة جديدة في بريدك، مع وصول مبكر إلى تطبيق NEXUS CORE. بلا إزعاج، ويمكنك الإلغاء متى شئت.', wl_label: 'البريد الإلكتروني', wl_btn: 'انضم الآن', wl_ok: 'تم تسجيلك في القائمة.', wl_bad: 'يرجى إدخال بريد إلكتروني صحيح.', wl_err: 'تعذّر التسجيل. حاول مرة أخرى.', wl_privacy: 'نستخدم بريدك لتحديثات NEXUS CORE فقط ولا نشاركه مع أحد. يمكنك طلب الحذف في أي وقت.',
       nt_old_ios: 'التنبيهات تتطلب iOS 16.4 أو أحدث. حدّث الآيفون من الإعدادات ← عام ← تحديث البرامج ثم فعّل التنبيهات هنا.', nt_unsup: 'هذا المتصفح لا يدعم التنبيهات. افتح الموقع في Chrome أو Edge أو Firefox أو Safari — أو تابع قناة تيليجرام.',
       nt_retry: 'جارٍ الاتصال… اضغط الزر مرة أخرى.',
       nt_alt: 'تعمل على كل الهواتف، بما فيها أجهزة الآيفون القديمة:', nt_tg: 'تنبيهات عبر تيليجرام', nt_mail: 'تنبيهات بالبريد',
+      permalink: 'رابط دائم لهذه الخطة',
+      res_hit: 'تحقق الهدف الأول', res_void: 'أُلغيت الفكرة', res_no_touch: 'لم يصل السعر إلى المنطقة', res_expired: 'بلا متابعة', res_aside: 'خارج السوق', pending: 'قيد التقييم',
+      res_pending_note: 'تُقيَّم بعد الإغلاق اليومي (17:00 بتوقيت نيويورك).',
+      pp_result: 'نتيجة هذه الخطة', pp_touched: 'وصول السعر إلى المنطقة', pp_event: 'حُسمت النتيجة', pp_window: 'فترة التقييم', pp_hl: 'أعلى / أدنى سعر في الفترة', pp_last: 'آخر سعر في الفترة', pp_t1: 'الهدف الأول', pp_void: 'مستوى الإلغاء',
+      prev_plan: 'الخطة السابقة', next_plan: 'الخطة التالية', today_plan: 'خطة اليوم', all_month: 'كل خطط الشهر',
+      tr_h1: 'سجل نتائج خطط الذهب', tr_lede: 'كل خطط NEXUS CORE للذهب هذا الشهر وكيف انتهت. الرابحة والخاسرة وغير المُفعّلة تبقى في السجل — لا نحذف شيئًا.',
+      tr_plans: 'خطط منشورة', tr_graded: 'مُقيَّمة', tr_reached: 'وصل السعر إلى المنطقة', tr_hit: 'تحقق الهدف الأول', tr_void: 'أُلغيت', tr_r: 'مجموع R',
+      tr_list: 'كل خطة', tr_none: 'لا توجد خطط هذا الشهر بعد.', tr_method: 'كيف نُقيّم الخطط', tr_prev_m: 'الشهر السابق', tr_next_m: 'الشهر التالي', view: 'عرض الخطة',
+      tr_m: ['تُقيَّم كل خطة على شموع XAUUSD لفترة 15 دقيقة (بيانات OANDA) من لحظة نشرها حتى تحل محلها الخطة التالية، أو حتى الإغلاق اليومي (17:00 بتوقيت نيويورك) — أيهما أسبق.',
+        'الوصول إلى المنطقة: شمعة تتداول داخل المنطقة الرئيسية. إن لم يحدث ذلك تُسجَّل «لم يصل السعر إلى المنطقة» بنتيجة 0R.',
+        'بعد الوصول إلى المنطقة، ما يحدث أولًا يحسم النتيجة: بلوغ الهدف الأول ← «تحقق الهدف الأول»؛ إغلاق شمعة 15 دقيقة بعد مستوى الإلغاء ← «أُلغيت الفكرة» (‎−1R).',
+        'إن لم يحدث أيٌّ منهما قبل نهاية الفترة ← «بلا متابعة» وتُحتسب بآخر سعر.',
+        'R = المسافة من حافة المنطقة إلى الهدف الأول (أو آخر سعر) مقسومة على المسافة من حافة المنطقة إلى مستوى الإلغاء. إذا وقع الأمران في الشمعة نفسها تُحتسب ضد الخطة.',
+        'خطط «خارج السوق» لا تُحتسب.'],
+      sg_h1: 'إشارات NEXUS CORE', sg_lede: 'إشارات تداول دقيقة مبنية على الخطة اليومية — للأعضاء فقط. تبقى الخطة اليومية مجانية للجميع.', sg_soon: 'للأعضاء فقط · قريبًا', sg_what: 'ما يحصل عليه الأعضاء',
+      sg_b: ['تنبيه فوري عند وصول السعر إلى منطقة الخطة وتأكيد الإعداد — الدخول والوقف والأهداف.', 'كل إشارة مرتبطة بالخطة السارية، فتعرف دائمًا سببها.', 'تنبيهات ذات أولوية في التطبيق ومجموعة تيليجرام خاصة.', 'كل إشارة تُسجَّل وتُقيَّم، رابحة كانت أم خاسرة.'],
+      sg_wl_title: 'انضم إلى قائمة انتظار الإشارات', sg_wl_sub: 'كن أول من يعلم عند إطلاق الإشارات، مع سعر خاص للأعضاء الأوائل. بلا إزعاج.', sg_free: 'تريد الخطة المجانية فقط؟', sg_free_link: 'شاهد خطة الذهب اليوم',
+      sg_note: 'الإشارات أفكار تداول لأغراض المعلومات فقط وليست نصيحة شخصية. قد لا تتوفر في بعض الدول.',
       risk_title: 'تحذير المخاطر',
       disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
     vi: {
-      skip: 'Tới nội dung', to_light: 'Chuyển sang giao diện sáng', to_dark: 'Chuyển sang giao diện tối', loading: 'Đang tải plan…', tab_plan: 'Plan ngày', tab_signals: 'Signal', tab_history: 'Lịch sử',
+      skip: 'Tới nội dung', to_light: 'Chuyển sang giao diện sáng', to_dark: 'Chuyển sang giao diện tối', tab_plan: 'Plan ngày', tab_signals: 'Signal', tab_history: 'Kết quả',
       lede: 'Plan vàng (XAUUSD) do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai — cập nhật trước phiên Á, Âu và Mỹ.',
       bias: 'Xu hướng', levels: 'Mức giá chính', scenarios: 'Kịch bản', zones: 'Các vùng trên chart', news: 'Lịch tin',
       main_zone: 'Vùng chính', invalid: 'Sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
@@ -65,21 +89,33 @@
       ed_short: { '0700': 'Phiên Á', '1345': 'Phiên Âu', '1930': 'Phiên Mỹ' },
       updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', key: 'Vùng chính',
       tz: 'Mọi giờ hiển thị theo giờ máy của bạn', your_time: 'giờ của bạn',
-      active: 'Đang chạy', closed: 'Đã đóng',
-      signals_sub: 'Mỗi signal gắn với plan đang hiệu lực, đăng cùng lúc ở đây và trên Telegram.',
-      no_active: 'Chưa có signal — signal tiếp theo hiện ở đây khi giá vào vùng plan.',
-      no_closed: 'Chưa có signal nào đóng.', entry: 'Entry', sl: 'SL', tp: 'TP',
-      tg_title: 'Nhận plan và signal qua Telegram', tg_sub: 'Kênh miễn phí · không cần đăng ký',
-      history_sub: 'Mọi plan đều được chấm công khai khi nến ngày đóng — đúng hay sai đều giữ lại.',
-      h_days: 'Ngày đã chấm', h_right: 'Đúng hướng', h_r: 'Tổng R', pending: 'Chờ chấm',
-      right: 'Đúng', wrong: 'Sai', void: 'Huỷ / đứng ngoài',
+      tg_title: 'Nhận mọi plan qua Telegram', tg_sub: 'Kênh miễn phí · không cần đăng ký',
       SELL: 'BÁN', BUY: 'MUA', TWO_WAY: '2 CHIỀU', STAND_ASIDE: 'ĐỨNG NGOÀI', lean: 'nghiêng',
       live: 'LIVE', stale: 'PLAN CŨ', err: 'Không tải được dữ liệu. Thử tải lại trang.',
+      cta_title: 'Nhận plan tiếp theo trước giờ mở cửa phiên London', cta_sub: 'Thông báo miễn phí ngay khi mỗi plan được đăng — phiên Á, Âu và Mỹ. Bật trong 5 giây.', cta_push: 'Thông báo trên máy này',
       nt_title: 'Thông báo plan mới', nt_sub: 'Nhận thông báo trên máy này ngay khi có plan mới.', nt_on_btn: 'Bật thông báo', nt_off_btn: 'Tắt thông báo', nt_on: 'Đã bật thông báo trên máy này.', nt_denied: 'Trình duyệt đang chặn thông báo của trang này. Hãy cho phép trong cài đặt trình duyệt để bật.', nt_ios: 'Trên iPhone: bấm nút Chia sẻ, chọn “Thêm vào MH chính”, rồi mở NEXUS CORE từ màn hình chính và bật thông báo.', nt_err: 'Không đổi được thông báo. Thử lại sau.',
-      wl_title: 'Nhận plan qua email & danh sách chờ', wl_sub: 'Nhận plan mới qua email và có app NEXUS CORE sớm nhất. Không spam, huỷ bất cứ lúc nào.', wl_label: 'Địa chỉ email', wl_btn: 'Đăng ký', wl_ok: 'Bạn đã có tên trong danh sách.', wl_bad: 'Vui lòng nhập email hợp lệ.', wl_err: 'Chưa đăng ký được. Thử lại sau.', wl_privacy: 'Email chỉ dùng để gửi tin NEXUS CORE, không chia sẻ cho ai. Bạn có thể yêu cầu xoá bất cứ lúc nào.',
+      wl_title: 'Hoặc nhận qua email', wl_sub: 'Bản sao mỗi plan mới gửi vào hộp thư, kèm quyền dùng app NEXUS CORE sớm nhất. Không spam, huỷ bất cứ lúc nào.', wl_label: 'Địa chỉ email', wl_btn: 'Đăng ký', wl_ok: 'Bạn đã có tên trong danh sách.', wl_bad: 'Vui lòng nhập email hợp lệ.', wl_err: 'Chưa đăng ký được. Thử lại sau.', wl_privacy: 'Email chỉ dùng để gửi tin NEXUS CORE, không chia sẻ cho ai. Bạn có thể yêu cầu xoá bất cứ lúc nào.',
       nt_old_ios: 'Thông báo cần iOS 16.4 trở lên. Cập nhật iPhone trong Cài đặt → Cài đặt chung → Cập nhật phần mềm, rồi bật thông báo tại đây.', nt_unsup: 'Trình duyệt này không hỗ trợ thông báo. Mở trang bằng Chrome, Edge, Firefox hoặc Safari — hoặc theo dõi kênh Telegram.',
       nt_retry: 'Đang kết nối… bấm nút thêm lần nữa.',
       nt_alt: 'Cách này chạy trên mọi điện thoại, kể cả iPhone đời cũ:', nt_tg: 'Nhận qua Telegram', nt_mail: 'Nhận qua email',
+      permalink: 'Link cố định của plan này',
+      res_hit: 'Chạm mục tiêu 1', res_void: 'Bị huỷ (sai)', res_no_touch: 'Giá không tới vùng', res_expired: 'Không chạy', res_aside: 'Đứng ngoài', pending: 'Chờ chấm',
+      res_pending_note: 'Chấm sau khi nến ngày đóng (17:00 giờ New York).',
+      pp_result: 'Kết quả của plan này', pp_touched: 'Giá chạm vùng', pp_event: 'Chốt kết quả lúc', pp_window: 'Khung giờ chấm', pp_hl: 'Cao / thấp trong khung', pp_last: 'Giá cuối khung', pp_t1: 'Mục tiêu 1', pp_void: 'Mốc huỷ',
+      prev_plan: '← Plan trước', next_plan: 'Plan sau →', today_plan: 'Plan hôm nay', all_month: 'Mọi plan trong tháng',
+      tr_h1: 'Kết quả plan vàng', tr_lede: 'Mọi plan vàng NEXUS CORE trong tháng và kết quả thật. Đúng, sai hay không chạy đều giữ lại — không xoá plan nào.',
+      tr_plans: 'Plan đã đăng', tr_graded: 'Đã chấm', tr_reached: 'Giá tới vùng', tr_hit: 'Chạm mục tiêu 1', tr_void: 'Bị huỷ', tr_r: 'Tổng R',
+      tr_list: 'Từng plan', tr_none: 'Tháng này chưa có plan.', tr_method: 'Cách chấm plan', tr_prev_m: '← Tháng trước', tr_next_m: 'Tháng sau →', view: 'Xem plan',
+      tr_m: ['Mỗi plan được chấm trên nến 15 phút XAUUSD (dữ liệu OANDA) từ lúc đăng đến khi plan sau thay thế, hoặc đến khi nến ngày đóng (17:00 giờ New York) — tuỳ cái nào đến trước.',
+        'Giá tới vùng: có nến chạm vào vùng chính. Không chạm → “Giá không tới vùng”, tính 0R.',
+        'Sau khi chạm vùng, điều gì đến trước quyết định: chạm Mục tiêu 1 → “Chạm mục tiêu 1”; nến 15 phút đóng vượt mốc huỷ → “Bị huỷ” (−1R).',
+        'Hết khung giờ mà chưa có điều nào → “Không chạy”, tính theo giá cuối.',
+        'R = khoảng cách từ mép vùng tới Mục tiêu 1 (hoặc giá cuối) chia cho khoảng cách từ mép vùng tới mốc huỷ. Hai việc xảy ra trong cùng một nến thì tính bất lợi cho plan.',
+        'Plan đứng ngoài không tính điểm.'],
+      sg_h1: 'NEXUS CORE Signals', sg_lede: 'Tín hiệu vào lệnh cụ thể dựa trên plan ngày — chỉ dành cho thành viên. Plan ngày vẫn miễn phí cho mọi người.', sg_soon: 'Chỉ cho thành viên · sắp mở', sg_what: 'Thành viên nhận được',
+      sg_b: ['Báo ngay khi giá vào vùng plan và tín hiệu xác nhận — điểm vào, dừng lỗ và mục tiêu.', 'Mỗi tín hiệu gắn với plan đang hiệu lực, luôn biết vì sao có lệnh.', 'Thông báo ưu tiên trong app và nhóm Telegram riêng.', 'Mọi tín hiệu được ghi lại và chấm, thắng hay thua.'],
+      sg_wl_title: 'Đăng ký chờ gói Signals', sg_wl_sub: 'Biết đầu tiên khi Signals mở, kèm giá ưu đãi cho thành viên sớm. Không spam.', sg_free: 'Chỉ cần plan miễn phí?', sg_free_link: 'Xem plan vàng hôm nay →',
+      sg_note: 'Tín hiệu chỉ là ý tưởng giao dịch để tham khảo, không phải lời khuyên cá nhân. Có thể chưa mở ở một số quốc gia.',
       risk_title: 'Cảnh báo rủi ro',
       disclaimer: 'Nội dung chỉ để tham khảo, không phải lời khuyên đầu tư hay lời mời giao dịch. Sản phẩm có đòn bẩy như vàng CFD có rủi ro mất tiền nhanh. Kết quả quá khứ không đảm bảo tương lai. Chỉ giao dịch bằng số tiền bạn chấp nhận mất.'
     }
@@ -94,7 +130,8 @@
   var saved = null;
   try { saved = localStorage.getItem('nc_lang'); } catch (e) {}
   var nav = (navigator.language || '').toLowerCase();
-  // The address decides the language: /  = English, /ar/ = Arabic, /vi/ = Vietnamese (each is its own page for search engines).
+  // Page kind is set by tools/build.py: home (latest plan), plan (one archived plan), track (monthly record), signals.
+  var KIND = document.body.getAttribute('data-page') || 'home';
   // Where a visitor came from (?src=x / utm_source, else the referring site) and which page they signed up on – stored with email/alerts.
   var SRC = '', PAGE = location.pathname.slice(0, 80);
   try {
@@ -104,15 +141,19 @@
     SRC = s0 || sessionStorage.getItem('nc_src') || 'direct';
     if (s0) sessionStorage.setItem('nc_src', s0);
   } catch (e) { SRC = SRC || 'direct'; }
+  // The address decides the language: / and /en/… = English, /ar/… = Arabic, /vi/… = Vietnamese.
   var PATH_LANG = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : 'en';
-  function langPath(l) { return l === 'en' ? '/' : '/' + l + '/'; }
   // a returning visitor who picked Arabic/Vietnamese and lands on the English home page goes to their language
-  if (PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
-    location.replace(langPath(saved) + location.search + location.hash);
+  if (KIND === 'home' && PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
+    location.replace('/' + saved + location.pathname.replace(/^\/(index\.html)?/, '/').replace(/^\/\//, '/') + location.search + location.hash);
+  }
+  // old in-page tabs (#signals, #history) now have their own pages
+  if (KIND === 'home' && (location.hash === '#signals' || location.hash === '#history')) {
+    var tl = document.querySelector('.tabs [data-tab="' + (location.hash === '#signals' ? 'signals' : 'track') + '"]');
+    if (tl) location.replace(tl.getAttribute('href'));
   }
   var lang = PATH_LANG;
-  var data = { plan: null, signals: null, history: null };
-  var seg = 'active';
+  var data = { plan: null };
 
   var themeBtn;
   function t(k) { return T[lang][k] != null ? T[lang][k] : k; }
@@ -120,7 +161,7 @@
     if (o == null) return '';
     var s = typeof o === 'string' ? o : (o[lang] || o.en || o.vi || '');
     // keep price ranges left-to-right inside Arabic sentences (4058–4068, not 4068–4058)
-    if (lang === 'ar') s = s.replace(/(\d[\d.,:]*)\s*[–-]\s*(\d[\d.,:]*)/g, '\u2066$1–$2\u2069');
+    if (lang === 'ar') s = s.replace(/(\d[\d.,:]*)\s*[–-]\s*(\d[\d.,:]*)/g, '⁦$1–$2⁩');
     return s;
   }
   function locale() { return lang === 'vi' ? 'vi-VN' : lang === 'ar' ? 'ar-u-nu-latn' : (nav.indexOf('en') === 0 ? navigator.language : 'en-GB'); }
@@ -134,6 +175,7 @@
     var r = el('div', 'row' + (text ? ' text' : ''));
     return add(r, el('span', 'k', k), el('span', 'v' + (text ? '' : ' num') + (vcls ? ' ' + vcls : ''), v));
   }
+  function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
 
   // Plan times are Vietnam time (UTC+7); show them in the visitor's own time zone.
   function vn(dateStr, hm) { return new Date(dateStr + 'T' + hm + ':00+07:00'); }
@@ -168,18 +210,21 @@
   function renderStatic() {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.querySelectorAll('[data-i18n]').forEach(function (n) { n.textContent = t(n.getAttribute('data-i18n')); });
-    document.querySelectorAll('.lang [data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
+    each('[data-i18n]', function (n) { var v = t(n.getAttribute('data-i18n')); if (typeof v === 'string') n.textContent = v; });
+    each('.lang [data-lang]', function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
     var tg = LINKS.tg[lang] || LINKS.tg._, x = LINKS.x[lang] || LINKS.x._;
-    ['tg-cta', 'tg-link', 's-tg', 'nt-tg'].forEach(function (id) { document.getElementById(id).href = tg; });
+    each('.js-tg', function (a) { a.href = tg; });
     document.getElementById('s-x').href = x;
     if (themeBtn) themeLabel();
     notifyRender();
     wlRender();
   }
 
+  // Home page only: the plan is already in the HTML; this refreshes it (a newer plan may exist) and shows local times.
   function renderPlan() {
     var p = data.plan; if (!p) return;
+    var same = document.body.getAttribute('data-plan') === p.date + '-' + p.edition;
+    if (!same) { ['result', 'plan-link'].forEach(function (id) { var n = document.getElementById(id); if (n) n.hidden = true; }); }
     var upd = vn(p.updated_vn.slice(0, 10), p.updated_vn.slice(11));
     document.getElementById('plan-title').textContent = t('plan_of') + ' · ' + dayOnly(vn(p.date, '12:00'));
     document.getElementById('plan-meta').textContent = p.symbol + ' · ' + (t('ed')[p.edition] || p.edition) + ' · ' + t('updated') + ' ' + hmz(upd);
@@ -233,7 +278,7 @@
     (p.scenarios || []).forEach(function (s, i) {
       var c = el('div', 'card scen ' + sideCls(s.side));
       var head = add(el('div', 't'), el('span', null, (i === 0 ? t('main') : t('alt')) + ' · ' + t(s.side)), el('span', 'num muted', '~' + s.prob + '%'));
-      var bar = el('div', 'bar'); var bi = el('i'); bi.style.width = Math.max(0, Math.min(100, s.prob)) + '%'; bar.appendChild(bi);
+      var bar = el('div', 'bar'); var bi = el('i', 'w' + Math.round(Math.max(0, Math.min(100, s.prob)) / 5) * 5); bar.appendChild(bi);
       add(sc, add(c, head, el('p', null, L(s.text)), bar));
     });
 
@@ -266,71 +311,14 @@
     document.getElementById('live-text').textContent = age > 30 ? t('stale') : t('live');
   }
 
-  function rSpan(r) { return r == null ? null : el('span', 'num ' + (r > 0 ? 'r-up' : r < 0 ? 'r-down' : 'r-flat'), (r > 0 ? '+' : '') + fmt(r) + 'R'); }
-
-  function renderSignals() {
-    var s = data.signals || { active: [], closed: [] };
-    document.querySelectorAll('.seg button').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.seg === seg ? 'true' : 'false'); });
-    var list = clear('signal-list');
-    var items = s[seg] || [];
-    if (!items.length) { add(list, el('div', 'card empty', seg === 'active' ? t('no_active') : t('no_closed'))); return; }
-    items.forEach(function (x) {
-      var c = el('div', 'card sig');
-      var left = add(el('div', 'stack-sm'),
-        add(el('div', 'h'), el('span', 'pill ' + sideCls(x.side), t(x.side)), document.createTextNode(' '), el('span', 'muted', x.time || '')),
-        add(el('div', 'nums'), el('span', 'lab', t('entry')), el('span', 'lab', t('sl')), el('span', 'lab', t('tp')),
-          el('span', 'num', fmt(x.entry)), el('span', 'num', fmt(x.sl)), el('span', 'num', (x.tp || []).map(fmt).join(' / '))));
-      if (x.note) add(left, el('span', 'muted', L(x.note)));
-      add(list, add(c, left, rSpan(x.r)));
-    });
-  }
-
-  function renderHistory() {
-    var h = (data.history && data.history.days) || [];
-    var graded = h.filter(function (d) { return d.result; });
-    var right = graded.filter(function (d) { return d.result === 'right'; }).length;
-    var dir = graded.filter(function (d) { return d.result === 'right' || d.result === 'wrong'; }).length;
-    var totalR = graded.reduce(function (a, d) { return a + (d.r || 0); }, 0);
-    var st = clear('hist-stats');
-    add(st,
-      add(el('div', 'stat'), el('span', 'k', t('h_days')), el('span', 'v num', String(graded.length))),
-      add(el('div', 'stat'), el('span', 'k', t('h_right')), el('span', 'v num', dir ? right + '/' + dir : '—')),
-      add(el('div', 'stat'), el('span', 'k', t('h_r')), el('span', 'v num', graded.length ? (totalR > 0 ? '+' : '') + fmt(Math.round(totalR * 10) / 10) + 'R' : '—')));
-    var list = clear('hist-list');
-    h.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; }).forEach(function (d) {
-      var c = el('div', 'card sig');
-      var side = d.bias === 'TWO_WAY' || d.bias === 'STAND_ASIDE' ? (d.lean || '') : d.bias;
-      var lab = t(d.bias) + (d.bias === 'TWO_WAY' && d.lean ? ' · ' + t(d.lean) : '');
-      var res = d.result ? t(d.result) : t('pending');
-      var left = add(el('div', 'stack-sm'),
-        add(el('div', 'h'), el('strong', null, dayOnly(vn(d.date, '12:00'))), document.createTextNode(' '), el('span', 'pill ' + sideCls(side), lab)),
-        add(el('span', 'muted'), document.createTextNode(res + (d.main_zone ? ' · ' : '')), d.main_zone ? el('span', 'num', fmt(d.main_zone)) : null));
-      add(list, add(c, left, rSpan(d.r)));
-    });
-  }
-
-  function route() {
-    var tab = (location.hash || '#plan').slice(1);
-    if (['plan', 'signals', 'history'].indexOf(tab) < 0) tab = 'plan';
-    ['plan', 'signals', 'history'].forEach(function (v) { document.getElementById('view-' + v).hidden = v !== tab || !data.plan; });
-    document.querySelectorAll('.tabs a').forEach(function (a) {
-      if (a.dataset.tab === tab) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
-    });
-  }
-
-  function renderAll() { renderStatic(); renderPlan(); renderSignals(); renderHistory(); route(); }
-
-  document.querySelectorAll('.lang [data-lang]').forEach(function (b) {
+  each('.lang [data-lang]', function (b) {
     b.addEventListener('click', function (e) {
       e.preventDefault();
       var l = b.dataset.lang;
       try { localStorage.setItem('nc_lang', l); } catch (x) {}
-      if (l !== PATH_LANG) { location.href = langPath(l) + location.search + location.hash; return; }
-      lang = l; renderAll(); notifyLang();
+      if (l !== PATH_LANG) { location.href = b.getAttribute('href') + (KIND === 'home' ? location.search + location.hash : ''); return; }
+      lang = l; renderStatic(); notifyLang();
     });
-  });
-  document.querySelectorAll('.seg button').forEach(function (b) {
-    b.addEventListener('click', function () { seg = b.dataset.seg; renderSignals(); });
   });
   themeBtn = document.getElementById('theme-btn');
   function themeLabel() {
@@ -344,9 +332,8 @@
     try { localStorage.setItem('nc_theme', next); } catch (e) {}
     themeLabel();
   });
-  window.addEventListener('hashchange', route);
 
-  // ---- new-plan alerts (web push) ----
+  // ---- new-plan alerts (web push) – every .js-notify block on the page shares one state ----
   // Several addresses for the same service: if a phone or network cannot reach the first one
   // (DNS not refreshed yet, blocked by a filter…), the next one is tried automatically.
   var PUSH_APIS = ['/api', 'https://push.nexuscore.trade'];
@@ -380,22 +367,24 @@
       });
   }
   function notifyRender() {
-    var card = document.getElementById('notify'), sub = document.getElementById('notify-sub'), btn = document.getElementById('notify-btn');
-    if (!card) return;
     var iosHint = isIOS && !standalone;
-    card.hidden = false;
-    if (!canPush && !iosHint) {   // say why instead of hiding the card
-      btn.hidden = true;
-      sub.textContent = isIOS ? t('nt_old_ios') : t('nt_unsup');
-      return;
-    }
-    card.hidden = false;
     var denied = canPush && Notification.permission === 'denied';
-    btn.hidden = iosHint && !canPush || denied;
-    btn.disabled = push.busy;
-    btn.className = 'btn big' + (push.state === 'on' ? ' on' : '');
-    document.getElementById('notify-btn-t').textContent = push.state === 'on' ? t('nt_off_btn') : t('nt_on_btn');
-    sub.textContent = push.err ? (canPush && Notification.permission === 'denied' ? t('nt_denied') : push.errName === 'retry' ? t('nt_retry') : t('nt_err') + (push.errName ? ' (' + push.errName + ')' : '')) : (!canPush ? t('nt_ios') : denied ? t('nt_denied') : push.state === 'on' ? t('nt_on') : t('nt_sub'));
+    var msg = push.err ? (denied ? t('nt_denied') : push.errName === 'retry' ? t('nt_retry') : t('nt_err') + (push.errName ? ' (' + push.errName + ')' : ''))
+      : (!canPush ? t('nt_ios') : denied ? t('nt_denied') : push.state === 'on' ? t('nt_on') : t('nt_sub'));
+    each('.js-notify', function (card) {
+      var sub = card.querySelector('.notify-sub'), btn = card.querySelector('.notify-btn');
+      card.hidden = false;
+      if (!canPush && !iosHint) {   // say why instead of hiding the card
+        btn.hidden = true;
+        sub.textContent = isIOS ? t('nt_old_ios') : t('nt_unsup');
+        return;
+      }
+      btn.hidden = iosHint && !canPush || denied;
+      btn.disabled = push.busy;
+      btn.className = 'btn big notify-btn' + (push.state === 'on' ? ' on' : '');
+      card.querySelector('.notify-btn-t').textContent = push.state === 'on' ? t('nt_off_btn') : t('nt_on_btn');
+      sub.textContent = msg;
+    });
   }
   // iPhone/Safari only allow the permission prompt and the subscription when they start
   // directly from the tap, so the subscribe call happens synchronously inside the click handler.
@@ -434,29 +423,31 @@
     try { localStorage.setItem('nc_push_lang', lang); } catch (e) {}
     push.reg.pushManager.getSubscription().then(function (s) { if (s) return post('/subscribe', { sub: s.toJSON(), lang: lang }); }).catch(function () {});
   }
-  document.getElementById('notify-btn').addEventListener('click', notifyToggle);
+  each('.js-notify .notify-btn', function (b) { b.addEventListener('click', notifyToggle); });
 
-  // ---- waitlist ----
-  var wl = { state: 'idle' };
+  // ---- email / waitlist – each .js-wl block keeps its own state; the page address tells plan vs Signals sign-ups apart ----
   function wlRender() {
-    var card = document.getElementById('waitlist');
-    if (!card) return;
-    card.hidden = false;
-    var msg = document.getElementById('wl-msg');
-    document.getElementById('wl-form').hidden = wl.state === 'ok';
-    document.getElementById('wl-btn').disabled = wl.state === 'busy';
-    document.getElementById('wl-email').placeholder = 'you@example.com';
-    msg.className = 'wl-msg' + (wl.state === 'ok' ? ' ok' : (wl.state === 'bad' || wl.state === 'err') ? ' bad' : '');
-    msg.textContent = wl.state === 'ok' ? t('wl_ok') : wl.state === 'bad' ? t('wl_bad') : wl.state === 'err' ? t('wl_err') : '';
+    each('.js-wl', function (card) {
+      var st = card._wl || 'idle';
+      card.hidden = false;
+      var msg = card.querySelector('.wl-msg');
+      card.querySelector('.wl-form').hidden = st === 'ok';
+      card.querySelector('.wl-btn').disabled = st === 'busy';
+      card.querySelector('.wl-email').placeholder = 'you@example.com';
+      msg.className = 'wl-msg' + (st === 'ok' ? ' ok' : (st === 'bad' || st === 'err') ? ' bad' : '');
+      msg.textContent = st === 'ok' ? t('wl_ok') : st === 'bad' ? t('wl_bad') : st === 'err' ? t('wl_err') : '';
+    });
   }
-  document.getElementById('wl-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (wl.state === 'busy') return;
-    var email = document.getElementById('wl-email').value.trim();
-    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,24}$/.test(email)) { wl.state = 'bad'; wlRender(); return; }
-    wl.state = 'busy'; wlRender();
-    post('/waitlist', { email: email, lang: lang, src: SRC, page: PAGE, website: document.getElementById('wl-hp').value })
-      .then(function () { wl.state = 'ok'; }, function () { wl.state = 'err'; }).then(wlRender);
+  each('.js-wl', function (card) {
+    card.querySelector('.wl-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (card._wl === 'busy') return;
+      var email = card.querySelector('.wl-email').value.trim();
+      if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,24}$/.test(email)) { card._wl = 'bad'; wlRender(); return; }
+      card._wl = 'busy'; wlRender();
+      post('/waitlist', { email: email, lang: lang, src: SRC, page: PAGE, website: card.querySelector('.wl-hp').value })
+        .then(function () { card._wl = 'ok'; }, function () { card._wl = 'err'; }).then(wlRender);
+    });
   });
   function pushInit() {   // fetch the service key and register the service worker (retried on demand)
     if (push.init) return push.init;
@@ -475,11 +466,7 @@
   pushInit().catch(function () {}).then(function () { notifyRender(); wlRender(); });
 
   renderStatic();
-  Promise.all([load('/data/latest.json'), load('/data/signals.json').catch(function () { return null; }), load('/data/history.json').catch(function () { return null; })])
-    .then(function (r) {
-      data.plan = r[0]; data.signals = r[1]; data.history = r[2];
-      document.getElementById('loading').hidden = true;
-      renderAll();
-    })
-    .catch(function () { document.getElementById('loading').textContent = t('err'); });
+  if (KIND === 'home') {
+    load('/data/latest.json').then(function (p) { data.plan = p; renderPlan(); }).catch(function () {});
+  }
 })();
