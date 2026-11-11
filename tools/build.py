@@ -447,6 +447,10 @@ def result_block(k, lang):
         if g.get('high') is not None: row(t(lang, 'pp_hl'), f"{fmt(g['high'], lang)} / {fmt(g['low'], lang)}")
         if g.get('last') is not None: row(t(lang, 'pp_last'), fmt(g['last'], lang))
         if rows: out.append('<div class="list">' + ''.join(rows) + '</div>')
+        if g.get('best') is not None:
+            br = f" (≈ {r_text(g['best_r'], lang, 1)})" if g.get('best_r') is not None else ''
+            out.append(f'<div class="best"><span class="k">{esc(t(lang, "pp_best"))}</span><span class="v num" dir="ltr">+{esc(fmt(g["best"], lang))} ${esc(br)}</span>'
+                       f'<p class="muted small">{esc(t(lang, "pp_best_note"))}</p></div>')
     out.append(f'<p class="small"><a href="{track_path(lang, k[:7])}#method">{esc(t(lang, "tr_method"))}</a></p>')
     return ''.join(out)
 
@@ -518,6 +522,11 @@ def month_stats(keys):
     return len(keys), len(graded), len(reached), hit, void, tot
 
 
+def avg_best(keys):
+    bs = [grade_of(k)['best_r'] for k in keys if grade_of(k) and grade_of(k).get('best_r') is not None]
+    return round(sum(bs) / len(bs), 1) if bs else None
+
+
 def track_page(ym, lang):
     keys = [k for k in KEYS if k.startswith(ym)]
     paths = {l: track_path(l, ym) for l in LANGS}
@@ -525,13 +534,15 @@ def track_page(ym, lang):
     n, ng, nr, hit, void, tot = month_stats(keys)
     st = lambda k, v: f'<div class="stat"><span class="k">{esc(t(lang, k))}</span><span class="v num" dir="ltr">{esc(v)}</span></div>'
     stats = (st('tr_plans', str(n)) + st('tr_graded', str(ng)) + st('tr_reached', str(nr)) +
-             st('tr_hit', f'{hit}/{nr}' if nr else '—') + st('tr_void', f'{void}/{nr}' if nr else '—') + st('tr_r', r_text(tot, lang, 1) if nr else '—'))
+             st('tr_hit', f'{hit}/{nr}' if nr else '—') + st('tr_void', f'{void}/{nr}' if nr else '—') + st('tr_r', r_text(tot, lang, 1) if nr else '—') +
+             st('tr_best', ('+' + r_text(avg_best(keys), lang, 1).lstrip('+')) if avg_best(keys) is not None else '—'))
     rows = []
     for k in reversed(keys):
         p, g = PLANS[k], grade_of(k)
         mz = p.get('main_zone')
         lab = t(lang, p['bias']) + (' · ' + t(lang, p['lean']) if p['bias'] == 'TWO_WAY' and p.get('lean') else '')
         rr = f'<span class="num r" dir="ltr">{esc(r_text(g.get("r"), lang))}</span>' if g and g.get('r') is not None else ''
+        if g and g.get('best') is not None: rr += f'<span class="num muted small" dir="ltr" title="{esc(t(lang, "pp_best"))}">↗ +{esc(fmt(g["best"], lang))}$</span>'
         rows.append(f'<a class="card trow" href="{plan_path(lang, k)}"><span class="l"><strong>{esc(day_label(dt.date.fromisoformat(p["date"]), lang))} · {esc(t(lang, "ed_short")[p["edition"]])}</strong>'
                     f'<span class="h"><span class="pill {side_cls(side_of(p))}">{esc(lab)}</span>{(" " + num(rng(mz["lo"], mz["hi"], lang))) if mz else ""}</span></span>'
                     f'<span class="rt"><span class="pill {res_cls(g["result"]) if g else "neutral"}">{esc(res_label(g, lang))}</span>{rr}</span></a>')

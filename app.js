@@ -3,6 +3,7 @@
 
   var T = {
     en: {
+      pp_best: 'Best move after the zone', pp_best_note: 'Furthest move in the plan’s direction after the zone was reached — shows the read, not a trade result (the grade above is the result).', tr_best: 'Avg best move', 
       chart_hint: 'Tap the chart to view it full screen', lb_hint: 'Tap anywhere to close · pinch to zoom', 
       tab_learn: 'Learn', ln_eyebrow: 'Gold trading Q&A', ln_short: 'Short answer', ln_example: 'Live example from the latest NEXUS CORE plan', ln_faq: 'Quick answers', ln_related: 'Related questions', ln_updated: 'Updated', see_plan: 'See the full plan →', see_track: 'See the track record →',
       ln_index_h1: 'Learn to read the gold market', ln_index_lede: 'Plain answers to the questions gold traders actually ask — each one tied to a real, graded NEXUS CORE plan.', ln_all: 'All questions', ln_sessions_note: 'Plan times: Asia 00:00 UTC · London update 06:45 UTC · New York 12:30 UTC.',
@@ -37,7 +38,8 @@
         'Once the zone is reached, whichever comes first decides: Target 1 → “Target 1 reached”; a 15-minute close beyond the invalidation level → “Invalidated” (−1R).',
         'If neither happens before the window ends → “No follow-through”, scored at the last price.',
         'R = distance from the zone edge to Target 1 (or the last price) divided by the distance from the zone edge to the invalidation level. When both happen in the same candle, it counts against the plan.',
-        'Stand-aside plans are not scored.'],
+        'Stand-aside plans are not scored.',
+        '“Best move after the zone” is shown separately: the furthest price travelled in the plan’s direction from the zone edge, from the touch until invalidation or the end of the window. It shows how good the read was — it is not counted in R.'],
       sg_h1: 'NEXUS CORE Signals', sg_lede: 'Exact trade signals built on the daily plan — for members only. The daily plan stays free for everyone.', sg_soon: 'Members only · launching soon', sg_what: 'What members get',
       sg_b: ['A real-time alert when price reaches a plan zone and the setup confirms — entry, stop and targets.', 'Every signal tied to the plan in force, so you always know why it exists.', 'Priority alerts in the app and a private Telegram group.', 'Every signal recorded and graded, win or loss.'],
       sg_wl_title: 'Join the Signals waitlist', sg_wl_sub: 'Be first to know when Signals opens, with early-member pricing. No spam.', sg_free: 'Only need the free plan?', sg_free_link: 'See today’s gold plan →',
@@ -46,6 +48,7 @@
       disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
     ar: {
+      pp_best: 'أفضل حركة بعد المنطقة', pp_best_note: 'أبعد حركة باتجاه الخطة بعد الوصول إلى المنطقة — تُظهر دقة القراءة وليست نتيجة صفقة (النتيجة هي التقييم أعلاه).', tr_best: 'متوسط أفضل حركة', 
       chart_hint: 'اضغط على الرسم لعرضه بملء الشاشة', lb_hint: 'اضغط في أي مكان للإغلاق · كبّر بإصبعين', 
       tab_learn: 'تعلّم', ln_eyebrow: 'أسئلة وأجوبة تداول الذهب', ln_short: 'الإجابة المختصرة', ln_example: 'مثال حي من أحدث خطة NEXUS CORE', ln_faq: 'إجابات سريعة', ln_related: 'أسئلة ذات صلة', ln_updated: 'آخر تحديث', see_plan: 'شاهد الخطة كاملة', see_track: 'شاهد سجل النتائج',
       ln_index_h1: 'تعلّم قراءة سوق الذهب', ln_index_lede: 'إجابات واضحة عن الأسئلة التي يطرحها متداولو الذهب فعلًا — كل إجابة مرتبطة بخطة حقيقية من NEXUS CORE وتم تقييمها.', ln_all: 'كل الأسئلة', ln_sessions_note: 'أوقات الخطط: آسيا 00:00 UTC · تحديث لندن 06:45 UTC · نيويورك 12:30 UTC.',
@@ -80,7 +83,8 @@
         'بعد الوصول إلى المنطقة، ما يحدث أولًا يحسم النتيجة: بلوغ الهدف الأول ← «تحقق الهدف الأول»؛ إغلاق شمعة 15 دقيقة بعد مستوى الإلغاء ← «أُلغيت الفكرة» (‎−1R).',
         'إن لم يحدث أيٌّ منهما قبل نهاية الفترة ← «بلا متابعة» وتُحتسب بآخر سعر.',
         'R = المسافة من حافة المنطقة إلى الهدف الأول (أو آخر سعر) مقسومة على المسافة من حافة المنطقة إلى مستوى الإلغاء. إذا وقع الأمران في الشمعة نفسها تُحتسب ضد الخطة.',
-        'خطط «خارج السوق» لا تُحتسب.'],
+        'خطط «خارج السوق» لا تُحتسب.',
+        '«أفضل حركة بعد المنطقة» تُعرض منفصلة: أبعد مسافة تحركها السعر باتجاه الخطة من حافة المنطقة، من لحظة الوصول حتى الإلغاء أو نهاية الفترة. تُظهر دقة القراءة ولا تُحتسب في R.'],
       sg_h1: 'إشارات NEXUS CORE', sg_lede: 'إشارات تداول دقيقة مبنية على الخطة اليومية — للأعضاء فقط. تبقى الخطة اليومية مجانية للجميع.', sg_soon: 'للأعضاء فقط · قريبًا', sg_what: 'ما يحصل عليه الأعضاء',
       sg_b: ['تنبيه فوري عند وصول السعر إلى منطقة الخطة وتأكيد الإعداد — الدخول والوقف والأهداف.', 'كل إشارة مرتبطة بالخطة السارية، فتعرف دائمًا سببها.', 'تنبيهات ذات أولوية في التطبيق ومجموعة تيليجرام خاصة.', 'كل إشارة تُسجَّل وتُقيَّم، رابحة كانت أم خاسرة.'],
       sg_wl_title: 'انضم إلى قائمة انتظار الإشارات', sg_wl_sub: 'كن أول من يعلم عند إطلاق الإشارات، مع سعر خاص للأعضاء الأوائل. بلا إزعاج.', sg_free: 'تريد الخطة المجانية فقط؟', sg_free_link: 'شاهد خطة الذهب اليوم',
@@ -89,6 +93,7 @@
       disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
     vi: {
+      pp_best: 'Giá chạy xa nhất sau khi chạm vùng', pp_best_note: 'Quãng giá xa nhất theo hướng plan sau khi chạm vùng — cho thấy độ chính xác của nhận định, không phải kết quả lệnh (kết quả là phần chấm ở trên).', tr_best: 'Chạy xa TB', 
       chart_hint: 'Chạm vào chart để xem toàn màn hình', lb_hint: 'Chạm bất kỳ đâu để đóng · dùng 2 ngón để phóng to', 
       tab_learn: 'Kiến thức', ln_eyebrow: 'Hỏi đáp giao dịch vàng', ln_short: 'Trả lời ngắn', ln_example: 'Ví dụ thật từ plan NEXUS CORE mới nhất', ln_faq: 'Trả lời nhanh', ln_related: 'Câu hỏi liên quan', ln_updated: 'Cập nhật', see_plan: 'Xem plan đầy đủ →', see_track: 'Xem kết quả chấm →',
       ln_index_h1: 'Học cách đọc thị trường vàng', ln_index_lede: 'Trả lời rõ ràng cho những câu người giao dịch vàng hay hỏi — mỗi câu gắn với plan NEXUS CORE thật đã được chấm.', ln_all: 'Mọi câu hỏi', ln_sessions_note: 'Giờ plan: phiên Á 00:00 UTC · cập nhật phiên Âu 06:45 UTC · phiên Mỹ 12:30 UTC.',
@@ -123,7 +128,8 @@
         'Sau khi chạm vùng, điều gì đến trước quyết định: chạm Mục tiêu 1 → “Chạm mục tiêu 1”; nến 15 phút đóng vượt mốc huỷ → “Bị huỷ” (−1R).',
         'Hết khung giờ mà chưa có điều nào → “Không chạy”, tính theo giá cuối.',
         'R = khoảng cách từ mép vùng tới Mục tiêu 1 (hoặc giá cuối) chia cho khoảng cách từ mép vùng tới mốc huỷ. Hai việc xảy ra trong cùng một nến thì tính bất lợi cho plan.',
-        'Plan đứng ngoài không tính điểm.'],
+        'Plan đứng ngoài không tính điểm.',
+        '“Giá chạy xa nhất sau khi chạm vùng” hiển thị riêng: quãng giá xa nhất theo hướng plan tính từ mép vùng, từ lúc chạm tới khi bị huỷ hoặc hết khung giờ. Số này cho thấy nhận định chuẩn tới đâu – không cộng vào R.'],
       sg_h1: 'NEXUS CORE Signals', sg_lede: 'Tín hiệu vào lệnh cụ thể dựa trên plan ngày — chỉ dành cho thành viên. Plan ngày vẫn miễn phí cho mọi người.', sg_soon: 'Chỉ cho thành viên · sắp mở', sg_what: 'Thành viên nhận được',
       sg_b: ['Báo ngay khi giá vào vùng plan và tín hiệu xác nhận — điểm vào, dừng lỗ và mục tiêu.', 'Mỗi tín hiệu gắn với plan đang hiệu lực, luôn biết vì sao có lệnh.', 'Thông báo ưu tiên trong app và nhóm Telegram riêng.', 'Mọi tín hiệu được ghi lại và chấm, thắng hay thua.'],
       sg_wl_title: 'Đăng ký chờ gói Signals', sg_wl_sub: 'Biết đầu tiên khi Signals mở, kèm giá ưu đãi cho thành viên sớm. Không spam.', sg_free: 'Chỉ cần plan miễn phí?', sg_free_link: 'Xem plan vàng hôm nay →',

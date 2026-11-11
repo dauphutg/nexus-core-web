@@ -149,6 +149,29 @@
     <loc>https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/</loc>
     <lastmod>2026-11-11T08:00:00+07:00</lastmod>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/how-to-read-a-gold-trading-plan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/why-is-gold-falling/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/why-is-gold-rising/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/how-cpi-affects-gold/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/how-nfp-affects-gold/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://nexuscore.trade/ar/learn/</loc>
@@ -165,5 +188,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/what-is-xauusd/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/learn/how-to-read-a-gold-trading-plan/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/how-to-read-a-gold-trading-plan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/learn/gold-weekly-outlook/</loc>
+    <lastmod>2026-11-12T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>

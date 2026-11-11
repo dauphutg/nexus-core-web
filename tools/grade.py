@@ -17,6 +17,8 @@ Rules (the same text is shown on the Track Record pages):
 - Neither before the window ends → "expired", scored at the last close (capped between -1R and the Target 1 R).
 - R measured from the zone edge price touches first (SELL: lower edge, BUY: upper edge): reward / (distance to invalidation).
 - STAND_ASIDE plans (or plans without a main zone) → "aside", not scored.
+- Extra, shown separately and labelled as such (never mixed into R): "best move after the zone" = the furthest price
+  travelled in the plan's direction from the zone edge, from the touch until the invalidation close or the end of the window.
 """
 import glob, json, os, re, sys, datetime as dt
 from zoneinfo import ZoneInfo
@@ -103,15 +105,23 @@ def grade(p, bars, start, end):
             touch = i; break
     if touch is None: return dict(base, result='no_touch', r=0)
     base['touched'] = fmt_vn(w[touch]['t'])
+
+    def best(upto):   # furthest favourable move from the zone edge, touch candle .. upto (inclusive)
+        seg = w[touch:upto + 1]
+        mv = (edge - min(b['l'] for b in seg)) if side == 'SELL' else (max(b['h'] for b in seg) - edge)
+        mv = max(0.0, round(mv, 2))
+        return {'best': mv, 'best_r': round(mv / risk, 2) if risk else None}
+    def void_at(k):   # index of the first invalidation close from k on, else the last candle
+        return next((j for j in range(k, len(w)) if (side == 'SELL' and w[j]['c'] > void) or (side == 'BUY' and w[j]['c'] < void)), len(w) - 1)
     for i in range(touch, len(w)):
         b = w[i]
         if (side == 'SELL' and b['c'] > void) or (side == 'BUY' and b['c'] < void):
-            return dict(base, result='void', r=-1.0, at=fmt_vn(b['t'] + BAR))
+            return dict(base, result='void', r=-1.0, at=fmt_vn(b['t'] + BAR), **best(i))
         if i > touch and ((side == 'SELL' and b['l'] <= t1) or (side == 'BUY' and b['h'] >= t1)):
-            return dict(base, result='hit', r=r_hit, at=fmt_vn(b['t']))
+            return dict(base, result='hit', r=r_hit, at=fmt_vn(b['t']), **best(void_at(i)))
     last = w[-1]['c']
     r = (edge - last) / risk if side == 'SELL' else (last - edge) / risk
-    return dict(base, result='expired', r=round(max(-1.0, min(r_hit, r)), 2))
+    return dict(base, result='expired', r=round(max(-1.0, min(r_hit, r)), 2), **best(len(w) - 1))
 
 
 def main():

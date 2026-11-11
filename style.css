@@ -290,3 +290,5 @@ html.lb-open,html.lb-open body{overflow:hidden}
   #notify .btn.big{min-height:50px;font-size:16px}
   .hero{gap:12px}
 }
+.best{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:12px 14px;border-radius:12px;background:var(--gold-bg);border:1px solid var(--gold-line)}
+.best .k{font-size:14px;color:var(--ink)}.best .v{font-weight:700;color:var(--gold-ink)}.best p{flex:1 1 100%;margin:0}
