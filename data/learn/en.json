@@ -638,7 +638,7 @@
  },
  {
   "slug": "daily-open-line-gold",
-  "example": "context",
+  "example": "plan",
   "q": "How to use the daily open line when trading gold",
   "title": "The daily open line in gold trading: how to use it",
   "answer": "The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far; below it, sellers are. Price often comes back to test an untested daily open, which makes it a useful intraday magnet and a reference for bias.",
@@ -654,7 +654,7 @@
    {
     "h": "Previous opens matter too",
     "p": [
-     "Yesterday's and this week's opens that price has not revisited yet act like hidden levels. The NEXUS CORE playbook tracks untested daily opens and uses them when building zones and targets."
+     "Yesterday's and this week's opens that price has not revisited yet are widely watched reference levels. Treat them like any other level: one input among several, never a signal on its own."
     ]
    },
    {
@@ -685,10 +685,10 @@
  },
  {
   "slug": "ema-89-gold",
-  "example": "context",
+  "example": "plan",
   "q": "What is EMA 89 used for in gold trading?",
   "title": "EMA 89 on gold (XAUUSD): what it shows and how to use it",
-  "answer": "EMA 89 is an 89-period exponential moving average. On the 1-hour gold chart it acts as a medium-term trend filter: price holding above a rising EMA 89 suggests buyers control the swing, below a falling EMA 89 sellers do. Traders often pair it with a fast EMA such as 13 to time pullbacks.",
+  "answer": "EMA 89 is an 89-period exponential moving average. On the 1-hour gold chart many traders use it as a medium-term trend filter: price holding above a rising EMA 89 suggests buyers control the swing, below a falling EMA 89 sellers do.",
   "sections": [
    {
     "h": "How to read it",
@@ -699,21 +699,15 @@
     ]
    },
    {
-    "h": "Fast and slow together",
+    "h": "Pairing it with a faster average",
     "p": [
-     "With EMA 13 and EMA 89 on H1, a pullback to EMA 13 inside a trend that stays on one side of EMA 89 is a classic continuation area. When the fast EMA crosses back through the slow one, the swing may be ending."
+     "Some traders add a shorter moving average to time pullbacks inside the trend the slower one shows. Which pair works is a matter of testing on your own data — there is no universal setting."
     ]
    },
    {
     "h": "Limits",
     "p": [
      "Moving averages lag and get whipped around in ranges and on news. Use EMA 89 to decide which side to favor, and price zones to decide where."
-    ]
-   },
-   {
-    "h": "In NEXUS CORE plans",
-    "p": [
-     "The context cards in each plan state where price sits relative to the EMA 89 on H1/H4 — the live box shows the latest reading."
     ]
    }
   ],
@@ -1039,15 +1033,15 @@
  },
  {
   "slug": "gold-average-daily-range",
-  "example": "context",
+  "example": "plan",
   "q": "What is gold's average daily range (ADR) and how do you use it?",
   "title": "Gold average daily range (ADR): how traders use it",
-  "answer": "The average daily range (ADR) is the average distance between the daily high and low over a recent period — NEXUS CORE uses the last 10 days (ADR10). It tells you how far gold typically travels in a day, so you can judge whether a target is realistic and whether the day has already done most of its move.",
+  "answer": "The average daily range (ADR) is the average distance between the daily high and low over a recent period — many traders use the last 10 to 14 days. It tells you how far gold typically travels in a day, so you can judge whether a target is realistic and whether the day has already done most of its move.",
   "sections": [
    {
     "h": "How to calculate it",
     "p": [
-     "For each of the last 10 days, subtract the low from the high, then average the results. Many charting platforms have an ADR or ATR indicator that does this automatically (ATR also includes gaps)."
+     "For each recent day, subtract the low from the high, then average the results. Many charting platforms have an ADR or ATR indicator that does this automatically (ATR also includes gaps)."
     ]
    },
    {
@@ -1086,7 +1080,7 @@
  },
  {
   "slug": "how-to-identify-gold-trend",
-  "example": "context",
+  "example": "plan",
   "q": "How to identify the gold trend (XAUUSD)",
   "title": "How to identify the trend on gold: D1, H4 and H1",
   "answer": "Start on the daily chart: a series of higher highs and higher lows is an up-trend, lower highs and lower lows a down-trend, overlapping swings a range. Confirm on H4 with the last swing structure and on H1 with price versus a medium moving average such as EMA 89. Trade with the higher timeframe unless a strong zone says otherwise.",
