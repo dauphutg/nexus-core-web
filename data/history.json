@@ -7,7 +7,11 @@
       "main_zone": "4058–4068",
       "result": null,
       "r": null,
-      "note": { "vi": "Chờ chấm khi D1 đóng 04:00", "en": "Graded at the 04:00 VN daily close" }
+      "note": {
+        "vi": "Chờ chấm khi D1 đóng 04:00",
+        "en": "Graded at the 04:00 VN daily close",
+        "ar": "تُقيَّم عند الإغلاق اليومي"
+      }
     }
   ]
 }

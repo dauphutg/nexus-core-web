@@ -7,55 +7,66 @@
   "lean": "SELL",
   "day_type": {
     "vi": "Thường – sideway biên rộng",
-    "en": "Normal day – wide-range sideways"
+    "en": "Normal day – wide-range sideways",
+    "ar": "يوم عادي – نطاق عرضي واسع"
   },
   "headline": {
     "vi": "Sideway 2 chiều, nghiêng BÁN ở cản H4 4058–4068",
-    "en": "Two-way range, leaning SELL at the H4 resistance 4058–4068"
+    "en": "Two-way range, leaning SELL at the H4 resistance 4058–4068",
+    "ar": "نطاق باتجاهين مع ميل للبيع عند مقاومة H4 بين 4058–4068"
   },
   "alert": {
     "vi": "Nghỉ lễ ngân hàng Mỹ (Veterans Day): thanh khoản mỏng, giá dễ đi ngang hoặc quét giả.",
-    "en": "US bank holiday (Veterans Day): thin liquidity, price may drift sideways or fake out."
+    "en": "US bank holiday (Veterans Day): thin liquidity, price may drift sideways or fake out.",
+    "ar": "عطلة البنوك الأمريكية (يوم المحاربين القدامى): سيولة ضعيفة وقد يتحرك السعر عرضيًا أو بكسر وهمي."
   },
   "context": [
     {
       "k": {
         "vi": "Phía D1",
-        "en": "D1 side"
+        "en": "D1 side",
+        "ar": "اتجاه D1"
       },
       "v": {
         "vi": "Giảm",
-        "en": "Bearish"
+        "en": "Bearish",
+        "ar": "هابط"
       }
     },
     {
       "k": {
         "vi": "Dow H4",
-        "en": "Dow H4"
+        "en": "Dow H4",
+        "ar": "داو H4"
       },
       "v": {
         "vi": "Giảm",
-        "en": "Bearish"
+        "en": "Bearish",
+        "ar": "هابط"
       }
     },
     {
       "k": {
         "vi": "Giá so EMA89 H1",
-        "en": "Price vs EMA89 H1"
+        "en": "Price vs EMA89 H1",
+        "ar": "السعر مقابل EMA89 H1"
       },
       "v": {
         "vi": "Dưới (4069,1)",
-        "en": "Below (4069.1)"
+        "en": "Below (4069.1)",
+        "ar": "أسفل (4069.1)"
       }
     },
     {
       "k": {
         "vi": "ADR10",
-        "en": "ADR10"
+        "en": "ADR10",
+        "ar": "ADR10"
       },
       "v": {
         "vi": "97,7 (đã chạy 39,5)",
-        "en": "97.7 (39.5 used)"
+        "en": "97.7 (39.5 used)",
+        "ar": "97.7 (تحرك منها 39.5)"
       }
     }
   ],
@@ -67,7 +78,8 @@
   },
   "invalidation": {
     "vi": "M15 đóng trên 4070 → chuyển sang vùng B 4071–4081,3. M15/H4 đóng trên 4084 → hết phía bán, mục tiêu trên 4100,6.",
-    "en": "M15 close above 4070 → switch to zone B 4071–4081.3. M15/H4 close above 4084 → sell side void, upside target 4100.6."
+    "en": "M15 close above 4070 → switch to zone B 4071–4081.3. M15/H4 close above 4084 → sell side void, upside target 4100.6.",
+    "ar": "إغلاق M15 فوق 4070 ← الانتقال إلى المنطقة B 4071–4081.3. إغلاق M15/H4 فوق 4084 ← إلغاء سيناريو البيع، والهدف العلوي 4100.6."
   },
   "targets": [
     {
@@ -94,7 +106,8 @@
       "grade": "A",
       "status": {
         "vi": "Đã chạm 12:15–12:30, phản ứng ~12 giá – còn hiệu lực",
-        "en": "Touched 12:15–12:30, ~$12 reaction – still valid"
+        "en": "Touched 12:15–12:30, ~$12 reaction – still valid",
+        "ar": "لُمست بين 12:15 و12:30 وارتد السعر نحو 12 دولارًا – ما زالت صالحة"
       }
     },
     {
@@ -104,7 +117,8 @@
       "grade": "B",
       "status": {
         "vi": "Chưa chạm – chỉ dùng khi vùng A bị phá",
-        "en": "Not touched – only if zone A breaks"
+        "en": "Not touched – only if zone A breaks",
+        "ar": "لم تُلمس بعد – تُستخدم فقط إذا كُسرت المنطقة A"
       }
     },
     {
@@ -114,7 +128,8 @@
       "grade": "B breakout",
       "status": {
         "vi": "Chưa kích hoạt – bán khi hồi lại sau khi M15 đóng dưới 4013,6",
-        "en": "Not triggered – sell the retest after an M15 close below 4013.6"
+        "en": "Not triggered – sell the retest after an M15 close below 4013.6",
+        "ar": "لم تتفعّل – البيع عند إعادة الاختبار بعد إغلاق M15 أسفل 4013.6"
       }
     },
     {
@@ -124,7 +139,8 @@
       "grade": "C",
       "status": {
         "vi": "Chỉ theo dõi",
-        "en": "Watch only"
+        "en": "Watch only",
+        "ar": "للمراقبة فقط"
       }
     },
     {
@@ -134,7 +150,8 @@
       "grade": "C",
       "status": {
         "vi": "Chỉ theo dõi",
-        "en": "Watch only"
+        "en": "Watch only",
+        "ar": "للمراقبة فقط"
       }
     }
   ],
@@ -144,7 +161,8 @@
       "prob": 55,
       "text": {
         "vi": "Phiên Á/Âu (14:00–17:00) giá giữ dưới 4066–4070, Dow M15 đảo giảm dưới 4053,9 → về 4044–4047 rồi 4027.",
-        "en": "Asia/Europe session (14:00–17:00 VN) holds below 4066–4070 and the M15 Dow turns down below 4053.9 → 4044–4047, then 4027."
+        "en": "Asia/Europe session (14:00–17:00 VN) holds below 4066–4070 and the M15 Dow turns down below 4053.9 → 4044–4047, then 4027.",
+        "ar": "في جلستي آسيا وأوروبا يبقى السعر أسفل 4066–4070 وينعكس داو M15 هبوطًا تحت 4053.9 ← 4044–4047 ثم 4027."
       }
     },
     {
@@ -152,7 +170,8 @@
       "prob": 45,
       "text": {
         "vi": "M15 đóng trên 4070 → giá lên vùng B 4071–4081,3 (bán lần 2, mục tiêu 4058).",
-        "en": "M15 closes above 4070 → price runs into zone B 4071–4081.3 (second sell, target 4058)."
+        "en": "M15 closes above 4070 → price runs into zone B 4071–4081.3 (second sell, target 4058).",
+        "ar": "إغلاق M15 فوق 4070 ← صعود السعر إلى المنطقة B 4071–4081.3 (بيع ثانٍ، الهدف 4058)."
       }
     }
   ],
@@ -166,7 +185,8 @@
       "impact": "holiday",
       "text": {
         "vi": "USD Bank Holiday – không có tin đỏ USD hôm nay",
-        "en": "USD Bank Holiday – no high-impact USD news today"
+        "en": "USD Bank Holiday – no high-impact USD news today",
+        "ar": "عطلة البنوك الأمريكية – لا أخبار عالية التأثير للدولار اليوم"
       }
     },
     {
@@ -174,7 +194,8 @@
       "impact": "medium",
       "text": {
         "vi": "Đơn xin trợ cấp thất nghiệp Mỹ",
-        "en": "US Unemployment Claims"
+        "en": "US Unemployment Claims",
+        "ar": "طلبات إعانة البطالة الأمريكية"
       }
     },
     {
@@ -182,13 +203,15 @@
       "impact": "high",
       "text": {
         "vi": "PPI + Core PPI Mỹ",
-        "en": "US PPI + Core PPI"
+        "en": "US PPI + Core PPI",
+        "ar": "مؤشر أسعار المنتجين الأمريكي PPI و Core PPI"
       }
     }
   ],
   "next_update": {
     "vi": "Plan tối 19:30 VN",
-    "en": "Evening plan 19:30 VN time"
+    "en": "Evening plan 19:30 VN time",
+    "ar": "خطة المساء 19:30 بتوقيت فيتنام"
   },
   "chart": {
     "vi": "data/charts/2026-11-11-1345-vi.png",

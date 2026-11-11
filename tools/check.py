@@ -11,6 +11,10 @@ BIAS = {'SELL', 'BUY', 'TWO_WAY', 'STAND_ASIDE'}
 def bi(o, where):
     if not (isinstance(o, dict) and isinstance(o.get('vi'), str) and isinstance(o.get('en'), str) and o['vi'].strip() and o['en'].strip()):
         errs.append(f'{where}: cần {{"vi": "...", "en": "..."}} đủ 2 thứ tiếng')
+        return
+    if where.startswith('chart'): return
+    if not (isinstance(o.get('ar'), str) and o['ar'].strip()):
+        errs.append(f'{where}: thiếu bản tiếng Ả Rập "ar"')
 
 def num(x, where):
     if not isinstance(x, (int, float)) or not (1000 < x < 20000):
