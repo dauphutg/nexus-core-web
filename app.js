@@ -94,7 +94,7 @@
   var saved = null;
   try { saved = localStorage.getItem('nc_lang'); } catch (e) {}
   var nav = (navigator.language || '').toLowerCase();
-  var lang = T[saved] ? saved : (nav.indexOf('vi') === 0 ? 'vi' : nav.indexOf('ar') === 0 ? 'ar' : 'en');
+  var lang = T[saved] ? saved : 'en';   // English by default; a visitor's own choice is remembered
   var data = { plan: null, signals: null, history: null };
   var seg = 'active';
 
