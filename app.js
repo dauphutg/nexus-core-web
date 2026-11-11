@@ -21,6 +21,7 @@
       right: 'Right', wrong: 'Wrong', void: 'Void / stood aside',
       SELL: 'SELL', BUY: 'BUY', TWO_WAY: 'TWO-WAY', STAND_ASIDE: 'STAND ASIDE', lean: 'leaning',
       live: 'LIVE', stale: 'LAST PLAN', err: 'Could not load data. Please reload the page.',
+      nt_title: 'New-plan alerts', nt_sub: 'Get a notification on this device the moment a new plan is published.', nt_on_btn: 'Turn on', nt_off_btn: 'Turn off', nt_on: 'Alerts are on for this device.', nt_denied: 'Notifications are blocked for this site. Allow them in your browser settings to turn alerts on.', nt_ios: 'On iPhone: tap the Share button, choose “Add to Home Screen”, then open NEXUS CORE from your home screen and turn on alerts.', nt_err: 'Could not change alerts. Please try again.',
       risk_title: 'Risk warning',
       disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
@@ -43,6 +44,7 @@
       right: 'صحيحة', wrong: 'خاطئة', void: 'ملغاة / خارج السوق',
       SELL: 'بيع', BUY: 'شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق', lean: 'ميل إلى',
       live: 'مباشر', stale: 'آخر خطة', err: 'تعذّر تحميل البيانات. يرجى إعادة تحميل الصفحة.',
+      nt_title: 'تنبيهات الخطة الجديدة', nt_sub: 'استلم إشعارًا على هذا الجهاز فور نشر خطة جديدة.', nt_on_btn: 'تفعيل', nt_off_btn: 'إيقاف', nt_on: 'التنبيهات مفعّلة على هذا الجهاز.', nt_denied: 'الإشعارات محظورة لهذا الموقع. اسمح بها من إعدادات المتصفح لتفعيل التنبيهات.', nt_ios: 'على الآيفون: اضغط زر المشاركة، اختر «إضافة إلى الشاشة الرئيسية»، ثم افتح NEXUS CORE من الشاشة الرئيسية وفعّل التنبيهات.', nt_err: 'تعذّر تغيير التنبيهات. حاول مرة أخرى.',
       risk_title: 'تحذير المخاطر',
       disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
@@ -65,6 +67,7 @@
       right: 'Đúng', wrong: 'Sai', void: 'Huỷ / đứng ngoài',
       SELL: 'BÁN', BUY: 'MUA', TWO_WAY: '2 CHIỀU', STAND_ASIDE: 'ĐỨNG NGOÀI', lean: 'nghiêng',
       live: 'LIVE', stale: 'PLAN CŨ', err: 'Không tải được dữ liệu. Thử tải lại trang.',
+      nt_title: 'Thông báo plan mới', nt_sub: 'Nhận thông báo trên máy này ngay khi có plan mới.', nt_on_btn: 'Bật', nt_off_btn: 'Tắt', nt_on: 'Đã bật thông báo trên máy này.', nt_denied: 'Trình duyệt đang chặn thông báo của trang này. Hãy cho phép trong cài đặt trình duyệt để bật.', nt_ios: 'Trên iPhone: bấm nút Chia sẻ, chọn “Thêm vào MH chính”, rồi mở NEXUS CORE từ màn hình chính và bật thông báo.', nt_err: 'Không đổi được thông báo. Thử lại sau.',
       risk_title: 'Cảnh báo rủi ro',
       disclaimer: 'Nội dung chỉ để tham khảo, không phải lời khuyên đầu tư hay lời mời giao dịch. Sản phẩm có đòn bẩy như vàng CFD có rủi ro mất tiền nhanh. Kết quả quá khứ không đảm bảo tương lai. Chỉ giao dịch bằng số tiền bạn chấp nhận mất.'
     }
@@ -143,6 +146,7 @@
     ['tg-cta', 'tg-link', 's-tg'].forEach(function (id) { document.getElementById(id).href = tg; });
     document.getElementById('s-x').href = x;
     if (themeBtn) themeLabel();
+    notifyRender();
   }
 
   function renderPlan() {
@@ -292,6 +296,7 @@
       lang = b.dataset.lang;
       try { localStorage.setItem('nc_lang', lang); } catch (e) {}
       renderAll();
+      notifyLang();
     });
   });
   document.querySelectorAll('.seg button').forEach(function (b) {
@@ -310,6 +315,70 @@
     themeLabel();
   });
   window.addEventListener('hashchange', route);
+
+  // ---- new-plan alerts (web push) ----
+  var PUSH_API = 'https://push.nexuscore.trade';
+  var push = { ready: false, key: '', state: 'off', busy: false, err: false, reg: null };
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var standalone = navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  var canPush = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+  function keyBytes(s) {
+    var b = atob(s.replace(/-/g, '+').replace(/_/g, '/')), o = new Uint8Array(b.length);
+    for (var i = 0; i < b.length; i++) o[i] = b.charCodeAt(i);
+    return o;
+  }
+  function post(path, body) {
+    return fetch(PUSH_API + path, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body) })
+      .then(function (r) { if (!r.ok) throw new Error(path); });
+  }
+  function notifyRender() {
+    var card = document.getElementById('notify'), sub = document.getElementById('notify-sub'), btn = document.getElementById('notify-btn');
+    if (!card) return;
+    var iosHint = isIOS && !standalone;
+    if (!push.ready || (!canPush && !iosHint)) { card.hidden = true; return; }
+    card.hidden = false;
+    var denied = canPush && Notification.permission === 'denied';
+    btn.hidden = iosHint && !canPush || denied;
+    btn.disabled = push.busy;
+    btn.textContent = push.state === 'on' ? t('nt_off_btn') : t('nt_on_btn');
+    sub.textContent = push.err ? t('nt_err') : (!canPush ? t('nt_ios') : denied ? t('nt_denied') : push.state === 'on' ? t('nt_on') : t('nt_sub'));
+  }
+  function notifyToggle() {
+    if (push.busy || !push.reg) return;
+    push.busy = true; push.err = false; notifyRender();
+    var job;
+    if (push.state === 'on') {
+      job = push.reg.pushManager.getSubscription().then(function (s) {
+        if (!s) return;
+        var ep = s.endpoint;
+        return s.unsubscribe().then(function () { return post('/unsubscribe', { endpoint: ep }).catch(function () {}); });
+      }).then(function () { push.state = 'off'; });
+    } else {
+      job = Notification.requestPermission().then(function (perm) {
+        if (perm !== 'granted') return;
+        return push.reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(push.key) })
+          .then(function (s) { return post('/subscribe', { sub: s.toJSON(), lang: lang }); })
+          .then(function () { push.state = 'on'; });
+      });
+    }
+    job.catch(function () { push.err = true; }).then(function () { push.busy = false; notifyRender(); });
+  }
+  function notifyLang() {   // keep the alert language in step with the page language
+    if (push.state !== 'on' || !push.reg) return;
+    push.reg.pushManager.getSubscription().then(function (s) { if (s) return post('/subscribe', { sub: s.toJSON(), lang: lang }); }).catch(function () {});
+  }
+  document.getElementById('notify-btn').addEventListener('click', notifyToggle);
+  if (canPush || isIOS) {
+    fetch(PUSH_API + '/key', { credentials: 'omit' }).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (k) {
+      if (!/^[A-Za-z0-9_-]{80,100}$/.test(k)) throw 0;
+      push.key = k; push.ready = true;
+      if (!canPush) return;
+      return navigator.serviceWorker.register('sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
+        push.reg = reg;
+        return reg.pushManager.getSubscription();
+      }).then(function (s) { push.state = s ? 'on' : 'off'; });
+    }).catch(function () {}).then(notifyRender);
+  }
 
   renderStatic();
   Promise.all([load('data/latest.json'), load('data/signals.json').catch(function () { return null; }), load('data/history.json').catch(function () { return null; })])

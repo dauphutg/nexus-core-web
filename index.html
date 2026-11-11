@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://push.nexuscore.trade; worker-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#0C2237">
 <title>NEXUS CORE — Gold (XAUUSD) daily plan &amp; signals</title>
@@ -14,6 +14,12 @@
 <meta property="og:description" content="Key zones, scenarios and invalidation levels for gold — refreshed before Asia, London and New York.">
 <meta property="og:image" content="https://nexuscore.trade/assets/logo-banner.png">
 <link rel="icon" href="assets/icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NEXUS CORE">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="style.css">
 <script src="theme.js"></script>
@@ -95,6 +101,12 @@
 
         <div class="card next" id="next"></div>
       </div>
+    </div>
+
+    <div class="card notify" id="notify" hidden>
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2zM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="notify-t"><strong data-i18n="nt_title"></strong><span id="notify-sub"></span></div>
+      <button type="button" class="btn" id="notify-btn"></button>
     </div>
 
     <a class="cta" id="tg-cta" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">

@@ -165,3 +165,13 @@ html[data-theme="light"] main a:not(.cta){color:#7A5200}
 html[data-theme="light"] main a:not(.cta):hover{color:#4F3500}
 html[data-theme="light"] .imp.high{background:#C62828} html[data-theme="light"] .imp.medium{background:#C77700} html[data-theme="light"] .imp.low,html[data-theme="light"] .imp.holiday{background:#8A94A6}
 @media (max-width:480px){.theme{width:40px;height:40px}}
+
+/* new-plan alerts */
+.notify{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-color:var(--gold-line)}
+.notify svg{flex:none;color:var(--gold-ink)}
+.notify-t{flex:1 1 220px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.notify-t span{font-size:14px;color:var(--ink2)}
+.btn{min-height:44px;padding:0 20px;border-radius:12px;border:1px solid var(--gold-line);background:var(--gold-bg);color:var(--gold-ink);font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--gold)}
+.btn[disabled]{opacity:.6;cursor:default}
+@media (display-mode:standalone){.top{padding-top:env(safe-area-inset-top)}}
