@@ -78,6 +78,28 @@ if s is not None:
     for k in ('active', 'closed'):
         if not isinstance(s.get(k), list): errs.append(f'signals.{k} phải là mảng')
 
+# --- safety: website text must be plain text, no links/markup/secrets, sane sizes ---
+BAD = re.compile(r'<|>|javascript:|data:|https?://|www\.|@[a-z0-9_]{3,}|gmail|token|api[_-]?key|password|secret|-100\d{6,}', re.I)
+def walk(o, where):
+    if isinstance(o, dict):
+        for k2, v in o.items(): walk(v, f'{where}.{k2}')
+    elif isinstance(o, list):
+        for i, v in enumerate(o): walk(v, f'{where}[{i}]')
+    elif isinstance(o, str):
+        if len(o) > 600: errs.append(f'{where}: chữ quá dài ({len(o)} ký tự)')
+        if not where.endswith(('.chart.vi', '.chart.en')) and BAD.search(o):
+            errs.append(f'{where}: có ký tự/link/thông tin nhạy cảm không được phép: {BAD.search(o).group(0)!r}')
+for name, obj in (('latest', p), ('history', h), ('signals', s)):
+    if obj is not None: walk(obj, name)
+if p and p.get('chart'):
+    for lg in ('vi', 'en'):
+        f = p['chart'].get(lg, '')
+        if not re.fullmatch(r'data/charts/\d{4}-\d{2}-\d{2}-(0700|1345|1930)-(vi|en)\.png', f or ''):
+            errs.append(f'chart.{lg}: đường dẫn ảnh không hợp lệ ({f!r})')
+for name in ('latest.json', 'history.json', 'signals.json'):
+    fp = os.path.join(root, 'data', name)
+    if os.path.isfile(fp) and os.path.getsize(fp) > 2_000_000: errs.append(f'{name}: file quá lớn')
+
 if errs:
     print('LỖI:\n- ' + '\n- '.join(errs)); sys.exit(1)
 print('OK')

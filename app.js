@@ -70,7 +70,7 @@
   }
 
   function load(path) {
-    return fetch(path + '?t=' + Date.now(), { cache: 'no-store' }).then(function (r) {
+    return fetch(path + '?t=' + Date.now(), { cache: 'no-store', credentials: 'omit' }).then(function (r) {
       if (!r.ok) throw new Error(path);
       return r.json();
     });
@@ -91,6 +91,8 @@
 
     var cb = document.getElementById('chart-box');
     var src = p.chart && L(p.chart);
+    // only accept our own chart files – never an arbitrary URL from the data file
+    if (src && !/^data\/charts\/[0-9]{4}-[0-9]{2}-[0-9]{2}-(0700|1345|1930)-(vi|en)\.png$/.test(src)) src = '';
     if (src) {
       cb.hidden = false;
       var im = document.getElementById('chart-img');

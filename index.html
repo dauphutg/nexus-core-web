@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>NEXUS CORE – XAUUSD daily plan</title>
 <meta name="description" content="NEXUS CORE AI: XAUUSD daily plan, key zones and signals – updated automatically every trading day.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="style.css">
 <meta property="og:title" content="NEXUS CORE – XAUUSD daily plan">
@@ -49,7 +50,7 @@
     </div>
 
     <figure class="chart card" id="chart-box" hidden>
-      <a id="chart-link" href="#" target="_blank" rel="noopener"><img id="chart-img" alt="" loading="lazy"></a>
+      <a id="chart-link" href="#" target="_blank" rel="noopener noreferrer"><img id="chart-img" alt="" loading="lazy"></a>
     </figure>
 
     <div class="grid-2">
@@ -91,7 +92,7 @@
       <button type="button" role="tab" data-seg="closed" data-i18n="closed"></button>
     </div>
     <div id="signal-list" class="stack-sm"></div>
-    <a class="card tg" href="https://t.me/" target="_blank" rel="noopener" id="tg-link">
+    <a class="card tg" href="https://t.me/" target="_blank" rel="noopener noreferrer" id="tg-link">
       <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="#1E2A4A" stroke-width="2" stroke-linejoin="round"/></svg>
       <span><strong data-i18n="tg_title"></strong><br><span class="muted" data-i18n="tg_sub"></span></span>
     </a>
