@@ -330,7 +330,18 @@
   window.addEventListener('hashchange', route);
 
   // ---- new-plan alerts (web push) ----
-  var PUSH_API = 'https://push.nexuscore.trade';
+  // Several addresses for the same service: if a phone or network cannot reach the first one
+  // (DNS not refreshed yet, blocked by a filter…), the next one is tried automatically.
+  var PUSH_APIS = ['https://push.nexuscore.trade'];
+  var PUSH_API = PUSH_APIS[0];
+  function apiFetch(path, opt, i) {
+    i = i || 0;
+    var base = i === 0 ? PUSH_API : PUSH_APIS[(PUSH_APIS.indexOf(PUSH_API) + i) % PUSH_APIS.length];
+    return fetch(base + path, opt).then(function (r) { PUSH_API = base; return r; }, function (e) {
+      if (i + 1 >= PUSH_APIS.length) throw e;
+      return apiFetch(path, opt, i + 1);
+    });
+  }
   var push = { ready: false, key: '', state: 'off', busy: false, err: false, reg: null };
   var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   var standalone = navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
@@ -342,7 +353,7 @@
   }
   function post(path, body, tries) {   // retries: the first request to a sleeping worker can drop on mobile networks
     tries = tries == null ? 3 : tries;
-    return fetch(PUSH_API + path, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body) })
+    return apiFetch(path, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body) })
       .then(function (r) { if (!r.ok) { var e = new Error('HTTP ' + r.status); e.name = 'Server'; throw e; } })
       .catch(function (e) {
         if (tries <= 1 || (e && e.name === 'Server')) { try { e.step = 'save'; } catch (x) {} throw e; }
@@ -389,7 +400,7 @@
                .then(function () { push.state = 'on'; });
     } else {
       // service not reachable yet: retry setup, then ask the user to tap again
-      job = pushInit().then(function () { throw new Error('retry'); });
+      job = pushInit().then(function () { throw new Error('retry'); }, function (e) { try { e.step = 'connect'; } catch (x) {} throw e; });
     }
     push.busy = true; notifyRender();
     job.catch(function (e) {
@@ -427,7 +438,7 @@
   });
   function pushInit() {   // fetch the service key and register the service worker (retried on demand)
     if (push.init) return push.init;
-    push.init = fetch(PUSH_API + '/key', { credentials: 'omit' }).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (k) {
+    push.init = apiFetch('/key', { credentials: 'omit' }).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (k) {
       if (!/^[A-Za-z0-9_-]{80,100}$/.test(k)) throw 0;
       push.key = k; push.ready = true;
       if (!canPush) return;
