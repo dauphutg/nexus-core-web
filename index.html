@@ -16,6 +16,7 @@
 <link rel="icon" href="assets/icon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
 </head>
 <body>
 <a class="skip" href="#app" data-i18n="skip"></a>
@@ -24,6 +25,10 @@
     <a class="brand" href="#plan"><img src="assets/logo-banner.png" alt="NEXUS CORE" width="222" height="46"></a>
     <div class="top-right">
       <span class="live" id="live"><span class="dot"></span><span id="live-text">LIVE</span></span>
+      <button type="button" class="theme" id="theme-btn" aria-label="Theme">
+        <svg class="i-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-lang="en" lang="en">EN</button>
         <button type="button" data-lang="ar" lang="ar">عربي</button>

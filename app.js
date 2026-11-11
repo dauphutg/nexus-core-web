@@ -3,7 +3,7 @@
 
   var T = {
     en: {
-      skip: 'Skip to content', loading: 'Loading plan…', tab_plan: 'Daily plan', tab_signals: 'Signals', tab_history: 'Track record',
+      skip: 'Skip to content', to_light: 'Switch to light theme', to_dark: 'Switch to dark theme', loading: 'Loading plan…', tab_plan: 'Daily plan', tab_signals: 'Signals', tab_history: 'Track record',
       lede: 'AI-built game plan for gold (XAUUSD): key zones, scenarios and the level that proves the view wrong — refreshed before Asia, London and New York.',
       bias: 'Bias', levels: 'Key levels', scenarios: 'Scenarios', zones: 'Zones on the chart', news: 'Economic calendar',
       main_zone: 'Main zone', invalid: 'View is wrong if', range: 'Expected range', target: 'Target',
@@ -25,7 +25,7 @@
       disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
     ar: {
-      skip: 'انتقل إلى المحتوى', loading: 'جارٍ تحميل الخطة…', tab_plan: 'الخطة اليومية', tab_signals: 'الإشارات', tab_history: 'سجل النتائج',
+      skip: 'انتقل إلى المحتوى', to_light: 'التبديل إلى الوضع الفاتح', to_dark: 'التبديل إلى الوضع الداكن', loading: 'جارٍ تحميل الخطة…', tab_plan: 'الخطة اليومية', tab_signals: 'الإشارات', tab_history: 'سجل النتائج',
       lede: 'خطة للذهب (XAUUSD) مبنية بالذكاء الاصطناعي: مناطق رئيسية، سيناريوهات، والمستوى الذي يُلغي الفكرة — تُحدَّث قبل جلسات آسيا ولندن ونيويورك.',
       bias: 'الاتجاه', levels: 'المستويات الرئيسية', scenarios: 'السيناريوهات', zones: 'المناطق على الرسم', news: 'المفكرة الاقتصادية',
       main_zone: 'المنطقة الرئيسية', invalid: 'تُلغى الفكرة إذا', range: 'النطاق المتوقع', target: 'الهدف',
@@ -47,7 +47,7 @@
       disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
     vi: {
-      skip: 'Tới nội dung', loading: 'Đang tải plan…', tab_plan: 'Plan ngày', tab_signals: 'Signal', tab_history: 'Lịch sử',
+      skip: 'Tới nội dung', to_light: 'Chuyển sang giao diện sáng', to_dark: 'Chuyển sang giao diện tối', loading: 'Đang tải plan…', tab_plan: 'Plan ngày', tab_signals: 'Signal', tab_history: 'Lịch sử',
       lede: 'Plan vàng (XAUUSD) do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai — cập nhật trước phiên Á, Âu và Mỹ.',
       bias: 'Xu hướng', levels: 'Mức giá chính', scenarios: 'Kịch bản', zones: 'Các vùng trên chart', news: 'Lịch tin',
       main_zone: 'Vùng chính', invalid: 'Sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
@@ -83,6 +83,7 @@
   var data = { plan: null, signals: null, history: null };
   var seg = 'active';
 
+  var themeBtn;
   function t(k) { return T[lang][k] != null ? T[lang][k] : k; }
   function L(o) {
     if (o == null) return '';
@@ -141,6 +142,7 @@
     var tg = LINKS.tg[lang] || LINKS.tg._, x = LINKS.x[lang] || LINKS.x._;
     ['tg-cta', 'tg-link', 's-tg'].forEach(function (id) { document.getElementById(id).href = tg; });
     document.getElementById('s-x').href = x;
+    if (themeBtn) themeLabel();
   }
 
   function renderPlan() {
@@ -294,6 +296,18 @@
   });
   document.querySelectorAll('.seg button').forEach(function (b) {
     b.addEventListener('click', function () { seg = b.dataset.seg; renderSignals(); });
+  });
+  themeBtn = document.getElementById('theme-btn');
+  function themeLabel() {
+    var dark = document.documentElement.getAttribute('data-theme') !== 'light';
+    themeBtn.setAttribute('aria-label', dark ? t('to_light') : t('to_dark'));
+    themeBtn.title = themeBtn.getAttribute('aria-label');
+  }
+  themeBtn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('nc_theme', next); } catch (e) {}
+    themeLabel();
   });
   window.addEventListener('hashchange', route);
 
