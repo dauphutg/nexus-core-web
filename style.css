@@ -202,3 +202,8 @@ html[data-theme="light"] .imp.high{background:#C62828} html[data-theme="light"] 
 .btn.big.on{background:transparent;color:var(--gold-ink);border-color:var(--gold-line);font-weight:600}
 .btn.big svg{flex:none;color:inherit}
 @media (max-width:640px){.btn.big{flex:1 1 100%}}
+
+.alt-ch{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:4px;font-size:14px}
+.alt-ch .muted{flex:1 1 100%}
+.btn.alt{display:inline-flex;align-items:center;gap:8px;text-decoration:none;flex:1 1 160px;justify-content:center}
+.btn.alt:hover{color:var(--gold-ink)}

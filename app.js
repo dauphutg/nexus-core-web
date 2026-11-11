@@ -22,8 +22,10 @@
       SELL: 'SELL', BUY: 'BUY', TWO_WAY: 'TWO-WAY', STAND_ASIDE: 'STAND ASIDE', lean: 'leaning',
       live: 'LIVE', stale: 'LAST PLAN', err: 'Could not load data. Please reload the page.',
       nt_title: 'New-plan alerts', nt_sub: 'Get a notification on this device the moment a new plan is published.', nt_on_btn: 'Turn on alerts', nt_off_btn: 'Turn off alerts', nt_on: 'Alerts are on for this device.', nt_denied: 'Notifications are blocked for this site. Allow them in your browser settings to turn alerts on.', nt_ios: 'On iPhone: tap the Share button, choose “Add to Home Screen”, then open NEXUS CORE from your home screen and turn on alerts.', nt_err: 'Could not change alerts. Please try again.',
-      wl_title: 'Join the waitlist', wl_sub: 'Be first to get the NEXUS CORE app and new features. One email when it is ready — no spam.', wl_label: 'Email address', wl_btn: 'Join waitlist', wl_ok: 'You are on the list. We will email you when it is ready.', wl_bad: 'Please enter a valid email address.', wl_err: 'Could not sign you up. Please try again.', wl_privacy: 'We use your email only for NEXUS CORE updates and never share it. You can ask to be removed at any time.',
+      wl_title: 'Email alerts & waitlist', wl_sub: 'Get new plans by email and be first to get the NEXUS CORE app. No spam, unsubscribe any time.', wl_label: 'Email address', wl_btn: 'Join waitlist', wl_ok: 'You are on the list.', wl_bad: 'Please enter a valid email address.', wl_err: 'Could not sign you up. Please try again.', wl_privacy: 'We use your email only for NEXUS CORE updates and never share it. You can ask to be removed at any time.',
       nt_old_ios: 'Alerts need iOS 16.4 or later. Update your iPhone in Settings → General → Software Update, then turn alerts on here.', nt_unsup: 'This browser cannot show alerts. Open the site in Chrome, Edge, Firefox or Safari — or follow the Telegram channel.',
+      nt_retry: 'Connecting… please tap the button again.',
+      nt_alt: 'Works on every phone, including older iPhones:', nt_tg: 'Alerts on Telegram', nt_mail: 'Alerts by email',
       risk_title: 'Risk warning',
       disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
@@ -47,8 +49,10 @@
       SELL: 'بيع', BUY: 'شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق', lean: 'ميل إلى',
       live: 'مباشر', stale: 'آخر خطة', err: 'تعذّر تحميل البيانات. يرجى إعادة تحميل الصفحة.',
       nt_title: 'تنبيهات الخطة الجديدة', nt_sub: 'استلم إشعارًا على هذا الجهاز فور نشر خطة جديدة.', nt_on_btn: 'تفعيل التنبيهات', nt_off_btn: 'إيقاف التنبيهات', nt_on: 'التنبيهات مفعّلة على هذا الجهاز.', nt_denied: 'الإشعارات محظورة لهذا الموقع. اسمح بها من إعدادات المتصفح لتفعيل التنبيهات.', nt_ios: 'على الآيفون: اضغط زر المشاركة، اختر «إضافة إلى الشاشة الرئيسية»، ثم افتح NEXUS CORE من الشاشة الرئيسية وفعّل التنبيهات.', nt_err: 'تعذّر تغيير التنبيهات. حاول مرة أخرى.',
-      wl_title: 'انضم إلى قائمة الانتظار', wl_sub: 'كن أول من يحصل على تطبيق NEXUS CORE والمزايا الجديدة. رسالة واحدة عند الجاهزية — بلا إزعاج.', wl_label: 'البريد الإلكتروني', wl_btn: 'انضم الآن', wl_ok: 'تم تسجيلك في القائمة. سنراسلك عند الجاهزية.', wl_bad: 'يرجى إدخال بريد إلكتروني صحيح.', wl_err: 'تعذّر التسجيل. حاول مرة أخرى.', wl_privacy: 'نستخدم بريدك لتحديثات NEXUS CORE فقط ولا نشاركه مع أحد. يمكنك طلب الحذف في أي وقت.',
+      wl_title: 'تنبيهات البريد وقائمة الانتظار', wl_sub: 'استلم الخطط الجديدة عبر البريد وكن أول من يحصل على تطبيق NEXUS CORE. بلا إزعاج، ويمكنك إلغاء الاشتراك متى شئت.', wl_label: 'البريد الإلكتروني', wl_btn: 'انضم الآن', wl_ok: 'تم تسجيلك في القائمة.', wl_bad: 'يرجى إدخال بريد إلكتروني صحيح.', wl_err: 'تعذّر التسجيل. حاول مرة أخرى.', wl_privacy: 'نستخدم بريدك لتحديثات NEXUS CORE فقط ولا نشاركه مع أحد. يمكنك طلب الحذف في أي وقت.',
       nt_old_ios: 'التنبيهات تتطلب iOS 16.4 أو أحدث. حدّث الآيفون من الإعدادات ← عام ← تحديث البرامج ثم فعّل التنبيهات هنا.', nt_unsup: 'هذا المتصفح لا يدعم التنبيهات. افتح الموقع في Chrome أو Edge أو Firefox أو Safari — أو تابع قناة تيليجرام.',
+      nt_retry: 'جارٍ الاتصال… اضغط الزر مرة أخرى.',
+      nt_alt: 'تعمل على كل الهواتف، بما فيها أجهزة الآيفون القديمة:', nt_tg: 'تنبيهات عبر تيليجرام', nt_mail: 'تنبيهات بالبريد',
       risk_title: 'تحذير المخاطر',
       disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
@@ -72,8 +76,10 @@
       SELL: 'BÁN', BUY: 'MUA', TWO_WAY: '2 CHIỀU', STAND_ASIDE: 'ĐỨNG NGOÀI', lean: 'nghiêng',
       live: 'LIVE', stale: 'PLAN CŨ', err: 'Không tải được dữ liệu. Thử tải lại trang.',
       nt_title: 'Thông báo plan mới', nt_sub: 'Nhận thông báo trên máy này ngay khi có plan mới.', nt_on_btn: 'Bật thông báo', nt_off_btn: 'Tắt thông báo', nt_on: 'Đã bật thông báo trên máy này.', nt_denied: 'Trình duyệt đang chặn thông báo của trang này. Hãy cho phép trong cài đặt trình duyệt để bật.', nt_ios: 'Trên iPhone: bấm nút Chia sẻ, chọn “Thêm vào MH chính”, rồi mở NEXUS CORE từ màn hình chính và bật thông báo.', nt_err: 'Không đổi được thông báo. Thử lại sau.',
-      wl_title: 'Đăng ký danh sách chờ', wl_sub: 'Nhận app NEXUS CORE và tính năng mới sớm nhất. Chỉ một email khi sẵn sàng — không spam.', wl_label: 'Địa chỉ email', wl_btn: 'Đăng ký', wl_ok: 'Bạn đã có tên trong danh sách. Chúng tôi sẽ gửi email khi sẵn sàng.', wl_bad: 'Vui lòng nhập email hợp lệ.', wl_err: 'Chưa đăng ký được. Thử lại sau.', wl_privacy: 'Email chỉ dùng để gửi tin NEXUS CORE, không chia sẻ cho ai. Bạn có thể yêu cầu xoá bất cứ lúc nào.',
+      wl_title: 'Nhận plan qua email & danh sách chờ', wl_sub: 'Nhận plan mới qua email và có app NEXUS CORE sớm nhất. Không spam, huỷ bất cứ lúc nào.', wl_label: 'Địa chỉ email', wl_btn: 'Đăng ký', wl_ok: 'Bạn đã có tên trong danh sách.', wl_bad: 'Vui lòng nhập email hợp lệ.', wl_err: 'Chưa đăng ký được. Thử lại sau.', wl_privacy: 'Email chỉ dùng để gửi tin NEXUS CORE, không chia sẻ cho ai. Bạn có thể yêu cầu xoá bất cứ lúc nào.',
       nt_old_ios: 'Thông báo cần iOS 16.4 trở lên. Cập nhật iPhone trong Cài đặt → Cài đặt chung → Cập nhật phần mềm, rồi bật thông báo tại đây.', nt_unsup: 'Trình duyệt này không hỗ trợ thông báo. Mở trang bằng Chrome, Edge, Firefox hoặc Safari — hoặc theo dõi kênh Telegram.',
+      nt_retry: 'Đang kết nối… bấm nút thêm lần nữa.',
+      nt_alt: 'Cách này chạy trên mọi điện thoại, kể cả iPhone đời cũ:', nt_tg: 'Nhận qua Telegram', nt_mail: 'Nhận qua email',
       risk_title: 'Cảnh báo rủi ro',
       disclaimer: 'Nội dung chỉ để tham khảo, không phải lời khuyên đầu tư hay lời mời giao dịch. Sản phẩm có đòn bẩy như vàng CFD có rủi ro mất tiền nhanh. Kết quả quá khứ không đảm bảo tương lai. Chỉ giao dịch bằng số tiền bạn chấp nhận mất.'
     }
@@ -149,7 +155,7 @@
     document.querySelectorAll('[data-i18n]').forEach(function (n) { n.textContent = t(n.getAttribute('data-i18n')); });
     document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
     var tg = LINKS.tg[lang] || LINKS.tg._, x = LINKS.x[lang] || LINKS.x._;
-    ['tg-cta', 'tg-link', 's-tg'].forEach(function (id) { document.getElementById(id).href = tg; });
+    ['tg-cta', 'tg-link', 's-tg', 'nt-tg'].forEach(function (id) { document.getElementById(id).href = tg; });
     document.getElementById('s-x').href = x;
     if (themeBtn) themeLabel();
     notifyRender();
@@ -354,35 +360,37 @@
     btn.disabled = push.busy;
     btn.className = 'btn big' + (push.state === 'on' ? ' on' : '');
     document.getElementById('notify-btn-t').textContent = push.state === 'on' ? t('nt_off_btn') : t('nt_on_btn');
-    sub.textContent = push.err ? t('nt_err') : (!canPush ? t('nt_ios') : denied ? t('nt_denied') : push.state === 'on' ? t('nt_on') : t('nt_sub'));
+    sub.textContent = push.err ? (canPush && Notification.permission === 'denied' ? t('nt_denied') : push.errName === 'retry' ? t('nt_retry') : t('nt_err') + (push.errName ? ' (' + push.errName + ')' : '')) : (!canPush ? t('nt_ios') : denied ? t('nt_denied') : push.state === 'on' ? t('nt_on') : t('nt_sub'));
   }
+  // iPhone/Safari only allow the permission prompt and the subscription when they start
+  // directly from the tap, so the subscribe call happens synchronously inside the click handler.
   function notifyToggle() {
     if (push.busy) return;
-    push.busy = true; push.err = false; notifyRender();
-    var job = pushInit().then(function () {
-      if (!push.reg) throw new Error('no sw');
-      return push.state === 'on' ? turnOff() : turnOn();
-    });
-    job.catch(function () { push.err = true; }).then(function () { push.busy = false; notifyRender(); });
-  }
-  function turnOff() {
-    {
-      return push.reg.pushManager.getSubscription().then(function (s) {
+    push.err = false; push.errName = '';
+    var job;
+    if (push.state === 'on' && push.reg) {
+      job = push.reg.pushManager.getSubscription().then(function (s) {
         if (!s) return;
         var ep = s.endpoint;
         return s.unsubscribe().then(function () { return post('/unsubscribe', { endpoint: ep }).catch(function () {}); });
       }).then(function () { push.state = 'off'; });
+    } else if (push.reg && push.key) {
+      var sub;
+      try {
+        sub = push.reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(push.key) });   // shows the iOS "Allow notifications" prompt
+      } catch (e) { sub = Promise.reject(e); }
+      job = sub.then(function (s) { return post('/subscribe', { sub: s.toJSON(), lang: lang }); })
+               .then(function () { push.state = 'on'; });
+    } else {
+      // service not reachable yet: retry setup, then ask the user to tap again
+      job = pushInit().then(function () { throw new Error('retry'); });
     }
-  }
-  function turnOn() {
-    {
-      return Notification.requestPermission().then(function (perm) {
-        if (perm !== 'granted') return;
-        return push.reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(push.key) })
-          .then(function (s) { return post('/subscribe', { sub: s.toJSON(), lang: lang }); })
-          .then(function () { push.state = 'on'; });
-      });
-    }
+    push.busy = true; notifyRender();
+    job.catch(function (e) {
+      push.err = true;
+      push.errName = (e && (e.name || e.message)) || '';
+      if (push.errName === 'Error') push.errName = (e && e.message) || '';
+    }).then(function () { push.busy = false; notifyRender(); });
   }
   function notifyLang() {   // keep the alert language in step with the page language
     if (push.state !== 'on' || !push.reg) return;
