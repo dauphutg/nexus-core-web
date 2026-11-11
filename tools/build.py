@@ -14,6 +14,8 @@ Reads template.html + data/latest.json + data/plans/*.json + data/grades.json an
 app.js still runs on top for visitors (local time, alerts, email). Run after every data change.
 """
 import glob, html, json, os, re, subprocess, sys, datetime as dt
+from zoneinfo import ZoneInfo
+ZoneInfoNY = ZoneInfo('America/New_York')
 
 ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), '..'))
 SITE = 'https://nexuscore.trade'
@@ -230,6 +232,52 @@ def grade_of(k):
 def plan_path(lang, k): return f"{PFX[lang]}/plan/{k[:10]}-{SESSION[k[11:]]}/"
 def track_path(lang, ym): return f"{PFX[lang]}/track-record/{ym}/"
 def signals_path(lang): return f"{PFX[lang]}/signals/"
+def learn_index_path(lang): return f"{PFX[lang]}/learn/"
+def learn_path(lang, slug): return f"{PFX[lang]}/learn/{slug}/"
+def move_path(lang, m): return f"{PFX[lang]}/why-gold-moved/{m['date']}-{m['tag']}/"
+
+
+# ---------- learn (Q&A) pages: data/learn/<en|ar>.json, each page goes live on its "publish" date (GMT+7) ----------
+TODAY_VN = os.environ.get('NC_TODAY') or dt.datetime.now(TZ_VN).date().isoformat()   # NC_TODAY: preview future pages locally
+LEARN_LANGS = ['en', 'ar']
+SLUG_RE = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+){0,8}')
+
+
+def load_learn():
+    out = {}
+    for lang in LEARN_LANGS:
+        try: items = json.loads(read(f'data/learn/{lang}.json'))
+        except FileNotFoundError: items = []
+        out[lang] = {x['slug']: x for x in items if SLUG_RE.fullmatch(x.get('slug', '')) and str(x.get('publish', '9999')) <= TODAY_VN}
+    return out
+
+
+LEARN = load_learn()
+
+
+def learn_pair(lang, slug):
+    """same question in the other language (pages share the slug)"""
+    return {l: learn_path(l, slug) for l in LEARN_LANGS if slug in LEARN[l]}
+
+
+# ---------- why gold moved: data/moves/<date>.json (numbers from tools/move.py, text from real news) ----------
+MOVE_TAGS = {'cpi', 'ppi', 'nfp', 'jobs', 'fed', 'fomc', 'powell', 'dollar', 'yields', 'gdp', 'pce', 'retail-sales', 'pmi',
+             'geopolitics', 'tariffs', 'holiday', 'risk-off', 'risk-on', 'profit-taking', 'technical', 'no-major-news', 'central-banks', 'data-mix'}
+
+
+def load_moves():
+    out = []
+    for f in sorted(glob.glob(os.path.join(ROOT, 'data', 'moves', '*.json'))):
+        try: m = json.load(open(f, encoding='utf-8'))
+        except Exception: continue
+        ok = (m.get('tag') in MOVE_TAGS and isinstance(m.get('headline'), dict) and all(m['headline'].get(l) for l in LANGS)
+              and m.get('reasons') and all(isinstance(r, dict) and all(r.get(l) for l in LANGS) for r in m['reasons'])
+              and re.fullmatch(r'\d{4}-\d{2}-\d{2}', m.get('date', '')) and os.path.basename(f) == m['date'] + '.json')
+        if ok: out.append(m)
+    return out
+
+
+MOVES = load_moves()
 
 
 CUR_MONTH = P['date'][:7]
@@ -280,14 +328,15 @@ def shell(lang, kind, paths):
     """Template with texts, tabs and language links filled in. paths = this page's address in each language."""
     doc = read('template.html')
     doc = (doc.replace('{{LANG}}', lang).replace('{{DIR}}', 'rtl' if lang == 'ar' else 'ltr').replace('{{HOME}}', PATH[lang])
-           .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{KIND}}', kind))
+           .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{KIND}}', kind)
+           .replace('{{LEARN}}', learn_index_path('ar' if lang == 'ar' else 'en')))
     for k, v in T[lang].items():
         if isinstance(v, str):
             doc = re.sub(r'(data-i18n="%s"[^>]*>)(</)' % re.escape(k), lambda m: m.group(1) + esc(v) + m.group(2), doc)
     for l in LANGS:
         doc = re.sub(r'href="[^"]*"( data-lang="%s")' % l, lambda m: f'href="{paths[l]}"' + m.group(1), doc, count=1)
     doc = re.sub(r'(<a role="button" href="[^"]*" data-lang="%s")' % lang, r'\1 aria-pressed="true" aria-current="page"', doc)
-    tab = {'home': 'plan', 'plan': 'plan', 'track': 'track', 'signals': 'signals'}[kind]
+    tab = {'home': 'plan', 'plan': 'plan', 'track': 'track', 'signals': 'signals', 'learn': 'learn', 'move': 'learn'}[kind]
     doc = doc.replace(f' data-tab="{tab}"', f' aria-current="page" data-tab="{tab}"', 1)
     if kind != 'home':
         doc = doc.replace('<span class="live" id="live">', '<span class="live" id="live" hidden>', 1)
@@ -309,11 +358,14 @@ def finish(doc, head_html, ld):
     return doc
 
 
-def head_tags(lang, title, desc, paths, img, pub=None, mod=None, og='article'):
+def head_tags(lang, title, desc, paths, img, pub=None, mod=None, og='article', langs=None):
     url = SITE + paths[lang]
-    alts = ''.join(f'\n<link rel="alternate" hreflang="{l}" href="{SITE}{paths[l]}">' for l in LANGS)
-    alts += f'\n<link rel="alternate" hreflang="x-default" href="{SITE}{paths["en"]}">'
-    og_alt = ''.join(f'\n<meta property="og:locale:alternate" content="{LOCALE[l]}">' for l in LANGS if l != lang)
+    langs = langs or LANGS
+    alts = ''
+    if len(langs) > 1:
+        alts = ''.join(f'\n<link rel="alternate" hreflang="{l}" href="{SITE}{paths[l]}">' for l in langs)
+        alts += f'\n<link rel="alternate" hreflang="x-default" href="{SITE}{paths["en" if "en" in langs else langs[0]]}">'
+    og_alt = ''.join(f'\n<meta property="og:locale:alternate" content="{LOCALE[l]}">' for l in langs if l != lang)
     times = (f'\n<meta property="article:published_time" content="{pub.isoformat()}">'
              f'\n<meta property="article:modified_time" content="{(mod or pub).isoformat()}">') if pub and og == 'article' else ''
     size = '\n<meta property="og:image:width" content="1800">\n<meta property="og:image:height" content="1110">' if '/data/charts/' in img else ''
@@ -532,6 +584,148 @@ def signals_page(lang):
     return finish(doc, head_tags(lang, title, desc, paths, SITE + '/assets/logo-banner.png', og='website'), ld(page_ld, crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'sg_h1'), paths[lang])])))
 
 
+
+def example_box(kind, lang):
+    """A live box built from the latest plan, so every Q&A page shows real, current numbers."""
+    p, k = P, key_of(P)
+    mz = p.get('main_zone')
+    head = f'{t(lang, "plan_of")} · {day_label(dt.date.fromisoformat(p["date"]), lang)} · {t(lang, "ed")[p["edition"]]}'
+    rows = []
+    row = lambda kk, v, n=True: rows.append(f'<div class="row{"" if n else " text"}"><span class="k">{esc(kk)}</span><span class="v{" num" if n else ""}"{" dir=\"ltr\"" if n else ""}>{esc(v)}</span></div>')
+    row(t(lang, 'bias'), bias_label(p, lang), False)
+    if kind in ('zone', 'invalidation', 'plan', 'scenarios', 'context', 'news', 'session') and mz:
+        row(t(lang, 'main_zone') + ' (' + t(lang, mz['side']) + ')', rng(mz['lo'], mz['hi'], lang))
+    if kind == 'zone':
+        for z in (p.get('zones') or [])[:4]:
+            if mz and z['lo'] == mz['lo'] and z['hi'] == mz['hi']: continue
+            row(t(lang, z['side']) + ' · ' + L(z.get('status'), lang)[:70], rng(z['lo'], z['hi'], lang))
+    if kind in ('invalidation', 'plan', 'zone') and p.get('invalidation'):
+        row(t(lang, 'invalid'), L(p['invalidation'], lang), False)
+    if kind in ('plan', 'invalidation') and p.get('targets'):
+        x = p['targets'][0]; row(t(lang, 'target') + ' ' + x['label'], rng(x['lo'], x['hi'], lang))
+    if kind == 'scenarios':
+        for i, sc in enumerate(p.get('scenarios') or []):
+            row(f"{t(lang, 'main') if i == 0 else t(lang, 'alt')} · {t(lang, sc['side'])} ~{sc['prob']}%", L(sc['text'], lang), False)
+    if kind == 'context':
+        for c in p.get('context') or []: row(L(c['k'], lang), L(c['v'], lang), False)
+    if kind == 'news':
+        for n in p.get('news') or []: row(L(n['text'], lang), str(n.get('time', '')) + (' GMT+7' if ' ' in str(n.get('time', '')) else ''), False)
+    if kind == 'session':
+        for e in ED_ORDER: row(t(lang, 'ed')[e], f"{ED_TIME[e]} GMT+7 · {['00:00', '06:45', '12:30'][ED_ORDER.index(e)]} UTC")
+    if kind == 'track':
+        n, ng, nr, hit, void, tot = month_stats([x for x in KEYS if x.startswith(CUR_MONTH)])
+        row(t(lang, 'tr_plans'), str(n)); row(t(lang, 'tr_graded'), str(ng)); row(t(lang, 'tr_reached'), str(nr))
+        row(t(lang, 'tr_hit'), f'{hit}/{nr}' if nr else '—'); row(t(lang, 'tr_r'), r_text(tot, lang, 1) if nr else '—')
+    if kind != 'track':
+        g = grade_of(k)
+        row(t(lang, 'pp_result'), res_label(g, lang) + ((' ' + r_text(g.get('r'), lang)) if g and g.get('r') is not None else ''), False)
+    pl = plan_path(lang if lang in PFX else 'en', k)
+    links = f'<a href="{pl}">{esc(t(lang, "see_plan"))}</a> · <a href="{track_path(lang, CUR_MONTH)}">{esc(t(lang, "see_track"))}</a>'
+    return (f'<aside class="card example"><p class="eyebrow">{esc(t(lang, "ln_example"))}</p><strong>{esc(head)}</strong>'
+            f'<div class="list">{"".join(rows)}</div><p class="small">{links}</p></aside>')
+
+
+def learn_page(lang, slug):
+    x = LEARN[lang][slug]
+    pair = learn_pair(lang, slug)
+    paths = {l: pair.get(l) or learn_index_path('ar' if l == 'ar' else 'en') if l != 'vi' else PATH['vi'] for l in LANGS}
+    paths[lang] = learn_path(lang, slug)
+    doc = shell(lang, 'learn', paths)
+    secs = []
+    for sec in x.get('sections') or []:
+        h = f'<h2 class="ah">{esc(sec["h"])}</h2>' if sec.get('h') else ''
+        ps = ''.join(f'<p>{esc(pp)}</p>' for pp in sec.get('p') or [])
+        ul = ('<ul>' + ''.join(f'<li>{esc(li)}</li>' for li in sec['ul']) + '</ul>') if sec.get('ul') else ''
+        ol = ('<ol>' + ''.join(f'<li>{esc(li)}</li>' for li in sec['ol']) + '</ol>') if sec.get('ol') else ''
+        secs.append(h + ps + ul + ol)
+    faq = x.get('faq') or []
+    faq_html = ''.join(f'<details class="card qa"><summary>{esc(f["q"])}</summary><p>{esc(f["a"])}</p></details>' for f in faq)
+    rel = [r for r in x.get('related') or [] if r in LEARN[lang] and r != slug][:6]
+    rel_html = ''.join(f'<a class="card rel" href="{learn_path(lang, r)}">{esc(LEARN[lang][r]["q"])}</a>' for r in rel)
+    body = (f'  <section id="view-learn">\n    <div class="plan-head"><div><p class="eyebrow"><a href="{learn_index_path(lang)}">{esc(t(lang, "ln_eyebrow"))}</a></p>'
+            f'<h1>{esc(x["q"])}</h1></div></div>\n'
+            f'    <div class="card answer"><p class="eyebrow">{esc(t(lang, "ln_short"))}</p><p>{esc(x["answer"])}</p></div>\n'
+            f'    <div class="layout">\n      <article class="stack prose">{"".join(secs)}</article>\n'
+            f'      <div class="stack">{example_box(x.get("example") or "plan", lang)}'
+            f'{("<h2>" + esc(t(lang, "ln_related")) + "</h2><div class=\"stack-sm\">" + rel_html + "</div>") if rel_html else ""}</div>\n    </div>\n'
+            f'    {("<h2>" + esc(t(lang, "ln_faq")) + "</h2><div class=\"stack-sm\">" + faq_html + "</div>") if faq_html else ""}\n'
+            f'    <p class="muted small">{esc(t(lang, "ln_updated"))} {esc(x["publish"])} · NEXUS CORE AI</p>\n  </section>')
+    doc = set_view(doc, body)
+    title = (x.get('title') or x['q']) + ' | NEXUS CORE'
+    desc = (x.get('desc') or x['answer'])[:300]
+    url = SITE + paths[lang]
+    pub = dt.datetime.fromisoformat(x['publish'] + 'T08:00:00+07:00')
+    art = {'@type': 'Article', '@id': url + '#article', 'headline': x['q'][:110], 'description': desc, 'inLanguage': lang,
+           'datePublished': pub.isoformat(), 'dateModified': updated_dt(P).isoformat() if updated_dt(P) > pub else pub.isoformat(),
+           'author': {'@id': SITE + '/#org'}, 'publisher': {'@id': SITE + '/#org'}, 'mainEntityOfPage': url, 'image': [img_for(P, 'en')],
+           'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD) trading'}}
+    fq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': lang, 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in [(x['q'], x['answer'])] + [(f['q'], f['a']) for f in faq]]}
+    bc = crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'ln_eyebrow'), learn_index_path(lang)), (x['q'], paths[lang])])
+    langs = [l for l in LEARN_LANGS if l in pair]
+    return finish(doc, head_tags(lang, title, desc, paths, img_for(P, 'en'), pub, og='article', langs=langs if len(langs) > 1 else [lang]), ld(art, fq, bc))
+
+
+def move_page(lang, m):
+    paths = {l: move_path(l, m) for l in LANGS}
+    doc = shell(lang, 'move', paths)
+    d0 = dt.date.fromisoformat(m['date'])
+    pct = m['change_pct']
+    sign = '+' if pct > 0 else ''
+    cls = 'r-up' if pct > 0 else 'r-down' if pct < 0 else 'r-flat'
+    st = lambda k, v, c='': f'<div class="stat"><span class="k">{esc(t(lang, k))}</span><span class="v num {c}" dir="ltr">{esc(v)}</span></div>'
+    bh = m.get('biggest_hour') or {}
+    stats = (st('mv_change', f"{sign}{fmt(pct, lang)}% ({sign}{fmt(m['change'], lang)})", cls) + st('mv_oc', f"{fmt(m['open'], lang)} → {fmt(m['close'], lang)}") +
+             st('mv_hl', f"{fmt(m['high'], lang)} / {fmt(m['low'], lang)}") +
+             (st('mv_big', f"{('+' if bh['move'] > 0 else '')}{fmt(bh['move'], lang)} · {bh['start_vn'][11:]} GMT+7") if bh.get('start_vn') else ''))
+    reasons = ''.join(f'<li>{esc(L(r, lang))}</li>' for r in m['reasons'])
+    srcs = ', '.join(esc(s_) for s_ in (m.get('sources') or []) if isinstance(s_, str))
+    dk = [k for k in KEYS if k.startswith(m['date'])]
+    plans = ''.join(f'<a class="btn alt" href="{plan_path(lang, k)}">{esc(t(lang, "ed_short")[k[11:]])}</a>' for k in dk)
+    others = [x for x in reversed(MOVES) if x['date'] != m['date']][:5]
+    oth = ''.join(f'<a class="card rel" href="{move_path(lang, x)}">{esc(day_label(dt.date.fromisoformat(x["date"]), lang))} · {esc(L(x["headline"], lang))}</a>' for x in others)
+    h1 = f"{t(lang, 'mv_h1')} · {day_label(d0, lang)}"
+    body = (f'  <section id="view-move">\n    <div class="plan-head"><div><p class="eyebrow"><a href="{learn_index_path("ar" if lang == "ar" else "en")}">XAUUSD · {esc(t(lang, "mv_eyebrow"))}</a></p>'
+            f'<h1>{esc(h1)}</h1><p class="lede">{esc(L(m["headline"], lang))}</p></div></div>\n'
+            f'    <div class="stats">{stats}</div>\n'
+            f'    <div class="layout"><article class="stack prose"><h2 class="ah">{esc(t(lang, "mv_reasons"))}</h2><ul>{reasons}</ul>'
+            f'{("<p class=\"muted small\">" + esc(t(lang, "mv_sources")) + ": " + srcs + "</p>") if srcs else ""}'
+            f'<p class="muted small">{esc(t(lang, "mv_method"))}</p></article>\n'
+            f'    <div class="stack">{("<h2>" + esc(t(lang, "mv_plans")) + "</h2><div class=\"pnav\">" + plans + "</div>") if plans else ""}'
+            f'{("<h2>" + esc(t(lang, "mv_recent")) + "</h2><div class=\"stack-sm\">" + oth + "</div>") if oth else ""}</div></div>\n  </section>')
+    doc = set_view(doc, body)
+    title = f"{h1}: {L(m['headline'], lang)} — XAUUSD | NEXUS CORE"
+    desc = f"{L(m['headline'], lang)} {t(lang, 'mv_change')}: {sign}{fmt(pct, lang)}%. " + ' '.join(L(r, lang) for r in m['reasons'][:2])
+    desc = desc[:300]
+    url = SITE + paths[lang]
+    pub = dt.datetime.combine(d0, dt.time(17, 0), tzinfo=ZoneInfoNY)
+    art = {'@type': 'Article', '@id': url + '#article', 'headline': h1[:110], 'description': desc, 'inLanguage': lang,
+           'datePublished': pub.isoformat(), 'author': {'@id': SITE + '/#org'}, 'publisher': {'@id': SITE + '/#org'}, 'mainEntityOfPage': url,
+           'image': [img_for(P, 'en')], 'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'}}
+    bc = crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'mv_eyebrow'), learn_index_path('ar' if lang == 'ar' else 'en')), (h1, paths[lang])])
+    return finish(doc, head_tags(lang, title, desc, paths, img_for(P, 'en'), pub, og='article'), ld(art, bc))
+
+
+def learn_index(lang):
+    paths = {l: learn_index_path('ar' if l == 'ar' else 'en') for l in LANGS}
+    paths['vi'] = PATH['vi']
+    doc = shell(lang, 'learn', paths)
+    items = sorted(LEARN[lang].values(), key=lambda x: (x['publish'], x.get('order', 0)), reverse=True)
+    ql = ''.join(f'<a class="card rel" href="{learn_path(lang, x["slug"])}"><strong>{esc(x["q"])}</strong><span class="muted">{esc(x["answer"][:150])}…</span></a>' for x in items)
+    mv = ''.join(f'<a class="card rel" href="{move_path(lang, m)}">{esc(day_label(dt.date.fromisoformat(m["date"]), lang))} · {esc(L(m["headline"], lang))}</a>' for m in list(reversed(MOVES))[:10])
+    body = (f'  <section id="view-learn">\n    <div class="plan-head"><div><p class="eyebrow">{esc(t(lang, "ln_eyebrow"))}</p><h1>{esc(t(lang, "ln_index_h1"))}</h1>'
+            f'<p class="lede">{esc(t(lang, "ln_index_lede"))}</p></div></div>\n'
+            f'    {("<h2>" + esc(t(lang, "mv_recent")) + "</h2><div class=\"stack-sm\">" + mv + "</div>") if mv else ""}\n'
+            f'    <h2>{esc(t(lang, "ln_all"))}</h2>\n    <div class="qgrid">{ql}</div>\n  </section>')
+    doc = set_view(doc, body)
+    title = f"{t(lang, 'ln_index_h1')} — XAUUSD Q&A | NEXUS CORE"
+    url = SITE + paths[lang]
+    page_ld = {'@type': 'CollectionPage', '@id': url, 'name': t(lang, 'ln_index_h1'), 'description': t(lang, 'ln_index_lede'), 'inLanguage': lang,
+               'isPartOf': {'@id': SITE + '/#website'}, 'mainEntity': {'@type': 'ItemList', 'numberOfItems': len(items), 'itemListElement': [
+                   {'@type': 'ListItem', 'position': i + 1, 'url': SITE + learn_path(lang, x['slug'])} for i, x in enumerate(items)]}}
+    return finish(doc, head_tags(lang, title, t(lang, 'ln_index_lede'), paths, SITE + '/assets/logo-banner.png', og='website', langs=['en', 'ar']), ld(page_ld))
+
+
 EN_ROOT = '''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>NEXUS CORE – gold plan</title>
 <meta name="robots" content="noindex, follow"><link rel="canonical" href="https://nexuscore.trade/">
@@ -568,6 +762,19 @@ def sitemap():
     url({l: signals_path(l) for l in LANGS}, None, 'monthly', '0.6')
     for k in reversed(KEYS):
         url({l: plan_path(l, k) for l in LANGS}, mod(k), None, '0.7')
+    for m in reversed(MOVES):
+        url({l: move_path(l, m) for l in LANGS}, dt.datetime.combine(dt.date.fromisoformat(m['date']), dt.time(17, 0), tzinfo=ZoneInfoNY).isoformat(), None, '0.6')
+    def one(lang, path, lastmod, prio, alts):
+        s_ = f'  <url>\n    <loc>{SITE}{path}</loc>\n    <lastmod>{lastmod}</lastmod>\n    <priority>{prio}</priority>'
+        out.append(s_)
+        if len(alts) > 1:
+            for l, pth in alts.items(): out.append(f'    <xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{pth}"/>')
+            out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{alts.get("en", path)}"/>')
+        out.append('  </url>')
+    for lang in LEARN_LANGS:
+        one(lang, learn_index_path(lang), updated_dt(P).isoformat(), '0.7', {l: learn_index_path(l) for l in LEARN_LANGS})
+        for slug, x in LEARN[lang].items():
+            one(lang, learn_path(lang, slug), x['publish'] + 'T08:00:00+07:00', '0.6', learn_pair(lang, slug))
     out.append('</urlset>')
     return '\n'.join(out) + '\n'
 
@@ -602,6 +809,14 @@ def llms():
         qz = q.get('main_zone')
         lines.append(f'- [{q["date"]} {t("en", "ed")[q["edition"]]}]({SITE}{plan_path("en", k)}): {bias_label(q, "en")}'
                      f'{(", main zone " + rng(qz["lo"], qz["hi"], "en")) if qz else ""} — {res_label(g, "en")}{(" " + r_text(g.get("r"), "en")) if g and g.get("r") is not None else ""}')
+    if LEARN['en']:
+        lines += ['', '## Gold trading Q&A', '']
+        for x in sorted(LEARN['en'].values(), key=lambda x: x['publish']):
+            lines.append(f'- [{x["q"]}]({SITE}{learn_path("en", x["slug"])}): {x["answer"][:160]}')
+    if MOVES:
+        lines += ['', '## Why gold moved (recent days)', '']
+        for m in list(reversed(MOVES))[:10]:
+            lines.append(f'- [{m["date"]}: {L(m["headline"], "en")}]({SITE}{move_path("en", m)}) ({m["change_pct"]:+}%)')
     lines += ['', '## Pages', '',
               f'- [Today\'s gold plan (English)]({SITE}/): latest XAUUSD plan with chart, zones and scenarios',
               f'- [خطة الذهب اليوم (العربية)]({SITE}/ar/): the same plan in Arabic',
@@ -629,7 +844,13 @@ if __name__ == '__main__':
         for ym in MONTHS:
             write(track_path(lang, ym).strip('/') + '/index.html', track_page(ym, lang))
         write(signals_path(lang).strip('/') + '/index.html', signals_page(lang))
+        for m in MOVES:
+            write(move_path(lang, m).strip('/') + '/index.html', move_page(lang, m))
+    for lang in LEARN_LANGS:
+        write(learn_index_path(lang).strip('/') + '/index.html', learn_index(lang))
+        for slug in LEARN[lang]:
+            write(learn_path(lang, slug).strip('/') + '/index.html', learn_page(lang, slug))
     write('en/index.html', EN_ROOT)
     write('sitemap.xml', sitemap())
     write('llms.txt', llms())
-    print(f'built: home + today, {len(KEYS)} plan page(s) x3, {len(MONTHS)} track-record month(s) x3, signals x3, sitemap.xml, llms.txt –', P['date'], P['edition'])
+    print(f'built: home + today, {len(KEYS)} plan page(s) x3, {len(MONTHS)} track-record month(s) x3, signals x3, {len(LEARN['en'])}+{len(LEARN['ar'])} learn page(s) live, {len(MOVES)} why-gold-moved x3, sitemap.xml, llms.txt –', P['date'], P['edition'])

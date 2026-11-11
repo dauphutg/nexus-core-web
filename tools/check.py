@@ -96,6 +96,35 @@ if s is not None:
     for k in ('active', 'closed'):
         if not isinstance(s.get(k), list): errs.append(f'signals.{k} phải là mảng')
 
+# Q&A pages (data/learn/<en|ar>.json) and "why gold moved" (data/moves/<date>.json)
+LEARN_EX = {'plan', 'zone', 'invalidation', 'session', 'track', 'context', 'news', 'scenarios'}
+learn = {}
+for lg in ('en', 'ar'):
+    fp = os.path.join(root, 'data', 'learn', lg + '.json')
+    if not os.path.isfile(fp): continue
+    try: learn[lg] = json.load(open(fp, encoding='utf-8'))
+    except Exception as e: errs.append(f'learn/{lg}.json: {e}'); continue
+    seen = set()
+    for i, x in enumerate(learn[lg]):
+        w = f'learn.{lg}[{i}]'
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+){0,8}', str(x.get('slug', ''))) or x.get('slug') in seen: errs.append(f'{w}: slug sai/trùng')
+        seen.add(x.get('slug'))
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', str(x.get('publish', ''))): errs.append(f'{w}: publish phải dạng yyyy-mm-dd')
+        for k in ('q', 'answer'):
+            if not (isinstance(x.get(k), str) and x[k].strip()): errs.append(f'{w}: thiếu {k}')
+        if x.get('example') not in LEARN_EX: errs.append(f'{w}: example sai')
+moves = []
+for f in sorted(os.listdir(os.path.join(root, 'data', 'moves'))) if os.path.isdir(os.path.join(root, 'data', 'moves')) else []:
+    w = f'moves/{f}'
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}\.json', f): errs.append(f'{w}: tên file sai'); continue
+    try: m = json.load(open(os.path.join(root, 'data', 'moves', f), encoding='utf-8'))
+    except Exception as e: errs.append(f'{w}: {e}'); continue
+    moves.append((w, m))
+    for k in ('open', 'close', 'high', 'low'): num(m.get(k), f'{w}.{k}')
+    if m.get('reasons'):
+        if m.get('headline') is not None: bi(m['headline'], f'{w}.headline')
+        for i, r in enumerate(m['reasons']): bi(r, f'{w}.reasons[{i}]')
+
 # --- safety: website text must be plain text, no links/markup/secrets, sane sizes ---
 BAD = re.compile(r'<|>|javascript:|data:|https?://|www\.|@[a-z0-9_]{3,}|gmail|token|api[_-]?key|password|secret|-100\d{6,}', re.I)
 def walk(o, where):
@@ -109,6 +138,8 @@ def walk(o, where):
             errs.append(f'{where}: có ký tự/link/thông tin nhạy cảm không được phép: {BAD.search(o).group(0)!r}')
 for name, obj in (('latest', p), ('signals', s)):
     if obj is not None: walk(obj, name)
+for lg, items in learn.items(): walk(items, 'learn.' + lg)
+for w, m in moves: walk({k: v for k, v in m.items() if k != 'sources'}, w); walk([x for x in m.get('sources') or [] if isinstance(x, str)], w + '.sources')
 if p and p.get('chart'):
     for lg in ('vi', 'en'):
         f = p['chart'].get(lg, '')

@@ -28,6 +28,14 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 - [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2 — Pending
 
+## Gold trading Q&A
+
+- [What is XAUUSD?](https://nexuscore.trade/en/learn/what-is-xauusd/): XAUUSD is the price of one troy ounce of gold quoted in US dollars. "XAU" is the currency-style code for gold and "USD" is the dollar, so a quote of 4050.00 mea
+- [How to trade gold (XAUUSD) step by step](https://nexuscore.trade/en/learn/how-to-trade-gold/): Start from the daily chart to know the bigger direction, mark the few price zones where buyers or sellers stepped in before, decide in advance which level would
+- [How to find key support and resistance levels for gold today](https://nexuscore.trade/en/learn/gold-support-and-resistance/): The levels that matter most for gold on any given day are usually the previous day's high and low, today's daily open, round numbers, and recent zones where pri
+- [What is the best time to trade gold? Asia, London and New York sessions](https://nexuscore.trade/en/learn/best-time-to-trade-gold/): Gold is usually most active when London and New York are both open — roughly 13:00 to 17:00 UTC in winter (one hour earlier in summer) — and around US data rele
+- [How to read a daily gold trading plan](https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/): A good gold plan tells you five things: the bias (which side has the edge today), the main zone where it expects a reaction, the targets, the exact level that m
+
 ## Pages
 
 - [Today's gold plan (English)](https://nexuscore.trade/): latest XAUUSD plan with chart, zones and scenarios

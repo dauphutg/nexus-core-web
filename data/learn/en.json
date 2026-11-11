@@ -1,0 +1,1539 @@
+[
+ {
+  "slug": "what-is-xauusd",
+  "example": "plan",
+  "q": "What is XAUUSD?",
+  "title": "What is XAUUSD? Gold vs the US dollar explained",
+  "answer": "XAUUSD is the price of one troy ounce of gold quoted in US dollars. \"XAU\" is the currency-style code for gold and \"USD\" is the dollar, so a quote of 4050.00 means one ounce costs 4,050 dollars. Traders use XAUUSD to speculate on gold rising or falling without owning physical metal.",
+  "sections": [
+   {
+    "h": "How the symbol works",
+    "p": [
+     "Gold is traded like a currency pair. XAU is the base, USD is the quote. When XAUUSD rises, gold is getting more expensive in dollar terms — either because demand for gold is up, the dollar is weaker, or both.",
+     "Most retail platforms offer XAUUSD as a spot CFD that trades almost 24 hours a day from Monday to Friday, with a short daily pause around 17:00 New York time. Some brokers list it as GOLD or add a suffix such as XAUUSD.m."
+    ]
+   },
+   {
+    "h": "How big is a move?",
+    "p": [
+     "Gold is usually quoted to two decimals. On many brokers one standard lot equals 100 ounces, so a 1-dollar move in XAUUSD is worth about 100 dollars per standard lot, 10 dollars per mini lot (0.1) and 1 dollar per micro lot (0.01). Always check your own broker's contract size.",
+     "Gold often moves 20 to 60 dollars in a single day, and much more around major US data. That is why position size matters more on gold than on most currency pairs."
+    ]
+   },
+   {
+    "h": "What moves XAUUSD",
+    "ul": [
+     "The US dollar: a stronger dollar usually weighs on gold.",
+     "Interest rates and real yields: higher yields raise the cost of holding a metal that pays no interest.",
+     "US data such as CPI inflation and the jobs report (NFP), and Federal Reserve decisions.",
+     "Risk mood and geopolitics: gold is a classic safe-haven asset.",
+     "Central bank buying and physical demand."
+    ]
+   },
+   {
+    "h": "How NEXUS CORE covers XAUUSD",
+    "p": [
+     "NEXUS CORE publishes a free XAUUSD plan three times every trading day — before the Asia, London and New York sessions. Each plan names the bias, the main price zone, targets and the level that proves the view wrong, and every plan is graded in public afterwards. The box on this page shows the latest one."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is XAUUSD the same as gold futures?",
+    "a": "No. XAUUSD is usually a spot price (or a CFD on it). Gold futures such as COMEX GC trade on an exchange with fixed expiry dates. Prices are close but not identical."
+   },
+   {
+    "q": "Why is it called XAU?",
+    "a": "XAU comes from the ISO 4217 currency-code system, where precious metals get an X code; AU is the chemical symbol for gold."
+   }
+  ],
+  "related": [
+   "how-to-trade-gold",
+   "best-time-to-trade-gold",
+   "how-to-read-a-gold-trading-plan",
+   "gold-lot-size-and-pip-value"
+  ],
+  "publish": "2026-11-11",
+  "order": 0
+ },
+ {
+  "slug": "how-to-trade-gold",
+  "example": "plan",
+  "q": "How to trade gold (XAUUSD) step by step",
+  "title": "How to trade gold (XAUUSD): a step-by-step routine",
+  "answer": "Start from the daily chart to know the bigger direction, mark the few price zones where buyers or sellers stepped in before, decide in advance which level would prove your idea wrong, size the position so that level costs no more than 1% of your account, and only act when price reaches your zone — not in the middle of nowhere.",
+  "sections": [
+   {
+    "h": "1. Know the bigger picture first",
+    "p": [
+     "Look at the daily (D1) and 4-hour (H4) charts before anything else. Are highs and lows getting higher, lower, or going sideways? Where did yesterday close compared with the day before? Trading against a strong daily move is where most gold losses come from."
+    ]
+   },
+   {
+    "h": "2. Mark only the zones that matter",
+    "p": [
+     "Pick two to four zones above and below price: previous day high and low, the daily open, areas where price turned sharply before. A zone is a band (for example 4048–4056), not a single line — gold regularly overshoots a line by a few dollars."
+    ]
+   },
+   {
+    "h": "3. Write down what would make you wrong",
+    "p": [
+     "Before entering, name the level where the idea is invalid — for example \"a 15-minute close above 4083\". If you cannot name it, you do not have a trade, you have a hope."
+    ]
+   },
+   {
+    "h": "4. Size the position from that level",
+    "p": [
+     "Risk a fixed small share of the account per idea; many traders use 0.5–1%. If the stop is 8 dollars away and you risk 100 dollars, the size is 100 / (8 × 100) = 0.125 lots on a 100-ounce contract."
+    ]
+   },
+   {
+    "h": "5. Respect the calendar and the session",
+    "p": [
+     "Check for US data (CPI, jobs report, Fed decisions) before trading. Gold is quietest in the Asia session and most active when London and New York overlap. Many traders simply stand aside in the minutes around red-flag news."
+    ]
+   },
+   {
+    "h": "6. Review every trade",
+    "p": [
+     "Keep a record — right or wrong. NEXUS CORE does the same with its own plans: every plan is graded publicly on its track record page, so you can see how this routine performs in real markets."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "How much money do I need to trade gold?",
+    "a": "With micro lots (0.01 = about 1 dollar per 1-dollar move on a 100-ounce contract) small accounts can trade gold, but the account must be big enough that a normal stop is no more than about 1% of it."
+   },
+   {
+    "q": "Is gold good for beginners?",
+    "a": "Gold is liquid and well covered, but it moves fast. Beginners should trade small size, avoid major news releases and follow a written plan."
+   }
+  ],
+  "related": [
+   "what-is-xauusd",
+   "gold-support-and-resistance",
+   "how-much-to-risk-per-trade-gold",
+   "best-time-to-trade-gold"
+  ],
+  "publish": "2026-11-11",
+  "order": 1
+ },
+ {
+  "slug": "gold-support-and-resistance",
+  "example": "zone",
+  "q": "How to find key support and resistance levels for gold today",
+  "title": "Gold support and resistance today: how to find the levels that matter",
+  "answer": "The levels that matter most for gold on any given day are usually the previous day's high and low, today's daily open, round numbers, and recent zones where price reversed sharply on the 1-hour or 4-hour chart. Treat each as a zone a few dollars wide, and rank them by how many times price reacted there.",
+  "sections": [
+   {
+    "h": "Where to look",
+    "ul": [
+     "Previous day high and low (PDH / PDL) — the first places stops cluster.",
+     "Today's daily open — price often returns to test it.",
+     "Round numbers such as 4000 or 4050 — orders gather there.",
+     "H4 and H1 swing highs and lows where price turned with a strong candle.",
+     "Gaps or fast moves that left little trading behind (price likes to revisit them)."
+    ]
+   },
+   {
+    "h": "Zones, not lines",
+    "p": [
+     "Gold routinely pokes through a level by a few dollars before turning. Drawing a band — say 4048.4 to 4056.2 — and waiting for a reaction inside it avoids being stopped out by noise. The wider the recent daily range, the wider the zone should be."
+    ]
+   },
+   {
+    "h": "Support turns into resistance",
+    "p": [
+     "When a support zone breaks and price closes clearly below it, that same zone often acts as resistance on the way back up — and the other way round. Many of the best gold setups are retests of a freshly broken zone."
+    ]
+   },
+   {
+    "h": "How NEXUS CORE grades its zones",
+    "p": [
+     "Each NEXUS CORE plan lists its zones with a status (touched or not, still valid or not) and marks one main zone. After the session the plan is graded on real 15-minute candles: did price reach the main zone, and did it reach Target 1 before the invalidation level? The live box shows the current zones."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Which timeframe is best for gold support and resistance?",
+    "a": "Use D1 and H4 to find the zones and H1 or M15 to watch the reaction. Levels from higher timeframes carry more weight."
+   },
+   {
+    "q": "How many levels should I draw?",
+    "a": "Two to four on each side is enough. A chart full of lines makes every price look like a level."
+   }
+  ],
+  "related": [
+   "supply-and-demand-zones-gold",
+   "daily-open-line-gold",
+   "how-to-spot-a-breakout-gold",
+   "invalidation-level"
+  ],
+  "publish": "2026-11-11",
+  "order": 2
+ },
+ {
+  "slug": "best-time-to-trade-gold",
+  "example": "session",
+  "q": "What is the best time to trade gold? Asia, London and New York sessions",
+  "title": "Best time to trade gold (XAUUSD): sessions explained",
+  "answer": "Gold is usually most active when London and New York are both open — roughly 13:00 to 17:00 UTC in winter (one hour earlier in summer) — and around US data releases at 8:30 New York time. The Asia session is typically calmer and often builds the range that London and New York later break.",
+  "sections": [
+   {
+    "h": "The three sessions",
+    "ul": [
+     "Asia (Tokyo, Hong Kong, Singapore, Sydney): lower volume, ranges form, reactions to overnight news.",
+     "London: volume jumps at the London open (08:00 London time); the first real direction of the day often starts here.",
+     "New York: US data at 8:30 ET, the COMEX gold futures open and the Fed. The London–New York overlap is usually the most volatile part of the day."
+    ]
+   },
+   {
+    "h": "Timing tips",
+    "p": [
+     "Many intraday traders prepare during Asia, look for the first move at the London open, and reassess before New York. Large moves often come in the first 30–60 minutes after major US numbers. The last hour before the daily close (17:00 New York) tends to be thin.",
+     "On US bank holidays liquidity drops — see the page on trading gold on holidays."
+    ]
+   },
+   {
+    "h": "Why NEXUS CORE publishes three plans",
+    "p": [
+     "Because each session can change the picture, NEXUS CORE publishes a plan before Asia (00:00 UTC), an update before London (06:45 UTC) and a plan before New York (12:30 UTC). Each one is graded only for the hours it was in force, so you can see which sessions the analysis handles best."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Can I trade gold on weekends?",
+    "a": "Spot gold and CFDs close from Friday 17:00 New York time until Sunday evening; prices can gap at the reopening."
+   },
+   {
+    "q": "Is the Asia session bad for gold?",
+    "a": "Not bad — just slower. It suits range trading; breakout traders usually wait for London."
+   }
+  ],
+  "related": [
+   "how-to-check-news-for-xauusd",
+   "how-cpi-affects-gold",
+   "trading-gold-on-holidays",
+   "gold-average-daily-range"
+  ],
+  "publish": "2026-11-11",
+  "order": 3
+ },
+ {
+  "slug": "how-to-read-a-gold-trading-plan",
+  "example": "plan",
+  "q": "How to read a daily gold trading plan",
+  "title": "How to read a daily gold (XAUUSD) trading plan",
+  "answer": "A good gold plan tells you five things: the bias (which side has the edge today), the main zone where it expects a reaction, the targets, the exact level that makes the view wrong, and the news that could change everything. Read the invalidation first — it tells you how much the plan can cost if it fails.",
+  "sections": [
+   {
+    "h": "The parts of a plan",
+    "ul": [
+     "Bias — SELL, BUY, two-way or stand aside, with a lean when the plan is two-way.",
+     "Main zone — the band where the plan expects price to react.",
+     "Targets — where the move is expected to run if the zone holds (T1 first).",
+     "Invalidation — the level or candle close that cancels the idea.",
+     "Scenarios with rough probabilities, and the economic calendar."
+    ]
+   },
+   {
+    "h": "How to use it",
+    "p": [
+     "Do not chase price toward the zone. Wait for price to reach it, watch the reaction on a lower timeframe, and size your position from the invalidation level. If price never reaches the zone, the plan simply did not trigger — that is not a loss.",
+     "A plan written before the session is a map, not a promise. When the invalidation hits, the plan is wrong and should be dropped, not defended."
+    ]
+   },
+   {
+    "h": "Check the track record",
+    "p": [
+     "Any plan is only as good as its record. NEXUS CORE grades every plan after it expires — Target 1 reached, invalidated, zone not reached or no follow-through — and keeps losing days on the public record. The live box on this page shows the latest plan and its grade."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "What does a two-way bias mean?",
+    "a": "The plan sees a range: it would sell near resistance and buy near support, sometimes leaning to one side."
+   },
+   {
+    "q": "Why are there three plans a day?",
+    "a": "Asia, London and New York each bring new information; each plan is graded only for the hours it was in force."
+   }
+  ],
+  "related": [
+   "invalidation-level",
+   "gold-support-and-resistance",
+   "how-to-judge-gold-analysis-track-record",
+   "what-is-xauusd"
+  ],
+  "publish": "2026-11-11",
+  "order": 4
+ },
+ {
+  "slug": "why-is-gold-falling",
+  "example": "plan",
+  "q": "Why is gold falling?",
+  "title": "Why is gold falling? The usual reasons behind a gold sell-off",
+  "answer": "Gold usually falls when the US dollar strengthens, when bond yields — especially real (inflation-adjusted) yields — rise, when US data come in hotter than expected and push back rate-cut hopes, or when fear eases and investors take profits on safe-haven positions. Often several of these happen at once.",
+  "sections": [
+   {
+    "h": "The most common drivers",
+    "ul": [
+     "A stronger US dollar: gold is priced in dollars, so it gets more expensive for the rest of the world.",
+     "Rising yields: holding gold pays no interest, so higher yields make it less attractive.",
+     "Hot US data — CPI, jobs, retail sales — that make the Federal Reserve less likely to cut rates.",
+     "Hawkish Fed comments or a less dovish rate decision.",
+     "Easing geopolitical stress, or profit-taking after a strong rally.",
+     "Technical selling: a break of a key support zone triggers stop orders."
+    ]
+   },
+   {
+    "h": "How to check which one it is",
+    "p": [
+     "Compare gold with the dollar index (DXY) and the US 10-year yield over the same hours. If both rose while gold fell, the macro story is likely. If they did not move, the drop may be positioning or technical. Then check the economic calendar for a release at the exact time of the biggest candle."
+    ]
+   },
+   {
+    "h": "Daily answers",
+    "p": [
+     "NEXUS CORE publishes a short \"Why gold moved\" page after each trading day with the real numbers from 15-minute candles — day change, high and low, the biggest hourly move — and the news that lined up with it. When no single trigger explains the move, the page says so."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Does a falling gold price mean the trend is over?",
+    "a": "Not necessarily. Sharp drops inside an uptrend are common; the daily and weekly structure tells you more than a single day."
+   },
+   {
+    "q": "Why does gold fall on good US data?",
+    "a": "Strong data can lift yields and the dollar and reduce expected Fed rate cuts — all of which weigh on gold."
+   }
+  ],
+  "related": [
+   "why-is-gold-rising",
+   "gold-and-the-us-dollar",
+   "gold-and-real-yields",
+   "how-cpi-affects-gold"
+  ],
+  "publish": "2026-11-12",
+  "order": 0
+ },
+ {
+  "slug": "why-is-gold-rising",
+  "example": "plan",
+  "q": "Why is gold rising?",
+  "title": "Why is gold going up? The main drivers of a gold rally",
+  "answer": "Gold tends to rise when the US dollar weakens, when real interest rates fall or are expected to fall, when US data come in soft and boost Fed rate-cut hopes, when geopolitical or financial stress sends investors to safe havens, and when central banks and funds keep buying. In 2022–2024 central banks bought more than 1,000 tonnes a year, according to the World Gold Council.",
+  "sections": [
+   {
+    "h": "The most common drivers",
+    "ul": [
+     "A weaker dollar and lower US yields.",
+     "Soft inflation or jobs data that raise the odds of Fed rate cuts.",
+     "Geopolitical shocks, banking stress or sharp stock-market falls (safe-haven demand).",
+     "Steady central-bank buying and inflows into gold ETFs.",
+     "Technical buying after a breakout above a key resistance zone."
+    ]
+   },
+   {
+    "h": "Why the old rules sometimes fail",
+    "p": [
+     "For years gold moved mostly opposite to real yields. Since 2022 that link has been weaker: gold rose even while yields were high, helped by record central-bank demand. That is why it pays to check several drivers instead of relying on one rule."
+    ]
+   },
+   {
+    "h": "How to confirm the move",
+    "p": [
+     "Check whether the dollar index fell and yields eased at the same time, and whether the rise started at a scheduled release. A rally with no macro support and no news is more likely to fade at the next resistance zone."
+    ]
+   },
+   {
+    "h": "Follow it day by day",
+    "p": [
+     "The NEXUS CORE \"Why gold moved\" pages give the real numbers for each trading day and the news that lined up with the move, and the daily plan shows where the next resistance zones sit."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is gold a hedge against inflation?",
+    "a": "Over long periods gold has held its value, but in the short run it reacts more to real yields and the dollar than to inflation itself."
+   },
+   {
+    "q": "Why does gold rise when stocks fall?",
+    "a": "In stress, investors move to assets seen as safe and liquid; gold is one of them. In a cash crunch gold can briefly fall too."
+   }
+  ],
+  "related": [
+   "why-is-gold-falling",
+   "fed-rates-and-gold",
+   "gold-and-real-yields",
+   "gold-and-the-us-dollar"
+  ],
+  "publish": "2026-11-12",
+  "order": 1
+ },
+ {
+  "slug": "how-cpi-affects-gold",
+  "example": "news",
+  "q": "How does CPI affect the gold price?",
+  "title": "How US CPI inflation data moves gold (XAUUSD)",
+  "answer": "US CPI is released by the Bureau of Labor Statistics at 8:30 New York time. A hotter-than-expected reading usually lifts US yields and the dollar and cuts the odds of Fed rate cuts, which tends to push gold down; a cooler reading tends to lift gold. What matters is the surprise versus the forecast, especially in core CPI.",
+  "sections": [
+   {
+    "h": "What to watch",
+    "ul": [
+     "Headline CPI and core CPI (excluding food and energy), month-on-month and year-on-year.",
+     "The forecast (consensus) — the market reacts to the difference, not the number itself.",
+     "Revisions and the details (shelter, services) that traders discuss in the first minutes."
+    ]
+   },
+   {
+    "h": "Typical reaction pattern",
+    "p": [
+     "The first one to five minutes after 8:30 ET are often a spike in both directions as spreads widen. The more reliable move usually appears after the first 15-minute candle closes, once yields and the dollar have settled. A reading in line with forecasts can still move gold if expectations had shifted beforehand."
+    ]
+   },
+   {
+    "h": "Practical rules",
+    "ul": [
+     "Do not hold a full-size position into the release unless the stop already accounts for a 20–40 dollar spike.",
+     "Mark the pre-release high and low; a 15-minute close outside them is more meaningful than the first wick.",
+     "Compare with the US 10-year yield: if gold and yields move the same direction, the reaction is less trustworthy."
+    ]
+   },
+   {
+    "h": "How NEXUS CORE handles it",
+    "p": [
+     "Plans list red-flag releases in the economic calendar and often widen zones or stand aside around them. The live box shows the news listed in the latest plan."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "When is CPI released?",
+    "a": "Monthly, at 8:30 a.m. New York time, usually around the middle of the month. Check the official BLS schedule."
+   },
+   {
+    "q": "Is CPI more important than NFP for gold?",
+    "a": "Both are major. When inflation is the Fed's main concern, CPI often moves gold more."
+   }
+  ],
+  "related": [
+   "how-nfp-affects-gold",
+   "fed-rates-and-gold",
+   "how-to-check-news-for-xauusd",
+   "gold-and-real-yields"
+  ],
+  "publish": "2026-11-12",
+  "order": 2
+ },
+ {
+  "slug": "how-nfp-affects-gold",
+  "example": "news",
+  "q": "How does the NFP report affect gold?",
+  "title": "How the US jobs report (NFP) affects gold",
+  "answer": "The US Employment Situation report — nonfarm payrolls, the unemployment rate and wages — is usually released on the first Friday of the month at 8:30 New York time. Strong job growth and wages tend to lift yields and the dollar and push gold lower; weak numbers tend to lift gold. Revisions to earlier months can matter as much as the headline.",
+  "sections": [
+   {
+    "h": "The three numbers",
+    "ul": [
+     "Nonfarm payrolls: jobs added versus forecast.",
+     "Unemployment rate: a rise is usually read as softer labor market.",
+     "Average hourly earnings: wage growth feeds inflation expectations."
+    ]
+   },
+   {
+    "h": "Why the first move often reverses",
+    "p": [
+     "The three numbers can point in different directions, and revisions to prior months are published at the same moment. Algorithms react to the headline first; people then read the details. A quick spike that fully reverses within 30 minutes is common on NFP Fridays."
+    ]
+   },
+   {
+    "h": "Practical rules",
+    "ul": [
+     "Reduce size or stand aside from a few minutes before until the first 15-minute candle closes.",
+     "Watch the US 2-year yield — it reflects rate-cut expectations most directly.",
+     "Friday afternoon liquidity thins out; late moves can be erratic before the weekly close."
+    ]
+   },
+   {
+    "h": "On NEXUS CORE",
+    "p": [
+     "Plans on NFP days flag the release and the pre-New York plan is published at 12:30 UTC, an hour before the 8:30 ET number in winter, so the zones are set before the spike."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is NFP always on the first Friday?",
+    "a": "Usually, but not always — the schedule shifts around holidays. Check the BLS release calendar."
+   },
+   {
+    "q": "Should I trade the NFP spike?",
+    "a": "Spikes are fast and spreads widen; most traders do better waiting for the dust to settle."
+   }
+  ],
+  "related": [
+   "how-cpi-affects-gold",
+   "fed-rates-and-gold",
+   "how-to-check-news-for-xauusd",
+   "how-much-to-risk-per-trade-gold"
+  ],
+  "publish": "2026-11-12",
+  "order": 3
+ },
+ {
+  "slug": "fed-rates-and-gold",
+  "example": "news",
+  "q": "How do Federal Reserve interest-rate decisions affect gold?",
+  "title": "How Fed rate decisions affect gold (XAUUSD)",
+  "answer": "The Fed's rate-setting committee (FOMC) meets eight times a year; the statement comes out at 2:00 p.m. New York time and the press conference starts at 2:30. Gold reacts mostly to the surprise in the outlook — signals of more or faster cuts tend to lift gold, while a more hawkish tone tends to push it down, usually through the dollar and yields.",
+  "sections": [
+   {
+    "h": "What moves gold on Fed day",
+    "ul": [
+     "The decision versus what futures markets expected.",
+     "The statement wording and, four times a year, the \"dot plot\" of rate projections.",
+     "The press conference — gold often moves more on the answers than on the statement."
+    ]
+   },
+   {
+    "h": "Why the decision alone is rarely the story",
+    "p": [
+     "Most decisions are fully expected, so the rate change itself is priced in. The move comes from new information about the path of future rates. That is why gold can rise after a hike or fall after a cut."
+    ]
+   },
+   {
+    "h": "Between meetings",
+    "p": [
+     "Speeches by Fed officials, the meeting minutes (three weeks after each meeting) and data such as CPI and NFP all shift expectations — and gold with them."
+    ]
+   },
+   {
+    "h": "Practical rules",
+    "ul": [
+     "Expect two waves: 2:00 p.m. (statement) and 2:30 p.m. (press conference) New York time.",
+     "Many traders stay flat from the statement until the press conference ends.",
+     "Use wider zones; Fed days often break the normal daily range."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do rate cuts always make gold go up?",
+    "a": "Not always. If a cut was fully expected, or comes with a hawkish message, gold can fall."
+   },
+   {
+    "q": "What time is the Fed decision?",
+    "a": "2:00 p.m. New York time on the second day of each scheduled meeting."
+   }
+  ],
+  "related": [
+   "gold-and-real-yields",
+   "gold-and-the-us-dollar",
+   "how-cpi-affects-gold",
+   "why-is-gold-rising"
+  ],
+  "publish": "2026-11-13",
+  "order": 0
+ },
+ {
+  "slug": "gold-and-the-us-dollar",
+  "example": "plan",
+  "q": "Why does gold move against the US dollar?",
+  "title": "Gold and the US dollar (DXY): why they usually move opposite",
+  "answer": "Gold is priced in dollars. When the dollar strengthens, an ounce costs more in euros, yen or rupees, which tends to cool demand — and the dollar price of gold falls. When the dollar weakens, the opposite happens. The relationship is strong on average but breaks down when both are bought as safe havens.",
+  "sections": [
+   {
+    "h": "How to use the dollar index",
+    "p": [
+     "The dollar index (DXY) tracks the dollar against six major currencies, mostly the euro. Put DXY next to XAUUSD on the same timeframe: if gold is rising while DXY is also rising, gold has its own strong demand — a sign of strength. If gold falls while DXY is flat, look for another cause."
+    ]
+   },
+   {
+    "h": "When the link breaks",
+    "ul": [
+     "Crises: investors can buy both the dollar and gold at the same time.",
+     "Central-bank or ETF flows that are not driven by currency moves.",
+     "Very short timeframes, where order flow dominates."
+    ]
+   },
+   {
+    "h": "Practical use",
+    "p": [
+     "Before taking a gold setup at a key zone, check whether DXY is also at a key level. A gold sell zone that lines up with DXY bouncing from support has more going for it than one that fights a falling dollar."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is gold always inverse to the dollar?",
+    "a": "No — the correlation is negative on average but changes over time and can turn positive in stress."
+   },
+   {
+    "q": "Which dollar pair matters most for gold?",
+    "a": "EURUSD makes up most of DXY; when EURUSD rises the dollar is weakening, which usually supports gold."
+   }
+  ],
+  "related": [
+   "gold-and-real-yields",
+   "why-is-gold-falling",
+   "why-is-gold-rising",
+   "fed-rates-and-gold"
+  ],
+  "publish": "2026-11-13",
+  "order": 1
+ },
+ {
+  "slug": "gold-and-real-yields",
+  "example": "plan",
+  "q": "What is the relationship between gold and real yields?",
+  "title": "Gold and real yields: the opportunity cost of holding gold",
+  "answer": "Real yields are bond yields after inflation, usually measured by the 10-year US TIPS yield. Gold pays no interest, so when real yields rise, holding gold costs more in lost income and gold tends to fall; when real yields fall, gold tends to rise. The link was very strong for years but has weakened since 2022 as central banks bought record amounts of gold.",
+  "sections": [
+   {
+    "h": "Why it matters",
+    "p": [
+     "Large investors compare gold with what they could earn in safe bonds after inflation. A rise in real yields from, say, 1% to 2% makes the bond alternative noticeably more attractive."
+    ]
+   },
+   {
+    "h": "How to watch it",
+    "ul": [
+     "US 10-year TIPS yield (real yield).",
+     "US 10-year nominal yield as a quick intraday proxy.",
+     "The US 2-year yield for short-term Fed expectations."
+    ]
+   },
+   {
+    "h": "The recent exception",
+    "p": [
+     "In 2022–2024 real yields rose sharply, yet gold went on to record highs. Record central-bank purchases — more than 1,000 tonnes a year according to the World Gold Council — and geopolitical demand offset the yield effect. Yields still move gold on data days, but they are not the only driver."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Where can I see real yields?",
+    "a": "The 10-year TIPS yield is published by the US Treasury and widely shown on charting platforms."
+   },
+   {
+    "q": "Do rising nominal yields always hurt gold?",
+    "a": "Not if inflation expectations rise just as fast — then real yields stay flat."
+   }
+  ],
+  "related": [
+   "fed-rates-and-gold",
+   "gold-and-the-us-dollar",
+   "why-is-gold-rising",
+   "how-cpi-affects-gold"
+  ],
+  "publish": "2026-11-13",
+  "order": 2
+ },
+ {
+  "slug": "daily-open-line-gold",
+  "example": "context",
+  "q": "How to use the daily open line when trading gold",
+  "title": "The daily open line in gold trading: how to use it",
+  "answer": "The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far; below it, sellers are. Price often comes back to test an untested daily open, which makes it a useful intraday magnet and a reference for bias.",
+  "sections": [
+   {
+    "h": "Three ways traders use it",
+    "ul": [
+     "Bias filter: prefer buys above the open and sells below it, unless a strong zone says otherwise.",
+     "Magnet: when price has run away from an untested open, a return to it is common, especially in quiet sessions.",
+     "Reaction level: the first retest of the open often produces a bounce or rejection."
+    ]
+   },
+   {
+    "h": "Previous opens matter too",
+    "p": [
+     "Yesterday's and this week's opens that price has not revisited yet act like hidden levels. The NEXUS CORE playbook tracks untested daily opens and uses them when building zones and targets."
+    ]
+   },
+   {
+    "h": "Limits",
+    "p": [
+     "On strong trend days price can leave the open behind and never return. On news days the open can be crossed many times. Use it as one input among the zones, not as a stand-alone signal."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Which time zone defines the daily open?",
+    "a": "Most forex and CFD brokers start the gold daily candle at 17:00 New York time; check your platform's server time."
+   },
+   {
+    "q": "Is the weekly open useful too?",
+    "a": "Yes — the Sunday open of the week is a widely watched reference for weekly bias."
+   }
+  ],
+  "related": [
+   "gold-support-and-resistance",
+   "how-to-identify-gold-trend",
+   "ema-89-gold",
+   "gold-average-daily-range"
+  ],
+  "publish": "2026-11-13",
+  "order": 3
+ },
+ {
+  "slug": "ema-89-gold",
+  "example": "context",
+  "q": "What is EMA 89 used for in gold trading?",
+  "title": "EMA 89 on gold (XAUUSD): what it shows and how to use it",
+  "answer": "EMA 89 is an 89-period exponential moving average. On the 1-hour gold chart it acts as a medium-term trend filter: price holding above a rising EMA 89 suggests buyers control the swing, below a falling EMA 89 sellers do. Traders often pair it with a fast EMA such as 13 to time pullbacks.",
+  "sections": [
+   {
+    "h": "How to read it",
+    "ul": [
+     "Slope: rising = up-trend, falling = down-trend, flat = range.",
+     "Price location: above or below it, and how far — a big gap often precedes a pullback.",
+     "First retest after a cross: often a reaction zone."
+    ]
+   },
+   {
+    "h": "Fast and slow together",
+    "p": [
+     "With EMA 13 and EMA 89 on H1, a pullback to EMA 13 inside a trend that stays on one side of EMA 89 is a classic continuation area. When the fast EMA crosses back through the slow one, the swing may be ending."
+    ]
+   },
+   {
+    "h": "Limits",
+    "p": [
+     "Moving averages lag and get whipped around in ranges and on news. Use EMA 89 to decide which side to favor, and price zones to decide where."
+    ]
+   },
+   {
+    "h": "In NEXUS CORE plans",
+    "p": [
+     "The context cards in each plan state where price sits relative to the EMA 89 on H1/H4 — the live box shows the latest reading."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Why 89 and not 100 or 200?",
+    "a": "89 is a Fibonacci number popular with some traders; 100 or 200 work similarly. Consistency matters more than the exact number."
+   },
+   {
+    "q": "Which timeframe?",
+    "a": "H1 for intraday swings; H4 or D1 for the bigger trend."
+   }
+  ],
+  "related": [
+   "how-to-identify-gold-trend",
+   "daily-open-line-gold",
+   "trading-gold-in-a-sideways-market",
+   "gold-support-and-resistance"
+  ],
+  "publish": "2026-11-13",
+  "order": 4
+ },
+ {
+  "slug": "liquidity-sweep-xauusd",
+  "example": "zone",
+  "q": "What is a liquidity sweep in XAUUSD?",
+  "title": "Liquidity sweep in gold (XAUUSD): what it is and how to spot it",
+  "answer": "A liquidity sweep is a quick move just beyond an obvious high or low — where many stop orders sit — followed by a fast return inside the range. In gold it often happens at the previous day high or low or at round numbers. The sweep fills large orders using those stops; the reversal after it can be a strong signal.",
+  "sections": [
+   {
+    "h": "How it looks on the chart",
+    "ul": [
+     "Price pushes a few dollars past a clear high or low.",
+     "The candle closes back inside the range, often with a long wick.",
+     "The next candles move away from the swept level with momentum."
+    ]
+   },
+   {
+    "h": "Sweep or breakout?",
+    "p": [
+     "The difference is acceptance. A breakout holds beyond the level and closes there on the 15-minute or 1-hour chart; a sweep cannot stay there. Wait for the candle close instead of reacting to the first wick."
+    ]
+   },
+   {
+    "h": "Where sweeps are most common",
+    "p": [
+     "At the London open and around US data, when volume arrives suddenly. Asia highs and lows are frequent targets during London."
+    ]
+   },
+   {
+    "h": "Risk",
+    "p": [
+     "Not every wick is a sweep. Place the invalidation beyond the sweep's extreme, and size accordingly — sweeps can extend further than expected on news."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is a stop hunt the same thing?",
+    "a": "In everyday use, yes — the term describes price running the stops before reversing."
+   },
+   {
+    "q": "Which timeframe shows sweeps best?",
+    "a": "M15 and H1 for intraday; D1 for sweeps of the previous day's high or low."
+   }
+  ],
+  "related": [
+   "how-to-avoid-fake-breakouts-gold",
+   "how-to-spot-a-breakout-gold",
+   "order-blocks-xauusd",
+   "supply-and-demand-zones-gold"
+  ],
+  "publish": "2026-11-16",
+  "order": 0
+ },
+ {
+  "slug": "supply-and-demand-zones-gold",
+  "example": "zone",
+  "q": "How to find gold supply and demand zones",
+  "title": "Gold supply and demand zones: how to draw and trade them",
+  "answer": "A demand zone is the base a strong rally started from; a supply zone is the base a strong drop started from. Draw the zone around the last small candles before the big move, prefer fresh zones that price has not returned to yet, and expect the first retest to give the cleanest reaction.",
+  "sections": [
+   {
+    "h": "Drawing a zone",
+    "ol": [
+     "Find a strong, fast move on H1 or H4 (several large candles in one direction).",
+     "Mark the small \"base\" candles just before it — from the body to the wick.",
+     "Note if price has come back since. The first return is the one traders watch."
+    ]
+   },
+   {
+    "h": "Rating a zone",
+    "ul": [
+     "Strength of the move away (the stronger, the better).",
+     "Freshness (untested zones hold more often than zones hit several times).",
+     "Agreement with the higher-timeframe trend and the daily open.",
+     "Distance from news times."
+    ]
+   },
+   {
+    "h": "Turning a zone into a plan",
+    "p": [
+     "Decide in advance what reaction you need inside the zone and where the idea is wrong — usually beyond the zone's far edge. NEXUS CORE plans list each zone with a grade and its status (touched, still valid) and mark one main zone; the live box shows today's."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "How wide should a gold zone be?",
+    "a": "Often 4 to 12 dollars on intraday charts, wider on D1 or on high-volatility days."
+   },
+   {
+    "q": "Are supply and demand zones the same as support and resistance?",
+    "a": "Closely related; zones focus on where a strong move started rather than where price turned many times."
+   }
+  ],
+  "related": [
+   "gold-support-and-resistance",
+   "order-blocks-xauusd",
+   "liquidity-sweep-xauusd",
+   "invalidation-level"
+  ],
+  "publish": "2026-11-16",
+  "order": 1
+ },
+ {
+  "slug": "how-to-spot-a-breakout-gold",
+  "example": "zone",
+  "q": "How to spot a real breakout in XAUUSD",
+  "title": "How to spot a real breakout in gold (XAUUSD)",
+  "answer": "A real gold breakout closes beyond the level on the 15-minute or 1-hour chart, keeps going with larger-than-average candles, and holds the level on the first retest. Breakouts that happen during the London or New York session, with a news or macro reason behind them, are more reliable than quiet Asia breakouts.",
+  "sections": [
+   {
+    "h": "Checklist",
+    "ul": [
+     "Candle close beyond the level, not just a wick.",
+     "Momentum: the breakout candle is larger than recent candles.",
+     "Follow-through: the next candle does not fall straight back inside.",
+     "Retest: price comes back to the level and it holds from the other side.",
+     "Context: session, news, dollar and yields support the direction."
+    ]
+   },
+   {
+    "h": "Entering after a breakout",
+    "p": [
+     "Chasing the first candle gives a poor price and a wide stop. Many traders wait for the retest of the broken level and place the invalidation back inside the old range."
+    ]
+   },
+   {
+    "h": "Measuring the target",
+    "p": [
+     "A common first objective is the next zone, or a move equal to the height of the range that broke. Compare it with the average daily range: if the day has already covered most of its usual range, expect less."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "What timeframe confirms a gold breakout?",
+    "a": "For intraday, a 15-minute close is the minimum; a 1-hour close is stronger."
+   },
+   {
+    "q": "Why do breakouts fail so often on gold?",
+    "a": "Gold is often swept beyond obvious levels to trigger stops — see the page on fake breakouts."
+   }
+  ],
+  "related": [
+   "how-to-avoid-fake-breakouts-gold",
+   "liquidity-sweep-xauusd",
+   "gold-average-daily-range",
+   "gold-support-and-resistance"
+  ],
+  "publish": "2026-11-16",
+  "order": 2
+ },
+ {
+  "slug": "how-to-avoid-fake-breakouts-gold",
+  "example": "invalidation",
+  "q": "How to avoid fake breakouts on XAUUSD",
+  "title": "How to avoid fake breakouts on gold (XAUUSD)",
+  "answer": "Wait for a candle close beyond the level instead of trading the first spike, avoid breakouts in the minutes right before major news and in the quiet hours of Asia, and require a successful retest before committing. If price closes back inside the range, treat it as a failed breakout — often a signal in the other direction.",
+  "sections": [
+   {
+    "h": "Common traps",
+    "ul": [
+     "Breaks of the previous day high or low that reverse within one or two candles.",
+     "Moves into round numbers that stall just after crossing them.",
+     "Pre-news drifts that reverse when the number is released.",
+     "Late-session breakouts with little volume."
+    ]
+   },
+   {
+    "h": "Filters that help",
+    "ul": [
+     "Close, not wick: use M15 or H1 closes.",
+     "Range check: if the day has already used most of its average daily range, a breakout has less fuel.",
+     "Higher timeframe: a breakout against the D1 trend needs more proof.",
+     "Clear invalidation: know exactly which close puts you back inside the range."
+    ]
+   },
+   {
+    "h": "Using the failure",
+    "p": [
+     "A failed breakout leaves trapped traders on the wrong side. When price closes back inside, the opposite edge of the range becomes a reasonable target. This is the same idea as a liquidity sweep."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is a retest always needed?",
+    "a": "No — strong moves sometimes never retest. Requiring it costs some trades but avoids many false ones."
+   },
+   {
+    "q": "How far past the level is still a sweep?",
+    "a": "On gold, a few dollars is common; judge it relative to the current daily range."
+   }
+  ],
+  "related": [
+   "liquidity-sweep-xauusd",
+   "how-to-spot-a-breakout-gold",
+   "invalidation-level",
+   "trading-gold-in-a-sideways-market"
+  ],
+  "publish": "2026-11-16",
+  "order": 3
+ },
+ {
+  "slug": "how-much-to-risk-per-trade-gold",
+  "example": "invalidation",
+  "q": "How much should you risk per trade on XAUUSD?",
+  "title": "How much to risk per trade on gold, with a lot-size example",
+  "answer": "Many professional traders risk 0.5% to 1% of their account per trade and rarely more than 2%. On gold, size the position from the distance to your invalidation level: lots = money at risk ÷ (stop distance in dollars × contract size). With a 10,000-dollar account, 1% risk and an 8-dollar stop on a 100-ounce contract, that is 100 ÷ (8 × 100) = 0.125 lots.",
+  "sections": [
+   {
+    "h": "Why small risk matters on gold",
+    "p": [
+     "Gold can move 30 to 60 dollars on a busy day. With fixed small risk, a run of five losses costs about 5% — painful but recoverable. With 5% risk per trade, the same run costs almost a quarter of the account."
+    ]
+   },
+   {
+    "h": "Step by step",
+    "ol": [
+     "Decide the invalidation level from the chart, not from how much you want to make.",
+     "Measure the distance from entry to that level in dollars.",
+     "Multiply by the contract size (often 100 ounces per lot — check your broker).",
+     "Divide the money you are willing to lose by that number, round down."
+    ]
+   },
+   {
+    "h": "Adjust for conditions",
+    "ul": [
+     "Reduce size on news days and when spreads widen.",
+     "Do not widen the stop to keep the same size — reduce the size instead.",
+     "Count correlated trades (gold and silver, or two gold trades) as one risk."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is 1% risk too small to grow an account?",
+    "a": "It grows slowly but survives losing streaks; consistency compounds more reliably than big bets."
+   },
+   {
+    "q": "Should risk change after a loss?",
+    "a": "Many traders cut risk after a drawdown and only raise it after recovering, never the other way round."
+   }
+  ],
+  "related": [
+   "gold-lot-size-and-pip-value",
+   "invalidation-level",
+   "how-to-trade-gold",
+   "gold-average-daily-range"
+  ],
+  "publish": "2026-11-17",
+  "order": 0
+ },
+ {
+  "slug": "gold-lot-size-and-pip-value",
+  "example": "plan",
+  "q": "How much is a pip on gold? Lot size and value explained",
+  "title": "Gold pip value and lot size (XAUUSD) explained simply",
+  "answer": "Brokers define a gold \"pip\" differently, so it is easier to think in dollars: on the common 100-ounce standard lot, a 1-dollar move in XAUUSD is worth about 100 dollars; on 0.1 lot it is 10 dollars and on 0.01 lot it is 1 dollar. Check your broker's contract size, because some use different sizes.",
+  "sections": [
+   {
+    "h": "Quick table (100-ounce contract)",
+    "ul": [
+     "1.00 lot: 1-dollar move = about 100 dollars.",
+     "0.10 lot: 1-dollar move = about 10 dollars.",
+     "0.01 lot: 1-dollar move = about 1 dollar.",
+     "A 10-dollar move on 0.10 lot = about 100 dollars."
+    ]
+   },
+   {
+    "h": "Why \"pips\" are confusing on gold",
+    "p": [
+     "Gold is usually quoted with two decimals (4050.25). Some platforms call 0.01 a point and 0.10 a pip; others call 0.01 a pip. Two traders saying \"50 pips\" may mean a 0.50-dollar or a 5-dollar move. Talking in dollars of price removes the confusion."
+    ]
+   },
+   {
+    "h": "Margin is not risk",
+    "p": [
+     "Leverage decides how much margin a position needs; it does not change how much a 1-dollar move costs. Size from your stop distance, not from the margin you have available."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "How do I find my broker's contract size?",
+    "a": "Look at the symbol specification in your platform (in MetaTrader: right-click the symbol, then Specification)."
+   },
+   {
+    "q": "Is gold more expensive to trade than forex?",
+    "a": "Per lot, moves are larger in money terms, so smaller lot sizes are normal on gold."
+   }
+  ],
+  "related": [
+   "how-much-to-risk-per-trade-gold",
+   "what-is-xauusd",
+   "how-to-add-xauusd-to-mt5",
+   "gold-average-daily-range"
+  ],
+  "publish": "2026-11-17",
+  "order": 1
+ },
+ {
+  "slug": "gold-average-daily-range",
+  "example": "context",
+  "q": "What is gold's average daily range (ADR) and how do you use it?",
+  "title": "Gold average daily range (ADR): how traders use it",
+  "answer": "The average daily range (ADR) is the average distance between the daily high and low over a recent period — NEXUS CORE uses the last 10 days (ADR10). It tells you how far gold typically travels in a day, so you can judge whether a target is realistic and whether the day has already done most of its move.",
+  "sections": [
+   {
+    "h": "How to calculate it",
+    "p": [
+     "For each of the last 10 days, subtract the low from the high, then average the results. Many charting platforms have an ADR or ATR indicator that does this automatically (ATR also includes gaps)."
+    ]
+   },
+   {
+    "h": "Three practical uses",
+    "ul": [
+     "Target check: a target further away than one ADR from the open is unlikely the same day.",
+     "Exhaustion: when the day has already covered 80–100% of ADR, new breakouts often stall.",
+     "Stops and zones: wider ADR means wider zones and stops — and smaller size."
+    ]
+   },
+   {
+    "h": "When ADR breaks",
+    "p": [
+     "Major news (CPI, NFP, Fed) or shocks can produce days of two or three times the average. Plans should note these days in advance."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "ADR or ATR?",
+    "a": "Both measure volatility; ATR also counts gaps between closes and opens. Either works if used consistently."
+   },
+   {
+    "q": "Does ADR tell me direction?",
+    "a": "No — only distance. Combine it with trend and zones."
+   }
+  ],
+  "related": [
+   "how-to-identify-gold-trend",
+   "how-to-spot-a-breakout-gold",
+   "how-much-to-risk-per-trade-gold",
+   "daily-open-line-gold"
+  ],
+  "publish": "2026-11-17",
+  "order": 2
+ },
+ {
+  "slug": "how-to-identify-gold-trend",
+  "example": "context",
+  "q": "How to identify the gold trend (XAUUSD)",
+  "title": "How to identify the trend on gold: D1, H4 and H1",
+  "answer": "Start on the daily chart: a series of higher highs and higher lows is an up-trend, lower highs and lower lows a down-trend, overlapping swings a range. Confirm on H4 with the last swing structure and on H1 with price versus a medium moving average such as EMA 89. Trade with the higher timeframe unless a strong zone says otherwise.",
+  "sections": [
+   {
+    "h": "Three timeframes, three questions",
+    "ul": [
+     "D1: what is the direction of the last few weeks?",
+     "H4: has the last swing broken in the same direction (a break of structure)?",
+     "H1: is price above or below a sloping EMA 89, and is the pullback finished?"
+    ]
+   },
+   {
+    "h": "Signs the trend is changing",
+    "ul": [
+     "A daily close beyond the last major swing high or low.",
+     "H4 failing to make a new extreme and breaking the other way.",
+     "EMA 89 on H1 flattening and price crossing it repeatedly."
+    ]
+   },
+   {
+    "h": "Range days",
+    "p": [
+     "When the timeframes disagree, gold is often ranging. The NEXUS CORE plan then says \"two-way\" with a lean, and trades the edges of the range instead of the middle."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Which single indicator shows the trend best?",
+    "a": "Price structure — highs and lows — is the most direct; moving averages help visualize it."
+   },
+   {
+    "q": "How long does a gold trend last?",
+    "a": "It varies from days to many months; that is why the daily chart leads."
+   }
+  ],
+  "related": [
+   "ema-89-gold",
+   "trading-gold-in-a-sideways-market",
+   "daily-open-line-gold",
+   "gold-average-daily-range"
+  ],
+  "publish": "2026-11-17",
+  "order": 3
+ },
+ {
+  "slug": "trading-gold-in-a-sideways-market",
+  "example": "zone",
+  "q": "How to trade gold in a sideways market",
+  "title": "How to trade gold (XAUUSD) in a sideways range",
+  "answer": "In a sideways market, gold rotates between a clear upper and lower boundary. Sell near the top zone and buy near the bottom zone, take profit before the opposite edge, avoid the middle, and keep the invalidation just outside the range — because when a range finally breaks, it can move fast.",
+  "sections": [
+   {
+    "h": "Recognizing a range",
+    "ul": [
+     "Highs and lows stop progressing on H1 and H4.",
+     "EMA 89 flattens and price crosses it often.",
+     "Daily ranges shrink below the 10-day average.",
+     "Calm before big news is common."
+    ]
+   },
+   {
+    "h": "How to trade it",
+    "ul": [
+     "Mark the range edges as zones, not lines.",
+     "Look for rejections (long wicks, failed breakouts) at the edges.",
+     "Aim for the middle or just before the opposite edge.",
+     "Stand aside when price is in the middle."
+    ]
+   },
+   {
+    "h": "When the range ends",
+    "p": [
+     "A close beyond the edge, especially with news or session momentum, ends the range strategy. Flip to breakout rules or wait. NEXUS CORE marks such days as two-way, with a lean when one side looks stronger."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is range trading safer?",
+    "a": "Losses are smaller per trade, but the eventual breakout can cause a bigger loss if stops are not respected."
+   },
+   {
+    "q": "What breaks a gold range most often?",
+    "a": "Scheduled US data and Fed events."
+   }
+  ],
+  "related": [
+   "how-to-avoid-fake-breakouts-gold",
+   "how-to-identify-gold-trend",
+   "gold-support-and-resistance",
+   "liquidity-sweep-xauusd"
+  ],
+  "publish": "2026-11-17",
+  "order": 4
+ },
+ {
+  "slug": "invalidation-level",
+  "example": "invalidation",
+  "q": "What is an invalidation level, and why does every gold plan need one?",
+  "title": "Invalidation level: the price that proves a gold idea wrong",
+  "answer": "An invalidation level is the price — or the candle close — that proves a trade idea wrong. For a sell zone at 4048–4056 it might be \"a 15-minute close above 4083\". It is decided before the trade, it defines the stop and the position size, and it lets you exit without arguing with the market.",
+  "sections": [
+   {
+    "h": "Why it comes first",
+    "p": [
+     "The invalidation tells you how much the idea can cost. Without it, there is no way to size a position or to know when to stop. It also separates analysis from hope: a plan without a \"wrong if\" can never fail, so it can never be graded."
+    ]
+   },
+   {
+    "h": "How to set it",
+    "ul": [
+     "Beyond the zone's far edge, past the swing that created it.",
+     "Using a candle close (M15 or H1) rather than a touch, to avoid noise.",
+     "Wide enough to fit the current daily range, then size the position down to fit it."
+    ]
+   },
+   {
+    "h": "How NEXUS CORE uses it",
+    "p": [
+     "Every NEXUS CORE plan has a \"View is wrong if\" line. When grading, a 15-minute close beyond that level after the zone is reached counts as \"Invalidated\" (−1R) on the public track record."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is the invalidation the same as the stop-loss?",
+    "a": "The stop is usually placed at or just beyond it; the invalidation is the reason, the stop is the order."
+   },
+   {
+    "q": "Can I move it during the trade?",
+    "a": "Moving it further away defeats the purpose; tightening it after price moves in your favor is common."
+   }
+  ],
+  "related": [
+   "how-much-to-risk-per-trade-gold",
+   "how-to-read-a-gold-trading-plan",
+   "supply-and-demand-zones-gold",
+   "how-to-judge-gold-analysis-track-record"
+  ],
+  "publish": "2026-11-18",
+  "order": 0
+ },
+ {
+  "slug": "order-blocks-xauusd",
+  "example": "zone",
+  "q": "What are order blocks in XAUUSD?",
+  "title": "Order blocks on gold (XAUUSD): what they are and how to use them",
+  "answer": "An order block is the last opposite-colored candle before a strong move that breaks market structure — for example, the last red candle before a sharp rally. Traders treat it as a zone where large orders were placed and expect price to react when it returns. In practice it is a precise way of drawing a supply or demand zone.",
+  "sections": [
+   {
+    "h": "How to mark one",
+    "ol": [
+     "Find a strong move that breaks a previous swing high or low.",
+     "Take the last opposite candle before that move (its body or full range).",
+     "Wait for the first return to it; the reaction there is what matters."
+    ]
+   },
+   {
+    "h": "Better order blocks",
+    "ul": [
+     "They caused a break of structure, not just a bounce.",
+     "They are fresh — untested since.",
+     "They agree with the higher-timeframe trend.",
+     "They sit near other levels: daily open, previous day high or low."
+    ]
+   },
+   {
+    "h": "Caution",
+    "p": [
+     "Almost every move has a \"last candle\", so order blocks can be found everywhere in hindsight. Rank them, use few, and always pair them with an invalidation level."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Are order blocks better than supply and demand zones?",
+    "a": "They are a variant of the same idea; consistency in how you draw them matters more than the name."
+   },
+   {
+    "q": "Which timeframe works best on gold?",
+    "a": "H1 and H4 for the zone, M15 for the reaction."
+   }
+  ],
+  "related": [
+   "supply-and-demand-zones-gold",
+   "liquidity-sweep-xauusd",
+   "gold-support-and-resistance",
+   "how-to-spot-a-breakout-gold"
+  ],
+  "publish": "2026-11-18",
+  "order": 1
+ },
+ {
+  "slug": "how-to-check-news-for-xauusd",
+  "example": "news",
+  "q": "How to check the news and economic calendar for XAUUSD",
+  "title": "How to check news for gold (XAUUSD): the economic calendar",
+  "answer": "Open an economic calendar, filter for US dollar events and high impact, and note the times of CPI, the jobs report, Fed decisions, retail sales and PCE in your own time zone. Check it before every session. For gold, US events matter most; Chinese data, geopolitical headlines and central-bank buying reports can also move it.",
+  "sections": [
+   {
+    "h": "What to filter",
+    "ul": [
+     "Currency: USD (plus major events for EUR and CNY).",
+     "Impact: high (red) and medium.",
+     "Time zone: set it to your own, or to New York time to match most releases at 8:30 and 10:00."
+    ]
+   },
+   {
+    "h": "The releases gold traders watch most",
+    "ul": [
+     "CPI and PCE inflation.",
+     "Employment Situation (nonfarm payrolls).",
+     "FOMC decisions, minutes and Fed speeches.",
+     "Retail sales, ISM/PMI, GDP, jobless claims.",
+     "US bank holidays (thin liquidity)."
+    ]
+   },
+   {
+    "h": "Before and after",
+    "p": [
+     "Mark the time, the forecast and the previous value. Avoid opening new positions in the last minutes before a high-impact release; let the first 15-minute candle close afterwards. The calendar inside each NEXUS CORE plan lists the remaining releases for the day — see the live box."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Which economic calendar is best?",
+    "a": "Any reputable one works — the official sources are the US Bureau of Labor Statistics, the BEA and the Federal Reserve."
+   },
+   {
+    "q": "Do I need to read the full report?",
+    "a": "For trading, the headline versus forecast and one or two key details are usually enough."
+   }
+  ],
+  "related": [
+   "how-cpi-affects-gold",
+   "how-nfp-affects-gold",
+   "fed-rates-and-gold",
+   "best-time-to-trade-gold"
+  ],
+  "publish": "2026-11-18",
+  "order": 2
+ },
+ {
+  "slug": "how-to-add-xauusd-to-mt5",
+  "example": "plan",
+  "q": "How to add XAUUSD (gold) to MetaTrader 5",
+  "title": "How to add XAUUSD (gold) to MetaTrader 5 — desktop and mobile",
+  "answer": "In MetaTrader 5 desktop, open the Symbols window (Ctrl+U or right-click Market Watch, then Symbols), search for XAU or GOLD, select your broker's gold symbol and click Show Symbol. On mobile, go to Quotes, tap the plus sign and search for XAU. If nothing appears, your account type may not offer gold — ask the broker.",
+  "sections": [
+   {
+    "h": "Desktop (Windows / Mac)",
+    "ol": [
+     "Right-click inside the Market Watch panel and choose Symbols (or press Ctrl+U).",
+     "Type XAU or GOLD in the search box.",
+     "Pick the gold symbol your broker uses (for example XAUUSD, GOLD or XAUUSD.m) and click Show Symbol.",
+     "Drag it from Market Watch onto a chart, or right-click it and choose Chart Window."
+    ]
+   },
+   {
+    "h": "Mobile (iOS / Android)",
+    "ol": [
+     "Open the Quotes tab.",
+     "Tap the + icon.",
+     "Search for XAU or GOLD and tap the symbol to add it."
+    ]
+   },
+   {
+    "h": "Before you trade it",
+    "p": [
+     "Right-click the symbol and open Specification to see the contract size (often 100 ounces per lot), the minimum lot and trading hours. That tells you how much a 1-dollar move is worth for your position size."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Why can't I find XAUUSD?",
+    "a": "Some brokers use a different name or offer gold only on certain account types; search for \"GOLD\" too."
+   },
+   {
+    "q": "Is MetaTrader 4 the same?",
+    "a": "Very similar: right-click Market Watch, choose Show All or Symbols, then find gold."
+   }
+  ],
+  "related": [
+   "gold-lot-size-and-pip-value",
+   "what-is-xauusd",
+   "how-to-backtest-a-gold-strategy",
+   "how-much-to-risk-per-trade-gold"
+  ],
+  "publish": "2026-11-18",
+  "order": 3
+ },
+ {
+  "slug": "how-to-backtest-a-gold-strategy",
+  "example": "track",
+  "q": "How to backtest a gold trading strategy for free",
+  "title": "How to backtest a gold (XAUUSD) strategy for free",
+  "answer": "Write your rules down first, then test them on past candles — manually with a bar-replay tool, or automatically with the free Strategy Tester in MetaTrader 5. Record every trade — entry, invalidation, result in R — over at least 50–100 trades across trending and ranging months before trusting the numbers.",
+  "sections": [
+   {
+    "h": "Manual (bar replay)",
+    "p": [
+     "Charting platforms such as TradingView offer a bar-replay mode that hides future candles (some intraday replay features need a paid plan). Step candle by candle, mark entries and exits exactly as your rules say, and log them in a spreadsheet."
+    ]
+   },
+   {
+    "h": "Automatic (MT5 Strategy Tester)",
+    "p": [
+     "If your rules can be coded, MetaTrader 5's Strategy Tester is free. Use \"every tick based on real ticks\" where available and include realistic spreads — gold spreads widen sharply around news."
+    ]
+   },
+   {
+    "h": "What to measure",
+    "ul": [
+     "Number of trades, win rate and average R per trade.",
+     "Largest losing streak and maximum drawdown.",
+     "Results by session and by month — an edge that only works in one month is not an edge."
+    ]
+   },
+   {
+    "h": "Forward testing",
+    "p": [
+     "A backtest is only the first step. Testing in real time — and publishing the results — is harder to fool. That is why NEXUS CORE grades every live plan on its public track record (see the live box)."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "How many trades are enough?",
+    "a": "Fifty is a minimum to see anything; a hundred or more across different market conditions is better."
+   },
+   {
+    "q": "What is R?",
+    "a": "R is the amount you risked on a trade. A win of +2R made twice what was risked; −1R lost exactly the planned risk."
+   }
+  ],
+  "related": [
+   "how-to-judge-gold-analysis-track-record",
+   "how-much-to-risk-per-trade-gold",
+   "how-to-add-xauusd-to-mt5",
+   "invalidation-level"
+  ],
+  "publish": "2026-11-19",
+  "order": 0
+ },
+ {
+  "slug": "trading-gold-on-holidays",
+  "example": "plan",
+  "q": "How to trade gold on bank holidays and thin-liquidity days",
+  "title": "Trading gold on holidays and thin-liquidity days",
+  "answer": "On US or UK bank holidays, gold still trades but with fewer participants, so moves can be slow and drift — or suddenly jump on small orders. Use smaller size, expect distant zones not to be reached, avoid chasing breakouts, and remember that the next full session can bring a catch-up move.",
+  "sections": [
+   {
+    "h": "What changes",
+    "ul": [
+     "Volume drops; spreads can widen, especially near the daily close.",
+     "Ranges often shrink below the 10-day average.",
+     "Breakouts are more likely to fail — or to overshoot when an order hits an empty book."
+    ]
+   },
+   {
+    "h": "Holidays that matter most for gold",
+    "ul": [
+     "US: Thanksgiving, Independence Day, Christmas, New Year, Memorial Day, Labor Day; bond-market-only holidays such as Veterans Day and Columbus Day thin the US session too.",
+     "UK: bank holidays reduce London volume.",
+     "Year-end weeks, when many desks are closed."
+    ]
+   },
+   {
+    "h": "Practical approach",
+    "p": [
+     "Trade the nearest zones only, cut size, and take profit earlier. NEXUS CORE plans flag holiday sessions with an alert and say when distant zones are unlikely to be reached."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is the gold market closed on US holidays?",
+    "a": "Spot gold and CFDs usually trade, sometimes with early closes; exchange-traded futures may have shortened hours. Check your broker."
+   },
+   {
+    "q": "Do holidays cause big moves?",
+    "a": "Usually smaller ones — but thin markets can produce sudden spikes."
+   }
+  ],
+  "related": [
+   "best-time-to-trade-gold",
+   "gold-average-daily-range",
+   "trading-gold-in-a-sideways-market",
+   "how-to-check-news-for-xauusd"
+  ],
+  "publish": "2026-11-19",
+  "order": 1
+ },
+ {
+  "slug": "how-to-judge-gold-analysis-track-record",
+  "example": "track",
+  "q": "How to judge a gold analysis or signal service: the track record test",
+  "title": "How to judge gold analysis: what a real track record looks like",
+  "answer": "Trust a gold analysis service only if it publishes every call before the move, keeps the losing ones on the record, defines in advance what counts as right or wrong, and reports results in R (risk units) rather than \"pips won\". If any of those is missing, the record cannot be checked.",
+  "sections": [
+   {
+    "h": "Five questions to ask",
+    "ol": [
+     "Is every plan or signal time-stamped before the move?",
+     "Are losses and missed calls still visible?",
+     "Are the grading rules written down and applied the same way every day?",
+     "Is performance shown in R or percent of risk, not only in pips?",
+     "Is there enough history — dozens of calls across different market conditions?"
+    ]
+   },
+   {
+    "h": "Red flags",
+    "ul": [
+     "Screenshots of winning trades only.",
+     "Results that \"start\" after a good month.",
+     "Calls edited after the fact, or targets without a stop.",
+     "Guaranteed returns or pressure to join quickly."
+    ]
+   },
+   {
+    "h": "How NEXUS CORE does it",
+    "p": [
+     "Every NEXUS CORE plan gets its own permanent page with the publish time. After it expires it is graded automatically on real 15-minute candles — Target 1 reached, invalidated, zone not reached or no follow-through — and the monthly track record keeps every result. The live box shows this month so far."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "What is a good win rate?",
+    "a": "It depends on the reward-to-risk ratio; a 40% win rate can be profitable at 2R per win. Total R tells you more than win rate."
+   },
+   {
+    "q": "Is past performance a guarantee?",
+    "a": "No. A track record shows how a method behaved; it cannot promise future results."
+   }
+  ],
+  "related": [
+   "how-to-read-a-gold-trading-plan",
+   "how-to-backtest-a-gold-strategy",
+   "invalidation-level",
+   "how-much-to-risk-per-trade-gold"
+  ],
+  "publish": "2026-11-19",
+  "order": 2
+ }
+]

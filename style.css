@@ -240,3 +240,21 @@ html[lang="ar"] .cta-head h2{font-size:clamp(20px,2.6vw,26px)}
 .cta-grid .notify{background:var(--card2);border:1px solid var(--line);border-radius:16px;margin:0}
 .cta-grid .wl{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
 @media (max-width:820px){.cta-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* GEO week 3: Q&A (/learn) and "why gold moved" pages */
+.answer{border-color:var(--gold-line);background:linear-gradient(160deg,var(--gold-bg),transparent 60%),var(--card);font-size:17px;line-height:1.6}
+.answer .eyebrow{margin-bottom:6px}
+.prose{gap:12px;color:var(--ink2);font-size:16px;line-height:1.7}
+.prose h2.ah{font-size:20px;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:700;margin:14px 0 0}
+.prose ul,.prose ol{margin:0;padding-inline-start:22px;display:flex;flex-direction:column;gap:6px}
+.example{display:flex;flex-direction:column;gap:8px;border-color:var(--gold-line)}
+.example .row .v{font-size:14px}
+.qa summary{cursor:pointer;font-weight:600;color:var(--ink);list-style-position:outside}
+.qa p{margin-top:8px;color:var(--ink2)}
+a.card.rel{display:flex;flex-direction:column;gap:4px;color:var(--ink)}
+a.card.rel:hover{border-color:var(--gold-line)}
+a.card.rel .muted{font-size:14px}
+html[data-theme="light"] main a.card.rel{color:var(--ink)}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+@media (max-width:400px){.qgrid{grid-template-columns:minmax(0,1fr)}}
+.eyebrow a{color:inherit}

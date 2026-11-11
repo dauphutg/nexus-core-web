@@ -114,4 +114,56 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/plan/2026-11-11-newyork/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
   </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/what-is-xauusd/</loc>
+    <lastmod>2026-11-11T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/how-to-trade-gold/</loc>
+    <lastmod>2026-11-11T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/gold-support-and-resistance/</loc>
+    <lastmod>2026-11-11T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/best-time-to-trade-gold/</loc>
+    <lastmod>2026-11-11T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/</loc>
+    <lastmod>2026-11-11T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/learn/</loc>
+    <lastmod>2026-11-11T19:40:00+07:00</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/learn/what-is-xauusd/</loc>
+    <lastmod>2026-11-11T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/what-is-xauusd/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/what-is-xauusd/"/>
+  </url>
 </urlset>
