@@ -66,14 +66,14 @@ def render(outf, mob):
         lab = (W['key'] + ' ' if main else W['zone'] + ' ') + (W['sell'] if red else W['buy']).lower() + f' {fmt(a)}–{fmt(b)}'
         if main: lab = W['key'] + f" · {W['sell'] if red else W['buy']} {fmt(a)}–{fmt(b)}"
         ax.text(X1 - 1, (a + b) / 2, lab, ha='right', va='center', fontsize=(10 if main else 8.5) * K, color=edge,
-                fontweight='bold' if main else 'normal', zorder=4, bbox=dict(fc='white', ec='none', alpha=0.8, pad=0.6))
+                fontweight='bold' if main else 'normal', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6))  # labels sit above the scenario arrows
         shown += [a, b]
     for tg in P.get('targets') or []:
         y = (tg['lo'] + tg['hi']) / 2
         if not vis(y): continue
         ax.hlines(y, X0, X1, color=GRAY, lw=0.9, ls=(0, (4, 3)), zorder=1)
         ax.text(X0 + 1, y, f"{W['tgt']} {tg['label']} {fmt(tg['lo']) if tg['lo'] == tg['hi'] else fmt(tg['lo']) + '–' + fmt(tg['hi'])}",
-                color=GRAY, fontsize=8.5 * K, ha='left', va='bottom', zorder=4, bbox=dict(fc='white', ec='none', alpha=0.7, pad=0.4))
+                color=GRAY, fontsize=8.5 * K, ha='left', va='bottom', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4))
         shown.append(y)
     ax.axhline(px, color=GRAY, lw=0.6, ls=(0, (2, 3)))
 
@@ -117,8 +117,8 @@ def render(outf, mob):
             if abs(lx - a2) < 14 and abs(ly - yy) < 8: yy = ly - 9 if b2 <= ly else ly + 9
         used.append((a2, yy))
         up = b2 > b1
-        ax.text(a2, yy + (3 if up else -3), q['nhan'], ha='center', va='bottom' if up else 'top', color=q['col'], fontsize=10 * K,
-                fontweight='bold', zorder=7, bbox=dict(fc='white', ec='none', alpha=0.9, pad=1))
+        ax.text(a2 + 0.8, yy + (3 if up else -3), q['nhan'], ha='right', va='bottom' if up else 'top', color=q['col'], fontsize=10 * K,
+                fontweight='bold', zorder=9, bbox=dict(fc='white', ec='none', alpha=0.9, pad=1))
 
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)
     for s_ in ax.spines.values(): s_.set_color('#E0E3EB')
