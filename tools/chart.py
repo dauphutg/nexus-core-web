@@ -81,8 +81,18 @@ def render(outf, mob):
     paths = []
     sc = P.get('scenarios') or []
     tg_mid = [(q['lo'] + q['hi']) / 2 for q in P.get('targets') or []]
+    zl = [(min(z['lo'], z['hi']), max(z['lo'], z['hi'])) for z in P.get('zones') or []]
     def path_for(s, main):
+        # The arrow's foot is where price BREAKS the zone that stands in the way – never the current price.
+        # 1) scenario "path" written by the plan task: [break level, waypoint, ...] → used as is.
+        # 2) otherwise: waypoints = main zone (main scenario, same side) then targets; foot = far edge of the
+        #    nearest zone between the current price and the first waypoint (none in the way → current price).
         sgn = -1 if s['side'] == 'SELL' else 1
+        col = (DN if sgn < 0 else UP) if main else ORG
+        lab = f"{W['main'] if main else W['alt']} ~{s['prob']}%"
+        pth = [float(v) for v in (s.get('path') or []) if isinstance(v, (int, float))]
+        if len(pth) >= 2:
+            return dict(gia=pth[1:], foot=pth[0], col=col, dut=not main, nhan=lab)
         if mz and main and ((mz['side'] == 'SELL') == (sgn < 0)) and abs((mz['lo'] + mz['hi']) / 2 - px) > 3:
             pts = [(mz['lo'] + mz['hi']) / 2]
         else:
@@ -90,12 +100,18 @@ def render(outf, mob):
         base = pts[-1] if pts else px
         goals = [g for g in tg_mid if (g - base) * sgn > 0][:2] if main else []
         if not goals: goals = [base + 22 * sgn]
-        return dict(gia=pts + goals, col=(DN if sgn < 0 else UP) if main else ORG, dut=not main,
-                    nhan=f"{W['main'] if main else W['alt']} ~{s['prob']}%")
+        gia = pts + goals
+        first, foot = gia[0], px
+        up = first > px
+        block = [(a, b) for a, b in zl if px < a and b < first - 2] if up else [(a, b) for a, b in zl if first + 2 < a and b < px]
+        if block:
+            a, b = min(block) if up else max(block)
+            foot = b if up else a
+        return dict(gia=gia, foot=foot, col=col, dut=not main, nhan=lab)
     if sc: paths.append(path_for(sc[0], True))
     if len(sc) > 1: paths.append(path_for(sc[1], False))
 
-    ys = [px, lo_v, hi_v] + [g + (8 if g > px else -8) for q in paths for g in q['gia']] + shown
+    ys = [px, lo_v, hi_v] + [g + (8 if g > px else -8) for q in paths for g in q['gia'] + [q['foot']]] + shown
     ax.set_xlim(0, n + fut); ax.set_ylim(min(ys) - 12, max(ys) + 12)
     fig.canvas.draw()
     def steep(x0, y0, prices, ang=16):
@@ -103,12 +119,14 @@ def render(outf, mob):
         wpx, hpx = ax.bbox.width / (xb - xa), ax.bbox.height / (yb - ya)
         pts, xx, yy = [(x0, y0)], x0, y0
         for p in prices:
-            dx = max(abs(p - yy) * hpx * math.tan(math.radians(ang)) / wpx, 1.0); xx, yy = xx + dx, p; pts.append((xx, yy))
+            dx = max(abs(p - yy) * hpx * math.tan(math.radians(ang)) / wpx, 1.8 if mob else 2.6); xx, yy = xx + dx, p; pts.append((xx, yy))
         return pts
     used = []
     for q in paths:
-        pts = steep(x, px, q['gia']); xs, ys_ = zip(*pts); lw = 1.9 if q['dut'] else 2.3
+        x0 = x + ((2.0 if mob else 3.0) if abs(q['foot'] - px) > 1 else 0)
+        pts = steep(x0, q['foot'], q['gia']); xs, ys_ = zip(*pts); lw = 1.9 if q['dut'] else 2.3
         ax.plot(xs, ys_, color=q['col'], lw=lw, ls='--' if q['dut'] else '-', zorder=5)
+        ax.plot([x0], [q['foot']], marker='o', ms=5.5 * K, mfc='white', mec=q['col'], mew=1.8, zorder=6)   # break point
         (a1, b1), (a2, b2) = pts[-2], pts[-1]
         ax.annotate('', xy=(a2, b2), xytext=(a1 + (a2 - a1) * 0.6, b1 + (b2 - b1) * 0.6), zorder=6,
                     arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=q['col'], lw=lw, shrinkA=0, shrinkB=0))
@@ -117,7 +135,7 @@ def render(outf, mob):
             if abs(lx - a2) < 14 and abs(ly - yy) < 8: yy = ly - 9 if b2 <= ly else ly + 9
         used.append((a2, yy))
         up = b2 > b1
-        ax.text(a2 + 0.8, yy + (3 if up else -3), q['nhan'], ha='right', va='bottom' if up else 'top', color=q['col'], fontsize=10 * K,
+        ax.text(a2, yy + (3 if up else -3), q['nhan'], ha='center', va='bottom' if up else 'top', color=q['col'], fontsize=10 * K,
                 fontweight='bold', zorder=9, bbox=dict(fc='white', ec='none', alpha=0.9, pad=1))
 
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)

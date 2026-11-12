@@ -215,6 +215,12 @@
   {
    "side": "SELL",
    "prob": 55,
+   "path": [
+    3968.8,
+    3957.7,
+    3991.2,
+    3957.7
+   ],
    "text": {
     "vi": "Phiên London nén 3968–3985, quét đáy 3968.8 xuống 3957.7 rồi hồi; phiên New York hồi về cản 3987–3995.4 hoặc 4018.7–4031.4 và bị từ chối.",
     "en": "London compresses 3968–3985 and sweeps the 3968.8 low down to 3957.7 before bouncing; New York rallies into 3987–3995.4 or 4018.7–4031.4 and gets rejected.",
@@ -225,6 +231,11 @@
   {
    "side": "BUY",
    "prob": 45,
+   "path": [
+    3990,
+    4041,
+    3995.4
+   ],
    "text": {
     "vi": "Giữ đáy 3968.8, M15 đóng trên 3990 → hồi sâu lên vùng chính 4035.4–4046.5 và bị từ chối; M15 đóng trên 4049 → sai, chờ 4050.5–4060.",
     "en": "The 3968.8 low holds and an M15 close above 3990 → deeper bounce into the 4035.4–4046.5 main zone and rejection; an M15 close above 4049 → void, watch 4050.5–4060.",
