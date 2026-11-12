@@ -24,10 +24,14 @@ fmt = (lambda v: num(v).replace('.', ',')) if lang == 'vi' else num
 W = {
     'vi': dict(sell='Bán', buy='Mua', main='KỊCH BẢN CHÍNH', alt='Kịch bản phụ', key='VÙNG CHÍNH', zone='Vùng', tgt='Mục tiêu',
                ed={'0700': 'Plan sáng', '1345': 'Cập nhật 13:45', '1930': 'Plan tối'}, bias={'SELL': 'BÁN', 'BUY': 'MUA', 'TWO_WAY': '2 CHIỀU', 'STAND_ASIDE': 'ĐỨNG NGOÀI'},
-               lean='nghiêng', disc='Chỉ là phân tích, không phải lời khuyên đầu tư', tz='giờ VN'),
+               lean='nghiêng', disc='Chỉ là phân tích, không phải lời khuyên đầu tư', tz='giờ VN',
+               lg_main='Kịch bản chính', lg_alt='Kịch bản phụ', lg_up='thành chính khi giá phá lên trên', lg_dn='thành chính khi giá phá xuống dưới',
+               lg_now='giá đã phá {v}', lg_was='kịch bản chính cũ'),
     'en': dict(sell='Sell', buy='Buy', main='MAIN SCENARIO', alt='Alternate', key='KEY ZONE', zone='Zone', tgt='Target',
                ed={'0700': 'Morning plan', '1345': '13:45 update', '1930': 'Evening plan'}, bias={'SELL': 'SELL', 'BUY': 'BUY', 'TWO_WAY': 'TWO-WAY', 'STAND_ASIDE': 'STAND ASIDE'},
-               lean='leaning', disc='Analysis only, not financial advice', tz='GMT+7'),
+               lean='leaning', disc='Analysis only, not financial advice', tz='GMT+7',
+               lg_main='Main scenario', lg_alt='Alternate', lg_up='becomes main if price breaks above', lg_dn='becomes main if price breaks below',
+               lg_now='price broke {v}', lg_was='former main scenario'),
 }[lang]
 MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -41,7 +45,7 @@ def render(outf, mob):
     n = len(t); fut = 24 if mob else 42; px = c[-1]; x = n - 1
 
     fig = plt.figure(figsize=(8, 10) if mob else (12, 7.4), dpi=150, facecolor='white')
-    ax = fig.add_axes([0.03, 0.05, 0.86, 0.80] if mob else [0.035, 0.07, 0.885, 0.74])
+    ax = fig.add_axes([0.03, 0.115, 0.86, 0.735] if mob else [0.035, 0.135, 0.885, 0.675])
     ax.set_facecolor('white')
     for i in range(n):
         col = UP if c[i] >= o[i] else DN
@@ -108,8 +112,16 @@ def render(outf, mob):
             a, b = min(block) if up else max(block)
             foot = b if up else a
         return dict(gia=gia, foot=foot, col=col, dut=not main, nhan=lab)
-    if sc: paths.append(path_for(sc[0], True))
-    if len(sc) > 1: paths.append(path_for(sc[1], False))
+    # The alternate becomes the main scenario (solid) once a CLOSED H1 candle after the plan time has closed
+    # beyond its break level (path[0]); the old main is then drawn dashed.
+    promoted = False
+    if len(sc) > 1 and sc[1].get('path'):
+        brk = float(sc[1]['path'][0]); sg = -1 if sc[1]['side'] == 'SELL' else 1
+        t0 = dt.datetime.fromisoformat(P['updated_vn']).replace(tzinfo=dt.timezone(dt.timedelta(hours=7))).timestamp()
+        promoted = any((c[i] - brk) * sg > 0 for i in range(n) if t[i] >= t0 - 3600)
+    order = [(sc[1], True, 1), (sc[0], False, 0)] if promoted else [(s_, k == 0, k) for k, s_ in enumerate(sc[:2])]
+    for s_, mn, k in order:
+        q = path_for(s_, mn); q['k'] = k; q['s'] = s_; paths.append(q)
 
     ys = [px, lo_v, hi_v] + [g + (8 if g > px else -8) for q in paths for g in q['gia'] + [q['foot']]] + shown
     ax.set_xlim(0, n + fut); ax.set_ylim(min(ys) - 12, max(ys) + 12)
@@ -131,44 +143,23 @@ def render(outf, mob):
         ax.annotate('', xy=(a2, b2), xytext=(a1 + (a2 - a1) * 0.6, b1 + (b2 - b1) * 0.6), zorder=6,
                     arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=q['col'], lw=lw, shrinkA=0, shrinkB=0))
         drawn.append((q, pts))
-    # scenario labels: first spot that covers no arrow line, no other label, no candles (tip → peak → beside)
-    R = fig.canvas.get_renderer()
-    taken = [tx.get_window_extent(R) for tx in ZL]
-    seg_pix = []
-    for _, pts in drawn:
-        pp = []
-        for (u1, v1), (u2, v2) in zip(pts, pts[1:]):
-            pp += [ax.transData.transform((u1 + (u2 - u1) * k / 40, v1 + (v2 - v1) * k / 40)) for k in range(41)]
-        seg_pix.append(pp)
-    candle = [ax.transData.transform((i, y_)) for i in range(n) for y_ in (h[i], l[i], (h[i] + l[i]) / 2)]
-    ylo, yhi = ax.get_ylim(); dy = (yhi - ylo) * 0.012
-    inside = ax.get_window_extent(R)
-    for j, (q, pts) in enumerate(drawn):
-        # the label must hug ITS OWN line (tip, peak/trough, or beside a leg) and never cover the other scenario
-        (a1, b1), (a2, b2) = pts[-2], pts[-1]; up = b2 > b1
-        top = max(pts[1:], key=lambda p_: p_[1]); bot = min(pts[1:], key=lambda p_: p_[1])
-        cands = [(a2, b2 + (dy if up else -dy), 'center', 'bottom' if up else 'top'), (a2 + 0.6, b2, 'left', 'center'),
-                 (top[0], top[1] + dy, 'center', 'bottom'), (bot[0], bot[1] - dy, 'center', 'top')]
-        for (u1, v1), (u2, v2) in zip(pts, pts[1:]):
-            mx, my = (u1 + u2) / 2, (v1 + v2) / 2
-            cands += [(mx + 0.5, my, 'left', 'center'), (mx - 0.5, my, 'right', 'center')]
-        own = seg_pix[j]; other = [pt for k, pp in enumerate(seg_pix) if k != j for pt in pp]
-        best, bcost = None, None
-        for cx, cy, ha_, va_ in cands:
-            tx = ax.text(cx, cy, q['nhan'], ha=ha_, va=va_, color=q['col'], fontsize=10 * K, fontweight='bold', zorder=9,
-                         bbox=dict(fc='white', ec='none', alpha=0.9, pad=1))
-            bb = tx.get_window_extent(R)
-            cost = 0 if (bb.x0 >= inside.x0 and bb.x1 <= inside.x1 and bb.y0 >= inside.y0 and bb.y1 <= inside.y1) else 10000
-            cost += 80 * sum(bb.overlaps(o_) for o_ in taken) + 25 * sum(bb.contains(*pt) for pt in other)
-            cost += 2 * sum(bb.contains(*pt) for pt in own) + sum(bb.contains(*pt) for pt in candle)
-            gap = min(max(bb.x0 - X_, 0, X_ - bb.x1) + max(bb.y0 - Y_, 0, Y_ - bb.y1) for X_, Y_ in own)
-            cost += gap * 0.5   # far from its own line = bad
-            if bcost is None or cost < bcost:
-                if best is not None: best.remove()
-                best, bcost = tx, cost
-            else:
-                tx.remove()
-        taken.append(best.get_window_extent(R))
+    # scenario legend under the chart (no labels on the chart itself)
+    LY = [0.052, 0.018] if mob else [0.04, 0.04]
+    LX = [(0.04, 0.04), (0.04, 0.04)] if mob else [(0.035, 0.035), (0.5, 0.5)]
+    for j, q in enumerate(paths[:2]):
+        s_ = q['s']; mn = not q['dut']
+        lx, y_ = LX[j][0], LY[j]
+        fig.add_artist(plt.Line2D([lx, lx + (0.07 if mob else 0.045)], [y_, y_], transform=fig.transFigure, color=q['col'],
+                                  lw=2.6 if mn else 2.2, ls='-' if mn else (0, (3, 2))))
+        txt = f"{W['lg_main'] if mn else W['lg_alt']} ~{s_['prob']}%"
+        pth = s_.get('path') or []
+        if mn and promoted:
+            txt += ' · ' + W['lg_now'].format(v=fmt(float(pth[0])))
+        elif not mn and promoted:
+            txt += ' · ' + W['lg_was']
+        elif not mn and pth:
+            txt += ' · ' + (W['lg_dn'] if s_['side'] == 'SELL' else W['lg_up']) + ' ' + fmt(float(pth[0]))
+        fig.text(lx + (0.085 if mob else 0.055), y_, txt, ha='left', va='center', color=q['col'], fontsize=10.5 * (1.2 if mob else 1), fontweight='bold')
 
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)
     for s_ in ax.spines.values(): s_.set_color('#E0E3EB')
