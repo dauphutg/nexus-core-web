@@ -21,13 +21,13 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Track record (November 2026)
 
-- Plans published: 2; graded: 0; zone reached: 0; Target 1 reached: 0; invalidated: 0; total: n/a
+- Plans published: 2; graded: 1; zone reached: 0; Target 1 reached: 0; invalidated: 0; total: n/a
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
 - [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Pending
-- [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2 — Pending
+- [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2 — Zone not reached 0R
 
 ## Gold trading Q&A
 
@@ -40,6 +40,10 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [Why is gold rising?](https://nexuscore.trade/en/learn/why-is-gold-rising/): Gold tends to rise when the US dollar weakens, when real interest rates fall or are expected to fall, when US data come in soft and boost Fed rate-cut hopes, wh
 - [How does CPI affect the gold price?](https://nexuscore.trade/en/learn/how-cpi-affects-gold/): US CPI is released by the Bureau of Labor Statistics at 8:30 New York time. A hotter-than-expected reading usually lifts US yields and the dollar and cuts the o
 - [How does the NFP report affect gold?](https://nexuscore.trade/en/learn/how-nfp-affects-gold/): The US Employment Situation report — nonfarm payrolls, the unemployment rate and wages — is usually released on the first Friday of the month at 8:30 New York t
+
+## Why gold moved (recent days)
+
+- [2026-11-11: Gold fell 1.18% as hawkish Fed remarks and a firmer dollar erased early gains](https://nexuscore.trade/en/why-gold-moved/2026-11-11-fed/) (-1.18%)
 
 ## Pages
 

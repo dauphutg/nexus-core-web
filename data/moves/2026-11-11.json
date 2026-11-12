@@ -1,0 +1,46 @@
+{
+ "date": "2026-11-11",
+ "open": 4035.39,
+ "close": 3987.7,
+ "high": 4067.1,
+ "low": 3982.68,
+ "change": -47.7,
+ "change_pct": -1.18,
+ "biggest_hour": {
+  "start_vn": "2026-11-11 21:00",
+  "move": -22.71
+ },
+ "candles": 92,
+ "tag": "fed",
+ "headline": {
+  "en": "Gold fell 1.18% as hawkish Fed remarks and a firmer dollar erased early gains",
+  "ar": "تراجع الذهب 1.18% مع تصريحات متشددة من الفيدرالي وصعود الدولار محوًا مكاسب الصباح",
+  "vi": "Vàng giảm 1.18% khi Fed phát biểu cứng rắn và USD mạnh lên, xoá sạch đà tăng đầu phiên",
+  "zh": "聯準會官員鷹派發言、美元走強，金價抹去早盤漲幅，全日下跌 1.18%"
+ },
+ "reasons": [
+  {
+   "en": "Fed Governor Bowman said inflation is broadening and there is more work to do on rates; Dallas Fed President Logan called for two more hikes. CME FedWatch priced an 87.1% chance of a 25 bp hike at the 8–9 December meeting.",
+   "ar": "قالت محافظة الفيدرالي بومان إن التضخم يتسع وإن هناك المزيد من العمل على الفائدة، ودعت رئيسة فيدرالي دالاس لوغان إلى رفعين إضافيين. وسعّرت أداة FedWatch احتمال رفع 25 نقطة أساس في اجتماع 8–9 ديسمبر عند 87.1%.",
+   "vi": "Thống đốc Fed Bowman nói lạm phát đang lan rộng và còn phải làm thêm về lãi suất; Chủ tịch Fed Dallas Logan kêu gọi tăng lãi thêm 2 lần. CME FedWatch định giá 87.1% khả năng Fed tăng 25 điểm cơ bản ở cuộc họp 8–9/12.",
+   "zh": "聯準會理事 Bowman 表示通膨正在擴散、利率仍有工作要做；達拉斯聯準銀行總裁 Logan 呼籲再升息兩次。CME FedWatch 顯示 12 月 8–9 日會議升息 1 碼的機率為 87.1%。"
+  },
+  {
+   "en": "The US dollar index rose 0.65% to 102.89. Gold reached 4067.1 early in the day, then slid to 3982.68; the biggest hourly drop, 22.71 dollars, came in the hour starting 9:00 ET as New York opened.",
+   "ar": "ارتفع مؤشر الدولار 0.65% إلى 102.89. بلغ الذهب 4067.1 في بداية اليوم ثم هبط إلى 3982.68، وجاء أكبر هبوط في ساعة واحدة (22.71 دولارًا) في الساعة التي بدأت 9:00 بتوقيت نيويورك مع افتتاح الجلسة الأمريكية.",
+   "vi": "Chỉ số USD tăng 0.65% lên 102.89. Vàng lên 4067.1 đầu ngày rồi trượt về 3982.68; giờ giảm mạnh nhất (−22.71 giá) là giờ mở cửa phiên New York, bắt đầu lúc 21:00 giờ VN.",
+   "zh": "美元指數上漲 0.65% 至 102.89。金價早盤觸及 4067.1 後回落至 3982.68；單小時最大跌幅 22.71 美元，出現在紐約盤開盤、美東 9:00 開始的一小時。"
+  },
+  {
+   "en": "It extended the slide that began after Tuesday’s October CPI rose 0.4% m/m, above expectations; spot gold closed the day back under 4,000 at 3987.7.",
+   "ar": "جاء ذلك امتدادًا للهبوط الذي بدأ بعد ارتفاع مؤشر أسعار المستهلك لشهر أكتوبر 0.4% على أساس شهري يوم الثلاثاء، فوق التوقعات؛ وأغلق الذهب الفوري دون 4,000 عند 3987.7.",
+   "vi": "Đây là nhịp nối dài cú giảm từ thứ Ba, khi CPI tháng 10 của Mỹ tăng 0.4% so với tháng trước, cao hơn dự báo; vàng đóng ngày dưới mốc 4,000, tại 3987.7.",
+   "zh": "延續週二美國 10 月 CPI 月增 0.4%、高於預期後的跌勢；現貨黃金收在 3987.7，重回 4,000 之下。"
+  }
+ ],
+ "sources": [
+  "TradingView news (dpa-AFX / RTTNews)",
+  "TradingView news (Reuters headlines)",
+  "CME FedWatch (as reported)"
+ ]
+}

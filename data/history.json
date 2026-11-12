@@ -19,8 +19,8 @@
    "bias": "SELL",
    "lean": null,
    "main_zone": "4048.4–4056.2",
-   "result": null,
-   "r": null,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-11-newyork/"
   }
  ]
