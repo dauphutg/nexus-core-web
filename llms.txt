@@ -4,27 +4,29 @@
 
 NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three times each trading day: before the Asia session (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). Each plan gives the bias, the main zone, targets, the level that invalidates the view, scenarios with rough probabilities, and the economic calendar. Every plan is graded in public on 15-minute candles after it expires — wins, losses and misses all stay on the record. Analysis only, not financial advice.
 
-## Latest plan (2026-11-12, Pre-London update, updated 2026-11-12 13:48 GMT+7)
+## Latest plan (2026-11-12, Pre-New York plan, updated 2026-11-12 19:46 GMT+7)
 
-- Permanent page: https://nexuscore.trade/en/plan/2026-11-12-london/
+- Permanent page: https://nexuscore.trade/en/plan/2026-11-12-newyork/
 - Bias: TWO-WAY · leaning SELL
-- Summary: Two-way, leaning SELL on rallies into 4035.4–4046.5; price pressing the 3968.8 low
-- Main zone: SELL 4035.4–4046.5
-- Target T1: 3957.7
-- Target T2: 3932.6
-- Target T3: 3920.8
-- Expected range: 3920.8–4049
-- View is wrong if: M15 close above 4049 → main zone fails, next resistance 4050.5–4060; H4 close above 4068 → sell side off.
-- Main scenario (~55%, SELL): London compresses 3968–3985 and sweeps the 3968.8 low down to 3957.7 before bouncing; New York rallies into 3987–3995.4 or 4018.7–4031.4 and gets rejected.
-- Alternate scenario (~45%, BUY): The 3968.8 low holds and an M15 close above 3990 → deeper bounce into the 4035.4–4046.5 main zone and rejection; an M15 close above 4049 → void, watch 4050.5–4060.
+- Summary: Two-way, leaning SELL on rallies; main zone 4018.7–4035.4, day low 3924.7
+- Main zone: SELL 4018.7–4035.4
+- Target T1: 3925
+- Target T2: 3915
+- Target T3: 3891
+- Expected range: 3891–4038
+- View is wrong if: M15 close above 4001 → 3980.7–3992 fails, sell side only at 4018.7–4035.4; M15 close above 4038 → sell side off for the day.
+- Main scenario (~50%, SELL): A bounce after the jobless claims data into 3949.3–3955 or 3980.7–3992 gets capped, then price drops back to 3925 and 3915.
+- Alternate scenario (~30%, SELL): No bounce: an M15 close below the 3924.7 day low → 3910.2–3920.8 support (a bounce there is possible on a two-way day).
+- Alternate scenario (~20%, BUY): Invalidation path: an M15 close above 4001 → deeper rally into the 4018.7–4035.4 main zone.
 
 ## Track record (November 2026)
 
-- Plans published: 3; graded: 1; zone reached: 0; Target 1 reached: 0; invalidated: 0; total: n/a
+- Plans published: 4; graded: 1; zone reached: 0; Target 1 reached: 0; invalidated: 0; total: n/a
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
+- [2026-11-12 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-12-newyork/): TWO-WAY · leaning SELL, main zone 4018.7–4035.4 — Pending
 - [2026-11-12 Pre-London update](https://nexuscore.trade/en/plan/2026-11-12-london/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Pending
 - [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Pending
 - [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2 — Zone not reached 0R
