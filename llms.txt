@@ -21,14 +21,14 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Track record (November 2026)
 
-- Plans published: 4; graded: 1; zone reached: 0; Target 1 reached: 0; invalidated: 0; total: n/a
+- Plans published: 4; graded: 4; zone reached: 0; Target 1 reached: 0; invalidated: 0; total: n/a
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
-- [2026-11-12 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-12-newyork/): TWO-WAY · leaning SELL, main zone 4018.7–4035.4 — Pending
-- [2026-11-12 Pre-London update](https://nexuscore.trade/en/plan/2026-11-12-london/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Pending
-- [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Pending
+- [2026-11-12 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-12-newyork/): TWO-WAY · leaning SELL, main zone 4018.7–4035.4 — Zone not reached 0R
+- [2026-11-12 Pre-London update](https://nexuscore.trade/en/plan/2026-11-12-london/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Zone not reached 0R
+- [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Zone not reached 0R
 - [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2 — Zone not reached 0R
 
 ## Gold trading Q&A
@@ -42,9 +42,15 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [Why is gold rising?](https://nexuscore.trade/en/learn/why-is-gold-rising/): Gold tends to rise when the US dollar weakens, when real interest rates fall or are expected to fall, when US data come in soft and boost Fed rate-cut hopes, wh
 - [How does CPI affect the gold price?](https://nexuscore.trade/en/learn/how-cpi-affects-gold/): US CPI is released by the Bureau of Labor Statistics at 8:30 New York time. A hotter-than-expected reading usually lifts US yields and the dollar and cuts the o
 - [How does the NFP report affect gold?](https://nexuscore.trade/en/learn/how-nfp-affects-gold/): The US Employment Situation report — nonfarm payrolls, the unemployment rate and wages — is usually released on the first Friday of the month at 8:30 New York t
+- [How do Federal Reserve interest-rate decisions affect gold?](https://nexuscore.trade/en/learn/fed-rates-and-gold/): The Fed's rate-setting committee (FOMC) meets eight times a year; the statement comes out at 2:00 p.m. New York time and the press conference starts at 2:30. Go
+- [Why does gold move against the US dollar?](https://nexuscore.trade/en/learn/gold-and-the-us-dollar/): Gold is priced in dollars. When the dollar strengthens, an ounce costs more in euros, yen or rupees, which tends to cool demand — and the dollar price of gold f
+- [What is the relationship between gold and real yields?](https://nexuscore.trade/en/learn/gold-and-real-yields/): Real yields are bond yields after inflation, usually measured by the 10-year US TIPS yield. Gold pays no interest, so when real yields rise, holding gold costs 
+- [How to use the daily open line when trading gold](https://nexuscore.trade/en/learn/daily-open-line-gold/): The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far
+- [What is EMA 89 used for in gold trading?](https://nexuscore.trade/en/learn/ema-89-gold/): EMA 89 is an 89-period exponential moving average. On the 1-hour gold chart many traders use it as a medium-term trend filter: price holding above a rising EMA 
 
 ## Why gold moved (recent days)
 
+- [2026-11-12: Gold sank 2.85% to a 1-year low on a Fed-driven dollar rally and fading US-Iran deal hopes](https://nexuscore.trade/en/why-gold-moved/2026-11-12-dollar/) (-2.85%)
 - [2026-11-11: Gold fell 1.18% as hawkish Fed remarks and a firmer dollar erased early gains](https://nexuscore.trade/en/why-gold-moved/2026-11-11-fed/) (-1.18%)
 
 ## Pages

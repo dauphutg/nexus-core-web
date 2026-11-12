@@ -1,0 +1,46 @@
+{
+ "date": "2026-11-12",
+ "open": 3991.2,
+ "close": 3877.59,
+ "high": 4000.73,
+ "low": 3852.58,
+ "change": -113.61,
+ "change_pct": -2.85,
+ "biggest_hour": {
+  "start_vn": "2026-11-12 20:00",
+  "move": -46.4
+ },
+ "candles": 92,
+ "tag": "dollar",
+ "headline": {
+  "en": "Gold sank 2.85% to a 1-year low on a Fed-driven dollar rally and fading US-Iran deal hopes",
+  "ar": "هبط الذهب 2.85% لأدنى مستوى في عام مع صعود الدولار وتلاشي آمال اتفاق أمريكي-إيراني",
+  "vi": "Vàng giảm 2.85% về đáy 1 năm khi USD tăng vì Fed và hy vọng thỏa thuận Mỹ-Iran phai nhạt",
+  "zh": "美元因聯準會升息預期走強、美伊協議希望消退，金價重挫 2.85% 至逾一年低點"
+ },
+ "reasons": [
+  {
+   "en": "Headlines through the day linked the drop to a dollar rally on Fed rate-hike bets, with one report citing a 19-month dollar high. Gold opened at 3991.2 and lost 36.11 dollars in the hour from 3:00 ET as London opened.",
+   "ar": "ربطت عناوين الأخبار طوال اليوم الهبوط بصعود الدولار على رهانات رفع الفائدة من الفيدرالي، وأشار أحد التقارير إلى أعلى مستوى للدولار في 19 شهرًا. افتتح الذهب عند 3991.2 وخسر 36.11 دولارًا في الساعة التي بدأت 3:00 بتوقيت نيويورك مع افتتاح لندن.",
+   "vi": "Các tin trong ngày gắn cú giảm với việc USD tăng mạnh do kỳ vọng Fed tăng lãi suất; một bản tin nêu USD lên đỉnh 19 tháng. Vàng mở ngày ở 3991.2 và mất 36.11 giá trong giờ bắt đầu lúc 15:00 giờ VN khi phiên London mở cửa.",
+   "zh": "全日新聞將跌勢歸因於聯準會升息預期推升美元，有報導指美元觸及 19 個月高點。金價開在 3991.2，倫敦開盤、美東 3:00 起的一小時內下跌 36.11 美元。"
+  },
+  {
+   "en": "The steepest hour started at 8:00 ET, a 46.4-dollar drop, and gold hit the day low of 3852.58 in the hour from 10:00 ET. Dow Jones reported gold futures extending losses as the dollar and yields rose.",
+   "ar": "بدأت أشد ساعات الهبوط عند 8:00 بتوقيت نيويورك بخسارة 46.4 دولارًا، وسجل الذهب أدنى مستوى في اليوم عند 3852.58 في الساعة التي بدأت 10:00. وذكرت داو جونز أن عقود الذهب الآجلة وسّعت خسائرها مع ارتفاع الدولار والعوائد.",
+   "vi": "Giờ giảm mạnh nhất bắt đầu lúc 20:00 giờ VN (8:00 ET), mất 46.4 giá; vàng chạm đáy ngày 3852.58 trong giờ bắt đầu lúc 22:00 giờ VN. Dow Jones đưa tin vàng tương lai giảm sâu thêm khi USD và lợi suất cùng tăng.",
+   "zh": "跌幅最大的一小時始於美東 8:00，下跌 46.4 美元；金價在美東 10:00 起的一小時觸及全日低點 3852.58。道瓊報導，美元與殖利率走升，黃金期貨跌勢擴大。"
+  },
+  {
+   "en": "Reuters and dpa-AFX tied the 3% slide to an over one-year low to fading hopes for a US-Iran deal, which pushed crude oil higher and fanned inflation fears. Gold closed at 3877.59, down 113.61 dollars.",
+   "ar": "ربطت رويترز ووكالة dpa-AFX الهبوط بنسبة 3% إلى أدنى مستوى في أكثر من عام بتلاشي آمال اتفاق أمريكي-إيراني، ما دفع النفط للارتفاع وأجج مخاوف التضخم. وأغلق الذهب عند 3877.59 بانخفاض 113.61 دولارًا.",
+   "vi": "Reuters và dpa-AFX cho rằng cú giảm 3% về đáy hơn 1 năm đến từ hy vọng thỏa thuận Mỹ-Iran phai nhạt, đẩy giá dầu tăng và làm dấy lên lo ngại lạm phát. Vàng đóng ngày ở 3877.59, giảm 113.61 giá.",
+   "zh": "路透與 dpa-AFX 指出，美伊達成協議的希望消退，推升原油並加深通膨憂慮，令金價下跌 3% 至逾一年低點。黃金收在 3877.59，下跌 113.61 美元。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (Dow Jones Newswires)",
+  "TradingView news (dpa-AFX, Invezz)"
+ ]
+}

@@ -8,8 +8,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "4018.7–4035.4",
-   "result": null,
-   "r": null,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-12-newyork/"
   },
   {
@@ -19,8 +19,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "4035.4–4046.5",
-   "result": null,
-   "r": null,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-12-london/"
   },
   {
@@ -30,8 +30,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "4035.4–4046.5",
-   "result": null,
-   "r": null,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-12-asia/"
   },
   {
