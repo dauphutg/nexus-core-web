@@ -199,7 +199,7 @@ def render(outf, mob):
         lax = fig.add_axes([0.025, BY + BH * (0.25 if mob else 0.19), wpx / fw, hpx / fh]); lax.set_axis_off()
         lax.imshow(lg);
     plt.savefig(outf, facecolor='white'); plt.close(fig)
-    print(f'chart: {outf} | {n} bars | price {px:.1f}')
+    print(f'chart: {outf} | {n} bars | price {px:.1f} | promoted: {"yes" if promoted else "no"}')
 
 
 render(outf, False)
