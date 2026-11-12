@@ -52,7 +52,7 @@ def render(outf, mob):
     lo_v, hi_v = (min(l[-40:]), max(h[-40:])) if mob else (min(l[-90:]), max(h[-90:]))
     vis = (lambda y: lo_v - 40 <= y <= hi_v + 40) if mob else (lambda y: lo_v - 70 <= y <= hi_v + 70)
     mz = P.get('main_zone') or {}
-    shown = []
+    shown, ZL = [], []
     for z in P.get('zones') or []:
         a, b = sorted([z['lo'], z['hi']])
         if not (vis(a) or vis(b)): continue
@@ -65,15 +65,15 @@ def render(outf, mob):
                                alpha=1 if main else 0.65, ls='--' if watch else '-', zorder=1))
         lab = (W['key'] + ' ' if main else W['zone'] + ' ') + (W['sell'] if red else W['buy']).lower() + f' {fmt(a)}–{fmt(b)}'
         if main: lab = W['key'] + f" · {W['sell'] if red else W['buy']} {fmt(a)}–{fmt(b)}"
-        ax.text(X1 - 1, (a + b) / 2, lab, ha='right', va='center', fontsize=(10 if main else 8.5) * K, color=edge,
-                fontweight='bold' if main else 'normal', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6))  # labels sit above the scenario arrows
+        ZL.append(ax.text(X1 - 1, (a + b) / 2, lab, ha='right', va='center', fontsize=(10 if main else 8.5) * K, color=edge,
+                fontweight='bold' if main else 'normal', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6)))  # labels sit above the scenario arrows
         shown += [a, b]
     for tg in P.get('targets') or []:
         y = (tg['lo'] + tg['hi']) / 2
         if not vis(y): continue
         ax.hlines(y, X0, X1, color=GRAY, lw=0.9, ls=(0, (4, 3)), zorder=1)
-        ax.text(X0 + 1, y, f"{W['tgt']} {tg['label']} {fmt(tg['lo']) if tg['lo'] == tg['hi'] else fmt(tg['lo']) + '–' + fmt(tg['hi'])}",
-                color=GRAY, fontsize=8.5 * K, ha='left', va='bottom', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4))
+        ZL.append(ax.text(X0 + 1, y, f"{W['tgt']} {tg['label']} {fmt(tg['lo']) if tg['lo'] == tg['hi'] else fmt(tg['lo']) + '–' + fmt(tg['hi'])}",
+                color=GRAY, fontsize=8.5 * K, ha='left', va='bottom', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4)))
         shown.append(y)
     ax.axhline(px, color=GRAY, lw=0.6, ls=(0, (2, 3)))
 
@@ -121,7 +121,7 @@ def render(outf, mob):
         for p in prices:
             dx = max(abs(p - yy) * hpx * math.tan(math.radians(ang)) / wpx, 1.8 if mob else 2.6); xx, yy = xx + dx, p; pts.append((xx, yy))
         return pts
-    used = []
+    drawn = []
     for q in paths:
         x0 = x + ((2.0 if mob else 3.0) if abs(q['foot'] - px) > 1 else 0)
         pts = steep(x0, q['foot'], q['gia']); xs, ys_ = zip(*pts); lw = 1.9 if q['dut'] else 2.3
@@ -130,13 +130,40 @@ def render(outf, mob):
         (a1, b1), (a2, b2) = pts[-2], pts[-1]
         ax.annotate('', xy=(a2, b2), xytext=(a1 + (a2 - a1) * 0.6, b1 + (b2 - b1) * 0.6), zorder=6,
                     arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=q['col'], lw=lw, shrinkA=0, shrinkB=0))
-        yy = b2
-        for (lx, ly) in used:
-            if abs(lx - a2) < 14 and abs(ly - yy) < 8: yy = ly - 9 if b2 <= ly else ly + 9
-        used.append((a2, yy))
-        up = b2 > b1
-        ax.text(a2, yy + (3 if up else -3), q['nhan'], ha='center', va='bottom' if up else 'top', color=q['col'], fontsize=10 * K,
-                fontweight='bold', zorder=9, bbox=dict(fc='white', ec='none', alpha=0.9, pad=1))
+        drawn.append((q, pts))
+    # scenario labels: first spot that covers no arrow line, no other label, no candles (tip → peak → beside)
+    R = fig.canvas.get_renderer()
+    taken = [tx.get_window_extent(R) for tx in ZL]
+    pix = []
+    for _, pts in drawn:
+        for (u1, v1), (u2, v2) in zip(pts, pts[1:]):
+            pix += [ax.transData.transform((u1 + (u2 - u1) * k / 40, v1 + (v2 - v1) * k / 40)) for k in range(41)]
+    pix += [ax.transData.transform((i, (h[i] + l[i]) / 2)) for i in range(n)] + [ax.transData.transform((i, h[i])) for i in range(n)] + [ax.transData.transform((i, l[i])) for i in range(n)]
+    ylo, yhi = ax.get_ylim(); dy = (yhi - ylo) * 0.012
+    for q, pts in drawn:
+        (a1, b1), (a2, b2) = pts[-2], pts[-1]; up = b2 > b1
+        top = max(pts, key=lambda p_: p_[1]); bot = min(pts, key=lambda p_: p_[1])
+        cands = [(a2, b2 + (dy if up else -dy), 'center', 'bottom' if up else 'top'),
+                 (top[0], top[1] + dy, 'center', 'bottom'), (bot[0], bot[1] - dy, 'center', 'top'),
+                 (a2 + 1, b2, 'left', 'center'), (a2, b2 + (-dy if up else dy), 'center', 'top' if up else 'bottom')]
+        cands += [(a2 + 1, b2 + k * dy * 3 * (1 if up else -1), 'left', 'center') for k in range(1, 6)]
+        for (u1, v1), (u2, v2) in zip(pts, pts[1:]):   # beside the middle of each leg
+            mx, my = (u1 + u2) / 2, (v1 + v2) / 2
+            cands += [(mx + 0.8, my, 'left', 'center'), (mx - 0.8, my, 'right', 'center')]
+        inside = ax.get_window_extent(R); best, bcost = None, None
+        for cx, cy, ha_, va_ in cands:   # least covered spot wins (labels count most, then line/candle points)
+            tx = ax.text(cx, cy, q['nhan'], ha=ha_, va=va_, color=q['col'], fontsize=10 * K, fontweight='bold', zorder=9,
+                         bbox=dict(fc='white', ec='none', alpha=0.9, pad=1))
+            bb = tx.get_window_extent(R)
+            cost = (0 if (bb.x0 >= inside.x0 and bb.x1 <= inside.x1 and bb.y0 >= inside.y0 and bb.y1 <= inside.y1) else 10000)
+            cost += 60 * sum(bb.overlaps(o_) for o_ in taken) + sum(bb.contains(px_, py_) for px_, py_ in pix)
+            if bcost is None or cost < bcost:
+                if best is not None: best.remove()
+                best, bcost = tx, cost
+            else:
+                tx.remove()
+            if cost == 0: break
+        taken.append(best.get_window_extent(R))
 
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)
     for s_ in ax.spines.values(): s_.set_color('#E0E3EB')
