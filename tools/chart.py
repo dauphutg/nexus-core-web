@@ -134,35 +134,40 @@ def render(outf, mob):
     # scenario labels: first spot that covers no arrow line, no other label, no candles (tip → peak → beside)
     R = fig.canvas.get_renderer()
     taken = [tx.get_window_extent(R) for tx in ZL]
-    pix = []
+    seg_pix = []
     for _, pts in drawn:
+        pp = []
         for (u1, v1), (u2, v2) in zip(pts, pts[1:]):
-            pix += [ax.transData.transform((u1 + (u2 - u1) * k / 40, v1 + (v2 - v1) * k / 40)) for k in range(41)]
-    pix += [ax.transData.transform((i, (h[i] + l[i]) / 2)) for i in range(n)] + [ax.transData.transform((i, h[i])) for i in range(n)] + [ax.transData.transform((i, l[i])) for i in range(n)]
+            pp += [ax.transData.transform((u1 + (u2 - u1) * k / 40, v1 + (v2 - v1) * k / 40)) for k in range(41)]
+        seg_pix.append(pp)
+    candle = [ax.transData.transform((i, y_)) for i in range(n) for y_ in (h[i], l[i], (h[i] + l[i]) / 2)]
     ylo, yhi = ax.get_ylim(); dy = (yhi - ylo) * 0.012
-    for q, pts in drawn:
+    inside = ax.get_window_extent(R)
+    for j, (q, pts) in enumerate(drawn):
+        # the label must hug ITS OWN line (tip, peak/trough, or beside a leg) and never cover the other scenario
         (a1, b1), (a2, b2) = pts[-2], pts[-1]; up = b2 > b1
-        top = max(pts, key=lambda p_: p_[1]); bot = min(pts, key=lambda p_: p_[1])
-        cands = [(a2, b2 + (dy if up else -dy), 'center', 'bottom' if up else 'top'),
-                 (top[0], top[1] + dy, 'center', 'bottom'), (bot[0], bot[1] - dy, 'center', 'top'),
-                 (a2 + 1, b2, 'left', 'center'), (a2, b2 + (-dy if up else dy), 'center', 'top' if up else 'bottom')]
-        cands += [(a2 + 1, b2 + k * dy * 3 * (1 if up else -1), 'left', 'center') for k in range(1, 6)]
-        for (u1, v1), (u2, v2) in zip(pts, pts[1:]):   # beside the middle of each leg
+        top = max(pts[1:], key=lambda p_: p_[1]); bot = min(pts[1:], key=lambda p_: p_[1])
+        cands = [(a2, b2 + (dy if up else -dy), 'center', 'bottom' if up else 'top'), (a2 + 0.6, b2, 'left', 'center'),
+                 (top[0], top[1] + dy, 'center', 'bottom'), (bot[0], bot[1] - dy, 'center', 'top')]
+        for (u1, v1), (u2, v2) in zip(pts, pts[1:]):
             mx, my = (u1 + u2) / 2, (v1 + v2) / 2
-            cands += [(mx + 0.8, my, 'left', 'center'), (mx - 0.8, my, 'right', 'center')]
-        inside = ax.get_window_extent(R); best, bcost = None, None
-        for cx, cy, ha_, va_ in cands:   # least covered spot wins (labels count most, then line/candle points)
+            cands += [(mx + 0.5, my, 'left', 'center'), (mx - 0.5, my, 'right', 'center')]
+        own = seg_pix[j]; other = [pt for k, pp in enumerate(seg_pix) if k != j for pt in pp]
+        best, bcost = None, None
+        for cx, cy, ha_, va_ in cands:
             tx = ax.text(cx, cy, q['nhan'], ha=ha_, va=va_, color=q['col'], fontsize=10 * K, fontweight='bold', zorder=9,
                          bbox=dict(fc='white', ec='none', alpha=0.9, pad=1))
             bb = tx.get_window_extent(R)
-            cost = (0 if (bb.x0 >= inside.x0 and bb.x1 <= inside.x1 and bb.y0 >= inside.y0 and bb.y1 <= inside.y1) else 10000)
-            cost += 60 * sum(bb.overlaps(o_) for o_ in taken) + sum(bb.contains(px_, py_) for px_, py_ in pix)
+            cost = 0 if (bb.x0 >= inside.x0 and bb.x1 <= inside.x1 and bb.y0 >= inside.y0 and bb.y1 <= inside.y1) else 10000
+            cost += 80 * sum(bb.overlaps(o_) for o_ in taken) + 25 * sum(bb.contains(*pt) for pt in other)
+            cost += 2 * sum(bb.contains(*pt) for pt in own) + sum(bb.contains(*pt) for pt in candle)
+            gap = min(max(bb.x0 - X_, 0, X_ - bb.x1) + max(bb.y0 - Y_, 0, Y_ - bb.y1) for X_, Y_ in own)
+            cost += gap * 0.5   # far from its own line = bad
             if bcost is None or cost < bcost:
                 if best is not None: best.remove()
                 best, bcost = tx, cost
             else:
                 tx.remove()
-            if cost == 0: break
         taken.append(best.get_window_extent(R))
 
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)
