@@ -1,171 +1,187 @@
 {
- "date": "2026-11-12",
- "edition": "1930",
- "updated_vn": "2026-11-12 19:46",
+ "date": "2026-11-13",
+ "edition": "0700",
+ "updated_vn": "2026-11-13 06:39",
  "symbol": "XAUUSD",
  "bias": "TWO_WAY",
  "lean": "SELL",
  "day_type": {
-  "vi": "Ngày thường – đi ngang biên rộng, nghiêng bán khi giá hồi",
-  "en": "Normal day – wide two-way range, leaning to sell rallies",
-  "ar": "يوم عادي – نطاق عرضي واسع مع ميل للبيع عند الارتدادات",
-  "zh": "一般交易日——寬幅雙向震盪，反彈偏空"
+  "vi": "Ngày có tin lớn – 2 chiều chờ phá vỡ, nghiêng bán khi giá hồi",
+  "en": "Big-news day – two-way, waiting for a break, leaning to sell rallies",
+  "ar": "يوم أخبار كبيرة – اتجاه مزدوج بانتظار الاختراق، مع ميل للبيع عند الارتدادات",
+  "zh": "重大消息日——雙向等待突破，反彈偏空"
  },
  "headline": {
-  "vi": "2 chiều, nghiêng BÁN khi hồi; vùng chính 4018.7–4035.4, đáy ngày 3924.7",
-  "en": "Two-way, leaning SELL on rallies; main zone 4018.7–4035.4, day low 3924.7",
-  "ar": "اتجاه مزدوج مع ميل للبيع عند الارتداد؛ المنطقة الرئيسية 4018.7–4035.4 وقاع اليوم 3924.7",
-  "zh": "雙向震盪，反彈偏空；主要區域 4018.7–4035.4，日低 3924.7"
+  "vi": "2 chiều, nghiêng BÁN khi hồi 3907.3–3925; chờ PPI, mốc phá 3852.6 / 3948.8",
+  "en": "Two-way, leaning SELL on rallies into 3907.3–3925; PPI ahead, pivots 3852.6 / 3948.8",
+  "ar": "اتجاه مزدوج مع ميل للبيع عند الارتداد إلى 3907.3–3925؛ بانتظار PPI والمحوران 3852.6 / 3948.8",
+  "zh": "雙向，反彈至 3907.3–3925 偏空；等待 PPI，關鍵 3852.6 / 3948.8"
  },
  "alert": {
-  "vi": "Vàng đã giảm ~76 giá hôm nay, quét xuống đáy 3924.7 trong phiên London và đang hồi yếu quanh 3936. Không có tin đỏ USD đến hết phiên New York; tin trợ cấp thất nghiệp Mỹ đầu phiên New York có thể tạo nhịp hồi. Mai có PPI Mỹ.",
-  "en": "Gold is down ~76 points today, sweeping to a 3924.7 low in London and bouncing weakly around 3936. No high-impact USD news through the New York session; US jobless claims at the New York open may spark a bounce. US PPI is due tomorrow.",
-  "ar": "تراجع الذهب نحو 76 نقطة اليوم، وكسح قاعًا عند 3924.7 خلال جلسة لندن، ويرتد بضعف حول 3936. لا أخبار دولار عالية التأثير حتى نهاية جلسة نيويورك؛ وقد تُطلق طلبات إعانة البطالة الأمريكية مع افتتاح نيويورك ارتدادًا. مؤشر أسعار المنتجين الأمريكي غدًا.",
-  "zh": "金價今日已下跌約 76 點，倫敦盤掃低至 3924.7，目前在 3936 附近弱勢反彈。紐約盤結束前無高影響美元數據；紐約盤開盤的美國初領失業救濟金人數可能引發反彈。明日公布美國 PPI。"
+  "vi": "Hôm qua vàng mất ~3%, xuống đáy hơn 1 năm (thị trường đặt cược Fed tăng lãi nhiều hơn, đô la và lợi suất tăng, hy vọng thoả thuận Mỹ–Iran mờ dần đẩy giá dầu lên). Hôm nay tin đỏ PPI Mỹ đầu phiên New York sẽ quyết định nhánh đi; tránh vào lệnh sát giờ tin.",
+  "en": "Gold fell ~3% yesterday to a more-than-one-year low (bets on further Fed hikes, a firmer dollar and yields, and fading hopes for a US–Iran deal lifting oil). Today the high-impact US PPI release early in the New York session decides the direction; avoid new positions right around the release.",
+  "ar": "هبط الذهب نحو 3% أمس إلى أدنى مستوى في أكثر من عام (رهانات على مزيد من رفع الفائدة من الفيدرالي، وارتفاع الدولار والعوائد، وتراجع آمال اتفاق أمريكي–إيراني ما دفع النفط للصعود). اليوم يحسم مؤشر أسعار المنتجين الأمريكي عالي التأثير مطلع جلسة نيويورك وجهة السعر؛ تجنّب فتح مراكز قرب موعد صدوره.",
+  "zh": "金價昨日重挫約 3%，跌至逾一年低點（市場加碼押注聯準會升息、美元與殖利率走高、美伊協議希望轉淡推升油價）。今日紐約盤初公布的美國 PPI 為高影響數據，將決定方向；數據公布前後避免新進場。"
  },
  "context": [
   {
    "k": {"vi": "Xu hướng D1", "en": "D1 trend", "ar": "اتجاه D1", "zh": "D1 趨勢"},
    "v": {
-    "vi": "Giảm – nến ngày 11/11 đóng 3987.7 dưới đường trung bình ngắn hạn, trong vùng cầu D1 3971.4–4057.8; hôm nay đã chạy ~76 giá",
-    "en": "Bearish – the 11/11 daily candle closed at 3987.7 below the short-term average, inside the D1 demand area 3971.4–4057.8; today has already moved ~76 points",
-    "ar": "هابط – أغلقت شمعة 11/11 اليومية عند 3987.7 أسفل المتوسط قصير الأجل داخل منطقة الطلب اليومية 3971.4–4057.8؛ وتحرّك السعر اليوم نحو 76 نقطة",
-    "zh": "偏空——11/11 日線收在 3987.7，位於短期均線之下、D1 需求區 3971.4–4057.8 之內；今日已波動約 76 點"
+    "vi": "Giảm – nến ngày 12/11 giảm mạnh, quét đáy 30/10 (3870.3) xuống 3852.6 rồi đóng lại 3877.6",
+    "en": "Bearish – the 12/11 daily candle sold off hard, sweeping the 30/10 low (3870.3) down to 3852.6 before closing back at 3877.6",
+    "ar": "هابط – هبطت شمعة 12/11 اليومية بقوة وكسحت قاع 30/10 (3870.3) حتى 3852.6 ثم أغلقت عائدةً عند 3877.6",
+    "zh": "偏空——12/11 日線大跌，掃破 10/30 低點（3870.3）至 3852.6 後收回 3877.6"
    }
   },
   {
    "k": {"vi": "Cấu trúc H4", "en": "H4 structure", "ar": "هيكل H4", "zh": "H4 結構"},
    "v": {
-    "vi": "Giảm – giá dưới cả đường trung bình trung và dài hạn, động lượng yếu, chưa có tín hiệu tạo đáy",
-    "en": "Bearish – price below both the medium- and long-term averages, weak momentum, no basing signal yet",
-    "ar": "هابط – السعر أسفل المتوسطين المتوسط والطويل الأجل، والزخم ضعيف دون إشارة قاع بعد",
-    "zh": "偏空——金價位於中、長期均線之下，動能疲弱，尚無築底訊號"
+    "vi": "Giảm – giá dưới các đường trung bình; đang quá bán trong vùng cầu H4 3870.3–3923.7 nên dễ hồi kỹ thuật trước",
+    "en": "Bearish – price below the moving averages; oversold inside the H4 demand area 3870.3–3923.7, so a technical bounce may come first",
+    "ar": "هابط – السعر أسفل المتوسطات المتحركة؛ في تشبّع بيعي داخل منطقة طلب H4 عند 3870.3–3923.7، لذا قد يسبق ذلك ارتداد فني",
+    "zh": "偏空——金價位於均線之下；於 H4 需求區 3870.3–3923.7 內超賣，可能先出現技術性反彈"
    }
   },
   {
    "k": {"vi": "Cấu trúc H1", "en": "H1 structure", "ar": "هيكل H1", "zh": "H1 結構"},
    "v": {
-    "vi": "Giảm – bám đường trung bình ngắn hạn đi xuống từ phiên Á, đáy ngày 3924.7",
-    "en": "Bearish – riding the short-term average lower since Asia, day low 3924.7",
-    "ar": "هابط – يسير مع المتوسط قصير الأجل نزولًا منذ جلسة آسيا، وقاع اليوم 3924.7",
-    "zh": "偏空——自亞洲盤起沿短期均線下行，日低 3924.7"
+    "vi": "Giảm – nhịp hồi đêm qua bị chặn ở 3948.8 rồi xả về 3852.6; nay đi ngang 3866–3888",
+    "en": "Bearish – last night's bounce was capped at 3948.8 and sold down to 3852.6; now ranging 3866–3888",
+    "ar": "هابط – صُدّ ارتداد الليلة الماضية عند 3948.8 ثم هبط إلى 3852.6؛ ويتحرك الآن عرضيًا بين 3866–3888",
+    "zh": "偏空——昨夜反彈於 3948.8 受阻後回落至 3852.6；目前於 3866–3888 區間整理"
    }
   },
   {
    "k": {"vi": "Động lượng H1", "en": "H1 momentum", "ar": "زخم H1", "zh": "H1 動能"},
    "v": {
-    "vi": "Quá bán sâu – có dấu hiệu sắp hồi kỹ thuật; cản gần 3940.8–3943.1",
-    "en": "Deeply oversold – signs of a technical bounce ahead; nearby resistance 3940.8–3943.1",
-    "ar": "تشبّع بيعي عميق – مؤشرات على ارتداد فني قريب؛ مقاومة قريبة 3940.8–3943.1",
-    "zh": "深度超賣——有技術性反彈跡象；近端壓力 3940.8–3943.1"
+    "vi": "Quá bán cả H1 và H4 – dễ hồi trước; cản hồi gần 3907.3–3925",
+    "en": "Oversold on both H1 and H4 – a bounce may come first; nearby resistance 3907.3–3925",
+    "ar": "تشبّع بيعي على H1 و H4 – قد يسبق ذلك ارتداد؛ مقاومة قريبة 3907.3–3925",
+    "zh": "H1 與 H4 皆超賣——可能先反彈；近端壓力 3907.3–3925"
    }
   },
   {
    "k": {"vi": "Mốc trong ngày", "en": "Intraday level", "ar": "مستوى اليوم", "zh": "日內關鍵價位"},
    "v": {
-    "vi": "Giá mở cửa ngày 3991.2; đỉnh phiên Á 4000.7; đáy ngày 3924.7 (phiên London)",
-    "en": "Daily open 3991.2; Asia high 4000.7; day low 3924.7 (London session)",
-    "ar": "افتتاح اليوم 3991.2؛ قمة آسيا 4000.7؛ قاع اليوم 3924.7 (جلسة لندن)",
-    "zh": "日開盤價 3991.2；亞洲盤高點 4000.7；日低 3924.7（倫敦盤）"
+    "vi": "Đáy ngày trước 3852.6; đỉnh hồi đêm qua 3948.8; biên đi ngang 3866–3888",
+    "en": "Previous day low 3852.6; last night's bounce high 3948.8; overnight range 3866–3888",
+    "ar": "قاع اليوم السابق 3852.6؛ قمة ارتداد الليلة الماضية 3948.8؛ نطاق الليل 3866–3888",
+    "zh": "前日低點 3852.6；昨夜反彈高點 3948.8；夜間區間 3866–3888"
    }
   }
  ],
- "main_zone": {"side": "SELL", "lo": 4018.7, "hi": 4035.4, "grade": "A"},
+ "main_zone": {"side": "SELL", "lo": 3907.3, "hi": 3915, "grade": "B"},
  "invalidation": {
-  "vi": "M15 đóng trên 4001 → vùng 3980.7–3992 hỏng, phía bán chỉ còn ở 4018.7–4035.4; M15 đóng trên 4038 → hết phía bán trong ngày.",
-  "en": "M15 close above 4001 → 3980.7–3992 fails, sell side only at 4018.7–4035.4; M15 close above 4038 → sell side off for the day.",
-  "ar": "إغلاق M15 فوق 4001 ← تفشل منطقة 3980.7–3992 ولا يبقى للبيع سوى 4018.7–4035.4؛ إغلاق M15 فوق 4038 ← تنتهي فكرة البيع لهذا اليوم.",
-  "zh": "M15 收在 4001 之上 → 3980.7–3992 失效，偏空僅看 4018.7–4035.4；M15 收在 4038 之上 → 當日偏空觀點失效。"
+  "vi": "Phía bán sai khi M15 đóng trên 3948.8 và nến kế tiếp giữ trên → chuyển sang nghiêng mua. Phía hồi sai khi M15 đóng dưới 3852.6 → giảm tiếp về 3838.1 / 3764.7.",
+  "en": "Sell side fails on an M15 close above 3948.8 with the next candle holding above → bias flips to buy. Bounce side fails on an M15 close below 3852.6 → further drop to 3838.1 / 3764.7.",
+  "ar": "يفشل جانب البيع بإغلاق M15 فوق 3948.8 مع ثبات الشمعة التالية فوقه ← يتحول الميل إلى الشراء. ويفشل جانب الارتداد بإغلاق M15 أسفل 3852.6 ← هبوط إضافي نحو 3838.1 / 3764.7.",
+  "zh": "M15 收在 3948.8 之上且下一根守穩 → 偏空觀點失效，轉為偏多。M15 收在 3852.6 之下 → 反彈觀點失效，續跌看 3838.1 / 3764.7。"
  },
- "void": 4038,
+ "void": 3948.8,
  "targets": [
-  {"label": "T1", "lo": 3925, "hi": 3925},
-  {"label": "T2", "lo": 3915, "hi": 3915},
-  {"label": "T3", "lo": 3891, "hi": 3891}
+  {"label": "T1", "lo": 3852.6, "hi": 3852.6},
+  {"label": "T2", "lo": 3838.1, "hi": 3838.1},
+  {"label": "T3", "lo": 3764.7, "hi": 3764.7}
  ],
  "zones": [
-  {"side": "SELL", "lo": 4018.7, "hi": 4035.4, "grade": "A",
+  {"side": "SELL", "lo": 3907.3, "hi": 3915, "grade": "B",
    "status": {
-    "vi": "Vùng chính – chưa chạm, có thể không tới; chỉ có hiệu lực sau khi M15 đóng trên 4001; hiệu lực phiên New York sang Á",
-    "en": "Main zone – not touched and may not be reached; only in play after an M15 close above 4001; valid New York into Asia",
-    "ar": "المنطقة الرئيسية – لم تُلمس وقد لا يصل إليها السعر؛ تصبح فعّالة فقط بعد إغلاق M15 فوق 4001؛ صالحة من نيويورك حتى آسيا",
-    "zh": "主要區域——尚未觸及，可能到不了；M15 收在 4001 之上後才生效；紐約盤有效並延續至亞洲盤"
+    "vi": "Vùng chính – chưa chạm; hiệu lực phiên Á và London, trước tin PPI; huỷ nếu M15 đóng trên 3918",
+    "en": "Main zone – not touched; valid in Asia and London, before PPI; void on an M15 close above 3918",
+    "ar": "المنطقة الرئيسية – لم تُلمس؛ صالحة في جلستي آسيا ولندن قبل PPI؛ تُلغى بإغلاق M15 فوق 3918",
+    "zh": "主要區域——尚未觸及；亞洲盤與倫敦盤、PPI 公布前有效；M15 收在 3918 之上則失效"
    }},
-  {"side": "SELL", "lo": 3949.3, "hi": 3955, "grade": "B",
+  {"side": "SELL", "lo": 3917.6, "hi": 3925, "grade": "B",
    "status": {
-    "vi": "Hiệu lực phiên New York; huỷ nếu M15 đóng trên 3960",
-    "en": "Valid in the New York session; void on an M15 close above 3960",
-    "ar": "صالحة في جلسة نيويورك؛ تُلغى بإغلاق M15 فوق 3960",
-    "zh": "紐約盤有效；M15 收在 3960 之上則失效"
+    "vi": "Chưa chạm; hiệu lực phiên Á và London; huỷ nếu M15 đóng trên 3928",
+    "en": "Not touched; valid in Asia and London; void on an M15 close above 3928",
+    "ar": "لم تُلمس؛ صالحة في جلستي آسيا ولندن؛ تُلغى بإغلاق M15 فوق 3928",
+    "zh": "尚未觸及；亞洲盤與倫敦盤有效；M15 收在 3928 之上則失效"
    }},
-  {"side": "SELL", "lo": 3980.7, "hi": 3992, "grade": "B",
+  {"side": "SELL", "lo": 3946.1, "hi": 3956, "grade": "B",
    "status": {
-    "vi": "Chưa chạm lại – hiệu lực New York sang Á; huỷ nếu M15 đóng trên 4001",
-    "en": "Not retested yet – valid New York into Asia; void on an M15 close above 4001",
-    "ar": "لم يُعَد اختبارها بعد – صالحة من نيويورك حتى آسيا؛ تُلغى بإغلاق M15 فوق 4001",
-    "zh": "尚未回測——紐約盤有效並延續至亞洲盤；M15 收在 4001 之上則失效"
+    "vi": "Đã chạm 1 lần (đêm qua); hiệu lực London – New York; huỷ nếu M15 đóng trên 3948.8 và nến kế giữ trên",
+    "en": "Touched once (last night); valid London – New York; void on an M15 close above 3948.8 with the next candle holding",
+    "ar": "لُمست مرة واحدة (الليلة الماضية)؛ صالحة من لندن إلى نيويورك؛ تُلغى بإغلاق M15 فوق 3948.8 مع ثبات الشمعة التالية",
+    "zh": "已觸及 1 次（昨夜）；倫敦盤至紐約盤有效；M15 收在 3948.8 之上且下一根守穩則失效"
    }},
-  {"side": "BUY", "lo": 3910.2, "hi": 3920.8, "grade": "C",
+  {"side": "SELL", "lo": 3980.7, "hi": 3993, "grade": "B",
    "status": {
-    "vi": "Chỉ theo dõi – chưa chạm; huỷ nếu M15 đóng dưới 3907",
-    "en": "Watch only – not touched; void on an M15 close below 3907",
-    "ar": "للمراقبة فقط – لم تُلمس؛ تُلغى بإغلاق M15 أسفل 3907",
-    "zh": "僅觀察——尚未觸及；M15 收在 3907 之下則失效"
+    "vi": "Chưa chạm, có thể không tới; hiệu lực London – New York sang Á khi phía bán còn đúng; nếu đã chuyển sang nghiêng mua thì đây là mục tiêu, không phải vùng bán; huỷ nếu M15 đóng trên 4004",
+    "en": "Not touched, may not be reached; valid London – New York into Asia while the sell side holds; if the bias has flipped to buy it is a target, not a sell zone; void on an M15 close above 4004",
+    "ar": "لم تُلمس وقد لا يصل إليها السعر؛ صالحة من لندن ونيويورك حتى آسيا ما دام جانب البيع قائمًا؛ إذا تحوّل الميل إلى الشراء فهي هدف لا منطقة بيع؛ تُلغى بإغلاق M15 فوق 4004",
+    "zh": "尚未觸及，可能到不了；偏空觀點成立時倫敦盤至紐約盤並延續至亞洲盤有效；若已轉為偏多則為目標而非賣區；M15 收在 4004 之上則失效"
    }},
-  {"side": "BUY", "lo": 3885.5, "hi": 3900.4, "grade": "C",
+  {"side": "BUY", "lo": 3948.8, "hi": 3953.8, "grade": "B",
    "status": {
-    "vi": "Chỉ theo dõi – chưa chạm, hiệu lực sang phiên Á",
-    "en": "Watch only – not touched, valid into Asia",
-    "ar": "للمراقبة فقط – لم تُلمس، صالحة حتى جلسة آسيا",
-    "zh": "僅觀察——尚未觸及，延續至亞洲盤有效"
+    "vi": "Chưa có hiệu lực – chỉ có hiệu lực sau khi M15 đóng trên 3948.8 (London – New York)",
+    "en": "Not active yet – only in play after an M15 close above 3948.8 (London – New York)",
+    "ar": "غير فعّالة بعد – تصبح فعّالة فقط بعد إغلاق M15 فوق 3948.8 (لندن – نيويورك)",
+    "zh": "尚未生效——M15 收在 3948.8 之上後才生效（倫敦盤至紐約盤）"
+   }},
+  {"side": "SELL", "lo": 3849, "hi": 3852.6, "grade": "B",
+   "status": {
+    "vi": "Vùng phá vỡ – chỉ có hiệu lực sau khi M15 đóng dưới 3852.6; huỷ nếu M15 đóng lại trên 3858",
+    "en": "Breakdown zone – only in play after an M15 close below 3852.6; void on an M15 close back above 3858",
+    "ar": "منطقة كسر – تصبح فعّالة فقط بعد إغلاق M15 أسفل 3852.6؛ تُلغى بإغلاق M15 عائدًا فوق 3858",
+    "zh": "跌破區——M15 收在 3852.6 之下後才生效；M15 收回 3858 之上則失效"
+   }},
+  {"side": "BUY", "lo": 3838.1, "hi": 3848, "grade": "C",
+   "status": {
+    "vi": "Chỉ theo dõi – chưa chạm; huỷ nếu M15 đóng dưới 3835",
+    "en": "Watch only – not touched; void on an M15 close below 3835",
+    "ar": "للمراقبة فقط – لم تُلمس؛ تُلغى بإغلاق M15 أسفل 3835",
+    "zh": "僅觀察——尚未觸及；M15 收在 3835 之下則失效"
    }}
  ],
  "scenarios": [
-  {"side": "SELL", "prob": 50, "path": [3943.1, 3952.2, 3925, 3915],
+  {"side": "SELL", "prob": 50, "path": [3888, 3916.2, 3880, 3866],
    "text": {
-    "vi": "Hồi sau tin trợ cấp thất nghiệp lên cản 3949.3–3955 hoặc 3980.7–3992, bị chặn rồi giảm lại 3925, sau đó 3915.",
-    "en": "A bounce after the jobless claims data into 3949.3–3955 or 3980.7–3992 gets capped, then price drops back to 3925 and 3915.",
-    "ar": "ارتداد بعد بيانات طلبات إعانة البطالة إلى 3949.3–3955 أو 3980.7–3992 يُقابَل بالرفض، ثم يعود السعر إلى 3925 ثم 3915.",
-    "zh": "初領失業救濟金數據後反彈至 3949.3–3955 或 3980.7–3992 遇阻，隨後回落至 3925，再看 3915。"
+    "vi": "Hồi rồi giảm: trước tin PPI, giá vượt 3888 hồi lên cản 3907.3–3925, bị chặn rồi giảm lại 3880, sau đó 3866.",
+    "en": "Bounce then drop: before PPI, price clears 3888 and rallies into 3907.3–3925 resistance, gets capped, then falls back to 3880 and 3866.",
+    "ar": "ارتداد ثم هبوط: قبل PPI يتجاوز السعر 3888 ويرتد إلى مقاومة 3907.3–3925، فيُصدّ ثم يعود إلى 3880 ثم 3866.",
+    "zh": "先彈後跌：PPI 前金價突破 3888 反彈至壓力 3907.3–3925 遇阻，隨後回落至 3880，再看 3866。"
    }},
-  {"side": "SELL", "prob": 30, "path": [3924.7, 3915.5],
+  {"side": "SELL", "prob": 25, "path": [3852.6, 3838.1, 3764.7],
    "text": {
-    "vi": "Không hồi, M15 đóng dưới đáy ngày 3924.7 → về vùng hỗ trợ 3910.2–3920.8 (có thể bật lên tại đó, ngày 2 chiều).",
-    "en": "No bounce: an M15 close below the 3924.7 day low → 3910.2–3920.8 support (a bounce there is possible on a two-way day).",
-    "ar": "لا ارتداد: إغلاق M15 أسفل قاع اليوم 3924.7 ← الدعم 3910.2–3920.8 (وقد يرتد السعر منه في يوم مزدوج الاتجاه).",
-    "zh": "未反彈：M15 收在日低 3924.7 之下 → 看向支撐 3910.2–3920.8（雙向日，該處可能反彈）。"
+    "vi": "PPI nóng (xấu cho vàng): M15 đóng dưới đáy 3852.6 → giảm tiếp về 3838.1, sau đó 3764.7.",
+    "en": "Hot PPI (gold-negative): an M15 close below the 3852.6 low → further drop to 3838.1, then 3764.7.",
+    "ar": "PPI أعلى من المتوقع (سلبي للذهب): إغلاق M15 أسفل قاع 3852.6 ← هبوط إضافي إلى 3838.1 ثم 3764.7.",
+    "zh": "PPI 偏熱（利空黃金）：M15 收在低點 3852.6 之下 → 續跌至 3838.1，再看 3764.7。"
    }},
-  {"side": "BUY", "prob": 20, "path": [4001, 4027.1],
+  {"side": "BUY", "prob": 25, "path": [3948.8, 3965.4, 3980.7],
    "text": {
-    "vi": "Sai: M15 đóng trên 4001 → hồi sâu lên vùng chính 4018.7–4035.4.",
-    "en": "Invalidation path: an M15 close above 4001 → deeper rally into the 4018.7–4035.4 main zone.",
-    "ar": "مسار الإلغاء: إغلاق M15 فوق 4001 ← ارتداد أعمق نحو المنطقة الرئيسية 4018.7–4035.4.",
-    "zh": "失效路徑：M15 收在 4001 之上 → 較深反彈至主要區域 4018.7–4035.4。"
+    "vi": "PPI mát hoặc đúng dự báo: M15 đóng trên 3948.8 và giữ được → đảo sang nghiêng mua, lên 3965.4, sau đó 3980.7.",
+    "en": "Soft or in-line PPI: an M15 close above 3948.8 that holds → bias flips to buy, rally to 3965.4, then 3980.7.",
+    "ar": "PPI أقل من المتوقع أو مطابق له: إغلاق M15 فوق 3948.8 مع الثبات ← يتحول الميل إلى الشراء، صعود إلى 3965.4 ثم 3980.7.",
+    "zh": "PPI 偏冷或符合預期：M15 收在 3948.8 之上並守穩 → 轉為偏多，上看 3965.4，再看 3980.7。"
    }}
  ],
- "range": {"lo": 3891, "hi": 4038},
+ "range": {"lo": 3852.6, "hi": 3925},
  "news": [
-  {"time": "12/11 20:30", "impact": "medium",
-   "text": {"vi": "Đơn xin trợ cấp thất nghiệp Mỹ", "en": "US Unemployment Claims", "ar": "طلبات إعانة البطالة الأمريكية", "zh": "美國初領失業救濟金人數"}},
-  {"time": "12/11 20:30", "impact": "low",
-   "text": {"vi": "Phát biểu của thành viên FOMC Hammack", "en": "FOMC member Hammack speaks", "ar": "كلمة عضو اللجنة الفيدرالية هاماك", "zh": "FOMC 委員 Hammack 講話"}},
-  {"time": "12/11 22:00", "impact": "low",
-   "text": {"vi": "Doanh số nhà hiện hữu Mỹ", "en": "US Existing Home Sales", "ar": "مبيعات المنازل القائمة الأمريكية", "zh": "美國成屋銷售"}},
-  {"time": "12/11 22:00", "impact": "low",
-   "text": {"vi": "Phát biểu của thành viên FOMC Barr", "en": "FOMC member Barr speaks", "ar": "كلمة عضو اللجنة الفيدرالية بار", "zh": "FOMC 委員 Barr 講話"}},
-  {"time": "12/11 23:15", "impact": "low",
-   "text": {"vi": "Phát biểu của thành viên FOMC Goolsbee", "en": "FOMC member Goolsbee speaks", "ar": "كلمة عضو اللجنة الفيدرالية غولسبي", "zh": "FOMC 委員 Goolsbee 講話"}},
+  {"time": "13/11 14:00", "impact": "low",
+   "text": {"vi": "Chỉ số giá bán buôn Đức (WPI)", "en": "German WPI", "ar": "مؤشر أسعار الجملة الألماني", "zh": "德國批發物價指數"}},
+  {"time": "13/11 17:00", "impact": "low",
+   "text": {"vi": "GDP sơ bộ + việc làm khu vực Euro", "en": "Eurozone Flash GDP + Employment", "ar": "الناتج المحلي الأولي والتوظيف في منطقة اليورو", "zh": "歐元區 GDP 初值與就業"}},
   {"time": "13/11 20:30", "impact": "high",
-   "text": {"vi": "PPI + Core PPI Mỹ", "en": "US PPI + Core PPI", "ar": "مؤشر أسعار المنتجين الأمريكي PPI و Core PPI", "zh": "美國 PPI 與核心 PPI"}}
+   "text": {"vi": "PPI + Core PPI Mỹ (m/m)", "en": "US PPI + Core PPI m/m", "ar": "مؤشر أسعار المنتجين الأمريكي PPI و Core PPI (شهري)", "zh": "美國 PPI 與核心 PPI（月增率）"}},
+  {"time": "13/11 21:10", "impact": "low",
+   "text": {"vi": "Phát biểu của thành viên FOMC Collins", "en": "FOMC member Collins speaks", "ar": "كلمة عضو اللجنة الفيدرالية كولينز", "zh": "FOMC 委員 Collins 講話"}},
+  {"time": "13/11 21:40", "impact": "low",
+   "text": {"vi": "Phát biểu của thành viên FOMC Logan", "en": "FOMC member Logan speaks", "ar": "كلمة عضو اللجنة الفيدرالية لوغان", "zh": "FOMC 委員 Logan 講話"}},
+  {"time": "13/11 22:50", "impact": "low",
+   "text": {"vi": "Phát biểu của thành viên FOMC Bowman", "en": "FOMC member Bowman speaks", "ar": "كلمة عضو اللجنة الفيدرالية بومان", "zh": "FOMC 委員 Bowman 講話"}},
+  {"time": "14/11 00:00", "impact": "low",
+   "text": {"vi": "Phát biểu của thành viên FOMC Daly", "en": "FOMC member Daly speaks", "ar": "كلمة عضو اللجنة الفيدرالية دالي", "zh": "FOMC 委員 Daly 講話"}}
  ],
  "next_update": {
-  "vi": "Plan sáng 07:00 VN thứ Sáu 13/11",
-  "en": "Morning plan at 07:00 VN on Friday 13/11",
-  "ar": "خطة الصباح الساعة 07:00 بتوقيت فيتنام يوم الجمعة 13/11",
-  "zh": "越南時間 11/13（週五）07:00 早盤計劃"
+  "vi": "Cập nhật 13:45 VN hôm nay (thứ Sáu 13/11)",
+  "en": "Update at 13:45 VN today (Friday 13/11)",
+  "ar": "تحديث الساعة 13:45 بتوقيت فيتنام اليوم (الجمعة 13/11)",
+  "zh": "越南時間今日（11/13 週五）13:45 更新"
  },
  "chart": {
-  "vi": "data/charts/2026-11-12-1930-vi.png",
-  "en": "data/charts/2026-11-12-1930-en.png"
+  "vi": "data/charts/2026-11-13-0700-vi.png",
+  "en": "data/charts/2026-11-13-0700-en.png"
  }
 }
