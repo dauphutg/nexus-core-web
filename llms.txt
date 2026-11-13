@@ -20,14 +20,14 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Track record (November 2026)
 
-- Plans published: 7; graded: 4; zone reached: 1; Target 1 reached: 1; invalidated: 0; total: +2.4R
+- Plans published: 7; graded: 7; zone reached: 4; Target 1 reached: 2; invalidated: 0; total: +6.8R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
-- [2026-11-13 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-13-newyork/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Pending
-- [2026-11-13 Pre-London update](https://nexuscore.trade/en/plan/2026-11-13-london/): TWO-WAY · leaning SELL, main zone 3907.3–3914 — Pending
-- [2026-11-13 Asia plan](https://nexuscore.trade/en/plan/2026-11-13-asia/): TWO-WAY · leaning SELL, main zone 3907.3–3915 — Pending
+- [2026-11-13 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-13-newyork/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Target 1 reached +0.62R
+- [2026-11-13 Pre-London update](https://nexuscore.trade/en/plan/2026-11-13-london/): TWO-WAY · leaning SELL, main zone 3907.3–3914 — Zone not reached 0R
+- [2026-11-13 Asia plan](https://nexuscore.trade/en/plan/2026-11-13-asia/): TWO-WAY · leaning SELL, main zone 3907.3–3915 — No follow-through +3.7R
 - [2026-11-12 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-12-newyork/): TWO-WAY · leaning SELL, main zone 4018.7–4035.4 — Zone not reached 0R
 - [2026-11-12 Pre-London update](https://nexuscore.trade/en/plan/2026-11-12-london/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Zone not reached 0R
 - [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Target 1 reached +2.44R
@@ -52,6 +52,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Why gold moved (recent days)
 
+- [2026-11-13: Gold edged up 0.14% as an Asian technical rebound faded under Fed rate-hike bets](https://nexuscore.trade/en/why-gold-moved/2026-11-13-technical/) (+0.14%)
 - [2026-11-12: Gold sank 2.85% to a 1-year low on a Fed-driven dollar rally and fading US-Iran deal hopes](https://nexuscore.trade/en/why-gold-moved/2026-11-12-dollar/) (-2.85%)
 - [2026-11-11: Gold fell 1.18% as hawkish Fed remarks and a firmer dollar erased early gains](https://nexuscore.trade/en/why-gold-moved/2026-11-11-fed/) (-1.18%)
 

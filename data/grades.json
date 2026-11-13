@@ -255,5 +255,216 @@
   "t1": 3925,
   "graded_utc": "2026-11-13T01:56Z",
   "regraded": "rules v2 (13/11/2026)"
+ },
+ "2026-11-13-0700": {
+  "rules": 2,
+  "window": [
+   "2026-11-13 06:39",
+   "2026-11-13 13:52"
+  ],
+  "followed_to": "2026-11-14 05:00",
+  "high": 3923.09,
+  "low": 3878.565,
+  "last": 3890.745,
+  "zones": [
+   {
+    "side": "SELL",
+    "zone": [
+     3907.3,
+     3915.0
+    ],
+    "edge": 3907.3,
+    "void": 3948.8,
+    "t1": 3852.6,
+    "touched": "2026-11-13 08:15",
+    "result": "expired",
+    "r": 0.54,
+    "last": 3884.685,
+    "best": 39.63,
+    "best_r": 0.95,
+    "main": true,
+    "grade": "B"
+   },
+   {
+    "side": "SELL",
+    "zone": [
+     3917.6,
+     3925.0
+    ],
+    "edge": 3917.6,
+    "void": 3928.0,
+    "t1": 3852.6,
+    "touched": "2026-11-13 10:00",
+    "result": "expired",
+    "r": 3.16,
+    "last": 3884.685,
+    "best": 49.93,
+    "best_r": 4.8,
+    "main": false,
+    "grade": "B"
+   },
+   {
+    "side": "SELL",
+    "zone": [
+     3980.7,
+     3993.0
+    ],
+    "edge": 3980.7,
+    "void": 4004.0,
+    "t1": 3852.6,
+    "result": "no_touch",
+    "r": 0,
+    "main": false,
+    "grade": "B"
+   }
+  ],
+  "result": "expired",
+  "r": 3.7,
+  "best": 49.93,
+  "best_r": 4.8,
+  "side": "SELL",
+  "zone": [
+   3907.3,
+   3915.0
+  ],
+  "edge": 3907.3,
+  "void": 3948.8,
+  "t1": 3852.6,
+  "graded_utc": "2026-11-13T22:16Z"
+ },
+ "2026-11-13-1345": {
+  "rules": 2,
+  "window": [
+   "2026-11-13 13:52",
+   "2026-11-13 19:50"
+  ],
+  "followed_to": "2026-11-14 05:00",
+  "high": 3905.975,
+  "low": 3886.58,
+  "last": 3890.355,
+  "zones": [
+   {
+    "side": "SELL",
+    "zone": [
+     3907.3,
+     3914.0
+    ],
+    "edge": 3907.3,
+    "void": 3948.8,
+    "t1": 3872.2,
+    "result": "no_touch",
+    "r": 0,
+    "main": true,
+    "grade": "B"
+   },
+   {
+    "side": "SELL",
+    "zone": [
+     3917.6,
+     3925.0
+    ],
+    "main": false,
+    "grade": "B",
+    "result": "counted_earlier",
+    "r": null
+   },
+   {
+    "side": "SELL",
+    "zone": [
+     3980.7,
+     3993.0
+    ],
+    "edge": 3980.7,
+    "void": 4004.0,
+    "t1": 3872.2,
+    "result": "no_touch",
+    "r": 0,
+    "main": false,
+    "grade": "B"
+   }
+  ],
+  "result": "no_touch",
+  "r": 0,
+  "side": "SELL",
+  "zone": [
+   3907.3,
+   3914.0
+  ],
+  "edge": 3907.3,
+  "void": 3948.8,
+  "t1": 3872.2,
+  "graded_utc": "2026-11-13T22:16Z"
+ },
+ "2026-11-13-1930": {
+  "rules": 2,
+  "window": [
+   "2026-11-13 19:50",
+   "2026-11-14 05:00"
+  ],
+  "followed_to": "2026-11-14 05:00",
+  "high": 3905.97,
+  "low": 3867.67,
+  "last": 3884.685,
+  "zones": [
+   {
+    "side": "SELL",
+    "zone": [
+     3901.6,
+     3914.0
+    ],
+    "edge": 3901.6,
+    "void": 3948.8,
+    "t1": 3872.2,
+    "touched": "2026-11-13 20:30",
+    "result": "hit",
+    "r": 0.62,
+    "at": "2026-11-13 23:00",
+    "best": 33.93,
+    "best_r": 0.72,
+    "main": true,
+    "grade": "B"
+   },
+   {
+    "side": "SELL",
+    "zone": [
+     3918.0,
+     3932.0
+    ],
+    "edge": 3918.0,
+    "void": 3935.0,
+    "t1": 3872.2,
+    "result": "no_touch",
+    "r": 0,
+    "main": false,
+    "grade": "B"
+   },
+   {
+    "side": "SELL",
+    "zone": [
+     3976.0,
+     3993.0
+    ],
+    "edge": 3976.0,
+    "void": 4004.0,
+    "t1": 3872.2,
+    "result": "no_touch",
+    "r": 0,
+    "main": false,
+    "grade": "B"
+   }
+  ],
+  "result": "hit",
+  "r": 0.62,
+  "best": 33.93,
+  "best_r": 0.72,
+  "side": "SELL",
+  "zone": [
+   3901.6,
+   3914.0
+  ],
+  "edge": 3901.6,
+  "void": 3948.8,
+  "t1": 3872.2,
+  "graded_utc": "2026-11-13T22:16Z"
  }
 }

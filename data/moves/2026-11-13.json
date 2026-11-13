@@ -1,0 +1,46 @@
+{
+ "date": "2026-11-13",
+ "open": 3879.28,
+ "close": 3884.68,
+ "high": 3923.09,
+ "low": 3867.67,
+ "change": 5.4,
+ "change_pct": 0.14,
+ "biggest_hour": {
+  "start_vn": "2026-11-13 08:00",
+  "move": 22.26
+ },
+ "candles": 92,
+ "tag": "technical",
+ "headline": {
+  "en": "Gold edged up 0.14% as an Asian technical rebound faded under Fed rate-hike bets",
+  "ar": "ارتفع الذهب 0.14% بعد ارتداد فني في آسيا تلاشى تحت رهانات رفع الفائدة الأمريكية",
+  "vi": "Vàng nhích 0.14% khi nhịp hồi kỹ thuật phiên Á phai dần vì kỳ vọng Fed tăng lãi suất",
+  "zh": "亞洲盤技術性反彈在聯準會升息預期下消退，金價小漲 0.14%"
+ },
+ "reasons": [
+  {
+   "en": "Gold bounced in Asian trade after Thursday's slide to a more than one-year low; newswires called it a technical rebound and Reuters cited bargain hunting. The biggest hour began at 20:00 ET, a 22.26-dollar gain, and the day high reached 3923.09.",
+   "ar": "ارتد الذهب في التداولات الآسيوية بعد هبوط الخميس إلى أدنى مستوى في أكثر من عام، ووصفت وكالات الأنباء ذلك بارتداد فني بينما أشارت رويترز إلى عمليات شراء عند الانخفاض. بدأت أكبر ساعة حركة عند 20:00 بتوقيت نيويورك بمكسب 22.26 دولارًا، وبلغ أعلى مستوى في اليوم 3923.09.",
+   "vi": "Vàng hồi lên trong phiên Á sau cú giảm hôm thứ Năm về đáy hơn 1 năm; các hãng tin gọi đây là nhịp hồi kỹ thuật, Reuters nêu lực mua bắt đáy. Giờ biến động mạnh nhất bắt đầu lúc 08:00 giờ VN, tăng 22.26 giá, đỉnh ngày đạt 3923.09.",
+   "zh": "金價週四跌至逾一年低點後，亞洲盤出現反彈；通訊社稱為技術性反彈，路透則指逢低買盤進場。波動最大的一小時始於美東 20:00，上漲 22.26 美元，全日高點達 3923.09。"
+  },
+  {
+   "en": "Headlines reported gold rising after a cooler US PPI report at 8:30 ET; spot spiked to 3905.97 in that 15-minute bar but slid to 3872.73 in the next one.",
+   "ar": "أفادت العناوين بارتفاع الذهب بعد صدور بيانات أسعار المنتجين الأمريكية الأهدأ عند 8:30 بتوقيت نيويورك؛ قفز السعر الفوري إلى 3905.97 خلال تلك الشمعة ذات 15 دقيقة لكنه تراجع إلى 3872.73 في الشمعة التالية.",
+   "vi": "Tin tức cho biết vàng tăng sau khi chỉ số PPI Mỹ hạ nhiệt công bố lúc 20:30 giờ VN; giá vọt lên 3905.97 trong nến 15 phút đó nhưng rơi về 3872.73 ở nến kế tiếp.",
+   "zh": "新聞指美國 PPI 數據降溫，美東 8:30 公布後金價走高；現貨在該 15 分鐘 K 線急升至 3905.97，但下一根即回落至 3872.73。"
+  },
+  {
+   "en": "Reuters said Fed rate-hike bets kept gold on track for its worst week in four months, capping the rebound. Gold closed at 3884.68, up 5.4 dollars on the day.",
+   "ar": "ذكرت رويترز أن رهانات رفع الفائدة من الفيدرالي أبقت الذهب في طريقه لأسوأ أسبوع في أربعة أشهر، ما حدّ من الارتداد. وأغلق الذهب عند 3884.68 مرتفعًا 5.4 دولار في اليوم.",
+   "vi": "Reuters cho biết kỳ vọng Fed tăng lãi suất khiến vàng hướng tới tuần tệ nhất trong 4 tháng, kìm nhịp hồi. Vàng đóng ngày ở 3884.68, tăng 5.4 giá.",
+   "zh": "路透指出，聯準會升息預期使金價朝四個月來最差單週表現邁進，限制了反彈幅度。黃金收在 3884.68，全日上漲 5.4 美元。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (newswires)",
+  "TradingView news (Crypto Briefing)"
+ ]
+}
