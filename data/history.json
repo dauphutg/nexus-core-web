@@ -41,8 +41,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "4035.4–4046.5",
-   "result": "no_touch",
-   "r": 0,
+   "result": "hit",
+   "r": 2.44,
    "url": "https://nexuscore.trade/en/plan/2026-11-12-asia/"
   },
   {

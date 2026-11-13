@@ -300,3 +300,6 @@ html:lang(zh-Hant) h2,html:lang(zh-Hant) .eyebrow{font-size:14px}
 .lang [lang="zh-Hant"]{font-family:'Noto Sans TC','PingFang TC',sans-serif;font-size:13px}
 @media (max-width:480px){.lang button,.lang a{min-width:34px;padding:0 6px;font-size:12px}.lang [lang="zh-Hant"]{font-size:12px}.top-right{gap:6px}.theme{width:38px;height:38px}}
 @media (max-width:360px){.brand img{height:22px}}
+/* rules v2: one block per graded zone */
+.zres{padding:12px 0;border-top:1px solid var(--line)} .zres:last-of-type{border-bottom:1px solid var(--line)}
+.zt{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px} .zres p{margin:6px 0 0} .zres .best{margin-top:8px}

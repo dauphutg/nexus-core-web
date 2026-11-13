@@ -231,7 +231,7 @@ try:
     G = json.loads(read('data/grades.json'))
 except Exception:
     G = {}
-RESULTS = ('hit', 'void', 'no_touch', 'expired', 'aside')
+RESULTS = ('hit', 'void', 'no_touch', 'expired', 'aside', 'mixed')
 
 
 def grade_of(k):
@@ -314,6 +314,13 @@ def r_text(r, lang, nd=2):
 
 
 def res_cls(res): return 'good' if res == 'hit' else 'bad' if res == 'void' else 'neutral'
+
+
+def counted_zones(g):
+    """zones that count in R (rules v2); older grades without a zone list count as one zone"""
+    if not g: return []
+    if 'zones' in g: return [z for z in g['zones'] if z.get('result') in ('hit', 'void', 'expired')]
+    return [g] if g.get('result') in ('hit', 'void', 'expired') else []
 
 
 def res_label(g, lang): return t(lang, 'res_' + g['result']) if g else t(lang, 'pending')
@@ -447,17 +454,32 @@ def result_block(k, lang):
         rows = []
         row = lambda kk, v, num_=True: rows.append(f'<div class="row"><span class="k">{esc(kk)}</span><span class="v{" num" if num_ else ""}"{" dir=\"ltr\"" if num_ else ""}>{esc(v)}</span></div>')
         if g.get('window'): row(t(lang, 'pp_window'), f"{vn_label(g['window'][0], lang)} → {vn_label(g['window'][1], lang)}", False)
-        if g.get('touched'): row(t(lang, 'pp_touched'), vn_label(g['touched'], lang), False)
-        if g.get('at'): row(t(lang, 'pp_event'), vn_label(g['at'], lang), False)
-        if g.get('t1') is not None: row(t(lang, 'pp_t1'), fmt(g['t1'], lang))
-        if g.get('void') is not None: row(t(lang, 'pp_void'), fmt(g['void'], lang))
+        if g.get('followed_to'): row(t(lang, 'pp_follow'), vn_label(g['followed_to'], lang), False)
         if g.get('high') is not None: row(t(lang, 'pp_hl'), f"{fmt(g['high'], lang)} / {fmt(g['low'], lang)}")
-        if g.get('last') is not None: row(t(lang, 'pp_last'), fmt(g['last'], lang))
         if rows: out.append('<div class="list">' + ''.join(rows) + '</div>')
-        if g.get('best') is not None:
-            br = f" (≈ {r_text(g['best_r'], lang, 1)})" if g.get('best_r') is not None else ''
-            out.append(f'<div class="best"><span class="k">{esc(t(lang, "pp_best"))}</span><span class="v num" dir="ltr">+{esc(fmt(g["best"], lang))} ${esc(br)}</span>'
-                       f'<p class="muted small">{esc(t(lang, "pp_best_note"))}</p></div>')
+        zs = g.get('zones')
+        if zs is None and g.get('zone'): zs = [dict(g, main=True)]
+        if zs:
+            out.append(f'<h3>{esc(t(lang, "pp_zones"))}</h3>')
+            for z in zs:
+                head = (f"{esc(t(lang, z['side']))} <span class=\"num\" dir=\"ltr\">{esc(rng(z['zone'][0], z['zone'][1], lang))}</span>"
+                        + esc(f" · {t(lang, 'z_main')}" if z.get('main') else (f" · {z['grade']}" if z.get('grade') else '')))
+                if z.get('result') == 'counted_earlier':
+                    out.append(f'<div class="zres"><div class="zt"><strong>{head}</strong><span class="pill neutral">{esc(t(lang, "z_earlier"))}</span></div></div>'); continue
+                zr = z.get('r')
+                rr = f'<span class="num r {"r-up" if (zr or 0) > 0 else "r-down" if (zr or 0) < 0 else "r-flat"}" dir="ltr">{esc(r_text(zr, lang))}</span>' if zr is not None else ''
+                det = []
+                if z.get('touched'): det.append(f"{t(lang, 'pp_touched')}: {vn_label(z['touched'], lang)}")
+                if z.get('at'): det.append(f"{t(lang, 'pp_event')}: {vn_label(z['at'], lang)}")
+                if z.get('t1') is not None: det.append(f"{t(lang, 'pp_t1')}: {fmt(z['t1'], lang)}")
+                if z.get('void') is not None: det.append(f"{t(lang, 'pp_void')}: {fmt(z['void'], lang)}")
+                mfe = ''
+                if z.get('best') is not None:
+                    br = f" (≈ {r_text(z['best_r'], lang, 1)})" if z.get('best_r') is not None else ''
+                    mfe = f'<div class="best"><span class="k">{esc(t(lang, "pp_best"))}</span><span class="v num" dir="ltr">+{esc(fmt(z["best"], lang))} ${esc(br)}</span></div>'
+                out.append(f'<div class="zres"><div class="zt"><strong>{head}</strong><span class="pill {res_cls(z["result"])}">{esc(t(lang, "res_" + z["result"]))}</span>{rr}</div>'
+                           f'<p class="muted small">{esc(" · ".join(det))}</p>{mfe}</div>')
+            if any(z.get('best') is not None for z in zs): out.append(f'<p class="muted small">{esc(t(lang, "pp_best_note"))}</p>')
     out.append(f'<p class="small"><a href="{track_path(lang, k[:7])}#method">{esc(t(lang, "tr_method"))}</a></p>')
     return ''.join(out)
 
@@ -522,15 +544,15 @@ def plan_page(k, lang):
 def month_stats(keys):
     gs = [grade_of(k) for k in keys]
     graded = [g for g in gs if g]
-    reached = [g for g in graded if g['result'] in ('hit', 'void', 'expired')]
-    hit = sum(1 for g in reached if g['result'] == 'hit')
-    void = sum(1 for g in reached if g['result'] == 'void')
-    tot = round(sum(g.get('r') or 0 for g in reached), 2)
-    return len(keys), len(graded), len(reached), hit, void, tot
+    zs = [z for g in graded for z in counted_zones(g)]
+    hit = sum(1 for z in zs if z['result'] == 'hit')
+    void = sum(1 for z in zs if z['result'] == 'void')
+    tot = round(sum(z.get('r') or 0 for z in zs), 2)
+    return len(keys), len(graded), len(zs), hit, void, tot
 
 
 def avg_best(keys):
-    bs = [grade_of(k)['best_r'] for k in keys if grade_of(k) and grade_of(k).get('best_r') is not None]
+    bs = [z['best_r'] for k in keys for z in counted_zones(grade_of(k)) if z.get('best_r') is not None]
     return round(sum(bs) / len(bs), 1) if bs else None
 
 
@@ -550,8 +572,10 @@ def track_page(ym, lang):
         lab = t(lang, p['bias']) + (' · ' + t(lang, p['lean']) if p['bias'] == 'TWO_WAY' and p.get('lean') else '')
         rr = f'<span class="num r" dir="ltr">{esc(r_text(g.get("r"), lang))}</span>' if g and g.get('r') is not None else ''
         if g and g.get('best') is not None: rr += f'<span class="num muted small" dir="ltr" title="{esc(t(lang, "pp_best"))}">↗ +{esc(fmt(g["best"], lang))}$</span>'
+        cz = counted_zones(g)
+        zr_txt = ', '.join(rng(z['zone'][0], z['zone'][1], lang) for z in cz) if cz and 'zones' in g else (rng(mz['lo'], mz['hi'], lang) if mz else '')
         rows.append(f'<a class="card trow" href="{plan_path(lang, k)}"><span class="l"><strong>{esc(day_label(dt.date.fromisoformat(p["date"]), lang))} · {esc(t(lang, "ed_short")[p["edition"]])}</strong>'
-                    f'<span class="h"><span class="pill {side_cls(side_of(p))}">{esc(lab)}</span>{(" " + num(rng(mz["lo"], mz["hi"], lang))) if mz else ""}</span></span>'
+                    f'<span class="h"><span class="pill {side_cls(side_of(p))}">{esc(lab)}</span>{(" " + num(zr_txt)) if zr_txt else ""}</span></span>'
                     f'<span class="rt"><span class="pill {res_cls(g["result"]) if g else "neutral"}">{esc(res_label(g, lang))}</span>{rr}</span></a>')
     i = MONTHS.index(ym)
     nav = []

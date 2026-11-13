@@ -21,7 +21,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Track record (November 2026)
 
-- Plans published: 5; graded: 4; zone reached: 0; Target 1 reached: 0; invalidated: 0; total: n/a
+- Plans published: 5; graded: 4; zone reached: 1; Target 1 reached: 1; invalidated: 0; total: +2.4R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
@@ -29,7 +29,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [2026-11-13 Asia plan](https://nexuscore.trade/en/plan/2026-11-13-asia/): TWO-WAY · leaning SELL, main zone 3907.3–3915 — Pending
 - [2026-11-12 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-12-newyork/): TWO-WAY · leaning SELL, main zone 4018.7–4035.4 — Zone not reached 0R
 - [2026-11-12 Pre-London update](https://nexuscore.trade/en/plan/2026-11-12-london/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Zone not reached 0R
-- [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Zone not reached 0R
+- [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Target 1 reached +2.44R
 - [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2 — Zone not reached 0R
 
 ## Gold trading Q&A
