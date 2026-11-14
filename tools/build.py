@@ -93,6 +93,13 @@ def pips(n, lang):
     return (s.replace(',', '.') if lang == 'vi' else s) + ' pip'
 
 
+STD_R = 10.0   # fixed comparison unit for MFE: 1 standard R = 10 dollars (not the trade's own R)
+
+
+def std_r(n, lang):
+    return r_text(round(float(n) / STD_R, 1), lang, 1) + ' ' + t(lang, 'std_r')
+
+
 def rng(lo, hi, lang):
     return fmt(lo, lang) if hi is None or lo == hi else fmt(lo, lang) + '–' + fmt(hi, lang)
 
@@ -489,7 +496,7 @@ def result_block(k, lang):
                 if z.get('void') is not None: det.append(f"{t(lang, 'pp_void')}: {fmt(z['void'], lang)}")
                 mfe = ''
                 if z.get('best') is not None:
-                    br = f" (≈ {r_text(z['best_r'], lang, 1)})" if z.get('best_r') is not None else ''
+                    br = f" · {std_r(z['best'], lang)}"
                     mfe = f'<div class="best"><span class="k">{esc(t(lang, "pp_best"))}</span><span class="v num" dir="ltr">+{esc(fmt(z["best"], lang))} $ · {esc(pips(z["best"], lang))}{esc(br)}</span></div>'
                 nr = z.get('near')
                 if nr:
@@ -599,7 +606,7 @@ def track_page(ym, lang):
     st = lambda k, v: f'<div class="stat"><span class="k">{esc(t(lang, k))}</span><span class="v num" dir="ltr">{esc(v)}</span></div>'
     stats = (st('tr_plans', str(n)) + st('tr_graded', str(ng)) + st('tr_reached', str(nr)) +
              st('tr_hit', f'{hit}/{nr}' if nr else '—') + st('tr_void', f'{void}/{nr}' if nr else '—') + st('tr_r', r_text(tot, lang, 1) if nr else '—') +
-             st('tr_best', (f"+{pips(avg_best_usd(keys), lang)} (+{fmt(avg_best_usd(keys), lang)} $)") if avg_best_usd(keys) is not None else '—') +
+             st('tr_best', (f"+{pips(avg_best_usd(keys), lang)} · {std_r(avg_best_usd(keys), lang)}") if avg_best_usd(keys) is not None else '—') +
              (st('tr_near', str(near_count(keys))) if near_count(keys) else ''))
     rc = round(sum(z.get('r') or 0 for k in keys for z in counted_zones(grade_of(k)) if z['result'] in ('hit', 'void')), 2)
     rs = round(sum(z.get('r') or 0 for k in keys for z in counted_zones(grade_of(k)) if z['result'] == 'expired'), 2)
