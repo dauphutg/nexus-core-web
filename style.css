@@ -357,3 +357,40 @@ html[lang="ar"] .kpi .kt,html:lang(zh-Hant) .kpi .kt{letter-spacing:0}
 .rv img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line)}
 .rv p{margin:8px 0 14px}
 .chart.review img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block}
+/* track record – app style */
+.tperf{margin:6px 0 10px}
+.ktiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ktile{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 10px 26px -20px rgba(8,22,37,.4)}
+.ktile .kv{font-size:clamp(24px,4.5vw,36px);font-weight:700;line-height:1}
+.ktile .kv.wr{color:var(--gold-ink)}
+.ktile .kk{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);text-align:center}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 10px 26px -22px rgba(8,22,37,.45)}
+.tc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.tc-top .sym{display:block;font-size:20px;font-weight:700;letter-spacing:.01em}
+.tc-top .sub{display:block;font-size:13px;color:var(--ink3)}
+.sidebadge{font-weight:800;font-size:13px;letter-spacing:.1em;padding:6px 14px;border-radius:999px;border:1px solid}
+.sidebadge.sell{color:var(--sell);background:var(--sell-bg);border-color:var(--sell-line)} .sidebadge.buy{color:var(--buy);background:var(--buy-bg);border-color:var(--buy-line)}
+.tc-mid{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tc-mid .entry{color:var(--ink2);font-size:16px} .tc-mid .entry b{color:var(--ink);font-weight:600}
+.chip{font-weight:700;font-size:14px;padding:5px 12px;border-radius:999px;border:1px solid;white-space:nowrap}
+.chip.good{color:var(--buy);background:var(--buy-bg);border-color:var(--buy-line)} .chip.bad{color:var(--sell);background:var(--sell-bg);border-color:var(--sell-line)} .chip.flat{color:var(--ink2);background:var(--soft);border-color:var(--line)}
+.tc-bot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tbtn{font-weight:600;font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid var(--gold-line);background:var(--gold-bg);color:var(--gold-ink)}
+.tcard .rv{border:0;padding:0;background:none;border-radius:0}
+.idle{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0 18px}
+.idle summary{cursor:pointer;padding:14px 0;font-weight:600;color:var(--ink2);list-style:none}
+.idle summary::-webkit-details-marker{display:none}
+.idle summary::before{content:'▸ ';display:inline-block;transition:transform .15s} .idle[open] summary::before{transform:rotate(90deg)}
+.idle-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);color:var(--ink)}
+.idle .stack-sm{gap:0;padding-bottom:8px}
+html[lang="ar"] .ktile .kk,html:lang(zh-Hant) .ktile .kk{letter-spacing:0}
+.tc-h{color:var(--ink)} .tc-h:hover{color:var(--ink)}
+.tcard{position:relative}
+.tcard .rv{margin-top:-46px}
+.tcard .rv summary.tbtn{display:inline-block;margin-inline-start:auto;width:max-content;float:inline-end;padding:8px 16px}
+.tcard .rv summary.tbtn::before{content:none}
+.tcard .rv[open] summary.tbtn{background:var(--gold);color:#0C2237}
+.tcard .rv img{clear:both;margin-top:52px}
+.tcard .rv p{margin:8px 0 0}
+.tcard .tc-bot{min-height:38px;padding-inline-end:150px}
+html[data-theme="light"] main a.tc-h,main a.tc-h{color:var(--ink)}

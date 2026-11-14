@@ -20,21 +20,21 @@ UP, DN, GRAY, TXT, NAVY, GOLD, ORG = '#089981', '#F23645', '#787B86', '#131722',
 VN = dt.timezone(dt.timedelta(hours=7))
 BAR = 900
 W = {
-    'vi': dict(before='TRƯỚC', after='SAU', b_sub='Lúc vẽ plan {t} · H1', a_sub='Hết phiên {t} · cùng chart, thêm nến thật sau khi vẽ',
+    'vi': dict(before='TRƯỚC', after='SAU', b_sub='lúc vẽ {t}', a_sub='hết phiên {t}',
                drawn='Lúc vẽ plan {t}', end='Hết phiên {t}', ed={'0700': 'Plan sáng', '1345': 'Cập nhật 13:45', '1930': 'Plan tối'},
                res={'hit': 'Chạm mục tiêu 1', 'void': 'Bị huỷ', 'expired': 'Chốt cuối phiên', 'no_touch': 'Giá không tới vùng',
                     'carried': 'Bản sau theo dõi tiếp', 'mixed': 'Có thắng có thua', 'aside': 'Đứng ngoài'},
                result='Kết quả', sell='Bán', buy='Mua', t1='Mục tiêu 1', touch='chạm vùng', ran='chạy {p} pip', near='suýt chạm · thiếu {g}',
                disc='Chấm tự động theo luật công khai · không phải lời khuyên đầu tư', tz='giờ VN', main='VÙNG CHÍNH', tgt='Mục tiêu',
-               sc_main='Kịch bản chính', sc_alt='Kịch bản phụ', unknown='chưa biết giá sẽ đi thế nào', open_prev='lệnh đang mở từ bản trước',
+               sc_main='Kịch bản chính', sc_alt='Kịch bản phụ', unknown='chưa biết giá sẽ đi thế nào', open_prev='lệnh đang mở từ bản trước', v_ok='✓ ĐÚNG', v_bad='✗ SAI', v_mix='± ĐÚNG MỘT PHẦN', v_none='○ GIÁ CHƯA TỚI VÙNG',
                bias={'SELL': 'BÁN', 'BUY': 'MUA', 'TWO_WAY': '2 CHIỀU', 'STAND_ASIDE': 'ĐỨNG NGOÀI'}, lean='nghiêng'),
-    'en': dict(before='BEFORE', after='AFTER', b_sub='When the plan was drawn {t} · H1', a_sub='Session end {t} · same chart plus the real candles after the plan',
+    'en': dict(before='BEFORE', after='AFTER', b_sub='drawn {t}', a_sub='session end {t}',
                drawn='Plan drawn {t}', end='Session end {t}', ed={'0700': 'Morning plan', '1345': '13:45 update', '1930': 'Evening plan'},
                res={'hit': 'Target 1 reached', 'void': 'Invalidated', 'expired': 'Closed at session end', 'no_touch': 'Zone not reached',
                     'carried': 'Followed by the next update', 'mixed': 'Mixed', 'aside': 'Stood aside'},
                result='Result', sell='Sell', buy='Buy', t1='Target 1', touch='zone reached', ran='ran {p} pips', near='just missed · {g} short',
                disc='Graded automatically by published rules · not financial advice', tz='GMT+7', main='MAIN ZONE', tgt='Target',
-               sc_main='Main scenario', sc_alt='Alternate', unknown='price path not known yet', open_prev='open trade from the previous update',
+               sc_main='Main scenario', sc_alt='Alternate', unknown='price path not known yet', open_prev='open trade from the previous update', v_ok='✓ RIGHT', v_bad='✗ WRONG', v_mix='± PARTLY RIGHT', v_none='○ ZONE NOT REACHED',
                bias={'SELL': 'SELL', 'BUY': 'BUY', 'TWO_WAY': 'TWO-WAY', 'STAND_ASIDE': 'STAND ASIDE'}, lean='leaning'),
 }
 
@@ -76,6 +76,15 @@ def rtxt(r, lang):
     return s.replace('.', ',') if lang == 'vi' else s
 
 
+def verdict(g, T):
+    """one-word verdict taken from the grade (never estimated)"""
+    res, r = g.get('result'), g.get('r') or 0
+    if res == 'hit' or (res == 'expired' and r > 0): return T['v_ok'], UP
+    if res == 'void' or (res == 'expired' and r < 0): return T['v_bad'], DN
+    if res == 'mixed': return T['v_mix'], GRAY
+    return T['v_none'], GRAY
+
+
 def panel(p, g, bars, lang, out, mode, tf='H1'):
     """mode 'before' = what was known when the plan was drawn (candles up to that moment, the plan's zones, targets and
     scenario arrows); 'after' = the same window, same scale, with the real candles to the session end and the result."""
@@ -107,95 +116,66 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
     inview = lambda y: lo - 25 <= y <= hi + 25
     zone_list = [z for z in zs_all if not (z.get('result') == 'no_touch' and not z.get('near') and (z['zone'][0] > hi + 15 or z['zone'][1] < lo - 15))]
     for z in zone_list: ys += z['zone']
-    tg = [q['lo'] for q in p.get('targets') or [] if inview(q['lo'])]
-    ys += tg
+    ys += [q['lo'] for q in p.get('targets') or [] if inview(q['lo'])]
     ymin, ymax = min(ys) - 10, max(ys) + 22
     XR = n + max(5, n * 0.25)
-    labels = []
-    tz_ = [z for z in zs if z.get('touched')]
-    best_z = next((z for z in tz_ if z.get('main') and not z.get('carried_from')), None) or max(tz_, key=lambda z: z.get('best') or 0, default=None)
     def mark(z):   # target reached = star, invalidation close = cross
         if z.get('result') == 'hit' and z.get('at'):
             k = int(xi(ts(z['at'])) + 0.5)
-            if 0 <= k < n: ax.plot([k], [z['t1']], marker='*', ms=17, color=UP, mec='white', mew=1, zorder=9)
+            if 0 <= k < n: ax.plot([k], [z['t1']], marker='*', ms=20, color=UP, mec='white', mew=1, zorder=9)
         if z.get('result') == 'void' and z.get('at'):
             k = int(xi(ts(z['at'])) + 0.5) - 1
-            if 0 <= k < n: ax.plot([k], [z['void']], marker='X', ms=12, color=DN, mec='white', mew=1, zorder=9)
-    for z in zone_list:
-        if z not in zs: continue
-        a, c_ = z['zone']; res = z.get('result')
+            if 0 <= k < n: ax.plot([k], [z['void']], marker='X', ms=14, color=DN, mec='white', mew=1, zorder=9)
+    for z in zone_list:   # zones only, no text: the arrows are what the eye should compare
+        a, c_ = z['zone']
         red = z['side'] == 'SELL'; edge = DN if red else UP
-        strong = z.get('main') or (after and res in ('hit', 'void', 'expired', 'carried'))
-        ax.add_patch(Rectangle((-0.5, a), XR, max(c_ - a, 0.8), facecolor=edge, alpha=0.20 if strong else 0.08, zorder=1))
-        ax.add_patch(Rectangle((-0.5, a), XR, max(c_ - a, 0.8), facecolor='none', edgecolor=edge, lw=1.8 if strong else 0.8, alpha=0.9, zorder=1))
-        lab = f"{T['sell'] if red else T['buy']} {fnum(a, lang)}–{fnum(c_, lang)}"
-        if after:
-            lab += f" · {T['res'].get(res, res)}" + (f" {rtxt(z.get('r'), lang)}" if z.get('r') else '')
-            if z.get('near') and res == 'no_touch': lab += ' · ' + T['near'].format(g=fnum(z['near']['gap'], lang))
-        else:
-            if z.get('main'): lab = T['main'] + ' · ' + lab
-            if z.get('carried_from'): lab += ' · ' + T['open_prev']
-        labels.append(((a + c_) / 2, lab, edge, strong))
-        if not after: continue
-        if z.get('touched'):
+        strong = bool(z.get('main'))
+        ax.add_patch(Rectangle((-0.5, a), XR, max(c_ - a, 0.8), facecolor=edge, alpha=0.16 if strong else 0.07, zorder=1))
+        ax.add_patch(Rectangle((-0.5, a), XR, max(c_ - a, 0.8), facecolor='none', edgecolor=edge, lw=1.6 if strong else 0.7, alpha=0.8, zorder=1))
+        if after and z.get('touched'):
             k = int(xi(ts(z['touched'])) + 0.5)
-            if z is not best_z:
-                if 0 <= k < n: ax.plot([k], [z['edge']], marker='o', ms=7, mfc='white', mec=edge, mew=2, zorder=7)
-                mark(z); continue
-            if 0 <= k < n:
-                e = z['edge']
-                ax.plot([k], [e], marker='o', ms=8, mfc='white', mec=edge, mew=2.2, zorder=7)
-                j = min(range(k, n), key=lambda i: B[i]['l']) if red else max(range(k, n), key=lambda i: B[i]['h'])
-                ext = B[j]['l'] if red else B[j]['h']
-                mv = (e - ext) if red else (ext - e)
-                if mv > 1:
-                    ax.annotate('', xy=(j, ext), xytext=(k, e), zorder=7,
-                                arrowprops=dict(arrowstyle='->,head_length=0.8,head_width=0.45', color=GOLD, lw=2.4, shrinkA=6, shrinkB=0))
-                    ax.text(j + 0.6, ext, f" {T['ran'].format(p=f'{round(mv * 10):,}'.replace(',', '.' if lang == 'vi' else ','))}",
-                            color='#9A6A00', fontsize=10, fontweight='bold', va='center', zorder=8, bbox=dict(fc='white', ec=GOLD, alpha=0.95, pad=0.35, boxstyle='round'))
-        mark(z)
+            if 0 <= k < n: ax.plot([k], [z['edge']], marker='o', ms=8, mfc='white', mec=edge, mew=2.2, zorder=7)
+        if after: mark(z)
     for q in p.get('targets') or []:
         if not inview(q['lo']): continue
         ax.hlines(q['lo'], -0.5, XR, color=GRAY, lw=1, ls=(0, (4, 3)), zorder=2)
-        ax.text(-0.3, q['lo'], f" {T['tgt']} {q.get('label', '')} {fnum(q['lo'], lang)}", color=GRAY, fontsize=8.5, va='bottom', ha='left', zorder=8,
-                bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.3))
-    # the plan's scenario arrows, drawn from the moment of the plan (faded in the after panel)
-    for k_, sc in enumerate((p.get('scenarios') or [])[:2]):   # drawn identically in both panels
+        ax.text(-0.3, q['lo'], f" {q.get('label', '')}", color=GRAY, fontsize=9, va='bottom', ha='left', zorder=8)
+    # the plan's scenario arrows – identical in both panels
+    cl = lambda y: max(ymin + 3, min(ymax - 3, y))
+    for k_, sc in enumerate((p.get('scenarios') or [])[:2]):
         pth = [float(v) for v in sc.get('path') or [] if isinstance(v, (int, float))]
         if len(pth) < 2: continue
         col = (DN if sc['side'] == 'SELL' else UP) if k_ == 0 else ORG
-        cl = lambda y: max(ymin + 2, min(ymax - 2, y))
-        xs_ = [xp + 1 + (xe - xp - 2) * m / len(pth) * 0.9 for m in range(len(pth))]
+        x0, x1 = xp + 0.6, xe + (XR - xe) * 0.55
+        xs_ = [x0 + (x1 - x0) * m / (len(pth) - 1) for m in range(len(pth))]
         ys_ = [cl(v) for v in pth]
-        ax.plot(xs_[:-1] + [xs_[-1]], ys_, color=col, lw=2.2, ls='-' if k_ == 0 else '--', alpha=0.55 if after else 1, zorder=5)
-        ax.plot([xs_[0]], [ys_[0]], marker='o', ms=6, mfc='white', mec=col, mew=1.8, alpha=0.55 if after else 1, zorder=6)
-        ax.annotate('', xy=(xs_[-1], ys_[-1]), xytext=(xs_[-2], ys_[-2]), zorder=6,
-                    arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=col, lw=2.2, alpha=0.55 if after else 1, shrinkA=0, shrinkB=0))
-        ax.text(xs_[-1] + 0.6, ys_[-1], f" {T['sc_main'] if k_ == 0 else T['sc_alt']} ~{sc.get('prob', '')}%", color=col, fontsize=9,
-                fontweight='bold', va='center', alpha=0.6 if after else 1, zorder=8)
+        lw = 3.2 if k_ == 0 else 2.4
+        ax.plot(xs_, ys_, color=col, lw=lw, ls='-' if k_ == 0 else (0, (4, 2.5)), zorder=6, solid_capstyle='round')
+        ax.plot([xs_[0]], [ys_[0]], marker='o', ms=7, mfc='white', mec=col, mew=2, zorder=7)
+        ax.annotate('', xy=(xs_[-1], ys_[-1]), xytext=(xs_[-2] + (xs_[-1] - xs_[-2]) * 0.5, ys_[-2] + (ys_[-1] - ys_[-2]) * 0.5), zorder=7,
+                    arrowprops=dict(arrowstyle='-|>,head_length=1.1,head_width=0.6', color=col, lw=lw, shrinkA=0, shrinkB=0))
+    if after:
+        # what price really did: from the close when the plan was drawn to the close at the session end
+        # the real path after the plan: H1 closes from the moment of drawing to the session end
+        pre = [b for b in B if b['t'] < t_pub]
+        if pre and n - len(pre) >= 1:
+            xs_r = list(range(len(pre) - 1, n)); ys_r = [B[i]['c'] for i in xs_r]
+            ax.plot(xs_r, ys_r, color=NAVY, lw=3, alpha=0.85, zorder=8, solid_capstyle='round', solid_joinstyle='round')
+            if len(xs_r) >= 2:
+                ax.annotate('', xy=(xs_r[-1], ys_r[-1]), xytext=(xs_r[-2] + (xs_r[-1] - xs_r[-2]) * 0.4, ys_r[-2] + (ys_r[-1] - ys_r[-2]) * 0.4), zorder=8,
+                            arrowprops=dict(arrowstyle='-|>,head_length=1.0,head_width=0.55', color=NAVY, lw=3, alpha=0.85, shrinkA=0, shrinkB=0))
+        vt, vc = verdict(g, T)
+        ax.text(0.015, 0.96, vt, transform=ax.transAxes, ha='left', va='top', fontsize=17, fontweight='bold', color='white', zorder=11,
+                bbox=dict(boxstyle='round,pad=0.5', fc=vc, ec='none'))
+    else:
+        ax.text((xp + xe) / 2, (ymin + ymax) / 2, '?', ha='center', va='center', fontsize=64, fontweight='bold', color=GRAY, alpha=0.25, zorder=2)
     ax.set_ylim(ymin, ymax); ax.set_xlim(-0.5, XR)
-    gap = (ymax - ymin) * 0.045
-    labels.sort(key=lambda q: q[0])
-    placed = []
-    for y, lab, col, strong in labels:
-        if placed and y - placed[-1] < gap: y = placed[-1] + gap
-        placed.append(y)
-    if placed and placed[-1] > ymax - gap:
-        sh = placed[-1] - (ymax - gap); placed = [v - sh for v in placed]
-    for (y0, lab, col, strong), y in zip(labels, placed):
-        ax.text(XR - 0.6, y, lab, ha='right', va='center', fontsize=9.5 if strong else 8.5, color=col,
-                fontweight='bold' if strong else 'normal', zorder=9, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.5))
-    if not after:
-        ax.text((xp + xe) / 2, ymin + (ymax - ymin) * 0.4, T['unknown'], ha='center', va='center', fontsize=10.5, color=GRAY, zorder=8,
-                bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4))
     ax.axvline(xp, color=NAVY, lw=1.6, ls=(0, (5, 3)), zorder=4)
     ax.annotate(T['drawn'].format(t=hm(g['window'][0])), xy=(xp, ymax - (ymax - ymin) * 0.06), xytext=(xp, ymax - (ymax - ymin) * 0.005),
                 ha='center', va='top', fontsize=10.5, fontweight='bold', color='white', zorder=10,
                 bbox=dict(boxstyle='round,pad=0.35', fc=NAVY, ec='none'),
                 arrowprops=dict(arrowstyle='-|>,head_length=0.7,head_width=0.4', color=NAVY, lw=2))
     ax.axvline(xe, color=GRAY, lw=1.2, ls=(0, (2, 2)), zorder=4)
-    ax.text(xe, ymax - (ymax - ymin) * 0.05, f" {T['end'].format(t=hm(g['window'][1]))}", color=GRAY, fontsize=9, ha='left', va='center', zorder=8,
-            bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.3))
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)
     for s_ in ax.spines.values(): s_.set_color('#E0E3EB')
     tk, tl = [], []
