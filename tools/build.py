@@ -921,6 +921,12 @@ if __name__ == '__main__':
         write(learn_index_path(lang).strip('/') + '/index.html', learn_index(lang))
         for slug in LEARN[lang]:
             write(learn_path(lang, slug).strip('/') + '/index.html', learn_page(lang, slug))
+            for old in LEARN[lang][slug].get('old_slugs') or []:   # renamed page: the old address forwards to the new one
+                new = SITE + learn_path(lang, slug)
+                write(learn_path(lang, old).strip('/') + '/index.html',
+                      f'<!doctype html><html lang="{HL.get(lang, lang)}"><head><meta charset="utf-8"><meta name="robots" content="noindex">'
+                      f'<meta http-equiv="refresh" content="0; url={esc(new)}"><link rel="canonical" href="{esc(new)}"><title>{esc(LEARN[lang][slug]["title"])}</title></head>'
+                      f'<body><p><a href="{esc(new)}">{esc(LEARN[lang][slug]["title"])}</a></p></body></html>')
     write('en/index.html', EN_ROOT)
     write('sitemap.xml', sitemap())
     write('llms.txt', llms())

@@ -212,6 +212,16 @@
     SRC = s0 || sessionStorage.getItem('nc_src') || 'direct';
     if (s0) sessionStorage.setItem('nc_src', s0);
   } catch (e) { SRC = SRC || 'direct'; }
+  // one visit count per browser session (counts only – source, language, page; no IP, no id) → /api/stats for the weekly report
+  try {
+    if (!sessionStorage.getItem('nc_hit') && !/bot|crawl|spider|preview|lighthouse|headless/i.test(navigator.userAgent)) {
+      sessionStorage.setItem('nc_hit', '1');
+      var hitApp = navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+      var hitLang = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : /^\/zh-hant(\/|$)/.test(location.pathname) ? 'zh-hant' : 'en';
+      fetch('/api/hit', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ src: SRC, page: PAGE, lang: hitLang, app: hitApp ? 1 : 0 }) }).catch(function () {});
+    }
+  } catch (e) {}
   // The address decides the language: / and /en/… = English, /ar/… = Arabic, /vi/… = Vietnamese.
   var PATH_LANG = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : /^\/zh-hant(\/|$)/.test(location.pathname) ? 'zh-hant' : 'en';
   // a returning visitor who picked Arabic/Vietnamese and lands on the English home page goes to their language

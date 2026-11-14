@@ -6,6 +6,11 @@
 //   • POST /unsubscribe  → remove it                          {endpoint}
 //   • POST /waitlist     → store a waitlist email             {email, lang, src, page}
 //       (read the list in the Cloudflare dashboard: KV namespace → keys starting with  w: )
+//   • POST /hit          → count one visit per browser session          {src, page, lang, app}
+//       (counts only – no IP, no cookie id; one KV record per day  c:<yyyy-mm-dd>, Vietnam date)
+//   • GET  /stats?days=30 with header  X-Stats-Key: <key>  → totals only (never an email or endpoint):
+//       visits by day / source / language / page, alert sign-ups and emails by day / source / language / page.
+//       Only the SHA-256 of the key is in this file; the key itself is kept privately by the owner.
 //   • every 2 minutes (Cron Trigger): reads https://nexuscore.trade/data/latest.json;
 //     when a new plan edition appears it sends one notification to every subscriber.
 //
@@ -29,6 +34,11 @@ const TXT = {
         b: { SELL: '方向：偏空', BUY: '方向：偏多', TWO_WAY: '雙向', STAND_ASIDE: '觀望' }, lean: '傾向', s: { SELL: '偏空', BUY: '偏多' }, zone: '主要區域' },
 };
 const LANGS = ['en', 'ar', 'vi', 'zh-hant'];
+const STATS_HASH = '9033bf708eb416a76841b768ddaf2ea2ef8e0b22a6f8c93a35a3e04568547b00';
+const HIT_CAP = 900;                    // KV free plan: 1,000 writes a day – stop counting visits before that
+const vnDate = (ms) => new Date((ms || Date.now()) + 7 * 3600e3).toISOString().slice(0, 10);
+const pageGroup = (pg) => { const m = /^\/(?:(ar|vi|zh-hant|en)\/)?([a-z-]+)?/.exec(pg || '/'); return '/' + (m && m[1] ? m[1] + '/' : '') + (m && m[2] ? m[2] + '/' : ''); };
+const bump = (o, k) => { o[k] = (o[k] || 0) + 1; };
 const HOME = { en: '/', ar: '/ar/', vi: '/vi/', 'zh-hant': '/zh-hant/' };
 
 const cleanSrc = (s) => { s = String(s || '').toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 40); return s || 'direct'; };
@@ -143,6 +153,39 @@ async function tick(env) {
   return sendBatch(env, state);
 }
 
+async function stats(env, days) {
+  const out = { generated: new Date().toISOString(), days, visits: { total: 0, app: 0, by_day: {}, src: {}, lang: {}, pg: {} } };
+  for (let i = days - 1; i >= 0; i--) {
+    const d = vnDate(Date.now() - i * 864e5), c = await env.SUBS.get('c:' + d, 'json');
+    if (!c) continue;
+    out.visits.by_day[d] = c.n; out.visits.total += c.n; out.visits.app += c.app || 0;
+    for (const f of ['src', 'lang', 'pg']) for (const [kk, v] of Object.entries(c[f] || {})) out.visits[f][kk] = (out.visits[f][kk] || 0) + v;
+  }
+  const since = vnDate(Date.now() - (days - 1) * 864e5);
+  const group = async (prefix) => {
+    const g = { total: 0, new_in_period: 0, by_day: {}, src: {}, lang: {}, pg: {} };
+    let cursor;
+    do {
+      const page = await env.SUBS.list({ prefix, cursor, limit: 1000 });
+      for (const key of page.keys) {
+        const r = await env.SUBS.get(key.name, 'json');
+        if (!r) continue;
+        g.total++;
+        const d = r.t ? vnDate(Date.parse(r.t)) : 'unknown';
+        if (d >= since) { g.new_in_period++; bump(g.by_day, d); }
+        bump(g.src, r.src || 'unknown'); bump(g.lang, r.l || 'en'); bump(g.pg, pageGroup(r.pg || '/'));
+      }
+      cursor = page.list_complete ? null : page.cursor;
+    } while (cursor && g.total < 5000);
+    return g;
+  };
+  out.alerts = await group('s:');            // active app-alert subscriptions
+  const em = await group('w:');              // emails (plan by email + Signals waitlist) – counts only
+  out.emails = em;
+  out.signals_waitlist = Object.entries(em.pg).filter(([kk]) => /signals\/$/.test(kk)).reduce((n, [, v]) => n + v, 0);
+  return out;
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -172,6 +215,23 @@ export default {
         await env.SUBS.put(id, JSON.stringify({ e: endpoint, p: k.p256dh, a: k.auth, l: lang,
           src: (old && old.src) || cleanSrc(d.src), pg: (old && old.pg) || cleanPage(d.page), t: (old && old.t) || new Date().toISOString() }));
         return reply(201, 'ok');
+      }
+      if (req.method === 'POST' && url.pathname === '/hit') {
+        if (req.headers.get('Origin') !== SITE) return reply(403, 'forbidden');
+        const raw = await req.text();
+        if (raw.length > 500) return reply(413, 'too large');
+        const d = JSON.parse(raw), day = 'c:' + vnDate();
+        const c = (await env.SUBS.get(day, 'json')) || { n: 0, app: 0, src: {}, lang: {}, pg: {} };
+        if (c.n >= HIT_CAP) return new Response(null, { status: 204, headers: cors() });
+        c.n++; if (d.app) c.app++;
+        bump(c.src, cleanSrc(d.src)); bump(c.lang, LANGS.includes(d.lang) ? d.lang : 'en'); bump(c.pg, pageGroup(cleanPage(d.page)));
+        await env.SUBS.put(day, JSON.stringify(c), { expirationTtl: 400 * 86400 });
+        return new Response(null, { status: 204, headers: cors() });
+      }
+      if (req.method === 'GET' && url.pathname === '/stats') {
+        const k = req.headers.get('X-Stats-Key') || '';
+        if (!k || hex(await crypto.subtle.digest('SHA-256', enc.encode(k))) !== STATS_HASH) return reply(403, 'forbidden');
+        return reply(200, JSON.stringify(await stats(env, Math.min(90, Math.max(1, parseInt(url.searchParams.get('days') || '30', 10) || 30)))), 'application/json');
       }
       if (req.method === 'POST' && url.pathname === '/waitlist') {
         if (req.headers.get('Origin') !== SITE) return reply(403, 'forbidden');

@@ -48,7 +48,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [Why does gold move against the US dollar?](https://nexuscore.trade/en/learn/gold-and-the-us-dollar/): Gold is priced in dollars. When the dollar strengthens, an ounce costs more in euros, yen or rupees, which tends to cool demand — and the dollar price of gold f
 - [What is the relationship between gold and real yields?](https://nexuscore.trade/en/learn/gold-and-real-yields/): Real yields are bond yields after inflation, usually measured by the 10-year US TIPS yield. Gold pays no interest, so when real yields rise, holding gold costs 
 - [How to use the daily open line when trading gold](https://nexuscore.trade/en/learn/daily-open-line-gold/): The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far
-- [What is EMA 89 used for in gold trading?](https://nexuscore.trade/en/learn/ema-89-gold/): EMA 89 is an 89-period exponential moving average. On the 1-hour gold chart many traders use it as a medium-term trend filter: price holding above a rising EMA 
+- [How do moving averages help read the gold trend?](https://nexuscore.trade/en/learn/moving-average-trend-gold/): A medium-term moving average on the 1-hour gold chart works as a trend filter: price holding above a rising average suggests buyers control the swing, price bel
 
 ## Why gold moved (recent days)
 

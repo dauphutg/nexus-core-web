@@ -641,13 +641,13 @@
   "example": "plan",
   "q": "How to use the daily open line when trading gold",
   "title": "The daily open line in gold trading: how to use it",
-  "answer": "The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far; below it, sellers are. Price often comes back to test an untested daily open, which makes it a useful intraday magnet and a reference for bias.",
+  "answer": "The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far; below it, sellers are. Price often comes back to it during the day, which makes it a useful intraday reference for bias.",
   "sections": [
    {
     "h": "Three ways traders use it",
     "ul": [
      "Bias filter: prefer buys above the open and sells below it, unless a strong zone says otherwise.",
-     "Magnet: when price has run away from an untested open, a return to it is common, especially in quiet sessions.",
+     "Reference: in quiet sessions price often drifts back toward the open before the next move.",
      "Reaction level: the first retest of the open often produces a bounce or rejection."
     ]
    },
@@ -677,44 +677,44 @@
   "related": [
    "gold-support-and-resistance",
    "how-to-identify-gold-trend",
-   "ema-89-gold",
+   "moving-average-trend-gold",
    "gold-average-daily-range"
   ],
   "publish": "2026-11-13",
   "order": 3
  },
  {
-  "slug": "ema-89-gold",
+  "slug": "moving-average-trend-gold",
   "example": "plan",
-  "q": "What is EMA 89 used for in gold trading?",
-  "title": "EMA 89 on gold (XAUUSD): what it shows and how to use it",
-  "answer": "EMA 89 is an 89-period exponential moving average. On the 1-hour gold chart many traders use it as a medium-term trend filter: price holding above a rising EMA 89 suggests buyers control the swing, below a falling EMA 89 sellers do.",
+  "q": "How do moving averages help read the gold trend?",
+  "title": "Moving averages on gold (XAUUSD): reading the trend filter",
+  "answer": "A medium-term moving average on the 1-hour gold chart works as a trend filter: price holding above a rising average suggests buyers control the swing, price below a falling one suggests sellers do. It tells you which side to favour, not where to act.",
   "sections": [
    {
     "h": "How to read it",
     "ul": [
      "Slope: rising = up-trend, falling = down-trend, flat = range.",
      "Price location: above or below it, and how far — a big gap often precedes a pullback.",
-     "First retest after a cross: often a reaction zone."
+     "First retest after a cross: often a reaction area."
     ]
    },
    {
     "h": "Pairing it with a faster average",
     "p": [
-     "Some traders add a shorter moving average to time pullbacks inside the trend the slower one shows. Which pair works is a matter of testing on your own data — there is no universal setting."
+     "Some traders add a shorter average to time pullbacks inside the trend the slower one shows. Which settings work is a matter of testing on your own data — there is no universal setting."
     ]
    },
    {
     "h": "Limits",
     "p": [
-     "Moving averages lag and get whipped around in ranges and on news. Use EMA 89 to decide which side to favor, and price zones to decide where."
+     "Moving averages lag and get whipped around in ranges and on news. Use the trend average to decide which side to favour, and price zones to decide where."
     ]
    }
   ],
   "faq": [
    {
-    "q": "Why 89 and not 100 or 200?",
-    "a": "89 is a Fibonacci number popular with some traders; 100 or 200 work similarly. Consistency matters more than the exact number."
+    "q": "Which length should I use?",
+    "a": "There is no magic number. Pick one medium-term setting, test it on your own data and keep it consistent — consistency matters more than the exact value."
    },
    {
     "q": "Which timeframe?",
@@ -728,7 +728,10 @@
    "gold-support-and-resistance"
   ],
   "publish": "2026-11-13",
-  "order": 4
+  "order": 4,
+  "old_slugs": [
+   "ema-89-gold"
+  ]
  },
  {
   "slug": "liquidity-sweep-xauusd",
@@ -1083,14 +1086,14 @@
   "example": "plan",
   "q": "How to identify the gold trend (XAUUSD)",
   "title": "How to identify the trend on gold: D1, H4 and H1",
-  "answer": "Start on the daily chart: a series of higher highs and higher lows is an up-trend, lower highs and lower lows a down-trend, overlapping swings a range. Confirm on H4 with the last swing structure and on H1 with price versus a medium moving average such as EMA 89. Trade with the higher timeframe unless a strong zone says otherwise.",
+  "answer": "Start on the daily chart: a series of higher highs and higher lows is an up-trend, lower highs and lower lows a down-trend, overlapping swings a range. Confirm on H4 with the last swing structure and on H1 with price versus a medium-term moving average. Trade with the higher timeframe unless a strong zone says otherwise.",
   "sections": [
    {
     "h": "Three timeframes, three questions",
     "ul": [
      "D1: what is the direction of the last few weeks?",
      "H4: has the last swing broken in the same direction (a break of structure)?",
-     "H1: is price above or below a sloping EMA 89, and is the pullback finished?"
+     "H1: is price above or below a sloping medium-term average, and is the pullback finished?"
     ]
    },
    {
@@ -1098,7 +1101,7 @@
     "ul": [
      "A daily close beyond the last major swing high or low.",
      "H4 failing to make a new extreme and breaking the other way.",
-     "EMA 89 on H1 flattening and price crossing it repeatedly."
+     "The H1 trend average flattening and price crossing it repeatedly."
     ]
    },
    {
@@ -1119,7 +1122,7 @@
    }
   ],
   "related": [
-   "ema-89-gold",
+   "moving-average-trend-gold",
    "trading-gold-in-a-sideways-market",
    "daily-open-line-gold",
    "gold-average-daily-range"
@@ -1138,7 +1141,7 @@
     "h": "Recognizing a range",
     "ul": [
      "Highs and lows stop progressing on H1 and H4.",
-     "EMA 89 flattens and price crosses it often.",
+     "The trend average flattens and price crosses it often.",
      "Daily ranges shrink below the 10-day average.",
      "Calm before big news is common."
     ]
