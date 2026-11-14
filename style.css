@@ -323,6 +323,9 @@ html:lang(zh-Hant) h2,html:lang(zh-Hant) .eyebrow{font-size:14px}
 .bars .h5{height:5%}.bars .h10{height:10%}.bars .h15{height:15%}.bars .h20{height:20%}.bars .h25{height:25%}.bars .h30{height:30%}.bars .h35{height:35%}.bars .h40{height:40%}.bars .h45{height:45%}.bars .h50{height:50%}.bars .h55{height:55%}.bars .h60{height:60%}.bars .h65{height:65%}.bars .h70{height:70%}.bars .h75{height:75%}.bars .h80{height:80%}.bars .h85{height:85%}.bars .h90{height:90%}.bars .h95{height:95%}.bars .h100{height:100%}
 .segbar .g,.legend .g{background:var(--buy)} .segbar .e,.legend .e{background:var(--gold)} .segbar .b,.legend .b{background:var(--sell)}
 .legend{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.legend.two{grid-template-columns:repeat(2,1fr);margin-top:24px}
+.kpi.move .legend .lg{background:var(--gold-bg);border-color:var(--gold-line)}
+.kpi.move .legend .lg b{color:var(--gold-ink)}
 .legend .lg{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:14px;background:var(--soft);border:1px solid var(--line)}
 .legend .lg b{font-size:26px;font-weight:700;line-height:1;color:var(--ink)}
 .legend .lg span{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2);line-height:1.3}

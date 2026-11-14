@@ -623,8 +623,8 @@ def track_page(ym, lang):
                    f'<span class="bl num" dir="ltr">{k[8:10]}/{k[5:7]}</span></div>' for k, b in bars)
     move = (f'<div class="kpi move"><div class="kh"><span class="kt">{esc(t(lang, "kp_move"))}</span><span class="kc">{esc(t(lang, "kp_avg"))}</span></div>'
             f'<span class="big num" dir="ltr">{esc("+" + pips(ab, lang)) if ab is not None else "—"}</span>'
-            + (f'<div class="sub"><span>{esc(t(lang, "kp_max"))} <b class="num" dir="ltr">+{esc(pips(mx, lang))}</b></span><span>{esc(t(lang, "kp_avg_usd"))} <b class="num" dir="ltr">+{esc(fmt(ab, lang))} $</b></span></div>' if ab is not None else '')
-            + (f'<div class="bars">{cols}</div>' if bars else '')
+            + (f'<div class="legend two"><span class="lg"><b class="num" dir="ltr">+{esc(pips(mx, lang))}</b><span>{esc(t(lang, "kp_max"))}</span></span>'
+               f'<span class="lg"><b class="num" dir="ltr">+{esc(fmt(ab, lang))} $</b><span>{esc(t(lang, "kp_avg_usd"))}</span></span></div>' if ab is not None else '')
             + f'<p class="note">{esc(t(lang, "kp_move_note"))}</p></div>')
     stats = real + move
     rows = []
