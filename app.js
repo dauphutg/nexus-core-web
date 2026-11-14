@@ -3,7 +3,7 @@
 
   var T = {
     en: {
-      pp_best: 'Max favourable move (MFE)', pp_best_note: 'Furthest move in the zone’s direction after it was reached, until invalidation or the daily close — shows how good the read was; it is not a trade result and is never added to R.', tr_best: 'Avg MFE', 
+      pp_best: 'Max favourable move (MFE)', pp_best_note: 'Furthest move in the zone’s direction after it was reached, until invalidation or the daily close — shows how good the read was; it is not a trade result and is never added to R.', tr_best: 'Avg MFE', z_near: 'Reacted just short of the zone', near_det: 'Closest {gap} $ from the zone at {at}, then {move} $ in the zone’s direction', near_note: 'Near-zone reaction: price turned within 2 $ of the zone without reaching it. Shown for transparency only — not a touch, not in the hit rate, never added to R.', tr_near: 'Near-zone reactions', 
       chart_hint: 'Tap the chart to view it full screen', lb_hint: 'Tap anywhere to close · pinch to zoom', 
       tab_learn: 'Learn', ln_eyebrow: 'Gold trading Q&A', ln_short: 'Short answer', ln_example: 'Live example from the latest NEXUS CORE plan', ln_faq: 'Quick answers', ln_related: 'Related questions', ln_updated: 'Updated', see_plan: 'See the full plan →', see_track: 'See the track record →',
       ln_index_h1: 'Learn to read the gold market', ln_index_lede: 'Plain answers to the questions gold traders actually ask — each one tied to a real, graded NEXUS CORE plan.', ln_all: 'All questions', ln_sessions_note: 'Plan times: Asia 00:00 UTC · London update 06:45 UTC · New York 12:30 UTC.',
@@ -40,6 +40,7 @@
         'A zone repeated in a later update of the same day is counted once, where it was first reached. A plan’s R is the sum of its zones; wins and losses are counted alike.',
         'Stand-aside plans are not scored.',
         'MFE (maximum favourable excursion) is shown separately: the furthest price travelled in the zone’s direction from its edge, from the touch until invalidation or the daily close. It shows how good the read was — it is never added to R.',
+        'Near-zone reaction (added 14 Nov 2026): a zone missed by 2 $ or less inside the plan’s window is labelled with the closest distance and the move that followed. It is a label only — the zone still counts as not reached and nothing is added to R.',
         'Rules updated 13 Nov 2026 (all zones graded, reached zones followed to the daily close); every earlier plan was re-graded once under these rules.'],
       sg_h1: 'NEXUS CORE Signals', sg_lede: 'Exact trade signals built on the daily plan — for members only. The daily plan stays free for everyone.', sg_soon: 'Members only · launching soon', sg_what: 'What members get',
       sg_b: ['A real-time alert when price reaches a plan zone and the setup confirms — entry, stop and targets.', 'Every signal tied to the plan in force, so you always know why it exists.', 'Priority alerts in the app and a private Telegram group.', 'Every signal recorded and graded, win or loss.'],
@@ -49,7 +50,7 @@
       disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
     ar: {
-      pp_best: 'أقصى حركة مواتية (MFE)', pp_best_note: 'أبعد حركة باتجاه المنطقة بعد الوصول إليها حتى الإلغاء أو الإغلاق اليومي — تُظهر دقة القراءة، وليست نتيجة صفقة ولا تُضاف إلى R.', tr_best: 'متوسط MFE', 
+      pp_best: 'أقصى حركة مواتية (MFE)', pp_best_note: 'أبعد حركة باتجاه المنطقة بعد الوصول إليها حتى الإلغاء أو الإغلاق اليومي — تُظهر دقة القراءة، وليست نتيجة صفقة ولا تُضاف إلى R.', tr_best: 'متوسط MFE', z_near: 'ارتداد قرب المنطقة', near_det: 'أقرب نقطة على بعد {gap} $ من المنطقة عند {at}، ثم تحرك {move} $ باتجاه المنطقة', near_note: 'ارتداد قرب المنطقة: انعكس السعر على بعد 2 $ أو أقل دون أن يصل إليها. يُعرض للشفافية فقط — لا يُعد وصولًا ولا يدخل في نسبة النجاح ولا يُضاف إلى R.', tr_near: 'ارتدادات قرب المنطقة', 
       chart_hint: 'اضغط على الرسم لعرضه بملء الشاشة', lb_hint: 'اضغط في أي مكان للإغلاق · كبّر بإصبعين', 
       tab_learn: 'تعلّم', ln_eyebrow: 'أسئلة وأجوبة تداول الذهب', ln_short: 'الإجابة المختصرة', ln_example: 'مثال حي من أحدث خطة NEXUS CORE', ln_faq: 'إجابات سريعة', ln_related: 'أسئلة ذات صلة', ln_updated: 'آخر تحديث', see_plan: 'شاهد الخطة كاملة', see_track: 'شاهد سجل النتائج',
       ln_index_h1: 'تعلّم قراءة سوق الذهب', ln_index_lede: 'إجابات واضحة عن الأسئلة التي يطرحها متداولو الذهب فعلًا — كل إجابة مرتبطة بخطة حقيقية من NEXUS CORE وتم تقييمها.', ln_all: 'كل الأسئلة', ln_sessions_note: 'أوقات الخطط: آسيا 00:00 UTC · تحديث لندن 06:45 UTC · نيويورك 12:30 UTC.',
@@ -86,6 +87,7 @@
         'المنطقة المكررة في تحديث لاحق من اليوم نفسه تُحتسب مرة واحدة حيث وصلها السعر أولًا. R الخطة = مجموع مناطقها، والرابحة والخاسرة تُحتسب بالتساوي.',
         'خطط «خارج السوق» لا تُحتسب.',
         'MFE (أقصى حركة مواتية) تُعرض منفصلة: أبعد مسافة تحركها السعر باتجاه المنطقة من حافتها، من لحظة الوصول حتى الإلغاء أو الإغلاق اليومي. تُظهر دقة القراءة ولا تُضاف أبدًا إلى R.',
+        'ارتداد قرب المنطقة (أُضيف في 14 نوفمبر 2026): المنطقة التي فاتها السعر بـ 2 $ أو أقل داخل نافذة الخطة تُوسم بأقرب مسافة والحركة التالية. هي وسم فقط — تبقى المنطقة غير مُصابة ولا يُضاف شيء إلى R.',
         'حُدّثت القواعد في 13 نوفمبر 2026 (تقييم كل المناطق ومتابعة المنطقة حتى الإغلاق اليومي)، وأُعيد تقييم كل الخطط السابقة مرة واحدة وفقها.'],
       sg_h1: 'إشارات NEXUS CORE', sg_lede: 'إشارات تداول دقيقة مبنية على الخطة اليومية — للأعضاء فقط. تبقى الخطة اليومية مجانية للجميع.', sg_soon: 'للأعضاء فقط · قريبًا', sg_what: 'ما يحصل عليه الأعضاء',
       sg_b: ['تنبيه فوري عند وصول السعر إلى منطقة الخطة وتأكيد الإعداد — الدخول والوقف والأهداف.', 'كل إشارة مرتبطة بالخطة السارية، فتعرف دائمًا سببها.', 'تنبيهات ذات أولوية في التطبيق ومجموعة تيليجرام خاصة.', 'كل إشارة تُسجَّل وتُقيَّم، رابحة كانت أم خاسرة.'],
@@ -95,7 +97,7 @@
       disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
     vi: {
-      pp_best: 'Giá chạy xa nhất (MFE)', pp_best_note: 'Quãng giá xa nhất theo hướng của vùng sau khi chạm, tới khi bị huỷ hoặc đóng nến ngày — cho thấy nhận định chuẩn tới đâu; không phải kết quả lệnh và không cộng vào R.', tr_best: 'MFE trung bình', 
+      pp_best: 'Giá chạy xa nhất (MFE)', pp_best_note: 'Quãng giá xa nhất theo hướng của vùng sau khi chạm, tới khi bị huỷ hoặc đóng nến ngày — cho thấy nhận định chuẩn tới đâu; không phải kết quả lệnh và không cộng vào R.', tr_best: 'MFE trung bình', z_near: 'Phản ứng sát vùng', near_det: 'Gần nhất cách vùng {gap} $ lúc {at}, sau đó chạy {move} $ theo hướng của vùng', near_note: 'Phản ứng sát vùng: giá quay đầu khi còn cách vùng ≤ 2 $ mà chưa chạm. Chỉ hiển thị để minh bạch — không tính là chạm, không vào tỉ lệ chạm mục tiêu, không cộng vào R.', tr_near: 'Phản ứng sát vùng', 
       chart_hint: 'Chạm vào chart để xem toàn màn hình', lb_hint: 'Chạm bất kỳ đâu để đóng · dùng 2 ngón để phóng to', 
       tab_learn: 'Kiến thức', ln_eyebrow: 'Hỏi đáp giao dịch vàng', ln_short: 'Trả lời ngắn', ln_example: 'Ví dụ thật từ plan NEXUS CORE mới nhất', ln_faq: 'Trả lời nhanh', ln_related: 'Câu hỏi liên quan', ln_updated: 'Cập nhật', see_plan: 'Xem plan đầy đủ →', see_track: 'Xem kết quả chấm →',
       ln_index_h1: 'Học cách đọc thị trường vàng', ln_index_lede: 'Trả lời rõ ràng cho những câu người giao dịch vàng hay hỏi — mỗi câu gắn với plan NEXUS CORE thật đã được chấm.', ln_all: 'Mọi câu hỏi', ln_sessions_note: 'Giờ plan: phiên Á 00:00 UTC · cập nhật phiên Âu 06:45 UTC · phiên Mỹ 12:30 UTC.',
@@ -132,6 +134,7 @@
         'Vùng lặp lại ở bản cập nhật sau trong cùng ngày chỉ tính một lần, ở bản mà giá chạm trước. R của plan = tổng các vùng; vùng thắng và vùng thua tính như nhau.',
         'Plan đứng ngoài không tính điểm.',
         'MFE (giá chạy xa nhất) hiển thị riêng: quãng giá xa nhất theo hướng của vùng tính từ mép vùng, từ lúc chạm tới khi bị huỷ hoặc đóng nến ngày. Số này cho thấy nhận định chuẩn tới đâu – không bao giờ cộng vào R.',
+        'Phản ứng sát vùng (thêm ngày 14/11/2026): vùng bị trượt ≤ 2 $ trong khung của plan được gắn nhãn kèm khoảng cách gần nhất và quãng giá chạy sau đó. Chỉ là nhãn — vùng vẫn tính là không chạm và không cộng gì vào R.',
         'Luật cập nhật ngày 13/11/2026 (chấm mọi vùng, theo dõi vùng đã chạm tới đóng nến ngày); mọi plan trước đó được chấm lại một lần theo luật này.'],
       sg_h1: 'NEXUS CORE Signals', sg_lede: 'Tín hiệu vào lệnh cụ thể dựa trên plan ngày — chỉ dành cho thành viên. Plan ngày vẫn miễn phí cho mọi người.', sg_soon: 'Chỉ cho thành viên · sắp mở', sg_what: 'Thành viên nhận được',
       sg_b: ['Báo ngay khi giá vào vùng plan và tín hiệu xác nhận — điểm vào, dừng lỗ và mục tiêu.', 'Mỗi tín hiệu gắn với plan đang hiệu lực, luôn biết vì sao có lệnh.', 'Thông báo ưu tiên trong app và nhóm Telegram riêng.', 'Mọi tín hiệu được ghi lại và chấm, thắng hay thua.'],
@@ -141,7 +144,7 @@
       disclaimer: 'Nội dung chỉ để tham khảo, không phải lời khuyên đầu tư hay lời mời giao dịch. Sản phẩm có đòn bẩy như vàng CFD có rủi ro mất tiền nhanh. Kết quả quá khứ không đảm bảo tương lai. Chỉ giao dịch bằng số tiền bạn chấp nhận mất.'
     },
     'zh-hant': {
-      pp_best: '最大順向波動（MFE）', pp_best_note: '區域被觸及後，價格朝該區域方向走得最遠的距離，計至失效或每日收盤——反映判讀品質，並非交易結果，也不計入 R。', tr_best: '平均 MFE',
+      pp_best: '最大順向波動（MFE）', pp_best_note: '區域被觸及後，價格朝該區域方向走得最遠的距離，計至失效或每日收盤——反映判讀品質，並非交易結果，也不計入 R。', tr_best: '平均 MFE', z_near: '逼近區域後反轉', near_det: '最接近時距區域 {gap} $（{at}），其後朝區域方向走了 {move} $', near_note: '逼近區域後反轉：價格在距區域 2 $ 以內反轉、未觸及區域。僅為透明揭露——不算觸及、不計入達標率，也永不計入 R。', tr_near: '逼近區域後反轉',
       chart_hint: '點擊圖表可全螢幕檢視', lb_hint: '點擊任意處關閉 · 雙指可放大',
       tab_learn: '學習', ln_eyebrow: '黃金交易問答', ln_short: '簡短回答', ln_example: '最新 NEXUS CORE 計畫的即時範例', ln_faq: '快速問答', ln_related: '相關問題', ln_updated: '更新於', see_plan: '查看完整計畫 →', see_track: '查看成績紀錄 →',
       ln_index_h1: '學會解讀黃金市場', ln_index_lede: '用白話回答黃金交易者最常問的問題——每一題都對應一份真實、已公開評分的 NEXUS CORE 計畫。', ln_all: '全部問題', ln_sessions_note: '計畫發布時間：亞洲盤 08:00 · 倫敦盤前 14:45 · 紐約盤前 20:30（台北／香港時間）。',
@@ -178,6 +181,7 @@
         '同一天後續更新重複出現的區域只計一次，計於最先被觸及的那份。計畫的 R = 各區域加總；盈與虧同樣計入。',
         '「觀望」計畫不計分。',
         'MFE（最大順向波動）另行顯示：自觸及起至失效或每日收盤，價格自區域邊緣朝該區域方向走得最遠的距離。它反映判讀品質，永不計入 R。',
+        '逼近區域後反轉（2026 年 11 月 14 日新增）：於計畫時段內與區域相差 2 $ 以內而未觸及者，標示最接近距離與其後走勢。僅為標示——該區域仍視為未觸及，亦不計入 R。',
         '評分規則於 2026 年 11 月 13 日更新（所有區域皆評分、觸及後追蹤至每日收盤）；先前所有計畫均依新規則重新評分一次。'],
       sg_h1: 'NEXUS CORE 訊號', sg_lede: '以每日計畫為基礎的精確交易訊號——僅限會員。每日計畫永久免費。', sg_soon: '僅限會員 · 即將推出', sg_what: '會員可獲得',
       sg_b: ['價格進入計畫區域且型態確認時即時通知——進場、停損與目標。', '每個訊號都對應當時有效的計畫，清楚知道訊號的依據。', 'App 內優先通知與專屬 Telegram 群組。', '每個訊號都會記錄並評分，無論盈虧。'],

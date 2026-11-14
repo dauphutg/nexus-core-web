@@ -21,6 +21,11 @@ Rules v2 (13/11/2026 – the same text is shown on the Track Record pages):
 - STAND_ASIDE plans → "aside", not scored.
 - MFE (maximum favourable excursion), shown separately and never mixed into R: the furthest price travelled in the
   zone's direction from the zone edge, from the touch until the invalidation close or the daily close.
+- Near-zone reaction (added 14/11/2026, label only – never counted as a touch, never added to R or the hit rate):
+  a zone not reached whose closest approach inside the touch window was within NEAR (2.00 dollars) of its edge records
+  "near" = {gap, at, price, move}: move = furthest price then travelled in the zone's direction from that closest price,
+  until a 15-minute close beyond the invalidation level or the daily close. Back-filled once on earlier no-touch zones
+  when the candles cover them (results and R unchanged).
 """
 import glob, json, os, re, sys, datetime as dt
 from zoneinfo import ZoneInfo
@@ -29,6 +34,7 @@ VN = dt.timezone(dt.timedelta(hours=7))
 NY = ZoneInfo('America/New_York')
 ED_ORDER = ['0700', '1345', '1930']
 BAR = 900  # seconds in a 15-minute candle
+NEAR = 2.0  # dollars: closest approach to a zone edge that still earns the "near-zone reaction" label
 
 
 def load_bars(path):
@@ -161,7 +167,11 @@ def grade_zone(side, lo, hi, void, t1, bars, start, touch_end, end):
     w = [b for b in bars if b['t'] >= start and b['t'] + BAR <= end]
     base = {'side': side, 'zone': [lo, hi], 'edge': edge, 'void': void, 't1': t1}
     touch = next((i for i, b in enumerate(w) if b['t'] < touch_end and ((side == 'SELL' and b['h'] >= lo) or (side == 'BUY' and b['l'] <= hi))), None)
-    if touch is None: return dict(base, result='no_touch', r=0)
+    if touch is None:
+        out = dict(base, result='no_touch', r=0)
+        nr = near_reaction(side, lo, hi, void, w, touch_end)
+        if nr: out['near'] = nr
+        return out
     base['touched'] = fmt_vn(w[touch]['t'])
     def mfe(upto):
         seg = w[touch:upto + 1]
@@ -179,6 +189,46 @@ def grade_zone(side, lo, hi, void, t1, bars, start, touch_end, end):
     last = w[-1]['c']
     r = (edge - last) / risk if side == 'SELL' else (last - edge) / risk
     return dict(base, result='expired', r=round(max(-1.0, min(r_hit, r)), 2), last=last, **mfe(len(w) - 1))
+
+
+def near_reaction(side, lo, hi, void, w, touch_end):
+    """Label for a zone missed by <= NEAR dollars: closest approach in the touch window, then the move in the zone's direction."""
+    tw = [i for i, b in enumerate(w) if b['t'] < touch_end]
+    if not tw: return None
+    if side == 'SELL':
+        k = max(tw, key=lambda i: (w[i]['h'], -i)); px = w[k]['h']; gap = lo - px
+    else:
+        k = min(tw, key=lambda i: (w[i]['l'], i)); px = w[k]['l']; gap = px - hi
+    if gap < 0 or gap > NEAR: return None
+    end = next((j for j in range(k, len(w)) if (side == 'SELL' and w[j]['c'] > void) or (side == 'BUY' and w[j]['c'] < void)), len(w) - 1)
+    seg = w[k:end + 1]
+    mv = (px - min(b['l'] for b in seg)) if side == 'SELL' else (max(b['h'] for b in seg) - px)
+    return {'gap': round(gap, 2), 'at': fmt_vn(w[k]['t']), 'price': px, 'move': max(0.0, round(mv, 2))}
+
+
+def backfill_near(plans, grades, bars):
+    """Add the near-zone label to earlier no-touch zones (rules v2) when the candles cover them. Results and R never change."""
+    added = []
+    for k, g in grades.items():
+        if g.get('rules') != RULES or k not in plans or not g.get('zones') or not g.get('window'): continue
+        p = plans[k]
+        start = int(vn_dt(g['window'][0]).timestamp()); touch_end = int(vn_dt(g['window'][1]).timestamp())
+        end = int(daily_close(p['date']).timestamp())
+        if start < bars[0]['t'] or end > bars[-1]['t'] + BAR: continue
+        w = [b for b in bars if b['t'] >= start and b['t'] + BAR <= end]
+        for z in g['zones']:
+            if z.get('result') != 'no_touch' or 'near' in z or z.get('void') is None: continue
+            nr = near_reaction(z['side'], z['zone'][0], z['zone'][1], z['void'], w, touch_end)
+            if nr: z['near'] = nr; added.append(f"{k} {z['zone'][0]}-{z['zone'][1]}")
+        set_plan_near(g)
+    return added
+
+
+def set_plan_near(g):
+    """Plan-level copy of the best near-zone reaction, only when no zone of the plan was reached."""
+    if g.get('result') != 'no_touch': return
+    ns = [z['near'] for z in g.get('zones') or [] if z.get('near')]
+    if ns: g['near'] = max(ns, key=lambda n: n['move'])
 
 
 def main():
@@ -239,10 +289,13 @@ def main():
             if mz:   # summary of the main zone (kept for older readers)
                 m = next((z for z in zs if z['main']), None)
                 if m: g.update({kk: m[kk] for kk in ('side', 'zone', 'edge', 'void', 't1') if kk in m})
+        set_plan_near(g)
         g['graded_utc'] = dt.datetime.fromtimestamp(now, dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
         if k in grades: g['regraded'] = 'rules v2 (13/11/2026)'
         grades[k] = g
         done.append(f"{k} {g['result']} {g['r']}" + (f" MFE {g.get('best')}" if g.get('best') is not None else ''))
+    nb = backfill_near(plans, grades, bars)
+    if nb: print('near-zone labels added:', ', '.join(nb))
     with open(gpath, 'w', encoding='utf-8') as f:
         json.dump(dict(sorted(grades.items())), f, ensure_ascii=False, indent=1)
         f.write('\n')

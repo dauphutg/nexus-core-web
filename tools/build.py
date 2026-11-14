@@ -477,11 +477,26 @@ def result_block(k, lang):
                 if z.get('best') is not None:
                     br = f" (≈ {r_text(z['best_r'], lang, 1)})" if z.get('best_r') is not None else ''
                     mfe = f'<div class="best"><span class="k">{esc(t(lang, "pp_best"))}</span><span class="v num" dir="ltr">+{esc(fmt(z["best"], lang))} ${esc(br)}</span></div>'
+                nr = z.get('near')
+                if nr:
+                    mfe += (f'<div class="best"><span class="k">{esc(t(lang, "z_near"))}</span><span class="v num" dir="ltr">'
+                            f'{"↘" if z["side"] == "SELL" else "↗"} {esc(fmt(nr["move"], lang))} $</span></div>'
+                            f'<p class="muted small">{esc(near_text(nr, lang))}</p>')
                 out.append(f'<div class="zres"><div class="zt"><strong>{head}</strong><span class="pill {res_cls(z["result"])}">{esc(t(lang, "res_" + z["result"]))}</span>{rr}</div>'
                            f'<p class="muted small">{esc(" · ".join(det))}</p>{mfe}</div>')
             if any(z.get('best') is not None for z in zs): out.append(f'<p class="muted small">{esc(t(lang, "pp_best_note"))}</p>')
+            if any(z.get('near') for z in zs): out.append(f'<p class="muted small">{esc(t(lang, "near_note"))}</p>')
     out.append(f'<p class="small"><a href="{track_path(lang, k[:7])}#method">{esc(t(lang, "tr_method"))}</a></p>')
     return ''.join(out)
+
+
+def near_text(nr, lang):
+    return (t(lang, 'near_det').replace('{gap}', fmt(nr['gap'], lang)).replace('{at}', vn_label(nr['at'], lang))
+            .replace('{move}', fmt(nr['move'], lang)))
+
+
+def near_count(keys):
+    return sum(1 for k in keys for z in ((grade_of(k) or {}).get('zones') or []) if z.get('near'))
 
 
 def plan_nav(k, lang):
@@ -564,7 +579,8 @@ def track_page(ym, lang):
     st = lambda k, v: f'<div class="stat"><span class="k">{esc(t(lang, k))}</span><span class="v num" dir="ltr">{esc(v)}</span></div>'
     stats = (st('tr_plans', str(n)) + st('tr_graded', str(ng)) + st('tr_reached', str(nr)) +
              st('tr_hit', f'{hit}/{nr}' if nr else '—') + st('tr_void', f'{void}/{nr}' if nr else '—') + st('tr_r', r_text(tot, lang, 1) if nr else '—') +
-             st('tr_best', ('+' + r_text(avg_best(keys), lang, 1).lstrip('+')) if avg_best(keys) is not None else '—'))
+             st('tr_best', ('+' + r_text(avg_best(keys), lang, 1).lstrip('+')) if avg_best(keys) is not None else '—') +
+             (st('tr_near', str(near_count(keys))) if near_count(keys) else ''))
     rows = []
     for k in reversed(keys):
         p, g = PLANS[k], grade_of(k)
@@ -572,6 +588,7 @@ def track_page(ym, lang):
         lab = t(lang, p['bias']) + (' · ' + t(lang, p['lean']) if p['bias'] == 'TWO_WAY' and p.get('lean') else '')
         rr = f'<span class="num r" dir="ltr">{esc(r_text(g.get("r"), lang))}</span>' if g and g.get('r') is not None else ''
         if g and g.get('best') is not None: rr += f'<span class="num muted small" dir="ltr" title="{esc(t(lang, "pp_best"))}">↗ +{esc(fmt(g["best"], lang))}$</span>'
+        elif g and g.get('near'): rr += f'<span class="num muted small" dir="ltr" title="{esc(t(lang, "z_near"))}">{"↘" if side_of(p) == "SELL" else "↗"} {esc(fmt(g["near"]["move"], lang))}$ · {esc(t(lang, "z_near"))}</span>'
         cz = counted_zones(g)
         zr_txt = ', '.join(rng(z['zone'][0], z['zone'][1], lang) for z in cz) if cz and 'zones' in g else (rng(mz['lo'], mz['hi'], lang) if mz else '')
         rows.append(f'<a class="card trow" href="{plan_path(lang, k)}"><span class="l"><strong>{esc(day_label(dt.date.fromisoformat(p["date"]), lang))} · {esc(t(lang, "ed_short")[p["edition"]])}</strong>'
