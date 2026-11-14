@@ -345,3 +345,8 @@ html:lang(zh-Hant) h2,html:lang(zh-Hant) .eyebrow{font-size:14px}
 .trow .r{font-size:16px}
 html[lang="ar"] .kpi .kt,html:lang(zh-Hant) .kpi .kt{letter-spacing:0}
 @media (max-width:480px){.kpi{padding:18px}.bars{height:130px;gap:6px}.legend{gap:8px}.legend .lg{padding:10px}.legend .lg b{font-size:22px}}
+.chart.review{margin:0}
+.chart.review + .b-chart{display:none}
+.chart.review .rv-h{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-ink);margin:0 0 8px}
+html[lang="ar"] .chart.review .rv-h,html:lang(zh-Hant) .chart.review .rv-h{letter-spacing:0}
+.chart.review img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block}

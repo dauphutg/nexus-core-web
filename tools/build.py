@@ -564,6 +564,12 @@ def plan_page(k, lang):
     doc = plan_html(doc, p, lang)
     doc = hide(doc, 'next')
     doc = unhide(doc, 'result'); doc = fill(doc, 'result', result_block(k, lang))
+    rv = f"data/charts/{k}-{'vi' if lang == 'vi' else 'en'}-review.png"
+    if g and os.path.exists(os.path.join(ROOT, rv)):   # graded: the before/after image replaces the plain chart (it contains it)
+        fig = (f'<figure class="chart review"><figcaption class="rv-h">{esc(t(lang, "rv_h"))}</figcaption>'
+               f'<a href="/{rv}" target="_blank" rel="noopener"><img src="/{rv}" alt="{esc(t(lang, "rv_alt"))}" loading="lazy" width="1800" height="2412"></a>'
+               f'<figcaption class="chart-hint">{esc(t(lang, "rv_cap"))}</figcaption></figure>\n        ')
+        doc = doc.replace('<figure class="chart b-chart" id="chart-box"', fig + '<figure class="chart b-chart" id="chart-box" data-review="1"', 1)
     doc = unhide(doc, 'pnav'); doc = fill(doc, 'pnav', plan_nav(k, lang))
     title, desc, img, upd = plan_title(p, lang), plan_desc(p, lang, g), img_for(p, lang), updated_dt(p)
     mod = dt.datetime.strptime(g['graded_utc'], '%Y-%m-%dT%H:%MZ').replace(tzinfo=dt.timezone.utc) if g and g.get('graded_utc') else upd
