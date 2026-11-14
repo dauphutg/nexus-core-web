@@ -7,7 +7,7 @@
 Reads data/plans/*.json, writes data/grades.json. Only plans whose grading window has fully closed are graded;
 a plan already graded is never changed (fix by hand only if the candles were wrong).
 
-Rules v3 final (14/11/2026, frozen: later changes apply to new plans only – the same text is shown on the Track Record pages):
+Rules v4 (14/11/2026 – the same text is shown on the Track Record pages):
 - Every tradeable zone of a plan is graded on its own: the main zone plus every other zone with a published invalidation
   level. Watch-only zones and zones that are "only in play after…" a break are not scored.
 - Each plan is graded on its own session only: from its publish time until the next plan of the same day replaces it,
@@ -17,11 +17,9 @@ Rules v3 final (14/11/2026, frozen: later changes apply to new plans only – th
   the touch; on the same candle the invalidation wins. Neither → "expired" (closed at session end), scored at the last
   close of the session (capped -1R … Target 1 R). Follow-up after that belongs to the next session's plan.
 - R from the zone edge price touches first (SELL: lower edge, BUY: upper edge): reward / (distance to invalidation).
-- Carry-over (mechanical): a zone still open at the end of its session (neither Target 1 nor invalidation) is not
-  settled there ("carried") whenever another update of the same day follows – whether or not that update repeats the
-  zone. The same trade (original touch, levels and R) is followed by the next update until the end of its session and
-  counted once, there. The last update of the day settles everything at the daily close. A repeated zone that is not an
-  open trade is graded fresh in the new session.
+- No carry-over (rules v4, 14/11/2026): every trade is settled at the end of its own session, so the result matches the
+  before / after image of that session. A zone repeated in the next update is graded fresh in the new session (it counts
+  only if price trades into it during that session).
 - Plan result = its counted zones: all hit → hit, all void → void, all expired → expired; hit with no void → hit,
   void with no hit → void; hit and void → mixed. Plan R = sum (every zone's R is listed on the plan page).
 - STAND_ASIDE plans → "aside", not scored.
@@ -139,7 +137,7 @@ def grade(p, bars, start, end):
     return dict(base, result='expired', r=round(max(-1.0, min(r_hit, r)), 2), **best(len(w) - 1))
 
 
-RULES = 4   # rules v3 final (14/11/2026); 4 = internal revision
+RULES = 5   # rules v4 (14/11/2026): settled per session, no carry-over
 SKIP = re.compile(r'watch only|not active|only in play|only after|no entry', re.I)
 
 
@@ -250,9 +248,7 @@ def carried_into(k, p, grades):
 def grade_plan_zones(k, p, mz, grades, bars, start, touch_end, end, later):
     nxt = f"{p['date']}-{later[0]}" if later else None
     zs, taken = [], set()
-    def settle(zg):   # still open at the end of the session → the next update of the day follows it
-        if zg['result'] == 'expired' and nxt:
-            zg.update(result='carried', r=None, carried_to=nxt)
+    def settle(zg):   # rules v4: every trade is settled at the end of its own session – nothing is carried over
         return zg
     for ci in carried_into(k, p, grades):
         ts = int(vn_dt(ci['trade_window'][0]).timestamp()); te = int(vn_dt(ci['trade_window'][1]).timestamp())
@@ -324,7 +320,7 @@ def main():
                 if m: g.update({kk: m[kk] for kk in ('side', 'zone', 'edge', 'void', 't1') if kk in m})
         set_plan_near(g)
         g['graded_utc'] = dt.datetime.fromtimestamp(now, dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
-        if k in grades: g['regraded'] = 'rules v3 final (14/11/2026)'
+        if k in grades: g['regraded'] = 'rules v4 (14/11/2026)'
         grades[k] = g
         done.append(f"{k} {g['result']} {g['r']}" + (f" MFE {g.get('best')}" if g.get('best') is not None else ''))
     nb = backfill_near(plans, grades, bars)

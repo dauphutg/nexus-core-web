@@ -9,7 +9,7 @@
    "lean": "SELL",
    "main_zone": "3901.6–3914",
    "result": "hit",
-   "r": 4.32,
+   "r": 0.62,
    "url": "https://nexuscore.trade/en/plan/2026-11-13-newyork/"
   },
   {
@@ -19,8 +19,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "3907.3–3914",
-   "result": "carried",
-   "r": null,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-13-london/"
   },
   {
@@ -30,8 +30,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "3907.3–3915",
-   "result": "carried",
-   "r": null,
+   "result": "expired",
+   "r": 2.98,
    "url": "https://nexuscore.trade/en/plan/2026-11-13-asia/"
   },
   {
@@ -52,8 +52,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "4035.4–4046.5",
-   "result": "hit",
-   "r": 2.44,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-12-london/"
   },
   {
@@ -63,8 +63,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "4035.4–4046.5",
-   "result": "carried",
-   "r": null,
+   "result": "expired",
+   "r": 1.28,
    "url": "https://nexuscore.trade/en/plan/2026-11-12-asia/"
   },
   {
