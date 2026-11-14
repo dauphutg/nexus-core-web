@@ -20,21 +20,21 @@ UP, DN, GRAY, TXT, NAVY, GOLD, ORG = '#089981', '#F23645', '#787B86', '#131722',
 VN = dt.timezone(dt.timedelta(hours=7))
 BAR = 900
 W = {
-    'vi': dict(before='TRƯỚC', after='SAU', b_sub='Chart lúc đăng plan {t} · H1', a_sub='Hết phiên {t} · H1, giá thật sau khi vẽ',
+    'vi': dict(before='TRƯỚC', after='SAU', b_sub='Lúc vẽ plan {t} · H1', a_sub='Hết phiên {t} · cùng chart, thêm nến thật sau khi vẽ',
                drawn='Lúc vẽ plan {t}', end='Hết phiên {t}', ed={'0700': 'Plan sáng', '1345': 'Cập nhật 13:45', '1930': 'Plan tối'},
                res={'hit': 'Chạm mục tiêu 1', 'void': 'Bị huỷ', 'expired': 'Chốt cuối phiên', 'no_touch': 'Giá không tới vùng',
                     'carried': 'Bản sau theo dõi tiếp', 'mixed': 'Có thắng có thua', 'aside': 'Đứng ngoài'},
                result='Kết quả', sell='Bán', buy='Mua', t1='Mục tiêu 1', touch='chạm vùng', ran='chạy {p} pip', near='suýt chạm · thiếu {g}',
                disc='Chấm tự động theo luật công khai · không phải lời khuyên đầu tư', tz='giờ VN', main='VÙNG CHÍNH', tgt='Mục tiêu',
-               sc_main='Kịch bản chính', sc_alt='Kịch bản phụ', unknown='chưa biết giá sẽ đi thế nào',
+               sc_main='Kịch bản chính', sc_alt='Kịch bản phụ', unknown='chưa biết giá sẽ đi thế nào', open_prev='lệnh đang mở từ bản trước',
                bias={'SELL': 'BÁN', 'BUY': 'MUA', 'TWO_WAY': '2 CHIỀU', 'STAND_ASIDE': 'ĐỨNG NGOÀI'}, lean='nghiêng'),
-    'en': dict(before='BEFORE', after='AFTER', b_sub='Chart as published {t} · H1', a_sub='Session end {t} · H1, real price after the plan',
+    'en': dict(before='BEFORE', after='AFTER', b_sub='When the plan was drawn {t} · H1', a_sub='Session end {t} · same chart plus the real candles after the plan',
                drawn='Plan drawn {t}', end='Session end {t}', ed={'0700': 'Morning plan', '1345': '13:45 update', '1930': 'Evening plan'},
                res={'hit': 'Target 1 reached', 'void': 'Invalidated', 'expired': 'Closed at session end', 'no_touch': 'Zone not reached',
                     'carried': 'Followed by the next update', 'mixed': 'Mixed', 'aside': 'Stood aside'},
                result='Result', sell='Sell', buy='Buy', t1='Target 1', touch='zone reached', ran='ran {p} pips', near='just missed · {g} short',
                disc='Graded automatically by published rules · not financial advice', tz='GMT+7', main='MAIN ZONE', tgt='Target',
-               sc_main='Main scenario', sc_alt='Alternate', unknown='price path not known yet',
+               sc_main='Main scenario', sc_alt='Alternate', unknown='price path not known yet', open_prev='open trade from the previous update',
                bias={'SELL': 'SELL', 'BUY': 'BUY', 'TWO_WAY': 'TWO-WAY', 'STAND_ASIDE': 'STAND ASIDE'}, lean='leaning'),
 }
 
@@ -85,7 +85,7 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
     zs_all = [z for z in g.get('zones') or [] if z.get('zone')]
     t_first = min([t_pub] + [ts(z['touched']) for z in zs_all if z.get('touched')])
     if tf == 'H1':
-        t0 = min(t_first - 6 * 3600, t_pub - 60 * 3600)
+        t0 = min(t_first - 6 * 3600, t_pub - 36 * 3600)
         B = [b for b in to_h1(bars) if t0 <= b['t'] and b['end'] <= t_end]
     else:
         t0 = min(t_first, t_pub - 8 * 3600) - 2 * 3600
@@ -95,7 +95,7 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
     xp, xe = xi(t_pub), n - 0.5
     shown = [b for b in B if after or b['t'] < t_pub]
     lo, hi = min(b['l'] for b in B), max(b['h'] for b in B)          # same scale in both panels
-    zs = [z for z in zs_all if after or not z.get('carried_from')]
+    zs = zs_all   # trades carried in from the previous update were already open when this plan was drawn: shown in both panels
     fig = plt.figure(figsize=(12, 7.4), dpi=150, facecolor='white')
     ax = fig.add_axes([0.035, 0.12, 0.885, 0.69])
     ax.axvspan(xp, xe, color=GOLD, alpha=0.07, zorder=0)
@@ -110,7 +110,7 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
     tg = [q['lo'] for q in p.get('targets') or [] if inview(q['lo'])]
     ys += tg
     ymin, ymax = min(ys) - 10, max(ys) + 22
-    XR = n + max(6, n * 0.32)
+    XR = n + max(5, n * 0.25)
     labels = []
     tz_ = [z for z in zs if z.get('touched')]
     best_z = next((z for z in tz_ if z.get('main') and not z.get('carried_from')), None) or max(tz_, key=lambda z: z.get('best') or 0, default=None)
@@ -132,7 +132,9 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
         if after:
             lab += f" · {T['res'].get(res, res)}" + (f" {rtxt(z.get('r'), lang)}" if z.get('r') else '')
             if z.get('near') and res == 'no_touch': lab += ' · ' + T['near'].format(g=fnum(z['near']['gap'], lang))
-        elif z.get('main'): lab = T['main'] + ' · ' + lab
+        else:
+            if z.get('main'): lab = T['main'] + ' · ' + lab
+            if z.get('carried_from'): lab += ' · ' + T['open_prev']
         labels.append(((a + c_) / 2, lab, edge, strong))
         if not after: continue
         if z.get('touched'):
@@ -158,19 +160,19 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
         ax.text(-0.3, q['lo'], f" {T['tgt']} {q.get('label', '')} {fnum(q['lo'], lang)}", color=GRAY, fontsize=8.5, va='bottom', ha='left', zorder=8,
                 bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.3))
     # the plan's scenario arrows, drawn from the moment of the plan (faded in the after panel)
-    for k_, sc in enumerate((p.get('scenarios') or [])[:2] if not after else []):   # the after panel shows only what happened
+    for k_, sc in enumerate((p.get('scenarios') or [])[:2]):   # drawn identically in both panels
         pth = [float(v) for v in sc.get('path') or [] if isinstance(v, (int, float))]
         if len(pth) < 2: continue
         col = (DN if sc['side'] == 'SELL' else UP) if k_ == 0 else ORG
         cl = lambda y: max(ymin + 2, min(ymax - 2, y))
         xs_ = [xp + 1 + (xe - xp - 2) * m / len(pth) * 0.9 for m in range(len(pth))]
         ys_ = [cl(v) for v in pth]
-        ax.plot(xs_[:-1] + [xs_[-1]], ys_, color=col, lw=2.2, ls='-' if k_ == 0 else '--', alpha=0.35 if after else 1, zorder=5)
-        ax.plot([xs_[0]], [ys_[0]], marker='o', ms=6, mfc='white', mec=col, mew=1.8, alpha=0.35 if after else 1, zorder=6)
+        ax.plot(xs_[:-1] + [xs_[-1]], ys_, color=col, lw=2.2, ls='-' if k_ == 0 else '--', alpha=0.55 if after else 1, zorder=5)
+        ax.plot([xs_[0]], [ys_[0]], marker='o', ms=6, mfc='white', mec=col, mew=1.8, alpha=0.55 if after else 1, zorder=6)
         ax.annotate('', xy=(xs_[-1], ys_[-1]), xytext=(xs_[-2], ys_[-2]), zorder=6,
-                    arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=col, lw=2.2, alpha=0.35 if after else 1, shrinkA=0, shrinkB=0))
+                    arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=col, lw=2.2, alpha=0.55 if after else 1, shrinkA=0, shrinkB=0))
         ax.text(xs_[-1] + 0.6, ys_[-1], f" {T['sc_main'] if k_ == 0 else T['sc_alt']} ~{sc.get('prob', '')}%", color=col, fontsize=9,
-                fontweight='bold', va='center', alpha=0.5 if after else 1, zorder=8)
+                fontweight='bold', va='center', alpha=0.6 if after else 1, zorder=8)
     ax.set_ylim(ymin, ymax); ax.set_xlim(-0.5, XR)
     gap = (ymax - ymin) * 0.045
     labels.sort(key=lambda q: q[0])
@@ -184,14 +186,16 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
         ax.text(XR - 0.6, y, lab, ha='right', va='center', fontsize=9.5 if strong else 8.5, color=col,
                 fontweight='bold' if strong else 'normal', zorder=9, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.5))
     if not after:
-        ax.text((xp + xe) / 2, ymin + (ymax - ymin) * 0.5, T['unknown'], ha='center', va='center', fontsize=12, color=GRAY, alpha=0.8, zorder=2)
+        ax.text((xp + xe) / 2, ymin + (ymax - ymin) * 0.4, T['unknown'], ha='center', va='center', fontsize=10.5, color=GRAY, zorder=8,
+                bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4))
     ax.axvline(xp, color=NAVY, lw=1.6, ls=(0, (5, 3)), zorder=4)
     ax.annotate(T['drawn'].format(t=hm(g['window'][0])), xy=(xp, ymax - (ymax - ymin) * 0.06), xytext=(xp, ymax - (ymax - ymin) * 0.005),
                 ha='center', va='top', fontsize=10.5, fontweight='bold', color='white', zorder=10,
                 bbox=dict(boxstyle='round,pad=0.35', fc=NAVY, ec='none'),
                 arrowprops=dict(arrowstyle='-|>,head_length=0.7,head_width=0.4', color=NAVY, lw=2))
     ax.axvline(xe, color=GRAY, lw=1.2, ls=(0, (2, 2)), zorder=4)
-    ax.text(xe, ymin + (ymax - ymin) * 0.02, f" {T['end'].format(t=hm(g['window'][1]))}", color=GRAY, fontsize=9, ha='left', va='bottom', zorder=8)
+    ax.text(xe, ymax - (ymax - ymin) * 0.05, f" {T['end'].format(t=hm(g['window'][1]))}", color=GRAY, fontsize=9, ha='left', va='center', zorder=8,
+            bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.3))
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)
     for s_ in ax.spines.values(): s_.set_color('#E0E3EB')
     tk, tl = [], []
@@ -271,9 +275,9 @@ def main():
             before = os.path.join(ROOT, 'data', 'charts', f'{k}-{lang}.png')      # the chart exactly as published (H1)
             out = os.path.join(ROOT, 'data', 'charts', f'{k}-{lang}-review.png')
             if not os.path.exists(before) or (os.path.exists(out) and not redo): continue
-            ta = out + '.after.png'
-            panel(p, g, bars, lang, ta, 'after', 'H1')
-            compose(before, ta, g, lang, out); os.remove(ta)
+            tb, ta = out + '.before.png', out + '.after.png'
+            panel(p, g, bars, lang, tb, 'before', 'H1'); panel(p, g, bars, lang, ta, 'after', 'H1')   # same window, same scale
+            compose(tb, ta, g, lang, out); os.remove(tb); os.remove(ta)
             done.append(os.path.basename(out))
     print('review:', ', '.join(done) if done else 'nothing new')
 
