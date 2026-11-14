@@ -564,12 +564,6 @@ def plan_page(k, lang):
     doc = plan_html(doc, p, lang)
     doc = hide(doc, 'next')
     doc = unhide(doc, 'result'); doc = fill(doc, 'result', result_block(k, lang))
-    rv = f"data/charts/{k}-{'vi' if lang == 'vi' else 'en'}-review.png"
-    if g and os.path.exists(os.path.join(ROOT, rv)):   # graded: the before/after image replaces the plain chart (it contains it)
-        fig = (f'<figure class="chart review"><figcaption class="rv-h">{esc(t(lang, "rv_h"))}</figcaption>'
-               f'<a href="/{rv}" target="_blank" rel="noopener"><img src="/{rv}" alt="{esc(t(lang, "rv_alt"))}" loading="lazy" width="1800" height="2412"></a>'
-               f'<figcaption class="chart-hint">{esc(t(lang, "rv_cap"))}</figcaption></figure>\n        ')
-        doc = doc.replace('<figure class="chart b-chart" id="chart-box"', fig + '<figure class="chart b-chart" id="chart-box" data-review="1"', 1)
     doc = unhide(doc, 'pnav'); doc = fill(doc, 'pnav', plan_nav(k, lang))
     title, desc, img, upd = plan_title(p, lang), plan_desc(p, lang, g), img_for(p, lang), updated_dt(p)
     mod = dt.datetime.strptime(g['graded_utc'], '%Y-%m-%dT%H:%MZ').replace(tzinfo=dt.timezone.utc) if g and g.get('graded_utc') else upd
@@ -647,6 +641,11 @@ def track_page(ym, lang):
         rows.append(f'<a class="card trow is-{kind}" href="{plan_path(lang, k)}"><span class="l"><strong>{esc(day_label(dt.date.fromisoformat(p["date"]), lang))} · {esc(t(lang, "ed_short")[p["edition"]])}</strong>'
                     f'<span class="h"><span class="pill {side_cls(side_of(p))}">{esc(lab)}</span>{(" " + num(zr_txt)) if zr_txt else ""}</span></span>'
                     f'<span class="rt"><span class="pill {res_cls(g["result"]) if g else "neutral"}">{esc(t(lang, "z_near_short") if g and g.get("near") else res_label(g, lang))}</span>{rr}</span></a>')
+        rv = f"data/charts/{k}-{'vi' if lang == 'vi' else 'en'}-review.png"
+        if g and os.path.exists(os.path.join(ROOT, rv)):   # before / after image of this plan, stored with its record
+            rows[-1] = (f'<div class="trwrap">{rows[-1]}<details class="rv"><summary>{esc(t(lang, "rv_h"))}</summary>'
+                        f'<a href="/{rv}" target="_blank" rel="noopener"><img src="/{rv}" alt="{esc(t(lang, "rv_alt"))}" loading="lazy" width="1800" height="2412"></a>'
+                        f'<p class="muted small">{esc(t(lang, "rv_cap"))}</p></details></div>')
     i = MONTHS.index(ym)
     nav = []
     if i > 0: nav.append(f'<a class="btn alt" href="{track_path(lang, MONTHS[i-1])}">{esc(t(lang, "tr_prev_m"))}</a>')
