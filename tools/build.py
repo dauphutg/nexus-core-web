@@ -607,15 +607,25 @@ def track_page(ym, lang):
     mx = max([z['best'] for k in keys for z in counted_zones(grade_of(k)) if z.get('best') is not None], default=None)
     rc = round(sum(z.get('r') or 0 for k in keys for z in counted_zones(grade_of(k)) if z['result'] in ('hit', 'void')), 2)
     rs = round(sum(z.get('r') or 0 for k in keys for z in counted_zones(grade_of(k)) if z['result'] == 'expired'), 2)
-    sub = lambda k, v: f'<span>{esc(t(lang, k))}: <b class="num" dir="ltr">{esc(v)}</b></span>'
-    real = (f'<div class="kpi"><span class="kt">{esc(t(lang, "kp_real"))}</span>'
+    allz = [(k, z) for k in keys for z in counted_zones(grade_of(k))]
+    ne = sum(1 for _, z in allz if z['result'] == 'expired')
+    tz = max(1, hit + ne + void)
+    seg = ''.join(f'<i class="{c} w{max(5, round(v / tz * 20) * 5)}"></i>' for c, v in (('g', hit), ('e', ne), ('b', void)) if v)   # CSP: no inline styles
+    leg = lambda c, k, v: f'<span class="lg"><b class="num" dir="ltr">{v}</b><span><i class="{c}"></i>{esc(t(lang, k))}</span></span>'
+    real = (f'<div class="kpi real"><div class="kh"><span class="kt">{esc(t(lang, "kp_real"))}</span><span class="kc num" dir="ltr">{n} {esc(t(lang, "kp_plans"))} · {nr} {esc(t(lang, "kp_zones"))}</span></div>'
             f'<span class="big num {"r-up" if tot > 0 else "r-down" if tot < 0 else ""}" dir="ltr">{esc(r_text(tot, lang, 1) if nr else "—")}</span>'
-            f'<div class="sub">{sub("tr_hit", f"{hit}/{nr}" if nr else "—")}{sub("tr_void", f"{void}/{nr}" if nr else "—")}{sub("tr_plans", str(n))}</div>'
-            f'<p class="note">{esc(t(lang, "kp_real_note").replace("{a}", r_text(rc, lang, 2) or "0R").replace("{b}", r_text(rs, lang, 2) or "0R"))}</p></div>')
-    move = (f'<div class="kpi move"><span class="kt">{esc(t(lang, "kp_move"))}</span>'
-            f'<span class="big num" dir="ltr">{esc("+" + pips(ab, lang)) if ab is not None else "—"}<small>{esc(t(lang, "kp_avg"))}</small></span>'
-            f'<div class="sub">{sub("kp_max", "+" + pips(mx, lang)) if mx is not None else ""}{sub("kp_avg_usd", "+" + fmt(ab, lang) + " $") if ab is not None else ""}</div>'
-            f'<p class="note">{esc(t(lang, "kp_move_note"))}</p></div>')
+            + (f'<div class="segbar">{seg}</div><div class="legend">{leg("g", "tr_hit", hit)}{leg("e", "res_expired", ne)}{leg("b", "tr_void", void)}</div>' if nr else '')
+            + f'<p class="note">{esc(t(lang, "kp_real_note").replace("{a}", r_text(rc, lang, 2) or "0R").replace("{b}", r_text(rs, lang, 2) or "0R"))}</p></div>')
+    bars = [(k, z['best']) for k, z in allz if z.get('best') is not None][-8:]
+    top = max([b for _, b in bars], default=0) or 1
+    cols = ''.join(f'<div class="bc" title="{esc(day_label(dt.date.fromisoformat(k[:10]), lang))} · {esc(t(lang, "ed_short")[k[11:]])}">'
+                   f'<span class="pl"><span class="bv num" dir="ltr">{esc(pips(b, lang).replace(" pip", ""))}</span><i class="h{max(5, round(b / top * 16) * 5)}"></i></span>'
+                   f'<span class="bl num" dir="ltr">{k[8:10]}/{k[5:7]}</span></div>' for k, b in bars)
+    move = (f'<div class="kpi move"><div class="kh"><span class="kt">{esc(t(lang, "kp_move"))}</span><span class="kc">{esc(t(lang, "kp_avg"))}</span></div>'
+            f'<span class="big num" dir="ltr">{esc("+" + pips(ab, lang)) if ab is not None else "—"}</span>'
+            + (f'<div class="sub"><span>{esc(t(lang, "kp_max"))} <b class="num" dir="ltr">+{esc(pips(mx, lang))}</b></span><span>{esc(t(lang, "kp_avg_usd"))} <b class="num" dir="ltr">+{esc(fmt(ab, lang))} $</b></span></div>' if ab is not None else '')
+            + (f'<div class="bars">{cols}</div>' if bars else '')
+            + f'<p class="note">{esc(t(lang, "kp_move_note"))}</p></div>')
     stats = real + move
     rows = []
     for k in reversed(keys):
@@ -624,10 +634,11 @@ def track_page(ym, lang):
         lab = t(lang, p['bias']) + (' · ' + t(lang, p['lean']) if p['bias'] == 'TWO_WAY' and p.get('lean') else '')
         rr = f'<span class="num r" dir="ltr">{esc(r_text(g.get("r"), lang))}</span>' if g and g.get('r') is not None else ''
         arrow = '↘' if side_of(p) == 'SELL' else '↗'
-        if g and g.get('best') is not None: rr += f'<span class="num muted small" dir="ltr" title="{esc(t(lang, "kp_move"))}">{arrow} +{esc(pips(g["best"], lang))}</span>'
-        elif g and g.get('near'): rr += f'<span class="num muted small" dir="ltr" title="{esc(t(lang, "z_near"))}">{arrow} +{esc(pips(g["near"]["move"], lang))}</span>'
+        if g and g.get('best') is not None: rr += f'<span class="pipchip num" dir="ltr" title="{esc(t(lang, "kp_move"))}">{arrow} +{esc(pips(g["best"], lang))}</span>'
+        elif g and g.get('near'): rr += f'<span class="pipchip num" dir="ltr" title="{esc(t(lang, "z_near"))}">{arrow} +{esc(pips(g["near"]["move"], lang))}</span>'
         zr_txt = rng(mz['lo'], mz['hi'], lang) if mz else ''
-        rows.append(f'<a class="card trow" href="{plan_path(lang, k)}"><span class="l"><strong>{esc(day_label(dt.date.fromisoformat(p["date"]), lang))} · {esc(t(lang, "ed_short")[p["edition"]])}</strong>'
+        kind = 'near' if g and g.get('near') else (g['result'] if g else 'pending')
+        rows.append(f'<a class="card trow is-{kind}" href="{plan_path(lang, k)}"><span class="l"><strong>{esc(day_label(dt.date.fromisoformat(p["date"]), lang))} · {esc(t(lang, "ed_short")[p["edition"]])}</strong>'
                     f'<span class="h"><span class="pill {side_cls(side_of(p))}">{esc(lab)}</span>{(" " + num(zr_txt)) if zr_txt else ""}</span></span>'
                     f'<span class="rt"><span class="pill {res_cls(g["result"]) if g else "neutral"}">{esc(t(lang, "z_near_short") if g and g.get("near") else res_label(g, lang))}</span>{rr}</span></a>')
     i = MONTHS.index(ym)
