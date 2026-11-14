@@ -231,7 +231,7 @@ try:
     G = json.loads(read('data/grades.json'))
 except Exception:
     G = {}
-RESULTS = ('hit', 'void', 'no_touch', 'expired', 'aside', 'mixed')
+RESULTS = ('hit', 'void', 'no_touch', 'expired', 'aside', 'mixed', 'carried')
 
 
 def grade_of(k):
@@ -464,12 +464,19 @@ def result_block(k, lang):
             for z in zs:
                 head = (f"{esc(t(lang, z['side']))} <span class=\"num\" dir=\"ltr\">{esc(rng(z['zone'][0], z['zone'][1], lang))}</span>"
                         + esc(f" · {t(lang, 'z_main')}" if z.get('main') else (f" · {z['grade']}" if z.get('grade') else '')))
+                if z.get('result') == 'carried':
+                    nk = z.get('carried_to', '')
+                    lk = f' <a href="{plan_path(lang, nk)}">{esc(t(lang, "z_see_next"))}</a>' if nk in KEYS else ''
+                    det0 = f"{t(lang, 'pp_touched')}: {vn_label(z['touched'], lang)}" if z.get('touched') else ''
+                    out.append(f'<div class="zres"><div class="zt"><strong>{head}</strong><span class="pill neutral">{esc(t(lang, "res_carried"))}</span></div>'
+                               f'<p class="muted small">{esc(det0)}{" · " if det0 else ""}{esc(t(lang, "z_carried_to"))}{lk}</p></div>'); continue
                 if z.get('result') == 'counted_earlier':
                     out.append(f'<div class="zres"><div class="zt"><strong>{head}</strong><span class="pill neutral">{esc(t(lang, "z_earlier"))}</span></div></div>'); continue
                 zr = z.get('r')
                 rr = f'<span class="num r {"r-up" if (zr or 0) > 0 else "r-down" if (zr or 0) < 0 else "r-flat"}" dir="ltr">{esc(r_text(zr, lang))}</span>' if zr is not None else ''
                 det = []
                 if z.get('touched'): det.append(f"{t(lang, 'pp_touched')}: {vn_label(z['touched'], lang)}")
+                if z.get('carried_from'): det.append(t(lang, 'z_carried_from'))
                 if z.get('at'): det.append(f"{t(lang, 'pp_event')}: {vn_label(z['at'], lang)}")
                 if z.get('t1') is not None: det.append(f"{t(lang, 'pp_t1')}: {fmt(z['t1'], lang)}")
                 if z.get('void') is not None: det.append(f"{t(lang, 'pp_void')}: {fmt(z['void'], lang)}")

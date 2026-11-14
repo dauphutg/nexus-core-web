@@ -7,24 +7,28 @@
 Reads data/plans/*.json, writes data/grades.json. Only plans whose grading window has fully closed are graded;
 a plan already graded is never changed (fix by hand only if the candles were wrong).
 
-Rules v2 (13/11/2026 – the same text is shown on the Track Record pages):
+Rules v3 (14/11/2026 – the same text is shown on the Track Record pages):
 - Every tradeable zone of a plan is graded on its own: the main zone plus every other zone with a published invalidation
   level. Watch-only zones and zones that are "only in play after…" a break are not scored.
-- Touch window: from the plan's publish time until the next plan of the same day replaces it, or the daily close
-  (17:00 New York). A zone counts only if price trades into it inside that window.
-- After the touch the zone is followed until the daily close, even if a newer plan is published: Target 1 first → "hit";
-  a 15-minute CLOSE beyond the zone's invalidation level first → "void" (-1R). Targets only count from the candle after the
-  touch; on the same candle the invalidation wins. Neither → "expired", scored at the daily close (capped -1R … Target 1 R).
+- Each plan is graded on its own session only: from its publish time until the next plan of the same day replaces it,
+  or the daily close (17:00 New York) for the last plan. A zone counts only if price trades into it inside that session.
+- After the touch the zone is followed until the end of that session and settled there: Target 1 first → "hit";
+  a 15-minute CLOSE beyond the zone's invalidation level first → "void" (-1R). Targets only count from the candle after
+  the touch; on the same candle the invalidation wins. Neither → "expired" (closed at session end), scored at the last
+  close of the session (capped -1R … Target 1 R). Follow-up after that belongs to the next session's plan.
 - R from the zone edge price touches first (SELL: lower edge, BUY: upper edge): reward / (distance to invalidation).
-- The same zone repeated in a later update of the same day is counted once (where it was first reached).
+- Carry-over: a zone still open at the end of its session (neither Target 1 nor invalidation) whose zone is repeated in
+  the next update is not settled there ("carried"): the same trade (original touch, levels and R) is followed by the next
+  plan until the end of that session, counted once, in that plan. If the next update drops the zone, it is settled at
+  the session's last close. A repeated zone that was not open is graded fresh in the new session.
 - Plan result = its counted zones: all hit → hit, all void → void, all expired → expired, otherwise mixed; plan R = sum.
 - STAND_ASIDE plans → "aside", not scored.
 - MFE (maximum favourable excursion), shown separately and never mixed into R: the furthest price travelled in the
-  zone's direction from the zone edge, from the touch until the invalidation close or the daily close.
+  zone's direction from the zone edge, from the touch until the invalidation close or the session end.
 - Near-zone reaction (added 14/11/2026, label only – never counted as a touch, never added to R or the hit rate):
   a zone not reached whose closest approach inside the touch window was within NEAR (2.00 dollars) of its edge records
   "near" = {gap, at, price, move}: move = furthest price then travelled in the zone's direction from that closest price,
-  until a 15-minute close beyond the invalidation level or the daily close. Back-filled once on earlier no-touch zones
+  until a 15-minute close beyond the invalidation level or the session end. Back-filled once on earlier no-touch zones
   when the candles cover them (results and R unchanged).
 """
 import glob, json, os, re, sys, datetime as dt
@@ -132,7 +136,7 @@ def grade(p, bars, start, end):
     return dict(base, result='expired', r=round(max(-1.0, min(r_hit, r)), 2), **best(len(w) - 1))
 
 
-RULES = 2
+RULES = 3
 SKIP = re.compile(r'watch only|not active|only in play|only after|no entry', re.I)
 
 
@@ -213,9 +217,8 @@ def backfill_near(plans, grades, bars):
         if g.get('rules') != RULES or k not in plans or not g.get('zones') or not g.get('window'): continue
         p = plans[k]
         start = int(vn_dt(g['window'][0]).timestamp()); touch_end = int(vn_dt(g['window'][1]).timestamp())
-        end = int(daily_close(p['date']).timestamp())
-        if start < bars[0]['t'] or end > bars[-1]['t'] + BAR: continue
-        w = [b for b in bars if b['t'] >= start and b['t'] + BAR <= end]
+        if start < bars[0]['t'] or touch_end > bars[-1]['t'] + BAR: continue
+        w = [b for b in bars if b['t'] >= start and b['t'] + BAR <= touch_end]
         for z in g['zones']:
             if z.get('result') != 'no_touch' or 'near' in z or z.get('void') is None: continue
             nr = near_reaction(z['side'], z['zone'][0], z['zone'][1], z['void'], w, touch_end)
@@ -253,35 +256,57 @@ def main():
         end = int(daily_close(p['date']).timestamp())
         later = [e for e in ED_ORDER[ED_ORDER.index(p['edition']) + 1:] if f"{p['date']}-{e}" in plans]
         touch_end = min(end, int(vn_dt(plans[f"{p['date']}-{later[0]}"]['updated_vn']).timestamp())) if later else end
-        if end > covered_to: continue          # day not closed yet
+        if touch_end > covered_to: continue    # session not closed yet
         if start < covered_from: print('skip (candles do not reach back):', k); continue
         w = [b for b in bars if b['t'] >= start and b['t'] + BAR <= touch_end]
         if not w: print('skip (no candles in window):', k); continue
-        g = {'rules': RULES, 'window': [fmt_vn(start), fmt_vn(touch_end)], 'followed_to': fmt_vn(end),
+        g = {'rules': RULES, 'window': [fmt_vn(start), fmt_vn(touch_end)], 'followed_to': fmt_vn(touch_end),
              'high': max(b['h'] for b in w), 'low': min(b['l'] for b in w), 'last': w[-1]['c']}
         mz = p.get('main_zone')
         if p.get('bias') == 'STAND_ASIDE' or not p.get('zones'):
             g.update(result='aside', r=None, zones=[])
         else:
-            # zones already reached in an earlier plan of the same day are counted there
-            earlier = [grades[f"{p['date']}-{e}"] for e in ED_ORDER[:ED_ORDER.index(p['edition'])] if f"{p['date']}-{e}" in grades]
-            seen = {(z['side'], z['zone'][0], z['zone'][1]) for eg in earlier for z in eg.get('zones', []) if z['result'] != 'no_touch'}
+            # zones still open at the end of the previous session and repeated in this plan are followed here
+            prev = [e for e in ED_ORDER[:ED_ORDER.index(p['edition'])] if f"{p['date']}-{e}" in grades]
+            carry_in = {}
+            if prev:
+                for cz in grades[f"{p['date']}-{prev[-1]}"].get('zones') or []:
+                    if cz.get('result') == 'carried' and cz.get('carried_to') == k:
+                        carry_in[(cz['side'], cz['zone'][0], cz['zone'][1])] = cz
+            nxt = plans.get(f"{p['date']}-{later[0]}") if later else None
+            nxt_zones = set()
+            if nxt and nxt.get('bias') != 'STAND_ASIDE':
+                nmz = nxt.get('main_zone')
+                for z in nxt.get('zones') or []:
+                    nmain = bool(nmz) and z.get('side') == nmz.get('side') and abs(float(z['lo']) - float(nmz['lo'])) < 0.05 and abs(float(z['hi']) - float(nmz['hi'])) < 0.05
+                    lv = zone_levels(nxt, z, nmain)
+                    if lv: nxt_zones.add(lv[:3])
             zs = []
             for z in p['zones']:
                 main = bool(mz) and z.get('side') == mz.get('side') and abs(float(z['lo']) - float(mz['lo'])) < 0.05 and abs(float(z['hi']) - float(mz['hi'])) < 0.05
                 lv = zone_levels(p, z, main)
                 if not lv: continue
                 side, lo, hi, void, t1 = lv
-                if (side, lo, hi) in seen:
-                    zs.append({'side': side, 'zone': [lo, hi], 'main': main, 'grade': z.get('grade'), 'result': 'counted_earlier', 'r': None}); continue
-                zg = grade_zone(side, lo, hi, void, t1, bars, start, touch_end, end)
+                ci = carry_in.get((side, lo, hi))
+                if ci:   # same trade: original touch window and levels, followed to the end of this session
+                    ts = int(vn_dt(ci['trade_window'][0]).timestamp()); te = int(vn_dt(ci['trade_window'][1]).timestamp())
+                    zg = grade_zone(side, lo, hi, ci['void'], ci['t1'], bars, ts, te, touch_end)
+                    zg.update(carried_from=ci['from'], trade_window=ci['trade_window'])
+                else:
+                    zg = grade_zone(side, lo, hi, void, t1, bars, start, touch_end, touch_end)
+                    zg['trade_window'] = [fmt_vn(start), fmt_vn(touch_end)]
+                    zg['from'] = k
+                if zg['result'] == 'expired' and (side, lo, hi) in nxt_zones:
+                    zg.update(result='carried', r=None, carried_to=f"{p['date']}-{later[0]}")
+                    zg.setdefault('from', zg.get('carried_from'))
+                if ci: zg['from'] = ci['from']
                 zg.update(main=main, grade=z.get('grade'))
                 zs.append(zg)
             zs.sort(key=lambda z: (not z['main'], z['zone'][0]))
             counted = [z for z in zs if z['result'] in ('hit', 'void', 'expired')]
             res = {z['result'] for z in counted}
             g['zones'] = zs
-            if not counted: g.update(result='no_touch', r=0)
+            if not counted: g.update(result='carried' if any(z['result'] == 'carried' for z in zs) else 'no_touch', r=0 if not any(z['result'] == 'carried' for z in zs) else None)
             else:
                 g.update(result=res.pop() if len(res) == 1 else 'mixed', r=round(sum(z['r'] for z in counted), 2))
                 top = max(counted, key=lambda z: z.get('best') or 0)
@@ -291,7 +316,7 @@ def main():
                 if m: g.update({kk: m[kk] for kk in ('side', 'zone', 'edge', 'void', 't1') if kk in m})
         set_plan_near(g)
         g['graded_utc'] = dt.datetime.fromtimestamp(now, dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
-        if k in grades: g['regraded'] = 'rules v2 (13/11/2026)'
+        if k in grades: g['regraded'] = 'rules v3 (14/11/2026)'
         grades[k] = g
         done.append(f"{k} {g['result']} {g['r']}" + (f" MFE {g.get('best')}" if g.get('best') is not None else ''))
     nb = backfill_near(plans, grades, bars)
