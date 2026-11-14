@@ -588,6 +588,9 @@ def track_page(ym, lang):
              st('tr_hit', f'{hit}/{nr}' if nr else '—') + st('tr_void', f'{void}/{nr}' if nr else '—') + st('tr_r', r_text(tot, lang, 1) if nr else '—') +
              st('tr_best', ('+' + r_text(avg_best(keys), lang, 1).lstrip('+')) if avg_best(keys) is not None else '—') +
              (st('tr_near', str(near_count(keys))) if near_count(keys) else ''))
+    rc = round(sum(z.get('r') or 0 for k in keys for z in counted_zones(grade_of(k)) if z['result'] in ('hit', 'void')), 2)
+    rs = round(sum(z.get('r') or 0 for k in keys for z in counted_zones(grade_of(k)) if z['result'] == 'expired'), 2)
+    if nr: stats += st('tr_r_closed', r_text(rc, lang, 2) or '0R') + st('tr_r_session', r_text(rs, lang, 2) or '0R')
     rows = []
     for k in reversed(keys):
         p, g = PLANS[k], grade_of(k)
