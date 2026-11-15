@@ -4,27 +4,28 @@
 
 NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three times each trading day: before the Asia session (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). Each plan gives the bias, the main zone, targets, the level that invalidates the view, scenarios with rough probabilities, and the economic calendar. Every plan is graded in public on 15-minute candles after it expires — wins, losses and misses all stay on the record. Analysis only, not financial advice.
 
-## Latest plan (2026-11-13, Pre-New York plan, updated 2026-11-13 19:50 GMT+7)
+## Latest plan (2026-11-16, Asia plan, updated 2026-11-16 06:44 GMT+7)
 
-- Permanent page: https://nexuscore.trade/en/plan/2026-11-13-newyork/
+- Permanent page: https://nexuscore.trade/en/plan/2026-11-16-asia/
 - Bias: TWO-WAY · leaning SELL
-- Summary: Two-way, leaning SELL on rallies into 3901.6–3914; PPI decides, pivots 3852.6 / 3948.8
+- Summary: Two-way, leaning SELL on rallies into 3901.6–3914; Warsh decides, pivots 3867.7 / 3906
 - Main zone: SELL 3901.6–3914
-- Target T1: 3872.2
+- Target T1: 3867.7
 - Target T2: 3852.6
-- Target T3: 3838.1
-- Expected range: 3880–3906
-- View is wrong if: Sell side fails on an M15 close above 3948.8 with the next candle holding above → bias flips to buy. Bounce side fails on an M15 close below 3852.6 → further drop to 3838 / 3765.
-- Main scenario (~50%, SELL): Branch A – hot PPI (gold-negative): rallies into 3901.6–3914 get sold; M15 closes below 3870 and then 3852.6 → drop to 3838, then 3765.
-- Alternate scenario (~50%, BUY): Branch B – soft or in-line PPI: an M15 close above 3923.1 → rebound into the 3946–3956 resistance; an M15 close above 3948.8 that holds → bias flips to buy, rally to 3976, then 3991.
+- Target T3: 3838.1–3848
+- Expected range: 3868–3906
+- View is wrong if: Sell side fails on an M15 close above 3906.0 (New York high) → bias flips to buying dips; fully void above 3923.1. Buy side fails on an M15 close below 3896.1. An M15 close below 3867.7 → further drop to 3852.6 / 3848.
+- Main scenario (~50%, SELL): Branch A – hawkish Warsh (gold-negative): ranging 3868–3906 before the event, rallies into 3901.6–3914 get sold; an M15 close below 3867.7 → drop to 3852.6, the 3838.1–3848 zone, then 3764.7.
+- Alternate scenario (~50%, BUY): Branch B – dovish Warsh: an M15 close above 3906.0 and then a break of 3923.1 → rebound into the 3947.3–3958 resistance, then 3976–3993 (profit-taking area for the rally).
 
 ## Track record (November 2026)
 
-- Plans published: 7; graded: 7; zone reached: 4; Target 1 reached: 1; invalidated: 0; total: +4.9R
+- Plans published: 8; graded: 7; zone reached: 4; Target 1 reached: 1; invalidated: 0; total: +4.9R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
+- [2026-11-16 Asia plan](https://nexuscore.trade/en/plan/2026-11-16-asia/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Pending
 - [2026-11-13 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-13-newyork/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Target 1 reached +0.62R
 - [2026-11-13 Pre-London update](https://nexuscore.trade/en/plan/2026-11-13-london/): TWO-WAY · leaning SELL, main zone 3907.3–3914 — Zone not reached 0R
 - [2026-11-13 Asia plan](https://nexuscore.trade/en/plan/2026-11-13-asia/): TWO-WAY · leaning SELL, main zone 3907.3–3915 — Closed at session end +2.98R
@@ -49,6 +50,10 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [What is the relationship between gold and real yields?](https://nexuscore.trade/en/learn/gold-and-real-yields/): Real yields are bond yields after inflation, usually measured by the 10-year US TIPS yield. Gold pays no interest, so when real yields rise, holding gold costs 
 - [How to use the daily open line when trading gold](https://nexuscore.trade/en/learn/daily-open-line-gold/): The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far
 - [How do moving averages help read the gold trend?](https://nexuscore.trade/en/learn/moving-average-trend-gold/): A medium-term moving average on the 1-hour gold chart works as a trend filter: price holding above a rising average suggests buyers control the swing, price bel
+- [What is a liquidity sweep in XAUUSD?](https://nexuscore.trade/en/learn/liquidity-sweep-xauusd/): A liquidity sweep is a quick move just beyond an obvious high or low — where many stop orders sit — followed by a fast return inside the range. In gold it often
+- [How to find gold supply and demand zones](https://nexuscore.trade/en/learn/supply-and-demand-zones-gold/): A demand zone is the base a strong rally started from; a supply zone is the base a strong drop started from. Draw the zone around the last small candles before 
+- [How to spot a real breakout in XAUUSD](https://nexuscore.trade/en/learn/how-to-spot-a-breakout-gold/): A real gold breakout closes beyond the level on the 15-minute or 1-hour chart, keeps going with larger-than-average candles, and holds the level on the first re
+- [How to avoid fake breakouts on XAUUSD](https://nexuscore.trade/en/learn/how-to-avoid-fake-breakouts-gold/): Wait for a candle close beyond the level instead of trading the first spike, avoid breakouts in the minutes right before major news and in the quiet hours of As
 
 ## Why gold moved (recent days)
 
