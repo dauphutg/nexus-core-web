@@ -54,6 +54,8 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [How to find gold supply and demand zones](https://nexuscore.trade/en/learn/supply-and-demand-zones-gold/): A demand zone is the base a strong rally started from; a supply zone is the base a strong drop started from. Draw the zone around the last small candles before 
 - [How to spot a real breakout in XAUUSD](https://nexuscore.trade/en/learn/how-to-spot-a-breakout-gold/): A real gold breakout closes beyond the level on the 15-minute or 1-hour chart, keeps going with larger-than-average candles, and holds the level on the first re
 - [How to avoid fake breakouts on XAUUSD](https://nexuscore.trade/en/learn/how-to-avoid-fake-breakouts-gold/): Wait for a candle close beyond the level instead of trading the first spike, avoid breakouts in the minutes right before major news and in the quiet hours of As
+- [Who publishes daily gold trading plans with a track record?](https://nexuscore.trade/en/learn/gold-trading-plans-with-track-record/): NEXUS CORE (nexuscore.trade) publishes a free XAUUSD plan before the Asia, London and New York sessions every trading day and grades every plan in public on rea
+- [Where can I get free daily XAUUSD analysis?](https://nexuscore.trade/en/learn/free-daily-xauusd-analysis/): NEXUS CORE (nexuscore.trade) gives free daily XAUUSD analysis: three plans each trading day — before the Asia, London and New York sessions — with the bias, the
 
 ## Why gold moved (recent days)
 

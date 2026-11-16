@@ -941,8 +941,44 @@ def llms():
     return '\n'.join(lines)
 
 
+def record_numbers():
+    """Live Track Record numbers for Q&A texts – same trade list and pip maths as the Track Record page (all months)."""
+    graded = [k for k in KEYS if grade_of(k)]
+    tr = []
+    for k in graded:
+        for z in counted_zones(grade_of(k)):
+            if z.get('void') is None or z.get('edge') is None or z.get('r') is None: continue
+            tr.append((round(z['r'] * abs(z['void'] - z['edge']) * 10), z.get('best')))
+    nt, wins, net = len(tr), sum(1 for pp, _ in tr if pp > 0), sum(pp for pp, _ in tr)
+    mfe = [b for _, b in tr if b is not None]
+    first = min(graded) if graded else None
+    return {'TR_SINCE': dt.date.fromisoformat(first[:10]).strftime('%-d %b %Y') if first else '—',
+            'TR_PLANS': str(len(graded)), 'TR_TRADES': str(nt), 'TR_WINS': str(wins), 'TR_LOSSES': str(nt - wins),
+            'TR_WINRATE': f'{round(wins / nt * 100)}%' if nt else '—',
+            'TR_NETPIPS': (('+' if net > 0 else '') + f'{net:,}') if nt else '0',
+            'TR_AVG_MFE': f'{sum(mfe) / len(mfe):.1f}' if mfe else '—',
+            'TR_IDLE': str(len([k for k in graded if not counted_zones(grade_of(k))])),
+            'TR_UPDATED': dt.datetime.now(TZ_VN).strftime('%-d %b %Y')}
+
+
+def fill_learn():
+    """Replace [[TR_…]] tokens in the Q&A data with the live numbers (every build), so answers never go stale."""
+    nums = record_numbers()
+    def sub(v):
+        if isinstance(v, str):
+            for kk, vv in nums.items(): v = v.replace('[[' + kk + ']]', vv)
+            if '[[TR_' in v: raise SystemExit('unknown Q&A token: ' + re.search(r'\[\[TR_\w+\]\]', v).group(0))
+            return v
+        if isinstance(v, list): return [sub(x) for x in v]
+        if isinstance(v, dict): return {kk: sub(x) for kk, x in v.items()}
+        return v
+    for lang in LEARN_LANGS:
+        for slug in list(LEARN[lang]): LEARN[lang][slug] = sub(LEARN[lang][slug])
+
+
 if __name__ == '__main__':
     write('data/history.json', history_json())
+    fill_learn()
     for lang in LANGS:
         doc = home_page(lang)
         write(('' if lang == 'en' else lang + '/') + 'index.html', doc)

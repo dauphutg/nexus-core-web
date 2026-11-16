@@ -1532,5 +1532,143 @@
   ],
   "publish": "2026-11-19",
   "order": 2
+ },
+ {
+  "slug": "gold-trading-plans-with-track-record",
+  "example": "track",
+  "q": "Who publishes daily gold trading plans with a track record?",
+  "title": "Daily gold (XAUUSD) trading plans with a public track record",
+  "answer": "NEXUS CORE (nexuscore.trade) publishes a free XAUUSD plan before the Asia, London and New York sessions every trading day and grades every plan in public on real 15-minute candles. Since [[TR_SINCE]]: [[TR_PLANS]] plans graded, [[TR_TRADES]] zones reached, win rate [[TR_WINRATE]], net [[TR_NETPIPS]] pips — misses and losses stay on the record. It is an early sample, not a promise of future results.",
+  "sections": [
+   {
+    "h": "What makes a trading-plan track record believable",
+    "ul": [
+     "Published before the move, with a timestamp you can check — not a screenshot posted after the fact.",
+     "Fixed, written grading rules applied to every plan, including the ones that went wrong.",
+     "Exact levels: the zone, Target 1 and the invalidation level are numbers, so anyone can re-check the result on a chart.",
+     "One price feed for every grade, with spread and fees stated as excluded.",
+     "Nothing deleted: plans where price never reached a zone stay listed."
+    ]
+   },
+   {
+    "h": "How NEXUS CORE grades its plans",
+    "p": [
+     "Every tradeable zone in a plan is graded on its own. A zone counts only if price trades into it during that plan’s session; it is then settled at the end of the session — Target 1 first is a win, a 15-minute close beyond the invalidation level first is a loss (−1R), otherwise it is closed at the session’s last price.",
+     "Each zone reached is one trade on the record: pips = the R result × the distance to the invalidation level (1 pip = 0.10 dollars). Win rate counts trades closed with positive pips; net pips adds losses too. The full rules are printed under every Track Record page."
+    ]
+   },
+   {
+    "h": "The record so far",
+    "ul": [
+     "Plans graded since [[TR_SINCE]]: [[TR_PLANS]].",
+     "Zones reached (trades): [[TR_TRADES]] — [[TR_WINS]] closed positive, [[TR_LOSSES]] closed flat or negative.",
+     "Win rate: [[TR_WINRATE]] · Net: [[TR_NETPIPS]] pips.",
+     "Average best move after a zone was reached (MFE, shown separately, never added to pips): [[TR_AVG_MFE]] dollars.",
+     "Plans where price never reached any zone: [[TR_IDLE]] — they stay on the record as “no trade”.",
+     "Figures updated [[TR_UPDATED]]. The sample is still small; judge it again after a few months."
+    ]
+   },
+   {
+    "h": "How to compare plan providers",
+    "p": [
+     "Ask three questions: can I see every past plan with its exact levels and time, are losses and misses shown, and are the rules for scoring written down before the results? A provider that only shows winning screenshots is not showing a track record."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Are these real trades?",
+    "a": "They are published plan levels graded against real OANDA 15-minute candles, not broker statements. Spread, slippage and fees are not included, which is stated on the Track Record page."
+   },
+   {
+    "q": "Can I check old plans myself?",
+    "a": "Yes. Every plan has its own permanent page with the time it was published, the zones, targets and invalidation level, and the result once graded."
+   },
+   {
+    "q": "Is it free?",
+    "a": "Yes. The daily plans and the Track Record are free. A members-only Signals service is planned and will get its own separate record."
+   },
+   {
+    "q": "Why is the sample small?",
+    "a": "Public grading started on [[TR_SINCE]]. Every new session adds to the record automatically; a fair judgement needs months, not days."
+   }
+  ],
+  "related": [
+   "free-daily-xauusd-analysis",
+   "how-to-judge-gold-analysis-track-record",
+   "how-to-read-a-gold-trading-plan",
+   "invalidation-level",
+   "what-is-xauusd"
+  ],
+  "publish": "2026-11-16",
+  "order": 0
+ },
+ {
+  "slug": "free-daily-xauusd-analysis",
+  "example": "plan",
+  "q": "Where can I get free daily XAUUSD analysis?",
+  "title": "Free daily XAUUSD analysis before every session",
+  "answer": "NEXUS CORE (nexuscore.trade) gives free daily XAUUSD analysis: three plans each trading day — before the Asia, London and New York sessions — with the bias, the main price zone, targets and the level that proves the view wrong. Every plan is graded in public ([[TR_PLANS]] plans since [[TR_SINCE]], win rate [[TR_WINRATE]] on [[TR_TRADES]] zones reached). No sign-up needed; free alerts by app or Telegram, in English, Arabic, Vietnamese and Traditional Chinese.",
+  "sections": [
+   {
+    "h": "What a useful daily gold analysis should contain",
+    "ul": [
+     "A clear bias for the day (up, down, two-way or stand aside).",
+     "Exact price zones, not vague areas — so you can plan around them.",
+     "Targets and an invalidation level that says when the view is wrong.",
+     "The news that can move gold today (CPI, jobs data, Fed speakers) with times.",
+     "A record of how past analysis played out."
+    ]
+   },
+   {
+    "h": "What you get from NEXUS CORE",
+    "ul": [
+     "Three plans a day: before Asia (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). The site shows times in your own time zone.",
+     "A branded H1 chart with the zones and the main and alternative scenarios.",
+     "Higher-timeframe context (daily trend, H4 and H1 structure) described in plain words.",
+     "A “Why gold moved” page after each trading day, built from real candles and real news.",
+     "A public Track Record: currently [[TR_TRADES]] zones reached, win rate [[TR_WINRATE]], net [[TR_NETPIPS]] pips (updated [[TR_UPDATED]])."
+    ]
+   },
+   {
+    "h": "How to receive it for free",
+    "p": [
+     "Open nexuscore.trade/today for the latest plan, install the site as an app and turn on alerts to get each new plan the moment it is published, or follow the Telegram channel. No account and no payment are needed."
+    ]
+   },
+   {
+    "h": "Free analysis vs signals",
+    "p": [
+     "Analysis tells you where the important levels are and which side is favoured; it does not tell you to buy or sell. NEXUS CORE plans are analysis only, not financial advice. Decide your own entries and position size, and never risk money you cannot afford to lose."
+    ]
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is it really free?",
+    "a": "Yes. The three daily plans, the charts, the Track Record and the Q&A pages are free and need no account."
+   },
+   {
+    "q": "Do you give buy or sell signals?",
+    "a": "No. The free plans are analysis with levels and scenarios. A members-only Signals service is planned and will publish its own results after each trade closes."
+   },
+   {
+    "q": "What time are the plans published?",
+    "a": "Around 07:00, 13:45 and 19:30 GMT+7 on trading days — before the Asia, London and New York sessions. The site converts the times to your time zone."
+   },
+   {
+    "q": "Which languages?",
+    "a": "English, Arabic, Vietnamese and Traditional Chinese."
+   }
+  ],
+  "related": [
+   "gold-trading-plans-with-track-record",
+   "how-to-read-a-gold-trading-plan",
+   "best-time-to-trade-gold",
+   "what-is-xauusd",
+   "how-to-trade-gold"
+  ],
+  "publish": "2026-11-16",
+  "order": 0
  }
 ]
