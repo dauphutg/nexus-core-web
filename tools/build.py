@@ -142,10 +142,14 @@ def tidy(s, lang):
     return s
 
 
+def raw_of(o, lang):
+    if o is None: return ''
+    return o if isinstance(o, str) else (o.get('zh' if lang == 'zh-hant' else lang) or o.get('en') or o.get('vi') or '')
+
+
 def L(o, lang):
     if o is None: return ''
-    if isinstance(o, str): return tidy(o, lang)
-    s = tidy(o.get('zh' if lang == 'zh-hant' else lang) or o.get('en') or o.get('vi') or '', lang)
+    s = tidy(raw_of(o, lang), lang)
     # Arabic: keep price ranges left to right inside the sentence (3912–3932.1, not 3932.1–3912), same as app.js
     if lang == 'ar': s = re.sub(r'(\d(?:[\d.,:]*\d)?)\s*[–-]\s*(\d(?:[\d.,:]*\d)?)', '\u2066\\1–\\2\u2069', s)
     return s
@@ -337,6 +341,22 @@ def ctx_card(k, v, lang):
     return f'<div class="stat ctx"><div class="ch">{head}</div>{body}</div>'
 
 
+def alert_html(o, lang):
+    """The warning box as a badge + title line and one line per idea (same as alertInto in app.js). Split on the
+    writer's own breaks (spaced dash, ';', sentence end) before tidy() turns the dashes into commas."""
+    raw = raw_of(o, lang)
+    parts = [x.strip(' ,，،.。') for x in re.split(r'(?<!\d)\s+[–—]\s+(?!\d)|——|[;；؛]\s*|(?<=\.)\s+|。', raw)]
+    parts = [L(x, lang) for x in parts if x]
+    if not parts: return ''
+    px = lambda x: _STEP_PRICE.sub(lambda m: '<b class="px">' + m.group(0) + '</b>', esc(x))
+    first, badge = parts[0], ''
+    m = re.match(r'^([^\d:：]{2,30}?)\s*[:：]\s*(.+)$', first)
+    if m: badge, first = m.group(1), m.group(2)
+    head = (f'<span class="al-b">{esc(badge)}</span>' if badge else '') + f'<b class="al-h">{px(first[:1].upper() + first[1:])}</b>'
+    li = ''.join(f'<li>{px(x[:1].upper() + x[1:])}</li>' for x in parts[1:])
+    return f'<div class="al-t">{head}</div>' + (f'<ul class="ideas">{li}</ul>' if li else '')
+
+
 def plan_html(doc, p, lang):
     d0 = dt.date.fromisoformat(p['date'])
     upd = updated_dt(p)
@@ -347,7 +367,7 @@ def plan_html(doc, p, lang):
     doc = fill(doc, 'editions', eds)
     if p.get('alert') and L(p['alert'], lang):
         doc = unhide(doc, 'alert')
-        doc = fill(doc, 'alert-text', esc(L(p['alert'], lang)))
+        doc = fill(doc, 'alert-text', alert_html(p['alert'], lang))
     side = (p.get('lean') or '') if p['bias'] in ('TWO_WAY', 'STAND_ASIDE') else p['bias']
     doc = doc.replace('class="hero card" id="bias-card"', f'class="hero card {side_cls(side)}" id="bias-card"', 1)
     doc = fill(doc, 'bias-val', esc(bias_label(p, lang)))

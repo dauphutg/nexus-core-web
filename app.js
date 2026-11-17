@@ -381,6 +381,24 @@
     } else card.appendChild(ideasEl(v));
     return card;
   }
+  // Warning box: badge + title line, then one line per idea; split on the writer's own breaks before tidy() (same as alert_html).
+  function alertInto(node, o) {
+    node.textContent = '';
+    var raw = typeof o === 'string' ? o : (o[lang === 'zh-hant' ? 'zh' : lang] || o.en || o.vi || '');
+    var parts = raw.split(/(?<!\d)\s+[–—]\s+(?!\d)|——|[;；؛]\s*|(?<=\.)\s+|。/).map(function (x) { return x.replace(/^[\s,，،.。]+|[\s,，،.。]+$/g, ''); })
+      .filter(Boolean).map(function (x) { return L(x); });
+    if (!parts.length) return;
+    function cap(x) { return x.charAt(0).toUpperCase() + x.slice(1); }
+    var first = parts[0], t = el('div', 'al-t'), m = /^([^\d:：]{2,30}?)\s*[:：]\s*(.+)$/.exec(first);
+    if (m) { t.appendChild(el('span', 'al-b', m[1])); first = m[2]; }
+    t.appendChild(pxInto(el('b', 'al-h'), cap(first)));
+    node.appendChild(t);
+    if (parts.length > 1) {
+      var ul = el('ul', 'ideas');
+      parts.slice(1).forEach(function (x) { ul.appendChild(pxInto(el('li'), cap(x))); });
+      node.appendChild(ul);
+    }
+  }
   function par(x) { return lang === 'zh-hant' ? '（' + x + '）' : ' (' + x + ')'; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -476,7 +494,7 @@
     } else cb.hidden = true;
 
     var al = document.getElementById('alert');
-    if (p.alert && L(p.alert)) { al.hidden = false; document.getElementById('alert-text').textContent = L(p.alert); } else al.hidden = true;
+    if (p.alert && L(p.alert)) { al.hidden = false; alertInto(document.getElementById('alert-text'), p.alert); } else al.hidden = true;
 
     var bc = document.getElementById('bias-card');
     var side = p.bias === 'TWO_WAY' || p.bias === 'STAND_ASIDE' ? (p.lean || '') : p.bias;

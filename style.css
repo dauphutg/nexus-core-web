@@ -695,3 +695,17 @@ html[data-theme="dark"] .next,html[data-theme="dark"] .cta-box{border:1px solid 
 html:lang(zh-Hant) .ctx .ch .k,html[lang="ar"] .ctx .ch .k{letter-spacing:0}
 #context.stats{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
 #zones .zone{justify-content:flex-start}
+
+/* 17/11 – warning box: badge + title, then one line per idea */
+.alert{align-items:flex-start;padding:16px 20px;gap:14px}
+.alert svg{margin-top:3px}
+.al{display:flex;flex-direction:column;gap:8px;min-width:0;color:var(--alert-ink)}
+.al-t{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.al-b{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--sell);color:#fff}
+html:lang(zh-Hant) .al-b,html[lang="ar"] .al-b{letter-spacing:0}
+.al-h{font-size:16px;font-weight:700;color:var(--ink);line-height:1.45}
+.al .ideas{margin:0;gap:4px}
+.al .ideas li{font-size:14.5px;color:var(--alert-ink)}
+.al .ideas li::before{background:var(--gold-ink)}
+.al .px{color:var(--ink)}
+@media (max-width:640px){.alert{padding:14px 16px;gap:10px}.al-h{font-size:15px}}
