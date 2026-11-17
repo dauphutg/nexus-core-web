@@ -40,6 +40,36 @@ DAY = {'en': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
        'zh-hant': ['週一', '週二', '週三', '週四', '週五', '週六', '週日']}
 MON_AR = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
 VN_TZ_LABEL = {'en': 'GMT+7', 'ar': 'غرينتش+7', 'vi': 'giờ VN', 'zh-hant': 'GMT+7'}
+# Each language shows times in its readers' clock (user, 17/11/2026): EN = UK time, AR = Mecca time,
+# VI = Vietnam time, 繁中 = Taipei / Hong Kong time. Plan data stays in Vietnam time (GMT+7) and is converted here.
+TZ_LANG = {'en': ZoneInfo('Europe/London'), 'ar': ZoneInfo('Asia/Riyadh'), 'vi': ZoneInfo('Asia/Ho_Chi_Minh'), 'zh-hant': ZoneInfo('Asia/Taipei')}
+
+
+def to_local(d, lang):
+    """Vietnam-time datetime (naive or aware) → the language's own clock."""
+    if d.tzinfo is None: d = d.replace(tzinfo=TZ_VN)
+    return d.astimezone(TZ_LANG[lang])
+
+
+def tz_label(d, lang):
+    """Short zone name for a local datetime: GMT / BST in the UK, otherwise GMT+n."""
+    off = int(d.utcoffset().total_seconds() // 3600)
+    if lang == 'en': return 'BST' if off == 1 else 'GMT'
+    return f'GMT+{off}' if off else 'GMT'
+
+
+def hm_local(d, lang):
+    x = to_local(d, lang)
+    return f'{x:%H:%M} {tz_label(x, lang)}'
+
+
+def vn_news_time(s, year, lang):
+    """News time "dd/mm HH:MM" (Vietnam time) → "dd/mm HH:MM <zone>" in the language's clock; "dd/mm" stays as is."""
+    m = re.fullmatch(r'(\d{2})/(\d{2})(?:\s+(\d{2}):(\d{2}))?', str(s or '').strip())
+    if not m: return str(s or '')
+    if not m.group(3): return f'{m.group(1)}/{m.group(2)}'
+    x = to_local(dt.datetime(int(year), int(m.group(2)), int(m.group(1)), int(m.group(3)), int(m.group(4))), lang)
+    return f'{x:%d/%m %H:%M} {tz_label(x, lang)}'
 FAQ = {
     'en': ('What is the gold (XAUUSD) bias today?', 'Where is the main gold zone today?', 'What would make today\'s gold view wrong?'),
     'ar': ('ما اتجاه الذهب (XAUUSD) اليوم؟', 'أين المنطقة الرئيسية للذهب اليوم؟', 'ما الذي يُلغي نظرة اليوم على الذهب؟'),
@@ -205,10 +235,10 @@ def scen_text(s):
 def plan_html(doc, p, lang):
     d0 = dt.date.fromisoformat(p['date'])
     upd = updated_dt(p)
-    doc = fill(doc, 'plan-meta', ''.join(f'<span>{esc(x)}</span>' for x in (p['symbol'], t(lang, 'ed').get(p['edition'], p['edition']), f"{upd:%H:%M} {VN_TZ_LABEL[lang]}")))
+    doc = fill(doc, 'plan-meta', ''.join(f'<span>{esc(x)}</span>' for x in (p['symbol'], t(lang, 'ed').get(p['edition'], p['edition']), hm_local(upd, lang))))
     doc = fill(doc, 'plan-title', esc(t(lang, 'plan_of')) + ' <span class="d">' + esc(day_label(d0, lang)) + '</span>')
     eds = ''.join(f'<div class="ed{" on" if e == p["edition"] else ""}"><span class="k">{esc(t(lang, "ed_short")[e])}</span>'
-                  f'<span class="v num">{ED_TIME[e]}</span></div>' for e in ED_ORDER)
+                  f'<span class="v num">{to_local(dt.datetime.strptime(p["date"] + " " + ED_TIME[e], "%Y-%m-%d %H:%M"), lang):%H:%M}</span></div>' for e in ED_ORDER)
     doc = fill(doc, 'editions', eds)
     if p.get('alert') and L(p['alert'], lang):
         doc = unhide(doc, 'alert')
@@ -261,7 +291,7 @@ def plan_html(doc, p, lang):
                   f'<span class="g">{esc(t(lang, "key") if is_main else z.get("grade", ""))}</span></div>')
     doc = fill(doc, 'zones', ''.join(zs))
     nw = ''.join(f'<div class="row news-row"><span class="k"><span class="imp {esc(n.get("impact", "low"))}"></span><span>{esc(L(n["text"], lang))}</span></span>'
-                 f'<span class="v">{esc(n.get("time", ""))} {esc(VN_TZ_LABEL[lang]) if " " in str(n.get("time", "")) else ""}</span></div>' for n in p.get('news') or [])
+                 f'<span class="v">{esc(vn_news_time(n.get("time", ""), p["date"][:4], lang))}</span></div>' for n in p.get('news') or [])
     doc = fill(doc, 'news', nw)
     doc = fill(doc, 'next', f'<span><strong>{esc(t(lang, "next"))}:</strong> <span id="next-v">{esc(L(p.get("next_update"), lang))}</span></span>'
                             f'<a href="#cta">{esc(C(lang, "next_alert"))}</a>')
@@ -384,8 +414,8 @@ def month_label(ym, lang):
 
 
 def vn_label(s, lang, with_day=True):
-    d = dt.datetime.strptime(s, '%Y-%m-%d %H:%M')
-    return (day_label(d.date(), lang) + ' ' if with_day else '') + f"{d:%H:%M} {VN_TZ_LABEL[lang]}"
+    d = to_local(dt.datetime.strptime(s, '%Y-%m-%d %H:%M'), lang)
+    return (day_label(d.date(), lang) + ' ' if with_day else '') + f"{d:%H:%M} {tz_label(d, lang)}"
 
 
 def r_text(r, lang, nd=2):
@@ -624,8 +654,11 @@ def all_trades(keys=None):
 def signed_pips(pp, lang): return ('+' if pp > 0 else '') + pips(pp / 10, lang).split(' ')[0]
 
 
+SEP = {'en': ', ', 'vi': ', ', 'ar': '، ', 'zh-hant': '，'}
+
+
 def ed_time_label(p, lang):
-    return f"{t(lang, 'ed').get(p['edition'], p['edition'])}, {C(lang, 'published')} {updated_dt(p):%H:%M} {VN_TZ_LABEL[lang]}"
+    return f"{t(lang, 'ed').get(p['edition'], p['edition'])}{SEP[lang]}{C(lang, 'published')} {hm_local(updated_dt(p), lang)}"
 
 
 def today_page(lang):
@@ -686,7 +719,7 @@ def home_page(lang):
                  f'<div class="h-tile"><div class="v num" dir="ltr">{esc(nums["TR_TRADES"])}</div><div class="k">{esc(c["tile_tr"])}</div></div></div>'
                  f'<p class="h-note">{esc(c["tiles_note"])}</p>')
     hero = (f'  <section class="h-hero bleed"><div class="h-in">\n'
-            f'    <div class="h-chips"><span class="c0">{esc(c["chip"])}</span><span class="c1" id="hp-ed">{esc(t(lang, "ed").get(p["edition"], ""))}, <span class="num" dir="ltr">{updated_dt(p):%H:%M} {esc(VN_TZ_LABEL[lang])}</span></span></div>\n'
+            f'    <div class="h-chips"><span class="c0">{esc(c["chip"])}</span><span class="c1" id="hp-ed">{esc(t(lang, "ed").get(p["edition"], ""))}{SEP[lang]}<span class="num" dir="ltr">{esc(hm_local(updated_dt(p), lang))}</span></span></div>\n'
             f'    <h1 class="h-h1">{esc(c["h1"][0])}<br><span class="gold-tx">{esc(c["h1"][1])}</span></h1>\n'
             f'    <p class="h-lede">{esc(c["lede"])}</p>\n'
             f'    <div class="h-btns"><a class="b-navy" href="{tp}">{esc(c["btn_plan"])}{ARROW}</a><a class="b-ghost" href="{tr}">{esc(c["btn_record"])}</a></div>\n'
@@ -697,7 +730,7 @@ def home_page(lang):
     src = chart_for(p, lang)
     pv = (f'  <section class="h-sec" id="today-preview">\n'
           f'    <div class="h-row"><div><p class="eyebrow">{esc(c["plan_eyebrow"])}</p><h2 class="h-h2" id="hp-day">{esc(day_label(d0, lang))}</h2></div>'
-          f'<span class="muted" id="hp-pub" data-tpl="{{ed}}, {esc(c["published"])} {{time}}">{esc(ed_time_label(p, lang))}</span></div>\n'
+          f'<span class="muted" id="hp-pub" data-tpl="{{ed}}{SEP[lang]}{esc(c["published"])} {{time}}">{esc(ed_time_label(p, lang))}</span></div>\n'
           f'    <div class="sum">\n'
           f'      <div class="hero card {side_cls(side)}" id="hp-card"><p class="eyebrow">{esc(c["bias_k"])}</p><p class="bias-val" id="hp-bias">{esc(bias_label(p, lang))}</p>'
           f'<p class="headline" id="hp-headline">{esc(L(p.get("headline"), lang))}</p>'
@@ -965,9 +998,9 @@ def example_box(kind, lang):
     if kind == 'context':
         for c in p.get('context') or []: row(L(c['k'], lang), L(c['v'], lang), False)
     if kind == 'news':
-        for n in p.get('news') or []: row(L(n['text'], lang), str(n.get('time', '')) + (' GMT+7' if ' ' in str(n.get('time', '')) else ''), False)
+        for n in p.get('news') or []: row(L(n['text'], lang), vn_news_time(n.get('time', ''), p['date'][:4], lang), False)
     if kind == 'session':
-        for e in ED_ORDER: row(t(lang, 'ed')[e], f"{ED_TIME[e]} GMT+7 ({['00:00', '06:45', '12:30'][ED_ORDER.index(e)]} UTC)")
+        for e in ED_ORDER: row(t(lang, 'ed')[e], f"{hm_local(dt.datetime.strptime(p['date'] + ' ' + ED_TIME[e], '%Y-%m-%d %H:%M'), lang)} ({['00:00', '06:45', '12:30'][ED_ORDER.index(e)]} UTC)")
     if kind == 'track':
         n, ng, nr, hit, void, tot = month_stats([x for x in KEYS if x.startswith(CUR_MONTH)])
         row(t(lang, 'tr_plans'), str(n)); row(t(lang, 'tr_graded'), str(ng)); row(t(lang, 'tr_reached'), str(nr))
@@ -1033,7 +1066,7 @@ def move_page(lang, m):
     bh = m.get('biggest_hour') or {}
     stats = (st('mv_change', f"{sign}{fmt(pct, lang)}% ({sign}{fmt(m['change'], lang)})", cls) + st('mv_oc', f"{fmt(m['open'], lang)} → {fmt(m['close'], lang)}") +
              st('mv_hl', f"{fmt(m['high'], lang)} / {fmt(m['low'], lang)}") +
-             (st('mv_big', f"{('+' if bh['move'] > 0 else '')}{fmt(bh['move'], lang)} ({bh['start_vn'][11:]} GMT+7)") if bh.get('start_vn') else ''))
+             (st('mv_big', f"{('+' if bh['move'] > 0 else '')}{fmt(bh['move'], lang)} ({hm_local(dt.datetime.strptime(bh['start_vn'][:16], '%Y-%m-%d %H:%M'), lang)})") if bh.get('start_vn') else ''))
     reasons = ''.join(f'<li>{esc(L(r, lang))}</li>' for r in m['reasons'])
     srcs = ', '.join(esc(s_) for s_ in (m.get('sources') or []) if isinstance(s_, str))
     dk = [k for k in KEYS if k.startswith(m['date'])]

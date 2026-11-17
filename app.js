@@ -15,7 +15,7 @@
       plan_of: 'Gold plan', ed: { '0700': 'Asia plan', '1345': 'Pre-London update', '1930': 'Pre-New York plan' },
       ed_short: { '0700': 'Asia', '1345': 'London', '1930': 'New York' },
       updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', key: 'Key zone',
-      tz: 'All times shown in your local time', your_time: 'your time',
+      tz: 'All times in UK time', your_time: 'your time',
       tg_title: 'Get every plan on Telegram', tg_sub: 'Free channel, no sign-up',
       SELL: 'SELL', BUY: 'BUY', TWO_WAY: 'TWO-WAY', STAND_ASIDE: 'STAND ASIDE', lean: 'leaning',
       live: 'LIVE', stale: 'LAST PLAN', err: 'Could not load data. Please reload the page.',
@@ -64,7 +64,7 @@
       plan_of: 'خطة الذهب', ed: { '0700': 'خطة آسيا', '1345': 'تحديث ما قبل لندن', '1930': 'خطة ما قبل نيويورك' },
       ed_short: { '0700': 'آسيا', '1345': 'لندن', '1930': 'نيويورك' },
       updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', key: 'منطقة رئيسية',
-      tz: 'جميع الأوقات بتوقيتك المحلي', your_time: 'بتوقيتك',
+      tz: 'جميع الأوقات بتوقيت مكة المكرمة', your_time: 'بتوقيتك',
       tg_title: 'استلم كل خطة عبر تيليجرام', tg_sub: 'قناة مجانية، بدون تسجيل',
       SELL: 'بيع', BUY: 'شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق', lean: 'ميل إلى',
       live: 'مباشر', stale: 'آخر خطة', err: 'تعذّر تحميل البيانات. يرجى إعادة تحميل الصفحة.',
@@ -113,7 +113,7 @@
       plan_of: 'Plan vàng', ed: { '0700': 'Plan phiên Á', '1345': 'Cập nhật trước phiên Âu', '1930': 'Plan trước phiên Mỹ' },
       ed_short: { '0700': 'Phiên Á', '1345': 'Phiên Âu', '1930': 'Phiên Mỹ' },
       updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', key: 'Vùng chính',
-      tz: 'Mọi giờ hiển thị theo giờ máy của bạn', your_time: 'giờ của bạn',
+      tz: 'Mọi giờ theo giờ Việt Nam', your_time: 'giờ của bạn',
       tg_title: 'Nhận mọi plan qua Telegram', tg_sub: 'Kênh miễn phí, không cần đăng ký',
       SELL: 'BÁN', BUY: 'MUA', TWO_WAY: '2 CHIỀU', STAND_ASIDE: 'ĐỨNG NGOÀI', lean: 'nghiêng',
       live: 'LIVE', stale: 'PLAN CŨ', err: 'Không tải được dữ liệu. Thử tải lại trang.',
@@ -162,7 +162,7 @@
       plan_of: '黃金計畫', ed: { '0700': '亞洲盤計畫', '1345': '倫敦盤前更新', '1930': '紐約盤前計畫' },
       ed_short: { '0700': '亞洲盤', '1345': '倫敦盤', '1930': '紐約盤' },
       updated: '更新於', next: '下次更新', main: '主要', alt: '備選', key: '主要區域',
-      tz: '所有時間皆以您的當地時間顯示', your_time: '您的時間',
+      tz: '所有時間皆為台北／香港時間', your_time: '您的時間',
       tg_title: '在 Telegram 接收每一份計畫', tg_sub: '免費頻道，無需註冊',
       SELL: '偏空', BUY: '偏多', TWO_WAY: '雙向', STAND_ASIDE: '觀望', lean: '傾向',
       live: 'LIVE', stale: '最新計畫', err: '資料載入失敗，請重新整理頁面。',
@@ -294,18 +294,21 @@
   }
   function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
 
-  // Plan times are Vietnam time (UTC+7); show them in the visitor's own time zone.
+  // Plan times are Vietnam time (UTC+7). Each language shows them in its readers' clock (user, 17/11/2026):
+  // EN = UK time, AR = Mecca time, VI = Vietnam time, 繁中 = Taipei / Hong Kong time (same as tools/build.py TZ_LANG).
+  var TZ = { en: 'Europe/London', ar: 'Asia/Riyadh', vi: 'Asia/Ho_Chi_Minh', 'zh-hant': 'Asia/Taipei' };
   function vn(dateStr, hm) { return new Date(dateStr + 'T' + hm + ':00+07:00'); }
-  function tf(d, opt) { try { return new Intl.DateTimeFormat(locale(), opt).format(d); } catch (e) { return d.toISOString().slice(0, 16).replace('T', ' '); } }
+  function tf(d, opt) { opt = opt || {}; opt.timeZone = TZ[lang] || 'Asia/Ho_Chi_Minh'; try { return new Intl.DateTimeFormat(locale(), opt).format(d); } catch (e) { return d.toISOString().slice(0, 16).replace('T', ' '); } }
   // 24-hour clock in every language (13:49, not 01:49 PM), time zone as a plain short name without brackets
   function hm(d) { return tf(d, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }); }
   function tzName(d) {
     var z = '';
-    try { new Intl.DateTimeFormat('en-GB', { timeZoneName: 'short' }).formatToParts(d).forEach(function (x) { if (x.type === 'timeZoneName') z = x.value; }); } catch (e) {}
+    try { new Intl.DateTimeFormat('en-GB', { timeZone: TZ[lang] || 'Asia/Ho_Chi_Minh', timeZoneName: 'short' }).formatToParts(d).forEach(function (x) { if (x.type === 'timeZoneName') z = x.value; }); } catch (e) {}
     return z.replace(/^UTC$/, 'GMT');
   }
   function hmz(d) { var z = tzName(d); return hm(d) + (z ? ' ' + z : ''); }
-  function dayHm(d) { return tf(d, { weekday: 'short', day: 'numeric', month: 'short' }) + ', ' + hm(d); }
+  function sep() { return lang === 'ar' ? '، ' : lang === 'zh-hant' ? '，' : ', '; }
+  function dayHm(d) { return tf(d, { weekday: 'short', day: 'numeric', month: 'short' }) + (lang === 'zh-hant' ? ' ' : sep()) + hm(d); }
   function dayOnly(d) { return tf(d, { weekday: 'short', day: 'numeric', month: 'short' }); }
   function addDays(dateStr, n) { var d = new Date(dateStr + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
   function nextEdition(p) {
@@ -430,7 +433,7 @@
     document.getElementById('tznote').textContent = t('tz') + (tzn ? par(tzn) : '') + (lang === 'zh-hant' ? '。' : '.');
 
     var nv = document.getElementById('next-v'), ne = nextEdition(p);
-    if (nv) nv.textContent = ne ? t('ed')[ne.ed] + ', ' + dayHm(ne.at) : L(p.next_update);
+    if (nv) nv.textContent = ne ? t('ed')[ne.ed] + sep() + dayHm(ne.at) : L(p.next_update);
 
     // LIVE badge goes grey when the plan is more than 30 hours old
     var age = (Date.now() - upd.getTime()) / 36e5;
@@ -447,7 +450,7 @@
     var pub = document.getElementById('hp-pub');
     if (pub && pub.getAttribute('data-tpl')) pub.textContent = pub.getAttribute('data-tpl').replace('{ed}', t('ed')[p.edition] || p.edition).replace('{time}', hmz(upd));
     var he = document.getElementById('hp-ed');
-    if (he) { he.textContent = (t('ed')[p.edition] || p.edition) + ', '; he.appendChild(el('span', 'num', hmz(upd))); }
+    if (he) { he.textContent = (t('ed')[p.edition] || p.edition) + (lang === 'ar' ? '، ' : lang === 'zh-hant' ? '，' : ', '); he.appendChild(el('span', 'num', hmz(upd))); }
     var age = (Date.now() - upd.getTime()) / 36e5;
     document.getElementById('live').classList.toggle('stale', age > 30);
     document.getElementById('live-text').textContent = age > 30 ? t('stale') : t('live');
