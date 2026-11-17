@@ -619,3 +619,25 @@ html[lang="ar"] .fh,html:lang(zh-Hant) .fh{letter-spacing:0;font-size:14px}
 @media (max-width:360px){.top .tabs a{padding:8px 6px;font-size:14px}}
 html[data-theme="dark"] .next,html[data-theme="dark"] .cta-box{border:1px solid var(--line)}
 #hp-card .hero-keys{margin-top:6px} #hp-card .b-navy{margin-top:auto}
+
+/* 17/11 – scenarios as a short path: setup (hollow dot) → what follows (filled dot), prices in bold */
+.scen{padding:20px 22px 18px;gap:12px}
+.scen .t{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0}
+.scen .t span:first-child{font-size:15px;font-weight:700}
+.scen .t .pct{font-size:26px;font-weight:700;color:var(--ink);line-height:1}
+.scen .bar{margin:0;height:5px}
+.steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column}
+.steps li{position:relative;padding-inline-start:28px;padding-bottom:12px;font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.steps li.e{padding-bottom:4px}
+.steps li.g{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.steps li.g::before{top:calc(12px + .45em)}
+.steps li::before{content:"";position:absolute;inset-inline-start:4px;top:.45em;width:12px;height:12px;border-radius:50%;box-sizing:border-box;border:2px solid var(--ink3);background:var(--card)}
+.steps li.o::before{border-color:transparent;background:var(--ink3)}
+.steps li:not(.e)::after{content:"";position:absolute;inset-inline-start:9px;top:calc(.45em + 14px);bottom:0;width:2px;border-radius:2px;background:var(--line)}
+.steps li.g:not(.e)::after{top:calc(12px + .45em + 14px)}
+.scen.sell .steps li::before{border-color:var(--sell)} .scen.sell .steps li.o::before{background:var(--sell);border-color:var(--sell)}
+.scen.buy .steps li::before{border-color:var(--buy)} .scen.buy .steps li.o::before{background:var(--buy);border-color:var(--buy)}
+.scen.sell .steps li:not(.e)::after{background:var(--sell-line)} .scen.buy .steps li:not(.e)::after{background:var(--buy-line)}
+.steps li.o{color:var(--ink)}
+.steps .px{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.scen{padding:18px 16px 14px}.steps li{font-size:15px;padding-inline-start:26px}.scen .t .pct{font-size:22px}}

@@ -275,13 +275,30 @@
     if (o == null) return '';
     var s = tidy(typeof o === 'string' ? o : (o[lang === 'zh-hant' ? 'zh' : lang] || o.en || o.vi || ''));
     // keep price ranges left-to-right inside Arabic sentences (4058–4068, not 4068–4058)
-    if (lang === 'ar') s = s.replace(/(\d[\d.,:]*)\s*[–-]\s*(\d[\d.,:]*)/g, '⁦$1–$2⁩');
+    if (lang === 'ar') s = s.replace(/(\d(?:[\d.,:]*\d)?)\s*[–-]\s*(\d(?:[\d.,:]*\d)?)/g, '⁦$1–$2⁩');
     return s;
   }
   function locale() { return lang === 'vi' ? 'vi-VN' : lang === 'ar' ? 'ar-u-nu-latn' : lang === 'zh-hant' ? 'zh-Hant' : (nav.indexOf('en') === 0 ? navigator.language : 'en-GB'); }
   function fmt(n) { if (n == null || n === '') return ''; return typeof n === 'number' ? String(Math.round(n * 10) / 10) : String(n); }
   // the card already says Main / Alternate: drop the same word at the start of the scenario text
   function scenText(s) { s = s.replace(/^(Chính|Phụ|Main|Alt(ernate)?|Primary|Secondary|主要|次要|الرئيسي|البديل)[^:：]{0,14}[:：]\s*/i, ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+  // A scenario sentence as a short path (same as scen_steps in tools/build.py): one group per sentence or ';' clause,
+  // one step per '→' (or '←' in Arabic); prices in bold. Built with text nodes only.
+  var PRICE = /(\d{3,5}(?:\.\d+)?(?:\u2060?[–-]\u2060?\d{3,5}(?:\.\d+)?)?)/;
+  function scenSteps(text) {
+    var ol = el('ol', 'steps'), first = true;
+    text.split(/(?:(?<=\.)\s+|。|[;；؛]\s*)/).forEach(function (g) {
+      var parts = g.split(/\s*[→←]\s*/).map(function (x) { return x.replace(/^[\s,，،.。]+|[\s,，،.。]+$/g, ''); }).filter(Boolean);
+      parts.forEach(function (x, i) {
+        x = x.charAt(0).toUpperCase() + x.slice(1);
+        var li = el('li', (i === 0 ? 'c' : 'o') + (i === parts.length - 1 ? ' e' : '') + (i === 0 && !first ? ' g' : ''));
+        x.split(PRICE).forEach(function (bit, k) { if (bit) li.appendChild(k % 2 ? el('b', 'px', bit) : document.createTextNode(bit)); });
+        ol.appendChild(li);
+      });
+      if (parts.length) first = false;
+    });
+    return ol;
+  }
   function par(x) { return lang === 'zh-hant' ? '（' + x + '）' : ' (' + x + ')'; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -409,9 +426,9 @@
     var sc = clear('scenarios');
     (p.scenarios || []).forEach(function (s, i) {
       var c = el('div', 'card scen ' + sideCls(s.side));
-      var head = add(el('div', 't'), el('span', null, (i === 0 ? t('main') : t('alt')) + par(t(s.side))), el('span', 'num muted', s.prob + '%'));
+      var head = add(el('div', 't'), el('span', null, (i === 0 ? t('main') : t('alt')) + par(t(s.side))), el('span', 'pct num', s.prob + '%'));
       var bar = el('div', 'bar'); var bi = el('i', 'w' + Math.round(Math.max(0, Math.min(100, s.prob)) / 5) * 5); bar.appendChild(bi);
-      add(sc, add(c, head, el('p', null, scenText(L(s.text))), bar));
+      add(sc, add(c, head, bar, scenSteps(scenText(L(s.text)))));
     });
 
     var zn = clear('zones');

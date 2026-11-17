@@ -147,7 +147,7 @@ def L(o, lang):
     if isinstance(o, str): return tidy(o, lang)
     s = tidy(o.get('zh' if lang == 'zh-hant' else lang) or o.get('en') or o.get('vi') or '', lang)
     # Arabic: keep price ranges left to right inside the sentence (3912–3932.1, not 3932.1–3912), same as app.js
-    if lang == 'ar': s = re.sub(r'(\d[\d.,:]*)\s*[–-]\s*(\d[\d.,:]*)', '\u2066\\1–\\2\u2069', s)
+    if lang == 'ar': s = re.sub(r'(\d(?:[\d.,:]*\d)?)\s*[–-]\s*(\d(?:[\d.,:]*\d)?)', '\u2066\\1–\\2\u2069', s)
     return s
 
 
@@ -232,6 +232,23 @@ def scen_text(s):
     return s[:1].upper() + s[1:]
 
 
+_STEP_PRICE = re.compile('\\d{3,5}(?:\\.\\d+)?(?:\u2060?[–-]\u2060?\\d{3,5}(?:\\.\\d+)?)?')
+
+
+def scen_steps(text, lang):
+    """A scenario sentence as a short path (same as scenSteps in app.js): one group per sentence or ';' clause,
+    one step per '→' (or '←' in Arabic). First step of a group = the setup, the next ones = what follows. Prices in bold."""
+    out, first = [], True
+    for g in re.split(r'(?:(?<=\.)\s+|。|[;；؛]\s*)', text):
+        parts = [x.strip(' ,，،.。') for x in re.split(r'\s*[→←]\s*', g)]
+        parts = [x[:1].upper() + x[1:] for x in parts if x]
+        for i, x in enumerate(parts):
+            cls = ('c' if i == 0 else 'o') + (' e' if i == len(parts) - 1 else '') + (' g' if i == 0 and not first else '')
+            out.append(f'<li class="{cls}">' + _STEP_PRICE.sub(lambda m: '<b class="px">' + m.group(0) + '</b>', esc(x)) + '</li>')
+        if parts: first = False
+    return '<ol class="steps">' + ''.join(out) + '</ol>'
+
+
 def plan_html(doc, p, lang):
     d0 = dt.date.fromisoformat(p['date'])
     upd = updated_dt(p)
@@ -281,7 +298,7 @@ def plan_html(doc, p, lang):
     for i, s in enumerate(p.get('scenarios') or []):
         w = max(0, min(100, s['prob']))
         sc.append(f'<div class="card scen {side_cls(s["side"])}"><div class="t"><span>{esc((t(lang, "main") if i == 0 else t(lang, "alt")) + par(t(lang, s["side"]), lang))}</span>'
-                  f'<span class="num muted">{esc(s["prob"])}%</span></div><p>{esc(scen_text(L(s["text"], lang)))}</p><div class="bar"><i class="w{int(round(w / 5.0) * 5)}"></i></div></div>')
+                  f'<span class="pct num">{esc(s["prob"])}%</span></div><div class="bar"><i class="w{int(round(w / 5.0) * 5)}"></i></div>{scen_steps(scen_text(L(s["text"], lang)), lang)}</div>')
     doc = fill(doc, 'scenarios', ''.join(sc))
     zs = []
     for z in p.get('zones') or []:
