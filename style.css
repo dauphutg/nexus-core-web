@@ -711,3 +711,13 @@ html:lang(zh-Hant) .al-b,html[lang="ar"] .al-b{letter-spacing:0}
 @media (max-width:640px){.alert{padding:14px 16px;gap:10px}.al-h{font-size:15px}}
 .al-time{font-size:14px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.6);border:1px solid var(--gold-line);border-radius:999px;padding:2px 10px;white-space:nowrap}
 html[data-theme="dark"] .al-time{background:var(--card)}
+
+/* 17/11 – zones named as support / resistance; the break condition that turns one into the other */
+.zone .pill{font-size:12.5px;white-space:nowrap}
+.zone .flip{margin:0;padding:10px 12px;border-radius:12px;background:var(--gold-bg);border:1px solid var(--gold-line);font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:500}
+.zone .flip::before{content:"⇅ ";color:var(--gold-ink);font-weight:700}
+.zone .flip .px{font-weight:700;white-space:nowrap}
+.zone .zh{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px 10px}
+.zone .zh .zr{grid-column:1;grid-row:1;font-size:20px}
+.zone .zh .g{grid-column:2;grid-row:1;margin:0}
+.zone .zh .pill{grid-column:1 / -1;grid-row:2;justify-self:start}

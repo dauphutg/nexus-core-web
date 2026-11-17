@@ -282,7 +282,7 @@ def headline_html(s, lang):
     return f'<span class="hl1">{esc(parts[0])}</span>' + (f'<ul class="hl">{li}</ul>' if li else '')
 
 
-INV_RE = re.compile(r'huỷ|hủy|\bvoid\b|失效|تُلغى|تلغى', re.I)
+INV_RE = re.compile(r'huỷ|hủy|\bvoid\b|失效|تُلغى|تلغى|bị phá|\bbreaks\b|تنكسر|ينكسر|即突破|即跌破|bỏ vùng|is cancelled|取消', re.I)
 VALID_RE = re.compile(r'hiệu lực|\bvalid\b|有效|صالحة', re.I)
 
 
@@ -380,6 +380,48 @@ def alert_html(p, lang):
     return f'<div class="al-t">{top}</div>' + (f'<ul class="ideas">{li}</ul>' if li else '')
 
 
+# Zones as support / resistance (user, 17/11/2026): say which one it is, and the condition for it to turn into the other.
+# "only valid after an M15 close below X" on a sell zone = a support that becomes new resistance after a closed break.
+_ACT = {'vi': r'[,;]?\s*(?:chỉ\s+)?có hiệu lực sau khi (M15|H1|H4|D1) đóng (dưới|trên) (\d+(?:\.\d+)?)',
+        'en': r'[,;]?\s*(?:only\s+)?valid (?:only\s+)?after an? (M15|H1|H4|D1) close (below|above) (\d+(?:\.\d+)?)',
+        'ar': r'[،,]?\s*(?:تصبح\s+)?صالحة فقط بعد إغلاق (M15|H1|H4|D1) (أسفل|دون|تحت|فوق|أعلى) (\d+(?:\.\d+)?)',
+        'zh-hant': r'[，,]?\s*僅在\s*(M15|H1|H4|D1) 收在 (\d+(?:\.\d+)?) 之(下|上)後生效'}
+_VOID = {'vi': r'(?:huỷ|hủy) nếu (M15|H1|H4|D1) đóng (?:lại )?(trên|dưới) (\d+(?:\.\d+)?)',
+         'en': r'void on an? (M15|H1|H4|D1) close (?:back )?(above|below) (\d+(?:\.\d+)?)',
+         'ar': r'تُلغى بإغلاق (M15|H1|H4|D1) (?:مجددًا )?(فوق|أعلى|دون|أسفل|تحت) (\d+(?:\.\d+)?)',
+         'zh-hant': r'(M15|H1|H4|D1) (?:重新)?收在 (\d+(?:\.\d+)?) 之(上|下)則失效'}
+_BELOW = {'dưới', 'below', 'أسفل', 'دون', 'تحت', '下'}
+
+
+def _tdx(m, lang):
+    """(timeframe, 'below'|'above', level) from an _ACT/_VOID match; Chinese puts the level before the direction."""
+    if lang == 'zh-hant': return m.group(1), ('below' if m.group(3) == '下' else 'above'), m.group(2)
+    return m.group(1), ('below' if m.group(2) in _BELOW else 'above'), m.group(3)
+
+
+def zone_view(z, lang):
+    """(pill text, flip line or '', status text with the break conditions rewritten). Same as zoneView in app.js."""
+    st = L(z.get('status'), lang)
+    sell = z.get('side') == 'SELL'
+    flip_line, flip = '', False
+    m = re.search(_ACT[lang], st, re.I)
+    if m:
+        tf, d, x = _tdx(m, lang)
+        flip = (sell and d == 'below') or (not sell and d == 'above')
+        key = ('fl_sb' if sell else 'fl_ba') if flip else ('fl_sa' if sell else 'fl_bb')
+        flip_line = t(lang, key).format(tf=tf, x=x)
+        st = re.sub(r'\s*[:：]\s*(?=[;；؛]|$)', '', st[:m.start()] + st[m.end():]).strip(' ,;،，:：')
+    def void(mm):
+        tf, d, x = _tdx(mm, lang)
+        if flip: return t(lang, 'hold_sup' if sell else 'hold_res').format(tf=tf, x=x)
+        if sell and d == 'above': return t(lang, 'br_res').format(tf=tf, x=x)
+        if not sell and d == 'below': return t(lang, 'br_sup').format(tf=tf, x=x)
+        return mm.group(0)
+    st = re.sub(_VOID[lang], void, st, flags=re.I)
+    pill = t(lang, ('pill_fs' if sell else 'pill_fb') if flip else ('pill_s' if sell else 'pill_b'))
+    return pill, flip_line, st
+
+
 def plan_html(doc, p, lang):
     d0 = dt.date.fromisoformat(p['date'])
     upd = updated_dt(p)
@@ -437,9 +479,11 @@ def plan_html(doc, p, lang):
     for z in p.get('zones') or []:
         is_main = bool(mz) and z['lo'] == mz['lo'] and z['hi'] == mz['hi'] and z['side'] == mz['side']
         chip = t(lang, 'key') if is_main else (f"{t(lang, 'grade')} {z['grade']}" if z.get('grade') else '')
-        zs.append(f'<div class="card zone{" is-main" if is_main else ""}"><div class="zh"><span class="pill {side_cls(z["side"])}">{esc(t(lang, z["side"]))}</span>'
+        pill, flip_line, st = zone_view(z, lang)
+        fl = f'<p class="flip">{_STEP_PRICE.sub(lambda m: "<b class=" + chr(34) + "px" + chr(34) + ">" + m.group(0) + "</b>", esc(flip_line))}</p>' if flip_line else ''
+        zs.append(f'<div class="card zone{" is-main" if is_main else ""}"><div class="zh"><span class="pill {side_cls(z["side"])}">{esc(pill)}</span>'
                   f'<span class="zr num" dir="ltr">{esc(rng(z["lo"], z["hi"], lang))}</span><span class="g{" main" if is_main else ""}">{esc(chip)}</span></div>'
-                  f'{ideas_html(L(z.get("status"), lang), lang, True, t(lang, "main_zone"))}</div>')
+                  f'{fl}{ideas_html(st, lang, True, t(lang, "main_zone"))}</div>')
     doc = fill(doc, 'zones', ''.join(zs))
     nw = ''.join(f'<div class="row news-row"><span class="k"><span class="imp {esc(n.get("impact", "low"))}"></span><span>{esc(L(n["text"], lang))}</span></span>'
                  f'<span class="v">{esc(vn_news_time(n.get("time", ""), p["date"][:4], lang))}</span></div>' for n in p.get('news') or [])

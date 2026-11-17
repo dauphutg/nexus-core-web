@@ -14,7 +14,7 @@
       main_zone: 'Main zone', watch: 'Watch level', invalid: 'View is wrong if', range: 'Expected range', target: 'Target',
       plan_of: 'Gold plan', ed: { '0700': 'Asia plan', '1345': 'Pre-London update', '1930': 'Pre-New York plan' },
       ed_short: { '0700': 'Asia', '1345': 'London', '1930': 'New York' },
-      updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', grade: 'Grade', key: 'Key zone',
+      updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', zsell: 'Sell zone', zbuy: 'Buy zone', fl_sb: 'Becomes new resistance (a sell zone) after an {tf} close below {x} (a closed candle, a wick does not count)', fl_ba: 'Becomes new support (a buy zone) after an {tf} close above {x} (a closed candle, a wick does not count)', fl_sa: 'Becomes a sell zone only after an {tf} close above {x}', fl_bb: 'Becomes a buy zone only after an {tf} close below {x}', pill_s: 'Resistance, sell zone', pill_b: 'Support, buy zone', pill_fs: 'Support, sell on a break', pill_fb: 'Resistance, buy on a break', br_res: 'Resistance breaks on an {tf} close above {x} and may then turn into new support', br_sup: 'Support breaks on an {tf} close below {x} and may then turn into new resistance', hold_sup: 'If an {tf} closes back above {x}, the support holds and the sell zone is cancelled', hold_res: 'If an {tf} closes back below {x}, the resistance holds and the buy zone is cancelled', grade: 'Grade', key: 'Key zone',
       tz: 'All times in UK time', your_time: 'your time',
       tg_title: 'Get every plan on Telegram', tg_sub: 'Free channel, no sign-up',
       SELL: 'SELL', BUY: 'BUY', TWO_WAY: 'TWO-WAY', STAND_ASIDE: 'STAND ASIDE', lean: 'leaning',
@@ -63,7 +63,7 @@
       main_zone: 'المنطقة الرئيسية', watch: 'مستوى للمراقبة', invalid: 'تُلغى الفكرة إذا', range: 'النطاق المتوقع', target: 'الهدف',
       plan_of: 'خطة الذهب', ed: { '0700': 'خطة آسيا', '1345': 'تحديث ما قبل لندن', '1930': 'خطة ما قبل نيويورك' },
       ed_short: { '0700': 'آسيا', '1345': 'لندن', '1930': 'نيويورك' },
-      updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', grade: 'الدرجة', key: 'منطقة رئيسية',
+      updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', zsell: 'منطقة بيع', zbuy: 'منطقة شراء', fl_sb: 'تتحول إلى مقاومة جديدة (منطقة بيع) بعد إغلاق {tf} دون {x} (إغلاق شمعة كاملة، الذيل لا يُحتسب)', fl_ba: 'تتحول إلى دعم جديد (منطقة شراء) بعد إغلاق {tf} فوق {x} (إغلاق شمعة كاملة، الذيل لا يُحتسب)', fl_sa: 'تصبح منطقة بيع فقط بعد إغلاق {tf} فوق {x}', fl_bb: 'تصبح منطقة شراء فقط بعد إغلاق {tf} دون {x}', pill_s: 'مقاومة، منطقة بيع', pill_b: 'دعم، منطقة شراء', pill_fs: 'دعم، بيع عند الكسر', pill_fb: 'مقاومة، شراء عند الاختراق', br_res: 'تنكسر المقاومة بإغلاق {tf} فوق {x} وقد تتحول بعدها إلى دعم جديد', br_sup: 'ينكسر الدعم بإغلاق {tf} دون {x} وقد يتحول بعدها إلى مقاومة جديدة', hold_sup: 'إذا أغلقت {tf} مجددًا فوق {x} يصمد الدعم وتُلغى منطقة البيع', hold_res: 'إذا أغلقت {tf} مجددًا دون {x} تصمد المقاومة وتُلغى منطقة الشراء', grade: 'الدرجة', key: 'منطقة رئيسية',
       tz: 'جميع الأوقات بتوقيت مكة المكرمة', your_time: 'بتوقيتك',
       tg_title: 'استلم كل خطة عبر تيليجرام', tg_sub: 'قناة مجانية، بدون تسجيل',
       SELL: 'بيع', BUY: 'شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق', lean: 'ميل إلى',
@@ -112,7 +112,7 @@
       main_zone: 'Vùng chính', watch: 'Mức theo dõi', invalid: 'Nhận định sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
       plan_of: 'Plan vàng', ed: { '0700': 'Plan phiên Á', '1345': 'Cập nhật trước phiên Âu', '1930': 'Plan trước phiên Mỹ' },
       ed_short: { '0700': 'Phiên Á', '1345': 'Phiên Âu', '1930': 'Phiên Mỹ' },
-      updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', grade: 'Hạng', key: 'Vùng chính',
+      updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', zsell: 'Vùng bán', zbuy: 'Vùng mua', fl_sb: 'Thành kháng cự mới (vùng bán) khi {tf} đóng dưới {x} (nến phải đóng hẳn, râu nến không tính)', fl_ba: 'Thành hỗ trợ mới (vùng mua) khi {tf} đóng trên {x} (nến phải đóng hẳn, râu nến không tính)', fl_sa: 'Chỉ thành vùng bán khi {tf} đóng trên {x}', fl_bb: 'Chỉ thành vùng mua khi {tf} đóng dưới {x}', pill_s: 'Kháng cự, vùng bán', pill_b: 'Hỗ trợ, vùng mua', pill_fs: 'Hỗ trợ, bán khi phá', pill_fb: 'Kháng cự, mua khi phá', br_res: 'Kháng cự bị phá khi {tf} đóng trên {x}, sau đó có thể thành hỗ trợ mới', br_sup: 'Hỗ trợ bị phá khi {tf} đóng dưới {x}, sau đó có thể thành kháng cự mới', hold_sup: 'Nếu {tf} đóng lại trên {x}: hỗ trợ vẫn giữ, bỏ vùng bán', hold_res: 'Nếu {tf} đóng lại dưới {x}: kháng cự vẫn giữ, bỏ vùng mua', grade: 'Hạng', key: 'Vùng chính',
       tz: 'Mọi giờ theo giờ Việt Nam', your_time: 'giờ của bạn',
       tg_title: 'Nhận mọi plan qua Telegram', tg_sub: 'Kênh miễn phí, không cần đăng ký',
       SELL: 'BÁN', BUY: 'MUA', TWO_WAY: '2 CHIỀU', STAND_ASIDE: 'ĐỨNG NGOÀI', lean: 'nghiêng',
@@ -161,7 +161,7 @@
       main_zone: '主要區域', watch: '觀察價位', invalid: '觀點失效條件', range: '預期區間', target: '目標',
       plan_of: '黃金計畫', ed: { '0700': '亞洲盤計畫', '1345': '倫敦盤前更新', '1930': '紐約盤前計畫' },
       ed_short: { '0700': '亞洲盤', '1345': '倫敦盤', '1930': '紐約盤' },
-      updated: '更新於', next: '下次更新', main: '主要', alt: '備選', grade: '等級', key: '主要區域',
+      updated: '更新於', next: '下次更新', main: '主要', alt: '備選', zsell: '偏空區域', zbuy: '偏多區域', fl_sb: '{tf} 收在 {x} 之下後轉為新的壓力（偏空區域）（須收盤確認，影線不算）', fl_ba: '{tf} 收在 {x} 之上後轉為新的支撐（偏多區域）（須收盤確認，影線不算）', fl_sa: '{tf} 收在 {x} 之上後才成為偏空區域', fl_bb: '{tf} 收在 {x} 之下後才成為偏多區域', pill_s: '壓力，偏空區域', pill_b: '支撐，偏多區域', pill_fs: '支撐，跌破後偏空', pill_fb: '壓力，突破後偏多', br_res: '{tf} 收在 {x} 之上即突破壓力，之後可能轉為新的支撐', br_sup: '{tf} 收在 {x} 之下即跌破支撐，之後可能轉為新的壓力', hold_sup: '{tf} 重新收在 {x} 之上：支撐守住，偏空區域取消', hold_res: '{tf} 重新收在 {x} 之下：壓力守住，偏多區域取消', grade: '等級', key: '主要區域',
       tz: '所有時間皆為台北／香港時間', your_time: '您的時間',
       tg_title: '在 Telegram 接收每一份計畫', tg_sub: '免費頻道，無需註冊',
       SELL: '偏空', BUY: '偏多', TWO_WAY: '雙向', STAND_ASIDE: '觀望', lean: '傾向',
@@ -331,7 +331,7 @@
   }
   // Long level texts as one line per idea (same as ideas_html in tools/build.py).
   function pxInto(node, x) { x.split(PRICE).forEach(function (bit, k) { if (bit) node.appendChild(k % 2 ? el('b', 'px', bit) : document.createTextNode(bit)); }); return node; }
-  var INV_RE = /huỷ|hủy|\bvoid\b|失效|تُلغى|تلغى/i, VALID_RE = /hiệu lực|\bvalid\b|有效|صالحة/i;
+  var INV_RE = /huỷ|hủy|\bvoid\b|失效|تُلغى|تلغى|bị phá|\bbreaks\b|تنكسر|ينكسر|即突破|即跌破|bỏ vùng|is cancelled|取消/i, VALID_RE = /hiệu lực|\bvalid\b|有效|صالحة/i;
   function ideasEl(text, mark, skipLab) {
     var ul = el('ul', 'ideas'), arrow = lang === 'ar' ? '←' : '→';
     if (skipLab && text.toLowerCase().indexOf(skipLab.toLowerCase()) === 0) text = text.slice(skipLab.length).replace(/^[\s:：,，،–-]+/, '');
@@ -415,6 +415,35 @@
       notes.forEach(function (x) { ul.appendChild(pxInto(el('li'), cap(L(x)))); });
       node.appendChild(ul);
     }
+  }
+  // Zones as support / resistance with the condition to turn into the other (same as zone_view in tools/build.py).
+  var ACT = { vi: /[,;]?\s*(?:chỉ\s+)?có hiệu lực sau khi (M15|H1|H4|D1) đóng (dưới|trên) (\d+(?:\.\d+)?)/i,
+    en: /[,;]?\s*(?:only\s+)?valid (?:only\s+)?after an? (M15|H1|H4|D1) close (below|above) (\d+(?:\.\d+)?)/i,
+    ar: /[،,]?\s*(?:تصبح\s+)?صالحة فقط بعد إغلاق (M15|H1|H4|D1) (أسفل|دون|تحت|فوق|أعلى) (\d+(?:\.\d+)?)/,
+    'zh-hant': /[，,]?\s*僅在\s*(M15|H1|H4|D1) 收在 (\d+(?:\.\d+)?) 之(下|上)後生效/ };
+  var VOID = { vi: /(?:huỷ|hủy) nếu (M15|H1|H4|D1) đóng (?:lại )?(trên|dưới) (\d+(?:\.\d+)?)/gi,
+    en: /void on an? (M15|H1|H4|D1) close (?:back )?(above|below) (\d+(?:\.\d+)?)/gi,
+    ar: /تُلغى بإغلاق (M15|H1|H4|D1) (?:مجددًا )?(فوق|أعلى|دون|أسفل|تحت) (\d+(?:\.\d+)?)/g,
+    'zh-hant': /(M15|H1|H4|D1) (?:重新)?收在 (\d+(?:\.\d+)?) 之(上|下)則失效/g };
+  var BELOW = { 'dưới': 1, below: 1, 'أسفل': 1, 'دون': 1, 'تحت': 1, '下': 1 };
+  function tdx(m) { return lang === 'zh-hant' ? [m[1], m[3] === '下' ? 'below' : 'above', m[2]] : [m[1], BELOW[m[2].toLowerCase()] ? 'below' : 'above', m[3]]; }
+  function fillT(k, a) { return t(k).replace('{tf}', a[0]).replace('{x}', a[2]); }
+  function zoneView(z) {
+    var st = L(z.status), sell = z.side === 'SELL', flipLine = '', flip = false, m = ACT[lang].exec(st);
+    if (m) {
+      var a = tdx(m);
+      flip = (sell && a[1] === 'below') || (!sell && a[1] === 'above');
+      flipLine = fillT(flip ? (sell ? 'fl_sb' : 'fl_ba') : (sell ? 'fl_sa' : 'fl_bb'), a);
+      st = (st.slice(0, m.index) + st.slice(m.index + m[0].length)).replace(/\s*[:：]\s*(?=[;；؛]|$)/g, '').replace(/^[\s,;،，:：]+|[\s,;،，:：]+$/g, '');
+    }
+    st = st.replace(VOID[lang], function () {
+      var mm = Array.prototype.slice.call(arguments, 0, 4), a = tdx(mm);
+      if (flip) return fillT(sell ? 'hold_sup' : 'hold_res', a);
+      if (sell && a[1] === 'above') return fillT('br_res', a);
+      if (!sell && a[1] === 'below') return fillT('br_sup', a);
+      return mm[0];
+    });
+    return { pill: t(flip ? (sell ? 'pill_fs' : 'pill_fb') : (sell ? 'pill_s' : 'pill_b')), flip: flipLine, st: st };
   }
   function par(x) { return lang === 'zh-hant' ? '（' + x + '）' : ' (' + x + ')'; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
@@ -558,9 +587,12 @@
     (p.zones || []).forEach(function (z) {
       var isMain = mz && z.lo === mz.lo && z.hi === mz.hi && z.side === mz.side;
       var c = el('div', 'card zone' + (isMain ? ' is-main' : ''));
-      var h = add(el('div', 'zh'), el('span', 'pill ' + sideCls(z.side), t(z.side)), el('span', 'zr num', rng(z.lo, z.hi)),
+      var zv = zoneView(z);
+      var h = add(el('div', 'zh'), el('span', 'pill ' + sideCls(z.side), zv.pill), el('span', 'zr num', rng(z.lo, z.hi)),
         el('span', 'g' + (isMain ? ' main' : ''), isMain ? t('key') : (z.grade ? t('grade') + ' ' + z.grade : '')));
-      add(zn, add(c, h, ideasEl(L(z.status), true, t('main_zone'))));
+      add(c, h);
+      if (zv.flip) c.appendChild(pxInto(el('p', 'flip'), zv.flip));
+      add(zn, add(c, ideasEl(zv.st, true, t('main_zone'))));
     });
 
     var nw = clear('news');
