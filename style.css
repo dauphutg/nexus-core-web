@@ -721,3 +721,4 @@ html[data-theme="dark"] .al-time{background:var(--card)}
 .zone .zh .zr{grid-column:1;grid-row:1;font-size:20px}
 .zone .zh .g{grid-column:2;grid-row:1;margin:0}
 .zone .zh .pill{grid-column:1 / -1;grid-row:2;justify-self:start}
+.pill.fz::before{content:none}

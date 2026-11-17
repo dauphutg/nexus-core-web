@@ -419,7 +419,9 @@ def zone_view(z, lang):
         return mm.group(0)
     st = re.sub(_VOID[lang], void, st, flags=re.I)
     pill = t(lang, ('pill_fs' if sell else 'pill_fb') if flip else ('pill_s' if sell else 'pill_b'))
-    return pill, flip_line, st
+    # colour follows what the zone is NOW: a support still holding is green, a resistance still holding is red
+    cls = ('buy fz' if sell else 'sell fz') if flip else side_cls(z.get('side'))
+    return pill, flip_line, st, cls
 
 
 def plan_html(doc, p, lang):
@@ -479,9 +481,9 @@ def plan_html(doc, p, lang):
     for z in p.get('zones') or []:
         is_main = bool(mz) and z['lo'] == mz['lo'] and z['hi'] == mz['hi'] and z['side'] == mz['side']
         chip = t(lang, 'key') if is_main else (f"{t(lang, 'grade')} {z['grade']}" if z.get('grade') else '')
-        pill, flip_line, st = zone_view(z, lang)
+        pill, flip_line, st, pcls = zone_view(z, lang)
         fl = f'<p class="flip">{_STEP_PRICE.sub(lambda m: "<b class=" + chr(34) + "px" + chr(34) + ">" + m.group(0) + "</b>", esc(flip_line))}</p>' if flip_line else ''
-        zs.append(f'<div class="card zone{" is-main" if is_main else ""}"><div class="zh"><span class="pill {side_cls(z["side"])}">{esc(pill)}</span>'
+        zs.append(f'<div class="card zone{" is-main" if is_main else ""}"><div class="zh"><span class="pill {pcls}">{esc(pill)}</span>'
                   f'<span class="zr num" dir="ltr">{esc(rng(z["lo"], z["hi"], lang))}</span><span class="g{" main" if is_main else ""}">{esc(chip)}</span></div>'
                   f'{fl}{ideas_html(st, lang, True, t(lang, "main_zone"))}</div>')
     doc = fill(doc, 'zones', ''.join(zs))

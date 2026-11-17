@@ -443,7 +443,8 @@
       if (!sell && a[1] === 'below') return fillT('br_sup', a);
       return mm[0];
     });
-    return { pill: t(flip ? (sell ? 'pill_fs' : 'pill_fb') : (sell ? 'pill_s' : 'pill_b')), flip: flipLine, st: st };
+    return { pill: t(flip ? (sell ? 'pill_fs' : 'pill_fb') : (sell ? 'pill_s' : 'pill_b')), flip: flipLine, st: st,
+      cls: flip ? (sell ? 'buy fz' : 'sell fz') : sideCls(z.side) };   // colour = what the zone is now
   }
   function par(x) { return lang === 'zh-hant' ? '（' + x + '）' : ' (' + x + ')'; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
@@ -588,7 +589,7 @@
       var isMain = mz && z.lo === mz.lo && z.hi === mz.hi && z.side === mz.side;
       var c = el('div', 'card zone' + (isMain ? ' is-main' : ''));
       var zv = zoneView(z);
-      var h = add(el('div', 'zh'), el('span', 'pill ' + sideCls(z.side), zv.pill), el('span', 'zr num', rng(z.lo, z.hi)),
+      var h = add(el('div', 'zh'), el('span', 'pill ' + zv.cls, zv.pill), el('span', 'zr num', rng(z.lo, z.hi)),
         el('span', 'g' + (isMain ? ' main' : ''), isMain ? t('key') : (z.grade ? t('grade') + ' ' + z.grade : '')));
       add(c, h);
       if (zv.flip) c.appendChild(pxInto(el('p', 'flip'), zv.flip));
