@@ -709,3 +709,5 @@ html:lang(zh-Hant) .al-b,html[lang="ar"] .al-b{letter-spacing:0}
 .al .ideas li::before{background:var(--gold-ink)}
 .al .px{color:var(--ink)}
 @media (max-width:640px){.alert{padding:14px 16px;gap:10px}.al-h{font-size:15px}}
+.al-time{font-size:14px;font-weight:700;color:var(--ink);background:rgba(255,255,255,.6);border:1px solid var(--gold-line);border-radius:999px;padding:2px 10px;white-space:nowrap}
+html[data-theme="dark"] .al-time{background:var(--card)}

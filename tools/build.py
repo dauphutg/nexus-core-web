@@ -341,20 +341,43 @@ def ctx_card(k, v, lang):
     return f'<div class="stat ctx"><div class="ch">{head}</div>{body}</div>'
 
 
-def alert_html(o, lang):
-    """The warning box as a badge + title line and one line per idea (same as alertInto in app.js). Split on the
-    writer's own breaks (spaced dash, ';', sentence end) before tidy() turns the dashes into commas."""
-    raw = raw_of(o, lang)
-    parts = [x.strip(' ,，،.。') for x in re.split(r'(?<!\d)\s+[–—]\s+(?!\d)|——|[;；؛]\s*|(?<=\.)\s+|。', raw)]
-    parts = [L(x, lang) for x in parts if x]
-    if not parts: return ''
+_NEWS_RE = re.compile(r'tin đỏ|giờ tin|sau tin|trước tin|tin tức|news|release|\bdata\b|數據|公布|بيانات|الخبر|الإصدار', re.I)
+_STOP = {'early', 'late', 'session', 'york', 'high', 'impact', 'with', 'from', 'speaks', 'into', 'today', 'tomorrow', 'turn', 'core'}
+
+
+def alert_news(p):
+    """The high-impact release the warning is about: best word match with the English alert, else the first high-impact item."""
+    highs = [n for n in p.get('news') or [] if n.get('impact') == 'high']
+    if not highs: return None
+    words = lambda x: {w for w in re.findall(r'[a-z]{4,}', (x or '').lower())} - _STOP
+    aw = words(raw_of(p.get('alert'), 'en'))
+    best = max(highs, key=lambda n: len(aw & words(raw_of(n.get('text'), 'en'))))
+    return best if aw & words(raw_of(best.get('text'), 'en')) else highs[0]
+
+
+def alert_html(p, lang):
+    """Warning box (user, 17/11/2026: "chỉ cần tin gì, lúc mấy giờ, cần lưu ý gì"): badge, the release and its time in the
+    page's clock, then only the advice about it. Same as alertInto in app.js."""
+    raw = raw_of(p.get('alert'), lang)
+    sents = [x for x in re.split(r'(?<=\.)\s+|。', raw) if x.strip()]
+    split = lambda x: [y.strip(' ,，،.。') for y in re.split(r'(?<!\d)\s+[–—]\s+(?!\d)|——|[;；؛]\s*', x) if y.strip(' ,，،.。')]
+    first = split(sents[0]) if sents else []
+    if not first: return ''
+    notes = first[1:] + [y for x in sents[1:] for y in split(x) if _NEWS_RE.search(y)]
     px = lambda x: _STEP_PRICE.sub(lambda m: '<b class="px">' + m.group(0) + '</b>', esc(x))
-    first, badge = parts[0], ''
-    m = re.match(r'^([^\d:：]{2,30}?)\s*[:：]\s*(.+)$', first)
-    if m: badge, first = m.group(1), m.group(2)
-    head = (f'<span class="al-b">{esc(badge)}</span>' if badge else '') + f'<b class="al-h">{px(first[:1].upper() + first[1:])}</b>'
-    li = ''.join(f'<li>{px(x[:1].upper() + x[1:])}</li>' for x in parts[1:])
-    return f'<div class="al-t">{head}</div>' + (f'<ul class="ideas">{li}</ul>' if li else '')
+    cap = lambda x: x[:1].upper() + x[1:]
+    head, badge = L(first[0], lang), ''
+    m = re.match(r'^([^\d:：]{2,30}?)\s*[:：]\s*(.+)$', head)
+    if m: badge, head = m.group(1), m.group(2)
+    n = alert_news(p)
+    if n:
+        head = L(n.get('text'), lang)
+        when = f'<span class="al-time num" dir="ltr">{esc(vn_news_time(n.get("time", ""), p["date"][:4], lang))}</span>'
+    else:
+        when = ''
+    top = (f'<span class="al-b">{esc(badge)}</span>' if badge else '') + f'<b class="al-h">{px(cap(head))}</b>' + when
+    li = ''.join(f'<li>{px(cap(L(x, lang)))}</li>' for x in notes)
+    return f'<div class="al-t">{top}</div>' + (f'<ul class="ideas">{li}</ul>' if li else '')
 
 
 def plan_html(doc, p, lang):
@@ -367,7 +390,7 @@ def plan_html(doc, p, lang):
     doc = fill(doc, 'editions', eds)
     if p.get('alert') and L(p['alert'], lang):
         doc = unhide(doc, 'alert')
-        doc = fill(doc, 'alert-text', alert_html(p['alert'], lang))
+        doc = fill(doc, 'alert-text', alert_html(p, lang))
     side = (p.get('lean') or '') if p['bias'] in ('TWO_WAY', 'STAND_ASIDE') else p['bias']
     doc = doc.replace('class="hero card" id="bias-card"', f'class="hero card {side_cls(side)}" id="bias-card"', 1)
     doc = fill(doc, 'bias-val', esc(bias_label(p, lang)))

@@ -381,21 +381,38 @@
     } else card.appendChild(ideasEl(v));
     return card;
   }
-  // Warning box: badge + title line, then one line per idea; split on the writer's own breaks before tidy() (same as alert_html).
-  function alertInto(node, o) {
+  // Warning box: badge, the release and its time in this page's clock, then only the advice about it (same as alert_html).
+  var NEWS_RE = /tin đỏ|giờ tin|sau tin|trước tin|tin tức|news|release|\bdata\b|數據|公布|بيانات|الخبر|الإصدار/i;
+  var STOP = { early: 1, late: 1, session: 1, york: 1, high: 1, impact: 1, 'with': 1, from: 1, speaks: 1, into: 1, today: 1, tomorrow: 1, turn: 1, core: 1 };
+  function words(x) { var o = {}; ((x || '').toLowerCase().match(/[a-z]{4,}/g) || []).forEach(function (w) { if (!STOP[w]) o[w] = 1; }); return o; }
+  function overlap(a, b) { var k = 0; for (var w in a) if (b[w]) k++; return k; }
+  function alertNews(p) {
+    var highs = (p.news || []).filter(function (n) { return n.impact === 'high'; });
+    if (!highs.length) return null;
+    var aw = words(p.alert && p.alert.en), best = highs[0], bs = -1;
+    highs.forEach(function (n) { var k = overlap(aw, words(n.text && n.text.en)); if (k > bs) { bs = k; best = n; } });
+    return bs > 0 ? best : highs[0];
+  }
+  function alertInto(node, p) {
     node.textContent = '';
-    var raw = typeof o === 'string' ? o : (o[lang === 'zh-hant' ? 'zh' : lang] || o.en || o.vi || '');
-    var parts = raw.split(/(?<!\d)\s+[–—]\s+(?!\d)|——|[;；؛]\s*|(?<=\.)\s+|。/).map(function (x) { return x.replace(/^[\s,，،.。]+|[\s,，،.。]+$/g, ''); })
-      .filter(Boolean).map(function (x) { return L(x); });
-    if (!parts.length) return;
+    var o = p.alert, raw = typeof o === 'string' ? o : (o[lang === 'zh-hant' ? 'zh' : lang] || o.en || o.vi || '');
+    function split(x) { return x.split(/(?<!\d)\s+[–—]\s+(?!\d)|——|[;；؛]\s*/).map(function (y) { return y.replace(/^[\s,，،.。]+|[\s,，،.。]+$/g, ''); }).filter(Boolean); }
     function cap(x) { return x.charAt(0).toUpperCase() + x.slice(1); }
-    var first = parts[0], t = el('div', 'al-t'), m = /^([^\d:：]{2,30}?)\s*[:：]\s*(.+)$/.exec(first);
-    if (m) { t.appendChild(el('span', 'al-b', m[1])); first = m[2]; }
-    t.appendChild(pxInto(el('b', 'al-h'), cap(first)));
+    var sents = raw.split(/(?<=\.)\s+|。/).filter(function (x) { return x.trim(); });
+    var first = sents.length ? split(sents[0]) : [];
+    if (!first.length) return;
+    var notes = first.slice(1);
+    sents.slice(1).forEach(function (x) { split(x).forEach(function (y) { if (NEWS_RE.test(y)) notes.push(y); }); });
+    var head = L(first[0]), t = el('div', 'al-t'), m = /^([^\d:：]{2,30}?)\s*[:：]\s*(.+)$/.exec(head);
+    if (m) { t.appendChild(el('span', 'al-b', m[1])); head = m[2]; }
+    var n = alertNews(p);
+    if (n) head = L(n.text);
+    t.appendChild(pxInto(el('b', 'al-h'), cap(head)));
+    if (n) { var nt = newsTime(n.time, p.date.slice(0, 4)); var te = el('span', 'al-time', / \d{2}:\d{2}$/.test(nt) ? nt + ' ' + tzName(new Date()) : nt); te.dir = 'auto'; t.appendChild(te); }
     node.appendChild(t);
-    if (parts.length > 1) {
+    if (notes.length) {
       var ul = el('ul', 'ideas');
-      parts.slice(1).forEach(function (x) { ul.appendChild(pxInto(el('li'), cap(x))); });
+      notes.forEach(function (x) { ul.appendChild(pxInto(el('li'), cap(L(x)))); });
       node.appendChild(ul);
     }
   }
@@ -494,7 +511,7 @@
     } else cb.hidden = true;
 
     var al = document.getElementById('alert');
-    if (p.alert && L(p.alert)) { al.hidden = false; alertInto(document.getElementById('alert-text'), p.alert); } else al.hidden = true;
+    if (p.alert && L(p.alert)) { al.hidden = false; alertInto(document.getElementById('alert-text'), p); } else al.hidden = true;
 
     var bc = document.getElementById('bias-card');
     var side = p.bias === 'TWO_WAY' || p.bias === 'STAND_ASIDE' ? (p.lean || '') : p.bias;
