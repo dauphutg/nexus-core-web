@@ -3,6 +3,17 @@
  "days": [
   {
    "date": "2026-11-17",
+   "edition": "1930",
+   "session": "newyork",
+   "bias": "SELL",
+   "lean": null,
+   "main_zone": "3982–4000.7",
+   "result": null,
+   "r": null,
+   "url": "https://nexuscore.trade/en/plan/2026-11-17-newyork/"
+  },
+  {
+   "date": "2026-11-17",
    "edition": "1345",
    "session": "london",
    "bias": "SELL",
