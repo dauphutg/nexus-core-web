@@ -24,16 +24,16 @@ W = {
                drawn='Lúc vẽ plan {t}', end='Hết phiên {t}', ed={'0700': 'Plan sáng', '1345': 'Cập nhật 13:45', '1930': 'Plan tối'},
                res={'hit': 'Chạm mục tiêu 1', 'void': 'Bị huỷ', 'expired': 'Chốt cuối phiên', 'no_touch': 'Giá không tới vùng',
                     'carried': 'Bản sau theo dõi tiếp', 'mixed': 'Có thắng có thua', 'aside': 'Đứng ngoài'},
-               result='Kết quả', sell='Bán', buy='Mua', t1='Mục tiêu 1', touch='chạm vùng', ran='chạy {p} pip', near='suýt chạm · thiếu {g}',
-               disc='Chấm tự động theo luật công khai · không phải lời khuyên đầu tư', tz='giờ VN', main='VÙNG CHÍNH', tgt='Mục tiêu',
+               result='Kết quả', sell='Bán', buy='Mua', t1='Mục tiêu 1', touch='chạm vùng', ran='chạy {p} pip', near='suýt chạm, thiếu {g}',
+               disc='Chấm tự động theo luật công khai, không phải lời khuyên đầu tư', tz='giờ VN', main='VÙNG CHÍNH', tgt='Mục tiêu',
                sc_main='Kịch bản chính', sc_alt='Kịch bản phụ', unknown='chưa biết giá sẽ đi thế nào', open_prev='lệnh đang mở từ bản trước', v_ok='✓ ĐÚNG', v_bad='✗ SAI', v_mix='± ĐÚNG MỘT PHẦN', v_none='○ GIÁ CHƯA TỚI VÙNG',
                bias={'SELL': 'BÁN', 'BUY': 'MUA', 'TWO_WAY': '2 CHIỀU', 'STAND_ASIDE': 'ĐỨNG NGOÀI'}, lean='nghiêng'),
     'en': dict(before='BEFORE', after='AFTER', b_sub='drawn {t}', a_sub='session end {t}',
                drawn='Plan drawn {t}', end='Session end {t}', ed={'0700': 'Morning plan', '1345': '13:45 update', '1930': 'Evening plan'},
                res={'hit': 'Target 1 reached', 'void': 'Invalidated', 'expired': 'Closed at session end', 'no_touch': 'Zone not reached',
                     'carried': 'Followed by the next update', 'mixed': 'Mixed', 'aside': 'Stood aside'},
-               result='Result', sell='Sell', buy='Buy', t1='Target 1', touch='zone reached', ran='ran {p} pips', near='just missed · {g} short',
-               disc='Graded automatically by published rules · not financial advice', tz='GMT+7', main='MAIN ZONE', tgt='Target',
+               result='Result', sell='Sell', buy='Buy', t1='Target 1', touch='zone reached', ran='ran {p} pips', near='just missed, {g} short',
+               disc='Graded automatically by published rules, not financial advice', tz='GMT+7', main='MAIN ZONE', tgt='Target',
                sc_main='Main scenario', sc_alt='Alternate', unknown='price path not known yet', open_prev='open trade from the previous update', v_ok='✓ RIGHT', v_bad='✗ WRONG', v_mix='± PARTLY RIGHT', v_none='○ ZONE NOT REACHED',
                bias={'SELL': 'SELL', 'BUY': 'BUY', 'TWO_WAY': 'TWO-WAY', 'STAND_ASIDE': 'STAND ASIDE'}, lean='leaning'),
 }
@@ -67,13 +67,13 @@ def hm(s): return s[11:16]
 
 def fnum(v, lang):
     s = (f'{v:,.1f}' if round(v % 1, 2) else f'{v:,.0f}').replace(',', '')
-    return s.replace('.', ',') if lang == 'vi' else s
+    return s
 
 
 def rtxt(r, lang):
     if r is None: return ''
     s = ('+' if r > 0 else '') + ('%g' % round(r, 2)) + 'R'
-    return s.replace('.', ',') if lang == 'vi' else s
+    return s
 
 
 def verdict(g, T):
@@ -192,15 +192,15 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
             if d_.minute == 0 and d_.hour % step == 0 and (not tk or i - tk[-1] >= 6): tk.append(i); tl.append(d_.strftime('%H:%M'))
     ax.set_xticks(tk); ax.set_xticklabels(tl, fontsize=8.5)
     ax.tick_params(axis='y', labelsize=9)
-    ax.text(0.01, 0.015, f"NEXUS CORE AI · {T['disc']}", transform=ax.transAxes, fontsize=8.5, color=GRAY)
+    ax.text(0.01, 0.015, f"NEXUS CORE AI. {T['disc']}", transform=ax.transAxes, fontsize=8.5, color=GRAY)
     band = fig.add_axes([0, 0.86, 1, 0.14]); band.set_axis_off()
     band.add_patch(Rectangle((0, 0), 1, 1, transform=band.transAxes, color=NAVY))
     d0 = dt.date.fromisoformat(p['date'])
-    band.text(0.985, 0.62, f"XAUUSD {tf} · {T['ed'].get(p['edition'], p['edition'])} · {d0.day:02d}/{d0.month:02d}/{d0.year}", ha='right', va='center', color='white', fontsize=13, fontweight='bold')
+    band.text(0.985, 0.62, f"XAUUSD {tf}  |  {T['ed'].get(p['edition'], p['edition'])}  |  {d0.day:02d}/{d0.month:02d}/{d0.year}", ha='right', va='center', color='white', fontsize=13, fontweight='bold')
     if after:
         line2 = f"{T['result']}: {T['res'].get(g['result'], g['result'])}" + (f"  {rtxt(g.get('r'), lang)}" if g.get('r') else '')
     else:
-        bias = p.get('bias'); line2 = T['bias'].get(bias, bias) + (f" · {T['lean']} {T['bias'].get(p['lean'], p['lean'])}" if bias == 'TWO_WAY' and p.get('lean') else '') + f"  ·  {hm(g['window'][0])} {T['tz']}"
+        bias = p.get('bias'); line2 = T['bias'].get(bias, bias) + (f"  |  {T['lean']} {T['bias'].get(p['lean'], p['lean'])}" if bias == 'TWO_WAY' and p.get('lean') else '') + f"  |  {hm(g['window'][0])} {T['tz']}"
     band.text(0.985, 0.27, line2, ha='right', va='center', color=GOLD, fontsize=12, fontweight='bold')
     logo = os.path.join(ROOT, 'assets', 'logo-banner.png')
     if os.path.exists(logo):

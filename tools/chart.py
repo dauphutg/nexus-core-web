@@ -20,7 +20,7 @@ UP, DN, GRAY, TXT, ORG, NAVY, GOLD = '#089981', '#F23645', '#787B86', '#131722',
 P = json.load(open(planf, encoding='utf-8'))
 L = lambda o: (o or {}).get(lang) or (o or {}).get('en') or ''
 num = lambda v: (f'{v:,.1f}' if round(v % 1, 2) else f'{v:,.0f}').replace(',', '')
-fmt = (lambda v: num(v).replace('.', ',')) if lang == 'vi' else num
+fmt = num
 W = {
     'vi': dict(sell='Bán', buy='Mua', main='KỊCH BẢN CHÍNH', alt='Kịch bản phụ', key='VÙNG CHÍNH', zone='Vùng', tgt='Mục tiêu', watch='Mức theo dõi',
                ed={'0700': 'Plan sáng', '1345': 'Cập nhật 13:45', '1930': 'Plan tối'}, bias={'SELL': 'BÁN', 'BUY': 'MUA', 'TWO_WAY': '2 CHIỀU', 'STAND_ASIDE': 'ĐỨNG NGOÀI'},
@@ -68,7 +68,7 @@ def render(outf, mob):
         ax.add_patch(Rectangle((X0, a), X1 - X0, max(b - a, 0.8), facecolor='none', edgecolor=edge, lw=2.2 if main else 0.9,
                                alpha=1 if main else 0.65, ls='--' if watch else '-', zorder=1))
         lab = (W['key'] + ' ' if main else W['zone'] + ' ') + (W['sell'] if red else W['buy']).lower() + f' {fmt(a)}–{fmt(b)}'
-        if main: lab = W['key'] + f" · {W['sell'] if red else W['buy']} {fmt(a)}–{fmt(b)}"
+        if main: lab = W['key'] + f" ({W['sell'] if red else W['buy']}) {fmt(a)}–{fmt(b)}"
         ZL.append(ax.text(X1 - 1, (a + b) / 2, lab, ha='right', va='center', fontsize=(10 if main else 8.5) * K, color=edge,
                 fontweight='bold' if main else 'normal', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6)))  # labels sit above the scenario arrows
         shown += [a, b]
@@ -100,7 +100,7 @@ def render(outf, mob):
         #    nearest zone between the current price and the first waypoint (none in the way → current price).
         sgn = -1 if s['side'] == 'SELL' else 1
         col = (DN if sgn < 0 else UP) if main else ORG
-        lab = f"{W['main'] if main else W['alt']} ~{s['prob']}%"
+        lab = f"{W['main'] if main else W['alt']} {s['prob']}%"
         pth = [float(v) for v in (s.get('path') or []) if isinstance(v, (int, float))]
         # 0) scenario "route" (from 17/11): the plan's own price path, in the order the scenario text reads,
         #    drawn from the CURRENT price; optional "branch" {"at": i, "to": [...]} forks off route[i] (dotted).
@@ -176,14 +176,14 @@ def render(outf, mob):
         lx, y_ = LX[j][0], LY[j]
         fig.add_artist(plt.Line2D([lx, lx + (0.07 if mob else 0.045)], [y_, y_], transform=fig.transFigure, color=q['col'],
                                   lw=2.6 if mn else 2.2, ls='-' if mn else (0, (3, 2))))
-        txt = f"{W['lg_main'] if mn else W['lg_alt']} ~{s_['prob']}%"
+        txt = f"{W['lg_main'] if mn else W['lg_alt']} {s_['prob']}%"
         pth = s_.get('path') or []
         if mn and promoted:
-            txt += ' · ' + W['lg_now'].format(v=fmt(float(pth[0])))
+            txt += ', ' + W['lg_now'].format(v=fmt(float(pth[0])))
         elif not mn and promoted:
-            txt += ' · ' + W['lg_was']
+            txt += ', ' + W['lg_was']
         elif not mn and pth:
-            txt += ' · ' + (W['lg_dn'] if s_['side'] == 'SELL' else W['lg_up']) + ' ' + fmt(float(pth[0]))
+            txt += ', ' + (W['lg_dn'] if s_['side'] == 'SELL' else W['lg_up']) + ' ' + fmt(float(pth[0]))
         fig.text(lx + (0.085 if mob else 0.055), y_, txt, ha='left', va='center', color=q['col'], fontsize=10.5 * (1.2 if mob else 1), fontweight='bold')
 
     ax.yaxis.tick_right(); ax.grid(color='#F0F3FA', lw=1)
@@ -201,7 +201,7 @@ def render(outf, mob):
     side = P.get('lean') if bias in ('TWO_WAY', 'STAND_ASIDE') else bias
     ax.text(1.003, px, f' {fmt(px)} ', transform=ax.get_yaxis_transform(), va='center', fontsize=8.5 * K, color='white',
             bbox=dict(boxstyle='square,pad=0.2', fc=DN if side == 'SELL' else (UP if side == 'BUY' else GRAY), ec='none'))
-    ax.text(0.01, 0.015, f"NEXUS CORE AI · {W['disc']}", transform=ax.transAxes, fontsize=8.5 * (1.15 if mob else 1), color=GRAY)
+    ax.text(0.01, 0.015, f"NEXUS CORE AI. {W['disc']}", transform=ax.transAxes, fontsize=8.5 * (1.15 if mob else 1), color=GRAY)
 
     # brand header band
     BY, BH = (0.885, 0.115) if mob else (0.86, 0.14)
@@ -209,13 +209,13 @@ def render(outf, mob):
     band.add_patch(Rectangle((0, 0), 1, 1, transform=band.transAxes, color=NAVY))
     d0 = dt.date.fromisoformat(P['date'])
     day = f'{d0.day:02d}/{d0.month:02d}/{d0.year}' if lang == 'vi' else f"{['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][d0.weekday()]} {d0.day:02d} {MON[d0.month-1]} {d0.year}"
-    bl = W['bias'].get(bias, bias) + (f" · {W['lean']} {W['bias'][P['lean']]}" if bias == 'TWO_WAY' and P.get('lean') else '')
+    bl = W['bias'].get(bias, bias) + (f"  |  {W['lean']} {W['bias'][P['lean']]}" if bias == 'TWO_WAY' and P.get('lean') else '')
     if mob:
-        band.text(0.975, 0.66, f"XAUUSD H1 · {W['ed'].get(P['edition'], P['edition'])}", ha='right', va='center', color='white', fontsize=15, fontweight='bold')
-        band.text(0.975, 0.30, f"{day} · " + bl, ha='right', va='center', color=GOLD, fontsize=13.5, fontweight='bold')
+        band.text(0.975, 0.66, f"XAUUSD H1  |  {W['ed'].get(P['edition'], P['edition'])}", ha='right', va='center', color='white', fontsize=15, fontweight='bold')
+        band.text(0.975, 0.30, f"{day}  |  " + bl, ha='right', va='center', color=GOLD, fontsize=13.5, fontweight='bold')
     else:
-        band.text(0.985, 0.62, f"XAUUSD H1 · {W['ed'].get(P['edition'], P['edition'])} · {day}", ha='right', va='center', color='white', fontsize=13, fontweight='bold')
-    if not mob: band.text(0.985, 0.28, ('Xu hướng: ' if lang == 'vi' else 'Bias: ') + bl + f"  ·  {P['updated_vn'][11:]} {W['tz']}", ha='right', va='center', color=GOLD, fontsize=11, fontweight='bold')
+        band.text(0.985, 0.62, f"XAUUSD H1  |  {W['ed'].get(P['edition'], P['edition'])}  |  {day}", ha='right', va='center', color='white', fontsize=13, fontweight='bold')
+    if not mob: band.text(0.985, 0.28, ('Xu hướng: ' if lang == 'vi' else 'Bias: ') + bl + f"  |  {P['updated_vn'][11:]} {W['tz']}", ha='right', va='center', color=GOLD, fontsize=11, fontweight='bold')
     if logof:
         lg = Image.open(logof).convert('RGBA')
         hpx = fig.get_figheight() * fig.dpi * BH * (0.5 if mob else 0.62)

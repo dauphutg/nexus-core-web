@@ -1,22 +1,22 @@
 # NEXUS CORE
 
-> Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong — refreshed before the Asia, London and New York sessions, every plan graded in public.
+> Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong, refreshed before the Asia, London and New York sessions, every plan graded in public.
 
-NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three times each trading day: before the Asia session (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). Each plan gives the bias, the main zone, targets, the level that invalidates the view, scenarios with rough probabilities, and the economic calendar. Every plan is graded in public on 15-minute candles after it expires — wins, losses and misses all stay on the record. Analysis only, not financial advice.
+NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three times each trading day: before the Asia session (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). Each plan gives the bias, the main zone, targets, the level that invalidates the view, scenarios with rough probabilities, and the economic calendar. Every plan is graded in public on 15-minute candles after it expires: wins, losses and misses all stay on the record. Analysis only, not financial advice.
 
 ## Latest plan (2026-11-17, Pre-London update, updated 2026-11-17 13:49 GMT+7)
 
 - Permanent page: https://nexuscore.trade/en/plan/2026-11-17-london/
 - Bias: SELL
-- Summary: SELL rallies into 3912–3932.1; main zone 3980.7–4000.7, void above 4004
+- Summary: SELL rallies into 3912⁠–⁠3932.1; main zone 3980.7⁠–⁠4000.7, void above 4004
 - Main zone: SELL 3980.7–4000.7
 - Target T1: 3863.4
 - Target T2: 3843.7–3846.3
 - Target T3: 3832.5
 - Expected range: 3800–3936
-- View is wrong if: The main zone fails on an M15 close above 4004. An H1 close above 3936 → sell side dropped for this session, the rebound can extend into 3949–3970. Early warning: an M15 close above 3901.4. An M15 close below 3843.7 → down to 3832.5, and a break of 3828–3832.5 opens 3800.
-- Main scenario (~60%, SELL): Main: price ranges 3863–3887 before the data. Strong Retail Sales → sellers defend 3880–3887; an M15 close below 3843.7 → 3832.5, then a breakdown toward 3800.
-- Alternate scenario (~40%, BUY): Alternative: weak Retail Sales → rebound through 3901.4 into 3912–3932.1; a rejection there turns price back to 3887 / 3872; an H1 close above 3936 → rebound extends into 3949–3970.
+- View is wrong if: The main zone fails on an M15 close above 4004. An H1 close above 3936 → sell side dropped for this session, the rebound can extend into 3949⁠–⁠3970. Early warning: an M15 close above 3901.4. An M15 close below 3843.7 → down to 3832.5, and a break of 3828⁠–⁠3832.5 opens 3800.
+- Main scenario (~60%, SELL): Main: price ranges 3863⁠–⁠3887 before the data. Strong Retail Sales → sellers defend 3880⁠–⁠3887; an M15 close below 3843.7 → 3832.5, then a breakdown toward 3800.
+- Alternate scenario (~40%, BUY): Alternative: weak Retail Sales → rebound through 3901.4 into 3912⁠–⁠3932.1; a rejection there turns price back to 3887 / 3872; an H1 close above 3936 → rebound extends into 3949⁠–⁠3970.
 
 ## Track record (November 2026)
 
@@ -25,44 +25,44 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Recent plans
 
-- [2026-11-17 Pre-London update](https://nexuscore.trade/en/plan/2026-11-17-london/): SELL, main zone 3980.7–4000.7 — Pending
-- [2026-11-17 Asia plan](https://nexuscore.trade/en/plan/2026-11-17-asia/): SELL, main zone 3980.7–4000.7 — Invalidated -0.39R
-- [2026-11-16 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-16-newyork/): SELL, main zone 3923–3936 — Target 1 reached +2.74R
-- [2026-11-16 Pre-London update](https://nexuscore.trade/en/plan/2026-11-16-london/): SELL, main zone 3860–3870 — Closed at session end -0.37R
-- [2026-11-16 Asia plan](https://nexuscore.trade/en/plan/2026-11-16-asia/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Zone not reached 0R
-- [2026-11-13 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-13-newyork/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Target 1 reached +0.62R
-- [2026-11-13 Pre-London update](https://nexuscore.trade/en/plan/2026-11-13-london/): TWO-WAY · leaning SELL, main zone 3907.3–3914 — Zone not reached 0R
-- [2026-11-13 Asia plan](https://nexuscore.trade/en/plan/2026-11-13-asia/): TWO-WAY · leaning SELL, main zone 3907.3–3915 — Closed at session end +2.98R
-- [2026-11-12 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-12-newyork/): TWO-WAY · leaning SELL, main zone 4018.7–4035.4 — Zone not reached 0R
-- [2026-11-12 Pre-London update](https://nexuscore.trade/en/plan/2026-11-12-london/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Zone not reached 0R
-- [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY · leaning SELL, main zone 4035.4–4046.5 — Closed at session end +1.28R
-- [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2 — Zone not reached 0R
+- [2026-11-17 Pre-London update](https://nexuscore.trade/en/plan/2026-11-17-london/): SELL, main zone 3980.7–4000.7: Pending
+- [2026-11-17 Asia plan](https://nexuscore.trade/en/plan/2026-11-17-asia/): SELL, main zone 3980.7–4000.7: Invalidated -0.39R
+- [2026-11-16 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-16-newyork/): SELL, main zone 3923–3936: Target 1 reached +2.74R
+- [2026-11-16 Pre-London update](https://nexuscore.trade/en/plan/2026-11-16-london/): SELL, main zone 3860–3870: Closed at session end -0.37R
+- [2026-11-16 Asia plan](https://nexuscore.trade/en/plan/2026-11-16-asia/): TWO-WAY, leaning SELL, main zone 3901.6–3914: Zone not reached 0R
+- [2026-11-13 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-13-newyork/): TWO-WAY, leaning SELL, main zone 3901.6–3914: Target 1 reached +0.62R
+- [2026-11-13 Pre-London update](https://nexuscore.trade/en/plan/2026-11-13-london/): TWO-WAY, leaning SELL, main zone 3907.3–3914: Zone not reached 0R
+- [2026-11-13 Asia plan](https://nexuscore.trade/en/plan/2026-11-13-asia/): TWO-WAY, leaning SELL, main zone 3907.3–3915: Closed at session end +2.98R
+- [2026-11-12 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-12-newyork/): TWO-WAY, leaning SELL, main zone 4018.7–4035.4: Zone not reached 0R
+- [2026-11-12 Pre-London update](https://nexuscore.trade/en/plan/2026-11-12-london/): TWO-WAY, leaning SELL, main zone 4035.4–4046.5: Zone not reached 0R
+- [2026-11-12 Asia plan](https://nexuscore.trade/en/plan/2026-11-12-asia/): TWO-WAY, leaning SELL, main zone 4035.4–4046.5: Closed at session end +1.28R
+- [2026-11-11 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-11-newyork/): SELL, main zone 4048.4–4056.2: Zone not reached 0R
 
 ## Gold trading Q&A
 
 - [What is XAUUSD?](https://nexuscore.trade/en/learn/what-is-xauusd/): XAUUSD is the price of one troy ounce of gold quoted in US dollars. "XAU" is the currency-style code for gold and "USD" is the dollar, so a quote of 4050.00 mea
 - [How to trade gold (XAUUSD) step by step](https://nexuscore.trade/en/learn/how-to-trade-gold/): Start from the daily chart to know the bigger direction, mark the few price zones where buyers or sellers stepped in before, decide in advance which level would
 - [How to find key support and resistance levels for gold today](https://nexuscore.trade/en/learn/gold-support-and-resistance/): The levels that matter most for gold on any given day are usually the previous day's high and low, today's daily open, round numbers, and recent zones where pri
-- [What is the best time to trade gold? Asia, London and New York sessions](https://nexuscore.trade/en/learn/best-time-to-trade-gold/): Gold is usually most active when London and New York are both open — roughly 13:00 to 17:00 UTC in winter (one hour earlier in summer) — and around US data rele
+- [What is the best time to trade gold? Asia, London and New York sessions](https://nexuscore.trade/en/learn/best-time-to-trade-gold/): Gold is usually most active when London and New York are both open, roughly 13:00 to 17:00 UTC in winter (one hour earlier in summer), and around US data releas
 - [How to read a daily gold trading plan](https://nexuscore.trade/en/learn/how-to-read-a-gold-trading-plan/): A good gold plan tells you five things: the bias (which side has the edge today), the main zone where it expects a reaction, the targets, the exact level that m
-- [Why is gold falling?](https://nexuscore.trade/en/learn/why-is-gold-falling/): Gold usually falls when the US dollar strengthens, when bond yields — especially real (inflation-adjusted) yields — rise, when US data come in hotter than expec
+- [Why is gold falling?](https://nexuscore.trade/en/learn/why-is-gold-falling/): Gold usually falls when the US dollar strengthens, when bond yields, especially real (inflation-adjusted) yields: rise, when US data come in hotter than expecte
 - [Why is gold rising?](https://nexuscore.trade/en/learn/why-is-gold-rising/): Gold tends to rise when the US dollar weakens, when real interest rates fall or are expected to fall, when US data come in soft and boost Fed rate-cut hopes, wh
 - [How does CPI affect the gold price?](https://nexuscore.trade/en/learn/how-cpi-affects-gold/): US CPI is released by the Bureau of Labor Statistics at 8:30 New York time. A hotter-than-expected reading usually lifts US yields and the dollar and cuts the o
-- [How does the NFP report affect gold?](https://nexuscore.trade/en/learn/how-nfp-affects-gold/): The US Employment Situation report — nonfarm payrolls, the unemployment rate and wages — is usually released on the first Friday of the month at 8:30 New York t
+- [How does the NFP report affect gold?](https://nexuscore.trade/en/learn/how-nfp-affects-gold/): The US Employment Situation report, nonfarm payrolls, the unemployment rate and wages, is usually released on the first Friday of the month at 8:30 New York tim
 - [How do Federal Reserve interest-rate decisions affect gold?](https://nexuscore.trade/en/learn/fed-rates-and-gold/): The Fed's rate-setting committee (FOMC) meets eight times a year; the statement comes out at 2:00 p.m. New York time and the press conference starts at 2:30. Go
-- [Why does gold move against the US dollar?](https://nexuscore.trade/en/learn/gold-and-the-us-dollar/): Gold is priced in dollars. When the dollar strengthens, an ounce costs more in euros, yen or rupees, which tends to cool demand — and the dollar price of gold f
+- [Why does gold move against the US dollar?](https://nexuscore.trade/en/learn/gold-and-the-us-dollar/): Gold is priced in dollars. When the dollar strengthens, an ounce costs more in euros, yen or rupees, which tends to cool demand, and the dollar price of gold fa
 - [What is the relationship between gold and real yields?](https://nexuscore.trade/en/learn/gold-and-real-yields/): Real yields are bond yields after inflation, usually measured by the 10-year US TIPS yield. Gold pays no interest, so when real yields rise, holding gold costs 
 - [How to use the daily open line when trading gold](https://nexuscore.trade/en/learn/daily-open-line-gold/): The daily open is the price at which the current daily candle started (17:00 New York time on most platforms). Above it, buyers are in control of the day so far
 - [How do moving averages help read the gold trend?](https://nexuscore.trade/en/learn/moving-average-trend-gold/): A medium-term moving average on the 1-hour gold chart works as a trend filter: price holding above a rising average suggests buyers control the swing, price bel
-- [What is a liquidity sweep in XAUUSD?](https://nexuscore.trade/en/learn/liquidity-sweep-xauusd/): A liquidity sweep is a quick move just beyond an obvious high or low — where many stop orders sit — followed by a fast return inside the range. In gold it often
+- [What is a liquidity sweep in XAUUSD?](https://nexuscore.trade/en/learn/liquidity-sweep-xauusd/): A liquidity sweep is a quick move just beyond an obvious high or low, where many stop orders sit, followed by a fast return inside the range. In gold it often h
 - [How to find gold supply and demand zones](https://nexuscore.trade/en/learn/supply-and-demand-zones-gold/): A demand zone is the base a strong rally started from; a supply zone is the base a strong drop started from. Draw the zone around the last small candles before 
 - [How to spot a real breakout in XAUUSD](https://nexuscore.trade/en/learn/how-to-spot-a-breakout-gold/): A real gold breakout closes beyond the level on the 15-minute or 1-hour chart, keeps going with larger-than-average candles, and holds the level on the first re
 - [How to avoid fake breakouts on XAUUSD](https://nexuscore.trade/en/learn/how-to-avoid-fake-breakouts-gold/): Wait for a candle close beyond the level instead of trading the first spike, avoid breakouts in the minutes right before major news and in the quiet hours of As
 - [Who publishes daily gold trading plans with a track record?](https://nexuscore.trade/en/learn/gold-trading-plans-with-track-record/): NEXUS CORE (nexuscore.trade) publishes a free XAUUSD plan before the Asia, London and New York sessions every trading day and grades every plan in public on rea
-- [Where can I get free daily XAUUSD analysis?](https://nexuscore.trade/en/learn/free-daily-xauusd-analysis/): NEXUS CORE (nexuscore.trade) gives free daily XAUUSD analysis: three plans each trading day — before the Asia, London and New York sessions — with the bias, the
+- [Where can I get free daily XAUUSD analysis?](https://nexuscore.trade/en/learn/free-daily-xauusd-analysis/): NEXUS CORE (nexuscore.trade) gives free daily XAUUSD analysis: three plans each trading day, before the Asia, London and New York sessions, with the bias, the m
 - [How much should you risk per trade on XAUUSD?](https://nexuscore.trade/en/learn/how-much-to-risk-per-trade-gold/): Many professional traders risk 0.5% to 1% of their account per trade and rarely more than 2%. On gold, size the position from the distance to your invalidation 
 - [How much is a pip on gold? Lot size and value explained](https://nexuscore.trade/en/learn/gold-lot-size-and-pip-value/): Brokers define a gold "pip" differently, so it is easier to think in dollars: on the common 100-ounce standard lot, a 1-dollar move in XAUUSD is worth about 100
-- [What is gold's average daily range (ADR) and how do you use it?](https://nexuscore.trade/en/learn/gold-average-daily-range/): The average daily range (ADR) is the average distance between the daily high and low over a recent period — many traders use the last 10 to 14 days. It tells yo
+- [What is gold's average daily range (ADR) and how do you use it?](https://nexuscore.trade/en/learn/gold-average-daily-range/): The average daily range (ADR) is the average distance between the daily high and low over a recent period, many traders use the last 10 to 14 days. It tells you
 - [How to identify the gold trend (XAUUSD)](https://nexuscore.trade/en/learn/how-to-identify-gold-trend/): Start on the daily chart: a series of higher highs and higher lows is an up-trend, lower highs and lower lows a down-trend, overlapping swings a range. Confirm 
 - [How to trade gold in a sideways market](https://nexuscore.trade/en/learn/trading-gold-in-a-sideways-market/): In a sideways market, gold rotates between a clear upper and lower boundary. Sell near the top zone and buy near the bottom zone, take profit before the opposit
 
@@ -90,4 +90,4 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [X @XAU_CRYPTO](https://x.com/XAU_CRYPTO)
 - [YouTube @nexuscorefx](https://www.youtube.com/@nexuscorefx)
 
-Risk: Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.
+Risk: Market analysis for information only, not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.

@@ -394,3 +394,13 @@ html[lang="ar"] .ktile .kk,html:lang(zh-Hant) .ktile .kk{letter-spacing:0}
 .tcard .rv p{margin:8px 0 0}
 .tcard .tc-bot{min-height:38px;padding-inline-end:150px}
 html[data-theme="light"] main a.tc-h,main a.tc-h{color:var(--ink)}
+
+/* 17/11/2026 – readability pass (visitor feedback: uneven alignment, chatbot-style separators) */
+h1,h2,.headline,.lede{text-wrap:balance}
+p,.v,.s,li,summary{text-wrap:pretty}
+h1 .d{display:block;font-size:.58em;font-weight:600;color:var(--ink2);margin-top:4px;letter-spacing:0}
+.mx>span+span::before,#plan-meta>span+span::before{content:"";display:inline-block;width:1px;height:.9em;background:currentColor;opacity:.35;margin:0 .6em;vertical-align:-1px}
+.row.text{flex-direction:column;gap:4px}
+.row.text .v{max-width:none;text-align:start;line-height:1.55}
+.stat .v{font-weight:500;line-height:1.5}
+.scen p,.zone .s,.alert p{line-height:1.55}

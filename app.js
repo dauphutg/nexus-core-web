@@ -3,34 +3,34 @@
 
   var T = {
     en: {
-      pp_best: 'Max favourable move (MFE)', pp_best_note: 'Furthest move in the zone’s direction after it was reached, until invalidation or the daily close — shows how good the read was; it is not a trade result and is never added to R.', tr_best: 'Avg MFE', kp_real: 'Real result', tr_winrate: 'Win rate', tr_netpips: 'Net pips', tr_signals: 'Trades', tr_entry: 'Entry', tr_sl: 'Stop loss', tr_max: 'max run', tr_detail: 'Details', tr_notrade: 'Plans with no entry', tr_perf: 'Performance', gold_usd: 'Gold / USD', rv_h: 'See before / after', rv_go: 'Full result of this plan', rv_alt: 'Before and after: the plan chart as published and the real 15-minute candles until the session ended', rv_cap: 'Top: the H1 chart as published. Bottom: the same H1 chart with the real candles until the session ended – the arrow marks when the plan was drawn.', kp_plans: 'plans', kp_zones: 'zones reached', kp_real_note: 'Losing days included.', kp_move: 'How far price ran', kp_avg: 'average per zone', kp_max: 'Biggest', kp_avg_usd: 'Average in $', kp_move_note: 'From zone touch to the furthest price. Not a trade profit.', z_near_short: 'Just missed the zone', std_r: 'std (1R = 10 $)', z_near: 'Reacted just short of the zone', near_det: 'Closest {gap} $ from the zone at {at}, then {move} $ in the zone’s direction', near_note: 'Near-zone reaction: price turned within 2 $ of the zone without reaching it. Shown for transparency only — not a touch, not in the hit rate, never added to R.', tr_near: 'Near-zone reactions', 
-      chart_hint: 'Tap the chart to view it full screen', lb_hint: 'Tap anywhere to close · pinch to zoom', 
+      pp_best: 'Max favourable move (MFE)', pp_best_note: 'Furthest move in the zone’s direction after it was reached, until invalidation or the daily close, shows how good the read was; it is not a trade result and is never added to R.', tr_best: 'Avg MFE', kp_real: 'Real result', tr_winrate: 'Win rate', tr_netpips: 'Net pips', tr_signals: 'Trades', tr_entry: 'Entry', tr_sl: 'Stop loss', tr_max: 'max run', tr_detail: 'Details', tr_notrade: 'Plans with no entry', tr_perf: 'Performance', gold_usd: 'Gold / USD', rv_h: 'See before / after', rv_go: 'Full result of this plan', rv_alt: 'Before and after: the plan chart as published and the real 15-minute candles until the session ended', rv_cap: 'Top: the H1 chart as published. Bottom: the same H1 chart with the real candles until the session ended, the arrow marks when the plan was drawn.', kp_plans: 'plans', kp_zones: 'zones reached', kp_real_note: 'Losing days included.', kp_move: 'How far price ran', kp_avg: 'average per zone', kp_max: 'Biggest', kp_avg_usd: 'Average in $', kp_move_note: 'From zone touch to the furthest price. Not a trade profit.', z_near_short: 'Just missed the zone', std_r: 'std (1R = 10 $)', z_near: 'Reacted just short of the zone', near_det: 'Closest {gap} $ from the zone at {at}, then {move} $ in the zone’s direction', near_note: 'Near-zone reaction: price turned within 2 $ of the zone without reaching it. Shown for transparency only, not a touch, not in the hit rate, never added to R.', tr_near: 'Near-zone reactions', 
+      chart_hint: 'Tap the chart to view it full screen', lb_hint: 'Tap anywhere to close, pinch to zoom', 
       tab_learn: 'Learn', ln_eyebrow: 'Gold trading Q&A', ln_short: 'Short answer', ln_example: 'Live example from the latest NEXUS CORE plan', ln_faq: 'Quick answers', ln_related: 'Related questions', ln_updated: 'Updated', see_plan: 'See the full plan →', see_track: 'See the track record →',
-      ln_index_h1: 'Learn to read the gold market', ln_index_lede: 'Plain answers to the questions gold traders actually ask — each one tied to a real, graded NEXUS CORE plan.', ln_all: 'All questions', ln_sessions_note: 'Plan times: Asia 00:00 UTC · London update 06:45 UTC · New York 12:30 UTC.',
-      mv_eyebrow: 'Why gold moved', mv_h1: 'Why gold moved', mv_change: 'Day change', mv_oc: 'Open → close', mv_hl: 'High / low', mv_big: 'Biggest hourly move', mv_reasons: 'What moved it', mv_sources: 'Sources', mv_method: 'Numbers from 15-minute XAUUSD candles (OANDA feed). Trading day = 17:00 New York to 17:00 New York. Reasons come only from published news and data; when none fits, we say so.', mv_plans: 'Plans for this day', mv_recent: 'Why gold moved – recent days',
+      ln_index_h1: 'Learn to read the gold market', ln_index_lede: 'Plain answers to the questions gold traders actually ask, each one tied to a real, graded NEXUS CORE plan.', ln_all: 'All questions', ln_sessions_note: 'Plan times: Asia 00:00 UTC, London update 06:45 UTC, New York 12:30 UTC.',
+      mv_eyebrow: 'Why gold moved', mv_h1: 'Why gold moved', mv_change: 'Day change', mv_oc: 'Open → close', mv_hl: 'High / low', mv_big: 'Biggest hourly move', mv_reasons: 'What moved it', mv_sources: 'Sources', mv_method: 'Numbers from 15-minute XAUUSD candles (OANDA feed). Trading day = 17:00 New York to 17:00 New York. Reasons come only from published news and data; when none fits, we say so.', mv_plans: 'Plans for this day', mv_recent: 'Why gold moved, recent days',
       skip: 'Skip to content', to_light: 'Switch to light theme', to_dark: 'Switch to dark theme', tab_plan: 'Daily plan', tab_signals: 'Signals', tab_history: 'Track record',
-      lede: 'AI-built game plan for gold (XAUUSD): key zones, scenarios and the level that proves the view wrong — refreshed before Asia, London and New York.',
+      lede: 'AI-built game plan for gold (XAUUSD): key zones, scenarios and the level that proves the view wrong, refreshed before Asia, London and New York.',
       bias: 'Bias', levels: 'Key levels', scenarios: 'Scenarios', zones: 'Zones on the chart', news: 'Economic calendar',
       main_zone: 'Main zone', watch: 'Watch level', invalid: 'View is wrong if', range: 'Expected range', target: 'Target',
       plan_of: 'Gold plan', ed: { '0700': 'Asia plan', '1345': 'Pre-London update', '1930': 'Pre-New York plan' },
       ed_short: { '0700': 'Asia', '1345': 'London', '1930': 'New York' },
       updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', key: 'Key zone',
       tz: 'All times shown in your local time', your_time: 'your time',
-      tg_title: 'Get every plan on Telegram', tg_sub: 'Free channel · no sign-up',
+      tg_title: 'Get every plan on Telegram', tg_sub: 'Free channel, no sign-up',
       SELL: 'SELL', BUY: 'BUY', TWO_WAY: 'TWO-WAY', STAND_ASIDE: 'STAND ASIDE', lean: 'leaning',
       live: 'LIVE', stale: 'LAST PLAN', err: 'Could not load data. Please reload the page.',
-      cta_title: 'Get the next plan before London opens', cta_sub: 'A free alert the moment each plan is published — Asia, London and New York. Takes five seconds.', cta_push: 'Alert on this device',
+      cta_title: 'Get the next plan before London opens', cta_sub: 'A free alert the moment each plan is published, Asia, London and New York. Takes five seconds.', cta_push: 'Alert on this device',
       nt_title: 'New-plan alerts', nt_sub: 'Get a notification on this device the moment a new plan is published.', nt_on_btn: 'Turn on alerts', nt_off_btn: 'Turn off alerts', nt_on: 'Alerts are on for this device.', nt_denied: 'Notifications are blocked for this site. Allow them in your browser settings to turn alerts on.', nt_ios: 'On iPhone: tap the Share button, choose “Add to Home Screen”, then open NEXUS CORE from your home screen and turn on alerts.', nt_err: 'Could not change alerts. Please try again.',
       wl_title: 'Or get it by email', wl_sub: 'A copy of every new plan in your inbox, plus first access to the NEXUS CORE app. No spam, unsubscribe any time.', wl_label: 'Email address', wl_btn: 'Join waitlist', wl_ok: 'You are on the list.', wl_bad: 'Please enter a valid email address.', wl_err: 'Could not sign you up. Please try again.', wl_privacy: 'We use your email only for NEXUS CORE updates and never share it. You can ask to be removed at any time.',
-      nt_old_ios: 'Alerts need iOS 16.4 or later. Update your iPhone in Settings → General → Software Update, then turn alerts on here.', nt_unsup: 'This browser cannot show alerts. Open the site in Chrome, Edge, Firefox or Safari — or follow the Telegram channel.',
+      nt_old_ios: 'Alerts need iOS 16.4 or later. Update your iPhone in Settings → General → Software Update, then turn alerts on here.', nt_unsup: 'This browser cannot show alerts. Open the site in Chrome, Edge, Firefox or Safari, or follow the Telegram channel.',
       nt_retry: 'Connecting… please tap the button again.',
       nt_alt: 'Works on every phone, including older iPhones:', nt_tg: 'Alerts on Telegram', nt_mail: 'Alerts by email',
       permalink: 'Permanent link to this plan',
-      res_mixed: 'Mixed', pp_zones: 'Zones graded', z_earlier: 'Counted in the earlier update', pp_follow: 'Followed until', z_main: 'Main zone', res_hit: 'Target 1 reached', res_void: 'Invalidated', res_no_touch: 'Zone not reached', res_expired: 'Closed at session end', res_carried: 'Followed by the next update', z_carried_to: 'Still open at the end of the session — the next update follows it and grades it there.', tr_r_closed: 'R · target or invalidation', tr_r_session: 'R · closed at session end', z_carried_from: 'Open trade carried over from the previous update', z_see_next: 'See the next update →', res_aside: 'Stood aside', pending: 'Pending',
+      res_mixed: 'Mixed', pp_zones: 'Zones graded', z_earlier: 'Counted in the earlier update', pp_follow: 'Followed until', z_main: 'Main zone', res_hit: 'Target 1 reached', res_void: 'Invalidated', res_no_touch: 'Zone not reached', res_expired: 'Closed at session end', res_carried: 'Followed by the next update', z_carried_to: 'Still open at the end of the session, the next update follows it and grades it there.', tr_r_closed: 'R, target or invalidation', tr_r_session: 'R, closed at session end', z_carried_from: 'Open trade carried over from the previous update', z_see_next: 'See the next update →', res_aside: 'Stood aside', pending: 'Pending',
       res_pending_note: 'Graded after the daily close (17:00 New York).',
       pp_result: 'How this plan played out', pp_touched: 'Zone reached', pp_event: 'Decided at', pp_window: 'Graded window', pp_hl: 'High / low in window', pp_last: 'Last price in window', pp_t1: 'Target 1', pp_void: 'Invalidation level',
       prev_plan: '← Previous plan', next_plan: 'Next plan →', today_plan: 'Today’s plan', all_month: 'All plans this month',
-      tr_h1: 'Gold plan track record', tr_lede: 'Every NEXUS CORE gold plan this month and how it played out. Wins, losses and misses all stay on the record — nothing is deleted.',
+      tr_h1: 'Gold plan track record', tr_lede: 'Every NEXUS CORE gold plan this month and how it played out. Wins, losses and misses all stay on the record, nothing is deleted.',
       tr_plans: 'Plans published', tr_graded: 'Graded', tr_reached: 'Zones reached', tr_hit: 'Target 1 reached', tr_void: 'Invalidated', tr_r: 'Total R',
       tr_list: 'Every plan', tr_none: 'No plans yet this month.', tr_method: 'How plans are graded', tr_prev_m: '← Previous month', tr_next_m: 'Next month →', view: 'View plan',
       tr_m: ['Every tradeable zone in a plan is graded on its own on 15-minute XAUUSD candles (OANDA feed): the main zone plus every other zone with a published invalidation level. Watch-only zones and zones that are only in play after a break are not scored.',
@@ -41,45 +41,45 @@
         'Prices are OANDA 15-minute candles; spread, slippage and fees are not included.',
         'Each zone price reached is one trade: entry = the zone edge reached first; pips = the R result × the distance to the invalidation level (1 pip = 0.10 $). Win rate = trades closed with positive pips; net pips = the sum, losses included. “Max run” is the MFE and is never added to the pips.',
         'Stand-aside plans are not scored.',
-        'MFE (maximum favourable excursion) is shown separately: the furthest price travelled in the zone’s direction from its edge, from the touch until invalidation or the daily close, measured from the zone’s conservative edge. It shows how good the read was — it is never added to R. MFE is shown in dollars and pips (1 pip = 0.10 $); the monthly figure is the average in dollars over all zones reached. MFE is also expressed in standard R (1R = 10 $), a fixed unit for comparison — not the trade’s own R.',
-        'Near-zone reaction (added 14 Nov 2026): a zone missed by 2 $ or less inside the plan’s window is labelled with the closest distance and the move that followed. It is a label only — the zone still counts as not reached and nothing is added to R.',
+        'MFE (maximum favourable excursion) is shown separately: the furthest price travelled in the zone’s direction from its edge, from the touch until invalidation or the daily close, measured from the zone’s conservative edge. It shows how good the read was, it is never added to R. MFE is shown in dollars and pips (1 pip = 0.10 $); the monthly figure is the average in dollars over all zones reached. MFE is also expressed in standard R (1R = 10 $), a fixed unit for comparison, not the trade’s own R.',
+        'Near-zone reaction (added 14 Nov 2026): a zone missed by 2 $ or less inside the plan’s window is labelled with the closest distance and the move that followed. It is a label only, the zone still counts as not reached and nothing is added to R.',
         'Rules v4, 14 Nov 2026 (graded and settled per session, no carry-over). Every earlier plan was re-graded once under these rules.'],
-      sg_h1: 'NEXUS CORE Signals', sg_lede: 'Exact trade signals built on the daily plan — for members only. The daily plan stays free for everyone.', sg_soon: 'Members only · launching soon', sg_what: 'What members get',
-      sg_b: ['A real-time alert when price reaches a plan zone and the setup confirms — entry, stop and targets.', 'Every signal tied to the plan in force, so you always know why it exists.', 'Priority alerts in the app and a private Telegram group.', 'Every signal recorded and graded, win or loss.'],
+      sg_h1: 'NEXUS CORE Signals', sg_lede: 'Exact trade signals built on the daily plan, for members only. The daily plan stays free for everyone.', sg_soon: 'Members only, launching soon', sg_what: 'What members get',
+      sg_b: ['A real-time alert when price reaches a plan zone and the setup confirms, entry, stop and targets.', 'Every signal tied to the plan in force, so you always know why it exists.', 'Priority alerts in the app and a private Telegram group.', 'Every signal recorded and graded, win or loss.'],
       sg_wl_title: 'Join the Signals waitlist', sg_wl_sub: 'Be first to know when Signals opens, with early-member pricing. No spam.', sg_free: 'Only need the free plan?', sg_free_link: 'See today’s gold plan →',
       sg_note: 'Signals are trade ideas for information only, not personal advice. Availability may depend on your country.',
       risk_title: 'Risk warning',
-      disclaimer: 'Market analysis for information only — not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
+      disclaimer: 'Market analysis for information only, not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.'
     },
     ar: {
-      pp_best: 'أقصى حركة مواتية (MFE)', pp_best_note: 'أبعد حركة باتجاه المنطقة بعد الوصول إليها حتى الإلغاء أو الإغلاق اليومي — تُظهر دقة القراءة، وليست نتيجة صفقة ولا تُضاف إلى R.', tr_best: 'متوسط MFE', kp_real: 'النتيجة الفعلية', tr_winrate: 'نسبة النجاح', tr_netpips: 'صافي النقاط', tr_signals: 'صفقات', tr_entry: 'الدخول', tr_sl: 'وقف الخسارة', tr_max: 'أقصى حركة', tr_detail: 'التفاصيل', tr_notrade: 'خطط بلا دخول', tr_perf: 'الأداء', gold_usd: 'الذهب / الدولار', rv_h: 'عرض قبل / بعد', rv_go: 'النتيجة الكاملة لهذه الخطة', rv_alt: 'قبل وبعد: مخطط الخطة كما نُشر وشموع 15 دقيقة الفعلية حتى نهاية الجلسة', rv_cap: 'في الأعلى: مخطط H1 كما نُشر. في الأسفل: مخطط H1 نفسه مع الشموع الفعلية حتى نهاية الجلسة – السهم يحدد وقت رسم الخطة.', kp_plans: 'خطط', kp_zones: 'مناطق تم الوصول إليها', kp_real_note: 'الأيام الخاسرة مشمولة.', kp_move: 'إلى أي مدى تحرك السعر', kp_avg: 'متوسط لكل منطقة', kp_max: 'الأكبر', kp_avg_usd: 'المتوسط بالدولار', kp_move_note: 'من لمس المنطقة حتى أبعد سعر. ليس ربح صفقة.', z_near_short: 'فاتته المنطقة بقليل', std_r: 'قياسي (1R = 10 $)', z_near: 'ارتداد قرب المنطقة', near_det: 'أقرب نقطة على بعد {gap} $ من المنطقة عند {at}، ثم تحرك {move} $ باتجاه المنطقة', near_note: 'ارتداد قرب المنطقة: انعكس السعر على بعد 2 $ أو أقل دون أن يصل إليها. يُعرض للشفافية فقط — لا يُعد وصولًا ولا يدخل في نسبة النجاح ولا يُضاف إلى R.', tr_near: 'ارتدادات قرب المنطقة', 
-      chart_hint: 'اضغط على الرسم لعرضه بملء الشاشة', lb_hint: 'اضغط في أي مكان للإغلاق · كبّر بإصبعين', 
+      pp_best: 'أقصى حركة مواتية (MFE)', pp_best_note: 'أبعد حركة باتجاه المنطقة بعد الوصول إليها حتى الإلغاء أو الإغلاق اليومي، تُظهر دقة القراءة، وليست نتيجة صفقة ولا تُضاف إلى R.', tr_best: 'متوسط MFE', kp_real: 'النتيجة الفعلية', tr_winrate: 'نسبة النجاح', tr_netpips: 'صافي النقاط', tr_signals: 'صفقات', tr_entry: 'الدخول', tr_sl: 'وقف الخسارة', tr_max: 'أقصى حركة', tr_detail: 'التفاصيل', tr_notrade: 'خطط بلا دخول', tr_perf: 'الأداء', gold_usd: 'الذهب / الدولار', rv_h: 'عرض قبل / بعد', rv_go: 'النتيجة الكاملة لهذه الخطة', rv_alt: 'قبل وبعد: مخطط الخطة كما نُشر وشموع 15 دقيقة الفعلية حتى نهاية الجلسة', rv_cap: 'في الأعلى: مخطط H1 كما نُشر. في الأسفل: مخطط H1 نفسه مع الشموع الفعلية حتى نهاية الجلسة، السهم يحدد وقت رسم الخطة.', kp_plans: 'خطط', kp_zones: 'مناطق تم الوصول إليها', kp_real_note: 'الأيام الخاسرة مشمولة.', kp_move: 'إلى أي مدى تحرك السعر', kp_avg: 'متوسط لكل منطقة', kp_max: 'الأكبر', kp_avg_usd: 'المتوسط بالدولار', kp_move_note: 'من لمس المنطقة حتى أبعد سعر. ليس ربح صفقة.', z_near_short: 'فاتته المنطقة بقليل', std_r: 'قياسي (1R = 10 $)', z_near: 'ارتداد قرب المنطقة', near_det: 'أقرب نقطة على بعد {gap} $ من المنطقة عند {at}، ثم تحرك {move} $ باتجاه المنطقة', near_note: 'ارتداد قرب المنطقة: انعكس السعر على بعد 2 $ أو أقل دون أن يصل إليها. يُعرض للشفافية فقط، لا يُعد وصولًا ولا يدخل في نسبة النجاح ولا يُضاف إلى R.', tr_near: 'ارتدادات قرب المنطقة', 
+      chart_hint: 'اضغط على الرسم لعرضه بملء الشاشة', lb_hint: 'اضغط في أي مكان للإغلاق، كبّر بإصبعين', 
       tab_learn: 'تعلّم', ln_eyebrow: 'أسئلة وأجوبة تداول الذهب', ln_short: 'الإجابة المختصرة', ln_example: 'مثال حي من أحدث خطة NEXUS CORE', ln_faq: 'إجابات سريعة', ln_related: 'أسئلة ذات صلة', ln_updated: 'آخر تحديث', see_plan: 'شاهد الخطة كاملة', see_track: 'شاهد سجل النتائج',
-      ln_index_h1: 'تعلّم قراءة سوق الذهب', ln_index_lede: 'إجابات واضحة عن الأسئلة التي يطرحها متداولو الذهب فعلًا — كل إجابة مرتبطة بخطة حقيقية من NEXUS CORE وتم تقييمها.', ln_all: 'كل الأسئلة', ln_sessions_note: 'أوقات الخطط: آسيا 00:00 UTC · تحديث لندن 06:45 UTC · نيويورك 12:30 UTC.',
-      mv_eyebrow: 'لماذا تحرك الذهب', mv_h1: 'لماذا تحرك الذهب', mv_change: 'تغيّر اليوم', mv_oc: 'الافتتاح ← الإغلاق', mv_hl: 'أعلى / أدنى', mv_big: 'أكبر حركة في ساعة', mv_reasons: 'ما الذي حرّكه', mv_sources: 'المصادر', mv_method: 'الأرقام من شموع XAUUSD لفترة 15 دقيقة (بيانات OANDA). يوم التداول = من 17:00 إلى 17:00 بتوقيت نيويورك. الأسباب من الأخبار والبيانات المنشورة فقط؛ وإن لم يوجد سبب واضح نقول ذلك.', mv_plans: 'خطط هذا اليوم', mv_recent: 'لماذا تحرك الذهب – الأيام الأخيرة',
+      ln_index_h1: 'تعلّم قراءة سوق الذهب', ln_index_lede: 'إجابات واضحة عن الأسئلة التي يطرحها متداولو الذهب فعلًا، كل إجابة مرتبطة بخطة حقيقية من NEXUS CORE وتم تقييمها.', ln_all: 'كل الأسئلة', ln_sessions_note: 'أوقات الخطط: آسيا 00:00 UTC، تحديث لندن 06:45 UTC، نيويورك 12:30 UTC.',
+      mv_eyebrow: 'لماذا تحرك الذهب', mv_h1: 'لماذا تحرك الذهب', mv_change: 'تغيّر اليوم', mv_oc: 'الافتتاح ← الإغلاق', mv_hl: 'أعلى / أدنى', mv_big: 'أكبر حركة في ساعة', mv_reasons: 'ما الذي حرّكه', mv_sources: 'المصادر', mv_method: 'الأرقام من شموع XAUUSD لفترة 15 دقيقة (بيانات OANDA). يوم التداول = من 17:00 إلى 17:00 بتوقيت نيويورك. الأسباب من الأخبار والبيانات المنشورة فقط؛ وإن لم يوجد سبب واضح نقول ذلك.', mv_plans: 'خطط هذا اليوم', mv_recent: 'لماذا تحرك الذهب، الأيام الأخيرة',
       skip: 'انتقل إلى المحتوى', to_light: 'التبديل إلى الوضع الفاتح', to_dark: 'التبديل إلى الوضع الداكن', tab_plan: 'الخطة اليومية', tab_signals: 'الإشارات', tab_history: 'سجل النتائج',
-      lede: 'خطة للذهب (XAUUSD) مبنية بالذكاء الاصطناعي: مناطق رئيسية، سيناريوهات، والمستوى الذي يُلغي الفكرة — تُحدَّث قبل جلسات آسيا ولندن ونيويورك.',
+      lede: 'خطة للذهب (XAUUSD) مبنية بالذكاء الاصطناعي: مناطق رئيسية، سيناريوهات، والمستوى الذي يُلغي الفكرة، تُحدَّث قبل جلسات آسيا ولندن ونيويورك.',
       bias: 'الاتجاه', levels: 'المستويات الرئيسية', scenarios: 'السيناريوهات', zones: 'المناطق على الرسم', news: 'المفكرة الاقتصادية',
       main_zone: 'المنطقة الرئيسية', watch: 'مستوى للمراقبة', invalid: 'تُلغى الفكرة إذا', range: 'النطاق المتوقع', target: 'الهدف',
       plan_of: 'خطة الذهب', ed: { '0700': 'خطة آسيا', '1345': 'تحديث ما قبل لندن', '1930': 'خطة ما قبل نيويورك' },
       ed_short: { '0700': 'آسيا', '1345': 'لندن', '1930': 'نيويورك' },
       updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', key: 'منطقة رئيسية',
       tz: 'جميع الأوقات بتوقيتك المحلي', your_time: 'بتوقيتك',
-      tg_title: 'استلم كل خطة عبر تيليجرام', tg_sub: 'قناة مجانية · بدون تسجيل',
+      tg_title: 'استلم كل خطة عبر تيليجرام', tg_sub: 'قناة مجانية، بدون تسجيل',
       SELL: 'بيع', BUY: 'شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق', lean: 'ميل إلى',
       live: 'مباشر', stale: 'آخر خطة', err: 'تعذّر تحميل البيانات. يرجى إعادة تحميل الصفحة.',
-      cta_title: 'احصل على الخطة القادمة قبل افتتاح لندن', cta_sub: 'تنبيه مجاني لحظة نشر كل خطة — آسيا ولندن ونيويورك. التفعيل في خمس ثوانٍ.', cta_push: 'تنبيه على هذا الجهاز',
+      cta_title: 'احصل على الخطة القادمة قبل افتتاح لندن', cta_sub: 'تنبيه مجاني لحظة نشر كل خطة، آسيا ولندن ونيويورك. التفعيل في خمس ثوانٍ.', cta_push: 'تنبيه على هذا الجهاز',
       nt_title: 'تنبيهات الخطة الجديدة', nt_sub: 'استلم إشعارًا على هذا الجهاز فور نشر خطة جديدة.', nt_on_btn: 'تفعيل التنبيهات', nt_off_btn: 'إيقاف التنبيهات', nt_on: 'التنبيهات مفعّلة على هذا الجهاز.', nt_denied: 'الإشعارات محظورة لهذا الموقع. اسمح بها من إعدادات المتصفح لتفعيل التنبيهات.', nt_ios: 'على الآيفون: اضغط زر المشاركة، اختر «إضافة إلى الشاشة الرئيسية»، ثم افتح NEXUS CORE من الشاشة الرئيسية وفعّل التنبيهات.', nt_err: 'تعذّر تغيير التنبيهات. حاول مرة أخرى.',
       wl_title: 'أو استلمها بالبريد', wl_sub: 'نسخة من كل خطة جديدة في بريدك، مع وصول مبكر إلى تطبيق NEXUS CORE. بلا إزعاج، ويمكنك الإلغاء متى شئت.', wl_label: 'البريد الإلكتروني', wl_btn: 'انضم الآن', wl_ok: 'تم تسجيلك في القائمة.', wl_bad: 'يرجى إدخال بريد إلكتروني صحيح.', wl_err: 'تعذّر التسجيل. حاول مرة أخرى.', wl_privacy: 'نستخدم بريدك لتحديثات NEXUS CORE فقط ولا نشاركه مع أحد. يمكنك طلب الحذف في أي وقت.',
-      nt_old_ios: 'التنبيهات تتطلب iOS 16.4 أو أحدث. حدّث الآيفون من الإعدادات ← عام ← تحديث البرامج ثم فعّل التنبيهات هنا.', nt_unsup: 'هذا المتصفح لا يدعم التنبيهات. افتح الموقع في Chrome أو Edge أو Firefox أو Safari — أو تابع قناة تيليجرام.',
+      nt_old_ios: 'التنبيهات تتطلب iOS 16.4 أو أحدث. حدّث الآيفون من الإعدادات ← عام ← تحديث البرامج ثم فعّل التنبيهات هنا.', nt_unsup: 'هذا المتصفح لا يدعم التنبيهات. افتح الموقع في Chrome أو Edge أو Firefox أو Safari، أو تابع قناة تيليجرام.',
       nt_retry: 'جارٍ الاتصال… اضغط الزر مرة أخرى.',
       nt_alt: 'تعمل على كل الهواتف، بما فيها أجهزة الآيفون القديمة:', nt_tg: 'تنبيهات عبر تيليجرام', nt_mail: 'تنبيهات بالبريد',
       permalink: 'رابط دائم لهذه الخطة',
-      res_mixed: 'نتائج مختلطة', pp_zones: 'المناطق المُقيَّمة', z_earlier: 'احتُسبت في التحديث السابق', pp_follow: 'المتابعة حتى', z_main: 'المنطقة الرئيسية', res_hit: 'تحقق الهدف الأول', res_void: 'أُلغيت الفكرة', res_no_touch: 'لم يصل السعر إلى المنطقة', res_expired: 'إغلاق نهاية الجلسة', res_carried: 'تتابعه الخطة التالية', z_carried_to: 'بقيت مفتوحة عند نهاية الجلسة — يتابعها التحديث التالي وتُقيَّم هناك.', tr_r_closed: 'R · هدف أو إلغاء', tr_r_session: 'R · إغلاق نهاية الجلسة', z_carried_from: 'صفقة مفتوحة منقولة من التحديث السابق', z_see_next: 'عرض التحديث التالي ←', res_aside: 'خارج السوق', pending: 'قيد التقييم',
+      res_mixed: 'نتائج مختلطة', pp_zones: 'المناطق المُقيَّمة', z_earlier: 'احتُسبت في التحديث السابق', pp_follow: 'المتابعة حتى', z_main: 'المنطقة الرئيسية', res_hit: 'تحقق الهدف الأول', res_void: 'أُلغيت الفكرة', res_no_touch: 'لم يصل السعر إلى المنطقة', res_expired: 'إغلاق نهاية الجلسة', res_carried: 'تتابعه الخطة التالية', z_carried_to: 'بقيت مفتوحة عند نهاية الجلسة، يتابعها التحديث التالي وتُقيَّم هناك.', tr_r_closed: 'R، هدف أو إلغاء', tr_r_session: 'R، إغلاق نهاية الجلسة', z_carried_from: 'صفقة مفتوحة منقولة من التحديث السابق', z_see_next: 'عرض التحديث التالي ←', res_aside: 'خارج السوق', pending: 'قيد التقييم',
       res_pending_note: 'تُقيَّم بعد الإغلاق اليومي (17:00 بتوقيت نيويورك).',
       pp_result: 'نتيجة هذه الخطة', pp_touched: 'وصول السعر إلى المنطقة', pp_event: 'حُسمت النتيجة', pp_window: 'فترة التقييم', pp_hl: 'أعلى / أدنى سعر في الفترة', pp_last: 'آخر سعر في الفترة', pp_t1: 'الهدف الأول', pp_void: 'مستوى الإلغاء',
       prev_plan: 'الخطة السابقة', next_plan: 'الخطة التالية', today_plan: 'خطة اليوم', all_month: 'كل خطط الشهر',
-      tr_h1: 'سجل نتائج خطط الذهب', tr_lede: 'كل خطط NEXUS CORE للذهب هذا الشهر وكيف انتهت. الرابحة والخاسرة وغير المُفعّلة تبقى في السجل — لا نحذف شيئًا.',
+      tr_h1: 'سجل نتائج خطط الذهب', tr_lede: 'كل خطط NEXUS CORE للذهب هذا الشهر وكيف انتهت. الرابحة والخاسرة وغير المُفعّلة تبقى في السجل، لا نحذف شيئًا.',
       tr_plans: 'خطط منشورة', tr_graded: 'مُقيَّمة', tr_reached: 'مناطق وصلها السعر', tr_hit: 'تحقق الهدف الأول', tr_void: 'أُلغيت', tr_r: 'مجموع R',
       tr_list: 'كل خطة', tr_none: 'لا توجد خطط هذا الشهر بعد.', tr_method: 'كيف نُقيّم الخطط', tr_prev_m: 'الشهر السابق', tr_next_m: 'الشهر التالي', view: 'عرض الخطة',
       tr_m: ['تُقيَّم كل منطقة قابلة للتداول في الخطة على حدة على شموع XAUUSD لفترة 15 دقيقة (بيانات OANDA): المنطقة الرئيسية وكل منطقة أخرى لها مستوى إلغاء منشور. مناطق المراقبة فقط والمناطق التي لا تُفعَّل إلا بعد كسر لا تُحتسب.',
@@ -91,44 +91,44 @@
         'كل منطقة وصلها السعر = صفقة واحدة: الدخول = حافة المنطقة التي لُمست أولًا؛ النقاط = نتيجة R × المسافة إلى مستوى الإلغاء (1 pip = 0.10 $). نسبة النجاح = الصفقات المغلقة بنقاط موجبة؛ صافي النقاط = المجموع بما فيه الخسائر. «أقصى حركة» هي MFE ولا تُضاف إلى النقاط.',
         'خطط «خارج السوق» لا تُحتسب.',
         'MFE (أقصى حركة مواتية) تُعرض منفصلة: أبعد مسافة تحركها السعر باتجاه المنطقة من حافتها، من لحظة الوصول حتى الإلغاء أو الإغلاق اليومي، مقيسة من الحافة المحافظة للمنطقة. تُظهر دقة القراءة ولا تُضاف أبدًا إلى R. تُعرض MFE بالدولار وبالنقاط (1 pip = 0.10 $)، والرقم الشهري هو المتوسط بالدولار لكل المناطق التي وصلها السعر. وتُعرض MFE أيضًا بوحدة R قياسية (1R = 10 $)، وهي وحدة ثابتة للمقارنة وليست R الصفقة.',
-        'ارتداد قرب المنطقة (أُضيف في 14 نوفمبر 2026): المنطقة التي فاتها السعر بـ 2 $ أو أقل داخل نافذة الخطة تُوسم بأقرب مسافة والحركة التالية. هي وسم فقط — تبقى المنطقة غير مُصابة ولا يُضاف شيء إلى R.',
+        'ارتداد قرب المنطقة (أُضيف في 14 نوفمبر 2026): المنطقة التي فاتها السعر بـ 2 $ أو أقل داخل نافذة الخطة تُوسم بأقرب مسافة والحركة التالية. هي وسم فقط، تبقى المنطقة غير مُصابة ولا يُضاف شيء إلى R.',
         'القواعد v4، 14 نوفمبر 2026 (التقييم والتسوية لكل جلسة، دون نقل). أُعيد تقييم كل الخطط السابقة مرة واحدة وفقها.'],
-      sg_h1: 'إشارات NEXUS CORE', sg_lede: 'إشارات تداول دقيقة مبنية على الخطة اليومية — للأعضاء فقط. تبقى الخطة اليومية مجانية للجميع.', sg_soon: 'للأعضاء فقط · قريبًا', sg_what: 'ما يحصل عليه الأعضاء',
-      sg_b: ['تنبيه فوري عند وصول السعر إلى منطقة الخطة وتأكيد الإعداد — الدخول والوقف والأهداف.', 'كل إشارة مرتبطة بالخطة السارية، فتعرف دائمًا سببها.', 'تنبيهات ذات أولوية في التطبيق ومجموعة تيليجرام خاصة.', 'كل إشارة تُسجَّل وتُقيَّم، رابحة كانت أم خاسرة.'],
+      sg_h1: 'إشارات NEXUS CORE', sg_lede: 'إشارات تداول دقيقة مبنية على الخطة اليومية، للأعضاء فقط. تبقى الخطة اليومية مجانية للجميع.', sg_soon: 'للأعضاء فقط، قريبًا', sg_what: 'ما يحصل عليه الأعضاء',
+      sg_b: ['تنبيه فوري عند وصول السعر إلى منطقة الخطة وتأكيد الإعداد، الدخول والوقف والأهداف.', 'كل إشارة مرتبطة بالخطة السارية، فتعرف دائمًا سببها.', 'تنبيهات ذات أولوية في التطبيق ومجموعة تيليجرام خاصة.', 'كل إشارة تُسجَّل وتُقيَّم، رابحة كانت أم خاسرة.'],
       sg_wl_title: 'انضم إلى قائمة انتظار الإشارات', sg_wl_sub: 'كن أول من يعلم عند إطلاق الإشارات، مع سعر خاص للأعضاء الأوائل. بلا إزعاج.', sg_free: 'تريد الخطة المجانية فقط؟', sg_free_link: 'شاهد خطة الذهب اليوم',
       sg_note: 'الإشارات أفكار تداول لأغراض المعلومات فقط وليست نصيحة شخصية. قد لا تتوفر في بعض الدول.',
       risk_title: 'تحذير المخاطر',
-      disclaimer: 'تحليل للسوق لأغراض المعلومات فقط — ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
+      disclaimer: 'تحليل للسوق لأغراض المعلومات فقط، ليس نصيحة استثمارية ولا دعوة للتداول. المنتجات ذات الرافعة المالية مثل عقود الذهب تنطوي على مخاطر عالية بخسارة الأموال سريعًا. الأداء السابق لا يضمن النتائج المستقبلية. تداول فقط بما تستطيع تحمّل خسارته.'
     },
     vi: {
-      pp_best: 'Giá chạy xa nhất (MFE)', pp_best_note: 'Quãng giá xa nhất theo hướng của vùng sau khi chạm, tới khi bị huỷ hoặc đóng nến ngày — cho thấy nhận định chuẩn tới đâu; không phải kết quả lệnh và không cộng vào R.', tr_best: 'MFE trung bình', kp_real: 'Kết quả thật', tr_winrate: 'Tỉ lệ thắng', tr_netpips: 'Pip ròng', tr_signals: 'Lệnh', tr_entry: 'Vào lệnh', tr_sl: 'Cắt lỗ', tr_max: 'chạy xa nhất', tr_detail: 'Chi tiết', tr_notrade: 'Plan không vào lệnh', tr_perf: 'Hiệu suất', gold_usd: 'Vàng / USD', rv_h: 'Xem trước / sau', rv_go: 'Xem kết quả chi tiết của plan', rv_alt: 'Trước và sau: chart plan lúc đăng và nến 15 phút thật tới khi hết phiên', rv_cap: 'Trên: chart H1 lúc đăng. Dưới: cùng khung H1 với nến thật tới khi hết phiên – mũi tên đánh dấu lúc vẽ plan.', kp_plans: 'plan', kp_zones: 'vùng được chạm', kp_real_note: 'Có cả ngày sai.', kp_move: 'Giá đã chạy bao xa', kp_avg: 'trung bình mỗi vùng', kp_max: 'Xa nhất', kp_avg_usd: 'Trung bình theo giá', kp_move_note: 'Từ lúc chạm vùng tới giá xa nhất. Không phải lợi nhuận lệnh.', z_near_short: 'Suýt chạm vùng', std_r: 'chuẩn (1R = 10 giá)', z_near: 'Phản ứng sát vùng', near_det: 'Gần nhất cách vùng {gap} $ lúc {at}, sau đó chạy {move} $ theo hướng của vùng', near_note: 'Phản ứng sát vùng: giá quay đầu khi còn cách vùng ≤ 2 $ mà chưa chạm. Chỉ hiển thị để minh bạch — không tính là chạm, không vào tỉ lệ chạm mục tiêu, không cộng vào R.', tr_near: 'Phản ứng sát vùng', 
-      chart_hint: 'Chạm vào chart để xem toàn màn hình', lb_hint: 'Chạm bất kỳ đâu để đóng · dùng 2 ngón để phóng to', 
+      pp_best: 'Giá chạy xa nhất (MFE)', pp_best_note: 'Quãng giá xa nhất theo hướng của vùng sau khi chạm, tới khi bị huỷ hoặc đóng nến ngày, cho thấy nhận định chuẩn tới đâu; không phải kết quả lệnh và không cộng vào R.', tr_best: 'MFE trung bình', kp_real: 'Kết quả thật', tr_winrate: 'Tỉ lệ thắng', tr_netpips: 'Pip ròng', tr_signals: 'Lệnh', tr_entry: 'Vào lệnh', tr_sl: 'Cắt lỗ', tr_max: 'chạy xa nhất', tr_detail: 'Chi tiết', tr_notrade: 'Plan không vào lệnh', tr_perf: 'Hiệu suất', gold_usd: 'Vàng / USD', rv_h: 'Xem trước / sau', rv_go: 'Xem kết quả chi tiết của plan', rv_alt: 'Trước và sau: chart plan lúc đăng và nến 15 phút thật tới khi hết phiên', rv_cap: 'Trên: chart H1 lúc đăng. Dưới: cùng khung H1 với nến thật tới khi hết phiên, mũi tên đánh dấu lúc vẽ plan.', kp_plans: 'plan', kp_zones: 'vùng được chạm', kp_real_note: 'Có cả ngày sai.', kp_move: 'Giá đã chạy bao xa', kp_avg: 'trung bình mỗi vùng', kp_max: 'Xa nhất', kp_avg_usd: 'Trung bình theo giá', kp_move_note: 'Từ lúc chạm vùng tới giá xa nhất. Không phải lợi nhuận lệnh.', z_near_short: 'Suýt chạm vùng', std_r: 'chuẩn (1R = 10 giá)', z_near: 'Phản ứng sát vùng', near_det: 'Gần nhất cách vùng {gap} $ lúc {at}, sau đó chạy {move} $ theo hướng của vùng', near_note: 'Phản ứng sát vùng: giá quay đầu khi còn cách vùng ≤ 2 $ mà chưa chạm. Chỉ hiển thị để minh bạch, không tính là chạm, không vào tỉ lệ chạm mục tiêu, không cộng vào R.', tr_near: 'Phản ứng sát vùng', 
+      chart_hint: 'Chạm vào chart để xem toàn màn hình', lb_hint: 'Chạm bất kỳ đâu để đóng, dùng 2 ngón để phóng to', 
       tab_learn: 'Kiến thức', ln_eyebrow: 'Hỏi đáp giao dịch vàng', ln_short: 'Trả lời ngắn', ln_example: 'Ví dụ thật từ plan NEXUS CORE mới nhất', ln_faq: 'Trả lời nhanh', ln_related: 'Câu hỏi liên quan', ln_updated: 'Cập nhật', see_plan: 'Xem plan đầy đủ →', see_track: 'Xem kết quả chấm →',
-      ln_index_h1: 'Học cách đọc thị trường vàng', ln_index_lede: 'Trả lời rõ ràng cho những câu người giao dịch vàng hay hỏi — mỗi câu gắn với plan NEXUS CORE thật đã được chấm.', ln_all: 'Mọi câu hỏi', ln_sessions_note: 'Giờ plan: phiên Á 00:00 UTC · cập nhật phiên Âu 06:45 UTC · phiên Mỹ 12:30 UTC.',
-      mv_eyebrow: 'Vì sao vàng chạy', mv_h1: 'Vì sao vàng chạy', mv_change: 'Thay đổi trong ngày', mv_oc: 'Mở → đóng', mv_hl: 'Cao / thấp', mv_big: 'Giờ chạy mạnh nhất', mv_reasons: 'Nguyên nhân', mv_sources: 'Nguồn', mv_method: 'Số liệu từ nến 15 phút XAUUSD (dữ liệu OANDA). Ngày giao dịch = 17:00 tới 17:00 giờ New York. Nguyên nhân chỉ lấy từ tin và số liệu đã công bố; không có lý do rõ thì ghi đúng như vậy.', mv_plans: 'Plan của ngày này', mv_recent: 'Vì sao vàng chạy – các ngày gần đây',
+      ln_index_h1: 'Học cách đọc thị trường vàng', ln_index_lede: 'Trả lời rõ ràng cho những câu người giao dịch vàng hay hỏi, mỗi câu gắn với plan NEXUS CORE thật đã được chấm.', ln_all: 'Mọi câu hỏi', ln_sessions_note: 'Giờ plan: phiên Á 00:00 UTC, cập nhật phiên Âu 06:45 UTC, phiên Mỹ 12:30 UTC.',
+      mv_eyebrow: 'Vì sao vàng chạy', mv_h1: 'Vì sao vàng chạy', mv_change: 'Thay đổi trong ngày', mv_oc: 'Mở → đóng', mv_hl: 'Cao / thấp', mv_big: 'Giờ chạy mạnh nhất', mv_reasons: 'Nguyên nhân', mv_sources: 'Nguồn', mv_method: 'Số liệu từ nến 15 phút XAUUSD (dữ liệu OANDA). Ngày giao dịch = 17:00 tới 17:00 giờ New York. Nguyên nhân chỉ lấy từ tin và số liệu đã công bố; không có lý do rõ thì ghi đúng như vậy.', mv_plans: 'Plan của ngày này', mv_recent: 'Vì sao vàng chạy, các ngày gần đây',
       skip: 'Tới nội dung', to_light: 'Chuyển sang giao diện sáng', to_dark: 'Chuyển sang giao diện tối', tab_plan: 'Plan ngày', tab_signals: 'Signal', tab_history: 'Kết quả',
-      lede: 'Plan vàng (XAUUSD) do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai — cập nhật trước phiên Á, Âu và Mỹ.',
+      lede: 'Plan vàng (XAUUSD) do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai, cập nhật trước phiên Á, Âu và Mỹ.',
       bias: 'Xu hướng', levels: 'Mức giá chính', scenarios: 'Kịch bản', zones: 'Các vùng trên chart', news: 'Lịch tin',
       main_zone: 'Vùng chính', watch: 'Mức theo dõi', invalid: 'Sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
       plan_of: 'Plan vàng', ed: { '0700': 'Plan phiên Á', '1345': 'Cập nhật trước phiên Âu', '1930': 'Plan trước phiên Mỹ' },
       ed_short: { '0700': 'Phiên Á', '1345': 'Phiên Âu', '1930': 'Phiên Mỹ' },
       updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', key: 'Vùng chính',
       tz: 'Mọi giờ hiển thị theo giờ máy của bạn', your_time: 'giờ của bạn',
-      tg_title: 'Nhận mọi plan qua Telegram', tg_sub: 'Kênh miễn phí · không cần đăng ký',
+      tg_title: 'Nhận mọi plan qua Telegram', tg_sub: 'Kênh miễn phí, không cần đăng ký',
       SELL: 'BÁN', BUY: 'MUA', TWO_WAY: '2 CHIỀU', STAND_ASIDE: 'ĐỨNG NGOÀI', lean: 'nghiêng',
       live: 'LIVE', stale: 'PLAN CŨ', err: 'Không tải được dữ liệu. Thử tải lại trang.',
-      cta_title: 'Nhận plan tiếp theo trước giờ mở cửa phiên London', cta_sub: 'Thông báo miễn phí ngay khi mỗi plan được đăng — phiên Á, Âu và Mỹ. Bật trong 5 giây.', cta_push: 'Thông báo trên máy này',
+      cta_title: 'Nhận plan tiếp theo trước giờ mở cửa phiên London', cta_sub: 'Thông báo miễn phí ngay khi mỗi plan được đăng, phiên Á, Âu và Mỹ. Bật trong 5 giây.', cta_push: 'Thông báo trên máy này',
       nt_title: 'Thông báo plan mới', nt_sub: 'Nhận thông báo trên máy này ngay khi có plan mới.', nt_on_btn: 'Bật thông báo', nt_off_btn: 'Tắt thông báo', nt_on: 'Đã bật thông báo trên máy này.', nt_denied: 'Trình duyệt đang chặn thông báo của trang này. Hãy cho phép trong cài đặt trình duyệt để bật.', nt_ios: 'Trên iPhone: bấm nút Chia sẻ, chọn “Thêm vào MH chính”, rồi mở NEXUS CORE từ màn hình chính và bật thông báo.', nt_err: 'Không đổi được thông báo. Thử lại sau.',
       wl_title: 'Hoặc nhận qua email', wl_sub: 'Bản sao mỗi plan mới gửi vào hộp thư, kèm quyền dùng app NEXUS CORE sớm nhất. Không spam, huỷ bất cứ lúc nào.', wl_label: 'Địa chỉ email', wl_btn: 'Đăng ký', wl_ok: 'Bạn đã có tên trong danh sách.', wl_bad: 'Vui lòng nhập email hợp lệ.', wl_err: 'Chưa đăng ký được. Thử lại sau.', wl_privacy: 'Email chỉ dùng để gửi tin NEXUS CORE, không chia sẻ cho ai. Bạn có thể yêu cầu xoá bất cứ lúc nào.',
-      nt_old_ios: 'Thông báo cần iOS 16.4 trở lên. Cập nhật iPhone trong Cài đặt → Cài đặt chung → Cập nhật phần mềm, rồi bật thông báo tại đây.', nt_unsup: 'Trình duyệt này không hỗ trợ thông báo. Mở trang bằng Chrome, Edge, Firefox hoặc Safari — hoặc theo dõi kênh Telegram.',
+      nt_old_ios: 'Thông báo cần iOS 16.4 trở lên. Cập nhật iPhone trong Cài đặt → Cài đặt chung → Cập nhật phần mềm, rồi bật thông báo tại đây.', nt_unsup: 'Trình duyệt này không hỗ trợ thông báo. Mở trang bằng Chrome, Edge, Firefox hoặc Safari, hoặc theo dõi kênh Telegram.',
       nt_retry: 'Đang kết nối… bấm nút thêm lần nữa.',
       nt_alt: 'Cách này chạy trên mọi điện thoại, kể cả iPhone đời cũ:', nt_tg: 'Nhận qua Telegram', nt_mail: 'Nhận qua email',
       permalink: 'Link cố định của plan này',
-      res_mixed: 'Có thắng có thua', pp_zones: 'Các vùng được chấm', z_earlier: 'Đã tính ở bản cập nhật trước', pp_follow: 'Theo dõi tới', z_main: 'Vùng chính', res_hit: 'Chạm mục tiêu 1', res_void: 'Bị huỷ (sai)', res_no_touch: 'Giá không tới vùng', res_expired: 'Chốt cuối phiên', res_carried: 'Bản sau theo dõi tiếp', z_carried_to: 'Còn mở khi hết phiên — bản sau theo dõi tiếp và chấm ở đó.', tr_r_closed: 'R · chạm mục tiêu / bị huỷ', tr_r_session: 'R · chốt cuối phiên', z_carried_from: 'Lệnh còn mở chuyển từ bản trước', z_see_next: 'Xem bản sau →', res_aside: 'Đứng ngoài', pending: 'Chờ chấm',
+      res_mixed: 'Có thắng có thua', pp_zones: 'Các vùng được chấm', z_earlier: 'Đã tính ở bản cập nhật trước', pp_follow: 'Theo dõi tới', z_main: 'Vùng chính', res_hit: 'Chạm mục tiêu 1', res_void: 'Bị huỷ (sai)', res_no_touch: 'Giá không tới vùng', res_expired: 'Chốt cuối phiên', res_carried: 'Bản sau theo dõi tiếp', z_carried_to: 'Còn mở khi hết phiên, bản sau theo dõi tiếp và chấm ở đó.', tr_r_closed: 'R, chạm mục tiêu / bị huỷ', tr_r_session: 'R, chốt cuối phiên', z_carried_from: 'Lệnh còn mở chuyển từ bản trước', z_see_next: 'Xem bản sau →', res_aside: 'Đứng ngoài', pending: 'Chờ chấm',
       res_pending_note: 'Chấm sau khi nến ngày đóng (17:00 giờ New York).',
       pp_result: 'Kết quả của plan này', pp_touched: 'Giá chạm vùng', pp_event: 'Chốt kết quả lúc', pp_window: 'Khung giờ chấm', pp_hl: 'Cao / thấp trong khung', pp_last: 'Giá cuối khung', pp_t1: 'Mục tiêu 1', pp_void: 'Mốc huỷ',
       prev_plan: '← Plan trước', next_plan: 'Plan sau →', today_plan: 'Plan hôm nay', all_month: 'Mọi plan trong tháng',
-      tr_h1: 'Kết quả plan vàng', tr_lede: 'Mọi plan vàng NEXUS CORE trong tháng và kết quả thật. Đúng, sai hay không chạy đều giữ lại — không xoá plan nào.',
+      tr_h1: 'Kết quả plan vàng', tr_lede: 'Mọi plan vàng NEXUS CORE trong tháng và kết quả thật. Đúng, sai hay không chạy đều giữ lại, không xoá plan nào.',
       tr_plans: 'Plan đã đăng', tr_graded: 'Đã chấm', tr_reached: 'Vùng được chạm', tr_hit: 'Chạm mục tiêu 1', tr_void: 'Bị huỷ', tr_r: 'Tổng R',
       tr_list: 'Từng plan', tr_none: 'Tháng này chưa có plan.', tr_method: 'Cách chấm plan', tr_prev_m: '← Tháng trước', tr_next_m: 'Tháng sau →', view: 'Xem plan',
       tr_m: ['Mọi vùng giao dịch được trong plan đều được chấm riêng trên nến 15 phút XAUUSD (dữ liệu OANDA): vùng chính và mọi vùng khác có mốc huỷ công bố. Vùng chỉ theo dõi và vùng chỉ có hiệu lực sau khi phá không tính.',
@@ -139,45 +139,45 @@
         'Giá lấy từ nến 15 phút OANDA; chưa trừ spread, trượt giá và phí.',
         'Mỗi vùng giá chạm vào = 1 lệnh: vào lệnh = mép vùng chạm trước; pip = kết quả R × khoảng cách tới mốc huỷ (1 pip = 0,1 USD). Tỉ lệ thắng = số lệnh đóng với pip dương; pip ròng = tổng, tính cả lệnh thua. “Chạy xa nhất” là MFE, không cộng vào pip.',
         'Plan đứng ngoài không tính điểm.',
-        'MFE (giá chạy xa nhất) hiển thị riêng: quãng giá xa nhất theo hướng của vùng tính từ mép vùng, từ lúc chạm tới khi bị huỷ hoặc đóng nến ngày, đo từ mép vùng thận trọng. Số này cho thấy nhận định chuẩn tới đâu – không bao giờ cộng vào R. MFE ghi bằng giá (USD) và pip (1 pip = 0,1 USD); số của tháng là trung bình theo USD trên mọi vùng được chạm. MFE còn được quy ra R chuẩn (1R = 10 giá) – đơn vị cố định để so sánh, không phải R của lệnh.',
-        'Phản ứng sát vùng (thêm ngày 14/11/2026): vùng bị trượt ≤ 2 $ trong khung của plan được gắn nhãn kèm khoảng cách gần nhất và quãng giá chạy sau đó. Chỉ là nhãn — vùng vẫn tính là không chạm và không cộng gì vào R.',
+        'MFE (giá chạy xa nhất) hiển thị riêng: quãng giá xa nhất theo hướng của vùng tính từ mép vùng, từ lúc chạm tới khi bị huỷ hoặc đóng nến ngày, đo từ mép vùng thận trọng. Số này cho thấy nhận định chuẩn tới đâu, không bao giờ cộng vào R. MFE ghi bằng giá (USD) và pip (1 pip = 0,1 USD); số của tháng là trung bình theo USD trên mọi vùng được chạm. MFE còn được quy ra R chuẩn (1R = 10 giá), đơn vị cố định để so sánh, không phải R của lệnh.',
+        'Phản ứng sát vùng (thêm ngày 14/11/2026): vùng bị trượt ≤ 2 $ trong khung của plan được gắn nhãn kèm khoảng cách gần nhất và quãng giá chạy sau đó. Chỉ là nhãn, vùng vẫn tính là không chạm và không cộng gì vào R.',
         'Luật v4, 14/11/2026 (chấm và tổng kết theo từng phiên, không chuyển lệnh). Mọi plan trước đó được chấm lại một lần theo luật này.'],
-      sg_h1: 'NEXUS CORE Signals', sg_lede: 'Tín hiệu vào lệnh cụ thể dựa trên plan ngày — chỉ dành cho thành viên. Plan ngày vẫn miễn phí cho mọi người.', sg_soon: 'Chỉ cho thành viên · sắp mở', sg_what: 'Thành viên nhận được',
-      sg_b: ['Báo ngay khi giá vào vùng plan và tín hiệu xác nhận — điểm vào, dừng lỗ và mục tiêu.', 'Mỗi tín hiệu gắn với plan đang hiệu lực, luôn biết vì sao có lệnh.', 'Thông báo ưu tiên trong app và nhóm Telegram riêng.', 'Mọi tín hiệu được ghi lại và chấm, thắng hay thua.'],
+      sg_h1: 'NEXUS CORE Signals', sg_lede: 'Tín hiệu vào lệnh cụ thể dựa trên plan ngày, chỉ dành cho thành viên. Plan ngày vẫn miễn phí cho mọi người.', sg_soon: 'Chỉ cho thành viên, sắp mở', sg_what: 'Thành viên nhận được',
+      sg_b: ['Báo ngay khi giá vào vùng plan và tín hiệu xác nhận, điểm vào, dừng lỗ và mục tiêu.', 'Mỗi tín hiệu gắn với plan đang hiệu lực, luôn biết vì sao có lệnh.', 'Thông báo ưu tiên trong app và nhóm Telegram riêng.', 'Mọi tín hiệu được ghi lại và chấm, thắng hay thua.'],
       sg_wl_title: 'Đăng ký chờ gói Signals', sg_wl_sub: 'Biết đầu tiên khi Signals mở, kèm giá ưu đãi cho thành viên sớm. Không spam.', sg_free: 'Chỉ cần plan miễn phí?', sg_free_link: 'Xem plan vàng hôm nay →',
       sg_note: 'Tín hiệu chỉ là ý tưởng giao dịch để tham khảo, không phải lời khuyên cá nhân. Có thể chưa mở ở một số quốc gia.',
       risk_title: 'Cảnh báo rủi ro',
       disclaimer: 'Nội dung chỉ để tham khảo, không phải lời khuyên đầu tư hay lời mời giao dịch. Sản phẩm có đòn bẩy như vàng CFD có rủi ro mất tiền nhanh. Kết quả quá khứ không đảm bảo tương lai. Chỉ giao dịch bằng số tiền bạn chấp nhận mất.'
     },
     'zh-hant': {
-      pp_best: '最大順向波動（MFE）', pp_best_note: '區域被觸及後，價格朝該區域方向走得最遠的距離，計至失效或每日收盤——反映判讀品質，並非交易結果，也不計入 R。', tr_best: '平均 MFE', kp_real: '實際結果', tr_winrate: '勝率', tr_netpips: '淨點數', tr_signals: '交易', tr_entry: '進場', tr_sl: '停損', tr_max: '最大走勢', tr_detail: '詳情', tr_notrade: '未進場的計畫', tr_perf: '績效', gold_usd: '黃金 / 美元', rv_h: '查看前後對照', rv_go: '查看本計畫完整結果', rv_alt: '前後對照：計畫發布時的圖表與至時段結束的實際 15 分鐘 K 線', rv_cap: '上方：發布時的 H1 圖表。下方：同為 H1，顯示至時段結束的實際 K 線——箭頭標示計畫繪製時間。', kp_plans: '份計畫', kp_zones: '個區域被觸及', kp_real_note: '虧損日也計入。', kp_move: '價格走了多遠', kp_avg: '每個區域平均', kp_max: '最大', kp_avg_usd: '美元平均', kp_move_note: '自觸及區域起至最遠價格。並非交易獲利。', z_near_short: '差一點觸及區域', std_r: '標準（1R = 10 美元）', z_near: '逼近區域後反轉', near_det: '最接近時距區域 {gap} $（{at}），其後朝區域方向走了 {move} $', near_note: '逼近區域後反轉：價格在距區域 2 $ 以內反轉、未觸及區域。僅為透明揭露——不算觸及、不計入達標率，也永不計入 R。', tr_near: '逼近區域後反轉',
-      chart_hint: '點擊圖表可全螢幕檢視', lb_hint: '點擊任意處關閉 · 雙指可放大',
+      pp_best: '最大順向波動（MFE）', pp_best_note: '區域被觸及後，價格朝該區域方向走得最遠的距離，計至失效或每日收盤，反映判讀品質，並非交易結果，也不計入 R。', tr_best: '平均 MFE', kp_real: '實際結果', tr_winrate: '勝率', tr_netpips: '淨點數', tr_signals: '交易', tr_entry: '進場', tr_sl: '停損', tr_max: '最大走勢', tr_detail: '詳情', tr_notrade: '未進場的計畫', tr_perf: '績效', gold_usd: '黃金 / 美元', rv_h: '查看前後對照', rv_go: '查看本計畫完整結果', rv_alt: '前後對照：計畫發布時的圖表與至時段結束的實際 15 分鐘 K 線', rv_cap: '上方：發布時的 H1 圖表。下方：同為 H1，顯示至時段結束的實際 K 線，箭頭標示計畫繪製時間。', kp_plans: '份計畫', kp_zones: '個區域被觸及', kp_real_note: '虧損日也計入。', kp_move: '價格走了多遠', kp_avg: '每個區域平均', kp_max: '最大', kp_avg_usd: '美元平均', kp_move_note: '自觸及區域起至最遠價格。並非交易獲利。', z_near_short: '差一點觸及區域', std_r: '標準（1R = 10 美元）', z_near: '逼近區域後反轉', near_det: '最接近時距區域 {gap} $（{at}），其後朝區域方向走了 {move} $', near_note: '逼近區域後反轉：價格在距區域 2 $ 以內反轉、未觸及區域。僅為透明揭露，不算觸及、不計入達標率，也永不計入 R。', tr_near: '逼近區域後反轉',
+      chart_hint: '點擊圖表可全螢幕檢視', lb_hint: '點擊任意處關閉，雙指可放大',
       tab_learn: '學習', ln_eyebrow: '黃金交易問答', ln_short: '簡短回答', ln_example: '最新 NEXUS CORE 計畫的即時範例', ln_faq: '快速問答', ln_related: '相關問題', ln_updated: '更新於', see_plan: '查看完整計畫 →', see_track: '查看成績紀錄 →',
-      ln_index_h1: '學會解讀黃金市場', ln_index_lede: '用白話回答黃金交易者最常問的問題——每一題都對應一份真實、已公開評分的 NEXUS CORE 計畫。', ln_all: '全部問題', ln_sessions_note: '計畫發布時間：亞洲盤 08:00 · 倫敦盤前 14:45 · 紐約盤前 20:30（台北／香港時間）。',
-      mv_eyebrow: '黃金為何波動', mv_h1: '黃金為何波動', mv_change: '當日漲跌', mv_oc: '開盤 → 收盤', mv_hl: '最高 / 最低', mv_big: '單小時最大波動', mv_reasons: '波動原因', mv_sources: '資料來源', mv_method: '數據來自 XAUUSD 15 分鐘 K 線（OANDA）。交易日 = 紐約時間 17:00 至隔日 17:00。原因僅取自已公布的新聞與數據；找不到明確原因時會如實說明。', mv_plans: '當日計畫', mv_recent: '黃金為何波動——近期',
+      ln_index_h1: '學會解讀黃金市場', ln_index_lede: '用白話回答黃金交易者最常問的問題，每一題都對應一份真實、已公開評分的 NEXUS CORE 計畫。', ln_all: '全部問題', ln_sessions_note: '計畫發布時間：亞洲盤 08:00，倫敦盤前 14:45，紐約盤前 20:30（台北／香港時間）。',
+      mv_eyebrow: '黃金為何波動', mv_h1: '黃金為何波動', mv_change: '當日漲跌', mv_oc: '開盤 → 收盤', mv_hl: '最高 / 最低', mv_big: '單小時最大波動', mv_reasons: '波動原因', mv_sources: '資料來源', mv_method: '數據來自 XAUUSD 15 分鐘 K 線（OANDA）。交易日 = 紐約時間 17:00 至隔日 17:00。原因僅取自已公布的新聞與數據；找不到明確原因時會如實說明。', mv_plans: '當日計畫', mv_recent: '黃金為何波動，近期',
       skip: '跳至內容', to_light: '切換為淺色主題', to_dark: '切換為深色主題', tab_plan: '每日計畫', tab_signals: '訊號', tab_history: '成績紀錄',
-      lede: 'AI 輔助製作的黃金（XAUUSD）交易計畫：關鍵區域、情境推演，以及判斷觀點失效的價位——於亞洲、倫敦、紐約盤前更新。',
+      lede: 'AI 輔助製作的黃金（XAUUSD）交易計畫：關鍵區域、情境推演，以及判斷觀點失效的價位，於亞洲、倫敦、紐約盤前更新。',
       bias: '方向', levels: '關鍵價位', scenarios: '情境', zones: '圖表上的區域', news: '經濟日曆',
       main_zone: '主要區域', watch: '觀察價位', invalid: '觀點失效條件', range: '預期區間', target: '目標',
       plan_of: '黃金計畫', ed: { '0700': '亞洲盤計畫', '1345': '倫敦盤前更新', '1930': '紐約盤前計畫' },
       ed_short: { '0700': '亞洲盤', '1345': '倫敦盤', '1930': '紐約盤' },
       updated: '更新於', next: '下次更新', main: '主要', alt: '備選', key: '主要區域',
       tz: '所有時間皆以您的當地時間顯示', your_time: '您的時間',
-      tg_title: '在 Telegram 接收每一份計畫', tg_sub: '免費頻道 · 無需註冊',
+      tg_title: '在 Telegram 接收每一份計畫', tg_sub: '免費頻道，無需註冊',
       SELL: '偏空', BUY: '偏多', TWO_WAY: '雙向', STAND_ASIDE: '觀望', lean: '傾向',
       live: 'LIVE', stale: '最新計畫', err: '資料載入失敗，請重新整理頁面。',
-      cta_title: '在倫敦開盤前收到下一份計畫', cta_sub: '每份計畫發布時立即免費通知——亞洲、倫敦、紐約盤。五秒完成設定。', cta_push: '在此裝置接收通知',
+      cta_title: '在倫敦開盤前收到下一份計畫', cta_sub: '每份計畫發布時立即免費通知，亞洲、倫敦、紐約盤。五秒完成設定。', cta_push: '在此裝置接收通知',
       nt_title: '新計畫通知', nt_sub: '新計畫發布時，立即在此裝置收到通知。', nt_on_btn: '開啟通知', nt_off_btn: '關閉通知', nt_on: '此裝置已開啟通知。', nt_denied: '瀏覽器已封鎖本站通知，請在瀏覽器設定中允許後再開啟。', nt_ios: 'iPhone：點擊「分享」，選擇「加入主畫面」，再從主畫面開啟 NEXUS CORE 並開啟通知。', nt_err: '無法變更通知設定，請再試一次。',
       wl_title: '或以電子郵件接收', wl_sub: '每份新計畫寄到您的信箱，並優先取得 NEXUS CORE App。不寄垃圾郵件，可隨時取消。', wl_label: '電子郵件', wl_btn: '加入名單', wl_ok: '您已加入名單。', wl_bad: '請輸入有效的電子郵件地址。', wl_err: '登記失敗，請再試一次。', wl_privacy: '您的電子郵件僅用於 NEXUS CORE 通知，絕不分享給他人，可隨時要求刪除。',
       nt_old_ios: '通知功能需要 iOS 16.4 以上。請至「設定 → 一般 → 軟體更新」更新後再開啟。', nt_unsup: '此瀏覽器不支援通知。請使用 Chrome、Edge、Firefox 或 Safari 開啟本站，或追蹤 Telegram 頻道。',
       nt_retry: '連線中……請再點一次按鈕。',
       nt_alt: '所有手機皆可使用，包括舊款 iPhone：', nt_tg: '透過 Telegram 接收', nt_mail: '透過電子郵件接收',
       permalink: '此計畫的永久連結',
-      res_mixed: '有盈有虧', pp_zones: '評分區域', z_earlier: '已於先前更新計入', pp_follow: '追蹤至', z_main: '主要區域', res_hit: '達到目標 1', res_void: '觀點失效', res_no_touch: '價格未觸及區域', res_expired: '時段結束結算', res_carried: '由下一份更新接續追蹤', z_carried_to: '時段結束時仍未結束——由下一份更新接續追蹤並於該份評分。', tr_r_closed: 'R · 達標或失效', tr_r_session: 'R · 時段結束結算', z_carried_from: '自上一份更新接續的未結束交易', z_see_next: '查看下一份更新 →', res_aside: '觀望', pending: '待評分',
+      res_mixed: '有盈有虧', pp_zones: '評分區域', z_earlier: '已於先前更新計入', pp_follow: '追蹤至', z_main: '主要區域', res_hit: '達到目標 1', res_void: '觀點失效', res_no_touch: '價格未觸及區域', res_expired: '時段結束結算', res_carried: '由下一份更新接續追蹤', z_carried_to: '時段結束時仍未結束，由下一份更新接續追蹤並於該份評分。', tr_r_closed: 'R，達標或失效', tr_r_session: 'R，時段結束結算', z_carried_from: '自上一份更新接續的未結束交易', z_see_next: '查看下一份更新 →', res_aside: '觀望', pending: '待評分',
       res_pending_note: '於每日收盤（紐約時間 17:00）後評分。',
       pp_result: '本計畫的結果', pp_touched: '觸及區域', pp_event: '結果判定時間', pp_window: '評分時段', pp_hl: '時段內最高 / 最低', pp_last: '時段結束價', pp_t1: '目標 1', pp_void: '失效價位',
       prev_plan: '← 上一份計畫', next_plan: '下一份計畫 →', today_plan: '今日計畫', all_month: '本月所有計畫',
-      tr_h1: '黃金計畫成績紀錄', tr_lede: '本月每一份 NEXUS CORE 黃金計畫及其結果。對、錯、未觸發都保留在紀錄上——不刪除任何一筆。',
+      tr_h1: '黃金計畫成績紀錄', tr_lede: '本月每一份 NEXUS CORE 黃金計畫及其結果。對、錯、未觸發都保留在紀錄上，不刪除任何一筆。',
       tr_plans: '已發布計畫', tr_graded: '已評分', tr_reached: '被觸及的區域', tr_hit: '達到目標 1', tr_void: '觀點失效', tr_r: '累計 R',
       tr_list: '每一份計畫', tr_none: '本月尚無計畫。', tr_method: '評分方式', tr_prev_m: '← 上個月', tr_next_m: '下個月 →', view: '查看計畫',
       tr_m: ['計畫中每個可交易區域都以 XAUUSD 15 分鐘 K 線（OANDA）個別評分：主要區域，以及其他公布失效價位的區域。僅供觀察的區域與須突破後才生效的區域不計分。',
@@ -189,10 +189,10 @@
         '價格觸及的每個區域 = 一筆交易：進場 = 先觸及的區域邊緣；點數 = R 結果 × 至失效價位的距離（1 pip = 0.10 美元）。勝率 = 以正點數結束的交易；淨點數 = 加總，含虧損。「最大走勢」為 MFE，不計入點數。',
         '「觀望」計畫不計分。',
         'MFE（最大順向波動）另行顯示：自觸及起至失效或每日收盤（自區域保守邊緣起算），價格自區域邊緣朝該區域方向走得最遠的距離。它反映判讀品質，永不計入 R。MFE 以美元及 pip 表示（1 pip = 0.10 美元）；月度數字為所有被觸及區域的美元平均值。MFE 亦以標準 R（1R = 10 美元）表示，此為固定比較單位，並非該筆交易的 R。',
-        '逼近區域後反轉（2026 年 11 月 14 日新增）：於計畫時段內與區域相差 2 $ 以內而未觸及者，標示最接近距離與其後走勢。僅為標示——該區域仍視為未觸及，亦不計入 R。',
+        '逼近區域後反轉（2026 年 11 月 14 日新增）：於計畫時段內與區域相差 2 $ 以內而未觸及者，標示最接近距離與其後走勢。僅為標示，該區域仍視為未觸及，亦不計入 R。',
         '評分規則 v4，2026 年 11 月 14 日（按時段評分與結算，不跨時段接續）。先前所有計畫均依此規則重新評分一次。'],
-      sg_h1: 'NEXUS CORE 訊號', sg_lede: '以每日計畫為基礎的精確交易訊號——僅限會員。每日計畫永久免費。', sg_soon: '僅限會員 · 即將推出', sg_what: '會員可獲得',
-      sg_b: ['價格進入計畫區域且型態確認時即時通知——進場、停損與目標。', '每個訊號都對應當時有效的計畫，清楚知道訊號的依據。', 'App 內優先通知與專屬 Telegram 群組。', '每個訊號都會記錄並評分，無論盈虧。'],
+      sg_h1: 'NEXUS CORE 訊號', sg_lede: '以每日計畫為基礎的精確交易訊號，僅限會員。每日計畫永久免費。', sg_soon: '僅限會員，即將推出', sg_what: '會員可獲得',
+      sg_b: ['價格進入計畫區域且型態確認時即時通知，進場、停損與目標。', '每個訊號都對應當時有效的計畫，清楚知道訊號的依據。', 'App 內優先通知與專屬 Telegram 群組。', '每個訊號都會記錄並評分，無論盈虧。'],
       sg_wl_title: '加入訊號等候名單', sg_wl_sub: '訊號開放時第一時間通知您，並享早鳥價格。不寄垃圾郵件。', sg_free: '只需要免費計畫？', sg_free_link: '查看今日黃金計畫 →',
       sg_note: '訊號僅為交易想法，供參考之用，並非個人化建議。部分國家或地區可能無法提供。',
       risk_title: '風險警示',
@@ -246,15 +246,43 @@
 
   var themeBtn;
   function t(k) { return T[lang][k] != null ? T[lang][k] : k; }
+  // Plain, human punctuation for text written by the plan schedules (same rules as tidy() in tools/build.py):
+  // no spaced dashes or middle dots between clauses, ranges as 3880–3887, "~15" as "about 15".
+  var ABOUT = { en: 'about ', vi: 'khoảng ', ar: 'نحو ', 'zh-hant': '約' };
+  function tidy(s) {
+    if (!s) return '';
+    var zh = lang === 'zh-hant', ar = lang === 'ar';
+    var comma = zh ? '，' : ar ? '، ' : ', ', colon = zh ? '：' : ': ';
+    s = s.split('——').join(zh ? '，' : ' – ');
+    s = s.replace(/(\d)\s+[–—]\s+(\d)/g, '$1–$2').replace(/\s*·\s*/g, comma);
+    var out = '', pos = 0, re = /\s+[–—-]\s+/g, m;
+    while ((m = re.exec(s))) {
+      out += s.slice(pos, m.index);
+      var cut = -1, cs = '.;:!?\n。；：؛,，،(（';
+      for (var k = 0; k < cs.length; k++) cut = Math.max(cut, out.lastIndexOf(cs[k]));
+      var cl = out.slice(cut + 1).trim();
+      var short = zh ? cl.length <= 6 : cl.split(/\s+/).length <= (lang === 'vi' ? 3 : 2);
+      out += cl && short && !/[:：]/.test(cl) ? colon : comma;
+      pos = m.index + m[0].length;
+    }
+    s = out + s.slice(pos);
+    s = s.replace(/~\s*(?=[\d$+−-])/g, ABOUT[lang] || 'about ').replace(/([,，،:：])\s*([,，،])/g, '$1');
+    s = s.replace(/  +/g, ' ').trim();
+    if (!ar) s = s.replace(/(\d)–(\d)/g, '$1\u2060–\u2060$2');   // never break a price range across lines
+    return s;
+  }
   function L(o) {
     if (o == null) return '';
-    var s = typeof o === 'string' ? o : (o[lang === 'zh-hant' ? 'zh' : lang] || o.en || o.vi || '');
+    var s = tidy(typeof o === 'string' ? o : (o[lang === 'zh-hant' ? 'zh' : lang] || o.en || o.vi || ''));
     // keep price ranges left-to-right inside Arabic sentences (4058–4068, not 4068–4058)
     if (lang === 'ar') s = s.replace(/(\d[\d.,:]*)\s*[–-]\s*(\d[\d.,:]*)/g, '⁦$1–$2⁩');
     return s;
   }
   function locale() { return lang === 'vi' ? 'vi-VN' : lang === 'ar' ? 'ar-u-nu-latn' : lang === 'zh-hant' ? 'zh-Hant' : (nav.indexOf('en') === 0 ? navigator.language : 'en-GB'); }
-  function fmt(n) { if (n == null || n === '') return ''; var s = String(n); return lang === 'vi' ? s.replace('.', ',') : s; }
+  function fmt(n) { if (n == null || n === '') return ''; return typeof n === 'number' ? String(Math.round(n * 10) / 10) : String(n); }
+  // the card already says Main / Alternate: drop the same word at the start of the scenario text
+  function scenText(s) { s = s.replace(/^(Chính|Phụ|Main|Alt(ernate)?|Primary|Secondary|主要|次要|الرئيسي|البديل)[^:：]{0,14}[:：]\s*/i, ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function par(x) { return lang === 'zh-hant' ? '（' + x + '）' : ' (' + x + ')'; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function add(p) { for (var i = 1; i < arguments.length; i++) if (arguments[i]) p.appendChild(arguments[i]); return p; }
@@ -315,8 +343,8 @@
     var same = document.body.getAttribute('data-plan') === p.date + '-' + p.edition;
     if (!same) { ['result', 'plan-link'].forEach(function (id) { var n = document.getElementById(id); if (n) n.hidden = true; }); }
     var upd = vn(p.updated_vn.slice(0, 10), p.updated_vn.slice(11));
-    document.getElementById('plan-title').textContent = t('plan_of') + ' · ' + dayOnly(vn(p.date, '12:00'));
-    document.getElementById('plan-meta').textContent = p.symbol + ' · ' + (t('ed')[p.edition] || p.edition) + ' · ' + t('updated') + ' ' + hmz(upd);
+    add(clear('plan-title'), document.createTextNode(t('plan_of') + ' '), el('span', 'd', dayOnly(vn(p.date, '12:00'))));
+    add(clear('plan-meta'), el('span', null, p.symbol), el('span', null, t('ed')[p.edition] || p.edition), el('span', null, hmz(upd)));
 
     var eds = clear('editions');
     ED_ORDER.forEach(function (e) {
@@ -346,19 +374,19 @@
     var side = p.bias === 'TWO_WAY' || p.bias === 'STAND_ASIDE' ? (p.lean || '') : p.bias;
     bc.className = 'hero card ' + sideCls(side);
     var bv = t(p.bias);
-    if (p.bias === 'TWO_WAY' && p.lean) bv += ' · ' + t('lean') + ' ' + t(p.lean);
+    if (p.bias === 'TWO_WAY' && p.lean) bv += ', ' + t('lean') + ' ' + t(p.lean);
     document.getElementById('bias-val').textContent = bv;
     document.getElementById('day-type').textContent = L(p.day_type);
     document.getElementById('headline').textContent = L(p.headline);
 
     var hk = clear('hero-keys');
     function key(k, v) { add(hk, add(el('div', 'key'), el('span', 'k', k), el('span', 'v num', v))); }
-    if (p.main_zone) key(t('main_zone') + ' · ' + t(p.main_zone.side), rng(p.main_zone.lo, p.main_zone.hi));
+    if (p.main_zone) key(t('main_zone') + par(t(p.main_zone.side)), rng(p.main_zone.lo, p.main_zone.hi));
     if (p.targets && p.targets[0]) key(t('target') + ' ' + p.targets[0].label, rng(p.targets[0].lo, p.targets[0].hi));
     if (p.range) key(t('range'), rng(p.range.lo, p.range.hi));
 
     var lv = clear('levels');
-    if (p.main_zone) add(lv, row(t('main_zone') + ' (' + t(p.main_zone.side) + ')', rng(p.main_zone.lo, p.main_zone.hi), 'main'));
+    if (p.main_zone) add(lv, row(t('main_zone') + par(t(p.main_zone.side)), rng(p.main_zone.lo, p.main_zone.hi), 'main'));
     (p.targets || []).forEach(function (x) { add(lv, row(t('target') + ' ' + x.label, rng(x.lo, x.hi))); });
     if (p.range) add(lv, row(t('range'), rng(p.range.lo, p.range.hi)));
     (p.watch || []).forEach(function (w) { add(lv, row(t('watch') + ' ' + rng(w.lo, w.hi), L(w.text), '', true)); });
@@ -370,9 +398,9 @@
     var sc = clear('scenarios');
     (p.scenarios || []).forEach(function (s, i) {
       var c = el('div', 'card scen ' + sideCls(s.side));
-      var head = add(el('div', 't'), el('span', null, (i === 0 ? t('main') : t('alt')) + ' · ' + t(s.side)), el('span', 'num muted', '~' + s.prob + '%'));
+      var head = add(el('div', 't'), el('span', null, (i === 0 ? t('main') : t('alt')) + par(t(s.side))), el('span', 'num muted', s.prob + '%'));
       var bar = el('div', 'bar'); var bi = el('i', 'w' + Math.round(Math.max(0, Math.min(100, s.prob)) / 5) * 5); bar.appendChild(bi);
-      add(sc, add(c, head, el('p', null, L(s.text)), bar));
+      add(sc, add(c, head, el('p', null, scenText(L(s.text))), bar));
     });
 
     var zn = clear('zones');
@@ -395,7 +423,7 @@
     document.getElementById('tznote').textContent = t('tz') + (tzn ? ' (' + tzn + ')' : '') + '.';
 
     var nx = clear('next'), ne = nextEdition(p);
-    if (ne) add(nx, el('strong', null, t('next') + ' · ' + t('ed')[ne.ed]), el('span', 'num', dayHm(ne.at)));
+    if (ne) add(nx, el('strong', null, t('next') + ': ' + t('ed')[ne.ed]), el('span', 'num', dayHm(ne.at)));
     else add(nx, el('strong', null, t('next')), el('span', null, L(p.next_update)));
 
     // LIVE badge goes grey when the plan is more than 30 hours old
