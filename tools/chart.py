@@ -22,12 +22,12 @@ L = lambda o: (o or {}).get(lang) or (o or {}).get('en') or ''
 num = lambda v: (f'{v:,.1f}' if round(v % 1, 2) else f'{v:,.0f}').replace(',', '')
 fmt = (lambda v: num(v).replace('.', ',')) if lang == 'vi' else num
 W = {
-    'vi': dict(sell='Bán', buy='Mua', main='KỊCH BẢN CHÍNH', alt='Kịch bản phụ', key='VÙNG CHÍNH', zone='Vùng', tgt='Mục tiêu',
+    'vi': dict(sell='Bán', buy='Mua', main='KỊCH BẢN CHÍNH', alt='Kịch bản phụ', key='VÙNG CHÍNH', zone='Vùng', tgt='Mục tiêu', watch='Mức theo dõi',
                ed={'0700': 'Plan sáng', '1345': 'Cập nhật 13:45', '1930': 'Plan tối'}, bias={'SELL': 'BÁN', 'BUY': 'MUA', 'TWO_WAY': '2 CHIỀU', 'STAND_ASIDE': 'ĐỨNG NGOÀI'},
                lean='nghiêng', disc='Chỉ là phân tích, không phải lời khuyên đầu tư', tz='giờ VN',
                lg_main='Kịch bản chính', lg_alt='Kịch bản phụ', lg_up='thành chính khi giá phá lên trên', lg_dn='thành chính khi giá phá xuống dưới',
                lg_now='giá đã phá {v}', lg_was='kịch bản chính cũ'),
-    'en': dict(sell='Sell', buy='Buy', main='MAIN SCENARIO', alt='Alternate', key='KEY ZONE', zone='Zone', tgt='Target',
+    'en': dict(sell='Sell', buy='Buy', main='MAIN SCENARIO', alt='Alternate', key='KEY ZONE', zone='Zone', tgt='Target', watch='Watch level',
                ed={'0700': 'Morning plan', '1345': '13:45 update', '1930': 'Evening plan'}, bias={'SELL': 'SELL', 'BUY': 'BUY', 'TWO_WAY': 'TWO-WAY', 'STAND_ASIDE': 'STAND ASIDE'},
                lean='leaning', disc='Analysis only, not financial advice', tz='GMT+7',
                lg_main='Main scenario', lg_alt='Alternate', lg_up='becomes main if price breaks above', lg_dn='becomes main if price breaks below',
@@ -79,6 +79,13 @@ def render(outf, mob):
         ZL.append(ax.text(X0 + 1, y, f"{W['tgt']} {tg['label']} {fmt(tg['lo']) if tg['lo'] == tg['hi'] else fmt(tg['lo']) + '–' + fmt(tg['hi'])}",
                 color=GRAY, fontsize=8.5 * K, ha='left', va='bottom', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4)))
         shown.append(y)
+    for w in P.get('watch') or []:   # plan's watch levels: not a trade zone, never graded
+        a, b = sorted([w['lo'], w['hi']])
+        if not (vis(a) or vis(b)): continue
+        ax.add_patch(Rectangle((X0, a), X1 - X0, max(b - a, 0.8), facecolor='#B2B5BE', alpha=0.16, edgecolor=GRAY, lw=0.8, ls=(0, (3, 3)), zorder=0))
+        ZL.append(ax.text(X1 - 1, (a + b) / 2, f"{W['watch']} {fmt(a)}–{fmt(b)}", ha='right', va='center', fontsize=8.5 * K, color=GRAY,
+                          zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6)))
+        shown += [a, b]
     ax.axhline(px, color=GRAY, lw=0.6, ls=(0, (2, 3)))
 
     # scenario arrows: main = solid, alternate = dashed
@@ -95,6 +102,14 @@ def render(outf, mob):
         col = (DN if sgn < 0 else UP) if main else ORG
         lab = f"{W['main'] if main else W['alt']} ~{s['prob']}%"
         pth = [float(v) for v in (s.get('path') or []) if isinstance(v, (int, float))]
+        # 0) scenario "route" (from 17/11): the plan's own price path, in the order the scenario text reads,
+        #    drawn from the CURRENT price; optional "branch" {"at": i, "to": [...]} forks off route[i] (dotted).
+        rte = [float(v) for v in (s.get('route') or []) if isinstance(v, (int, float))]
+        if rte:
+            br = s.get('branch') or {}
+            bto = [float(v) for v in (br.get('to') or []) if isinstance(v, (int, float))]
+            return dict(gia=rte, foot=px, col=col, dut=not main, nhan=lab,
+                        brk=pth[0] if pth else None, bat=br.get('at') if bto else None, bto=bto)
         if len(pth) >= 2:
             return dict(gia=pth[1:], foot=pth[0], col=col, dut=not main, nhan=lab)
         if mz and main and ((mz['side'] == 'SELL') == (sgn < 0)) and abs((mz['lo'] + mz['hi']) / 2 - px) > 3:
@@ -123,7 +138,7 @@ def render(outf, mob):
     for s_, mn, k in order:
         q = path_for(s_, mn); q['k'] = k; q['s'] = s_; paths.append(q)
 
-    ys = [px, lo_v, hi_v] + [g + (8 if g > px else -8) for q in paths for g in q['gia'] + [q['foot']]] + shown
+    ys = [px, lo_v, hi_v] + [g + (8 if g > px else -8) for q in paths for g in q['gia'] + [q['foot']] + (q.get('bto') or [])] + shown
     ax.set_xlim(0, n + fut); ax.set_ylim(min(ys) - 12, max(ys) + 12)
     fig.canvas.draw()
     def steep(x0, y0, prices, ang=16):
@@ -132,6 +147,9 @@ def render(outf, mob):
         pts, xx, yy = [(x0, y0)], x0, y0
         for p in prices:
             dx = max(abs(p - yy) * hpx * math.tan(math.radians(ang)) / wpx, 1.8 if mob else 2.6); xx, yy = xx + dx, p; pts.append((xx, yy))
+        room = (n + fut - 1.5) - x0
+        if xx - x0 > room > 0:   # long routes are squeezed horizontally so the whole path stays on the chart
+            k_ = room / (xx - x0); pts = [(x0 + (a - x0) * k_, b) for a, b in pts]
         return pts
     drawn = []
     for q in paths:
@@ -142,6 +160,13 @@ def render(outf, mob):
         (a1, b1), (a2, b2) = pts[-2], pts[-1]
         ax.annotate('', xy=(a2, b2), xytext=(a1 + (a2 - a1) * 0.6, b1 + (b2 - b1) * 0.6), zorder=6,
                     arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=q['col'], lw=lw, shrinkA=0, shrinkB=0))
+        if q.get('bat') is not None and 0 <= q['bat'] < len(q['gia']):   # fork (e.g. "H1 closes above 3936 → 3949–3970")
+            bx, by = pts[q['bat'] + 1]
+            bp = steep(bx, by, q['bto']); bxs, bys = zip(*bp)
+            ax.plot(bxs, bys, color=q['col'], lw=1.4, ls=(0, (1.2, 1.6)), zorder=5)
+            (a1, b1), (a2, b2) = bp[-2], bp[-1]
+            ax.annotate('', xy=(a2, b2), xytext=(a1 + (a2 - a1) * 0.6, b1 + (b2 - b1) * 0.6), zorder=6,
+                        arrowprops=dict(arrowstyle='->,head_length=0.7,head_width=0.35', color=q['col'], lw=1.4, shrinkA=0, shrinkB=0))
         drawn.append((q, pts))
     # scenario legend under the chart (no labels on the chart itself)
     LY = [0.052, 0.018] if mob else [0.04, 0.04]

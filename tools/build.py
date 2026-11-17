@@ -189,6 +189,7 @@ def plan_html(doc, p, lang):
     if mz: rows.append(row(t(lang, 'main_zone') + ' (' + t(lang, mz['side']) + ')', rng(mz['lo'], mz['hi'], lang), 'main'))
     for x in p.get('targets') or []: rows.append(row(t(lang, 'target') + ' ' + x['label'], rng(x['lo'], x['hi'], lang)))
     if p.get('range'): rows.append(row(t(lang, 'range'), rng(p['range']['lo'], p['range']['hi'], lang)))
+    for w in p.get('watch') or []: rows.append(row(t(lang, 'watch') + ' ' + rng(w['lo'], w['hi'], lang), L(w.get('text'), lang), '', True))
     if p.get('invalidation'): rows.append(row(t(lang, 'invalid'), L(p['invalidation'], lang), 'bad', True))
     doc = fill(doc, 'levels', ''.join(rows))
     doc = fill(doc, 'context', ''.join(f'<div class="stat"><span class="k">{esc(L(c["k"], lang))}</span><span class="v">{esc(L(c["v"], lang))}</span></div>' for c in p.get('context') or []))

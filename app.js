@@ -11,7 +11,7 @@
       skip: 'Skip to content', to_light: 'Switch to light theme', to_dark: 'Switch to dark theme', tab_plan: 'Daily plan', tab_signals: 'Signals', tab_history: 'Track record',
       lede: 'AI-built game plan for gold (XAUUSD): key zones, scenarios and the level that proves the view wrong — refreshed before Asia, London and New York.',
       bias: 'Bias', levels: 'Key levels', scenarios: 'Scenarios', zones: 'Zones on the chart', news: 'Economic calendar',
-      main_zone: 'Main zone', invalid: 'View is wrong if', range: 'Expected range', target: 'Target',
+      main_zone: 'Main zone', watch: 'Watch level', invalid: 'View is wrong if', range: 'Expected range', target: 'Target',
       plan_of: 'Gold plan', ed: { '0700': 'Asia plan', '1345': 'Pre-London update', '1930': 'Pre-New York plan' },
       ed_short: { '0700': 'Asia', '1345': 'London', '1930': 'New York' },
       updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', key: 'Key zone',
@@ -60,7 +60,7 @@
       skip: 'انتقل إلى المحتوى', to_light: 'التبديل إلى الوضع الفاتح', to_dark: 'التبديل إلى الوضع الداكن', tab_plan: 'الخطة اليومية', tab_signals: 'الإشارات', tab_history: 'سجل النتائج',
       lede: 'خطة للذهب (XAUUSD) مبنية بالذكاء الاصطناعي: مناطق رئيسية، سيناريوهات، والمستوى الذي يُلغي الفكرة — تُحدَّث قبل جلسات آسيا ولندن ونيويورك.',
       bias: 'الاتجاه', levels: 'المستويات الرئيسية', scenarios: 'السيناريوهات', zones: 'المناطق على الرسم', news: 'المفكرة الاقتصادية',
-      main_zone: 'المنطقة الرئيسية', invalid: 'تُلغى الفكرة إذا', range: 'النطاق المتوقع', target: 'الهدف',
+      main_zone: 'المنطقة الرئيسية', watch: 'مستوى للمراقبة', invalid: 'تُلغى الفكرة إذا', range: 'النطاق المتوقع', target: 'الهدف',
       plan_of: 'خطة الذهب', ed: { '0700': 'خطة آسيا', '1345': 'تحديث ما قبل لندن', '1930': 'خطة ما قبل نيويورك' },
       ed_short: { '0700': 'آسيا', '1345': 'لندن', '1930': 'نيويورك' },
       updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', key: 'منطقة رئيسية',
@@ -109,7 +109,7 @@
       skip: 'Tới nội dung', to_light: 'Chuyển sang giao diện sáng', to_dark: 'Chuyển sang giao diện tối', tab_plan: 'Plan ngày', tab_signals: 'Signal', tab_history: 'Kết quả',
       lede: 'Plan vàng (XAUUSD) do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai — cập nhật trước phiên Á, Âu và Mỹ.',
       bias: 'Xu hướng', levels: 'Mức giá chính', scenarios: 'Kịch bản', zones: 'Các vùng trên chart', news: 'Lịch tin',
-      main_zone: 'Vùng chính', invalid: 'Sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
+      main_zone: 'Vùng chính', watch: 'Mức theo dõi', invalid: 'Sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
       plan_of: 'Plan vàng', ed: { '0700': 'Plan phiên Á', '1345': 'Cập nhật trước phiên Âu', '1930': 'Plan trước phiên Mỹ' },
       ed_short: { '0700': 'Phiên Á', '1345': 'Phiên Âu', '1930': 'Phiên Mỹ' },
       updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', key: 'Vùng chính',
@@ -158,7 +158,7 @@
       skip: '跳至內容', to_light: '切換為淺色主題', to_dark: '切換為深色主題', tab_plan: '每日計畫', tab_signals: '訊號', tab_history: '成績紀錄',
       lede: 'AI 輔助製作的黃金（XAUUSD）交易計畫：關鍵區域、情境推演，以及判斷觀點失效的價位——於亞洲、倫敦、紐約盤前更新。',
       bias: '方向', levels: '關鍵價位', scenarios: '情境', zones: '圖表上的區域', news: '經濟日曆',
-      main_zone: '主要區域', invalid: '觀點失效條件', range: '預期區間', target: '目標',
+      main_zone: '主要區域', watch: '觀察價位', invalid: '觀點失效條件', range: '預期區間', target: '目標',
       plan_of: '黃金計畫', ed: { '0700': '亞洲盤計畫', '1345': '倫敦盤前更新', '1930': '紐約盤前計畫' },
       ed_short: { '0700': '亞洲盤', '1345': '倫敦盤', '1930': '紐約盤' },
       updated: '更新於', next: '下次更新', main: '主要', alt: '備選', key: '主要區域',
@@ -361,6 +361,7 @@
     if (p.main_zone) add(lv, row(t('main_zone') + ' (' + t(p.main_zone.side) + ')', rng(p.main_zone.lo, p.main_zone.hi), 'main'));
     (p.targets || []).forEach(function (x) { add(lv, row(t('target') + ' ' + x.label, rng(x.lo, x.hi))); });
     if (p.range) add(lv, row(t('range'), rng(p.range.lo, p.range.hi)));
+    (p.watch || []).forEach(function (w) { add(lv, row(t('watch') + ' ' + rng(w.lo, w.hi), L(w.text), '', true)); });
     if (p.invalidation) add(lv, row(t('invalid'), L(p.invalidation), 'bad', true));
 
     var cx = clear('context');

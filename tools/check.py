@@ -51,12 +51,21 @@ if p:
         num(z.get('lo'), f'zones[{i}].lo'); num(z.get('hi'), f'zones[{i}].hi'); bi(z.get('status'), f'zones[{i}].status')
     for i, t in enumerate(p.get('targets') or []):
         num(t.get('lo'), f'targets[{i}].lo'); num(t.get('hi'), f'targets[{i}].hi')
+    for i, w in enumerate(p.get('watch') or []):
+        num(w.get('lo'), f'watch[{i}].lo'); num(w.get('hi'), f'watch[{i}].hi'); bi(w.get('text'), f'watch[{i}].text')
     sc = p.get('scenarios') or []
     if not sc: errs.append('scenarios trống')
     for i, s in enumerate(sc):
         if s.get('side') not in SIDES: errs.append(f'scenarios[{i}].side sai')
         if not isinstance(s.get('prob'), (int, float)) or not 0 <= s['prob'] <= 100: errs.append(f'scenarios[{i}].prob 0–100')
         bi(s.get('text'), f'scenarios[{i}].text')
+        for fld in ('path', 'route'):
+            if s.get(fld) is not None and (not isinstance(s[fld], list) or not all(isinstance(v, (int, float)) for v in s[fld])):
+                errs.append(f'scenarios[{i}].{fld} phải là danh sách số')
+        br = s.get('branch')
+        if br is not None and (not isinstance(br, dict) or not isinstance(br.get('at'), int) or not isinstance(br.get('to'), list)
+                               or not all(isinstance(v, (int, float)) for v in br['to']) or not s.get('route') or not 0 <= br['at'] < len(s['route'])):
+            errs.append(f'scenarios[{i}].branch phải dạng {{"at": chỉ số trong route, "to": [giá…]}}')
     for i, c in enumerate(p.get('context') or []):
         bi(c.get('k'), f'context[{i}].k'); bi(c.get('v'), f'context[{i}].v')
     for i, n in enumerate(p.get('news') or []):
