@@ -109,7 +109,7 @@
       skip: 'Tới nội dung', to_light: 'Chuyển sang giao diện sáng', to_dark: 'Chuyển sang giao diện tối', tab_plan: 'Plan ngày', tab_signals: 'Signal', tab_history: 'Kết quả',
       lede: 'Plan vàng (XAUUSD) do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai, cập nhật trước phiên Á, Âu và Mỹ.',
       bias: 'Xu hướng', levels: 'Mức giá chính', scenarios: 'Kịch bản', zones: 'Các vùng trên chart', news: 'Lịch tin',
-      main_zone: 'Vùng chính', watch: 'Mức theo dõi', invalid: 'Sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
+      main_zone: 'Vùng chính', watch: 'Mức theo dõi', invalid: 'Nhận định sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
       plan_of: 'Plan vàng', ed: { '0700': 'Plan phiên Á', '1345': 'Cập nhật trước phiên Âu', '1930': 'Plan trước phiên Mỹ' },
       ed_short: { '0700': 'Phiên Á', '1345': 'Phiên Âu', '1930': 'Phiên Mỹ' },
       updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', key: 'Vùng chính',
@@ -299,6 +299,36 @@
     });
     return ol;
   }
+  // Headline wording a reader understands (same rules as _HL_FIX / headline_html in tools/build.py).
+  var HL_FIX = {
+    vi: [[/[,;]?\s*\bsai trên\s+/g, '; Nhận định sai nếu giá vượt lên trên '], [/[,;]?\s*\bsai dưới\s+/g, '; Nhận định sai nếu giá xuống dưới '],
+         [/[,;]?\s*(?<!định )\bsai nếu\s+/g, '; Nhận định sai nếu ']],
+    en: [[/[,;]?\s*\bvoid above\s+/g, '; The view is wrong if price goes above '], [/[,;]?\s*\bvoid below\s+/g, '; The view is wrong if price goes below '],
+         [/[,;]?\s*\bvoid on\s+/g, '; The view is wrong on '], [/^SELL rallies into\b/, 'Sell the rally into'], [/^BUY dips into\b/, 'Buy the dip into']],
+    ar: [[/[،,؛]?\s*و?تُلغى فوق\s+/g, '؛ تُلغى الفكرة إذا صعد السعر فوق '], [/[،,؛]?\s*و?تُلغى (?:تحت|دون|أسفل)\s+/g, '؛ تُلغى الفكرة إذا هبط السعر دون ']],
+    'zh-hant': [[/[，,]\s*(?=[\d\u2060]+(?:\.\d+)?\s*之[上下]觀點失效)/g, '；'], [/(\d+(?:\.\d+)?)\s*之上觀點失效/g, '價格站上 $1 則觀點失效'],
+                [/(\d+(?:\.\d+)?)\s*之下觀點失效/g, '價格跌破 $1 則觀點失效']]
+  };
+  function clearHeadline(p) {
+    var s = L(p.headline);
+    (HL_FIX[lang] || []).forEach(function (r) { s = s.replace(r[0], r[1]); });
+    return s.replace(/^[;؛；\s]+/, '');
+  }
+  function headlineInto(node, s) {
+    node.textContent = '';
+    var parts = s.split(/\s*[;；؛]\s*/).map(function (x) { return x.replace(/^[\s,，،]+|[\s,，،]+$/g, ''); }).filter(Boolean)
+      .map(function (x) { return x.charAt(0).toUpperCase() + x.slice(1); });
+    if (!parts.length) return;
+    node.appendChild(el('span', 'hl1', parts[0]));
+    if (parts.length < 2) return;
+    var ul = el('ul', 'hl');
+    parts.slice(1).forEach(function (x) {
+      var li = el('li', /Nhận định sai|view is wrong|تُلغى|失效/.test(x) ? 'inv' : null);
+      x.split(PRICE).forEach(function (bit, k) { if (bit) li.appendChild(k % 2 ? el('b', 'px', bit) : document.createTextNode(bit)); });
+      ul.appendChild(li);
+    });
+    node.appendChild(ul);
+  }
   function par(x) { return lang === 'zh-hant' ? '（' + x + '）' : ' (' + x + ')'; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -405,7 +435,7 @@
     if (p.bias === 'TWO_WAY' && p.lean) bv += ', ' + t('lean') + ' ' + t(p.lean);
     document.getElementById('bias-val').textContent = bv;
     document.getElementById('day-type').textContent = L(p.day_type);
-    document.getElementById('headline').textContent = L(p.headline);
+    headlineInto(document.getElementById('headline'), clearHeadline(p));
 
     var hk = clear('hero-keys');
     function key(k, v) { add(hk, add(el('div', 'key'), el('span', 'k', k), el('span', 'v num', v))); }
@@ -476,7 +506,7 @@
     var side = p.bias === 'TWO_WAY' || p.bias === 'STAND_ASIDE' ? (p.lean || '') : p.bias;
     var card = document.getElementById('hp-card'); if (card) card.className = 'hero card ' + sideCls(side);
     var bv = t(p.bias); if (p.bias === 'TWO_WAY' && p.lean) bv += ', ' + t('lean') + ' ' + t(p.lean);
-    set('hp-bias', bv); set('hp-headline', L(p.headline)); set('hp-type', L(p.day_type));
+    set('hp-bias', bv); var hh = document.getElementById('hp-headline'); if (hh) headlineInto(hh, clearHeadline(p)); set('hp-type', L(p.day_type));
     var hk = document.getElementById('hp-keys'); if (hk) hk.hidden = true;   // built for the older plan
     var ci = document.querySelector('.chart-card img'), ch = p.chart || {}, src = ch[lang] || ch.en || ch.vi || '';
     if (ci && /^data\/charts\/[0-9]{4}-[0-9]{2}-[0-9]{2}-(0700|1345|1930)-(vi|en)\.png$/.test(src)) {

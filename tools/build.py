@@ -249,6 +249,35 @@ def scen_steps(text, lang):
     return '<ol class="steps">' + ''.join(out) + '</ol>'
 
 
+# Headline wording a reader understands (user, 17/11/2026: "sai trên nghĩa là gì"): the short "void above X" /
+# "sai trên X" becomes a full phrase and its own idea. Same rules as clearHeadline() in app.js.
+_HL_FIX = {
+    'vi': [(r'[,;]?\s*\bsai trên\s+', '; Nhận định sai nếu giá vượt lên trên '), (r'[,;]?\s*\bsai dưới\s+', '; Nhận định sai nếu giá xuống dưới '),
+           (r'[,;]?\s*(?<!định )\bsai nếu\s+', '; Nhận định sai nếu ')],
+    'en': [(r'[,;]?\s*\bvoid above\s+', '; The view is wrong if price goes above '), (r'[,;]?\s*\bvoid below\s+', '; The view is wrong if price goes below '),
+           (r'[,;]?\s*\bvoid on\s+', '; The view is wrong on '), (r'^SELL rallies into\b', 'Sell the rally into'), (r'^BUY dips into\b', 'Buy the dip into')],
+    'ar': [(r'[،,؛]?\s*و?تُلغى فوق\s+', '؛ تُلغى الفكرة إذا صعد السعر فوق '), (r'[،,؛]?\s*و?تُلغى (?:تحت|دون|أسفل)\s+', '؛ تُلغى الفكرة إذا هبط السعر دون ')],
+    'zh-hant': [(r'[，,]\s*(?=[\d⁠]+(?:\.\d+)?\s*之[上下]觀點失效)', '；'), (r'(\d+(?:\.\d+)?)\s*之上觀點失效', r'價格站上 \1 則觀點失效'),
+                (r'(\d+(?:\.\d+)?)\s*之下觀點失效', r'價格跌破 \1 則觀點失效')],
+}
+
+
+def plan_headline(p, lang):
+    s = L(p.get('headline'), lang)
+    for a, b in _HL_FIX.get(lang, []): s = re.sub(a, b, s)
+    return s.lstrip('; ؛；')
+
+
+def headline_html(s, lang):
+    """First idea large (what to do), each further idea on its own line; the "wrong if" idea marked."""
+    parts = [x.strip(' ,，،') for x in re.split(r'\s*[;；؛]\s*', s) if x.strip(' ,，،')]
+    parts = [x[:1].upper() + x[1:] for x in parts]
+    if not parts: return ''
+    inv = re.compile(r'Nhận định sai|view is wrong|تُلغى|失效')
+    li = ''.join(f'<li{" class=\"inv\"" if inv.search(x) else ""}>' + _STEP_PRICE.sub(lambda m: '<b class="px">' + m.group(0) + '</b>', esc(x)) + '</li>' for x in parts[1:])
+    return f'<span class="hl1">{esc(parts[0])}</span>' + (f'<ul class="hl">{li}</ul>' if li else '')
+
+
 def plan_html(doc, p, lang):
     d0 = dt.date.fromisoformat(p['date'])
     upd = updated_dt(p)
@@ -264,7 +293,7 @@ def plan_html(doc, p, lang):
     doc = doc.replace('class="hero card" id="bias-card"', f'class="hero card {side_cls(side)}" id="bias-card"', 1)
     doc = fill(doc, 'bias-val', esc(bias_label(p, lang)))
     doc = fill(doc, 'day-type', esc(L(p.get('day_type'), lang)))
-    doc = fill(doc, 'headline', esc(L(p.get('headline'), lang)))
+    doc = fill(doc, 'headline', headline_html(plan_headline(p, lang), lang))
     sc0 = (p.get('scenarios') or [None])[0]
     doc = fill(doc, 'main-chip', esc(f"{t(lang, 'main')} {sc0['prob']}%") if sc0 else '')
     if sc0: doc = doc.replace('class="mchip" id="main-chip"', f'class="mchip {side_cls(sc0["side"])}" id="main-chip"', 1)
@@ -563,7 +592,7 @@ def plan_title(p, lang):
 
 def plan_desc(p, lang, g=None):
     mz = p.get('main_zone')
-    desc = L(p.get('headline'), lang)
+    desc = plan_headline(p, lang)
     if desc and desc[-1] not in '.!?。':
         desc += '。' if lang == 'zh-hant' else '.'
     if mz: desc += f" {t(lang, 'main_zone')}: {rng(mz['lo'], mz['hi'], lang)}."
@@ -706,7 +735,7 @@ def today_page(lang):
            'datePublished': upd.isoformat(), 'dateModified': upd.isoformat(), 'inLanguage': HL[lang],
            'author': {'@id': SITE + '/#org'}, 'publisher': {'@id': SITE + '/#org'}, 'mainEntityOfPage': url,
            'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'}, 'isAccessibleForFree': True}
-    qa = [(FAQ[lang][0], bias_label(P, lang) + '. ' + L(P.get('headline'), lang))]
+    qa = [(FAQ[lang][0], bias_label(P, lang) + '. ' + plan_headline(P, lang))]
     if mz: qa.append((FAQ[lang][1], f"{t(lang, mz['side'])} {rng(mz['lo'], mz['hi'], lang)} ({t(lang, 'ed').get(P['edition'], '')})"))
     if P.get('invalidation'): qa.append((FAQ[lang][2], L(P['invalidation'], lang)))
     faq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': HL[lang], 'mainEntity': [
@@ -750,7 +779,7 @@ def home_page(lang):
           f'<span class="muted" id="hp-pub" data-tpl="{{ed}}{SEP[lang]}{esc(c["published"])} {{time}}">{esc(ed_time_label(p, lang))}</span></div>\n'
           f'    <div class="sum">\n'
           f'      <div class="hero card {side_cls(side)}" id="hp-card"><p class="eyebrow">{esc(c["bias_k"])}</p><p class="bias-val" id="hp-bias">{esc(bias_label(p, lang))}</p>'
-          f'<p class="headline" id="hp-headline">{esc(L(p.get("headline"), lang))}</p>'
+          f'<div class="headline" id="hp-headline">{headline_html(plan_headline(p, lang), lang)}</div>'
           f'<p class="bias-sub" id="hp-type">{esc(L(p.get("day_type"), lang))}</p>'
           f'<div class="hero-keys" id="hp-keys">{home_keys(p, lang)}</div>'
           f'<a class="b-navy" href="{tp}">{esc(c["open_plan"])}{ARROW}</a></div>\n'
@@ -1200,7 +1229,7 @@ def llms():
              f'## Latest plan ({p["date"]}, {t(lang, "ed").get(p["edition"], p["edition"])}, updated {p["updated_vn"]} GMT+7)', '',
              f'- Permanent page: {SITE}{plan_path("en", key_of(p))}',
              f'- Bias: {bias_label(p, lang)}',
-             f'- Summary: {L(p.get("headline"), lang)}']
+             f'- Summary: {plan_headline(p, lang)}']
     if mz: lines.append(f'- Main zone: {t(lang, mz["side"])} {rng(mz["lo"], mz["hi"], lang)}')
     for x in p.get('targets') or []: lines.append(f'- Target {x["label"]}: {rng(x["lo"], x["hi"], lang)}')
     if p.get('range'): lines.append(f'- Expected range: {rng(p["range"]["lo"], p["range"]["hi"], lang)}')

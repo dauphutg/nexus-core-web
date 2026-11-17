@@ -641,3 +641,17 @@ html[data-theme="dark"] .next,html[data-theme="dark"] .cta-box{border:1px solid 
 .steps li.o{color:var(--ink)}
 .steps .px{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
 @media (max-width:640px){.scen{padding:18px 16px 14px}.steps li{font-size:15px;padding-inline-start:26px}.scen .t .pct{font-size:22px}}
+
+/* 17/11 – headline as separate ideas: what to do (large), then one line per idea; the "wrong if" line in the side colour */
+.headline{display:flex;flex-direction:column;gap:10px;font-weight:400}
+.headline .hl1{font-size:21px;line-height:1.35;font-weight:700;color:var(--ink)}
+.headline .hl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.headline .hl li{position:relative;padding-inline-start:18px;font-size:15.5px;line-height:1.5;color:var(--ink2);font-weight:500}
+.headline .hl li::before{content:"";position:absolute;inset-inline-start:2px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--ink3)}
+.headline .hl li.inv{color:var(--sell)}
+.headline .hl li.inv::before{border-radius:2px;background:var(--sell)}
+.hero.buy .headline .hl li.inv{color:var(--sell)}
+.headline .px{font-weight:700;color:inherit;white-space:nowrap}
+.headline .hl li:not(.inv) .px{color:var(--ink)}
+@media (max-width:640px){.headline .hl1{font-size:19px}.headline .hl li{font-size:15px}}
+.headline{margin-top:2px}.headline + .bias-sub{margin-top:4px}

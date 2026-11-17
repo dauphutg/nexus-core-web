@@ -8,7 +8,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 - Permanent page: https://nexuscore.trade/en/plan/2026-11-17-london/
 - Bias: SELL
-- Summary: SELL rallies into 3912⁠–⁠3932.1; main zone 3980.7⁠–⁠4000.7, void above 4004
+- Summary: Sell the rally into 3912⁠–⁠3932.1; main zone 3980.7⁠–⁠4000.7; The view is wrong if price goes above 4004
 - Main zone: SELL 3980.7–4000.7
 - Target T1: 3863.4
 - Target T2: 3843.7–3846.3
