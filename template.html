@@ -14,15 +14,21 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261117a">
-<script src="/theme.js?v=20261117a"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/style.css?v=20261117b">
+<script src="/theme.js?v=20261117b"></script>
 </head>
 <body data-page="{{KIND}}">
 <a class="skip" href="#app" data-i18n="skip"></a>
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="{{HOME}}"><img src="/assets/logo-banner.png" alt="NEXUS CORE" width="222" height="46"></a>
+    <nav class="tabs" aria-label="Main">
+      <a href="{{TODAY}}" data-tab="plan" data-i18n="tab_plan"></a>
+      <a href="{{TRACK}}" data-tab="track" data-i18n="tab_history"></a>
+      <a href="{{LEARN}}" data-tab="learn" data-i18n="tab_learn"></a>
+      <a href="{{SIGNALS}}" data-tab="signals" data-i18n="tab_signals"></a>
+    </nav>
     <div class="top-right">
       <span class="live" id="live"><span class="dot"></span><span id="live-text">LIVE</span></span>
       <button type="button" class="theme" id="theme-btn" aria-label="Theme">
@@ -35,14 +41,9 @@
         <a role="button" href="/vi/" data-lang="vi" lang="vi" hreflang="vi">VI</a>
         <a role="button" href="/zh-hant/" data-lang="zh-hant" lang="zh-Hant" hreflang="zh-Hant">繁中</a>
       </div>
+      <a class="get-alerts" href="#cta">{{C:alerts_btn}}</a>
     </div>
   </div>
-  <nav class="wrap tabs" aria-label="Main">
-    <a href="{{HOME}}" data-tab="plan" data-i18n="tab_plan"></a>
-    <a href="{{TRACK}}" data-tab="track" data-i18n="tab_history"></a>
-    <a href="{{LEARN}}" data-tab="learn" data-i18n="tab_learn"></a>
-    <a href="{{SIGNALS}}" data-tab="signals" data-i18n="tab_signals"></a>
-  </nav>
 </header>
 
 <main class="wrap" id="app">
@@ -52,7 +53,6 @@
       <div>
         <p class="eyebrow" id="plan-meta"></p>
         <h1 id="plan-title"></h1>
-        <p class="lede" data-i18n="lede"></p>
         <a class="permalink" id="plan-link" href="#" hidden></a>
       </div>
       <div class="editions" id="editions" aria-label="Plan update times"></div>
@@ -63,74 +63,65 @@
       <p id="alert-text"></p>
     </div>
 
-    <div class="hero card" id="bias-card">
-      <div class="hero-bias">
-        <p class="eyebrow" data-i18n="bias"></p>
+    <div class="sum">
+      <div class="hero card" id="bias-card">
+        <div class="hero-top"><p class="eyebrow" data-i18n="bias"></p><span class="mchip" id="main-chip"></span></div>
         <p class="bias-val" id="bias-val"></p>
+        <p class="headline" id="headline"></p>
         <p class="bias-sub" id="day-type"></p>
+        <div class="hero-keys" id="hero-keys"></div>
       </div>
-      <p class="headline" id="headline"></p>
-      <div class="hero-keys" id="hero-keys"></div>
+      <figure class="chart" id="chart-box" hidden>
+        <a id="chart-link" href="#" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" alt="" loading="lazy" width="1800" height="1110"></picture></a>
+        <figcaption class="chart-hint" data-i18n="chart_hint"></figcaption>
+      </figure>
     </div>
 
-    <div class="card notify js-notify" id="notify" hidden>
-      <div class="notify-t"><strong data-i18n="nt_title"></strong><span class="notify-sub"></span></div>
-      <button type="button" class="btn big notify-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2zM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="notify-btn-t"></span>
-      </button>
-      <div class="alt-ch">
-        <span class="muted" data-i18n="nt_alt"></span>
-        <a class="btn alt js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          <span data-i18n="nt_tg"></span>
-        </a>
-        <a class="btn alt" href="#cta">
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          <span data-i18n="nt_mail"></span>
-        </a>
+    <div class="card result" id="result" hidden></div>
+
+    <div class="ptabs-bar">
+      <div class="ptabs" id="ptabs" role="tablist" aria-label="{{C:tabs_label}}">
+        <button type="button" role="tab" id="t-scen" aria-controls="p-scen" data-p="scen">{{C:tab_scen}}</button>
+        <button type="button" role="tab" id="t-levels" aria-controls="p-levels" data-p="levels">{{C:tab_levels}}</button>
+        <button type="button" role="tab" id="t-zones" aria-controls="p-zones" data-p="zones">{{C:tab_zones}}</button>
+        <button type="button" role="tab" id="t-context" aria-controls="p-context" data-p="context">{{C:tab_context}}</button>
+        <button type="button" role="tab" id="t-news" aria-controls="p-news" data-p="news">{{C:tab_news}}</button>
       </div>
     </div>
 
-    <div class="layout">
-      <div class="stack">
-        <figure class="chart b-chart" id="chart-box" hidden>
-          <a id="chart-link" href="#" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" alt="" loading="lazy" width="1800" height="1110"></picture></a>
-          <figcaption class="chart-hint" data-i18n="chart_hint"></figcaption>
-        </figure>
-        <div class="blk b-zones">
-          <h2 data-i18n="zones"></h2>
-          <div id="zones" class="stack-sm"></div>
-        </div>
+    <div class="panels" id="panels">
+      <div class="panel" id="p-scen" role="tabpanel" aria-labelledby="t-scen" tabindex="0">
+        <h2 data-i18n="scenarios"></h2>
+        <div id="scenarios" class="pgrid"></div>
       </div>
-
-      <div class="stack">
-        <div class="blk b-levels">
-          <h2 data-i18n="levels"></h2>
-          <div class="card list" id="levels"></div>
-        </div>
-        <div class="stats b-context" id="context"></div>
-        <div class="blk b-scen">
-          <h2 data-i18n="scenarios"></h2>
-          <div id="scenarios" class="stack-sm"></div>
-        </div>
-        <div class="blk b-news">
-          <h2 data-i18n="news"></h2>
-          <div class="card list" id="news"></div>
-          <p class="tznote muted" id="tznote"></p>
-        </div>
-        <div class="card result b-result" id="result" hidden></div>
-        <div class="card next b-next" id="next"></div>
+      <div class="panel" id="p-levels" role="tabpanel" aria-labelledby="t-levels" tabindex="0">
+        <h2 data-i18n="levels"></h2>
+        <div class="card list" id="levels"></div>
+      </div>
+      <div class="panel" id="p-zones" role="tabpanel" aria-labelledby="t-zones" tabindex="0">
+        <h2 data-i18n="zones"></h2>
+        <div id="zones" class="pgrid"></div>
+      </div>
+      <div class="panel" id="p-context" role="tabpanel" aria-labelledby="t-context" tabindex="0">
+        <h2>{{C:tab_context}}</h2>
+        <div class="stats" id="context"></div>
+      </div>
+      <div class="panel" id="p-news" role="tabpanel" aria-labelledby="t-news" tabindex="0">
+        <h2 data-i18n="news"></h2>
+        <div class="card list" id="news"></div>
+        <p class="tznote muted" id="tznote"></p>
       </div>
     </div>
 
+    <div class="next" id="next"></div>
+    <a class="proof" id="proof" href="#" hidden></a>
     <nav class="pnav" id="pnav" hidden></nav>
   </section>
 
 <!-- /VIEW -->
 
   <!-- CTA: on every page -->
-  <section class="card cta-box" id="cta" aria-labelledby="cta-h">
+  <section class="cta-box" id="cta" aria-labelledby="cta-h">
     <div class="cta-head">
       <h2 id="cta-h" data-i18n="cta_title"></h2>
       <p data-i18n="cta_sub"></p>
@@ -156,28 +147,13 @@
       </div>
     </div>
     <a class="cta js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer" id="tg-cta">
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       <span><strong data-i18n="tg_title"></strong><span data-i18n="tg_sub"></span></span>
     </a>
   </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap foot-in">
-    <div class="risk">
-      <strong data-i18n="risk_title"></strong>
-      <p data-i18n="disclaimer"></p>
-    </div>
-    <div class="foot-row">
-      <span class="muted">© 2026 NEXUS CORE AI</span>
-      <nav class="social" aria-label="Social">
-        <a id="s-tg" class="js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a id="s-x" href="https://x.com/XAU_CRYPTO" target="_blank" rel="noopener noreferrer">X</a>
-        <a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">YouTube</a>
-      </nav>
-    </div>
-  </div>
-</footer>
+{{FOOTER}}
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Chart">
   <button type="button" class="lb-x" id="lb-x" aria-label="Close">×</button>
@@ -186,6 +162,6 @@
 </div>
 
 {{JSONLD}}
-<script src="/app.js?v=20261117a"></script>
+<script src="/app.js?v=20261117b"></script>
 </body>
 </html>

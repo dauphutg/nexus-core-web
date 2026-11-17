@@ -209,7 +209,7 @@
   var saved = null;
   try { saved = localStorage.getItem('nc_lang'); } catch (e) {}
   var nav = (navigator.language || '').toLowerCase();
-  // Page kind is set by tools/build.py: home (latest plan), plan (one archived plan), track (monthly record), signals.
+  // Page kind is set by tools/build.py: home (intro + plan preview), today (latest plan), plan (one archived plan), track, signals, learn, legal.
   var KIND = document.body.getAttribute('data-page') || 'home';
   // Where a visitor came from (?src=x / utm_source, else the referring site) and which page they signed up on – stored with email/alerts.
   var SRC = '', PAGE = location.pathname.slice(0, 80);
@@ -233,7 +233,7 @@
   // The address decides the language: / and /en/… = English, /ar/… = Arabic, /vi/… = Vietnamese.
   var PATH_LANG = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : /^\/zh-hant(\/|$)/.test(location.pathname) ? 'zh-hant' : 'en';
   // a returning visitor who picked Arabic/Vietnamese and lands on the English home page goes to their language
-  if (KIND === 'home' && PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi' || saved === 'zh-hant') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
+  if ((KIND === 'home' || KIND === 'today') && PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi' || saved === 'zh-hant') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
     location.replace('/' + saved + location.pathname.replace(/^\/(index\.html)?/, '/').replace(/^\/\//, '/') + location.search + location.hash);
   }
   // old in-page tabs (#signals, #history) now have their own pages
@@ -297,9 +297,15 @@
   // Plan times are Vietnam time (UTC+7); show them in the visitor's own time zone.
   function vn(dateStr, hm) { return new Date(dateStr + 'T' + hm + ':00+07:00'); }
   function tf(d, opt) { try { return new Intl.DateTimeFormat(locale(), opt).format(d); } catch (e) { return d.toISOString().slice(0, 16).replace('T', ' '); } }
-  function hm(d) { return tf(d, { hour: '2-digit', minute: '2-digit' }); }
-  function hmz(d) { return tf(d, { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }); }
-  function dayHm(d) { return tf(d, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); }
+  // 24-hour clock in every language (13:49, not 01:49 PM), time zone as a plain short name without brackets
+  function hm(d) { return tf(d, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }); }
+  function tzName(d) {
+    var z = '';
+    try { new Intl.DateTimeFormat('en-GB', { timeZoneName: 'short' }).formatToParts(d).forEach(function (x) { if (x.type === 'timeZoneName') z = x.value; }); } catch (e) {}
+    return z.replace(/^UTC$/, 'GMT');
+  }
+  function hmz(d) { var z = tzName(d); return hm(d) + (z ? ' ' + z : ''); }
+  function dayHm(d) { return tf(d, { weekday: 'short', day: 'numeric', month: 'short' }) + ', ' + hm(d); }
   function dayOnly(d) { return tf(d, { weekday: 'short', day: 'numeric', month: 'short' }); }
   function addDays(dateStr, n) { var d = new Date(dateStr + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
   function nextEdition(p) {
@@ -331,7 +337,7 @@
     each('.lang [data-lang]', function (b) { b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'); });
     var tg = LINKS.tg[lang] || LINKS.tg._, x = LINKS.x[lang] || LINKS.x._;
     each('.js-tg', function (a) { a.href = tg; });
-    document.getElementById('s-x').href = x;
+    var sx = document.getElementById('s-x'); if (sx) sx.href = x;
     if (themeBtn) themeLabel();
     notifyRender();
     wlRender();
@@ -373,6 +379,8 @@
     var bc = document.getElementById('bias-card');
     var side = p.bias === 'TWO_WAY' || p.bias === 'STAND_ASIDE' ? (p.lean || '') : p.bias;
     bc.className = 'hero card ' + sideCls(side);
+    var mc = document.getElementById('main-chip'), s0 = (p.scenarios || [])[0];
+    if (mc) { mc.textContent = s0 ? t('main') + ' ' + s0.prob + '%' : ''; mc.className = 'mchip' + (s0 ? ' ' + sideCls(s0.side) : ''); }
     var bv = t(p.bias);
     if (p.bias === 'TWO_WAY' && p.lean) bv += ', ' + t('lean') + ' ' + t(p.lean);
     document.getElementById('bias-val').textContent = bv;
@@ -418,13 +426,11 @@
       var r = el('div', 'row news-row');
       add(nw, add(r, add(el('span', 'k'), el('span', 'imp ' + (n.impact || 'low')), el('span', null, L(n.text))), el('span', 'v', newsTime(n.time, yr))));
     });
-    var tzn = '';
-    try { new Intl.DateTimeFormat(locale(), { timeZoneName: 'short' }).formatToParts(new Date()).forEach(function (x) { if (x.type === 'timeZoneName') tzn = x.value; }); } catch (e) {}
-    document.getElementById('tznote').textContent = t('tz') + (tzn ? ' (' + tzn + ')' : '') + '.';
+    var tzn = tzName(new Date());
+    document.getElementById('tznote').textContent = t('tz') + (tzn ? par(tzn) : '') + (lang === 'zh-hant' ? '。' : '.');
 
-    var nx = clear('next'), ne = nextEdition(p);
-    if (ne) add(nx, el('strong', null, t('next') + ': ' + t('ed')[ne.ed]), el('span', 'num', dayHm(ne.at)));
-    else add(nx, el('strong', null, t('next')), el('span', null, L(p.next_update)));
+    var nv = document.getElementById('next-v'), ne = nextEdition(p);
+    if (nv) nv.textContent = ne ? t('ed')[ne.ed] + ', ' + dayHm(ne.at) : L(p.next_update);
 
     // LIVE badge goes grey when the plan is more than 30 hours old
     var age = (Date.now() - upd.getTime()) / 36e5;
@@ -432,12 +438,78 @@
     document.getElementById('live-text').textContent = age > 30 ? t('stale') : t('live');
   }
 
+  // Home page: short preview of the latest plan, refreshed from latest.json, times in the visitor's zone.
+  function renderHome() {
+    var p = data.plan; if (!p) return;
+    var same = document.body.getAttribute('data-plan') === p.date + '-' + p.edition;
+    var upd = vn(p.updated_vn.slice(0, 10), p.updated_vn.slice(11));
+    function set(id, v) { var n = document.getElementById(id); if (n) n.textContent = v; return n; }
+    var pub = document.getElementById('hp-pub');
+    if (pub && pub.getAttribute('data-tpl')) pub.textContent = pub.getAttribute('data-tpl').replace('{ed}', t('ed')[p.edition] || p.edition).replace('{time}', hmz(upd));
+    var he = document.getElementById('hp-ed');
+    if (he) { he.textContent = (t('ed')[p.edition] || p.edition) + ', '; he.appendChild(el('span', 'num', hmz(upd))); }
+    var age = (Date.now() - upd.getTime()) / 36e5;
+    document.getElementById('live').classList.toggle('stale', age > 30);
+    document.getElementById('live-text').textContent = age > 30 ? t('stale') : t('live');
+    if (same) return;
+    set('hp-day', dayOnly(vn(p.date, '12:00')));
+    var side = p.bias === 'TWO_WAY' || p.bias === 'STAND_ASIDE' ? (p.lean || '') : p.bias;
+    var card = document.getElementById('hp-card'); if (card) card.className = 'hero card ' + sideCls(side);
+    var bv = t(p.bias); if (p.bias === 'TWO_WAY' && p.lean) bv += ', ' + t('lean') + ' ' + t(p.lean);
+    set('hp-bias', bv); set('hp-headline', L(p.headline)); set('hp-type', L(p.day_type));
+    var hk = document.getElementById('hp-keys'); if (hk) hk.hidden = true;   // built for the older plan
+    var ci = document.querySelector('.chart-card img'), ch = p.chart || {}, src = ch[lang] || ch.en || ch.vi || '';
+    if (ci && /^data\/charts\/[0-9]{4}-[0-9]{2}-[0-9]{2}-(0700|1345|1930)-(vi|en)\.png$/.test(src)) {
+      var cs = document.querySelector('.chart-card source'); if (cs) cs.parentNode.removeChild(cs);   // phone image of the old plan
+      ci.src = '/' + src;
+    }
+  }
+
+  // Plan pages: Scenarios / Key levels / Zones / Market context / News as tabs (without JavaScript every panel simply shows).
+  function initTabs() {
+    var bar = document.getElementById('ptabs'), box = document.getElementById('panels');
+    if (!bar || !box) return;
+    var tabs = Array.prototype.slice.call(bar.querySelectorAll('[role="tab"]'));
+    function pick(name, focus, keepHash) {
+      tabs.forEach(function (b) {
+        var on = b.getAttribute('data-p') === name;
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+        document.getElementById('p-' + b.getAttribute('data-p')).classList.toggle('on', on);
+        if (on && focus) b.focus();
+        if (on) {   // keep the chosen tab in view inside the bar without scrolling the page
+          var l = b.offsetLeft - bar.offsetLeft, r = l + b.offsetWidth;
+          if (l < bar.scrollLeft) bar.scrollLeft = l - 8; else if (r > bar.scrollLeft + bar.clientWidth) bar.scrollLeft = r - bar.clientWidth + 8;
+        }
+      });
+      if (!keepHash && history.replaceState) history.replaceState(null, '', location.pathname + location.search + '#p-' + name);
+    }
+    tabs.forEach(function (b, i) {
+      b.addEventListener('click', function () { pick(b.getAttribute('data-p')); });
+      b.addEventListener('keydown', function (e) {
+        var k = e.key, rtl = document.documentElement.dir === 'rtl', n = tabs.length, j;
+        if (k === 'ArrowRight') j = rtl ? i - 1 : i + 1; else if (k === 'ArrowLeft') j = rtl ? i + 1 : i - 1;
+        else if (k === 'Home') j = 0; else if (k === 'End') j = n - 1; else return;
+        e.preventDefault(); pick(tabs[(j + n) % n].getAttribute('data-p'), true);
+      });
+    });
+    bar.classList.add('on'); box.classList.add('tabbed');
+    var m = /^#p-(scen|levels|zones|context|news)$/.exec(location.hash);
+    pick(m ? m[1] : 'scen', false, true);
+  }
+  function headerHeight() {
+    var h = document.querySelector('.top');
+    if (h) document.documentElement.style.setProperty('--hh', h.offsetHeight + 'px');
+  }
+  headerHeight(); window.addEventListener('resize', headerHeight);
+  initTabs();
+
   each('.lang [data-lang]', function (b) {
     b.addEventListener('click', function (e) {
       e.preventDefault();
       var l = b.dataset.lang;
       try { localStorage.setItem('nc_lang', l); } catch (x) {}
-      if (l !== PATH_LANG) { location.href = b.getAttribute('href') + (KIND === 'home' ? location.search + location.hash : ''); return; }
+      if (l !== PATH_LANG) { location.href = b.getAttribute('href') + (KIND === 'home' || KIND === 'today' ? location.search + location.hash : ''); return; }
       lang = l; renderStatic(); notifyLang();
     });
   });
@@ -605,7 +677,9 @@
   pushInit().catch(function () {}).then(function () { notifyRender(); wlRender(); });
 
   renderStatic();
-  if (KIND === 'home') {
+  if (KIND === 'today') {
     load('/data/latest.json').then(function (p) { data.plan = p; renderPlan(); }).catch(function () {});
+  } else if (KIND === 'home') {
+    load('/data/latest.json').then(function (p) { data.plan = p; renderHome(); }).catch(function () {});
   }
 })();

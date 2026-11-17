@@ -41,15 +41,21 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261117a">
-<script src="/theme.js?v=20261117a"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/style.css?v=20261117b">
+<script src="/theme.js?v=20261117b"></script>
 </head>
 <body data-page="plan">
 <a class="skip" href="#app" data-i18n="skip">跳至內容</a>
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="/zh-hant/"><img src="/assets/logo-banner.png" alt="NEXUS CORE" width="222" height="46"></a>
+    <nav class="tabs" aria-label="Main">
+      <a href="/zh-hant/today/" aria-current="page" data-tab="plan" data-i18n="tab_plan">每日計畫</a>
+      <a href="/zh-hant/track-record/2026-11/" data-tab="track" data-i18n="tab_history">成績紀錄</a>
+      <a href="/zh-hant/learn/" data-tab="learn" data-i18n="tab_learn">學習</a>
+      <a href="/zh-hant/signals/" data-tab="signals" data-i18n="tab_signals">訊號</a>
+    </nav>
     <div class="top-right">
       <span class="live" id="live" hidden><span class="dot"></span><span id="live-text">LIVE</span></span>
       <button type="button" class="theme" id="theme-btn" aria-label="Theme">
@@ -62,14 +68,9 @@
         <a role="button" href="/vi/plan/2026-11-13-newyork/" data-lang="vi" lang="vi" hreflang="vi">VI</a>
         <a role="button" href="/zh-hant/plan/2026-11-13-newyork/" data-lang="zh-hant" aria-pressed="true" aria-current="page" lang="zh-Hant" hreflang="zh-Hant">繁中</a>
       </div>
+      <a class="get-alerts" href="#cta">免費通知</a>
     </div>
   </div>
-  <nav class="wrap tabs" aria-label="Main">
-    <a href="/zh-hant/" aria-current="page" data-tab="plan" data-i18n="tab_plan">每日計畫</a>
-    <a href="/zh-hant/track-record/2026-11/" data-tab="track" data-i18n="tab_history">成績紀錄</a>
-    <a href="/zh-hant/learn/" data-tab="learn" data-i18n="tab_learn">學習</a>
-    <a href="/zh-hant/signals/" data-tab="signals" data-i18n="tab_signals">訊號</a>
-  </nav>
 </header>
 
 <main class="wrap" id="app">
@@ -79,7 +80,6 @@
       <div>
         <p class="eyebrow" id="plan-meta"><span>XAUUSD</span><span>紐約盤前計畫</span><span>19:50 GMT+7</span></p>
         <h1 id="plan-title">黃金計畫 <span class="d">11月13日（週五）</span></h1>
-        <p class="lede" data-i18n="lede">AI 輔助製作的黃金（XAUUSD）交易計畫：關鍵區域、情境推演，以及判斷觀點失效的價位，於亞洲、倫敦、紐約盤前更新。</p>
         <a class="permalink" id="plan-link" href="#" hidden></a>
       </div>
       <div class="editions" id="editions" aria-label="Plan update times"><div class="ed"><span class="k">亞洲盤</span><span class="v num">07:00</span></div><div class="ed"><span class="k">倫敦盤</span><span class="v num">13:45</span></div><div class="ed on"><span class="k">紐約盤</span><span class="v num">19:30</span></div></div>
@@ -90,74 +90,65 @@
       <p id="alert-text">紐約盤初公布的美國 PPI 為高影響數據，將決定走勢分支；數據公布前後避免新進場，數據後以 H4 收盤確認方向。本計畫信心偏低，暫無 A 級區域。</p>
     </div>
 
-    <div class="hero card sell" id="bias-card">
-      <div class="hero-bias">
-        <p class="eyebrow" data-i18n="bias">方向</p>
+    <div class="sum">
+      <div class="hero card sell" id="bias-card">
+        <div class="hero-top"><p class="eyebrow" data-i18n="bias">方向</p><span class="mchip sell" id="main-chip">主要 50%</span></div>
         <p class="bias-val" id="bias-val">雙向, 傾向 偏空</p>
+        <p class="headline" id="headline">雙向，反彈至 3901.6⁠–⁠3914 偏空；PPI 定方向，關鍵 3852.6 / 3948.8</p>
         <p class="bias-sub" id="day-type">重大消息日，雙向等待突破，反彈偏空</p>
+        <div class="hero-keys" id="hero-keys"><div class="key"><span class="k">主要區域（偏空）</span><span class="v num" dir="ltr">3901.6–3914</span></div><div class="key"><span class="k">目標 T1</span><span class="v num" dir="ltr">3872.2</span></div><div class="key"><span class="k">預期區間</span><span class="v num" dir="ltr">3880–3906</span></div></div>
       </div>
-      <p class="headline" id="headline">雙向，反彈至 3901.6⁠–⁠3914 偏空；PPI 定方向，關鍵 3852.6 / 3948.8</p>
-      <div class="hero-keys" id="hero-keys"><div class="key"><span class="k">主要區域（偏空）</span><span class="v num" dir="ltr">3901.6–3914</span></div><div class="key"><span class="k">目標 T1</span><span class="v num" dir="ltr">3872.2</span></div><div class="key"><span class="k">預期區間</span><span class="v num" dir="ltr">3880–3906</span></div></div>
+      <figure class="chart" id="chart-box">
+        <a id="chart-link" href="/data/charts/2026-11-13-1930-en.png" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" srcset="/data/charts/2026-11-13-1930-en-m.png" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" src="/data/charts/2026-11-13-1930-en.png" alt="XAUUSD H1, 黃金計畫 11月13日（週五）" loading="lazy" width="1800" height="1110"></picture></a>
+        <figcaption class="chart-hint" data-i18n="chart_hint">點擊圖表可全螢幕檢視</figcaption>
+      </figure>
     </div>
 
-    <div class="card notify js-notify" id="notify" hidden>
-      <div class="notify-t"><strong data-i18n="nt_title">新計畫通知</strong><span class="notify-sub"></span></div>
-      <button type="button" class="btn big notify-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2zM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="notify-btn-t"></span>
-      </button>
-      <div class="alt-ch">
-        <span class="muted" data-i18n="nt_alt">所有手機皆可使用，包括舊款 iPhone：</span>
-        <a class="btn alt js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          <span data-i18n="nt_tg">透過 Telegram 接收</span>
-        </a>
-        <a class="btn alt" href="#cta">
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          <span data-i18n="nt_mail">透過電子郵件接收</span>
-        </a>
+    <div class="card result" id="result"><h2>本計畫的結果</h2><div class="res-top"><span class="pill good">達到目標 1</span><span class="num r r-up" dir="ltr">+0.62R</span></div><div class="list"><div class="row"><span class="k">評分時段</span><span class="v">11月13日（週五） 19:50 GMT+7 → 11月14日（週六） 05:00 GMT+7</span></div><div class="row"><span class="k">追蹤至</span><span class="v">11月14日（週六） 05:00 GMT+7</span></div><div class="row"><span class="k">時段內最高 / 最低</span><span class="v num" dir="ltr">3906 / 3867.7</span></div></div><h3>評分區域</h3><div class="zres"><div class="zt"><strong>偏空 <span class="num" dir="ltr">3901.6–3914</span> (主要區域)</strong><span class="pill good">達到目標 1</span><span class="num r r-up" dir="ltr">+0.62R</span></div><p class="muted small">觸及區域: 11月13日（週五） 20:30 GMT+7; 結果判定時間: 11月13日（週五） 23:00 GMT+7; 目標 1: 3872.2; 失效價位: 3948.8</p><div class="best"><span class="k">最大順向波動（MFE）</span><span class="v num" dir="ltr">+33.9 $, 339 pip (+3.4R 標準（1R = 10 美元）)</span></div></div><div class="zres"><div class="zt"><strong>偏空 <span class="num" dir="ltr">3918–3932</span> (B)</strong><span class="pill neutral">價格未觸及區域</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">目標 1: 3872.2; 失效價位: 3935</p></div><div class="zres"><div class="zt"><strong>偏空 <span class="num" dir="ltr">3976–3993</span> (B)</strong><span class="pill neutral">價格未觸及區域</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">目標 1: 3872.2; 失效價位: 4004</p></div><p class="muted small">區域被觸及後，價格朝該區域方向走得最遠的距離，計至失效或每日收盤，反映判讀品質，並非交易結果，也不計入 R。</p><p class="small"><a href="/zh-hant/track-record/2026-11/#method">評分方式</a></p></div>
+
+    <div class="ptabs-bar">
+      <div class="ptabs" id="ptabs" role="tablist" aria-label="計畫細節">
+        <button type="button" role="tab" id="t-scen" aria-controls="p-scen" data-p="scen">情境</button>
+        <button type="button" role="tab" id="t-levels" aria-controls="p-levels" data-p="levels">關鍵價位</button>
+        <button type="button" role="tab" id="t-zones" aria-controls="p-zones" data-p="zones">區域</button>
+        <button type="button" role="tab" id="t-context" aria-controls="p-context" data-p="context">市場背景</button>
+        <button type="button" role="tab" id="t-news" aria-controls="p-news" data-p="news">財經數據</button>
       </div>
     </div>
 
-    <div class="layout">
-      <div class="stack">
-        <figure class="chart b-chart" id="chart-box">
-          <a id="chart-link" href="/data/charts/2026-11-13-1930-en.png" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" srcset="/data/charts/2026-11-13-1930-en-m.png" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" src="/data/charts/2026-11-13-1930-en.png" alt="XAUUSD H1, 黃金計畫 11月13日（週五）" loading="lazy" width="1800" height="1110"></picture></a>
-          <figcaption class="chart-hint" data-i18n="chart_hint">點擊圖表可全螢幕檢視</figcaption>
-        </figure>
-        <div class="blk b-zones">
-          <h2 data-i18n="zones">圖表上的區域</h2>
-          <div id="zones" class="stack-sm"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3901.6–3914</span></div><span class="s">主要區域，倫敦盤已觸及下緣（高點 3906）後回落至 3887；紐約盤數據後仍有效；M15 收在 3918 之上則失效</span></div><span class="g">主要區域</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3918–3932</span></div><span class="s">亞洲盤已觸及（高點 3923.1）後遭賣壓；紐約盤仍有效；M15 收在 3935 之上則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3946–3956</span></div><span class="s">今日尚未觸及；紐約盤（PPI 後）有效；M15 收在 3948.8 之上且下一根守穩則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3976–3993</span></div><span class="s">尚未觸及，可能到不了；偏空觀點成立時紐約盤延續至亞洲盤有效；若已轉為偏多則為目標；M15 收在 4004 之上則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">偏多</span><span class="num" dir="ltr">3943.8–3948.8</span></div><span class="s">尚未生效，M15 收在 3948.8 之上且下一根守穩後才生效（紐約盤）；M15 收在 3873 之下則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3849–3852.6</span></div><span class="s">跌破區，M15 收在 3852.6 之下後才生效；M15 收回 3858 之上則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">偏多</span><span class="num" dir="ltr">3870.3–3879.3</span></div><span class="s">僅觀察，亞洲盤與倫敦盤皆守住（低點 3875.2、3887）；M15 收在 3868 之下則失效</span></div><span class="g">C</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">偏多</span><span class="num" dir="ltr">3838.1–3848</span></div><span class="s">僅觀察，尚未觸及；M15 收在 3835 之下則失效</span></div><span class="g">C</span></div></div>
-        </div>
+    <div class="panels" id="panels">
+      <div class="panel" id="p-scen" role="tabpanel" aria-labelledby="t-scen" tabindex="0">
+        <h2 data-i18n="scenarios">情境</h2>
+        <div id="scenarios" class="pgrid"><div class="card scen sell"><div class="t"><span>主要（偏空）</span><span class="num muted">50%</span></div><p>分支 A，PPI 偏熱（利空黃金）：反彈至 3901.6⁠–⁠3914 遇賣壓；M15 先收在 3870 之下、再收在 3852.6 之下 → 跌至 3838，再看 3765。</p><div class="bar"><i class="w50"></i></div></div><div class="card scen buy"><div class="t"><span>備選（偏多）</span><span class="num muted">50%</span></div><p>分支 B，PPI 偏冷或符合預期：M15 收在 3923.1 之上 → 反彈至壓力 3946⁠–⁠3956；M15 收在 3948.8 之上並守穩 → 轉為偏多，上看 3976，再看 3991。</p><div class="bar"><i class="w50"></i></div></div></div>
       </div>
-
-      <div class="stack">
-        <div class="blk b-levels">
-          <h2 data-i18n="levels">關鍵價位</h2>
-          <div class="card list" id="levels"><div class="row"><span class="k">主要區域（偏空）</span><span class="v num main" dir="ltr">3901.6–3914</span></div><div class="row"><span class="k">目標 T1</span><span class="v num" dir="ltr">3872.2</span></div><div class="row"><span class="k">目標 T2</span><span class="v num" dir="ltr">3852.6</span></div><div class="row"><span class="k">目標 T3</span><span class="v num" dir="ltr">3838.1</span></div><div class="row"><span class="k">預期區間</span><span class="v num" dir="ltr">3880–3906</span></div><div class="row text"><span class="k">觀點失效條件</span><span class="v bad">M15 收在 3948.8 之上且下一根守穩 → 偏空觀點失效，轉為偏多。M15 收在 3852.6 之下 → 反彈觀點失效，續跌看 3838 / 3765。</span></div></div>
-        </div>
-        <div class="stats b-context" id="context"><div class="stat"><span class="k">D1 趨勢</span><span class="v">偏空，12/11 日線長黑掃破 3870.3 至 3852.6 後收回 3877.6；尚無反轉訊號</span></div><div class="stat"><span class="k">H4 結構</span><span class="v">偏空，金價位於均線之下；超賣後技術性反彈進行中，最高可能延伸至壓力 3946⁠–⁠3956</span></div><div class="stat"><span class="k">H1 結構</span><span class="v">H1 高點自 3923.1 逐步下移（3923 → 3906 → 3905 → 3898）；金價位於短期均線之下</span></div><div class="stat"><span class="k">H1 動能</span><span class="v">買盤轉弱；金價於日開盤價上方 3887⁠–⁠3906 區間整理，等待 PPI</span></div><div class="stat"><span class="k">日內關鍵價位</span><span class="v">日開盤價 3879.3；日內高點 3923.1（亞洲盤）；日內低點 3875.2；前日低點 3852.6</span></div></div>
-        <div class="blk b-scen">
-          <h2 data-i18n="scenarios">情境</h2>
-          <div id="scenarios" class="stack-sm"><div class="card scen sell"><div class="t"><span>主要（偏空）</span><span class="num muted">50%</span></div><p>分支 A，PPI 偏熱（利空黃金）：反彈至 3901.6⁠–⁠3914 遇賣壓；M15 先收在 3870 之下、再收在 3852.6 之下 → 跌至 3838，再看 3765。</p><div class="bar"><i class="w50"></i></div></div><div class="card scen buy"><div class="t"><span>備選（偏多）</span><span class="num muted">50%</span></div><p>分支 B，PPI 偏冷或符合預期：M15 收在 3923.1 之上 → 反彈至壓力 3946⁠–⁠3956；M15 收在 3948.8 之上並守穩 → 轉為偏多，上看 3976，再看 3991。</p><div class="bar"><i class="w50"></i></div></div></div>
-        </div>
-        <div class="blk b-news">
-          <h2 data-i18n="news">經濟日曆</h2>
-          <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp high"></span><span>美國 PPI 與核心 PPI（月增率）</span></span><span class="v">13/11 20:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Collins 講話</span></span><span class="v">13/11 21:10 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Logan 講話</span></span><span class="v">13/11 21:40 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Bowman 講話</span></span><span class="v">13/11 22:50 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Daly 講話</span></span><span class="v">14/11 00:00 GMT+7</span></div></div>
-          <p class="tznote muted" id="tznote"></p>
-        </div>
-        <div class="card result b-result" id="result"><h2>本計畫的結果</h2><div class="res-top"><span class="pill good">達到目標 1</span><span class="num r r-up" dir="ltr">+0.62R</span></div><div class="list"><div class="row"><span class="k">評分時段</span><span class="v">11月13日（週五） 19:50 GMT+7 → 11月14日（週六） 05:00 GMT+7</span></div><div class="row"><span class="k">追蹤至</span><span class="v">11月14日（週六） 05:00 GMT+7</span></div><div class="row"><span class="k">時段內最高 / 最低</span><span class="v num" dir="ltr">3906 / 3867.7</span></div></div><h3>評分區域</h3><div class="zres"><div class="zt"><strong>偏空 <span class="num" dir="ltr">3901.6–3914</span> (主要區域)</strong><span class="pill good">達到目標 1</span><span class="num r r-up" dir="ltr">+0.62R</span></div><p class="muted small">觸及區域: 11月13日（週五） 20:30 GMT+7; 結果判定時間: 11月13日（週五） 23:00 GMT+7; 目標 1: 3872.2; 失效價位: 3948.8</p><div class="best"><span class="k">最大順向波動（MFE）</span><span class="v num" dir="ltr">+33.9 $, 339 pip (+3.4R 標準（1R = 10 美元）)</span></div></div><div class="zres"><div class="zt"><strong>偏空 <span class="num" dir="ltr">3918–3932</span> (B)</strong><span class="pill neutral">價格未觸及區域</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">目標 1: 3872.2; 失效價位: 3935</p></div><div class="zres"><div class="zt"><strong>偏空 <span class="num" dir="ltr">3976–3993</span> (B)</strong><span class="pill neutral">價格未觸及區域</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">目標 1: 3872.2; 失效價位: 4004</p></div><p class="muted small">區域被觸及後，價格朝該區域方向走得最遠的距離，計至失效或每日收盤，反映判讀品質，並非交易結果，也不計入 R。</p><p class="small"><a href="/zh-hant/track-record/2026-11/#method">評分方式</a></p></div>
-        <div class="card next b-next" id="next" hidden><strong>下次更新</strong><span>越南時間 11/16 週一 07:00 早盤計畫</span></div>
+      <div class="panel" id="p-levels" role="tabpanel" aria-labelledby="t-levels" tabindex="0">
+        <h2 data-i18n="levels">關鍵價位</h2>
+        <div class="card list" id="levels"><div class="row"><span class="k">主要區域（偏空）</span><span class="v num main" dir="ltr">3901.6–3914</span></div><div class="row"><span class="k">目標 T1</span><span class="v num" dir="ltr">3872.2</span></div><div class="row"><span class="k">目標 T2</span><span class="v num" dir="ltr">3852.6</span></div><div class="row"><span class="k">目標 T3</span><span class="v num" dir="ltr">3838.1</span></div><div class="row"><span class="k">預期區間</span><span class="v num" dir="ltr">3880–3906</span></div><div class="row text"><span class="k">觀點失效條件</span><span class="v bad">M15 收在 3948.8 之上且下一根守穩 → 偏空觀點失效，轉為偏多。M15 收在 3852.6 之下 → 反彈觀點失效，續跌看 3838 / 3765。</span></div></div>
+      </div>
+      <div class="panel" id="p-zones" role="tabpanel" aria-labelledby="t-zones" tabindex="0">
+        <h2 data-i18n="zones">圖表上的區域</h2>
+        <div id="zones" class="pgrid"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3901.6–3914</span></div><span class="s">主要區域，倫敦盤已觸及下緣（高點 3906）後回落至 3887；紐約盤數據後仍有效；M15 收在 3918 之上則失效</span></div><span class="g">主要區域</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3918–3932</span></div><span class="s">亞洲盤已觸及（高點 3923.1）後遭賣壓；紐約盤仍有效；M15 收在 3935 之上則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3946–3956</span></div><span class="s">今日尚未觸及；紐約盤（PPI 後）有效；M15 收在 3948.8 之上且下一根守穩則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3976–3993</span></div><span class="s">尚未觸及，可能到不了；偏空觀點成立時紐約盤延續至亞洲盤有效；若已轉為偏多則為目標；M15 收在 4004 之上則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">偏多</span><span class="num" dir="ltr">3943.8–3948.8</span></div><span class="s">尚未生效，M15 收在 3948.8 之上且下一根守穩後才生效（紐約盤）；M15 收在 3873 之下則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">偏空</span><span class="num" dir="ltr">3849–3852.6</span></div><span class="s">跌破區，M15 收在 3852.6 之下後才生效；M15 收回 3858 之上則失效</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">偏多</span><span class="num" dir="ltr">3870.3–3879.3</span></div><span class="s">僅觀察，亞洲盤與倫敦盤皆守住（低點 3875.2、3887）；M15 收在 3868 之下則失效</span></div><span class="g">C</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill buy">偏多</span><span class="num" dir="ltr">3838.1–3848</span></div><span class="s">僅觀察，尚未觸及；M15 收在 3835 之下則失效</span></div><span class="g">C</span></div></div>
+      </div>
+      <div class="panel" id="p-context" role="tabpanel" aria-labelledby="t-context" tabindex="0">
+        <h2>市場背景</h2>
+        <div class="stats" id="context"><div class="stat"><span class="k">D1 趨勢</span><span class="v">偏空，12/11 日線長黑掃破 3870.3 至 3852.6 後收回 3877.6；尚無反轉訊號</span></div><div class="stat"><span class="k">H4 結構</span><span class="v">偏空，金價位於均線之下；超賣後技術性反彈進行中，最高可能延伸至壓力 3946⁠–⁠3956</span></div><div class="stat"><span class="k">H1 結構</span><span class="v">H1 高點自 3923.1 逐步下移（3923 → 3906 → 3905 → 3898）；金價位於短期均線之下</span></div><div class="stat"><span class="k">H1 動能</span><span class="v">買盤轉弱；金價於日開盤價上方 3887⁠–⁠3906 區間整理，等待 PPI</span></div><div class="stat"><span class="k">日內關鍵價位</span><span class="v">日開盤價 3879.3；日內高點 3923.1（亞洲盤）；日內低點 3875.2；前日低點 3852.6</span></div></div>
+      </div>
+      <div class="panel" id="p-news" role="tabpanel" aria-labelledby="t-news" tabindex="0">
+        <h2 data-i18n="news">經濟日曆</h2>
+        <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp high"></span><span>美國 PPI 與核心 PPI（月增率）</span></span><span class="v">13/11 20:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Collins 講話</span></span><span class="v">13/11 21:10 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Logan 講話</span></span><span class="v">13/11 21:40 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Bowman 講話</span></span><span class="v">13/11 22:50 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>FOMC 委員 Daly 講話</span></span><span class="v">14/11 00:00 GMT+7</span></div></div>
+        <p class="tznote muted" id="tznote"></p>
       </div>
     </div>
 
-    <nav class="pnav" id="pnav"><a class="btn alt" href="/zh-hant/plan/2026-11-13-london/" rel="prev">← 上一份計畫</a><a class="btn alt" href="/zh-hant/plan/2026-11-16-asia/" rel="next">下一份計畫 →</a><a class="btn alt" href="/zh-hant/track-record/2026-11/">本月所有計畫</a><a class="btn alt" href="/zh-hant/">今日計畫</a></nav>
+    <div class="next" id="next" hidden><span><strong>下次更新:</strong> <span id="next-v">越南時間 11/16 週一 07:00 早盤計畫</span></span><a href="#cta">發布時通知我</a></div>
+    <a class="proof" id="proof" href="#" hidden></a>
+    <nav class="pnav" id="pnav"><a class="btn alt" href="/zh-hant/plan/2026-11-13-london/" rel="prev">← 上一份計畫</a><a class="btn alt" href="/zh-hant/plan/2026-11-16-asia/" rel="next">下一份計畫 →</a><a class="btn alt" href="/zh-hant/track-record/2026-11/">本月所有計畫</a><a class="btn alt" href="/zh-hant/today/">今日計畫</a></nav>
   </section>
 
 <!-- /VIEW -->
 
   <!-- CTA: on every page -->
-  <section class="card cta-box" id="cta" aria-labelledby="cta-h">
+  <section class="cta-box" id="cta" aria-labelledby="cta-h">
     <div class="cta-head">
       <h2 id="cta-h" data-i18n="cta_title">在倫敦開盤前收到下一份計畫</h2>
       <p data-i18n="cta_sub">每份計畫發布時立即免費通知，亞洲、倫敦、紐約盤。五秒完成設定。</p>
@@ -183,7 +174,7 @@
       </div>
     </div>
     <a class="cta js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer" id="tg-cta">
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       <span><strong data-i18n="tg_title">在 Telegram 接收每一份計畫</strong><span data-i18n="tg_sub">免費頻道，無需註冊</span></span>
     </a>
   </section>
@@ -191,18 +182,17 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <div class="risk">
-      <strong data-i18n="risk_title">風險警示</strong>
-      <p data-i18n="disclaimer">僅供分析，不構成投資建議或交易邀約。黃金差價合約等槓桿產品具有快速虧損的高風險。過往績效不保證未來結果。請僅以可承受損失的資金進行交易。</p>
+    <div class="fl"><div class="fcol"><p class="fh">黃金交易入門</p><a href="/zh-hant/learn/what-is-xauusd/">XAUUSD 是什麼？</a><a href="/zh-hant/learn/how-to-trade-gold/">如何交易黃金（XAUUSD）？一步一步來</a><a href="/zh-hant/learn/best-time-to-trade-gold/">什麼時間交易黃金最好？亞洲、倫敦、紐約盤（台北／香港時間）</a><a href="/zh-hant/learn/how-to-read-a-gold-trading-plan/">今日黃金分析怎麼看？教你讀懂每日交易計畫</a><a href="/zh-hant/learn/how-much-to-risk-per-trade-gold/">交易黃金每筆該承擔多少風險？</a></div><div class="fcol"><p class="fh">新聞與金價</p><a href="/zh-hant/learn/how-cpi-affects-gold/">美國 CPI 如何影響金價？</a><a href="/zh-hant/learn/how-nfp-affects-gold/">美國非農就業（NFP）如何影響黃金？</a><a href="/zh-hant/learn/gold-and-the-us-dollar/">為什麼黃金常和美元反向走？</a></div><div class="fcol"><p class="fh">看懂圖表</p><a href="/zh-hant/learn/gold-support-and-resistance/">今日黃金關鍵支撐與壓力怎麼找？</a></div><div class="fcol"><p class="fh">NEXUS CORE</p><a href="/zh-hant/today/">每日黃金計畫</a><a href="/zh-hant/track-record/2026-11/">成績紀錄</a><a href="/zh-hant/track-record/2026-11/#method">評分方式</a><a href="/zh-hant/signals/">訊號（候補名單）</a><a id="s-tg" class="js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">Telegram 頻道</a><a id="s-x" href="https://x.com/XAU_CRYPTO" target="_blank" rel="noopener noreferrer">X</a><a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">YouTube</a></div></div>
+    <a class="f-all" href="/zh-hant/learn/">所有問答<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="legal">
+      <p class="fh">免責聲明與條款摘要</p>
+      <p>僅供參考，不構成投資建議。使用 NEXUS CORE（網站、App、通知、Telegram、X 與 YouTube 頻道）即表示您同意以下主要條款：</p>
+      <ul><li><b>NEXUS CORE 並非券商、基金，亦非證券投資顧問。</b> 本站不保管用戶資金，也不代任何人交易。</li><li><b>本站獨立運作。</b> 不收取任何券商、交易平台或自營交易公司的佣金、返佣或介紹費，亦不推薦任何券商。</li><li>計畫、圖表、文章與通知均為一般市場分析，僅供資訊與學習之用，不構成投資建議、個人化推薦或買賣要約，也未考量您的個人狀況。</li><li>計畫以 AI 工具依固定書面規則產出，可能有誤、延遲或不完整；所顯示的價格與時間亦可能延遲。</li><li><b>成績為假設結果。</b> 依公開規則，以 15 分鐘 K 線對每個已發布區域自動計算，並非實盤交易，未計入點差、手續費、隔夜利息、滑價與成交延遲。</li><li>不保證獲利。過去績效（無論實際或假設）不代表未來結果。</li><li>交易決定由您自行負責，並請遵守所在地法規。本站內容不適用於任何依法不得接收此類內容之地區。</li><li>因使用本站內容所生之任何損失或損害（包括技術故障、資料錯誤或市場狀況所致者），NEXUS CORE 概不負責。</li></ul>
+      <p class="fh">風險警語</p>
+      <p>透過差價合約（CFD）、期貨或其他槓桿商品交易黃金相當複雜，且有快速虧損的高度風險。槓桿可能對您不利，多數散戶 CFD 帳戶處於虧損，您可能損失全部入金。請僅以可承受損失的資金交易，並確認您了解這些商品的運作方式。如有疑問，請諮詢獨立且具合法執照的財務顧問。投資有風險，請審慎評估。</p>
+      <p>注意：以上僅為摘要，完整的<a href="/zh-hant/terms/">使用條款</a>與<a href="/zh-hant/risk-disclosure/">風險揭露</a>適用於您對 NEXUS CORE 的使用。</p>
     </div>
-    <div class="foot-row">
-      <span class="muted">© 2026 NEXUS CORE AI</span>
-      <nav class="social" aria-label="Social">
-        <a id="s-tg" class="js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a id="s-x" href="https://x.com/XAU_CRYPTO" target="_blank" rel="noopener noreferrer">X</a>
-        <a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">YouTube</a>
-      </nav>
-    </div>
+    <div class="foot-row"><span>© 2026 NEXUS CORE. 版權所有。</span><nav class="fnav" aria-label="Legal"><a href="/zh-hant/terms/">使用條款</a><a href="/zh-hant/privacy/">隱私權政策</a><a href="/zh-hant/risk-disclosure/">風險揭露</a><a href="/zh-hant/track-record/2026-11/#method">評分方式</a></nav></div>
   </div>
 </footer>
 
@@ -213,6 +203,6 @@
 </div>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nexuscore.trade/#org","name":"NEXUS CORE AI","url":"https://nexuscore.trade/","logo":{"@type":"ImageObject","url":"https://nexuscore.trade/assets/icon-512.png","width":512,"height":512},"sameAs":["https://t.me/nexuscorefx","https://x.com/XAU_CRYPTO","https://www.youtube.com/@nexuscorefx"]},{"@type":"WebSite","@id":"https://nexuscore.trade/#website","name":"NEXUS CORE","url":"https://nexuscore.trade/","publisher":{"@id":"https://nexuscore.trade/#org"},"inLanguage":["en","ar","vi","zh-Hant"],"description":"Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong, refreshed before the Asia, London and New York sessions, every plan graded in public."},{"@type":"Article","@id":"https://nexuscore.trade/zh-hant/plan/2026-11-13-newyork/#plan","headline":"黃金計畫 11月13日（週五）, 紐約盤前計畫: 雙向, 傾向 偏空 | XAUUSD | NEXUS CORE","description":"雙向，反彈至 3901.6⁠–⁠3914 偏空；PPI 定方向，關鍵 3852.6 / 3948.8。 主要區域: 3901.6–3914. 本計畫的結果: 達到目標 1 +0.62R.","image":["https://nexuscore.trade/data/charts/2026-11-13-1930-en.png"],"datePublished":"2026-11-13T19:50:00+07:00","dateModified":"2026-11-13T22:00:00+00:00","inLanguage":"zh-Hant","author":{"@id":"https://nexuscore.trade/#org"},"publisher":{"@id":"https://nexuscore.trade/#org"},"mainEntityOfPage":"https://nexuscore.trade/zh-hant/plan/2026-11-13-newyork/","isPartOf":{"@id":"https://nexuscore.trade/#website"},"about":{"@type":"Thing","name":"Gold (XAUUSD)"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"NEXUS CORE","item":"https://nexuscore.trade/zh-hant/"},{"@type":"ListItem","position":2,"name":"成績紀錄 2026年11月","item":"https://nexuscore.trade/zh-hant/track-record/2026-11/"},{"@type":"ListItem","position":3,"name":"11月13日（週五）, 紐約盤","item":"https://nexuscore.trade/zh-hant/plan/2026-11-13-newyork/"}]}]}</script>
-<script src="/app.js?v=20261117a"></script>
+<script src="/app.js?v=20261117b"></script>
 </body>
 </html>

@@ -6,7 +6,9 @@
 Reads template.html + data/latest.json + data/plans/*.json + data/grades.json and the texts in app.js, then writes
   data/plans/<date>-<edition>.json      – archive copy of latest.json (never edited by hand)
   data/history.json                     – every plan with its grade (generated)
-  index.html (EN), ar/index.html, vi/index.html, today/ (+ ar/, vi/)   – latest plan
+  index.html (EN), ar/, vi/, zh-hant/                                  – home page (intro + today's plan preview)
+  today/ (+ ar/today/, vi/today/, zh-hant/today/)                   – latest plan with tabs
+  <lang>/terms/, <lang>/privacy/, <lang>/risk-disclosure/           – legal pages (texts in tools/site_copy.py)
   <en|ar|vi>/plan/<date>-<asia|london|newyork>/index.html             – one page per plan
   <en|ar|vi>/track-record/<yyyy-mm>/index.html                        – monthly track record
   <en|ar|vi>/signals/index.html                                       – Signals (members only) + waitlist
@@ -14,6 +16,8 @@ Reads template.html + data/latest.json + data/plans/*.json + data/grades.json an
 app.js still runs on top for visitors (local time, alerts, email). Run after every data change.
 """
 import glob, html, json, os, re, subprocess, sys, datetime as dt
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from site_copy import COPY, UPDATED
 from zoneinfo import ZoneInfo
 ZoneInfoNY = ZoneInfo('America/New_York')
 
@@ -46,7 +50,7 @@ SITE_DESC = {
     'en': 'Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong, refreshed before the Asia, London and New York sessions, every plan graded in public.',
     'ar': 'خطة مجانية للذهب (XAUUSD) مبنية بالذكاء الاصطناعي: مناطق رئيسية وسيناريوهات ومستوى إلغاء الفكرة، تُحدَّث قبل جلسات آسيا ولندن ونيويورك وتُقيَّم كل خطة علنًا.',
     'vi': 'Plan vàng (XAUUSD) miễn phí do AI lập: vùng giá chính, kịch bản và mốc cho biết nhận định sai, cập nhật trước phiên Á, Âu và Mỹ, mọi plan được chấm công khai.',
-    'zh-hant': '免費的 AI 輔助黃金（XAUUSD）交易計畫：關鍵區域、情境推演與觀點失效價位——於亞洲、倫敦、紐約盤前更新，每份計畫皆公開評分。',
+    'zh-hant': '免費的 AI 輔助黃金（XAUUSD）交易計畫：關鍵區域、情境推演與觀點失效價位，於亞洲、倫敦、紐約盤前更新，每份計畫皆公開評分。',
 }
 SAME_AS = ['https://t.me/nexuscorefx', 'https://x.com/XAU_CRYPTO', 'https://www.youtube.com/@nexuscorefx']
 
@@ -111,7 +115,10 @@ def tidy(s, lang):
 def L(o, lang):
     if o is None: return ''
     if isinstance(o, str): return tidy(o, lang)
-    return tidy(o.get('zh' if lang == 'zh-hant' else lang) or o.get('en') or o.get('vi') or '', lang)
+    s = tidy(o.get('zh' if lang == 'zh-hant' else lang) or o.get('en') or o.get('vi') or '', lang)
+    # Arabic: keep price ranges left to right inside the sentence (3912–3932.1, not 3932.1–3912), same as app.js
+    if lang == 'ar': s = re.sub(r'(\d[\d.,:]*)\s*[–-]\s*(\d[\d.,:]*)', '\u2066\\1–\\2\u2069', s)
+    return s
 
 
 def fmt(n, lang):
@@ -211,6 +218,9 @@ def plan_html(doc, p, lang):
     doc = fill(doc, 'bias-val', esc(bias_label(p, lang)))
     doc = fill(doc, 'day-type', esc(L(p.get('day_type'), lang)))
     doc = fill(doc, 'headline', esc(L(p.get('headline'), lang)))
+    sc0 = (p.get('scenarios') or [None])[0]
+    doc = fill(doc, 'main-chip', esc(f"{t(lang, 'main')} {sc0['prob']}%") if sc0 else '')
+    if sc0: doc = doc.replace('class="mchip" id="main-chip"', f'class="mchip {side_cls(sc0["side"])}" id="main-chip"', 1)
     keys, mz = [], p.get('main_zone')
     if mz: keys.append((t(lang, 'main_zone') + par(t(lang, mz['side']), lang), rng(mz['lo'], mz['hi'], lang)))
     if p.get('targets'): keys.append((t(lang, 'target') + ' ' + p['targets'][0]['label'], rng(p['targets'][0]['lo'], p['targets'][0]['hi'], lang)))
@@ -253,7 +263,8 @@ def plan_html(doc, p, lang):
     nw = ''.join(f'<div class="row news-row"><span class="k"><span class="imp {esc(n.get("impact", "low"))}"></span><span>{esc(L(n["text"], lang))}</span></span>'
                  f'<span class="v">{esc(n.get("time", ""))} {esc(VN_TZ_LABEL[lang]) if " " in str(n.get("time", "")) else ""}</span></div>' for n in p.get('news') or [])
     doc = fill(doc, 'news', nw)
-    doc = fill(doc, 'next', f'<strong>{esc(t(lang, "next"))}</strong><span>{esc(L(p.get("next_update"), lang))}</span>')
+    doc = fill(doc, 'next', f'<span><strong>{esc(t(lang, "next"))}:</strong> <span id="next-v">{esc(L(p.get("next_update"), lang))}</span></span>'
+                            f'<a href="#cta">{esc(C(lang, "next_alert"))}</a>')
     return doc
 
 
@@ -302,6 +313,10 @@ def plan_path(lang, k): return f"{PFX[lang]}/plan/{k[:10]}-{SESSION[k[11:]]}/"
 def track_path(lang, ym): return f"{PFX[lang]}/track-record/{ym}/"
 def signals_path(lang): return f"{PFX[lang]}/signals/"
 def learn_index_path(lang): return f"{PFX[lang]}/learn/"
+def today_path(lang): return '/today/' if lang == 'en' else f"{PFX[lang]}/today/"
+LEGAL = {'terms': 'terms', 'privacy': 'privacy', 'risk': 'risk-disclosure'}
+def legal_path(lang, kind): return f"{PFX[lang]}/{LEGAL[kind]}/"
+def C(lang, k): return COPY[lang][k]
 def learn_path(lang, slug): return f"{PFX[lang]}/learn/{slug}/"
 def move_path(lang, m): return f"{PFX[lang]}/why-gold-moved/{m['date']}-{m['tag']}/"
 
@@ -415,16 +430,17 @@ def shell(lang, kind, paths):
     doc = read('template.html')
     doc = (doc.replace('{{LANG}}', HL[lang]).replace('{{DIR}}', 'rtl' if lang == 'ar' else 'ltr').replace('{{HOME}}', PATH[lang])
            .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{KIND}}', kind)
-           .replace('{{LEARN}}', learn_home(lang)))
+           .replace('{{LEARN}}', learn_home(lang)).replace('{{TODAY}}', today_path(lang)).replace('{{FOOTER}}', footer_html(lang)))
+    doc = re.sub(r'\{\{C:(\w+)\}\}', lambda m: esc(COPY[lang][m.group(1)]), doc)
     for k, v in T[lang].items():
         if isinstance(v, str):
             doc = re.sub(r'(data-i18n="%s"[^>]*>)(</)' % re.escape(k), lambda m: m.group(1) + esc(v) + m.group(2), doc)
     for l in LANGS:
         doc = re.sub(r'href="[^"]*"( data-lang="%s")' % l, lambda m: f'href="{paths[l]}"' + m.group(1), doc, count=1)
     doc = re.sub(r'(<a role="button" href="[^"]*" data-lang="%s")' % lang, r'\1 aria-pressed="true" aria-current="page"', doc)
-    tab = {'home': 'plan', 'plan': 'plan', 'track': 'track', 'signals': 'signals', 'learn': 'learn', 'move': 'learn'}[kind]
-    doc = doc.replace(f' data-tab="{tab}"', f' aria-current="page" data-tab="{tab}"', 1)
-    if kind != 'home':
+    tab = {'home': None, 'today': 'plan', 'plan': 'plan', 'track': 'track', 'signals': 'signals', 'learn': 'learn', 'move': 'learn', 'legal': None}[kind]
+    if tab: doc = doc.replace(f' data-tab="{tab}"', f' aria-current="page" data-tab="{tab}"', 1)
+    if kind not in ('home', 'today'):
         doc = doc.replace('<span class="live" id="live">', '<span class="live" id="live" hidden>', 1)
     return doc
 
@@ -581,24 +597,60 @@ def plan_nav(k, lang):
     if i > 0: links.append(f'<a class="btn alt" href="{plan_path(lang, KEYS[i-1])}" rel="prev">{esc(t(lang, "prev_plan"))}</a>')
     if i + 1 < len(KEYS): links.append(f'<a class="btn alt" href="{plan_path(lang, KEYS[i+1])}" rel="next">{esc(t(lang, "next_plan"))}</a>')
     links.append(f'<a class="btn alt" href="{track_path(lang, k[:7])}">{esc(t(lang, "all_month"))}</a>')
-    links.append(f'<a class="btn alt" href="{PATH[lang]}">{esc(t(lang, "today_plan"))}</a>')
+    links.append(f'<a class="btn alt" href="{today_path(lang)}">{esc(t(lang, "today_plan"))}</a>')
     return ''.join(links)
 
 
 # ---------- pages ----------
 
-def home_page(lang):
+ARROW = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+TICK = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+CROSS = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15 9-6 6M9 9l6 6"/></svg>'
+SHIELD = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-4z"/><path d="m9 12 2 2 4-4"/></svg>'
+FEAT_ICONS = ['<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/>', '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 4v16"/>',
+              '<circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>']
+
+
+def all_trades(keys=None):
+    """Every zone price reached = one trade, same list and pip maths as the Track Record page. Returns (key, zone, pips)."""
+    out = []
+    for k in (KEYS if keys is None else keys):
+        for z in counted_zones(grade_of(k)):
+            if z.get('void') is None or z.get('edge') is None or z.get('r') is None: continue
+            out.append((k, z, round(z['r'] * abs(z['void'] - z['edge']) * 10)))
+    return out
+
+
+def signed_pips(pp, lang): return ('+' if pp > 0 else '') + pips(pp / 10, lang).split(' ')[0]
+
+
+def ed_time_label(p, lang):
+    return f"{t(lang, 'ed').get(p['edition'], p['edition'])}, {C(lang, 'published')} {updated_dt(p):%H:%M} {VN_TZ_LABEL[lang]}"
+
+
+def today_page(lang):
+    """The latest plan with tabs (was the home page until 17/11/2026). Canonical address: /today/."""
     k = key_of(P)
-    doc = shell(lang, 'home', PATH)
-    doc = doc.replace('<body data-page="home">', f'<body data-page="home" data-plan="{k}">', 1)
+    paths = {l: today_path(l) for l in LANGS}
+    doc = shell(lang, 'today', paths)
+    doc = doc.replace('<body data-page="today">', f'<body data-page="today" data-plan="{k}">', 1)
     doc = plan_html(doc, P, lang)
     doc = unhide(doc, 'plan-link')
     doc = doc.replace('<a class="permalink" id="plan-link" href="#"', f'<a class="permalink" id="plan-link" href="{plan_path(lang, k)}"', 1)
     doc = fill(doc, 'plan-link', esc(t(lang, 'permalink')) + ' →' if lang != 'ar' else esc(t(lang, 'permalink')))
     if grade_of(k):
         doc = unhide(doc, 'result'); doc = fill(doc, 'result', result_block(k, lang))
+    nums = record_numbers()
+    if nums['TR_TRADES'] != '0':
+        doc = unhide(doc, 'proof')
+        doc = doc.replace('<a class="proof" id="proof" href="#"', f'<a class="proof" id="proof" href="{track_path(lang, CUR_MONTH)}"', 1)
+        doc = fill(doc, 'proof', '<span class="pf">'
+                   f'<span><b class="num wr" dir="ltr">{esc(nums["TR_WINRATE"])}</b> {esc(C(lang, "proof_wr"))}</span>'
+                   f'<span><b class="num {"up" if nums["TR_NETPIPS"].startswith("+") else "down"}" dir="ltr">{esc(nums["TR_NETPIPS"])}</b> {esc(C(lang, "proof_net"))}</span>'
+                   f'<span><b class="num" dir="ltr">{esc(nums["TR_TRADES"])}</b> {esc(C(lang, "proof_tr"))}</span></span>'
+                   f'<span class="go">{esc(C(lang, "proof_go"))}</span>')
     title, desc, img, upd = plan_title(P, lang), plan_desc(P, lang), img_for(P, lang), updated_dt(P)
-    url = SITE + PATH[lang]
+    url = SITE + paths[lang]
     mz = P.get('main_zone')
     art = {'@type': 'Article', '@id': url + '#plan', 'headline': title[:110], 'description': desc, 'image': [img],
            'datePublished': upd.isoformat(), 'dateModified': upd.isoformat(), 'inLanguage': HL[lang],
@@ -609,7 +661,147 @@ def home_page(lang):
     if P.get('invalidation'): qa.append((FAQ[lang][2], L(P['invalidation'], lang)))
     faq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': HL[lang], 'mainEntity': [
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a + ' ' + t(lang, 'disclaimer').split('.')[0] + '.'}} for q, a in qa]}
-    return finish(doc, head_tags(lang, title, desc, PATH, img, upd), ld(art, faq))
+    bc = crumbs(lang, [('NEXUS CORE', PATH[lang]), (t(lang, 'today_plan'), paths[lang])])
+    return finish(doc, head_tags(lang, title, desc, paths, img, upd), ld(art, faq, bc))
+
+
+def home_page(lang):
+    """Intro page: what NEXUS CORE is, today's plan in short, the record, why a plan helps. Numbers are live."""
+    c = COPY[lang]
+    p, k = P, key_of(P)
+    d0 = dt.date.fromisoformat(p['date'])
+    doc = shell(lang, 'home', PATH)
+    doc = doc.replace('<body data-page="home">', f'<body data-page="home" data-plan="{k}">', 1)
+    nums = record_numbers()
+    tp, tr = today_path(lang), track_path(lang, CUR_MONTH)
+    side = side_of(p)
+    first = min((x for x in KEYS if grade_of(x)), default=None)
+    since = day_label(dt.date.fromisoformat(first[:10]), lang).split(', ')[-1].split('，')[-1].split('، ')[-1] if first else ''
+    if lang == 'zh-hant' and first: since = f"{int(first[5:7])}月{int(first[8:10])}日"
+    netcls = 'up' if nums['TR_NETPIPS'].startswith('+') else 'down' if nums['TR_NETPIPS'].startswith('-') else ''
+    tiles = ''
+    if nums['TR_TRADES'] != '0':
+        tiles = (f'<div class="h-tiles"><div class="h-tile"><div class="v num wr" dir="ltr">{esc(nums["TR_WINRATE"])}</div><div class="k">{esc(c["tile_wr"].format(since=since))}</div></div>'
+                 f'<div class="h-tile"><div class="v num {netcls}" dir="ltr">{esc(nums["TR_NETPIPS"])} {pip_word(2, lang)}</div><div class="k">{esc(c["tile_net"])}</div></div>'
+                 f'<div class="h-tile"><div class="v num" dir="ltr">{esc(nums["TR_TRADES"])}</div><div class="k">{esc(c["tile_tr"])}</div></div></div>'
+                 f'<p class="h-note">{esc(c["tiles_note"])}</p>')
+    hero = (f'  <section class="h-hero bleed"><div class="h-in">\n'
+            f'    <div class="h-chips"><span class="c0">{esc(c["chip"])}</span><span class="c1" id="hp-ed">{esc(t(lang, "ed").get(p["edition"], ""))}, <span class="num" dir="ltr">{updated_dt(p):%H:%M} {esc(VN_TZ_LABEL[lang])}</span></span></div>\n'
+            f'    <h1 class="h-h1">{esc(c["h1"][0])}<br><span class="gold-tx">{esc(c["h1"][1])}</span></h1>\n'
+            f'    <p class="h-lede">{esc(c["lede"])}</p>\n'
+            f'    <div class="h-btns"><a class="b-navy" href="{tp}">{esc(c["btn_plan"])}{ARROW}</a><a class="b-ghost" href="{tr}">{esc(c["btn_record"])}</a></div>\n'
+            f'    {tiles}\n'
+            f'    <div class="h-checks">{"".join(f"<span>{TICK}{esc(x)}</span>" for x in c["checks"])}</div>\n'
+            f'  </div></section>\n')
+    mz = p.get('main_zone')
+    src = chart_for(p, lang)
+    pv = (f'  <section class="h-sec" id="today-preview">\n'
+          f'    <div class="h-row"><div><p class="eyebrow">{esc(c["plan_eyebrow"])}</p><h2 class="h-h2" id="hp-day">{esc(day_label(d0, lang))}</h2></div>'
+          f'<span class="muted" id="hp-pub" data-tpl="{{ed}}, {esc(c["published"])} {{time}}">{esc(ed_time_label(p, lang))}</span></div>\n'
+          f'    <div class="sum">\n'
+          f'      <div class="hero card {side_cls(side)}" id="hp-card"><p class="eyebrow">{esc(c["bias_k"])}</p><p class="bias-val" id="hp-bias">{esc(bias_label(p, lang))}</p>'
+          f'<p class="headline" id="hp-headline">{esc(L(p.get("headline"), lang))}</p>'
+          f'<p class="bias-sub" id="hp-type">{esc(L(p.get("day_type"), lang))}</p>'
+          f'<div class="hero-keys" id="hp-keys">{home_keys(p, lang)}</div>'
+          f'<a class="b-navy" href="{tp}">{esc(c["open_plan"])}{ARROW}</a></div>\n'
+          + (f'      <a class="chart-card" href="{tp}"><picture>'
+             + (f'<source media="(max-width: 640px)" srcset="/{src[:-4]}-m.png" width="1200" height="1500">' if os.path.isfile(os.path.join(ROOT, src[:-4] + '-m.png')) else '')
+             + f'<img src="/{src}" alt="{esc(c["chart_alt"])}" width="1800" height="1110" loading="lazy"></picture></a>\n' if src else '')
+          + '    </div>\n  </section>\n')
+    rows = []
+    for kk, z, pp in list(reversed(all_trades()))[:4]:
+        when = f"{day_label(dt.date.fromisoformat(kk[:10]), lang)}, {t(lang, 'ed_short')[kk[11:]]}"
+        what = f"{t(lang, 'tr_entry')} <span class=\"num\" dir=\"ltr\">{esc(fmt(z['edge'], lang))}</span>, {esc(t(lang, 'res_' + z['result']))}"
+        chip = (f'<span class="chip bad">{esc(t(lang, "tr_sl"))}</span>' if z['result'] == 'void' else
+                f'<span class="chip {"good" if pp > 0 else "bad" if pp < 0 else "flat"} num" dir="ltr">{esc(signed_pips(pp, lang))} {pip_word(pp, lang)}</span>')
+        rows.append(f'<a class="h-trade" href="{plan_path(lang, kk)}#result"><span class="l"><span class="w"><span class="pill {side_cls(z["side"])}">{esc(t(lang, z["side"]))}</span> {esc(when)}</span>'
+                    f'<span class="s">{what}</span></span>{chip}</a>')
+    feats = ''.join(f'<div class="h-feat"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{FEAT_ICONS[i]}</svg></span>'
+                    f'<div><b>{esc(a)}</b><p>{esc(b)}</p></div></div>' for i, (a, b) in enumerate(c['feats']))
+    rec = (f'  <section class="h-band bleed" id="record"><div class="h-split">\n'
+           + (f'    <div class="h-list"><div class="hl-top"><b>{esc(c["rec_head"])}</b><span class="ok">{SHIELD}{esc(c["auto"])}</span></div>{"".join(rows)}</div>\n' if rows else '')
+           + f'    <div class="h-why"><h2 class="h-h2">{esc(c["rec_h2"][0])} <span class="gold-tx">{esc(c["rec_h2"][1])}</span></h2>{feats}'
+           f'<a class="b-navy" href="{tr}">{esc(c["open_record"])}{ARROW}</a></div>\n  </div></section>\n')
+    pains = (f'  <section class="h-sec"><h2 class="h-h2">{esc(c["pain_h2"])}</h2>\n'
+             f'    <div class="h-pains">{"".join(f"<div>{CROSS}<span>{esc(x)}</span></div>" for x in c["pains"])}</div>\n'
+             f'    <p class="h-punch">{esc(c["pain_end"][0])} <span class="gold-tx">{esc(c["pain_end"][1])}</span></p>\n  </section>\n')
+    cmp_ = (f'  <section class="h-sec"><h2 class="h-h2">{esc(c["cmp_h2"])}</h2><p class="h-sub">{esc(c["cmp_sub"])}</p>\n'
+            f'    <div class="h-cmp"><div class="a"><p>{esc(c["cmp_a_t"])}</p>{"".join(f"<div>{esc(x)}</div>" for x in c["cmp_a"])}</div>'
+            f'<div class="b"><p>{esc(c["cmp_b_t"])}</p>{"".join(f"<div>{TICK}<span>{esc(x)}</span></div>" for x in c["cmp_b"])}</div></div>\n  </section>\n')
+    nb = (f'  <section class="h-sec"><h2 class="h-h2">{esc(c["num_h2"])}</h2>\n'
+          f'    <div class="h-nums">{"".join(f"<div><b>{esc(v.format(plans=nums["TR_PLANS"]))}</b><span>{esc(kk)}</span></div>" for v, kk in c["nums"])}</div>\n  </section>\n')
+    doc = set_view(doc, '  <div id="view-home">\n' + hero + pv + rec + pains + cmp_ + nb + '  </div>')
+    title, desc = c['home_title'], c['home_desc']
+    url = SITE + PATH[lang]
+    page = {'@type': 'WebPage', '@id': url, 'url': url, 'name': title, 'description': desc, 'inLanguage': HL[lang],
+            'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'},
+            'primaryImageOfPage': {'@type': 'ImageObject', 'url': img_for(p, lang)}}
+    return finish(doc, head_tags(lang, title, desc, PATH, img_for(p, lang), og='website'), ld(page))
+
+
+def home_keys(p, lang):
+    """Key numbers in the home preview: main zone, Target 1, the first watch level (else the expected range)."""
+    ks, mz = [], p.get('main_zone')
+    if mz: ks.append((t(lang, 'main_zone') + par(t(lang, mz['side']), lang), rng(mz['lo'], mz['hi'], lang)))
+    if p.get('targets'): ks.append((t(lang, 'target') + ' ' + p['targets'][0]['label'], rng(p['targets'][0]['lo'], p['targets'][0]['hi'], lang)))
+    if p.get('watch'): ks.append((t(lang, 'watch'), rng(p['watch'][0]['lo'], p['watch'][0]['hi'], lang)))
+    elif p.get('range'): ks.append((t(lang, 'range'), rng(p['range']['lo'], p['range']['hi'], lang)))
+    return ''.join(f'<div class="key"><span class="k">{esc(k)}</span><span class="v num" dir="ltr">{esc(v)}</span></div>' for k, v in ks)
+
+
+def footer_html(lang):
+    c = COPY[lang]
+    ql = lang if lang in LEARN_LANGS else 'en'
+    cols = []
+    for head, slugs in c['f_groups']:
+        links = ''.join(f'<a href="{learn_path(ql, s)}">{esc(LEARN[ql][s]["q"])}</a>' for s in slugs if s in LEARN[ql])
+        if links: cols.append(f'<div class="fcol"><p class="fh">{esc(head)}</p>{links}</div>')
+    fl = c['f_links']
+    tg = 'https://t.me/nexuscoreArabic' if lang == 'ar' else 'https://t.me/nexuscorefx'
+    xl = 'https://x.com/froggtrading' if lang == 'ar' else 'https://x.com/XAU_CRYPTO'
+    cols.append(f'<div class="fcol"><p class="fh">{esc(c["f_nexus"])}</p>'
+                f'<a href="{today_path(lang)}">{esc(fl["plan"])}</a><a href="{track_path(lang, CUR_MONTH)}">{esc(fl["record"])}</a>'
+                f'<a href="{track_path(lang, CUR_MONTH)}#method">{esc(fl["grading"])}</a><a href="{signals_path(lang)}">{esc(fl["signals"])}</a>'
+                f'<a id="s-tg" class="js-tg" href="{tg}" target="_blank" rel="noopener noreferrer">{esc(fl["tg"])}</a>'
+                f'<a id="s-x" href="{xl}" target="_blank" rel="noopener noreferrer">{esc(fl["x"])}</a>'
+                f'<a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">{esc(fl["yt"])}</a></div>')
+    names = c['legal_names']
+    lk = lambda kind: f'<a href="{legal_path(lang, kind)}">{esc(names[kind])}</a>'
+    note = esc(c['f_note']).replace('{terms}', lk('terms')).replace('{risk}', lk('risk'))
+    terms = ''.join(f'<li>{("<b>" + esc(a) + "</b> ") if a else ""}{esc(b)}</li>' for a, b in c['f_terms'])
+    return (f'<footer class="foot">\n  <div class="wrap foot-in">\n'
+            f'    <div class="fl">{"".join(cols)}</div>\n'
+            f'    <a class="f-all" href="{learn_home(lang)}">{esc(c["f_all"])}{ARROW}</a>\n'
+            f'    <div class="legal">\n      <p class="fh">{esc(c["f_legal_h"])}</p>\n      <p>{esc(c["f_intro"])}</p>\n      <ul>{terms}</ul>\n'
+            f'      <p class="fh">{esc(c["f_risk_h"])}</p>\n      <p>{esc(c["f_risk"])}</p>\n      <p>{note}</p>\n    </div>\n'
+            f'    <div class="foot-row"><span>{esc(c["f_copy"])}</span><nav class="fnav" aria-label="Legal">{lk("terms")}{lk("privacy")}{lk("risk")}'
+            f'<a href="{track_path(lang, CUR_MONTH)}#method">{esc(fl["grading"])}</a></nav></div>\n'
+            f'  </div>\n</footer>')
+
+
+def legal_page(lang, kind):
+    c = COPY[lang]
+    x = c['legal'][kind]
+    paths = {l: legal_path(l, kind) for l in LANGS}
+    doc = shell(lang, 'legal', paths)
+    name = c['legal_names'][kind]
+    body = []
+    for h, items in x['sections']:
+        body.append(f'<h2 class="ah">{esc(h)}</h2>')
+        for it in items:
+            body.append('<ul>' + ''.join(f'<li>{esc(li)}</li>' for li in it) + '</ul>' if isinstance(it, list) else f'<p>{esc(it)}</p>')
+    others = ''.join(f'<a class="btn alt" href="{legal_path(lang, o)}">{esc(c["legal_names"][o])}</a>' for o in LEGAL if o != kind)
+    view = (f'  <section id="view-legal">\n    <div class="plan-head"><div><p class="eyebrow mx"><span>{esc(c["legal_eyebrow"])}</span>'
+            f'<span>{esc(c["legal_updated"])} {esc(UPDATED[lang])}</span></p><h1>{esc(name)}</h1><p class="lede">{esc(x["lede"])}</p></div></div>\n'
+            f'    <article class="card prose legal-doc">{"".join(body)}</article>\n'
+            f'    <nav class="pnav">{others}</nav>\n  </section>')
+    doc = set_view(doc, view)
+    doc = doc.replace('<section class="cta-box" id="cta"', '<section class="cta-box" id="cta" hidden', 1)
+    title = f"{name} | NEXUS CORE"
+    url = SITE + paths[lang]
+    page = {'@type': 'WebPage', '@id': url, 'name': name, 'description': x['desc'], 'inLanguage': HL[lang], 'isPartOf': {'@id': SITE + '/#website'}}
+    return finish(doc, head_tags(lang, title, x['desc'], paths, SITE + '/assets/logo-banner.png', og='website'),
+                  ld(page, crumbs(lang, [('NEXUS CORE', PATH[lang]), (name, paths[lang])])))
 
 
 def plan_page(k, lang):
@@ -698,7 +890,7 @@ def track_page(ym, lang):
     nav = []
     if i > 0: nav.append(f'<a class="btn alt" href="{track_path(lang, MONTHS[i-1])}">{esc(t(lang, "tr_prev_m"))}</a>')
     if i + 1 < len(MONTHS): nav.append(f'<a class="btn alt" href="{track_path(lang, MONTHS[i+1])}">{esc(t(lang, "tr_next_m"))}</a>')
-    nav.append(f'<a class="btn alt" href="{PATH[lang]}">{esc(t(lang, "today_plan"))}</a>')
+    nav.append(f'<a class="btn alt" href="{today_path(lang)}">{esc(t(lang, "today_plan"))}</a>')
     h1 = f"{t(lang, 'tr_h1')} {month_label(ym, lang)}"
     body = (f'  <section id="view-track">\n    <div class="plan-head"><div><p class="eyebrow mx"><span>XAUUSD</span><span>NEXUS CORE</span></p><h1>{esc(t(lang, 'tr_h1'))} <span class="d">{esc(month_label(ym, lang))}</span></h1>'
             f'<p class="lede">{esc(t(lang, "tr_lede"))}</p></div></div>\n'
@@ -738,7 +930,7 @@ def signals_page(lang):
             f'            <button type="submit" class="btn solid wl-btn">{esc(t(lang, "wl_btn"))}</button>\n'
             f'          </form>\n          <p class="wl-msg" role="status" aria-live="polite"></p>\n'
             f'          <p class="wl-note muted">{esc(t(lang, "wl_privacy"))}</p>\n        </div>\n'
-            f'        <a class="card next" href="{PATH[lang]}"><strong>{esc(t(lang, "sg_free"))}</strong><span>{esc(t(lang, "sg_free_link"))}</span></a>\n'
+            f'        <a class="card next" href="{today_path(lang)}"><strong>{esc(t(lang, "sg_free"))}</strong><span>{esc(t(lang, "sg_free_link"))}</span></a>\n'
             f'      </div>\n    </div>\n  </section>')
     doc = set_view(doc, body)
     title = f"{t(lang, 'sg_h1')}: {t(lang, 'sg_soon')} | NEXUS CORE"
@@ -919,10 +1111,12 @@ def sitemap():
         return updated_dt(PLANS[k]).isoformat()
 
     url(PATH, updated_dt(P).isoformat(), 'hourly', '1.0')
+    url({l: today_path(l) for l in LANGS}, updated_dt(P).isoformat(), 'hourly', '0.9')
     for ym in reversed(MONTHS):
         ks = [k for k in KEYS if k.startswith(ym)]
         url({l: track_path(l, ym) for l in LANGS}, max((mod(k) for k in ks), default=None), 'daily', '0.8')
     url({l: signals_path(l) for l in LANGS}, None, 'monthly', '0.6')
+    for kind in LEGAL: url({l: legal_path(l, kind) for l in LANGS}, None, 'yearly', '0.3')
     for k in reversed(KEYS):
         url({l: plan_path(l, k) for l in LANGS}, mod(k), None, '0.7')
     for m in reversed(MOVES):
@@ -981,10 +1175,12 @@ def llms():
         for m in list(reversed(MOVES))[:10]:
             lines.append(f'- [{m["date"]}: {L(m["headline"], "en")}]({SITE}{move_path("en", m)}) ({m["change_pct"]:+}%)')
     lines += ['', '## Pages', '',
-              f'- [Today\'s gold plan (English)]({SITE}/): latest XAUUSD plan with chart, zones and scenarios',
-              f'- [خطة الذهب اليوم (العربية)]({SITE}/ar/): the same plan in Arabic',
-              f'- [Plan vàng hôm nay (Tiếng Việt)]({SITE}/vi/): the same plan in Vietnamese',
-              f'- [今日黃金計畫（繁體中文）]({SITE}/zh-hant/): the same plan in Traditional Chinese',
+              f'- [Home]({SITE}/): what NEXUS CORE is, today\'s plan in short and the live track record',
+              f'- [Today\'s gold plan (English)]({SITE}/today/): latest XAUUSD plan with chart, zones and scenarios',
+              f'- [خطة الذهب اليوم (العربية)]({SITE}/ar/today/): the same plan in Arabic',
+              f'- [Plan vàng hôm nay (Tiếng Việt)]({SITE}/vi/today/): the same plan in Vietnamese',
+              f'- [今日黃金計畫（繁體中文）]({SITE}/zh-hant/today/): the same plan in Traditional Chinese',
+              f'- [Terms of Use]({SITE}{legal_path("en", "terms")}), [Privacy Policy]({SITE}{legal_path("en", "privacy")}), [Risk Disclosure]({SITE}{legal_path("en", "risk")})',
               f'- [Track record]({SITE}{track_path("en", CUR_MONTH)}): every plan this month and how it played out',
               f'- [Signals]({SITE}{signals_path("en")}): members-only trade signals (waitlist)',
               f'- [Plan data (JSON)]({SITE}/data/latest.json): machine-readable latest plan',
@@ -1035,10 +1231,11 @@ if __name__ == '__main__':
     write('data/history.json', history_json())
     fill_learn()
     for lang in LANGS:
-        doc = home_page(lang)
-        write(('' if lang == 'en' else lang + '/') + 'index.html', doc)
-        # /today (bio links on TikTok/Instagram/YouTube) = same page; canonical stays on the language home
-        write(('' if lang == 'en' else lang + '/') + 'today/index.html', doc)
+        write(('' if lang == 'en' else lang + '/') + 'index.html', home_page(lang))
+        # /today = the latest plan with tabs (bio links on TikTok/Instagram/YouTube, X posts, alerts)
+        write(today_path(lang).strip('/') + '/index.html', today_page(lang))
+        for kind in LEGAL:
+            write(legal_path(lang, kind).strip('/') + '/index.html', legal_page(lang, kind))
         for k in KEYS:
             write(plan_path(lang, k).strip('/') + '/index.html', plan_page(k, lang))
         for ym in MONTHS:
@@ -1059,4 +1256,4 @@ if __name__ == '__main__':
     write('en/index.html', EN_ROOT)
     write('sitemap.xml', sitemap())
     write('llms.txt', llms())
-    print(f'built: home + today, {len(KEYS)} plan page(s) x{len(LANGS)}, {len(MONTHS)} track-record month(s) x{len(LANGS)}, signals x{len(LANGS)}, {'+'.join(str(len(LEARN[l])) for l in LEARN_LANGS)} learn page(s) live (en+ar+zh), {len(MOVES)} why-gold-moved x{len(LANGS)}, sitemap.xml, llms.txt –', P['date'], P['edition'])
+    print(f'built: home + today + legal x3, {len(KEYS)} plan page(s) x{len(LANGS)}, {len(MONTHS)} track-record month(s) x{len(LANGS)}, signals x{len(LANGS)}, {'+'.join(str(len(LEARN[l])) for l in LEARN_LANGS)} learn page(s) live (en+ar+zh), {len(MOVES)} why-gold-moved x{len(LANGS)}, sitemap.xml, llms.txt –', P['date'], P['edition'])

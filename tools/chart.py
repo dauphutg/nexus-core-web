@@ -10,6 +10,11 @@ larger text – shown on phones). Only closed H1 candles are drawn. No network a
 import json, sys, time, math, datetime as dt
 import matplotlib
 matplotlib.use('Agg')
+# site font (Be Vietnam Pro, SIL Open Font License) so charts match the website; falls back to DejaVu Sans
+import glob as _g, os as _os
+from matplotlib import font_manager as _fm
+for _f in _g.glob(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'fonts', '*.ttf')): _fm.fontManager.addfont(_f)
+matplotlib.rcParams['font.family'] = ['Be Vietnam Pro', 'DejaVu Sans']
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from PIL import Image

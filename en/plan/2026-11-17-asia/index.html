@@ -41,15 +41,21 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261117a">
-<script src="/theme.js?v=20261117a"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/style.css?v=20261117b">
+<script src="/theme.js?v=20261117b"></script>
 </head>
 <body data-page="plan">
 <a class="skip" href="#app" data-i18n="skip">Skip to content</a>
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="/"><img src="/assets/logo-banner.png" alt="NEXUS CORE" width="222" height="46"></a>
+    <nav class="tabs" aria-label="Main">
+      <a href="/today/" aria-current="page" data-tab="plan" data-i18n="tab_plan">Daily plan</a>
+      <a href="/en/track-record/2026-11/" data-tab="track" data-i18n="tab_history">Track record</a>
+      <a href="/en/learn/" data-tab="learn" data-i18n="tab_learn">Learn</a>
+      <a href="/en/signals/" data-tab="signals" data-i18n="tab_signals">Signals</a>
+    </nav>
     <div class="top-right">
       <span class="live" id="live" hidden><span class="dot"></span><span id="live-text">LIVE</span></span>
       <button type="button" class="theme" id="theme-btn" aria-label="Theme">
@@ -62,14 +68,9 @@
         <a role="button" href="/vi/plan/2026-11-17-asia/" data-lang="vi" lang="vi" hreflang="vi">VI</a>
         <a role="button" href="/zh-hant/plan/2026-11-17-asia/" data-lang="zh-hant" lang="zh-Hant" hreflang="zh-Hant">繁中</a>
       </div>
+      <a class="get-alerts" href="#cta">Get free alerts</a>
     </div>
   </div>
-  <nav class="wrap tabs" aria-label="Main">
-    <a href="/" aria-current="page" data-tab="plan" data-i18n="tab_plan">Daily plan</a>
-    <a href="/en/track-record/2026-11/" data-tab="track" data-i18n="tab_history">Track record</a>
-    <a href="/en/learn/" data-tab="learn" data-i18n="tab_learn">Learn</a>
-    <a href="/en/signals/" data-tab="signals" data-i18n="tab_signals">Signals</a>
-  </nav>
 </header>
 
 <main class="wrap" id="app">
@@ -79,7 +80,6 @@
       <div>
         <p class="eyebrow" id="plan-meta"><span>XAUUSD</span><span>Asia plan</span><span>08:40 GMT+7</span></p>
         <h1 id="plan-title">Gold plan <span class="d">Tue, Nov 17</span></h1>
-        <p class="lede" data-i18n="lede">AI-built game plan for gold (XAUUSD): key zones, scenarios and the level that proves the view wrong, refreshed before Asia, London and New York.</p>
         <a class="permalink" id="plan-link" href="#" hidden></a>
       </div>
       <div class="editions" id="editions" aria-label="Plan update times"><div class="ed on"><span class="k">Asia</span><span class="v num">07:00</span></div><div class="ed"><span class="k">London</span><span class="v num">13:45</span></div><div class="ed"><span class="k">New York</span><span class="v num">19:30</span></div></div>
@@ -90,74 +90,65 @@
       <p id="alert-text">High impact: US Retail Sales early in the New York session, no call on the outcome; avoid new positions within 15 minutes of the release and let the H4 close confirm direction afterwards. H4 is oversold, so a sharp rebound may come before the next leg down. The main zone is far away and may not be reached today.</p>
     </div>
 
-    <div class="hero card sell" id="bias-card">
-      <div class="hero-bias">
-        <p class="eyebrow" data-i18n="bias">Bias</p>
+    <div class="sum">
+      <div class="hero card sell" id="bias-card">
+        <div class="hero-top"><p class="eyebrow" data-i18n="bias">Bias</p><span class="mchip sell" id="main-chip">Main 50%</span></div>
         <p class="bias-val" id="bias-val">SELL</p>
+        <p class="headline" id="headline">SELL rallies into 3872⁠–⁠3901.4; main zone 3980.7⁠–⁠4000.7, void above 4004</p>
         <p class="bias-sub" id="day-type">Bearish higher timeframes, rebound-then-drop expected, US Retail Sales decides the New York branch</p>
+        <div class="hero-keys" id="hero-keys"><div class="key"><span class="k">Main zone (SELL)</span><span class="v num" dir="ltr">3980.7–4000.7</span></div><div class="key"><span class="k">Target T1</span><span class="v num" dir="ltr">3841.2</span></div><div class="key"><span class="k">Expected range</span><span class="v num" dir="ltr">3800–3936</span></div></div>
       </div>
-      <p class="headline" id="headline">SELL rallies into 3872⁠–⁠3901.4; main zone 3980.7⁠–⁠4000.7, void above 4004</p>
-      <div class="hero-keys" id="hero-keys"><div class="key"><span class="k">Main zone (SELL)</span><span class="v num" dir="ltr">3980.7–4000.7</span></div><div class="key"><span class="k">Target T1</span><span class="v num" dir="ltr">3841.2</span></div><div class="key"><span class="k">Expected range</span><span class="v num" dir="ltr">3800–3936</span></div></div>
+      <figure class="chart" id="chart-box">
+        <a id="chart-link" href="/data/charts/2026-11-17-0700-en.png" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" srcset="/data/charts/2026-11-17-0700-en-m.png" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" src="/data/charts/2026-11-17-0700-en.png" alt="XAUUSD H1, Gold plan Tue, Nov 17" loading="lazy" width="1800" height="1110"></picture></a>
+        <figcaption class="chart-hint" data-i18n="chart_hint">Tap the chart to view it full screen</figcaption>
+      </figure>
     </div>
 
-    <div class="card notify js-notify" id="notify" hidden>
-      <div class="notify-t"><strong data-i18n="nt_title">New-plan alerts</strong><span class="notify-sub"></span></div>
-      <button type="button" class="btn big notify-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2zM10 21h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="notify-btn-t"></span>
-      </button>
-      <div class="alt-ch">
-        <span class="muted" data-i18n="nt_alt">Works on every phone, including older iPhones:</span>
-        <a class="btn alt js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          <span data-i18n="nt_tg">Alerts on Telegram</span>
-        </a>
-        <a class="btn alt" href="#cta">
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          <span data-i18n="nt_mail">Alerts by email</span>
-        </a>
+    <div class="card result" id="result"><h2>How this plan played out</h2><div class="res-top"><span class="pill bad">Invalidated</span><span class="num r r-down" dir="ltr">-0.39R</span></div><div class="list"><div class="row"><span class="k">Graded window</span><span class="v">Tue, Nov 17 08:40 GMT+7 → Tue, Nov 17 13:49 GMT+7</span></div><div class="row"><span class="k">Followed until</span><span class="v">Tue, Nov 17 13:49 GMT+7</span></div><div class="row"><span class="k">High / low in window</span><span class="v num" dir="ltr">3886.9 / 3858.8</span></div></div><h3>Zones graded</h3><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3980.7–4000.7</span> (Main zone)</strong><span class="pill neutral">Zone not reached</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">Target 1: 3841.2; Invalidation level: 4004</p></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3872–3878.6</span> (B)</strong><span class="pill bad">Invalidated</span><span class="num r r-down" dir="ltr">-1R</span></div><p class="muted small">Zone reached: Tue, Nov 17 09:15 GMT+7; Decided at: Tue, Nov 17 12:30 GMT+7; Target 1: 3841.2; Invalidation level: 3882</p><div class="best"><span class="k">Max favourable move (MFE)</span><span class="v num" dir="ltr">+9.8 $, 98 pips (+1R std (1R = 10 $))</span></div></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3885.6–3901.4</span> (B)</strong><span class="pill neutral">Closed at session end</span><span class="num r r-up" dir="ltr">+0.61R</span></div><p class="muted small">Zone reached: Tue, Nov 17 12:30 GMT+7; Target 1: 3841.2; Invalidation level: 3904</p><div class="best"><span class="k">Max favourable move (MFE)</span><span class="v num" dir="ltr">+15.3 $, 153 pips (+1.5R std (1R = 10 $))</span></div></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3914–3932.1</span> (B)</strong><span class="pill neutral">Zone not reached</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">Target 1: 3841.2; Invalidation level: 3936</p></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3949.3–3969.8</span> (B)</strong><span class="pill neutral">Zone not reached</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">Target 1: 3841.2; Invalidation level: 3972</p></div><p class="muted small">Furthest move in the zone’s direction after it was reached, until invalidation or the daily close, shows how good the read was; it is not a trade result and is never added to R.</p><p class="small"><a href="/en/track-record/2026-11/#method">How plans are graded</a></p></div>
+
+    <div class="ptabs-bar">
+      <div class="ptabs" id="ptabs" role="tablist" aria-label="Plan details">
+        <button type="button" role="tab" id="t-scen" aria-controls="p-scen" data-p="scen">Scenarios</button>
+        <button type="button" role="tab" id="t-levels" aria-controls="p-levels" data-p="levels">Key levels</button>
+        <button type="button" role="tab" id="t-zones" aria-controls="p-zones" data-p="zones">Zones</button>
+        <button type="button" role="tab" id="t-context" aria-controls="p-context" data-p="context">Market context</button>
+        <button type="button" role="tab" id="t-news" aria-controls="p-news" data-p="news">News</button>
       </div>
     </div>
 
-    <div class="layout">
-      <div class="stack">
-        <figure class="chart b-chart" id="chart-box">
-          <a id="chart-link" href="/data/charts/2026-11-17-0700-en.png" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" srcset="/data/charts/2026-11-17-0700-en-m.png" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" src="/data/charts/2026-11-17-0700-en.png" alt="XAUUSD H1, Gold plan Tue, Nov 17" loading="lazy" width="1800" height="1110"></picture></a>
-          <figcaption class="chart-hint" data-i18n="chart_hint">Tap the chart to view it full screen</figcaption>
-        </figure>
-        <div class="blk b-zones">
-          <h2 data-i18n="zones">Zones on the chart</h2>
-          <div id="zones" class="stack-sm"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3980.7–4000.7</span></div><span class="s">Main zone: not touched and far away, may not be reached today; valid New York into Asia; void on an M15 close above 4004</span></div><span class="g">Key zone</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3872–3878.6</span></div><span class="s">Touched early in the day, weaker; valid in Asia / London; void on an M15 close above 3882</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3885.6–3901.4</span></div><span class="s">Tested several times recently; valid from Asia through London–New York; void on an M15 close above 3904</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3914–3932.1</span></div><span class="s">Not touched; valid London–New York (after the data) into Asia; void on an H1 close above 3936</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3949.3–3969.8</span></div><span class="s">Not touched and may not be reached; valid New York into Asia; void on an M15 close above 3972</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3828–3832.5</span></div><span class="s">Breakdown zone: only valid after an M15 close below 3832.5; Asia through London–New York; void on an M15 close back above 3840</span></div><span class="g">B</span></div></div>
-        </div>
+    <div class="panels" id="panels">
+      <div class="panel" id="p-scen" role="tabpanel" aria-labelledby="t-scen" tabindex="0">
+        <h2 data-i18n="scenarios">Scenarios</h2>
+        <div id="scenarios" class="pgrid"><div class="card scen sell"><div class="t"><span>Main (SELL)</span><span class="num muted">50%</span></div><p>Branch A: before the data price ranges or rebounds into 3872⁠–⁠3901.4 and is rejected, with 3832.5⁠–⁠3841.2 as the liquidity pool. Strong Retail Sales or an M15 close below 3832.5 → down to 3800 then 3764.7.</p><div class="bar"><i class="w50"></i></div></div><div class="card scen buy"><div class="t"><span>Alternate (BUY)</span><span class="num muted">50%</span></div><p>Branch B: weak Retail Sales or an M15 close above 3901.4 → rebound into 3914⁠–⁠3932.1; a rejection there turns price back to 3889 / 3872; an H1 close above 3936 → rebound extends to 3949⁠–⁠3970 and then the 3980.7⁠–⁠4000.7 main zone.</p><div class="bar"><i class="w50"></i></div></div></div>
       </div>
-
-      <div class="stack">
-        <div class="blk b-levels">
-          <h2 data-i18n="levels">Key levels</h2>
-          <div class="card list" id="levels"><div class="row"><span class="k">Main zone (SELL)</span><span class="v num main" dir="ltr">3980.7–4000.7</span></div><div class="row"><span class="k">Target T1</span><span class="v num" dir="ltr">3841.2</span></div><div class="row"><span class="k">Target T2</span><span class="v num" dir="ltr">3832.5</span></div><div class="row"><span class="k">Target T3</span><span class="v num" dir="ltr">3800</span></div><div class="row"><span class="k">Expected range</span><span class="v num" dir="ltr">3800–3936</span></div><div class="row text"><span class="k">View is wrong if</span><span class="v bad">The main zone fails on an M15 close above 4004. An H1 close above 3936 → nearby sell zones dropped, the rebound can extend into 3949⁠–⁠3970. An M15 close above 3901.4 → sell side at 3872⁠–⁠3901.4 dropped. An M15 close below 3832.5 → breakdown toward 3800 / 3764.7.</span></div></div>
-        </div>
-        <div class="stats b-context" id="context"><div class="stat"><span class="k">D1 trend</span><span class="v">Bearish: the 16/11 daily candle was red, swept the 12/11 low at 3852.6 down to 3832.5 and closed at 3856.5, still far below the daily moving average; all three higher timeframes agree on the downside</span></div><div class="stat"><span class="k">H4 structure</span><span class="v">Bearish: lower highs 3906 → 3901 → 3889 → 3867 with price below the H4 moving average; H4 is oversold, so a rebound into 3872⁠–⁠3901.4 may come first</span></div><div class="stat"><span class="k">H1 structure</span><span class="v">Sideways within a downtrend at 3841⁠–⁠3867, below the H1 moving averages; New York rebounded to 3889.0 and was sold back to 3841.2; the H1 structure high is 3901.4</span></div><div class="stat"><span class="k">H1 momentum</span><span class="v">Soft: H1 momentum is mid-range with a bearish tilt; M15 broke 3851.7 this morning down to 3843.7, with price below the M15 moving averages</span></div><div class="stat"><span class="k">Intraday level</span><span class="v">Daily/weekly open 3885.6; New York high 3889.0; 16/11 low 3832.5; Asia range 3843.7⁠–⁠3864.2</span></div></div>
-        <div class="blk b-scen">
-          <h2 data-i18n="scenarios">Scenarios</h2>
-          <div id="scenarios" class="stack-sm"><div class="card scen sell"><div class="t"><span>Main (SELL)</span><span class="num muted">50%</span></div><p>Branch A: before the data price ranges or rebounds into 3872⁠–⁠3901.4 and is rejected, with 3832.5⁠–⁠3841.2 as the liquidity pool. Strong Retail Sales or an M15 close below 3832.5 → down to 3800 then 3764.7.</p><div class="bar"><i class="w50"></i></div></div><div class="card scen buy"><div class="t"><span>Alternate (BUY)</span><span class="num muted">50%</span></div><p>Branch B: weak Retail Sales or an M15 close above 3901.4 → rebound into 3914⁠–⁠3932.1; a rejection there turns price back to 3889 / 3872; an H1 close above 3936 → rebound extends to 3949⁠–⁠3970 and then the 3980.7⁠–⁠4000.7 main zone.</p><div class="bar"><i class="w50"></i></div></div></div>
-        </div>
-        <div class="blk b-news">
-          <h2 data-i18n="news">Economic calendar</h2>
-          <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp medium"></span><span>UK Average Earnings</span></span><span class="v">17/11 14:00 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>FOMC member Musalem speaks</span></span><span class="v">17/11 19:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp high"></span><span>US Retail Sales + Core Retail Sales m/m</span></span><span class="v">17/11 20:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>US Import Prices</span></span><span class="v">17/11 20:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>US Industrial Production</span></span><span class="v">17/11 21:15 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>NAHB Housing Market Index</span></span><span class="v">17/11 22:00 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>US Housing Starts / Building Permits</span></span><span class="v">18/11 20:30 GMT+7</span></div></div>
-          <p class="tznote muted" id="tznote"></p>
-        </div>
-        <div class="card result b-result" id="result"><h2>How this plan played out</h2><div class="res-top"><span class="pill bad">Invalidated</span><span class="num r r-down" dir="ltr">-0.39R</span></div><div class="list"><div class="row"><span class="k">Graded window</span><span class="v">Tue, Nov 17 08:40 GMT+7 → Tue, Nov 17 13:49 GMT+7</span></div><div class="row"><span class="k">Followed until</span><span class="v">Tue, Nov 17 13:49 GMT+7</span></div><div class="row"><span class="k">High / low in window</span><span class="v num" dir="ltr">3886.9 / 3858.8</span></div></div><h3>Zones graded</h3><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3980.7–4000.7</span> (Main zone)</strong><span class="pill neutral">Zone not reached</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">Target 1: 3841.2; Invalidation level: 4004</p></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3872–3878.6</span> (B)</strong><span class="pill bad">Invalidated</span><span class="num r r-down" dir="ltr">-1R</span></div><p class="muted small">Zone reached: Tue, Nov 17 09:15 GMT+7; Decided at: Tue, Nov 17 12:30 GMT+7; Target 1: 3841.2; Invalidation level: 3882</p><div class="best"><span class="k">Max favourable move (MFE)</span><span class="v num" dir="ltr">+9.8 $, 98 pips (+1R std (1R = 10 $))</span></div></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3885.6–3901.4</span> (B)</strong><span class="pill neutral">Closed at session end</span><span class="num r r-up" dir="ltr">+0.61R</span></div><p class="muted small">Zone reached: Tue, Nov 17 12:30 GMT+7; Target 1: 3841.2; Invalidation level: 3904</p><div class="best"><span class="k">Max favourable move (MFE)</span><span class="v num" dir="ltr">+15.3 $, 153 pips (+1.5R std (1R = 10 $))</span></div></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3914–3932.1</span> (B)</strong><span class="pill neutral">Zone not reached</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">Target 1: 3841.2; Invalidation level: 3936</p></div><div class="zres"><div class="zt"><strong>SELL <span class="num" dir="ltr">3949.3–3969.8</span> (B)</strong><span class="pill neutral">Zone not reached</span><span class="num r r-flat" dir="ltr">0R</span></div><p class="muted small">Target 1: 3841.2; Invalidation level: 3972</p></div><p class="muted small">Furthest move in the zone’s direction after it was reached, until invalidation or the daily close, shows how good the read was; it is not a trade result and is never added to R.</p><p class="small"><a href="/en/track-record/2026-11/#method">How plans are graded</a></p></div>
-        <div class="card next b-next" id="next" hidden><strong>Next update</strong><span>Update at 13:45 VN today (before London)</span></div>
+      <div class="panel" id="p-levels" role="tabpanel" aria-labelledby="t-levels" tabindex="0">
+        <h2 data-i18n="levels">Key levels</h2>
+        <div class="card list" id="levels"><div class="row"><span class="k">Main zone (SELL)</span><span class="v num main" dir="ltr">3980.7–4000.7</span></div><div class="row"><span class="k">Target T1</span><span class="v num" dir="ltr">3841.2</span></div><div class="row"><span class="k">Target T2</span><span class="v num" dir="ltr">3832.5</span></div><div class="row"><span class="k">Target T3</span><span class="v num" dir="ltr">3800</span></div><div class="row"><span class="k">Expected range</span><span class="v num" dir="ltr">3800–3936</span></div><div class="row text"><span class="k">View is wrong if</span><span class="v bad">The main zone fails on an M15 close above 4004. An H1 close above 3936 → nearby sell zones dropped, the rebound can extend into 3949⁠–⁠3970. An M15 close above 3901.4 → sell side at 3872⁠–⁠3901.4 dropped. An M15 close below 3832.5 → breakdown toward 3800 / 3764.7.</span></div></div>
+      </div>
+      <div class="panel" id="p-zones" role="tabpanel" aria-labelledby="t-zones" tabindex="0">
+        <h2 data-i18n="zones">Zones on the chart</h2>
+        <div id="zones" class="pgrid"><div class="card zone is-main"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3980.7–4000.7</span></div><span class="s">Main zone: not touched and far away, may not be reached today; valid New York into Asia; void on an M15 close above 4004</span></div><span class="g">Key zone</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3872–3878.6</span></div><span class="s">Touched early in the day, weaker; valid in Asia / London; void on an M15 close above 3882</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3885.6–3901.4</span></div><span class="s">Tested several times recently; valid from Asia through London–New York; void on an M15 close above 3904</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3914–3932.1</span></div><span class="s">Not touched; valid London–New York (after the data) into Asia; void on an H1 close above 3936</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3949.3–3969.8</span></div><span class="s">Not touched and may not be reached; valid New York into Asia; void on an M15 close above 3972</span></div><span class="g">B</span></div><div class="card zone"><div class="l"><div class="h"><span class="pill sell">SELL</span><span class="num" dir="ltr">3828–3832.5</span></div><span class="s">Breakdown zone: only valid after an M15 close below 3832.5; Asia through London–New York; void on an M15 close back above 3840</span></div><span class="g">B</span></div></div>
+      </div>
+      <div class="panel" id="p-context" role="tabpanel" aria-labelledby="t-context" tabindex="0">
+        <h2>Market context</h2>
+        <div class="stats" id="context"><div class="stat"><span class="k">D1 trend</span><span class="v">Bearish: the 16/11 daily candle was red, swept the 12/11 low at 3852.6 down to 3832.5 and closed at 3856.5, still far below the daily moving average; all three higher timeframes agree on the downside</span></div><div class="stat"><span class="k">H4 structure</span><span class="v">Bearish: lower highs 3906 → 3901 → 3889 → 3867 with price below the H4 moving average; H4 is oversold, so a rebound into 3872⁠–⁠3901.4 may come first</span></div><div class="stat"><span class="k">H1 structure</span><span class="v">Sideways within a downtrend at 3841⁠–⁠3867, below the H1 moving averages; New York rebounded to 3889.0 and was sold back to 3841.2; the H1 structure high is 3901.4</span></div><div class="stat"><span class="k">H1 momentum</span><span class="v">Soft: H1 momentum is mid-range with a bearish tilt; M15 broke 3851.7 this morning down to 3843.7, with price below the M15 moving averages</span></div><div class="stat"><span class="k">Intraday level</span><span class="v">Daily/weekly open 3885.6; New York high 3889.0; 16/11 low 3832.5; Asia range 3843.7⁠–⁠3864.2</span></div></div>
+      </div>
+      <div class="panel" id="p-news" role="tabpanel" aria-labelledby="t-news" tabindex="0">
+        <h2 data-i18n="news">Economic calendar</h2>
+        <div class="card list" id="news"><div class="row news-row"><span class="k"><span class="imp medium"></span><span>UK Average Earnings</span></span><span class="v">17/11 14:00 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>FOMC member Musalem speaks</span></span><span class="v">17/11 19:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp high"></span><span>US Retail Sales + Core Retail Sales m/m</span></span><span class="v">17/11 20:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>US Import Prices</span></span><span class="v">17/11 20:30 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>US Industrial Production</span></span><span class="v">17/11 21:15 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp low"></span><span>NAHB Housing Market Index</span></span><span class="v">17/11 22:00 GMT+7</span></div><div class="row news-row"><span class="k"><span class="imp medium"></span><span>US Housing Starts / Building Permits</span></span><span class="v">18/11 20:30 GMT+7</span></div></div>
+        <p class="tznote muted" id="tznote"></p>
       </div>
     </div>
 
-    <nav class="pnav" id="pnav"><a class="btn alt" href="/en/plan/2026-11-16-newyork/" rel="prev">← Previous plan</a><a class="btn alt" href="/en/plan/2026-11-17-london/" rel="next">Next plan →</a><a class="btn alt" href="/en/track-record/2026-11/">All plans this month</a><a class="btn alt" href="/">Today’s plan</a></nav>
+    <div class="next" id="next" hidden><span><strong>Next update:</strong> <span id="next-v">Update at 13:45 VN today (before London)</span></span><a href="#cta">Alert me when it’s out</a></div>
+    <a class="proof" id="proof" href="#" hidden></a>
+    <nav class="pnav" id="pnav"><a class="btn alt" href="/en/plan/2026-11-16-newyork/" rel="prev">← Previous plan</a><a class="btn alt" href="/en/plan/2026-11-17-london/" rel="next">Next plan →</a><a class="btn alt" href="/en/track-record/2026-11/">All plans this month</a><a class="btn alt" href="/today/">Today’s plan</a></nav>
   </section>
 
 <!-- /VIEW -->
 
   <!-- CTA: on every page -->
-  <section class="card cta-box" id="cta" aria-labelledby="cta-h">
+  <section class="cta-box" id="cta" aria-labelledby="cta-h">
     <div class="cta-head">
       <h2 id="cta-h" data-i18n="cta_title">Get the next plan before London opens</h2>
       <p data-i18n="cta_sub">A free alert the moment each plan is published, Asia, London and New York. Takes five seconds.</p>
@@ -183,7 +174,7 @@
       </div>
     </div>
     <a class="cta js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer" id="tg-cta">
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       <span><strong data-i18n="tg_title">Get every plan on Telegram</strong><span data-i18n="tg_sub">Free channel, no sign-up</span></span>
     </a>
   </section>
@@ -191,18 +182,17 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <div class="risk">
-      <strong data-i18n="risk_title">Risk warning</strong>
-      <p data-i18n="disclaimer">Market analysis for information only, not investment advice or a solicitation to trade. Leveraged products such as gold CFDs carry a high risk of losing money rapidly. Past performance does not guarantee future results. Trade only with money you can afford to lose.</p>
+    <div class="fl"><div class="fcol"><p class="fh">Learn gold trading</p><a href="/en/learn/what-is-xauusd/">What is XAUUSD?</a><a href="/en/learn/how-to-trade-gold/">How to trade gold (XAUUSD) step by step</a><a href="/en/learn/best-time-to-trade-gold/">What is the best time to trade gold? Asia, London and New York sessions</a><a href="/en/learn/how-to-read-a-gold-trading-plan/">How to read a daily gold trading plan</a><a href="/en/learn/how-much-to-risk-per-trade-gold/">How much should you risk per trade on XAUUSD?</a><a href="/en/learn/gold-lot-size-and-pip-value/">How much is a pip on gold? Lot size and value explained</a></div><div class="fcol"><p class="fh">News and the gold price</p><a href="/en/learn/how-cpi-affects-gold/">How does CPI affect the gold price?</a><a href="/en/learn/how-nfp-affects-gold/">How does the NFP report affect gold?</a><a href="/en/learn/fed-rates-and-gold/">How do Federal Reserve interest-rate decisions affect gold?</a><a href="/en/learn/gold-and-the-us-dollar/">Why does gold move against the US dollar?</a><a href="/en/learn/gold-and-real-yields/">What is the relationship between gold and real yields?</a><a href="/en/learn/why-is-gold-falling/">Why is gold falling?</a></div><div class="fcol"><p class="fh">Reading the chart</p><a href="/en/learn/gold-support-and-resistance/">How to find key support and resistance levels for gold today</a><a href="/en/learn/supply-and-demand-zones-gold/">How to find gold supply and demand zones</a><a href="/en/learn/liquidity-sweep-xauusd/">What is a liquidity sweep in XAUUSD?</a><a href="/en/learn/how-to-spot-a-breakout-gold/">How to spot a real breakout in XAUUSD</a><a href="/en/learn/how-to-avoid-fake-breakouts-gold/">How to avoid fake breakouts on XAUUSD</a><a href="/en/learn/how-to-identify-gold-trend/">How to identify the gold trend (XAUUSD)</a></div><div class="fcol"><p class="fh">NEXUS CORE</p><a href="/today/">Daily gold plan</a><a href="/en/track-record/2026-11/">Track record</a><a href="/en/track-record/2026-11/#method">How plans are graded</a><a href="/en/signals/">Signals (waitlist)</a><a id="s-tg" class="js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">Telegram channel</a><a id="s-x" href="https://x.com/XAU_CRYPTO" target="_blank" rel="noopener noreferrer">X</a><a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">YouTube</a></div></div>
+    <a class="f-all" href="/en/learn/">All questions and answers<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="legal">
+      <p class="fh">Disclaimer and terms summary</p>
+      <p>By using NEXUS CORE (the website, app, alerts, Telegram, X and YouTube channels) you accept these key terms:</p>
+      <ul><li><b>NEXUS CORE is not a broker, a fund or a licensed investment adviser.</b> We do not hold client money and do not trade on your behalf.</li><li><b>We are independent.</b> We receive no commission, rebate or referral fee from any broker or prop firm, and we do not recommend any of them.</li><li>Plans, charts, articles and alerts are general market analysis for information and education only. They are not investment advice, a personal recommendation or an offer to buy or sell, and they do not take your situation into account.</li><li>Plans are produced with AI tools under fixed written rules. They can be wrong, late or incomplete, and prices and times may be delayed.</li><li><b>Track record results are hypothetical.</b> They are calculated automatically from each published plan zone on 15-minute candles under our published rules. They are not real-money trades and do not include spreads, commissions, swaps, slippage or execution delays.</li><li>There is no guarantee of profit. Past performance, real or hypothetical, does not indicate future results.</li><li>You are responsible for your own trading decisions and for following the laws of your country. US residents cannot trade CFDs. Our content is not intended for anyone in a country where it would be unlawful.</li><li>NEXUS CORE accepts no liability for any loss or damage arising from the use of this content, including losses caused by technical faults, data errors or market conditions.</li></ul>
+      <p class="fh">Risk warning</p>
+      <p>Trading gold through contracts for difference (CFDs), futures or other leveraged products is complex and carries a high risk of losing money rapidly. Leverage can work against you, and most retail CFD accounts lose money. You can lose all of the money you deposit. Only trade with money you can afford to lose, and consider whether you understand how these products work. If in doubt, seek advice from an independent, licensed financial adviser.</p>
+      <p>Note: this is a summary only. The full <a href="/en/terms/">Terms of Use</a> and <a href="/en/risk-disclosure/">Risk Disclosure</a> apply and govern your use of NEXUS CORE.</p>
     </div>
-    <div class="foot-row">
-      <span class="muted">© 2026 NEXUS CORE AI</span>
-      <nav class="social" aria-label="Social">
-        <a id="s-tg" class="js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a id="s-x" href="https://x.com/XAU_CRYPTO" target="_blank" rel="noopener noreferrer">X</a>
-        <a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">YouTube</a>
-      </nav>
-    </div>
+    <div class="foot-row"><span>© 2026 NEXUS CORE. All rights reserved.</span><nav class="fnav" aria-label="Legal"><a href="/en/terms/">Terms of Use</a><a href="/en/privacy/">Privacy Policy</a><a href="/en/risk-disclosure/">Risk Disclosure</a><a href="/en/track-record/2026-11/#method">How plans are graded</a></nav></div>
   </div>
 </footer>
 
@@ -213,6 +203,6 @@
 </div>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nexuscore.trade/#org","name":"NEXUS CORE AI","url":"https://nexuscore.trade/","logo":{"@type":"ImageObject","url":"https://nexuscore.trade/assets/icon-512.png","width":512,"height":512},"sameAs":["https://t.me/nexuscorefx","https://x.com/XAU_CRYPTO","https://www.youtube.com/@nexuscorefx"]},{"@type":"WebSite","@id":"https://nexuscore.trade/#website","name":"NEXUS CORE","url":"https://nexuscore.trade/","publisher":{"@id":"https://nexuscore.trade/#org"},"inLanguage":["en","ar","vi","zh-Hant"],"description":"Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong, refreshed before the Asia, London and New York sessions, every plan graded in public."},{"@type":"Article","@id":"https://nexuscore.trade/en/plan/2026-11-17-asia/#plan","headline":"Gold plan Tue, Nov 17, Asia plan: SELL | XAUUSD | NEXUS CORE","description":"SELL rallies into 3872⁠–⁠3901.4; main zone 3980.7⁠–⁠4000.7, void above 4004. Main zone: 3980.7–4000.7. How this plan played out: Invalidated -0.39R.","image":["https://nexuscore.trade/data/charts/2026-11-17-0700-en.png"],"datePublished":"2026-11-17T08:40:00+07:00","dateModified":"2026-11-17T07:16:00+00:00","inLanguage":"en","author":{"@id":"https://nexuscore.trade/#org"},"publisher":{"@id":"https://nexuscore.trade/#org"},"mainEntityOfPage":"https://nexuscore.trade/en/plan/2026-11-17-asia/","isPartOf":{"@id":"https://nexuscore.trade/#website"},"about":{"@type":"Thing","name":"Gold (XAUUSD)"},"isAccessibleForFree":true},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"NEXUS CORE","item":"https://nexuscore.trade/"},{"@type":"ListItem","position":2,"name":"Track record November 2026","item":"https://nexuscore.trade/en/track-record/2026-11/"},{"@type":"ListItem","position":3,"name":"Tue, Nov 17, Asia","item":"https://nexuscore.trade/en/plan/2026-11-17-asia/"}]}]}</script>
-<script src="/app.js?v=20261117a"></script>
+<script src="/app.js?v=20261117b"></script>
 </body>
 </html>

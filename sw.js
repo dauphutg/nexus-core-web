@@ -24,6 +24,8 @@ self.addEventListener('notificationclick', function (e) {
   try {
     // only ever open a page of this site
     var u = new URL((e.notification.data && e.notification.data.url) || '/', self.location.origin);
+    // since 17/11/2026 the language home is an intro page: a new-plan alert opens the plan itself (/today/)
+    if (/^\/(ar\/|vi\/|zh-hant\/)?$/.test(u.pathname)) u.pathname += 'today/';
     if (u.origin === self.location.origin) target = u.href;
   } catch (err) {}
   e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (list) {

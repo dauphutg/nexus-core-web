@@ -41,15 +41,21 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261117a">
-<script src="/theme.js?v=20261117a"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/style.css?v=20261117b">
+<script src="/theme.js?v=20261117b"></script>
 </head>
 <body data-page="move">
 <a class="skip" href="#app" data-i18n="skip">Tới nội dung</a>
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="/vi/"><img src="/assets/logo-banner.png" alt="NEXUS CORE" width="222" height="46"></a>
+    <nav class="tabs" aria-label="Main">
+      <a href="/vi/today/" data-tab="plan" data-i18n="tab_plan">Plan ngày</a>
+      <a href="/vi/track-record/2026-11/" data-tab="track" data-i18n="tab_history">Kết quả</a>
+      <a href="/en/learn/" aria-current="page" data-tab="learn" data-i18n="tab_learn">Kiến thức</a>
+      <a href="/vi/signals/" data-tab="signals" data-i18n="tab_signals">Signal</a>
+    </nav>
     <div class="top-right">
       <span class="live" id="live" hidden><span class="dot"></span><span id="live-text">LIVE</span></span>
       <button type="button" class="theme" id="theme-btn" aria-label="Theme">
@@ -62,14 +68,9 @@
         <a role="button" href="/vi/why-gold-moved/2026-11-13-technical/" data-lang="vi" aria-pressed="true" aria-current="page" lang="vi" hreflang="vi">VI</a>
         <a role="button" href="/zh-hant/why-gold-moved/2026-11-13-technical/" data-lang="zh-hant" lang="zh-Hant" hreflang="zh-Hant">繁中</a>
       </div>
+      <a class="get-alerts" href="#cta">Nhận thông báo</a>
     </div>
   </div>
-  <nav class="wrap tabs" aria-label="Main">
-    <a href="/vi/" data-tab="plan" data-i18n="tab_plan">Plan ngày</a>
-    <a href="/vi/track-record/2026-11/" data-tab="track" data-i18n="tab_history">Kết quả</a>
-    <a href="/en/learn/" aria-current="page" data-tab="learn" data-i18n="tab_learn">Kiến thức</a>
-    <a href="/vi/signals/" data-tab="signals" data-i18n="tab_signals">Signal</a>
-  </nav>
 </header>
 
 <main class="wrap" id="app">
@@ -82,7 +83,7 @@
 <!-- /VIEW -->
 
   <!-- CTA: on every page -->
-  <section class="card cta-box" id="cta" aria-labelledby="cta-h">
+  <section class="cta-box" id="cta" aria-labelledby="cta-h">
     <div class="cta-head">
       <h2 id="cta-h" data-i18n="cta_title">Nhận plan tiếp theo trước giờ mở cửa phiên London</h2>
       <p data-i18n="cta_sub">Thông báo miễn phí ngay khi mỗi plan được đăng, phiên Á, Âu và Mỹ. Bật trong 5 giây.</p>
@@ -108,7 +109,7 @@
       </div>
     </div>
     <a class="cta js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer" id="tg-cta">
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       <span><strong data-i18n="tg_title">Nhận mọi plan qua Telegram</strong><span data-i18n="tg_sub">Kênh miễn phí, không cần đăng ký</span></span>
     </a>
   </section>
@@ -116,18 +117,17 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <div class="risk">
-      <strong data-i18n="risk_title">Cảnh báo rủi ro</strong>
-      <p data-i18n="disclaimer">Nội dung chỉ để tham khảo, không phải lời khuyên đầu tư hay lời mời giao dịch. Sản phẩm có đòn bẩy như vàng CFD có rủi ro mất tiền nhanh. Kết quả quá khứ không đảm bảo tương lai. Chỉ giao dịch bằng số tiền bạn chấp nhận mất.</p>
+    <div class="fl"><div class="fcol"><p class="fh">Hỏi đáp về vàng (tiếng Anh)</p><a href="/en/learn/what-is-xauusd/">What is XAUUSD?</a><a href="/en/learn/how-to-trade-gold/">How to trade gold (XAUUSD) step by step</a><a href="/en/learn/best-time-to-trade-gold/">What is the best time to trade gold? Asia, London and New York sessions</a><a href="/en/learn/how-to-read-a-gold-trading-plan/">How to read a daily gold trading plan</a><a href="/en/learn/how-much-to-risk-per-trade-gold/">How much should you risk per trade on XAUUSD?</a><a href="/en/learn/gold-lot-size-and-pip-value/">How much is a pip on gold? Lot size and value explained</a></div><div class="fcol"><p class="fh">Tin tức và giá vàng (tiếng Anh)</p><a href="/en/learn/how-cpi-affects-gold/">How does CPI affect the gold price?</a><a href="/en/learn/how-nfp-affects-gold/">How does the NFP report affect gold?</a><a href="/en/learn/fed-rates-and-gold/">How do Federal Reserve interest-rate decisions affect gold?</a><a href="/en/learn/gold-and-the-us-dollar/">Why does gold move against the US dollar?</a><a href="/en/learn/gold-and-real-yields/">What is the relationship between gold and real yields?</a><a href="/en/learn/why-is-gold-falling/">Why is gold falling?</a></div><div class="fcol"><p class="fh">NEXUS CORE</p><a href="/vi/today/">Plan vàng mỗi ngày</a><a href="/vi/track-record/2026-11/">Kết quả đã chấm</a><a href="/vi/track-record/2026-11/#method">Cách chấm plan</a><a href="/vi/signals/">Signal (danh sách chờ)</a><a id="s-tg" class="js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">Kênh Telegram</a><a id="s-x" href="https://x.com/XAU_CRYPTO" target="_blank" rel="noopener noreferrer">X</a><a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">YouTube</a></div></div>
+    <a class="f-all" href="/en/learn/">Tất cả câu hỏi (tiếng Anh)<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="legal">
+      <p class="fh">Miễn trừ trách nhiệm và tóm tắt điều khoản</p>
+      <p>Khi dùng NEXUS CORE (website, app, thông báo, kênh Telegram, X và YouTube), bạn đồng ý với các điều khoản chính sau:</p>
+      <ul><li><b>NEXUS CORE không phải sàn, quỹ hay đơn vị tư vấn đầu tư có giấy phép.</b> Chúng tôi không giữ tiền của người dùng và không giao dịch thay ai.</li><li><b>NEXUS CORE độc lập.</b> Không nhận hoa hồng, hoàn phí hay tiền giới thiệu từ sàn hoặc quỹ prop nào, và không giới thiệu sàn nào.</li><li>Plan, biểu đồ, bài viết và thông báo chỉ là phân tích thị trường chung để tham khảo và học hỏi. Đây không phải lời khuyên đầu tư, khuyến nghị cá nhân hay lời mời mua bán, và không xét đến hoàn cảnh riêng của bạn.</li><li>Plan được làm bằng công cụ AI theo bộ luật viết sẵn. Plan có thể sai, trễ hoặc thiếu; giá và giờ hiển thị có thể chậm.</li><li><b>Kết quả chấm là giả định.</b> Kết quả được tính tự động từ từng vùng đã đăng trên nến 15 phút theo luật công khai. Đây không phải lệnh tiền thật và chưa trừ spread, phí, swap, trượt giá hay độ trễ khớp lệnh.</li><li>Không có gì bảo đảm lợi nhuận. Kết quả quá khứ, thật hay giả định, không cho biết kết quả tương lai.</li><li>Bạn tự chịu trách nhiệm về quyết định giao dịch của mình và tự tuân thủ pháp luật nơi bạn sống. Nội dung không dành cho người ở nơi mà việc tiếp cận là trái luật.</li><li>NEXUS CORE không chịu trách nhiệm cho bất kỳ khoản lỗ hay thiệt hại nào phát sinh từ việc dùng nội dung này, kể cả do lỗi kỹ thuật, lỗi dữ liệu hay biến động thị trường.</li></ul>
+      <p class="fh">Cảnh báo rủi ro</p>
+      <p>Giao dịch vàng qua CFD, hợp đồng tương lai hay sản phẩm đòn bẩy khác rất phức tạp và có rủi ro mất tiền nhanh. Đòn bẩy có thể đi ngược lại bạn, phần lớn tài khoản CFD cá nhân bị lỗ, và bạn có thể mất toàn bộ số tiền đã nạp. Chỉ giao dịch bằng tiền bạn chấp nhận mất được, và hãy chắc rằng bạn hiểu sản phẩm mình dùng. Nếu còn phân vân, hãy hỏi một chuyên gia tài chính độc lập có giấy phép.</p>
+      <p>Lưu ý: đây chỉ là bản tóm tắt. <a href="/vi/terms/">Điều khoản sử dụng</a> và <a href="/vi/risk-disclosure/">Công bố rủi ro</a> đầy đủ mới là văn bản áp dụng khi bạn dùng NEXUS CORE.</p>
     </div>
-    <div class="foot-row">
-      <span class="muted">© 2026 NEXUS CORE AI</span>
-      <nav class="social" aria-label="Social">
-        <a id="s-tg" class="js-tg" href="https://t.me/nexuscorefx" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a id="s-x" href="https://x.com/XAU_CRYPTO" target="_blank" rel="noopener noreferrer">X</a>
-        <a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">YouTube</a>
-      </nav>
-    </div>
+    <div class="foot-row"><span>© 2026 NEXUS CORE. Bảo lưu mọi quyền.</span><nav class="fnav" aria-label="Legal"><a href="/vi/terms/">Điều khoản sử dụng</a><a href="/vi/privacy/">Chính sách bảo mật</a><a href="/vi/risk-disclosure/">Công bố rủi ro</a><a href="/vi/track-record/2026-11/#method">Cách chấm plan</a></nav></div>
   </div>
 </footer>
 
@@ -138,6 +138,6 @@
 </div>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nexuscore.trade/#org","name":"NEXUS CORE AI","url":"https://nexuscore.trade/","logo":{"@type":"ImageObject","url":"https://nexuscore.trade/assets/icon-512.png","width":512,"height":512},"sameAs":["https://t.me/nexuscorefx","https://x.com/XAU_CRYPTO","https://www.youtube.com/@nexuscorefx"]},{"@type":"WebSite","@id":"https://nexuscore.trade/#website","name":"NEXUS CORE","url":"https://nexuscore.trade/","publisher":{"@id":"https://nexuscore.trade/#org"},"inLanguage":["en","ar","vi","zh-Hant"],"description":"Free AI-built gold (XAUUSD) game plan: key zones, scenarios and the level that proves the view wrong, refreshed before the Asia, London and New York sessions, every plan graded in public."},{"@type":"Article","@id":"https://nexuscore.trade/vi/why-gold-moved/2026-11-13-technical/#article","headline":"Vì sao vàng chạy Thứ 6, 13/11","description":"Vàng nhích 0.14% khi nhịp hồi kỹ thuật phiên Á phai dần vì kỳ vọng Fed tăng lãi suất Thay đổi trong ngày: +0.1%. Vàng hồi lên trong phiên Á sau cú giảm hôm thứ Năm về đáy hơn 1 năm; các hãng tin gọi đây là nhịp hồi kỹ thuật, Reuters nêu lực mua bắt đáy. Giờ biến động mạnh nhất bắt đầu lúc 08:00 giờ ","inLanguage":"vi","datePublished":"2026-11-13T17:00:00-05:00","author":{"@id":"https://nexuscore.trade/#org"},"publisher":{"@id":"https://nexuscore.trade/#org"},"mainEntityOfPage":"https://nexuscore.trade/vi/why-gold-moved/2026-11-13-technical/","image":["https://nexuscore.trade/data/charts/2026-11-17-1345-en.png"],"isPartOf":{"@id":"https://nexuscore.trade/#website"},"about":{"@type":"Thing","name":"Gold (XAUUSD)"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"NEXUS CORE","item":"https://nexuscore.trade/vi/"},{"@type":"ListItem","position":2,"name":"Vì sao vàng chạy","item":"https://nexuscore.trade/en/learn/"},{"@type":"ListItem","position":3,"name":"Vì sao vàng chạy Thứ 6, 13/11","item":"https://nexuscore.trade/vi/why-gold-moved/2026-11-13-technical/"}]}]}</script>
-<script src="/app.js?v=20261117a"></script>
+<script src="/app.js?v=20261117b"></script>
 </body>
 </html>
