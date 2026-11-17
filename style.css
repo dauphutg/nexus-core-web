@@ -452,7 +452,7 @@ html[data-theme="light"] .gold-tx{background:linear-gradient(90deg,#A86F00,#C990
 html[data-theme="light"] .h-hero{background:radial-gradient(55% 60% at 50% 0%,rgba(227,179,65,.28),rgba(227,179,65,0) 70%),radial-gradient(35% 45% at 90% 20%,rgba(12,34,55,.06),rgba(12,34,55,0) 70%)}
 .h-in{max-width:960px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
 .h-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.h-chips span{padding:6px 14px;border-radius:999px;font-size:13px}
+.h-chips>span{padding:6px 14px;border-radius:999px;font-size:13px}
 .h-chips .c0{background:var(--card);border:1px solid var(--line);color:var(--ink2);font-weight:500}
 .h-chips .c1{background:var(--gold-bg);border:1px solid var(--gold-line);color:var(--gold-ink);font-weight:600}
 .h-h1{margin:0;font-size:clamp(38px,6.4vw,76px);line-height:1.06;font-weight:800;letter-spacing:-.035em;color:var(--ink)}
