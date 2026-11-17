@@ -20,13 +20,13 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Track record (November 2026)
 
-- Plans published: 11; graded: 9; zone reached: 5; Target 1 reached: 1; invalidated: 0; total: +4.5R
+- Plans published: 11; graded: 10; zone reached: 6; Target 1 reached: 2; invalidated: 0; total: +7.2R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
 - [2026-11-17 Asia plan](https://nexuscore.trade/en/plan/2026-11-17-asia/): SELL, main zone 3980.7–4000.7 — Pending
-- [2026-11-16 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-16-newyork/): SELL, main zone 3923–3936 — Pending
+- [2026-11-16 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-16-newyork/): SELL, main zone 3923–3936 — Target 1 reached +2.74R
 - [2026-11-16 Pre-London update](https://nexuscore.trade/en/plan/2026-11-16-london/): SELL, main zone 3860–3870 — Closed at session end -0.37R
 - [2026-11-16 Asia plan](https://nexuscore.trade/en/plan/2026-11-16-asia/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Zone not reached 0R
 - [2026-11-13 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-13-newyork/): TWO-WAY · leaning SELL, main zone 3901.6–3914 — Target 1 reached +0.62R
@@ -67,6 +67,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Why gold moved (recent days)
 
+- [2026-11-16: Gold fell 0.75% to a more than one-year low as a firm dollar and Fed-hike bets weighed](https://nexuscore.trade/en/why-gold-moved/2026-11-16-dollar/) (-0.75%)
 - [2026-11-13: Gold edged up 0.14% as an Asian technical rebound faded under Fed rate-hike bets](https://nexuscore.trade/en/why-gold-moved/2026-11-13-technical/) (+0.14%)
 - [2026-11-12: Gold sank 2.85% to a 1-year low on a Fed-driven dollar rally and fading US-Iran deal hopes](https://nexuscore.trade/en/why-gold-moved/2026-11-12-dollar/) (-2.85%)
 - [2026-11-11: Gold fell 1.18% as hawkish Fed remarks and a firmer dollar erased early gains](https://nexuscore.trade/en/why-gold-moved/2026-11-11-fed/) (-1.18%)
