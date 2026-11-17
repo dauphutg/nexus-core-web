@@ -1,0 +1,319 @@
+{
+ "date": "2026-11-17",
+ "edition": "0700",
+ "updated_vn": "2026-11-17 08:40",
+ "symbol": "XAUUSD",
+ "bias": "SELL",
+ "day_type": {
+  "vi": "Giảm theo khung lớn – dự kiến hồi rồi giảm, Doanh số bán lẻ Mỹ quyết nhánh phiên New York",
+  "en": "Bearish higher timeframes – rebound-then-drop expected, US Retail Sales decides the New York branch",
+  "ar": "اتجاه هابط على الأطر الكبرى – يُتوقّع ارتداد ثم هبوط، وبيانات مبيعات التجزئة الأمريكية تحسم مسار نيويورك",
+  "zh": "大週期偏空——預期先反彈後下跌，美國零售銷售決定紐約盤走勢分支"
+ },
+ "headline": {
+  "vi": "Nghiêng BÁN khi hồi lên 3872–3901.4; vùng chính 3980.7–4000.7, sai trên 4004",
+  "en": "SELL rallies into 3872–3901.4; main zone 3980.7–4000.7, void above 4004",
+  "ar": "بيع الارتدادات إلى 3872–3901.4؛ المنطقة الرئيسية 3980.7–4000.7، وتُلغى فوق 4004",
+  "zh": "反彈至 3872–3901.4 偏空；主要區域 3980.7–4000.7，4004 之上觀點失效"
+ },
+ "alert": {
+  "vi": "Tin đỏ: Doanh số bán lẻ Mỹ đầu phiên New York – không đoán kết quả, tránh vào lệnh mới 15 phút quanh giờ tin; hướng sau tin chốt theo nến H4 đóng. H4 đang quá bán nên nhịp hồi có thể mạnh trước khi giảm tiếp. Vùng chính ở xa, có thể không chạm hôm nay.",
+  "en": "High impact: US Retail Sales early in the New York session – no call on the outcome; avoid new positions within 15 minutes of the release and let the H4 close confirm direction afterwards. H4 is oversold, so a sharp rebound may come before the next leg down. The main zone is far away and may not be reached today.",
+  "ar": "حدث عالي التأثير: بيانات مبيعات التجزئة الأمريكية مع بداية جلسة نيويورك – لا نتوقّع النتيجة؛ تجنّب فتح مراكز جديدة خلال 15 دقيقة حول صدورها، ويُحسم الاتجاه بعدها بإغلاق شمعة H4. إطار H4 في تشبّع بيعي، لذا قد يأتي ارتداد حاد قبل موجة الهبوط التالية. المنطقة الرئيسية بعيدة وقد لا يصلها السعر اليوم.",
+  "zh": "高影響事件：美國零售銷售於紐約盤初公布——不預測結果；公布前後 15 分鐘避免新進場，之後方向以 H4 收盤確認。H4 處於超賣，下一段下跌前可能先出現急彈。主要區域距離較遠，今日未必觸及。"
+ },
+ "context": [
+  {
+   "k": {
+    "vi": "Xu hướng D1",
+    "en": "D1 trend",
+    "ar": "اتجاه D1",
+    "zh": "D1 趨勢"
+   },
+   "v": {
+    "vi": "Giảm – nến ngày 16/11 đỏ, quét đáy 12/11 3852.6 xuống 3832.5 rồi đóng 3856.5, vẫn cách xa dưới đường trung bình ngày; ba khung lớn đồng thuận giảm",
+    "en": "Bearish – the 16/11 daily candle was red, swept the 12/11 low at 3852.6 down to 3832.5 and closed at 3856.5, still far below the daily moving average; all three higher timeframes agree on the downside",
+    "ar": "هابط – كانت الشمعة اليومية 16/11 حمراء، واكتسحت قاع 12/11 عند 3852.6 نزولًا إلى 3832.5 ثم أغلقت عند 3856.5، ولا يزال السعر بعيدًا أسفل المتوسط المتحرك اليومي؛ الأطر الكبرى الثلاثة متفقة على الهبوط",
+    "zh": "偏空——16/11 日線收陰，掃過 12/11 低點 3852.6 至 3832.5 後收於 3856.5，仍遠在日線均線之下；三個大週期一致偏空"
+   }
+  },
+  {
+   "k": {
+    "vi": "Cấu trúc H4",
+    "en": "H4 structure",
+    "ar": "هيكل H4",
+    "zh": "H4 結構"
+   },
+   "v": {
+    "vi": "Giảm – đỉnh thấp dần 3906 → 3901 → 3889 → 3867, giá dưới đường trung bình H4; H4 vừa quá bán nên có thể hồi lên 3872–3901.4 trước",
+    "en": "Bearish – lower highs 3906 → 3901 → 3889 → 3867 with price below the H4 moving average; H4 is oversold, so a rebound into 3872–3901.4 may come first",
+    "ar": "هابط – قمم متناقصة 3906 ← 3901 ← 3889 ← 3867 والسعر أسفل متوسط H4 المتحرك؛ إطار H4 في تشبّع بيعي لذا قد يرتد السعر أولًا إلى 3872–3901.4",
+    "zh": "偏空——高點逐步下移 3906 → 3901 → 3889 → 3867，金價在 H4 均線之下；H4 超賣，可能先反彈至 3872–3901.4"
+   }
+  },
+  {
+   "k": {
+    "vi": "Cấu trúc H1",
+    "en": "H1 structure",
+    "ar": "هيكل H1",
+    "zh": "H1 結構"
+   },
+   "v": {
+    "vi": "Đi ngang trong xu hướng giảm 3841–3867, dưới các đường trung bình H1; phiên New York hồi tới 3889.0 bị bán về 3841.2; đỉnh cấu trúc H1 ở 3901.4",
+    "en": "Sideways within a downtrend at 3841–3867, below the H1 moving averages; New York rebounded to 3889.0 and was sold back to 3841.2; the H1 structure high is 3901.4",
+    "ar": "تذبذب عرضي داخل اتجاه هابط بين 3841–3867، أسفل متوسطات H1 المتحركة؛ ارتدت نيويورك إلى 3889.0 ثم بِيعت حتى 3841.2؛ وقمة هيكل H1 عند 3901.4",
+    "zh": "下跌中的區間整理 3841–3867，位於 H1 均線之下；紐約盤反彈至 3889.0 後回落至 3841.2；H1 結構高點在 3901.4"
+   }
+  },
+  {
+   "k": {
+    "vi": "Động lượng H1",
+    "en": "H1 momentum",
+    "ar": "زخم H1",
+    "zh": "H1 動能"
+   },
+   "v": {
+    "vi": "Yếu – động lượng H1 ở vùng giữa nghiêng giảm; M15 sáng nay phá 3851.7 xuống 3843.7, giá dưới các đường trung bình M15",
+    "en": "Soft – H1 momentum is mid-range with a bearish tilt; M15 broke 3851.7 this morning down to 3843.7, with price below the M15 moving averages",
+    "ar": "ضعيف – زخم H1 في المنتصف مع ميل هابط؛ كسر M15 صباح اليوم مستوى 3851.7 نزولًا إلى 3843.7، والسعر أسفل متوسطات M15 المتحركة",
+    "zh": "偏弱——H1 動能居中偏空；M15 今早跌破 3851.7 至 3843.7，金價在 M15 均線之下"
+   }
+  },
+  {
+   "k": {
+    "vi": "Mốc trong ngày",
+    "en": "Intraday level",
+    "ar": "مستوى اليوم",
+    "zh": "日內關鍵價位"
+   },
+   "v": {
+    "vi": "Giá mở cửa ngày/tuần 3885.6; đỉnh phiên New York 3889.0; đáy 16/11 3832.5; phiên Á 3843.7–3864.2",
+    "en": "Daily/weekly open 3885.6; New York high 3889.0; 16/11 low 3832.5; Asia range 3843.7–3864.2",
+    "ar": "سعر الافتتاح اليومي/الأسبوعي 3885.6؛ قمة جلسة نيويورك 3889.0؛ قاع 16/11 عند 3832.5؛ نطاق آسيا 3843.7–3864.2",
+    "zh": "日/週開盤價 3885.6；紐約盤高點 3889.0；16/11 低點 3832.5；亞洲盤區間 3843.7–3864.2"
+   }
+  }
+ ],
+ "main_zone": {
+  "side": "SELL",
+  "lo": 3980.7,
+  "hi": 4000.7,
+  "grade": "A"
+ },
+ "invalidation": {
+  "vi": "Vùng chính sai khi M15 đóng trên 4004. H1 đóng trên 3936 → bỏ phía bán ở các vùng gần, nhịp hồi có thể lên 3949–3970. M15 đóng trên 3901.4 → bỏ phía bán ở 3872–3901.4. M15 đóng dưới 3832.5 → phá vỡ, giảm tiếp về 3800 / 3764.7.",
+  "en": "The main zone fails on an M15 close above 4004. An H1 close above 3936 → nearby sell zones dropped, the rebound can extend into 3949–3970. An M15 close above 3901.4 → sell side at 3872–3901.4 dropped. An M15 close below 3832.5 → breakdown toward 3800 / 3764.7.",
+  "ar": "تفشل المنطقة الرئيسية بإغلاق M15 فوق 4004. إغلاق H1 فوق 3936 ← تُلغى مناطق البيع القريبة وقد يمتد الارتداد إلى 3949–3970. إغلاق M15 فوق 3901.4 ← يُلغى جانب البيع عند 3872–3901.4. إغلاق M15 أسفل 3832.5 ← كسر نحو 3800 / 3764.7.",
+  "zh": "M15 收在 4004 之上 → 主要區域觀點失效。H1 收在 3936 之上 → 放棄近端偏空區域，反彈可延伸至 3949–3970。M15 收在 3901.4 之上 → 放棄 3872–3901.4 偏空。M15 收在 3832.5 之下 → 跌破，續看 3800 / 3764.7。"
+ },
+ "void": 4004,
+ "targets": [
+  {
+   "label": "T1",
+   "lo": 3841.2,
+   "hi": 3841.2
+  },
+  {
+   "label": "T2",
+   "lo": 3832.5,
+   "hi": 3832.5
+  },
+  {
+   "label": "T3",
+   "lo": 3800,
+   "hi": 3800
+  }
+ ],
+ "zones": [
+  {
+   "side": "SELL",
+   "lo": 3980.7,
+   "hi": 4000.7,
+   "grade": "A",
+   "status": {
+    "vi": "Vùng chính – chưa chạm, ở xa nên có thể không tới hôm nay; hiệu lực New York sang Á; huỷ nếu M15 đóng trên 4004",
+    "en": "Main zone – not touched and far away, may not be reached today; valid New York into Asia; void on an M15 close above 4004",
+    "ar": "المنطقة الرئيسية – لم تُلمس وهي بعيدة وقد لا يصلها السعر اليوم؛ صالحة من نيويورك حتى آسيا؛ تُلغى بإغلاق M15 فوق 4004",
+    "zh": "主要區域——尚未觸及，距離較遠，今日未必能到；紐約盤延續至亞洲盤有效；M15 收在 4004 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3872,
+   "hi": 3878.6,
+   "grade": "B",
+   "status": {
+    "vi": "Đã chạm sớm đầu ngày – yếu hơn; hiệu lực phiên Á / London; huỷ nếu M15 đóng trên 3882",
+    "en": "Touched early in the day – weaker; valid in Asia / London; void on an M15 close above 3882",
+    "ar": "لُمست مبكرًا في بداية اليوم – أضعف؛ صالحة في آسيا / لندن؛ تُلغى بإغلاق M15 فوق 3882",
+    "zh": "日初已提早觸及——力道較弱；亞洲盤 / 倫敦盤有效；M15 收在 3882 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3885.6,
+   "hi": 3901.4,
+   "grade": "B",
+   "status": {
+    "vi": "Đã được test nhiều lần gần đây; hiệu lực từ phiên Á tới London–New York; huỷ nếu M15 đóng trên 3904",
+    "en": "Tested several times recently; valid from Asia through London–New York; void on an M15 close above 3904",
+    "ar": "اختُبرت مرات عدة مؤخرًا؛ صالحة من آسيا حتى لندن–نيويورك؛ تُلغى بإغلاق M15 فوق 3904",
+    "zh": "近期已多次測試；亞洲盤至倫敦–紐約盤有效；M15 收在 3904 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3914,
+   "hi": 3932.1,
+   "grade": "B",
+   "status": {
+    "vi": "Chưa chạm; hiệu lực London–New York (sau tin) sang Á; huỷ nếu H1 đóng trên 3936",
+    "en": "Not touched; valid London–New York (after the data) into Asia; void on an H1 close above 3936",
+    "ar": "لم تُلمس؛ صالحة لندن–نيويورك (بعد البيانات) حتى آسيا؛ تُلغى بإغلاق H1 فوق 3936",
+    "zh": "尚未觸及；倫敦–紐約盤（數據後）延續至亞洲盤有效；H1 收在 3936 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3949.3,
+   "hi": 3969.8,
+   "grade": "B",
+   "status": {
+    "vi": "Chưa chạm, có thể không tới; hiệu lực New York sang Á; huỷ nếu M15 đóng trên 3972",
+    "en": "Not touched and may not be reached; valid New York into Asia; void on an M15 close above 3972",
+    "ar": "لم تُلمس وقد لا يصلها السعر؛ صالحة من نيويورك حتى آسيا؛ تُلغى بإغلاق M15 فوق 3972",
+    "zh": "尚未觸及，未必能到；紐約盤延續至亞洲盤有效；M15 收在 3972 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3828,
+   "hi": 3832.5,
+   "grade": "B",
+   "status": {
+    "vi": "Vùng phá vỡ – chỉ có hiệu lực sau khi M15 đóng dưới 3832.5; Á tới London–New York; huỷ nếu M15 đóng lại trên 3840",
+    "en": "Breakdown zone – only valid after an M15 close below 3832.5; Asia through London–New York; void on an M15 close back above 3840",
+    "ar": "منطقة كسر – تصبح صالحة فقط بعد إغلاق M15 أسفل 3832.5؛ من آسيا حتى لندن–نيويورك؛ تُلغى بعودة إغلاق M15 فوق 3840",
+    "zh": "跌破區域——僅在 M15 收在 3832.5 之下後生效；亞洲盤至倫敦–紐約盤；M15 重新收在 3840 之上則失效"
+   }
+  }
+ ],
+ "scenarios": [
+  {
+   "side": "SELL",
+   "prob": 50,
+   "path": [
+    3832.5,
+    3800,
+    3764.7
+   ],
+   "text": {
+    "vi": "Nhánh A: trước tin giá đi ngang hoặc hồi lên 3872–3901.4 bị từ chối, đáy 3832.5–3841.2 là thanh khoản. Doanh số bán lẻ mạnh hoặc M15 đóng dưới 3832.5 → giảm về 3800 rồi 3764.7.",
+    "en": "Branch A: before the data price ranges or rebounds into 3872–3901.4 and is rejected, with 3832.5–3841.2 as the liquidity pool. Strong Retail Sales or an M15 close below 3832.5 → down to 3800 then 3764.7.",
+    "ar": "المسار A: قبل البيانات يتذبذب السعر أو يرتد إلى 3872–3901.4 ويُرفض، مع وجود السيولة عند 3832.5–3841.2. مبيعات تجزئة قوية أو إغلاق M15 أسفل 3832.5 ← هبوط إلى 3800 ثم 3764.7.",
+    "zh": "分支 A：數據前金價區間整理或反彈至 3872–3901.4 遇阻，3832.5–3841.2 為流動性所在。零售銷售強勁或 M15 收在 3832.5 之下 → 下看 3800，再看 3764.7。"
+   }
+  },
+  {
+   "side": "BUY",
+   "prob": 50,
+   "path": [
+    3901.4,
+    3923.1,
+    3889
+   ],
+   "text": {
+    "vi": "Nhánh B: Doanh số bán lẻ yếu hoặc M15 đóng trên 3901.4 → hồi lên 3914–3932.1, bị từ chối thì quay về 3889 / 3872; H1 đóng trên 3936 → hồi tiếp 3949–3970 rồi vùng chính 3980.7–4000.7.",
+    "en": "Branch B: weak Retail Sales or an M15 close above 3901.4 → rebound into 3914–3932.1; a rejection there turns price back to 3889 / 3872; an H1 close above 3936 → rebound extends to 3949–3970 and then the 3980.7–4000.7 main zone.",
+    "ar": "المسار B: مبيعات تجزئة ضعيفة أو إغلاق M15 فوق 3901.4 ← ارتداد إلى 3914–3932.1؛ ورفض السعر هناك يعيده إلى 3889 / 3872؛ وإغلاق H1 فوق 3936 ← يمتد الارتداد إلى 3949–3970 ثم المنطقة الرئيسية 3980.7–4000.7.",
+    "zh": "分支 B：零售銷售疲弱或 M15 收在 3901.4 之上 → 反彈至 3914–3932.1，遇阻則回落至 3889 / 3872；H1 收在 3936 之上 → 反彈延伸至 3949–3970，再看主要區域 3980.7–4000.7。"
+   }
+  }
+ ],
+ "range": {
+  "lo": 3800,
+  "hi": 3936
+ },
+ "news": [
+  {
+   "time": "17/11 14:00",
+   "impact": "medium",
+   "text": {
+    "vi": "Thu nhập bình quân Anh",
+    "en": "UK Average Earnings",
+    "ar": "متوسط الأجور في بريطانيا",
+    "zh": "英國平均薪資"
+   }
+  },
+  {
+   "time": "17/11 19:30",
+   "impact": "low",
+   "text": {
+    "vi": "Phát biểu của thành viên FOMC Musalem",
+    "en": "FOMC member Musalem speaks",
+    "ar": "كلمة عضو اللجنة الفيدرالية موسالم",
+    "zh": "FOMC 委員 Musalem 講話"
+   }
+  },
+  {
+   "time": "17/11 20:30",
+   "impact": "high",
+   "text": {
+    "vi": "Doanh số bán lẻ Mỹ + lõi (m/m)",
+    "en": "US Retail Sales + Core Retail Sales m/m",
+    "ar": "مبيعات التجزئة الأمريكية والأساسية (شهري)",
+    "zh": "美國零售銷售與核心零售銷售（月增率）"
+   }
+  },
+  {
+   "time": "17/11 20:30",
+   "impact": "low",
+   "text": {
+    "vi": "Giá nhập khẩu Mỹ",
+    "en": "US Import Prices",
+    "ar": "أسعار الواردات الأمريكية",
+    "zh": "美國進口物價"
+   }
+  },
+  {
+   "time": "17/11 21:15",
+   "impact": "low",
+   "text": {
+    "vi": "Sản lượng công nghiệp Mỹ",
+    "en": "US Industrial Production",
+    "ar": "الإنتاج الصناعي الأمريكي",
+    "zh": "美國工業生產"
+   }
+  },
+  {
+   "time": "17/11 22:00",
+   "impact": "low",
+   "text": {
+    "vi": "Chỉ số thị trường nhà ở NAHB",
+    "en": "NAHB Housing Market Index",
+    "ar": "مؤشر سوق الإسكان NAHB",
+    "zh": "NAHB 房屋市場指數"
+   }
+  },
+  {
+   "time": "18/11 20:30",
+   "impact": "medium",
+   "text": {
+    "vi": "Nhà ở khởi công / Giấy phép xây dựng Mỹ",
+    "en": "US Housing Starts / Building Permits",
+    "ar": "البدء في بناء المساكن / تصاريح البناء الأمريكية",
+    "zh": "美國新屋開工 / 營建許可"
+   }
+  }
+ ],
+ "next_update": {
+  "vi": "Cập nhật 13:45 VN hôm nay (trước phiên London)",
+  "en": "Update at 13:45 VN today (before London)",
+  "ar": "تحديث الساعة 13:45 بتوقيت فيتنام اليوم (قبل لندن)",
+  "zh": "越南時間今日 13:45 更新（倫敦盤前）"
+ },
+ "chart": {
+  "vi": "data/charts/2026-11-17-0700-vi.png",
+  "en": "data/charts/2026-11-17-0700-en.png"
+ }
+}
