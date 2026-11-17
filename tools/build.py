@@ -278,6 +278,65 @@ def headline_html(s, lang):
     return f'<span class="hl1">{esc(parts[0])}</span>' + (f'<ul class="hl">{li}</ul>' if li else '')
 
 
+INV_RE = re.compile(r'huỷ|hủy|\bvoid\b|失效|تُلغى|تلغى', re.I)
+VALID_RE = re.compile(r'hiệu lực|\bvalid\b|有效|صالحة', re.I)
+
+
+def ideas_html(text, lang, mark=False, skip_lab=''):
+    """Long level texts (watch level, "view is wrong if") as one line per idea (same as ideasEl in app.js):
+    a long "Label: …" opener becomes a small note, a short "Label:" is bold, "A → B" shows condition → result. Prices in bold."""
+    px = lambda x: _STEP_PRICE.sub(lambda m: '<b class="px">' + m.group(0) + '</b>', esc(x))
+    cap = lambda x: x[:1].upper() + x[1:]
+    arrow = '←' if lang == 'ar' else '→'
+    out = []
+    if skip_lab and text.lower().startswith(skip_lab.lower()):   # "Main zone: …" under a "Main zone" chip
+        text = text[len(skip_lab):].lstrip(' :：,，،–-')
+    for g in re.split(r'(?:(?<=\.)\s+|。|[;；؛]\s*)', text):
+        g = g.strip(' ,，،.。')
+        if not g: continue
+        lab = ''
+        m = re.match(r'^([^\d:：]{2,80}?)\s*[:：]\s*(.+)$', g)
+        if m:
+            if skip_lab and m.group(1).strip().lower() == skip_lab.lower(): pass
+            elif len(m.group(1)) > 26 or re.search(r'[,，،]', m.group(1)): out.append(f'<li class="nt">{esc(cap(m.group(1).strip()))}</li>')
+            else: lab = m.group(1).strip()
+            g = m.group(2)
+        parts = [cap(x.strip(' ,，،')) for x in re.split(r'\s*[→←]\s*', g) if x.strip(' ,，،')]
+        if not parts: continue
+        head = f'<b class="lbl">{esc(cap(lab))}{"：" if lang == "zh-hant" else ":"}</b> ' if lab else ''
+        mk = (' inv' if INV_RE.search(g) else ' tm' if VALID_RE.search(g) else '') if mark else ''
+        if len(parts) > 1:
+            out.append(f'<li class="ar{mk}">{head}<span class="cd">{px(parts[0])}</span><span class="to" aria-hidden="true">{arrow}</span>'
+                       f'<span class="rs">{f" {arrow} ".join(px(x) for x in parts[1:])}</span></li>')
+        else:
+            out.append(f'<li{(" class=" + chr(34) + mk.strip() + chr(34)) if mk else ""}>{head}{px(parts[0])}</li>')
+    return '<ul class="ideas">' + ''.join(out) + '</ul>'
+
+
+def verdict_cls(v):
+    if re.search(r'hồi|rebound|反彈|ارتداد|trung tính|neutral|中性|محايد|đi ngang|range|整理', v, re.I): return 'neutral'
+    if re.search(r'giảm|bear|偏空|下跌|هابط', v, re.I): return 'sell'
+    if re.search(r'tăng|bull|偏多|上漲|صاعد', v, re.I): return 'buy'
+    return 'neutral'
+
+
+def ctx_card(k, v, lang):
+    """Market context card (same as ctxCard in app.js): label, coloured verdict, one line per idea, or a name/price table."""
+    head = f'<span class="k">{esc(k)}</span>'
+    m = re.match(r'^([^\d:：]{2,40}?)\s*[:：]\s*(.+)$', v)
+    if not m and lang == 'zh-hant': m = re.match(r'^(偏空|偏多|中性|雙向|震盪|整理)[，,]\s*(.+)$', v)
+    if m and not re.search(r'[,，،]', m.group(1)):
+        head += f'<span class="vd {verdict_cls(m.group(1))}">{esc(m.group(1)[:1].upper() + m.group(1)[1:])}</span>'
+        v = m.group(2)
+    items = [x.rstrip(' .。') for x in re.split(r'\s*[;；؛]\s*', v) if x.strip(' .。')]
+    pairs = [re.match(r'^(.+?)\s+(\d{3,5}(?:\.\d+)?)$', x.strip()) for x in items]
+    if len(items) > 1 and all(q and re.search(r'[^\d\s/.:-]', q.group(1)) for q in pairs):
+        body = '<div class="kv">' + ''.join(f'<span class="kk">{esc(q.group(1)[:1].upper() + q.group(1)[1:])}</span><b class="px">{esc(q.group(2))}</b>' for q in pairs) + '</div>'
+    else:
+        body = ideas_html(v, lang)
+    return f'<div class="stat ctx"><div class="ch">{head}</div>{body}</div>'
+
+
 def plan_html(doc, p, lang):
     d0 = dt.date.fromisoformat(p['date'])
     upd = updated_dt(p)
@@ -319,10 +378,12 @@ def plan_html(doc, p, lang):
     if mz: rows.append(row(t(lang, 'main_zone') + par(t(lang, mz['side']), lang), rng(mz['lo'], mz['hi'], lang), 'main'))
     for x in p.get('targets') or []: rows.append(row(t(lang, 'target') + ' ' + x['label'], rng(x['lo'], x['hi'], lang)))
     if p.get('range'): rows.append(row(t(lang, 'range'), rng(p['range']['lo'], p['range']['hi'], lang)))
-    for w in p.get('watch') or []: rows.append(row(t(lang, 'watch') + ' ' + rng(w['lo'], w['hi'], lang), L(w.get('text'), lang), '', True))
-    if p.get('invalidation'): rows.append(row(t(lang, 'invalid'), L(p['invalidation'], lang), 'bad', True))
+    trow = lambda k, v, cls='': f'<div class="row text ideas-row{(" " + cls) if cls else ""}"><span class="k">{k}</span><div class="v">{v}</div></div>'
+    for w in p.get('watch') or []:
+        rows.append(trow(esc(t(lang, 'watch')) + ' <b class="px">' + esc(rng(w['lo'], w['hi'], lang)) + '</b>', ideas_html(L(w.get('text'), lang), lang), 'watch'))
+    if p.get('invalidation'): rows.append(trow(esc(t(lang, 'invalid')), ideas_html(L(p['invalidation'], lang), lang), 'inv'))
     doc = fill(doc, 'levels', ''.join(rows))
-    doc = fill(doc, 'context', ''.join(f'<div class="stat"><span class="k">{esc(L(c["k"], lang))}</span><span class="v">{esc(L(c["v"], lang))}</span></div>' for c in p.get('context') or []))
+    doc = fill(doc, 'context', ''.join(ctx_card(L(c['k'], lang), L(c['v'], lang), lang) for c in p.get('context') or []))
     sc = []
     for i, s in enumerate(p.get('scenarios') or []):
         w = max(0, min(100, s['prob']))
@@ -332,9 +393,10 @@ def plan_html(doc, p, lang):
     zs = []
     for z in p.get('zones') or []:
         is_main = bool(mz) and z['lo'] == mz['lo'] and z['hi'] == mz['hi'] and z['side'] == mz['side']
-        zs.append(f'<div class="card zone{" is-main" if is_main else ""}"><div class="l"><div class="h"><span class="pill {side_cls(z["side"])}">{esc(t(lang, z["side"]))}</span>'
-                  f'{num(rng(z["lo"], z["hi"], lang))}</div><span class="s">{esc(L(z.get("status"), lang))}</span></div>'
-                  f'<span class="g">{esc(t(lang, "key") if is_main else z.get("grade", ""))}</span></div>')
+        chip = t(lang, 'key') if is_main else (f"{t(lang, 'grade')} {z['grade']}" if z.get('grade') else '')
+        zs.append(f'<div class="card zone{" is-main" if is_main else ""}"><div class="zh"><span class="pill {side_cls(z["side"])}">{esc(t(lang, z["side"]))}</span>'
+                  f'<span class="zr num" dir="ltr">{esc(rng(z["lo"], z["hi"], lang))}</span><span class="g{" main" if is_main else ""}">{esc(chip)}</span></div>'
+                  f'{ideas_html(L(z.get("status"), lang), lang, True, t(lang, "main_zone"))}</div>')
     doc = fill(doc, 'zones', ''.join(zs))
     nw = ''.join(f'<div class="row news-row"><span class="k"><span class="imp {esc(n.get("impact", "low"))}"></span><span>{esc(L(n["text"], lang))}</span></span>'
                  f'<span class="v">{esc(vn_news_time(n.get("time", ""), p["date"][:4], lang))}</span></div>' for n in p.get('news') or [])

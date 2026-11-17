@@ -14,7 +14,7 @@
       main_zone: 'Main zone', watch: 'Watch level', invalid: 'View is wrong if', range: 'Expected range', target: 'Target',
       plan_of: 'Gold plan', ed: { '0700': 'Asia plan', '1345': 'Pre-London update', '1930': 'Pre-New York plan' },
       ed_short: { '0700': 'Asia', '1345': 'London', '1930': 'New York' },
-      updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', key: 'Key zone',
+      updated: 'updated', next: 'Next update', main: 'Main', alt: 'Alternate', grade: 'Grade', key: 'Key zone',
       tz: 'All times in UK time', your_time: 'your time',
       tg_title: 'Get every plan on Telegram', tg_sub: 'Free channel, no sign-up',
       SELL: 'SELL', BUY: 'BUY', TWO_WAY: 'TWO-WAY', STAND_ASIDE: 'STAND ASIDE', lean: 'leaning',
@@ -63,7 +63,7 @@
       main_zone: 'المنطقة الرئيسية', watch: 'مستوى للمراقبة', invalid: 'تُلغى الفكرة إذا', range: 'النطاق المتوقع', target: 'الهدف',
       plan_of: 'خطة الذهب', ed: { '0700': 'خطة آسيا', '1345': 'تحديث ما قبل لندن', '1930': 'خطة ما قبل نيويورك' },
       ed_short: { '0700': 'آسيا', '1345': 'لندن', '1930': 'نيويورك' },
-      updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', key: 'منطقة رئيسية',
+      updated: 'آخر تحديث', next: 'التحديث القادم', main: 'الرئيسي', alt: 'البديل', grade: 'الدرجة', key: 'منطقة رئيسية',
       tz: 'جميع الأوقات بتوقيت مكة المكرمة', your_time: 'بتوقيتك',
       tg_title: 'استلم كل خطة عبر تيليجرام', tg_sub: 'قناة مجانية، بدون تسجيل',
       SELL: 'بيع', BUY: 'شراء', TWO_WAY: 'اتجاهان', STAND_ASIDE: 'خارج السوق', lean: 'ميل إلى',
@@ -112,7 +112,7 @@
       main_zone: 'Vùng chính', watch: 'Mức theo dõi', invalid: 'Nhận định sai khi', range: 'Vùng giá dự kiến', target: 'Mục tiêu',
       plan_of: 'Plan vàng', ed: { '0700': 'Plan phiên Á', '1345': 'Cập nhật trước phiên Âu', '1930': 'Plan trước phiên Mỹ' },
       ed_short: { '0700': 'Phiên Á', '1345': 'Phiên Âu', '1930': 'Phiên Mỹ' },
-      updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', key: 'Vùng chính',
+      updated: 'cập nhật', next: 'Lần cập nhật tới', main: 'Chính', alt: 'Phụ', grade: 'Hạng', key: 'Vùng chính',
       tz: 'Mọi giờ theo giờ Việt Nam', your_time: 'giờ của bạn',
       tg_title: 'Nhận mọi plan qua Telegram', tg_sub: 'Kênh miễn phí, không cần đăng ký',
       SELL: 'BÁN', BUY: 'MUA', TWO_WAY: '2 CHIỀU', STAND_ASIDE: 'ĐỨNG NGOÀI', lean: 'nghiêng',
@@ -161,7 +161,7 @@
       main_zone: '主要區域', watch: '觀察價位', invalid: '觀點失效條件', range: '預期區間', target: '目標',
       plan_of: '黃金計畫', ed: { '0700': '亞洲盤計畫', '1345': '倫敦盤前更新', '1930': '紐約盤前計畫' },
       ed_short: { '0700': '亞洲盤', '1345': '倫敦盤', '1930': '紐約盤' },
-      updated: '更新於', next: '下次更新', main: '主要', alt: '備選', key: '主要區域',
+      updated: '更新於', next: '下次更新', main: '主要', alt: '備選', grade: '等級', key: '主要區域',
       tz: '所有時間皆為台北／香港時間', your_time: '您的時間',
       tg_title: '在 Telegram 接收每一份計畫', tg_sub: '免費頻道，無需註冊',
       SELL: '偏空', BUY: '偏多', TWO_WAY: '雙向', STAND_ASIDE: '觀望', lean: '傾向',
@@ -329,6 +329,58 @@
     });
     node.appendChild(ul);
   }
+  // Long level texts as one line per idea (same as ideas_html in tools/build.py).
+  function pxInto(node, x) { x.split(PRICE).forEach(function (bit, k) { if (bit) node.appendChild(k % 2 ? el('b', 'px', bit) : document.createTextNode(bit)); }); return node; }
+  var INV_RE = /huỷ|hủy|\bvoid\b|失效|تُلغى|تلغى/i, VALID_RE = /hiệu lực|\bvalid\b|有效|صالحة/i;
+  function ideasEl(text, mark, skipLab) {
+    var ul = el('ul', 'ideas'), arrow = lang === 'ar' ? '←' : '→';
+    if (skipLab && text.toLowerCase().indexOf(skipLab.toLowerCase()) === 0) text = text.slice(skipLab.length).replace(/^[\s:：,，،–-]+/, '');
+    function cap(x) { return x.charAt(0).toUpperCase() + x.slice(1); }
+    function trim(x) { return x.replace(/^[\s,，،.。]+|[\s,，،.。]+$/g, ''); }
+    text.split(/(?:(?<=\.)\s+|。|[;；؛]\s*)/).forEach(function (g) {
+      g = trim(g); if (!g) return;
+      var lab = '', m = /^([^\d:：]{2,80}?)\s*[:：]\s*(.+)$/.exec(g);
+      if (m) {
+        if (skipLab && m[1].trim().toLowerCase() === skipLab.toLowerCase()) lab = '';
+        else if (m[1].length > 26 || /[,，،]/.test(m[1])) ul.appendChild(el('li', 'nt', cap(m[1].trim()))); else lab = m[1].trim();
+        g = m[2];
+      }
+      var parts = g.split(/\s*[→←]\s*/).map(trim).filter(Boolean).map(cap);
+      if (!parts.length) return;
+      var cls = (parts.length > 1 ? 'ar' : '') + (mark && INV_RE.test(g) ? ' inv' : mark && VALID_RE.test(g) ? ' tm' : '');
+      var li = el('li', cls.trim() || null);
+      if (lab) { li.appendChild(el('b', 'lbl', cap(lab) + (lang === 'zh-hant' ? '：' : ':'))); li.appendChild(document.createTextNode(' ')); }
+      if (parts.length > 1) {
+        li.appendChild(pxInto(el('span', 'cd'), parts[0]));
+        var to = el('span', 'to', arrow); to.setAttribute('aria-hidden', 'true'); li.appendChild(to);
+        li.appendChild(pxInto(el('span', 'rs'), parts.slice(1).join(' ' + arrow + ' ')));
+      } else pxInto(li, parts[0]);
+      ul.appendChild(li);
+    });
+    return ul;
+  }
+  // Market context card: label, a coloured verdict (text before ":"), then one line per idea; a list of "name price" pairs as a table.
+  function verdictCls(v) {
+    if (/hồi|rebound|反彈|ارتداد|trung tính|neutral|中性|محايد|đi ngang|range|整理/i.test(v)) return 'neutral';
+    if (/giảm|bear|偏空|下跌|هابط/i.test(v)) return 'sell';
+    if (/tăng|bull|偏多|上漲|صاعد/i.test(v)) return 'buy';
+    return 'neutral';
+  }
+  function ctxCard(k, v) {
+    var card = el('div', 'stat ctx'), head = add(el('div', 'ch'), el('span', 'k', k));
+    card.appendChild(head);
+    var m = /^([^\d:：]{2,40}?)\s*[:：]\s*(.+)$/.exec(v);
+    if (!m && lang === 'zh-hant') m = /^(偏空|偏多|中性|雙向|震盪|整理)[，,]\s*(.+)$/.exec(v);
+    if (m && !/[,，،]/.test(m[1])) { head.appendChild(el('span', 'vd ' + verdictCls(m[1]), m[1].charAt(0).toUpperCase() + m[1].slice(1))); v = m[2]; }
+    var items = v.split(/\s*[;；؛]\s*/).map(function (x) { return x.replace(/[\s.。]+$/, ''); }).filter(Boolean);
+    var kv = items.length > 1 && items.every(function (x) { var q = /^(.+?)\s+(\d{3,5}(?:\.\d+)?)$/.exec(x.trim()); return q && /[^\d\s\/.:-]/.test(q[1]); });
+    if (kv) {
+      var tb = el('div', 'kv');
+      items.forEach(function (x) { var mm = /^(.*?)\s+(\d{3,5}(?:\.\d+)?)$/.exec(x.trim()); add(tb, el('span', 'kk', mm[1].charAt(0).toUpperCase() + mm[1].slice(1)), el('b', 'px', mm[2])); });
+      card.appendChild(tb);
+    } else card.appendChild(ideasEl(v));
+    return card;
+  }
   function par(x) { return lang === 'zh-hant' ? '（' + x + '）' : ' (' + x + ')'; }
   function rng(lo, hi) { return lo === hi || hi == null ? fmt(lo) : fmt(lo) + '–' + fmt(hi); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -447,11 +499,16 @@
     if (p.main_zone) add(lv, row(t('main_zone') + par(t(p.main_zone.side)), rng(p.main_zone.lo, p.main_zone.hi), 'main'));
     (p.targets || []).forEach(function (x) { add(lv, row(t('target') + ' ' + x.label, rng(x.lo, x.hi))); });
     if (p.range) add(lv, row(t('range'), rng(p.range.lo, p.range.hi)));
-    (p.watch || []).forEach(function (w) { add(lv, row(t('watch') + ' ' + rng(w.lo, w.hi), L(w.text), '', true)); });
-    if (p.invalidation) add(lv, row(t('invalid'), L(p.invalidation), 'bad', true));
+    function trow(k, kpx, text, cls) {
+      var r = el('div', 'row text ideas-row ' + cls), kk = el('span', 'k', k);
+      if (kpx) { kk.appendChild(document.createTextNode(' ')); kk.appendChild(el('b', 'px', kpx)); }
+      return add(r, kk, add(el('div', 'v'), ideasEl(text)));
+    }
+    (p.watch || []).forEach(function (w) { add(lv, trow(t('watch'), rng(w.lo, w.hi), L(w.text), 'watch')); });
+    if (p.invalidation) add(lv, trow(t('invalid'), '', L(p.invalidation), 'inv'));
 
     var cx = clear('context');
-    (p.context || []).forEach(function (c) { add(cx, add(el('div', 'stat'), el('span', 'k', L(c.k)), el('span', 'v', L(c.v)))); });
+    (p.context || []).forEach(function (c) { cx.appendChild(ctxCard(L(c.k), L(c.v))); });
 
     var sc = clear('scenarios');
     (p.scenarios || []).forEach(function (s, i) {
@@ -466,8 +523,9 @@
     (p.zones || []).forEach(function (z) {
       var isMain = mz && z.lo === mz.lo && z.hi === mz.hi && z.side === mz.side;
       var c = el('div', 'card zone' + (isMain ? ' is-main' : ''));
-      var h = add(el('div', 'h'), el('span', 'pill ' + sideCls(z.side), t(z.side)), el('span', 'num', rng(z.lo, z.hi)));
-      add(zn, add(c, add(el('div', 'l'), h, el('span', 's', L(z.status))), el('span', 'g', isMain ? t('key') : String(z.grade || ''))));
+      var h = add(el('div', 'zh'), el('span', 'pill ' + sideCls(z.side), t(z.side)), el('span', 'zr num', rng(z.lo, z.hi)),
+        el('span', 'g' + (isMain ? ' main' : ''), isMain ? t('key') : (z.grade ? t('grade') + ' ' + z.grade : '')));
+      add(zn, add(c, h, ideasEl(L(z.status), true, t('main_zone'))));
     });
 
     var nw = clear('news');
@@ -546,6 +604,10 @@
     bar.classList.add('on'); box.classList.add('tabbed');
     var m = /^#p-(scen|levels|zones|context|news)$/.exec(location.hash);
     pick(m ? m[1] : 'scen', false, true);
+    window.addEventListener('hashchange', function () {   // links to #p-zones etc. on the same page
+      var h = /^#p-(scen|levels|zones|context|news)$/.exec(location.hash);
+      if (h) pick(h[1], false, true);
+    });
   }
   function headerHeight() {
     var h = document.querySelector('.top');

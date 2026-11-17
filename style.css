@@ -655,3 +655,43 @@ html[data-theme="dark"] .next,html[data-theme="dark"] .cta-box{border:1px solid 
 .headline .hl li:not(.inv) .px{color:var(--ink)}
 @media (max-width:640px){.headline .hl1{font-size:19px}.headline .hl li{font-size:15px}}
 .headline{margin-top:2px}.headline + .bias-sub{margin-top:4px}
+
+/* 17/11 – long level texts (watch level, "wrong if") as one line per idea */
+.ideas-row .k{font-size:14px;color:var(--ink2);font-weight:600}
+.ideas-row.inv .k{color:var(--sell)}
+.ideas-row .k .px{color:var(--ink);font-weight:700}
+.ideas{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ideas li{position:relative;padding-inline-start:18px;font-size:15px;line-height:1.55;color:var(--ink2)}
+.ideas li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--ink3)}
+.ideas-row.inv .ideas li::before{background:var(--sell)}
+.ideas li.nt{padding:4px 10px;align-self:flex-start;border-radius:8px;background:var(--soft);font-size:13px;color:var(--ink3)}
+.ideas li.nt::before{display:none}
+.ideas .lbl{color:var(--ink);font-weight:700}
+.ideas .px{color:var(--ink);font-weight:700;white-space:nowrap}
+.ideas li.ar .cd{color:var(--ink)}
+.ideas li.ar .to{display:inline-block;margin:0 .45em;color:var(--gold-ink);font-weight:700}
+@media (max-width:640px){.ideas li{font-size:14.5px}}
+
+/* 17/11 – zones and market context as clear cards */
+#zones .zone{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:18px 20px}
+.zone .zh{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.zone .zr{font-size:19px;font-weight:700;color:var(--ink)}
+.zone .g{margin-inline-start:auto;font-size:12px;font-weight:600;color:var(--ink2);background:var(--soft);border:0;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.zone .g.main{background:var(--gold-bg);color:var(--gold-ink)}
+.zone .g:empty{display:none}
+.zone .ideas{margin:0;gap:6px}
+.zone .ideas li{font-size:14.5px}
+.ideas li.inv{color:var(--sell)} .ideas li.inv::before{background:var(--sell);border-radius:2px}
+.ideas li.tm::before{background:transparent;border:1.5px solid var(--ink3);box-sizing:border-box}
+.stat.ctx{gap:10px;padding:18px 20px}
+.ctx .ch{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.ctx .ch .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+.ctx .vd{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--soft);color:var(--ink2)}
+.ctx .vd.sell{background:var(--sell-bg);color:var(--sell)} .ctx .vd.buy{background:var(--buy-bg);color:var(--buy)}
+.ctx .vd.sell::before{content:"↓ "} .ctx .vd.buy::before{content:"↑ "}
+.ctx .ideas{margin:0;gap:6px} .ctx .ideas li{font-size:14.5px}
+.ctx .kv{display:grid;grid-template-columns:1fr auto;gap:8px 14px;font-size:14.5px;color:var(--ink2)}
+.ctx .kv .px{color:var(--ink);text-align:end;white-space:nowrap}
+html:lang(zh-Hant) .ctx .ch .k,html[lang="ar"] .ctx .ch .k{letter-spacing:0}
+#context.stats{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+#zones .zone{justify-content:flex-start}
