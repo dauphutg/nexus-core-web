@@ -1,0 +1,39 @@
+{
+ "date": "2026-11-17",
+ "open": 3853.8,
+ "close": 3849.21,
+ "high": 3891.07,
+ "low": 3836.96,
+ "change": -4.59,
+ "change_pct": -0.12,
+ "biggest_hour": {
+  "start_vn": "2026-11-17 22:00",
+  "move": 16.28
+ },
+ "candles": 92,
+ "tag": "dollar",
+ "headline": {
+  "en": "Gold slipped 0.12% as early gains faded on a firmer dollar and the Fed rate outlook",
+  "ar": "تراجع الذهب 0.12% بعد تلاشي مكاسبه المبكرة مع صعود الدولار وتوقعات الفائدة الأمريكية",
+  "vi": "Vàng giảm 0.12% khi đà tăng đầu ngày tan biến do USD mạnh lên và triển vọng lãi suất Fed",
+  "zh": "美元走強加上聯準會利率前景，金價早盤漲幅回吐，收跌 0.12%"
+ },
+ "reasons": [
+  {
+   "en": "Gold climbed from a 3853.8 open to a 3891.07 high in Asian and European trade; Reuters headlines said it inched up from an over one-year low but the Fed outlook capped gains.",
+   "ar": "صعد الذهب من مستوى الافتتاح 3853.8 إلى قمة 3891.07 خلال التداولات الآسيوية والأوروبية؛ وأفادت عناوين رويترز بأنه ارتفع قليلًا من أدنى مستوى في أكثر من عام، لكن توقعات الاحتياطي الفيدرالي حدّت من المكاسب.",
+   "vi": "Vàng tăng từ giá mở cửa 3853.8 lên đỉnh 3891.07 trong phiên Á và Âu; tin Reuters cho biết vàng nhích lên từ đáy hơn 1 năm nhưng triển vọng của Fed hạn chế đà tăng.",
+   "zh": "金價在亞洲及歐洲盤由開盤 3853.8 升至高點 3891.07；路透報導指金價自逾一年低點小幅回升，但聯準會前景限制了漲幅。"
+  },
+  {
+   "en": "In US trade Reuters said gold struggled to rebound as the US dollar and Treasury yields advanced, and Dow Jones cited Fed rate-hike bets; it closed at 3849.21, near the 3836.96 low.",
+   "ar": "خلال التداولات الأمريكية ذكرت رويترز أن الذهب واجه صعوبة في التعافي مع ارتفاع الدولار الأمريكي وعوائد سندات الخزانة، وأشارت داو جونز إلى الرهانات على رفع الفائدة؛ وأغلق عند 3849.21 قرب أدنى مستوى عند 3836.96.",
+   "vi": "Trong phiên Mỹ, Reuters cho biết vàng khó hồi phục khi USD và lợi suất trái phiếu Mỹ tăng, còn Dow Jones nêu kỳ vọng Fed tăng lãi suất; vàng đóng cửa 3849.21, sát đáy ngày 3836.96.",
+   "zh": "美國盤中，路透指美元與美債殖利率走高令金價難以反彈，道瓊斯則提及聯準會升息押注；金價收於 3849.21，接近低點 3836.96。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (newswires)"
+ ]
+}

@@ -19,8 +19,8 @@
    "bias": "SELL",
    "lean": null,
    "main_zone": "3777.2–3783.8",
-   "result": null,
-   "r": null,
+   "result": "expired",
+   "r": 0.58,
    "url": "https://nexuscore.trade/en/plan/2026-11-18-london/"
   },
   {
@@ -30,8 +30,8 @@
    "bias": "SELL",
    "lean": null,
    "main_zone": "3980.7–4000.7",
-   "result": null,
-   "r": null,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-18-asia/"
   },
   {
@@ -41,8 +41,8 @@
    "bias": "SELL",
    "lean": null,
    "main_zone": "3982–4000.7",
-   "result": null,
-   "r": null,
+   "result": "no_touch",
+   "r": 0,
    "url": "https://nexuscore.trade/en/plan/2026-11-17-newyork/"
   },
   {
