@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "rules": 5,
+ "date": "2026-11-18",
+ "edition": "1930",
+ "updated_vn": "2026-11-18 19:39",
+ "daily_close_vn": "2026-11-19 05:00",
+ "bias": "SELL",
+ "zones": [
+  {
+   "side": "SELL",
+   "lo": 3778.0,
+   "hi": 3787.0,
+   "edge": 3778.0,
+   "void": 3807.0,
+   "t1": 3757.4,
+   "main": true,
+   "grade": "B"
+  },
+  {
+   "side": "SELL",
+   "lo": 3796.0,
+   "hi": 3807.0,
+   "edge": 3796.0,
+   "void": 3811.0,
+   "t1": 3757.4,
+   "main": false,
+   "grade": "B"
+  },
+  {
+   "side": "SELL",
+   "lo": 3830.6,
+   "hi": 3846.0,
+   "edge": 3830.6,
+   "void": 3850.0,
+   "t1": 3757.4,
+   "main": false,
+   "grade": "B"
+  },
+  {
+   "side": "SELL",
+   "lo": 3853.0,
+   "hi": 3862.1,
+   "edge": 3853.0,
+   "void": 3872.0,
+   "t1": 3757.4,
+   "main": false,
+   "grade": "A-H1"
+  }
+ ]
+}

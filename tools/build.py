@@ -1486,4 +1486,7 @@ if __name__ == '__main__':
     write('en/index.html', EN_ROOT)
     write('sitemap.xml', sitemap())
     write('llms.txt', llms())
+    # data/ea-zones.json for the MT5 EA (tools/ea_zones.py, levels from tools/grade.py); printed before "built:" so that line stays last
+    import ea_zones
+    ea_zones.write(ROOT)
     print(f'built: home + today + legal x3, {len(KEYS)} plan page(s) x{len(LANGS)}, {len(MONTHS)} track-record month(s) x{len(LANGS)}, signals x{len(LANGS)}, {'+'.join(str(len(LEARN[l])) for l in LEARN_LANGS)} learn page(s) live (en+ar+zh), {len(MOVES)} why-gold-moved x{len(LANGS)}, sitemap.xml, llms.txt –', P['date'], P['edition'])
