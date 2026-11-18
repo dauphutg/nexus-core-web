@@ -1,0 +1,39 @@
+{
+ "date": "2026-11-18",
+ "open": 3854.72,
+ "close": 3725.18,
+ "high": 3857.61,
+ "low": 3720.02,
+ "change": -129.54,
+ "change_pct": -3.36,
+ "biggest_hour": {
+  "start_vn": "2026-11-18 20:00",
+  "move": 38.59
+ },
+ "candles": 92,
+ "tag": "fed",
+ "headline": {
+  "en": "Gold fell 3.36% to a 14-month low as hawkish Fed signals lifted the dollar and yields",
+  "ar": "هبط الذهب 3.36% إلى أدنى مستوى في 14 شهرًا مع إشارات متشددة من الفيدرالي رفعت الدولار والعوائد",
+  "vi": "Vàng giảm 3.36% về đáy 14 tháng khi tín hiệu cứng rắn của Fed đẩy USD và lợi suất tăng",
+  "zh": "聯準會鷹派訊號推升美元與殖利率，金價重挫 3.36% 至 14 個月低點"
+ },
+ "reasons": [
+  {
+   "en": "Gold slid from a 3854.72 open to below 3800 in Asian and European trade; Reuters said it hit an over one-year low on a firm dollar and the US rate outlook, and Dow Jones cited rate-hike bets as it fell 2.5%.",
+   "ar": "انزلق الذهب من مستوى الافتتاح 3854.72 إلى ما دون 3800 خلال التداولات الآسيوية والأوروبية؛ وذكرت رويترز أنه بلغ أدنى مستوى في أكثر من عام بفعل قوة الدولار وتوقعات الفائدة الأمريكية، وأشارت داو جونز إلى الرهانات على رفع الفائدة مع تراجعه 2.5%.",
+   "vi": "Vàng trượt từ giá mở cửa 3854.72 xuống dưới 3800 trong phiên Á và Âu; Reuters cho biết vàng về đáy hơn 1 năm do USD mạnh và triển vọng lãi suất Mỹ, còn Dow Jones nêu kỳ vọng Fed tăng lãi suất khi vàng giảm 2.5%.",
+   "zh": "金價在亞洲及歐洲盤由開盤 3854.72 跌破 3800；路透指美元強勢及美國利率前景令金價跌至逾一年低點，道瓊斯則提及升息押注，金價一度跌 2.5%。"
+  },
+  {
+   "en": "In US trade gold bounced 38.59 in the hour from 20:00 Vietnam time but the rebound faded; Reuters said hawkish Fed rhetoric pushed the dollar and yields higher, and gold closed at 3725.18, near the 3720.02 low.",
+   "ar": "خلال التداولات الأمريكية ارتد الذهب 38.59 دولارًا في الساعة التي بدأت 20:00 بتوقيت فيتنام لكن الارتداد تلاشى؛ وذكرت رويترز أن التصريحات المتشددة للفيدرالي دفعت الدولار والعوائد للارتفاع، وأغلق الذهب عند 3725.18 قرب أدنى مستوى عند 3720.02.",
+   "vi": "Trong phiên Mỹ, vàng hồi 38.59 USD trong giờ bắt đầu 20:00 giờ VN nhưng nhanh chóng mất đà; Reuters cho biết phát biểu cứng rắn của Fed đẩy USD và lợi suất tăng, vàng đóng cửa 3725.18, sát đáy ngày 3720.02.",
+   "zh": "美國盤中，金價在越南時間 20:00 起的一小時內反彈 38.59，但隨即回落；路透指聯準會鷹派言論推升美元與殖利率，金價收於 3725.18，接近低點 3720.02。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (newswires)"
+ ]
+}
