@@ -1,0 +1,40 @@
+{
+ "date": "2026-11-19",
+ "open": 3731.2,
+ "close": 3624.63,
+ "high": 3758.72,
+ "low": 3619.91,
+ "change": -106.57,
+ "change_pct": -2.86,
+ "biggest_hour": {
+  "start_vn": "2026-11-19 09:00",
+  "move": -45.59
+ },
+ "candles": 92,
+ "tag": "fed",
+ "headline": {
+  "en": "Gold fell 2.86% to a new 14-month low as Fed rate-hike bets and a firm dollar weighed",
+  "ar": "تراجع الذهب 2.86% إلى أدنى مستوى جديد في 14 شهرًا مع رهانات رفع الفائدة الأمريكية وقوة الدولار",
+  "vi": "Vàng giảm 2.86% về đáy 14 tháng mới khi kỳ vọng Fed tăng lãi suất và USD mạnh gây áp lực",
+  "zh": "聯準會升息押注與美元走強施壓，金價下跌 2.86% 再創 14 個月新低"
+ },
+ "reasons": [
+  {
+   "en": "Gold dropped 45.59 in the hour from 09:00 Vietnam time, from near 3755 to about 3709; Reuters and Dow Jones headlines through Asian and European trade said bets on a Fed rate hike kept gold near its 14-month low.",
+   "ar": "هبط الذهب 45.59 دولارًا في الساعة التي بدأت 09:00 بتوقيت فيتنام، من نحو 3755 إلى قرابة 3709؛ وذكرت عناوين رويترز وداو جونز خلال التداولات الآسيوية والأوروبية أن الرهانات على رفع الفيدرالي للفائدة أبقت الذهب قرب أدنى مستوى في 14 شهرًا.",
+   "vi": "Vàng giảm 45.59 USD trong giờ bắt đầu 09:00 giờ VN, từ gần 3755 xuống khoảng 3709; tiêu đề Reuters và Dow Jones trong phiên Á, Âu cho biết kỳ vọng Fed tăng lãi suất giữ vàng sát đáy 14 tháng.",
+   "zh": "金價在越南時間 09:00 起的一小時內下跌 45.59，由約 3755 跌至約 3709；路透及道瓊斯在亞洲及歐洲盤的標題指，聯準會升息押注令金價徘徊於 14 個月低點附近。"
+  },
+  {
+   "en": "In US trade gold broke below 3700 and kept sliding to a 3619.91 low, closing at 3624.63; dpa-AFX cited rising expectations of a December Fed hike and Reuters said a strong dollar and rate bets pushed gold to a 14-month low.",
+   "ar": "خلال التداولات الأمريكية كسر الذهب مستوى 3700 وواصل الانزلاق إلى أدنى مستوى عند 3619.91 ليغلق عند 3624.63؛ وأشارت dpa-AFX إلى تزايد توقعات رفع الفيدرالي للفائدة في ديسمبر، وذكرت رويترز أن قوة الدولار ورهانات الفائدة دفعت الذهب إلى أدنى مستوى في 14 شهرًا.",
+   "vi": "Trong phiên Mỹ, vàng thủng 3700 và tiếp tục trượt xuống đáy 3619.91, đóng cửa 3624.63; dpa-AFX nêu kỳ vọng Fed tăng lãi suất tháng 12 tăng lên, còn Reuters cho biết USD mạnh và cược lãi suất đẩy vàng về đáy 14 tháng.",
+   "zh": "美國盤中金價跌破 3700 並續跌至低點 3619.91，收於 3624.63；dpa-AFX 指市場對聯準會 12 月升息的預期升溫，路透則稱美元強勢與利率押注令金價跌至 14 個月低點。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (newswires)",
+  "TradingView news (dpa-AFX)"
+ ]
+}
