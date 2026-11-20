@@ -14,15 +14,17 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="NEXUS CORE">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="/style.css?v=20261120f">
-<script src="/theme.js?v=20261120f"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="gf" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"></noscript>
+<link rel="stylesheet" href="/style.css?v=20261121a">
+<script src="/theme.js?v=20261121a"></script>
 </head>
 <body data-page="{{KIND}}">
 <a class="skip" href="#app" data-i18n="skip"></a>
 <header class="top">
   <div class="wrap top-row">
-    <a class="brand" href="{{HOME}}"><img src="/assets/logo-banner.png" alt="NEXUS CORE" width="222" height="46"></a>
+    <a class="brand" href="{{HOME}}"><picture><source type="image/webp" srcset="/assets/logo-head.webp"><img src="/assets/logo-head.png" alt="NEXUS CORE" width="222" height="46"></picture></a>
     <nav class="tabs" aria-label="Main">
       <a href="{{TODAY}}" data-tab="plan" data-i18n="tab_plan"></a>
       <a href="{{TRACK}}" data-tab="track" data-i18n="tab_history"></a>
@@ -72,7 +74,7 @@
         <div class="hero-keys" id="hero-keys"></div>
       </div>
       <figure class="chart" id="chart-box" hidden>
-        <a id="chart-link" href="#" target="_blank" rel="noopener noreferrer"><picture><source id="chart-m" media="(max-width: 640px)" width="1200" height="1500"><img id="chart-img" alt="" loading="lazy" width="1800" height="1110"></picture></a>
+        <a id="chart-link" href="#" target="_blank" rel="noopener noreferrer"><picture><source id="chart-mw" type="image/webp" media="(max-width: 640px)" width="1200" height="1500"><source id="chart-m" media="(max-width: 640px)" width="1200" height="1500"><source id="chart-w" type="image/webp" width="1800" height="1110"><img id="chart-img" alt="" loading="lazy" width="1800" height="1110"></picture></a>
         <figcaption class="chart-hint" data-i18n="chart_hint"></figcaption>
       </figure>
     </div>
@@ -162,6 +164,6 @@
 </div>
 
 {{JSONLD}}
-<script src="/app.js?v=20261120f"></script>
+<script src="/app.js?v=20261121a" defer></script>
 </body>
 </html>

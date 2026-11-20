@@ -234,3 +234,9 @@ def render(outf, mob):
 
 render(outf, False)
 render(outf[:-4] + '-m.png' if outf.endswith('.png') else outf + '-m.png', True)
+try:   # WebP copies for the website (SEO F3, 21/11/2026); the PNG files stay
+    sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__))); import webp
+    for _f in (outf, outf[:-4] + '-m.png' if outf.endswith('.png') else outf + '-m.png'):
+        if _os.path.exists(_f): webp.ensure(_f)
+except Exception as _e:
+    print(f'webp: skipped ({type(_e).__name__})')

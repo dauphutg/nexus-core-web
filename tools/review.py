@@ -239,6 +239,10 @@ def compose(before, after, g, lang, out):
     strip(sh + A.height, T['after'], T['a_sub'].format(t=hm(g['window'][1])), '#9A6A00')
     img.paste(Bm, (0, 2 * sh + A.height))
     img.save(out, optimize=True)
+    try:   # WebP copy for the website (SEO F3, 21/11/2026)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import webp; webp.ensure(out)
+    except Exception as e:
+        print(f'webp: skipped ({type(e).__name__})')
 
 
 def main():

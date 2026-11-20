@@ -544,6 +544,8 @@
       // the portrait phone chart (…-m.png) exists for plans the site built itself; for a newer plan than this page, use the wide one
       var cm = document.getElementById('chart-m');
       if (cm && !same) cm.removeAttribute('srcset');
+      // WebP copies match this page's own chart only: for a newer plan fall back to the PNG set above
+      ['chart-mw', 'chart-w'].forEach(function (id) { var w = document.getElementById(id); if (w && !same) w.removeAttribute('srcset'); });
     } else cb.hidden = true;
 
     var al = document.getElementById('alert');

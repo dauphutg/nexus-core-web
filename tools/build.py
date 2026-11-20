@@ -469,6 +469,14 @@ def plan_html(doc, p, lang):
             doc = doc.replace('<source id="chart-m"', f'<source id="chart-m" srcset="/{msrc}"', 1)
         else:
             doc = doc.replace('<source id="chart-m" media="(max-width: 640px)" width="1200" height="1500">', '', 1)
+        # WebP first (SEO F3); a source is only kept when its file exists, the PNG <img> stays the fallback
+        for sid, png, tag in (('chart-mw', msrc, '<source id="chart-mw" type="image/webp" media="(max-width: 640px)" width="1200" height="1500">'),
+                              ('chart-w', src, '<source id="chart-w" type="image/webp" width="1800" height="1110">')):
+            wp = png[:-4] + '.webp'
+            if os.path.isfile(os.path.join(ROOT, wp)) and os.path.isfile(os.path.join(ROOT, png)):
+                doc = doc.replace(f'<source id="{sid}"', f'<source id="{sid}" srcset="/{wp}"', 1)
+            else:
+                doc = doc.replace(tag, '', 1)
     rows = []
     row = lambda k, v, cls='', text=False: (f'<div class="row{" text" if text else ""}"><span class="k">{esc(k)}</span>'
                                             f'<span class="v{"" if text else " num"}{(" " + cls) if cls else ""}"{"" if text else " dir=\"ltr\""}>{esc(v)}</span></div>')
@@ -662,6 +670,13 @@ def history_json():
 def side_of(p): return (p.get('lean') or '') if p['bias'] in ('TWO_WAY', 'STAND_ASIDE') else p['bias']
 
 
+GF_ALL = ('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800'
+          '&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap')
+GF_URL = 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800{fam}&display=swap'
+GF_FAM = {'en': '', 'vi': '', 'ar': '&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700',
+          'zh-hant': '&family=Noto+Sans+TC:wght@400;500;700'}
+
+
 def shell(lang, kind, paths):
     """Template with texts, tabs and language links filled in. paths = this page's address in each language."""
     doc = read('template.html')
@@ -669,6 +684,9 @@ def shell(lang, kind, paths):
            .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{KIND}}', kind)
            .replace('{{LEARN}}', learn_home(lang)).replace('{{TODAY}}', today_path(lang)).replace('{{FOOTER}}', footer_html(lang)))
     doc = re.sub(r'\{\{C:(\w+)\}\}', lambda m: esc(COPY[lang][m.group(1)]), doc)
+    # each language loads only the font families it shows (Core Web Vitals, 21/11/2026): Latin pages no longer download
+    # the Arabic and Chinese fonts just for the language menu
+    doc = doc.replace(GF_ALL, GF_URL.format(fam=GF_FAM[lang]))
     for k, v in T[lang].items():
         if isinstance(v, str):
             doc = re.sub(r'(data-i18n="%s"[^>]*>)(</)' % re.escape(k), lambda m: m.group(1) + esc(v) + m.group(2), doc)
@@ -697,6 +715,56 @@ def finish(doc, head_html, ld):
     return doc
 
 
+# SEO length rules (đề xuất F, người dùng duyệt 21/11/2026): <title> about 50–60 and meta description about 150–160,
+# measured in display width (a CJK character counts 2, so Chinese pages get about half as many characters).
+# Social cards (og:/twitter:) keep the full text.
+TAIL = {'en': ['Free daily gold plans, graded after the move: wins and losses.', 'Free, graded in public after the move.', 'Graded after the move.'],
+        'vi': ['Plan vàng miễn phí mỗi ngày, chấm điểm công khai sau khi giá chạy.', 'Miễn phí, chấm điểm công khai.', 'Chấm điểm sau.'],
+        'ar': ['خطط ذهب مجانية يوميًا، تُقيَّم علنًا بعد الحركة: الربح والخسارة.', 'مجانية وتُقيَّم علنًا بعد الحركة.', 'تقييم بعد الحركة.'],
+        'zh-hant': ['每日免費黃金計畫，行情走完後公開評分。', '免費，事後公開評分。', '事後評分。']}
+
+
+def _w(s):
+    import unicodedata
+    return sum(2 if unicodedata.east_asian_width(ch) in 'WF' else 1 for ch in s)
+
+
+def _cut(s, limit, ell='…'):
+    """shorten to display width <= limit at a word (or CJK character) boundary"""
+    if _w(s) <= limit: return s
+    out, w = '', 0
+    for ch in s:
+        if w + _w(ch) > limit - _w(ell): break
+        out += ch; w += _w(ch)
+    if ' ' in out and not any(_w(ch) == 2 for ch in out[-3:]): out = out[:out.rfind(' ')]
+    return out.rstrip(' ,;:–-|·') + ell
+
+
+def seo_title(title, lang):
+    t = title
+    for drop in (' | XAUUSD', ' | NEXUS CORE'):
+        if _w(t) > 60 and drop in t: t = t.replace(drop, '')
+    if _w(t) > 60: t = _cut(t, 60)
+    if _w(t) < 50 and 'NEXUS CORE' not in t and _w(t + ' | NEXUS CORE') <= 60: t += ' | NEXUS CORE'
+    return t
+
+
+def seo_desc(desc, lang):
+    d = re.sub(r'\s+', ' ', desc or '').strip()
+    if _w(d) > 160:
+        cut = ''
+        for m in re.finditer(r'[.!?。！？](?=\s|$)', d):     # whole sentences first
+            if _w(d[:m.end()]) <= 160: cut = d[:m.end()]
+        d = cut if _w(cut) >= 120 else _cut(d, 160)
+    if _w(d) < 150:
+        zh = lang == 'zh-hant'
+        if d and d[-1] not in '.!?。！？…': d += '。' if zh else '.'
+        for tail in TAIL.get(lang, TAIL['en']):
+            nd = d + tail if zh else d + ' ' + tail
+            if _w(nd) <= 160: d = nd; break
+    return d
+
+
 def head_tags(lang, title, desc, paths, img, pub=None, mod=None, og='article', langs=None):
     url = SITE + paths[lang]
     langs = langs or LANGS
@@ -708,8 +776,8 @@ def head_tags(lang, title, desc, paths, img, pub=None, mod=None, og='article', l
     times = (f'\n<meta property="article:published_time" content="{pub.isoformat()}">'
              f'\n<meta property="article:modified_time" content="{(mod or pub).isoformat()}">') if pub and og == 'article' else ''
     size = '\n<meta property="og:image:width" content="1800">\n<meta property="og:image:height" content="1110">' if '/data/charts/' in img else ''
-    return (f'<title>{esc(title)}</title>\n'
-            f'<meta name="description" content="{esc(desc)}">\n'
+    return (f'<title>{esc(seo_title(title, lang))}</title>\n'
+            f'<meta name="description" content="{esc(seo_desc(desc, lang))}">\n'
             f'<link rel="canonical" href="{url}">{alts}\n'
             f'<meta name="robots" content="index, follow, max-image-preview:large">\n'
             f'<meta property="og:type" content="{og}">\n'
@@ -751,6 +819,18 @@ def plan_title(p, lang):
     return f"{t(lang, 'plan_of')} {day_label(d0, lang)}, {t(lang, 'ed').get(p['edition'], '')}: {bias_label(p, lang)} | XAUUSD | NEXUS CORE"
 
 
+def webp_source(png, w, h):
+    """<source> for the WebP copy of a chart PNG, or '' when there is none (SEO F3)"""
+    wp = png[:-4] + '.webp'
+    return f'<source type="image/webp" srcset="/{wp}" width="{w}" height="{h}">' if os.path.isfile(os.path.join(ROOT, wp)) else ''
+
+
+def plan_seo_title(p, lang):
+    """<title> of a dated plan page: shorter than plan_title (session name instead of the long edition name)."""
+    d0 = dt.date.fromisoformat(p['date'])
+    return f"{t(lang, 'plan_of')} {day_label(d0, lang)}, {t(lang, 'ed_short').get(p['edition'], '')}: {bias_label(p, lang)} | XAUUSD"
+
+
 def plan_desc(p, lang, g=None):
     mz = p.get('main_zone')
     desc = plan_headline(p, lang)
@@ -758,7 +838,7 @@ def plan_desc(p, lang, g=None):
         desc += '。' if lang == 'zh-hant' else '.'
     if mz: desc += f" {t(lang, 'main_zone')}: {rng(mz['lo'], mz['hi'], lang)}."
     if g: desc += f" {t(lang, 'pp_result')}: {res_label(g, lang)}{(' ' + r_text(g.get('r'), lang)) if g.get('r') is not None else ''}."
-    else: desc += ' ' + t(lang, 'ed').get(p['edition'], '') + '.'
+    else: desc += ' ' + t(lang, 'ed').get(p['edition'], '') + ('。' if lang == 'zh-hant' else '.')
     return desc[:300]
 
 
@@ -870,6 +950,14 @@ def ed_time_label(p, lang):
     return f"{t(lang, 'ed').get(p['edition'], p['edition'])}{SEP[lang]}{C(lang, 'published')} {hm_local(updated_dt(p), lang)}"
 
 
+TODAY_SEO = {
+    'en': ('XAUUSD Analysis Today: Free Gold Plan and Key Levels', "Today's free gold plan, updated before Asia, London and New York:"),
+    'vi': ('Phân tích XAUUSD hôm nay: plan vàng miễn phí, vùng giá chính', 'Plan vàng hôm nay, cập nhật trước phiên Á, Âu và Mỹ:'),
+    'ar': ('تحليل الذهب XAUUSD اليوم: خطة مجانية والمستويات الرئيسية', 'خطة الذهب اليوم، تُحدَّث قبل جلسات آسيا ولندن ونيويورك:'),
+    'zh-hant': ('今日黃金 XAUUSD 分析：免費計畫與關鍵價位', '今日黃金計畫，於亞洲盤、倫敦盤與紐約盤前更新：'),
+}
+
+
 def today_page(lang):
     """The latest plan with tabs (was the home page until 17/11/2026). Canonical address: /today/."""
     k = key_of(P)
@@ -892,6 +980,8 @@ def today_page(lang):
                    f'<span><b class="num" dir="ltr">{esc(nums["TR_TRADES"])}</b> {esc(C(lang, "proof_tr"))}</span></span>'
                    f'<span class="go">{esc(C(lang, "proof_go"))}</span>')
     title, desc, img, upd = plan_title(P, lang), plan_desc(P, lang), img_for(P, lang), updated_dt(P)
+    # /today is the evergreen page for "XAUUSD analysis today"; the dated plan page keeps the dated title (F4, 21/11/2026)
+    title, desc = TODAY_SEO[lang][0], TODAY_SEO[lang][1] + ' ' + plan_headline(P, lang)
     url = SITE + paths[lang]
     mz = P.get('main_zone')
     art = {'@type': 'Article', '@id': url + '#plan', 'headline': title[:110], 'description': desc, 'image': [img],
@@ -947,7 +1037,9 @@ def home_page(lang):
           f'<div class="hero-keys" id="hp-keys">{home_keys(p, lang)}</div>'
           f'<a class="b-navy" href="{tp}">{esc(c["open_plan"])}{ARROW}</a></div>\n'
           + (f'      <a class="chart-card" href="{tp}"><picture>'
+             + (f'<source type="image/webp" media="(max-width: 640px)" srcset="/{src[:-4]}-m.webp" width="1200" height="1500">' if os.path.isfile(os.path.join(ROOT, src[:-4] + '-m.webp')) and os.path.isfile(os.path.join(ROOT, src[:-4] + '-m.png')) else '')
              + (f'<source media="(max-width: 640px)" srcset="/{src[:-4]}-m.png" width="1200" height="1500">' if os.path.isfile(os.path.join(ROOT, src[:-4] + '-m.png')) else '')
+             + (f'<source type="image/webp" srcset="/{src[:-4]}.webp" width="1800" height="1110">' if os.path.isfile(os.path.join(ROOT, src[:-4] + '.webp')) else '')
              + f'<img src="/{src}" alt="{esc(c["chart_alt"])}" width="1800" height="1110" loading="lazy"></picture></a>\n' if src else '')
           + '    </div>\n  </section>\n')
     rows = []
@@ -1054,7 +1146,7 @@ def plan_page(k, lang):
     doc = hide(doc, 'next')
     doc = unhide(doc, 'result'); doc = fill(doc, 'result', result_block(k, lang))
     doc = unhide(doc, 'pnav'); doc = fill(doc, 'pnav', plan_nav(k, lang))
-    title, desc, img, upd = plan_title(p, lang), plan_desc(p, lang, g), img_for(p, lang), updated_dt(p)
+    title, desc, img, upd = plan_seo_title(p, lang), plan_desc(p, lang, g), img_for(p, lang), updated_dt(p)
     mod = dt.datetime.strptime(g['graded_utc'], '%Y-%m-%dT%H:%MZ').replace(tzinfo=dt.timezone.utc) if g and g.get('graded_utc') else upd
     url = SITE + paths[lang]
     art = {'@type': 'Article', '@id': url + '#plan', 'headline': title[:110], 'description': desc, 'image': [img],
@@ -1117,7 +1209,7 @@ def track_page(ym, lang):
                     f'<span class="sidebadge {side_cls(side)}">{esc(t(lang, side))}</span></div>'
                     f'<div class="tc-mid"><span class="entry">{esc(t(lang, "tr_entry"))} <b class="num" dir="ltr">{esc(fmt(z["edge"], lang))}</b></span>{chip}</div>'
                     f'<div class="tc-bot"><span class="muted small">{esc(how)}' + (f', {esc(t(lang, "tr_max"))} <span class="num" dir="ltr">+{esc(pips(z["best"], lang))}</span>' if z.get('best') is not None else '') + '</span>'
-                    + (f'</div><details class="rv"><summary class="tbtn">{esc(t(lang, "rv_h"))}</summary><a href="{plan_path(lang, k)}#result"><img src="/{rv}" alt="{esc(t(lang, "rv_alt"))}" loading="lazy" width="1800" height="2412"></a>'
+                    + (f'</div><details class="rv"><summary class="tbtn">{esc(t(lang, "rv_h"))}</summary><a href="{plan_path(lang, k)}#result"><picture>{webp_source(rv, 1800, 2412)}<img src="/{rv}" alt="{esc(t(lang, "rv_alt"))}" loading="lazy" width="1800" height="2412"></picture></a>'
                        f'<p class="small"><a href="{plan_path(lang, k)}#result">{esc(t(lang, "rv_go"))} →</a></p></details>' if has_rv
                        else f'<a class="tbtn" href="{plan_path(lang, k)}#result">{esc(t(lang, "tr_detail"))}</a></div>')
                     + '</div>')
@@ -1470,6 +1562,12 @@ def fill_learn():
 
 
 if __name__ == '__main__':
+    try:   # WebP copies of new chart PNGs before the pages refer to them (SEO F3, 21/11/2026)
+        import webp
+        _n = webp.sweep(ROOT)
+        if _n: print(f'webp: {_n} file(s) written')
+    except Exception as e:
+        print(f'webp: skipped ({type(e).__name__}: {e})')
     write('data/history.json', history_json())
     fill_learn()
     for lang in LANGS:
