@@ -11,10 +11,10 @@
 //   • GET  /stats?days=30 with header  X-Stats-Key: <key>  → totals only (never an email or endpoint):
 //       visits by day / source / language / page, alert sign-ups and emails by day / source / language / page.
 //       Only the SHA-256 of the key is in this file; the key itself is kept privately by the owner.
-//   • every 2 minutes (Cron Trigger): reads https://nexuscore.trade/data/latest.json;
+//   • every minute (Cron Trigger): reads https://nexuscore.trade/data/latest.json;
 //     when a new plan edition appears it sends one notification to every subscriber.
 //
-// Setup (Cloudflare dashboard): KV namespace bound as  SUBS , Cron Trigger  */2 * * * * ,
+// Setup (Cloudflare dashboard): KV namespace bound as  SUBS , Cron Trigger  * * * * *  (every minute; was */2 until 20/11/2026),
 // custom domain  push.nexuscore.trade , and route  nexuscore.trade/api/*  (same-domain address:
 // any phone that can open the site can reach the service). No secrets to copy: the signing key is created on first run.
 
@@ -100,7 +100,7 @@ async function pushOne(v, s, payload, cache) {
   const body = await encrypt(s.p, s.a, JSON.stringify(payload));
   const r = await fetch(s.e, { method: 'POST', body, headers: {
     'Authorization': await vapidAuth(v, s.e, cache), 'Content-Encoding': 'aes128gcm', 'Content-Type': 'application/octet-stream',
-    'TTL': '21600', 'Urgency': 'normal', 'Topic': 'plan' } });
+    'TTL': '21600', 'Urgency': 'high', 'Topic': 'plan' } });   // Urgency high (20/11/2026): phones in power-saving mode deliver at once instead of holding it for later
   return r.status;
 }
 
