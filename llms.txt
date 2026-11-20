@@ -23,12 +23,12 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Track record (November 2026)
 
-- Plans published: 22; graded: 21; zone reached: 13; Target 1 reached: 4; invalidated: 2; total: +10.9R
+- Plans published: 22; graded: 22; zone reached: 13; Target 1 reached: 4; invalidated: 2; total: +10.9R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
-- [2026-11-20 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-20-newyork/): TWO-WAY, leaning SELL, main zone 3718–3734: Pending
+- [2026-11-20 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-20-newyork/): TWO-WAY, leaning SELL, main zone 3718–3734: Zone not reached 0R
 - [2026-11-20 Pre-London update](https://nexuscore.trade/en/plan/2026-11-20-london/): SELL, main zone 3571–3578: Invalidated +0.35R
 - [2026-11-20 Asia plan](https://nexuscore.trade/en/plan/2026-11-20-asia/): TWO-WAY, leaning SELL, main zone 3655–3666: Zone not reached 0R
 - [2026-11-19 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-19-newyork/): TWO-WAY, leaning SELL, main zone 3755–3764: Zone not reached 0R
@@ -78,6 +78,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Why gold moved (recent days)
 
+- [2026-11-20: Gold fell 2.6% to a near 15-month low as Fed rate-hike bets and a market rout weighed](https://nexuscore.trade/en/why-gold-moved/2026-11-20-fed/) (-2.6%)
 - [2026-11-19: Gold fell 2.86% to a new 14-month low as Fed rate-hike bets and a firm dollar weighed](https://nexuscore.trade/en/why-gold-moved/2026-11-19-fed/) (-2.86%)
 - [2026-11-18: Gold fell 3.36% to a 14-month low as hawkish Fed signals lifted the dollar and yields](https://nexuscore.trade/en/why-gold-moved/2026-11-18-fed/) (-3.36%)
 - [2026-11-17: Gold slipped 0.12% as early gains faded on a firmer dollar and the Fed rate outlook](https://nexuscore.trade/en/why-gold-moved/2026-11-17-dollar/) (-0.12%)
