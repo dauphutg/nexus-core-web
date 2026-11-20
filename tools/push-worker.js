@@ -9,7 +9,8 @@
 //   • POST /hit          → count one visit per browser session          {src, page, lang, app}
 //       (counts only – no IP, no cookie id; one KV record per day  c:<yyyy-mm-dd>, Vietnam date)
 //   • GET  /stats?days=30 with header  X-Stats-Key: <key>  → totals only (never an email or endpoint):
-//       visits by day / source / language / page, alert sign-ups and emails by day / source / language / page.
+//       visits by day / source / language / page, alert sign-ups and emails by day / source / language / page / country.
+//       (since 20/11/2026 each new alert sign-up and email also stores c: its 2-letter country code from Cloudflare – no IP)
 //       Only the SHA-256 of the key is in this file; the key itself is kept privately by the owner.
 //   • every minute (Cron Trigger): reads https://nexuscore.trade/data/latest.json;
 //     when a new plan edition appears it sends one notification to every subscriber.
@@ -41,6 +42,7 @@ const pageGroup = (pg) => { const m = /^\/(?:(ar|vi|zh-hant|en)\/)?([a-z-]+)?/.e
 const bump = (o, k) => { o[k] = (o[k] || 0) + 1; };
 const HOME = { en: '/', ar: '/ar/', vi: '/vi/', 'zh-hant': '/zh-hant/' };
 
+const country = (req) => { const c = String((req.cf && req.cf.country) || '').toUpperCase(); return /^[A-Z0-9]{2}$/.test(c) ? c : 'XX'; }; // 2-letter country code from Cloudflare (no IP kept)
 const cleanSrc = (s) => { s = String(s || '').toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 40); return s || 'direct'; };
 const cleanPage = (s) => { s = String(s || '/'); return /^\/[A-Za-z0-9\/_.-]{0,80}$/.test(s) ? s : '/'; };
 const enc = new TextEncoder();
@@ -163,7 +165,7 @@ async function stats(env, days) {
   }
   const since = vnDate(Date.now() - (days - 1) * 864e5);
   const group = async (prefix) => {
-    const g = { total: 0, new_in_period: 0, by_day: {}, src: {}, lang: {}, pg: {} };
+    const g = { total: 0, new_in_period: 0, by_day: {}, src: {}, lang: {}, pg: {}, country: {} };
     let cursor;
     do {
       const page = await env.SUBS.list({ prefix, cursor, limit: 1000 });
@@ -173,7 +175,7 @@ async function stats(env, days) {
         g.total++;
         const d = r.t ? vnDate(Date.parse(r.t)) : 'unknown';
         if (d >= since) { g.new_in_period++; bump(g.by_day, d); }
-        bump(g.src, r.src || 'unknown'); bump(g.lang, r.l || 'en'); bump(g.pg, pageGroup(r.pg || '/'));
+        bump(g.src, r.src || 'unknown'); bump(g.lang, r.l || 'en'); bump(g.pg, pageGroup(r.pg || '/')); bump(g.country, r.c || 'unknown');
       }
       cursor = page.list_complete ? null : page.cursor;
     } while (cursor && g.total < 5000);
@@ -213,7 +215,7 @@ export default {
         const lang = LANGS.includes(d.lang) ? d.lang : 'en';
         const old = await env.SUBS.get(id, 'json');   // keep where the visitor first came from
         await env.SUBS.put(id, JSON.stringify({ e: endpoint, p: k.p256dh, a: k.auth, l: lang,
-          src: (old && old.src) || cleanSrc(d.src), pg: (old && old.pg) || cleanPage(d.page), t: (old && old.t) || new Date().toISOString() }));
+          src: (old && old.src) || cleanSrc(d.src), pg: (old && old.pg) || cleanPage(d.page), t: (old && old.t) || new Date().toISOString(), c: (old && old.c) || country(req) }));
         return reply(201, 'ok');
       }
       if (req.method === 'POST' && url.pathname === '/hit') {
@@ -243,7 +245,7 @@ export default {
         if (email.length > 254 || !/^[a-z0-9._%+-]{1,64}@[a-z0-9.-]{1,180}\.[a-z]{2,24}$/.test(email)) return reply(400, 'bad email');
         const key = 'w:' + email;
         if (!(await env.SUBS.get(key))) {
-          await env.SUBS.put(key, JSON.stringify({ l: LANGS.includes(d.lang) ? d.lang : 'en', t: new Date().toISOString(), src: cleanSrc(d.src), pg: cleanPage(d.page) }));
+          await env.SUBS.put(key, JSON.stringify({ l: LANGS.includes(d.lang) ? d.lang : 'en', t: new Date().toISOString(), src: cleanSrc(d.src), pg: cleanPage(d.page), c: country(req) }));
         }
         return reply(201, 'ok');
       }
