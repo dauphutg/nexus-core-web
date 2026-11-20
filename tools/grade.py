@@ -23,6 +23,11 @@ Rules v4 (14/11/2026 – the same text is shown on the Track Record pages):
 - Plan result = its counted zones: all hit → hit, all void → void, all expired → expired; hit with no void → hit,
   void with no hit → void; hit and void → mixed. Plan R = sum (every zone's R is listed on the plan page).
 - STAND_ASIDE plans → "aside", not scored.
+- Break-and-retest zones (added 20/11/2026, zones with a "trigger" key, e.g. {"tf":"M15","close_below":3968.8}): not active
+  until a closed 15-minute candle of the session closes beyond the trigger level by more than TRIG_BUF (1 dollar):
+  close < L - 1 for close_below, close > L + 1 for close_above. No such candle before the session ends → "no_trigger":
+  no trade, not in the hit rate, not in R. After the trigger candle the zone is graded exactly like any other zone
+  (edge, invalidation, Target 1), counting only candles after the trigger candle. Zones without "trigger" are unchanged.
 - MFE (maximum favourable excursion), shown separately and never mixed into R: the furthest price travelled in the
   zone's direction from the zone edge, from the touch until the invalidation close or the daily close (read quality,
   measured from the conservative edge; not a trade result).
@@ -39,6 +44,7 @@ VN = dt.timezone(dt.timedelta(hours=7))
 NY = ZoneInfo('America/New_York')
 ED_ORDER = ['0700', '1345', '1930']
 BAR = 900  # seconds in a 15-minute candle
+TRIG_BUF = 1.0  # dollars: a break-and-retest zone activates on a 15-minute close beyond its trigger level by more than this
 NEAR = 2.0  # dollars: closest approach to a zone edge that still earns the "near-zone reaction" label
 
 
@@ -146,6 +152,12 @@ def zone_levels(p, z, main):
     side = z.get('side')
     if side not in ('SELL', 'BUY'): return None
     lo, hi = sorted([float(z['lo']), float(z['hi'])])
+    if trigger_of(z):          # break-and-retest zone: its own invalidation and target are published with it
+        void, t1 = z.get('void'), z.get('t1')
+        if not isinstance(void, (int, float)) or not isinstance(t1, (int, float)): return None
+        void, t1 = float(void), float(t1)
+        if (side == 'SELL' and not (void >= hi and t1 < lo)) or (side == 'BUY' and not (void <= lo and t1 > hi)): return None
+        return side, lo, hi, void, t1
     st = (z.get('status') or {}).get('en', '') if isinstance(z.get('status'), dict) else str(z.get('status') or '')
     if not main and (str(z.get('grade', '')).upper().startswith('C') or SKIP.search(st)): return None
     cand = []
@@ -162,6 +174,36 @@ def zone_levels(p, z, main):
     else: t1 = min([x for x in tg if x > hi], default=None)
     if void is None or t1 is None: return None
     return side, lo, hi, void, t1
+
+
+def trigger_of(z):
+    """('close_below'|'close_above', level) for a break-and-retest zone, else None."""
+    tg = z.get('trigger')
+    if not isinstance(tg, dict): return None
+    for k in ('close_below', 'close_above'):
+        if isinstance(tg.get(k), (int, float)): return k, float(tg[k])
+    return None
+
+
+def trigger_bar(kind, level, bars, start, touch_end):
+    """first closed 15-minute candle in [start, touch_end) closing beyond the trigger level by more than TRIG_BUF"""
+    for b in bars:
+        if b['t'] < start or b['t'] >= touch_end or b['t'] + BAR > touch_end: continue
+        if (kind == 'close_below' and b['c'] < level - TRIG_BUF) or (kind == 'close_above' and b['c'] > level + TRIG_BUF): return b
+    return None
+
+
+def grade_trigger_zone(side, lo, hi, void, t1, kind, level, bars, start, touch_end, end, mfe_end=None):
+    """Break-and-retest zone: inactive until the trigger candle; then graded like any zone from the next candle on."""
+    tb = trigger_bar(kind, level, bars, start, touch_end)
+    trig = {kind: level}
+    if tb is None:
+        return {'side': side, 'zone': [lo, hi], 'edge': lo if side == 'SELL' else hi, 'void': void, 't1': t1,
+                'trigger': trig, 'result': 'no_trigger', 'r': None}
+    zg = grade_zone(side, lo, hi, void, t1, bars, tb['t'] + BAR, touch_end, end, mfe_end)
+    zg.update(trigger=trig, triggered=fmt_vn(tb['t'] + BAR), trigger_close=tb['c'])
+    zg.pop('near', None)
+    return zg
 
 
 def grade_zone(side, lo, hi, void, t1, bars, start, touch_end, end, mfe_end=None):
@@ -263,7 +305,9 @@ def grade_plan_zones(k, p, mz, grades, bars, start, touch_end, end, later):
         if not lv: continue
         side, lo, hi, void, t1 = lv
         if (side, lo, hi) in taken: continue          # the same open trade, already followed above
-        zg = grade_zone(side, lo, hi, void, t1, bars, start, touch_end, touch_end, end)
+        tk = trigger_of(z)
+        if tk: zg = grade_trigger_zone(side, lo, hi, void, t1, tk[0], tk[1], bars, start, touch_end, touch_end, end)
+        else: zg = grade_zone(side, lo, hi, void, t1, bars, start, touch_end, touch_end, end)
         zg.update(trade_window=[fmt_vn(start), fmt_vn(touch_end)], main=main, grade=z.get('grade'))
         zg['from'] = k
         zs.append(settle(zg))

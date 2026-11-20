@@ -5,7 +5,8 @@ Usage:  python3 tools/ea_zones.py <repo root> [plan json] [output json]
         (defaults: <root>/data/latest.json → <root>/data/ea-zones.json)
 
 The zone list and every level (edge, void, t1) come from tools/grade.py (zone_levels), the same function that grades
-the public track record – no rule is copied here. The EA compares date / edition / updated_vn with data/latest.json
+the public track record – no rule is copied here. A break-and-retest zone keeps its "trigger" key
+({"tf": "M15", "close_below": L} or "close_above"); EA v2.06 waits for that close (beyond L by more than 1 dollar). The EA compares date / edition / updated_vn with data/latest.json
 and ignores this file when they differ.
 """
 import importlib.util, json, os, sys
@@ -28,8 +29,12 @@ def ea_zones(p, g):
             lv = g.zone_levels(p, z, main)
             if not lv: continue
             side, lo, hi, void, t1 = lv
-            zones.append({'side': side, 'lo': lo, 'hi': hi, 'edge': lo if side == 'SELL' else hi,
-                          'void': void, 't1': t1, 'main': main, 'grade': z.get('grade')})
+            ez = {'side': side, 'lo': lo, 'hi': hi, 'edge': lo if side == 'SELL' else hi,
+                  'void': void, 't1': t1, 'main': main, 'grade': z.get('grade')}
+            if g.trigger_of(z):   # break-and-retest zone (EA v2.06): inactive until an M15 close beyond the level by > 1 dollar
+                ez['main'] = False
+                ez['trigger'] = dict(z['trigger'])
+            zones.append(ez)
     return {'v': 1, 'rules': g.RULES, 'date': p['date'], 'edition': p['edition'], 'updated_vn': p['updated_vn'],
             'daily_close_vn': g.daily_close(p['date']).astimezone(g.VN).strftime('%Y-%m-%d %H:%M'),
             'bias': p.get('bias'), 'zones': zones}

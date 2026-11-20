@@ -119,7 +119,7 @@ def panel(p, g, bars, lang, out, mode, tf='H1'):
         ax.add_patch(Rectangle((i - 0.32, min(b['o'], b['c'])), 0.64, max(abs(b['c'] - b['o']), 0.25), color=col, zorder=3))
     ys = [lo, hi]
     inview = lambda y: lo - 25 <= y <= hi + 25
-    zone_list = [z for z in zs_all if not (z.get('result') == 'no_touch' and not z.get('near') and (z['zone'][0] > hi + 15 or z['zone'][1] < lo - 15))]
+    zone_list = [z for z in zs_all if not (z.get('result') in ('no_touch', 'no_trigger') and not z.get('near') and (z['zone'][0] > hi + 15 or z['zone'][1] < lo - 15))]
     for z in zone_list: ys += z['zone']
     ys += [q['lo'] for q in p.get('targets') or [] if inview(q['lo'])]
     ymin, ymax = min(ys) - 10, max(ys) + 22

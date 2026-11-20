@@ -424,6 +424,16 @@ def zone_view(z, lang):
     return pill, flip_line, st, cls
 
 
+def trig_wait(z, lang):
+    """chip of a break-and-retest zone (20/11/2026): 'Chờ M15 đóng dưới L'. Same as trigWait in app.js."""
+    g = z.get('trigger')
+    if not isinstance(g, dict): return ''
+    b = isinstance(g.get('close_below'), (int, float))
+    x = g.get('close_below') if b else g.get('close_above')
+    if not isinstance(x, (int, float)): return ''
+    return t(lang, 'tg_wait').replace('{tf}', g.get('tf') or 'M15').replace('{d}', t(lang, 'tg_below' if b else 'tg_above')).replace('{x}', fmt(x, lang))
+
+
 def plan_html(doc, p, lang):
     d0 = dt.date.fromisoformat(p['date'])
     upd = updated_dt(p)
@@ -480,7 +490,7 @@ def plan_html(doc, p, lang):
     zs = []
     for z in p.get('zones') or []:
         is_main = bool(mz) and z['lo'] == mz['lo'] and z['hi'] == mz['hi'] and z['side'] == mz['side']
-        chip = t(lang, 'key') if is_main else (f"{t(lang, 'grade')} {z['grade']}" if z.get('grade') else '')
+        chip = t(lang, 'key') if is_main else (trig_wait(z, lang) or (f"{t(lang, 'grade')} {z['grade']}" if z.get('grade') else ''))
         pill, flip_line, st, pcls = zone_view(z, lang)
         fl = f'<p class="flip">{_STEP_PRICE.sub(lambda m: "<b class=" + chr(34) + "px" + chr(34) + ">" + m.group(0) + "</b>", esc(flip_line))}</p>' if flip_line else ''
         zs.append(f'<div class="card zone{" is-main" if is_main else ""}"><div class="zh"><span class="pill {pcls}">{esc(pill)}</span>'
@@ -787,6 +797,8 @@ def result_block(k, lang):
                 zr = z.get('r')
                 rr = f'<span class="num r {"r-up" if (zr or 0) > 0 else "r-down" if (zr or 0) < 0 else "r-flat"}" dir="ltr">{esc(r_text(zr, lang))}</span>' if zr is not None else ''
                 det = []
+                if z.get('trigger'):     # break-and-retest zone: when it became active, or that it never did
+                    det.append(f"{trig_wait(z, lang)}: {t(lang, 'pp_trig')} {vn_label(z['triggered'], lang)}" if z.get('triggered') else trig_wait(z, lang))
                 if z.get('touched'): det.append(f"{t(lang, 'pp_touched')}: {vn_label(z['touched'], lang)}")
                 if z.get('carried_from'): det.append(t(lang, 'z_carried_from'))
                 if z.get('at'): det.append(f"{t(lang, 'pp_event')}: {vn_label(z['at'], lang)}")
