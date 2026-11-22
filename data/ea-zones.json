@@ -1,41 +1,85 @@
 {
  "v": 1,
  "rules": 5,
- "date": "2026-11-20",
- "edition": "1930",
- "updated_vn": "2026-11-20 19:45",
- "daily_close_vn": "2026-11-21 05:00",
+ "date": "2026-11-23",
+ "edition": "0700",
+ "updated_vn": "2026-11-23 05:20",
+ "daily_close_vn": "2026-11-24 05:00",
  "bias": "TWO_WAY",
  "zones": [
+  {
+   "side": "SELL",
+   "lo": 3544.0,
+   "hi": 3553.0,
+   "edge": 3544.0,
+   "void": 3556.0,
+   "t1": 3520,
+   "main": false,
+   "grade": "B"
+  },
+  {
+   "side": "SELL",
+   "lo": 3558.0,
+   "hi": 3567.5,
+   "edge": 3558.0,
+   "void": 3571.0,
+   "t1": 3520,
+   "main": false,
+   "grade": "B"
+  },
+  {
+   "side": "SELL",
+   "lo": 3584.0,
+   "hi": 3598.0,
+   "edge": 3584.0,
+   "void": 3601.0,
+   "t1": 3520,
+   "main": false,
+   "grade": "B"
+  },
   {
    "side": "SELL",
    "lo": 3606.0,
    "hi": 3620.0,
    "edge": 3606.0,
-   "void": 3624.0,
-   "t1": 3548,
+   "void": 3623.0,
+   "t1": 3586.1,
    "main": false,
    "grade": "B"
   },
   {
    "side": "SELL",
-   "lo": 3632.0,
-   "hi": 3645.0,
-   "edge": 3632.0,
-   "void": 3649.0,
-   "t1": 3620,
-   "main": false,
-   "grade": "B"
-  },
-  {
-   "side": "SELL",
-   "lo": 3718.0,
-   "hi": 3734.0,
-   "edge": 3718.0,
-   "void": 3738.0,
-   "t1": 3672,
+   "lo": 3625.0,
+   "hi": 3637.5,
+   "edge": 3625.0,
+   "void": 3641.0,
+   "t1": 3586.1,
    "main": true,
-   "grade": "A-H1"
+   "grade": "B"
+  },
+  {
+   "side": "SELL",
+   "lo": 3687.0,
+   "hi": 3710.6,
+   "edge": 3687.0,
+   "void": 3714.0,
+   "t1": 3625.1,
+   "main": false,
+   "grade": "B"
+  },
+  {
+   "side": "SELL",
+   "lo": 3503.0,
+   "hi": 3518.7,
+   "edge": 3503.0,
+   "void": 3518.7,
+   "t1": 3471.6,
+   "main": false,
+   "grade": "B",
+   "trigger": {
+    "tf": "M15",
+    "close_below": 3503.0
+   }
   }
  ]
 }
