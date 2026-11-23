@@ -7,7 +7,7 @@ Usage: python3 tools/chart.py <h1.json> <latest.json> <vi|en> <out.png> [logo.pn
 Writes TWO images: <out.png> (wide, for desktop and social cards) and <out>-m.png (portrait, zoomed in,
 larger text – shown on phones). Only closed H1 candles are drawn. No network access.
 """
-import json, sys, time, math, datetime as dt
+import json, re, sys, time, math, datetime as dt
 import matplotlib
 matplotlib.use('Agg')
 # site font (Be Vietnam Pro, SIL Open Font License) so charts match the website; falls back to DejaVu Sans
@@ -27,12 +27,12 @@ L = lambda o: (o or {}).get(lang) or (o or {}).get('en') or ''
 num = lambda v: (f'{v:,.1f}' if round(v % 1, 2) else f'{v:,.0f}').replace(',', '')
 fmt = num
 W = {
-    'vi': dict(sell='Bán', buy='Mua', main='KỊCH BẢN CHÍNH', alt='Kịch bản phụ', key='VÙNG CHÍNH', zone='Vùng', tgt='Mục tiêu', watch='Mức theo dõi',
+    'vi': dict(sell='Bán', buy='Mua', main='KỊCH BẢN CHÍNH', alt='Kịch bản phụ', key='VÙNG CHÍNH', zone='Vùng', tgt='Mục tiêu', watch='Mức theo dõi', cl_up='đóng trên', cl_dn='đóng dưới',
                ed={'0700': 'Plan sáng', '1345': 'Cập nhật 13:45', '1930': 'Plan tối'}, bias={'SELL': 'BÁN', 'BUY': 'MUA', 'TWO_WAY': '2 CHIỀU', 'STAND_ASIDE': 'ĐỨNG NGOÀI'},
                lean='nghiêng', disc='Chỉ là phân tích, không phải lời khuyên đầu tư', tz='giờ VN',
                lg_main='Kịch bản chính', lg_alt='Kịch bản phụ', lg_up='thành chính khi giá phá lên trên', lg_dn='thành chính khi giá phá xuống dưới',
                lg_now='giá đã phá {v}', lg_was='kịch bản chính cũ'),
-    'en': dict(sell='Sell', buy='Buy', main='MAIN SCENARIO', alt='Alternate', key='KEY ZONE', zone='Zone', tgt='Target', watch='Watch level',
+    'en': dict(sell='Sell', buy='Buy', main='MAIN SCENARIO', alt='Alternate', key='KEY ZONE', zone='Zone', tgt='Target', watch='Watch level', cl_up='close above', cl_dn='close below',
                ed={'0700': 'Morning plan', '1345': '13:45 update', '1930': 'Evening plan'}, bias={'SELL': 'SELL', 'BUY': 'BUY', 'TWO_WAY': 'TWO-WAY', 'STAND_ASIDE': 'STAND ASIDE'},
                lean='leaning', disc='Analysis only, not financial advice', tz='GMT+7',
                lg_main='Main scenario', lg_alt='Alternate', lg_up='becomes main if price breaks above', lg_dn='becomes main if price breaks below',
@@ -95,8 +95,8 @@ def render(outf, mob):
     for tg in keep_tg:
         y = (tg['lo'] + tg['hi']) / 2
         ax.hlines(y, X0, X1, color=GRAY, lw=0.9, ls=(0, (4, 3)), zorder=1)
-        ZL.append(ax.text(X0 + 1, y, f"{W['tgt']} {tg['label']} {fmt(tg['lo']) if tg['lo'] == tg['hi'] else fmt(tg['lo']) + '–' + fmt(tg['hi'])}",
-                color=GRAY, fontsize=8.5 * K, ha='left', va='bottom', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4)))
+        ZL.append(ax.text(X1 - 1, y, f"{W['tgt']} {tg['label']} {fmt(tg['lo']) if tg['lo'] == tg['hi'] else fmt(tg['lo']) + '–' + fmt(tg['hi'])}",
+                color=GRAY, fontsize=8.5 * K, ha='right', va='bottom', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4)))
         shown.append(y)
     for w in keep_w:   # plan's watch levels: not a trade zone, never graded
         a, b = sorted([w['lo'], w['hi']])
@@ -126,6 +126,21 @@ def render(outf, mob):
         if rte:
             br = s.get('branch') or {}
             bto = [float(v) for v in (br.get('to') or []) if isinstance(v, (int, float))]
+            # conditional scenario (user 23/11/2026: "điểm xuất phát là lúc nến M15 đóng trên"): when the text says the
+            # scenario only starts after an M15/H1 close beyond its break level and price has not closed there yet, the
+            # arrow STARTS AT that level (marked and labelled), not at the current price – otherwise it reads as
+            # "price goes there first anyway".
+            trig = None
+            if pth:
+                tv = str((s.get('text') or {}).get('vi') or '')
+                for m in re.finditer(r'(M15|H1|H4)\s+đóng\s+(?:lại\s+)?(trên|dưới)\s+(\d{3,5}(?:[.,]\d+)?)', tv):
+                    if abs(float(m.group(3).replace(',', '.')) - pth[0]) <= 1.5: trig = (m.group(1), m.group(2) == 'trên'); break
+            if trig and ((trig[1] and px < pth[0]) or (not trig[1] and px > pth[0])):
+                up_ = trig[1]; g2 = list(rte)
+                while g2 and ((g2[0] <= pth[0] + 0.5) if up_ else (g2[0] >= pth[0] - 0.5)): g2.pop(0)
+                if g2:
+                    return dict(gia=g2, foot=pth[0], col=col, dut=not main, nhan=lab, brk=pth[0], bat=None, bto=[],
+                                trig=f"{trig[0]} {W['cl_up'] if up_ else W['cl_dn']} {fmt(pth[0])}", trig_up=up_)
             return dict(gia=rte, foot=px, col=col, dut=not main, nhan=lab,
                         brk=pth[0] if pth else None, bat=br.get('at') if bto else None, bto=bto)
         if len(pth) >= 2:
@@ -175,6 +190,9 @@ def render(outf, mob):
         pts = steep(x0, q['foot'], q['gia']); xs, ys_ = zip(*pts); lw = 1.9 if q['dut'] else 2.3
         ax.plot(xs, ys_, color=q['col'], lw=lw, ls='--' if q['dut'] else '-', zorder=5)
         ax.plot([x0], [q['foot']], marker='o', ms=5.5 * K, mfc='white', mec=q['col'], mew=1.8, zorder=6)   # break point
+        if q.get('trig'):   # label of the conditional start: "M15 đóng trên 3641"
+            ax.text(x0 - 0.6, q['foot'] + (2.5 if q['trig_up'] else -2.5), q['trig'], ha='right', va='bottom' if q['trig_up'] else 'top',
+                    fontsize=8.5 * K, color=q['col'], fontweight='bold', zorder=9, bbox=dict(fc='white', ec='none', alpha=0.9, pad=0.5))
         (a1, b1), (a2, b2) = pts[-2], pts[-1]
         ax.annotate('', xy=(a2, b2), xytext=(a1 + (a2 - a1) * 0.6, b1 + (b2 - b1) * 0.6), zorder=6,
                     arrowprops=dict(arrowstyle='->,head_length=0.9,head_width=0.45', color=q['col'], lw=lw, shrinkA=0, shrinkB=0))
