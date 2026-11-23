@@ -243,6 +243,15 @@
   if ((KIND === 'home' || KIND === 'today') && PATH_LANG === 'en' && (saved === 'ar' || saved === 'vi' || saved === 'zh-hant') && /^\/(index\.html|today\/?)?$/.test(location.pathname)) {
     location.replace('/' + saved + location.pathname.replace(/^\/(index\.html)?/, '/').replace(/^\/\//, '/') + location.search + location.hash);
   }
+  // the server sends first-time visitors to their language by IP country unless cookie nc_lang says what they picked:
+  // keep the cookie in step with the saved choice, and a visitor who picked English but was sent to another language goes back
+  function langCookie(l) { try { document.cookie = 'nc_lang=' + l + '; path=/; max-age=31536000; SameSite=Lax; Secure'; } catch (e) {} }
+  if (saved === 'en' || saved === 'ar' || saved === 'vi' || saved === 'zh-hant') {
+    langCookie(saved);
+    if (saved === 'en' && PATH_LANG !== 'en' && (KIND === 'home' || KIND === 'today') && /^\/(ar|vi|zh-hant)\/(today\/)?$/.test(location.pathname)) {
+      location.replace(location.pathname.replace(/^\/(ar|vi|zh-hant)/, '') + location.search + location.hash);
+    }
+  }
   // old in-page tabs (#signals, #history) now have their own pages
   if (KIND === 'home' && (location.hash === '#signals' || location.hash === '#history')) {
     var tl = document.querySelector('.tabs [data-tab="' + (location.hash === '#signals' ? 'signals' : 'track') + '"]');
@@ -704,6 +713,7 @@
       e.preventDefault();
       var l = b.dataset.lang;
       try { localStorage.setItem('nc_lang', l); } catch (x) {}
+      langCookie(l);
       if (l !== PATH_LANG) { location.href = b.getAttribute('href') + (KIND === 'home' || KIND === 'today' ? location.search + location.hash : ''); return; }
       lang = l; renderStatic(); notifyLang();
     });

@@ -2,11 +2,16 @@
   // Public website served by Cloudflare (replaces GitHub Pages). Built by build-public.sh.
   "name": "nexus-site",
   "compatibility_date": "2025-09-01",
+  // Small script: sends first-time visitors on / and /today/ to their language by IP country (see the file).
+  "main": "tools/site-worker.js",
   // nexuscore.trade/api/* stays on Worker nexus-push (more specific route wins).
   "routes": [{ "pattern": "nexuscore.trade/*", "zone_name": "nexuscore.trade" }],
   "assets": {
     "directory": "./public",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none"
+    "not_found_handling": "none",
+    // the script only runs for the two entry pages; every other file is served straight from assets
+    "run_worker_first": ["/", "/today", "/today/"]
   }
 }
