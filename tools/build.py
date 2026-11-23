@@ -1374,6 +1374,8 @@ def ea_page(lang):
             f'<p class="small"><a href="{legal_path(lang, "eaterms")}">{esc(c["eaterms"])}</a> · <a href="{legal_path(lang, "terms")}">{esc(c["terms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></aside>\n'
             f'  </section>')
     doc = set_view(doc, body)
+    # owner 24/11/2026 01:19: no free-alerts box at the bottom of the sales page (keeps the visitor on the Telegram step)
+    doc = doc.replace('<section class="cta-box" id="cta"', '<section class="cta-box" id="cta" hidden', 1)
     url = SITE + paths[lang]
     page_ld = {'@type': 'WebPage', '@id': url, 'name': c['h1'], 'description': c['desc'], 'inLanguage': HL[lang], 'isPartOf': {'@id': SITE + '/#website'}}
     fq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': HL[lang], 'mainEntity': [
