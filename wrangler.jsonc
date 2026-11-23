@@ -1,0 +1,10 @@
+{
+  // Public website served by Cloudflare (replaces GitHub Pages). Built by build-public.sh.
+  "name": "nexus-site",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}
