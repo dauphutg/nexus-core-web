@@ -881,6 +881,30 @@
   }
   pushInit().catch(function () {}).then(function () { notifyRender(); wlRender(); });
 
+  // ---- EA page: confirm before contact (owner 24/11/2026 01:06). Every Telegram button inside #view-ea waits for the tick box;
+  // an unticked click scrolls to the confirm box and shows the reminder instead of opening Telegram. Nothing is stored or sent. ----
+  each('.js-ack', function (box) {
+    var cb = box.querySelector('.ea-ackbox'), msg = box.querySelector('.ea-ackmsg'), go = box.querySelector('.ea-ackgo');
+    if (!cb || !msg || !go) return;
+    function paint() {
+      box.classList.toggle('ok', cb.checked);
+      go.setAttribute('aria-disabled', cb.checked ? 'false' : 'true');
+      if (cb.checked) { msg.hidden = true; box.classList.remove('need'); }
+    }
+    cb.addEventListener('change', paint);
+    each('#view-ea a[href^="https://t.me/"]', function (a) {
+      a.addEventListener('click', function (e) {
+        if (cb.checked) return;
+        e.preventDefault();
+        msg.hidden = false;
+        box.classList.remove('need'); void box.offsetWidth; box.classList.add('need');
+        try { box.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (err) { box.scrollIntoView(); }
+        try { cb.focus({ preventScroll: true }); } catch (err) { cb.focus(); }
+      });
+    });
+    paint();
+  });
+
   renderStatic();
   if (KIND === 'today') {
     load('/data/latest.json').then(function (p) { data.plan = p; renderPlan(); }).catch(function () {});

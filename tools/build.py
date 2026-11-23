@@ -1342,8 +1342,14 @@ def ea_page(lang):
         + f'<ul>{"".join("<li>" + I("<path d=\"M5 12l4 4 10-10\"/>") + esc(x) + "</li>" for x in pl["pts"])}</ul>'
         + f'<a class="ea-b{" gold" if pl["tag"] else ""}" {tg}>{esc(c["plan_btn"])}</a></li>'
         for pl in c['plans'])
-    ack = (f'<div class="ea-ack"><h3>{esc(c["ack_h"])}</h3><ol>{"".join("<li>" + esc(x) + "</li>" for x in c["ack"])}</ol>'
-           f'<p class="small"><a href="{legal_path(lang, "eaterms")}">{esc(c["eaterms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></div>')
+    # confirm box (owner 24/11/2026 01:06): highlighted, with a tick box; app.js holds every Telegram button of this page until it is ticked.
+    # Without JavaScript the buttons stay plain links.
+    ack = (f'<div class="ea-ack js-ack" id="confirm" role="group" aria-labelledby="ack-h"><h3 id="ack-h">{I(icons[3])}{esc(c["ack_h"])}</h3>'
+           f'<ol>{"".join("<li>" + esc(x) + "</li>" for x in c["ack"])}</ol>'
+           f'<label class="ea-ackc"><input type="checkbox" class="ea-ackbox"><span>{esc(c["ack_check"])}</span></label>'
+           f'<p class="ea-ackmsg" role="alert" hidden>{esc(c["ack_need"])}</p>'
+           f'<div class="ea-ackrow"><a class="ea-b gold ea-ackgo" {tg}>{esc(c["ack_btn"])}{ARROW}</a>'
+           f'<p class="small"><a href="{legal_path(lang, "eaterms")}">{esc(c["eaterms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></div></div>')
     faq = ''.join(f'<details class="ea-q"><summary>{esc(q)}<span aria-hidden="true">+</span></summary><p>{esc(a)}</p></details>' for q, a in c['faq'])
     body = (f'  <section id="view-ea" class="ea">\n'
             f'    <div class="ea-hero"><div class="ea-glow" aria-hidden="true"></div>\n'
