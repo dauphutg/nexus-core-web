@@ -824,3 +824,24 @@ html[data-theme="light"] .ea-risk p{color:#3A4A5E}
 .ea-sdot{width:10px;height:10px;border-radius:50%;background:#E3B341;box-shadow:0 0 0 4px rgba(227,179,65,.2)}
 @media (max-width:640px){.ea-promo{padding:28px 18px}.ea-promo .ea-cta .ea-b{flex:1 1 100%}}
 .ea-strip small{display:block;margin-top:4px;font-weight:400;font-size:12px;color:#8FA3BC}
+/* EA page: pain points, comparison, trust (23/11/2026) */
+.ea-pains{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ea-pains li{display:flex;gap:12px;align-items:flex-start;padding:18px 20px;border-radius:16px;background:#0C1D31;border:1px solid #1E3754;color:#C9D4E3}
+.ea-pains svg,.ea-cr span:first-child svg{flex:none;color:#FF7B7B;margin-top:1px}
+.ea-punch{margin-top:18px;font-size:clamp(20px,2.4vw,26px);font-weight:700;color:var(--gold-ink)!important}
+html[data-theme="light"] .ea-punch{color:#7A5200!important}
+.ea-cmp{border-radius:20px;overflow:hidden;border:1px solid #1E3754;background:#0C1D31}
+.ea-ch,.ea-cr{display:grid;grid-template-columns:1fr 1fr}
+.ea-ch span{padding:16px 20px;font-weight:700;color:#8FA3BC;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.ea-ch span.g{color:#F0C866;background:rgba(227,179,65,.08)}
+.ea-cr span{display:flex;gap:10px;align-items:flex-start;padding:16px 20px;border-top:1px solid #17304D;color:#B4C2D4}
+.ea-cr span.g{background:rgba(227,179,65,.06);color:#EEF3F9;font-weight:500}
+.ea-cr span.g svg{flex:none;color:#3DDBB0;margin-top:1px}
+.ea-sec > .ea-cta{margin-top:18px}
+.ea-trust{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:40px;border-radius:24px;background:#071321;border:1px solid #1E3754}
+.ea-trust h2{font-size:clamp(26px,3.2vw,38px);color:#fff;text-transform:none;letter-spacing:-.02em;margin:0 0 10px;font-weight:800}
+.ea-trust ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.ea-trust li{display:flex;gap:12px;align-items:flex-start;color:#DCE4EE;font-size:16px}
+.ea-trust li svg{flex:none;color:#3DDBB0;margin-top:1px}
+@media (max-width:820px){.ea-pains{grid-template-columns:1fr}.ea-trust{grid-template-columns:1fr;padding:28px 20px}}
+@media (max-width:560px){.ea-ch{display:none}.ea-cr{grid-template-columns:1fr}.ea-cr span{border-top:0}.ea-cr{border-top:1px solid #17304D}.ea-cr span:first-child{padding-bottom:6px}.ea-cr span.g{padding-top:10px}}

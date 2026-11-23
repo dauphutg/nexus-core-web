@@ -1319,6 +1319,10 @@ def ea_page(lang):
     rows = ''.join(f'<div class="ea-row"><span>{esc(pn[k])}</span><b{" class=\"ok\"" if k == 1 else ""}>{esc(pn[k + 1])}</b></div>' for k in (1, 3, 5, 7, 9))
     panel = (f'<div class="ea-panel" role="img" aria-label="{esc(pn[0])}"><div class="ea-ph"><span class="ea-dots"><i></i><i></i><i></i></span>'
              f'<span>NEXUS CORE Gold EA · XAUUSD</span></div>{rows}<p class="ea-pcap">{esc(pn[0])}</p></div>')
+    X = I('<path d="M6 6l12 12M18 6L6 18"/>'); V = I('<path d="M5 12l4 4 10-10"/>')
+    pains = ''.join(f'<li>{X}<span>{esc(x)}</span></li>' for x in c['pains'])
+    cmp_rows = ''.join(f'<div class="ea-cr" role="row"><span role="cell">{X}{esc(a)}</span><span role="cell" class="g">{V}{esc(b)}</span></div>' for a, b in c['cmp'])
+    trust = ''.join(f'<li>{V}<span>{esc(x)}</span></li>' for x in c['trust'])
     feats = ''.join(f'<li class="ea-f"><span class="ea-ic">{I(icons[k])}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for k, (a, b) in enumerate(c['feats']))
     steps = ''.join(f'<li><span class="ea-n num">{i + 1}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for i, (a, b) in enumerate(c['steps']))
     plans = ''.join(
@@ -1333,7 +1337,13 @@ def ea_page(lang):
             f'        <div class="ea-cta"><a class="ea-b gold big" {tg}>{esc(c["cta"])}{ARROW}</a><a class="ea-b ghost big" href="{today_path(lang)}">{esc(c["cta2"])}</a></div>\n'
             f'        <ul class="ea-chips">{chips}</ul><p class="ea-rs">{esc(c["risk_short"])}</p></div>\n'
             f'      {panel}\n    </div>\n'
+            f'    <div class="ea-sec"><h2>{esc(c["pain_h"])}</h2><ul class="ea-pains">{pains}</ul><p class="ea-punch">{esc(c["pain_end"])}</p></div>\n'
+            f'    <div class="ea-sec"><h2>{esc(c["cmp_h"])}</h2><div class="ea-cmp" role="table"><div class="ea-ch" role="row"><span role="columnheader">{esc(c["cmp_cols"][0])}</span><span role="columnheader" class="g">{esc(c["cmp_cols"][1])}</span></div>{cmp_rows}</div>'
+            f'<div class="ea-cta"><a class="ea-b gold" {tg}>{esc(c["mid_cta"])}{ARROW}</a></div></div>\n'
             f'    <div class="ea-sec"><h2>{esc(c["feat_h"])}</h2><ul class="ea-grid3">{feats}</ul></div>\n'
+            f'    <div class="ea-trust"><div><h2>{esc(c["trust_h"])}</h2><p>{esc(c["trust_p"])}</p>'
+            f'<div class="ea-cta"><a class="ea-b ghost" href="{track_path(lang, CUR_MONTH)}">{esc(c["see_track"])}</a><a class="ea-b gold" {tg}>{esc(c["cta"])}{ARROW}</a></div></div>'
+            f'<ul>{trust}</ul></div>\n'
             f'    <div class="ea-sec"><h2>{esc(c["how_h"])}</h2><ol class="ea-steps">{steps}</ol></div>\n'
             f'    <div class="ea-sec"><h2>{esc(c["plans_h"])}</h2><ul class="ea-plans">{plans}</ul></div>\n'
             f'    <div class="ea-see"><div><h3>{esc(c["see_h"])}</h3><p>{esc(c["see_p"])}</p></div>'
