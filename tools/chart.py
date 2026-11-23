@@ -77,16 +77,29 @@ def render(outf, mob):
         ZL.append(ax.text(X1 - 1, (a + b) / 2, lab, ha='right', va='center', fontsize=(10 if main else 8.5) * K, color=edge,
                 fontweight='bold' if main else 'normal', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6)))  # labels sit above the scenario arrows
         shown += [a, b]
-    for tg in P.get('targets') or []:
+    # declutter (user 23/11/2026 "nhiều vùng watch quá, bỏ bớt"): every zone is drawn; then at most MAX_TG targets and
+    # MAX_WATCH watch levels, nearest to the price first, and none that sits on/within GAP dollars of something already drawn
+    MAX_TG, MAX_WATCH, GAP = 3, 2, 4.0
+    def free(a, b): return all(b < s0 - GAP or a > s1 + GAP for s0, s1 in taken)
+    taken = [(min(z['lo'], z['hi']), max(z['lo'], z['hi'])) for z in P.get('zones') or []]
+    tgs = sorted((q for q in P.get('targets') or [] if vis((q['lo'] + q['hi']) / 2)), key=lambda q: abs((q['lo'] + q['hi']) / 2 - px))
+    keep_tg = []
+    for q in tgs:
+        y = (q['lo'] + q['hi']) / 2
+        if len(keep_tg) < MAX_TG and free(y, y): keep_tg.append(q); taken.append((y, y))
+    wls = sorted((w for w in P.get('watch') or [] if vis(w['lo']) or vis(w['hi'])), key=lambda w: abs((w['lo'] + w['hi']) / 2 - px))
+    keep_w = []
+    for w in wls:
+        a, b = sorted([w['lo'], w['hi']])
+        if len(keep_w) < MAX_WATCH and free(a, b): keep_w.append(w); taken.append((a, b))
+    for tg in keep_tg:
         y = (tg['lo'] + tg['hi']) / 2
-        if not vis(y): continue
         ax.hlines(y, X0, X1, color=GRAY, lw=0.9, ls=(0, (4, 3)), zorder=1)
         ZL.append(ax.text(X0 + 1, y, f"{W['tgt']} {tg['label']} {fmt(tg['lo']) if tg['lo'] == tg['hi'] else fmt(tg['lo']) + '–' + fmt(tg['hi'])}",
                 color=GRAY, fontsize=8.5 * K, ha='left', va='bottom', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.85, pad=0.4)))
         shown.append(y)
-    for w in P.get('watch') or []:   # plan's watch levels: not a trade zone, never graded
+    for w in keep_w:   # plan's watch levels: not a trade zone, never graded
         a, b = sorted([w['lo'], w['hi']])
-        if not (vis(a) or vis(b)): continue
         ax.add_patch(Rectangle((X0, a), X1 - X0, max(b - a, 0.8), facecolor='#B2B5BE', alpha=0.16, edgecolor=GRAY, lw=0.8, ls=(0, (3, 3)), zorder=0))
         ZL.append(ax.text(X1 - 1, (a + b) / 2, f"{W['watch']} {fmt(a)}–{fmt(b)}", ha='right', va='center', fontsize=8.5 * K, color=GRAY,
                           zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6)))
