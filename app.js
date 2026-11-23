@@ -200,9 +200,33 @@
     SRC = s0 || sessionStorage.getItem('nc_src') || 'direct';
     if (s0) sessionStorage.setItem('nc_src', s0);
   } catch (e) { SRC = SRC || 'direct'; }
+  // Owner's own devices are not counted (23/11/2026): open any page with ?nc_me=1 (undo: ?nc_me=0), or – inside the
+  // installed app, which has no address bar – tap an empty part of the footer 7 times quickly to switch it on/off.
+  var ME = false;
+  try {
+    var me0 = new URLSearchParams(location.search).get('nc_me');
+    if (me0 === '1') localStorage.setItem('nc_me', '1'); else if (me0 === '0') localStorage.removeItem('nc_me');
+    ME = localStorage.getItem('nc_me') === '1';
+  } catch (e) {}
+  (function (fn) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn); else fn(); })(function () {
+    var ft = document.querySelector('footer.foot') || document.querySelector('footer'), taps = [];
+    if (!ft) return;
+    ft.addEventListener('click', function (ev) {
+      if (ev.target.closest('a,button,input,select')) return;
+      var now = Date.now(); taps = taps.filter(function (x) { return now - x < 4000; }); taps.push(now);
+      if (taps.length < 7) return;
+      taps = [];
+      var on = false;
+      try { if (localStorage.getItem('nc_me') === '1') localStorage.removeItem('nc_me'); else { localStorage.setItem('nc_me', '1'); on = true; } } catch (e) {}
+      var d = document.createElement('div');
+      d.textContent = on ? 'This device is no longer counted in visits' : 'This device is counted again';
+      d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0C2237;color:#fff;padding:10px 16px;border-radius:10px;z-index:9999;font-size:14px';
+      document.body.appendChild(d); setTimeout(function () { d.remove(); }, 2500);
+    });
+  });
   // one visit count per browser session (counts only – source, language, page; no IP, no id) → /api/stats for the weekly report
   try {
-    if (!sessionStorage.getItem('nc_hit') && !/bot|crawl|spider|preview|lighthouse|headless/i.test(navigator.userAgent)) {
+    if (!ME && !sessionStorage.getItem('nc_hit') && !/bot|crawl|spider|preview|lighthouse|headless/i.test(navigator.userAgent)) {
       sessionStorage.setItem('nc_hit', '1');
       var hitApp = navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
       var hitLang = /^\/ar(\/|$)/.test(location.pathname) ? 'ar' : /^\/vi(\/|$)/.test(location.pathname) ? 'vi' : /^\/zh-hant(\/|$)/.test(location.pathname) ? 'zh-hant' : 'en';
