@@ -28,6 +28,12 @@ Rules v4 (14/11/2026 – the same text is shown on the Track Record pages):
   close < L - 1 for close_below, close > L + 1 for close_above. No such candle before the session ends → "no_trigger":
   no trade, not in the hit rate, not in R. After the trigger candle the zone is graded exactly like any other zone
   (edge, invalidation, Target 1), counting only candles after the trigger candle. Zones without "trigger" are unchanged.
+- Market-reopen gap (added 23/11/2026): a zone whose first touch is the first candle after the market was closed
+  (weekly open, or the daily break: more than 30 minutes since the previous candle) and that candle OPENS beyond the
+  zone's invalidation level (SELL: open > invalidation, BUY: open < invalidation) was invalidated by the gap before any
+  order could be filled at the zone → "gap": no trade, not in the hit rate, not in R (the plan was published before the
+  reopen and could not know the gap). Zones the reopen candle only reaches, without opening beyond the invalidation,
+  are graded as usual.
 - MFE (maximum favourable excursion), shown separately and never mixed into R: the furthest price travelled in the
   zone's direction from the zone edge, from the touch until the invalidation close or the daily close (read quality,
   measured from the conservative edge; not a trade result).
@@ -45,6 +51,7 @@ NY = ZoneInfo('America/New_York')
 ED_ORDER = ['0700', '1345', '1930']
 BAR = 900  # seconds in a 15-minute candle
 TRIG_BUF = 1.0  # dollars: a break-and-retest zone activates on a 15-minute close beyond its trigger level by more than this
+GAP_BREAK = 2 * BAR  # seconds without a candle that mean the market was closed (weekly open / daily break)
 NEAR = 2.0  # dollars: closest approach to a zone edge that still earns the "near-zone reaction" label
 
 
@@ -222,6 +229,8 @@ def grade_zone(side, lo, hi, void, t1, bars, start, touch_end, end, mfe_end=None
         if nr: out['near'] = nr
         return out
     base['touched'] = fmt_vn(w[touch]['t'])
+    if gap_skip(side, void, bars, w[touch]):
+        return dict(base, result='gap', r=None, gap_open=w[touch]['o'])
     def mfe(upto):
         seg = w[touch:upto + 1]
         mv = (edge - min(b['l'] for b in seg)) if side == 'SELL' else (max(b['h'] for b in seg) - edge)
@@ -238,6 +247,52 @@ def grade_zone(side, lo, hi, void, t1, bars, start, touch_end, end, mfe_end=None
     last = w[n - 1]['c']
     r = (edge - last) / risk if side == 'SELL' else (last - edge) / risk
     return dict(base, result='expired', r=round(max(-1.0, min(r_hit, r)), 2), last=last, **mfe(void_at(touch)))
+
+
+def gap_skip(side, void, bars, b):
+    """True when candle b is the first one after the market was closed and it opened beyond the invalidation level."""
+    prev = max((x['t'] for x in bars if x['t'] < b['t']), default=None)
+    if prev is None or b['t'] - prev <= GAP_BREAK: return False
+    return (side == 'SELL' and b['o'] > void) or (side == 'BUY' and b['o'] < void)
+
+
+def summarize(g, zs, mz):
+    """Plan result / R from its counted zones (hit, void, expired)."""
+    for kk in ('best', 'best_r'): g.pop(kk, None)
+    counted = [z for z in zs if z['result'] in ('hit', 'void', 'expired')]
+    res = {z['result'] for z in counted}
+    g['zones'] = zs
+    if not counted: g.update(result='carried' if any(z['result'] == 'carried' for z in zs) else 'no_touch', r=0 if not any(z['result'] == 'carried' for z in zs) else None)
+    else:
+        one = res.pop() if len(res) == 1 else None
+        if not one and 'void' not in res: one = 'hit'        # hit + closed at session end, no loss
+        elif not one and 'hit' not in res: one = 'void'      # invalidated + closed at session end, no target
+        g.update(result=one or 'mixed', r=round(sum(z['r'] for z in counted), 2))
+        top = max(counted, key=lambda z: z.get('best') or 0)
+        g.update(best=top.get('best'), best_r=top.get('best_r'))
+    if mz:   # summary of the main zone (kept for older readers)
+        m = next((z for z in zs if z['main']), None)
+        if m: g.update({kk: m[kk] for kk in ('side', 'zone', 'edge', 'void', 't1') if kk in m})
+
+
+def backfill_gap(plans, grades, bars):
+    """Rule of 23/11/2026 applied once to plans graded before it: zones settled on a reopen-gap candle become "gap"."""
+    by_t = {b['t']: b for b in bars}
+    fixed = []
+    for k, g in grades.items():
+        if k not in plans or not g.get('zones'): continue
+        ch = False
+        for i, z in enumerate(g['zones']):
+            if z.get('result') not in ('hit', 'void', 'expired') or not z.get('touched') or z.get('void') is None: continue
+            b = by_t.get(int(vn_dt(z['touched']).timestamp()))
+            if not b or not gap_skip(z['side'], z['void'], bars, b): continue
+            keep = {kk: z[kk] for kk in ('side', 'zone', 'edge', 'void', 't1', 'touched', 'trade_window', 'main', 'grade', 'from', 'trigger', 'triggered', 'trigger_close', 'carried_from') if kk in z}
+            g['zones'][i] = dict(keep, result='gap', r=None, gap_open=b['o'])
+            ch = True; fixed.append(f"{k} {z['zone'][0]}-{z['zone'][1]}")
+        if ch:
+            summarize(g, g['zones'], plans[k].get('main_zone'))
+            g['regraded'] = 'reopen gap rule (23/11/2026)'
+    return fixed
 
 
 def near_reaction(side, lo, hi, void, w, touch_end):
@@ -348,25 +403,14 @@ def main():
         else:
             zs = grade_plan_zones(k, p, mz, grades, bars, start, touch_end, end, later)
             zs.sort(key=lambda z: (not z['main'], z['zone'][0]))
-            counted = [z for z in zs if z['result'] in ('hit', 'void', 'expired')]
-            res = {z['result'] for z in counted}
-            g['zones'] = zs
-            if not counted: g.update(result='carried' if any(z['result'] == 'carried' for z in zs) else 'no_touch', r=0 if not any(z['result'] == 'carried' for z in zs) else None)
-            else:
-                one = res.pop() if len(res) == 1 else None
-                if not one and 'void' not in res: one = 'hit'        # hit + closed at session end, no loss
-                elif not one and 'hit' not in res: one = 'void'      # invalidated + closed at session end, no target
-                g.update(result=one or 'mixed', r=round(sum(z['r'] for z in counted), 2))
-                top = max(counted, key=lambda z: z.get('best') or 0)
-                g.update(best=top.get('best'), best_r=top.get('best_r'))
-            if mz:   # summary of the main zone (kept for older readers)
-                m = next((z for z in zs if z['main']), None)
-                if m: g.update({kk: m[kk] for kk in ('side', 'zone', 'edge', 'void', 't1') if kk in m})
+            summarize(g, zs, mz)
         set_plan_near(g)
         g['graded_utc'] = dt.datetime.fromtimestamp(now, dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
         if k in grades: g['regraded'] = 'rules v4 (14/11/2026)'
         grades[k] = g
         done.append(f"{k} {g['result']} {g['r']}" + (f" MFE {g.get('best')}" if g.get('best') is not None else ''))
+    gf = backfill_gap(plans, grades, bars)
+    if gf: print('reopen-gap zones (not counted):', ', '.join(gf))
     nb = backfill_near(plans, grades, bars)
     if nb: print('near-zone labels added:', ', '.join(nb))
     with open(gpath, 'w', encoding='utf-8') as f:
