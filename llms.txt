@@ -104,6 +104,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [Terms of Use](https://nexuscore.trade/en/terms/), [Privacy Policy](https://nexuscore.trade/en/privacy/), [Risk Disclosure](https://nexuscore.trade/en/risk-disclosure/)
 - [Track record](https://nexuscore.trade/en/track-record/2026-11/): every plan this month and how it played out
 - [Signals](https://nexuscore.trade/en/signals/): members-only trade signals (waitlist)
+- [NEXUS CORE Gold EA](https://nexuscore.trade/en/ea/): MetaTrader 5 Expert Advisor that trades the published daily plan (licence via Telegram)
 - [Plan data (JSON)](https://nexuscore.trade/data/latest.json): machine-readable latest plan
 - [All plans with grades (JSON)](https://nexuscore.trade/data/history.json)
 

@@ -12,6 +12,7 @@ Reads template.html + data/latest.json + data/plans/*.json + data/grades.json an
   <en|ar|vi>/plan/<date>-<asia|london|newyork>/index.html             – one page per plan
   <en|ar|vi>/track-record/<yyyy-mm>/index.html                        – monthly track record
   <en|ar|vi>/signals/index.html                                       – Signals (members only) + waitlist
+  <en|ar|vi|zh-hant>/ea/index.html                                    – NEXUS CORE Gold EA landing page (copy in tools/ea_copy.py)
   en/index.html (points to /), sitemap.xml, llms.txt.
 app.js still runs on top for visitors (local time, alerts, email). Run after every data change.
 """
@@ -105,6 +106,7 @@ def load_texts():
 
 
 T = load_texts()
+from ea_copy import EA
 P = json.loads(read('data/latest.json'))
 esc = lambda s: html.escape(str(s), quote=True)
 
@@ -557,6 +559,7 @@ def grade_of(k):
 def plan_path(lang, k): return f"{PFX[lang]}/plan/{k[:10]}-{SESSION[k[11:]]}/"
 def track_path(lang, ym): return f"{PFX[lang]}/track-record/{ym}/"
 def signals_path(lang): return f"{PFX[lang]}/signals/"
+def ea_path(lang): return f"{PFX[lang]}/ea/"
 def learn_index_path(lang): return f"{PFX[lang]}/learn/"
 def today_path(lang): return '/today/' if lang == 'en' else f"{PFX[lang]}/today/"
 LEGAL = {'terms': 'terms', 'privacy': 'privacy', 'risk': 'risk-disclosure'}
@@ -681,7 +684,7 @@ def shell(lang, kind, paths):
     """Template with texts, tabs and language links filled in. paths = this page's address in each language."""
     doc = read('template.html')
     doc = (doc.replace('{{LANG}}', HL[lang]).replace('{{DIR}}', 'rtl' if lang == 'ar' else 'ltr').replace('{{HOME}}', PATH[lang])
-           .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{KIND}}', kind)
+           .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{EA}}', ea_path(lang)).replace('{{KIND}}', kind)
            .replace('{{LEARN}}', learn_home(lang)).replace('{{TODAY}}', today_path(lang)).replace('{{FOOTER}}', footer_html(lang)))
     doc = re.sub(r'\{\{C:(\w+)\}\}', lambda m: esc(COPY[lang][m.group(1)]), doc)
     # each language loads only the font families it shows (Core Web Vitals, 21/11/2026): Latin pages no longer download
@@ -693,7 +696,7 @@ def shell(lang, kind, paths):
     for l in LANGS:
         doc = re.sub(r'href="[^"]*"( data-lang="%s")' % l, lambda m: f'href="{paths[l]}"' + m.group(1), doc, count=1)
     doc = re.sub(r'(<a role="button" href="[^"]*" data-lang="%s")' % lang, r'\1 aria-pressed="true" aria-current="page"', doc)
-    tab = {'home': None, 'today': 'plan', 'plan': 'plan', 'track': 'track', 'signals': 'signals', 'learn': 'learn', 'move': 'learn', 'legal': None}[kind]
+    tab = {'home': None, 'today': 'plan', 'plan': 'plan', 'track': 'track', 'signals': 'signals', 'ea': 'ea', 'learn': 'learn', 'move': 'learn', 'legal': None}[kind]
     if tab: doc = doc.replace(f' data-tab="{tab}"', f' aria-current="page" data-tab="{tab}"', 1)
     if kind not in ('home', 'today'):
         doc = doc.replace('<span class="live" id="live">', '<span class="live" id="live" hidden>', 1)
@@ -1095,7 +1098,7 @@ def footer_html(lang):
     xl = 'https://x.com/froggtrading' if lang == 'ar' else 'https://x.com/XAU_CRYPTO'
     cols.append(f'<div class="fcol"><p class="fh">{esc(c["f_nexus"])}</p>'
                 f'<a href="{today_path(lang)}">{esc(fl["plan"])}</a><a href="{track_path(lang, CUR_MONTH)}">{esc(fl["record"])}</a>'
-                f'<a href="{track_path(lang, CUR_MONTH)}#method">{esc(fl["grading"])}</a><a href="{signals_path(lang)}">{esc(fl["signals"])}</a>'
+                f'<a href="{track_path(lang, CUR_MONTH)}#method">{esc(fl["grading"])}</a><a href="{signals_path(lang)}">{esc(fl["signals"])}</a><a href="{ea_path(lang)}">{esc(EA[lang]["tab"])}</a>'
                 f'<a id="s-tg" class="js-tg" href="{tg}" target="_blank" rel="noopener noreferrer">{esc(fl["tg"])}</a>'
                 f'<a id="s-x" href="{xl}" target="_blank" rel="noopener noreferrer">{esc(fl["x"])}</a>'
                 f'<a id="s-yt" href="https://www.youtube.com/@nexuscorefx" target="_blank" rel="noopener noreferrer">{esc(fl["yt"])}</a></div>')
@@ -1275,6 +1278,46 @@ def signals_page(lang):
 
 
 
+def ea_page(lang):
+    """NEXUS CORE Gold EA landing page (owner's brief 23/11/2026). Benefits only – no method, no internal numbers,
+    no performance figures (links to the Track Record instead); every buy/contact button goes to Telegram."""
+    from ea_copy import EA as E_, TG
+    c = E_[lang]
+    paths = {l: ea_path(l) for l in LANGS}
+    doc = shell(lang, 'ea', paths)
+    tg = f'href="{TG}" target="_blank" rel="noopener noreferrer"'
+    chips = ''.join(f'<li>{esc(x)}</li>' for x in c['chips'])
+    feats = ''.join(f'<li class="card"><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for a, b in c['feats'])
+    steps = ''.join(f'<li class="card"><span class="ea-n num">{i + 1}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for i, (a, b) in enumerate(c['steps']))
+    plans = ''.join(
+        f'<li class="card ea-plan{" hot" if j == 2 else ""}">' + (f'<span class="ea-badge">{esc(tag)}</span>' if tag else '')
+        + f'<h3>{esc(name)}</h3><ul class="ticks">{"".join("<li>" + esc(x) + "</li>" for x in pts)}</ul>'
+        + f'<p class="muted small">{esc(c["price"])}</p><a class="btn{" solid" if j == 2 else ""} ea-btn" {tg}>{esc(c["plan_btn"])}</a></li>'
+        for j, (name, tag, pts) in enumerate(c['plans']))
+    faq = ''.join(f'<details class="card ea-q"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in c['faq'])
+    body = (f'  <section id="view-ea" class="ea">\n'
+            f'    <div class="ea-hero card"><p class="eyebrow">{esc(c["eyebrow"])}</p><h1>{esc(c["h1"])}</h1><p class="lede">{esc(c["lede"])}</p>\n'
+            f'      <div class="ea-cta"><a class="btn big" {tg}>{esc(c["cta"])}{ARROW}</a><a class="btn alt" href="{today_path(lang)}">{esc(c["cta2"])}</a></div>\n'
+            f'      <ul class="ea-chips">{chips}</ul><p class="muted small ea-rs">{esc(c["risk_short"])}</p></div>\n'
+            f'    <h2>{esc(c["feat_h"])}</h2>\n    <ul class="ea-grid">{feats}</ul>\n'
+            f'    <h2>{esc(c["how_h"])}</h2>\n    <ol class="ea-grid ea-steps">{steps}</ol>\n'
+            f'    <h2>{esc(c["plans_h"])}</h2>\n    <ul class="ea-grid ea-plans">{plans}</ul>\n'
+            f'    <div class="card ea-see"><div><h3>{esc(c["see_h"])}</h3><p>{esc(c["see_p"])}</p></div>'
+            f'<div class="ea-cta"><a class="btn alt" href="{today_path(lang)}">{esc(c["see_today"])}</a><a class="btn alt" href="{track_path(lang, CUR_MONTH)}">{esc(c["see_track"])}</a></div></div>\n'
+            f'    <h2>{esc(c["faq_h"])}</h2>\n    <div class="stack-sm">{faq}</div>\n'
+            f'    <div class="card ea-end"><h3>{esc(c["end_h"])}</h3><p>{esc(c["end_p"])}</p><div class="ea-cta"><a class="btn big" {tg}>{esc(c["cta"])}{ARROW}</a></div></div>\n'
+            f'    <aside class="card ea-risk" role="note"><h3>{esc(c["risk_h"])}</h3><p>{esc(c["risk"])}</p><p>{esc(c["diff"])}</p>'
+            f'<p class="small"><a href="{legal_path(lang, "terms")}">{esc(c["terms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></aside>\n'
+            f'  </section>')
+    doc = set_view(doc, body)
+    url = SITE + paths[lang]
+    page_ld = {'@type': 'WebPage', '@id': url, 'name': c['h1'], 'description': c['desc'], 'inLanguage': HL[lang], 'isPartOf': {'@id': SITE + '/#website'}}
+    fq = {'@type': 'FAQPage', '@id': url + '#faq', 'inLanguage': HL[lang], 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in c['faq']]}
+    return finish(doc, head_tags(lang, c['title'], c['desc'], paths, SITE + '/assets/logo-banner.png', og='website'),
+                  ld(page_ld, fq, crumbs(lang, [('NEXUS CORE', PATH[lang]), (c['tab'], paths[lang])])))
+
+
 def example_box(kind, lang):
     """A live box built from the latest plan, so every Q&A page shows real, current numbers."""
     p, k = P, key_of(P)
@@ -1450,6 +1493,7 @@ def sitemap():
         ks = [k for k in KEYS if k.startswith(ym)]
         url({l: track_path(l, ym) for l in LANGS}, max((mod(k) for k in ks), default=None), 'daily', '0.8')
     url({l: signals_path(l) for l in LANGS}, None, 'monthly', '0.6')
+    url({l: ea_path(l) for l in LANGS}, None, 'monthly', '0.6')
     for kind in LEGAL: url({l: legal_path(l, kind) for l in LANGS}, None, 'yearly', '0.3')
     for k in reversed(KEYS):
         url({l: plan_path(l, k) for l in LANGS}, mod(k), None, '0.7')
@@ -1517,6 +1561,7 @@ def llms():
               f'- [Terms of Use]({SITE}{legal_path("en", "terms")}), [Privacy Policy]({SITE}{legal_path("en", "privacy")}), [Risk Disclosure]({SITE}{legal_path("en", "risk")})',
               f'- [Track record]({SITE}{track_path("en", CUR_MONTH)}): every plan this month and how it played out',
               f'- [Signals]({SITE}{signals_path("en")}): members-only trade signals (waitlist)',
+              f'- [NEXUS CORE Gold EA]({SITE}{ea_path("en")}): MetaTrader 5 Expert Advisor that trades the published daily plan (licence via Telegram)',
               f'- [Plan data (JSON)]({SITE}/data/latest.json): machine-readable latest plan',
               f'- [All plans with grades (JSON)]({SITE}/data/history.json)', '',
               '## Optional', '',
@@ -1581,6 +1626,7 @@ if __name__ == '__main__':
         for ym in MONTHS:
             write(track_path(lang, ym).strip('/') + '/index.html', track_page(ym, lang))
         write(signals_path(lang).strip('/') + '/index.html', signals_page(lang))
+        write(ea_path(lang).strip('/') + '/index.html', ea_page(lang))
         for m in MOVES:
             write(move_path(lang, m).strip('/') + '/index.html', move_page(lang, m))
     for lang in LEARN_LANGS:
@@ -1603,4 +1649,4 @@ if __name__ == '__main__':
         ea_zones.write(ROOT)
     except Exception as e:
         print(f'ea-zones: ERROR {type(e).__name__}: {e}')
-    print(f'built: home + today + legal x3, {len(KEYS)} plan page(s) x{len(LANGS)}, {len(MONTHS)} track-record month(s) x{len(LANGS)}, signals x{len(LANGS)}, {'+'.join(str(len(LEARN[l])) for l in LEARN_LANGS)} learn page(s) live (en+ar+zh), {len(MOVES)} why-gold-moved x{len(LANGS)}, sitemap.xml, llms.txt –', P['date'], P['edition'])
+    print(f'built: home + today + legal x3, {len(KEYS)} plan page(s) x{len(LANGS)}, {len(MONTHS)} track-record month(s) x{len(LANGS)}, signals x{len(LANGS)}, ea x{len(LANGS)}, {'+'.join(str(len(LEARN[l])) for l in LEARN_LANGS)} learn page(s) live (en+ar+zh), {len(MOVES)} why-gold-moved x{len(LANGS)}, sitemap.xml, llms.txt –', P['date'], P['edition'])
