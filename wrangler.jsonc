@@ -2,6 +2,8 @@
   // Public website served by Cloudflare (replaces GitHub Pages). Built by build-public.sh.
   "name": "nexus-site",
   "compatibility_date": "2025-09-01",
+  // nexuscore.trade/api/* stays on Worker nexus-push (more specific route wins).
+  "routes": [{ "pattern": "nexuscore.trade/*", "zone_name": "nexuscore.trade" }],
   "assets": {
     "directory": "./public",
     "html_handling": "auto-trailing-slash",
