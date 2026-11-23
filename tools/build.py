@@ -19,6 +19,10 @@ app.js still runs on top for visitors (local time, alerts, email). Run after eve
 import glob, html, json, os, re, subprocess, sys, datetime as dt
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from site_copy import COPY, UPDATED
+import ea_terms as _EAT
+for _l in COPY:
+    COPY[_l]['legal_names']['eaterms'] = _EAT.NAME[_l]
+    COPY[_l]['legal']['eaterms'] = {'desc': _EAT.DESC[_l], 'lede': _EAT.LEDE[_l], 'sections': _EAT.SECTIONS}
 from zoneinfo import ZoneInfo
 ZoneInfoNY = ZoneInfo('America/New_York')
 
@@ -563,6 +567,7 @@ def ea_path(lang): return f"{PFX[lang]}/ea/"
 def learn_index_path(lang): return f"{PFX[lang]}/learn/"
 def today_path(lang): return '/today/' if lang == 'en' else f"{PFX[lang]}/today/"
 LEGAL = {'terms': 'terms', 'privacy': 'privacy', 'risk': 'risk-disclosure'}
+LEGAL['eaterms'] = 'ea/terms'   # EA Licence Terms v1.1 (24/11/2026), English text on every language page – tools/ea_terms.py
 def legal_path(lang, kind): return f"{PFX[lang]}/{LEGAL[kind]}/"
 def C(lang, k): return COPY[lang][k]
 def learn_path(lang, slug): return f"{PFX[lang]}/learn/{slug}/"
@@ -1152,7 +1157,7 @@ def legal_page(lang, kind):
     others = ''.join(f'<a class="btn alt" href="{legal_path(lang, o)}">{esc(c["legal_names"][o])}</a>' for o in LEGAL if o != kind)
     view = (f'  <section id="view-legal">\n    <div class="plan-head"><div><p class="eyebrow mx"><span>{esc(c["legal_eyebrow"])}</span>'
             f'<span>{esc(c["legal_updated"])} {esc(UPDATED[lang])}</span></p><h1>{esc(name)}</h1><p class="lede">{esc(x["lede"])}</p></div></div>\n'
-            f'    <article class="card prose legal-doc">{"".join(body)}</article>\n'
+            f'    <article class="card prose legal-doc"{" dir=\"ltr\" lang=\"en\"" if kind == "eaterms" else ""}>{"".join(body)}</article>\n'
             f'    <nav class="pnav">{others}</nav>\n  </section>')
     doc = set_view(doc, view)
     doc = doc.replace('<section class="cta-box" id="cta"', '<section class="cta-box" id="cta" hidden', 1)
@@ -1273,6 +1278,8 @@ def track_page(ym, lang):
     return finish(doc, head_tags(lang, title, desc, paths, SITE + '/assets/logo-banner.png', og='website'), ld(page_ld, bc))
 
 
+from ea_copy import TG as TG_SUPPORT
+
 def signals_page(lang):
     paths = {l: signals_path(l) for l in LANGS}
     doc = shell(lang, 'signals', paths)
@@ -1281,6 +1288,9 @@ def signals_page(lang):
             f'    <div class="layout">\n      <div class="stack">\n        <h2>{esc(t(lang, "sg_what"))}</h2>\n'
             f'        <ul class="card ticks">{"".join("<li>" + esc(x) + "</li>" for x in t(lang, "sg_b"))}</ul>\n'
             f'        <p class="muted small">{esc(t(lang, "sg_note"))}</p>\n      </div>\n      <div class="stack">\n'
+            f'        <div class="card sg-buy"><p class="sg-price num">{esc(t(lang, "sg_price"))}</p>'
+            f'<a class="btn solid" href="{TG_SUPPORT}" target="_blank" rel="noopener noreferrer">{esc(t(lang, "sg_join"))}</a>'
+            f'<p class="muted small"><a href="{legal_path(lang, "terms")}">{esc(t(lang, "sg_terms"))}</a> · <a href="{legal_path(lang, "risk")}">{esc(COPY[lang]["legal_names"]["risk"])}</a></p></div>\n'
             f'        <div class="card wl js-wl sg-wl" data-topic="signals">\n'
             f'          <div class="wl-t"><strong>{esc(t(lang, "sg_wl_title"))}</strong><span>{esc(t(lang, "sg_wl_sub"))}</span></div>\n'
             f'          <form class="wl-form" novalidate>\n'
@@ -1325,11 +1335,15 @@ def ea_page(lang):
     trust = ''.join(f'<li>{V}<span>{esc(x)}</span></li>' for x in c['trust'])
     feats = ''.join(f'<li class="ea-f"><span class="ea-ic">{I(icons[k])}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for k, (a, b) in enumerate(c['feats']))
     steps = ''.join(f'<li><span class="ea-n num">{i + 1}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for i, (a, b) in enumerate(c['steps']))
+    # pricing approved by the owner 24/11/2026 (tools/ea_copy.py PRICING): VIP Plan · Gold EA · extra accounts
     plans = ''.join(
-        f'<li class="ea-plan{" hot" if j == 2 else ""}">' + (f'<span class="ea-badge">{esc(tag)}</span>' if tag else '')
-        + f'<h3>{esc(name)}</h3><p class="ea-price">{esc(c["price"])}</p><ul>{"".join("<li>" + I("<path d=\"M5 12l4 4 10-10\"/>") + esc(x) + "</li>" for x in pts)}</ul>'
-        + f'<a class="ea-b{" gold" if j == 2 else ""}" {tg}>{esc(c["plan_btn"])}</a></li>'
-        for j, (name, tag, pts) in enumerate(c['plans']))
+        f'<li class="ea-plan{" hot" if pl["tag"] else ""}">' + (f'<span class="ea-badge">{esc(pl["tag"])}</span>' if pl['tag'] else '')
+        + f'<h3>{esc(pl["name"])}</h3><p class="ea-amt num">{esc(pl["price"])}</p><p class="ea-price">{esc(pl["sub"])}</p>'
+        + f'<ul>{"".join("<li>" + I("<path d=\"M5 12l4 4 10-10\"/>") + esc(x) + "</li>" for x in pl["pts"])}</ul>'
+        + f'<a class="ea-b{" gold" if pl["tag"] else ""}" {tg}>{esc(c["plan_btn"])}</a></li>'
+        for pl in c['plans'])
+    ack = (f'<div class="ea-ack"><h3>{esc(c["ack_h"])}</h3><ol>{"".join("<li>" + esc(x) + "</li>" for x in c["ack"])}</ol>'
+           f'<p class="small"><a href="{legal_path(lang, "eaterms")}">{esc(c["eaterms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></div>')
     faq = ''.join(f'<details class="ea-q"><summary>{esc(q)}<span aria-hidden="true">+</span></summary><p>{esc(a)}</p></details>' for q, a in c['faq'])
     body = (f'  <section id="view-ea" class="ea">\n'
             f'    <div class="ea-hero"><div class="ea-glow" aria-hidden="true"></div>\n'
@@ -1345,13 +1359,13 @@ def ea_page(lang):
             f'<div class="ea-cta"><a class="ea-b ghost" href="{track_path(lang, CUR_MONTH)}">{esc(c["see_track"])}</a><a class="ea-b gold" {tg}>{esc(c["cta"])}{ARROW}</a></div></div>'
             f'<ul>{trust}</ul></div>\n'
             f'    <div class="ea-sec"><h2>{esc(c["how_h"])}</h2><ol class="ea-steps">{steps}</ol></div>\n'
-            f'    <div class="ea-sec"><h2>{esc(c["plans_h"])}</h2><ul class="ea-plans">{plans}</ul></div>\n'
+            f'    <div class="ea-sec" id="pricing"><h2>{esc(c["plans_h"])}</h2><ul class="ea-plans">{plans}</ul><p class="ea-pnote">{esc(c["plan_note"])}</p>{ack}</div>\n'
             f'    <div class="ea-see"><div><h3>{esc(c["see_h"])}</h3><p>{esc(c["see_p"])}</p></div>'
             f'<div class="ea-cta"><a class="ea-b ghost" href="{today_path(lang)}">{esc(c["see_today"])}</a><a class="ea-b ghost" href="{track_path(lang, CUR_MONTH)}">{esc(c["see_track"])}</a></div></div>\n'
             f'    <div class="ea-sec"><h2>{esc(c["faq_h"])}</h2><div class="ea-faq">{faq}</div></div>\n'
             f'    <div class="ea-end"><div class="ea-glow" aria-hidden="true"></div><h2>{esc(c["end_h"])}</h2><p>{esc(c["end_p"])}</p><div class="ea-cta"><a class="ea-b gold big" {tg}>{esc(c["cta"])}{ARROW}</a></div></div>\n'
             f'    <aside class="ea-risk" role="note"><h3>{esc(c["risk_h"])}</h3><p>{esc(c["risk"])}</p><p>{esc(c["diff"])}</p>'
-            f'<p class="small"><a href="{legal_path(lang, "terms")}">{esc(c["terms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></aside>\n'
+            f'<p class="small"><a href="{legal_path(lang, "eaterms")}">{esc(c["eaterms"])}</a> · <a href="{legal_path(lang, "terms")}">{esc(c["terms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></aside>\n'
             f'  </section>')
     doc = set_view(doc, body)
     url = SITE + paths[lang]
@@ -1603,7 +1617,7 @@ def llms():
               f'- [今日黃金計畫（繁體中文）]({SITE}/zh-hant/today/): the same plan in Traditional Chinese',
               f'- [Terms of Use]({SITE}{legal_path("en", "terms")}), [Privacy Policy]({SITE}{legal_path("en", "privacy")}), [Risk Disclosure]({SITE}{legal_path("en", "risk")})',
               f'- [Track record]({SITE}{track_path("en", CUR_MONTH)}): every plan this month and how it played out',
-              f'- [Signals]({SITE}{signals_path("en")}): members-only trade signals (waitlist)',
+              f'- [VIP Plan]({SITE}{signals_path("en")}): members-only daily analysis, 1–2 focused zones with real-time updates (USD 50/month)',
               f'- [NEXUS CORE Gold EA]({SITE}{ea_path("en")}): MetaTrader 5 Expert Advisor that trades the published daily plan (licence via Telegram)',
               f'- [Plan data (JSON)]({SITE}/data/latest.json): machine-readable latest plan',
               f'- [All plans with grades (JSON)]({SITE}/data/history.json)', '',

@@ -6,7 +6,7 @@ never a promise of profit, results always called hypothetical, no broker names.
 Placeholders in {braces} are filled by tools/build.py with live numbers or links.
 """
 
-UPDATED = {'en': '17 November 2026', 'ar': '17 نوفمبر 2026', 'vi': '17/11/2026', 'zh-hant': '2026年11月17日'}
+UPDATED = {'en': '24 November 2026', 'ar': '24 نوفمبر 2026', 'vi': '24/11/2026', 'zh-hant': '2026年11月24日'}
 
 COPY = {}
 
@@ -64,7 +64,7 @@ COPY['en'] = {
                  ('News and the gold price', ['how-cpi-affects-gold', 'how-nfp-affects-gold', 'fed-rates-and-gold', 'gold-and-the-us-dollar', 'gold-and-real-yields', 'why-is-gold-falling']),
                  ('Reading the chart', ['gold-support-and-resistance', 'supply-and-demand-zones-gold', 'liquidity-sweep-xauusd', 'how-to-spot-a-breakout-gold', 'how-to-avoid-fake-breakouts-gold', 'how-to-identify-gold-trend'])],
     'f_nexus': 'NEXUS CORE',
-    'f_links': {'plan': 'Daily gold plan', 'record': 'Track record', 'grading': 'How plans are graded', 'signals': 'Signals (waitlist)',
+    'f_links': {'plan': 'Daily gold plan', 'record': 'Track record', 'grading': 'How plans are graded', 'signals': 'VIP Plan',
                 'tg': 'Telegram channel', 'x': 'X', 'yt': 'YouTube'},
     'f_all': 'All questions and answers',
     'f_legal_h': 'Disclaimer and terms summary',
@@ -103,7 +103,7 @@ COPY['en']['legal'] = {
                                            'You follow the laws of your country. Leveraged products such as CFDs are restricted or banned in some places; for example, US residents cannot trade CFDs.',
                                            'You use the content at your own risk and only trade with money you can afford to lose.',
                                            'You do not copy, resell or republish our plans, charts or articles as your own, and you do not scrape the site automatically. Sharing a link with credit to NEXUS CORE is welcome.']]),
-            ('7. Paid services', ['The daily plan is free. Paid services, such as Signals, are not on sale yet. If they launch, they will come with their own terms, shown before you pay.']),
+            ('7. Paid services', ['The daily plan stays free. We also sell two paid services: the VIP Plan, a members-only analysis service, and the NEXUS CORE Gold EA, a software licence for MetaTrader 5. Prices are shown on the Gold EA page.', 'The EA is covered by the EA Licence Terms, which you accept before you pay and which apply on top of these terms. The EA is software you install and control in your own account; buying it does not make us your adviser, broker or account manager. The VIP Plan is general analysis only, the same for every member, with no entry, stop or target orders.', 'Sections 3, 5, 6 and 9 of these terms still apply to paid services. Paid services are not offered to residents of the United States, Canada or Vietnam, and may not be offered in other countries. Where they are not available, we will not take payment for them.']),
             ('8. Other websites', ['Links to Telegram, X, YouTube or other sites are for your convenience. Those services have their own terms and privacy rules, and we are not responsible for them.']),
             ('9. Liability', ['To the extent the law allows, NEXUS CORE is not liable for any loss or damage, direct or indirect, that comes from using or relying on the content, including losses caused by trading, technical faults, data errors, delays or market conditions.']),
             ('10. Changes', ['We may update these terms. The date at the top shows the latest version. If you keep using NEXUS CORE after a change, the new terms apply.']),
@@ -119,14 +119,15 @@ COPY['en']['legal'] = {
             ('2. Settings on your device', ['Your browser remembers your language, your light or dark theme and your alert language on your own device (local storage). This never leaves your device and you can clear it in your browser settings at any time.']),
             ('3. Alerts', ['If you turn on alerts, your browser gives us a push address for this device. We keep it with your language, the page where you turned alerts on and how you found us, only to send you a message when a new plan is published.',
                            'Tap “Turn off alerts” on the site, or block notifications in your browser, and the push address stops working; we delete it.']),
-            ('4. Email list', ['If you join the email list or the Signals waitlist, we keep your email address with your language, the page you signed up on and how you found us. We use it only to send plans, news about the NEXUS CORE app and Signals, and you can ask us to delete it at any time.',
+            ('4. Email list', ['If you join the email list or the VIP Plan email list, we keep your email address with your language, the page you signed up on and how you found us. We use it only to send plans, news about the NEXUS CORE app and the VIP Plan, and you can ask us to delete it at any time.',
                                'We never sell, rent or share your email address with brokers, advertisers or anyone else.']),
             ('5. Where data is kept', ['The website is served through GitHub Pages and Cloudflare. Alerts, the email list and visit counts are stored on Cloudflare. These providers process the data for us and may store it outside your country.']),
             ('6. How long we keep it', ['Alert addresses are kept until you turn alerts off or they stop working. Email addresses are kept until you ask us to remove them or the list closes. Visit counts contain no personal data and are kept as totals.']),
             ('7. Your rights', ['You can ask what we hold about you, ask us to correct it or ask us to delete it. Depending on where you live (for example under the GDPR in Europe), you may also have the right to object or to complain to your data protection authority.',
                                 'To make a request, message us through our Telegram channel. We will answer within 30 days.']),
             ('8. Children', ['NEXUS CORE is not for anyone under 18. We do not knowingly collect data from children.']),
-            ('9. Changes', ['If this policy changes, we update the date at the top of this page.']),
+            ('9. EA customers', ['To run your EA licence we keep: your name, a contact (Telegram handle or email), your plan and payment dates, your MT5 account number and broker server name, and the country of each licence check. We do not keep your IP address; we keep only a scrambled code of it for 30 days to detect shared keys. Your licence key is stored only in scrambled (hashed) form. We do not collect your broker password, balance or trades. Licence check records are deleted after 180 days. We use this data only to run and protect your licence and to support you, and we never sell it. Ask us on Telegram to see, correct or erase your data; erasing it ends your licence.']),
+            ('10. Changes', ['If this policy changes, we update the date at the top of this page.']),
         ]},
     'risk': {
         'desc': 'The main risks of trading gold with leverage, and what the NEXUS CORE track record can and cannot tell you.',
@@ -196,7 +197,7 @@ COPY['ar'] = {
                  ('الأخبار وسعر الذهب', ['how-cpi-affects-gold', 'how-nfp-affects-gold', 'fed-rates-and-gold', 'gold-and-the-us-dollar', 'gold-and-real-yields', 'why-is-gold-falling']),
                  ('قراءة الرسم البياني', ['gold-support-and-resistance', 'supply-and-demand-zones-gold', 'liquidity-sweep-xauusd', 'how-to-spot-a-breakout-gold', 'how-to-avoid-fake-breakouts-gold', 'how-to-identify-gold-trend'])],
     'f_nexus': 'NEXUS CORE',
-    'f_links': {'plan': 'خطة الذهب اليومية', 'record': 'سجل النتائج', 'grading': 'كيف تُقيَّم الخطط', 'signals': 'الإشارات (قائمة الانتظار)',
+    'f_links': {'plan': 'خطة الذهب اليومية', 'record': 'سجل النتائج', 'grading': 'كيف تُقيَّم الخطط', 'signals': 'VIP Plan',
                 'tg': 'قناة تيليجرام', 'x': 'X', 'yt': 'يوتيوب'},
     'f_all': 'كل الأسئلة والأجوبة',
     'f_legal_h': 'إخلاء المسؤولية وملخص الشروط',
@@ -235,7 +236,7 @@ COPY['ar']['legal'] = {
                                 'أن تلتزم بأنظمة بلدك، فالمنتجات ذات الرافعة المالية مقيّدة أو محظورة في بعض الدول.',
                                 'أن تستخدم المحتوى على مسؤوليتك، وألا تتداول إلا بأموال يمكنك تحمّل خسارتها.',
                                 'ألا تنسخ خططنا أو رسومنا أو مقالاتنا أو تعيد بيعها أو نشرها باسمك، وألا تجمع محتوى الموقع آليًا. مشاركة الرابط مع ذكر NEXUS CORE مرحّب بها.']]),
-            ('7. الخدمات المدفوعة', ['الخطة اليومية مجانية. الخدمات المدفوعة مثل الإشارات غير متاحة للبيع بعد، وإذا أُطلقت فستكون لها شروطها الخاصة التي تُعرض قبل الدفع.']),
+            ('7. الخدمات المدفوعة', ['تبقى الخطة اليومية مجانية. ونبيع أيضًا خدمتين مدفوعتين: VIP Plan، وهي خدمة تحليل للأعضاء فقط، وNEXUS CORE Gold EA، وهو ترخيص برنامج لمنصة MetaTrader 5. الأسعار معروضة في صفحة Gold EA.', 'يخضع EA لشروط ترخيص EA التي توافق عليها قبل الدفع، وتنطبق إضافةً إلى هذه الشروط. EA برنامج تثبّته وتتحكم فيه في حسابك؛ وشراؤه لا يجعلنا مستشارك أو وسيطك أو مدير حسابك. وVIP Plan تحليل عام فقط، واحد لكل الأعضاء، بلا أوامر دخول أو وقف أو أهداف.', 'تظل البنود 3 و5 و6 و9 من هذه الشروط سارية على الخدمات المدفوعة. لا تُقدَّم الخدمات المدفوعة للمقيمين في الولايات المتحدة وكندا وفيتنام، وقد لا تُقدَّم في دول أخرى، ولن نقبل الدفع حيث لا تتوفر.']),
             ('8. المواقع الأخرى', ['الروابط إلى تيليجرام وX ويوتيوب وغيرها للتسهيل فقط. لهذه الخدمات شروطها وقواعد خصوصيتها، ولسنا مسؤولين عنها.']),
             ('9. حدود المسؤولية', ['في الحدود التي يسمح بها القانون، لا يتحمل NEXUS CORE أي مسؤولية عن أي خسارة أو ضرر، مباشر أو غير مباشر، ناتج عن استخدام المحتوى أو الاعتماد عليه، بما في ذلك خسائر التداول والأعطال التقنية وأخطاء البيانات والتأخير وظروف السوق.']),
             ('10. التعديلات', ['قد نحدّث هذه الشروط، ويبيّن التاريخ في أعلى الصفحة أحدث نسخة. واستمرارك في استخدام NEXUS CORE بعد التعديل يعني قبولك الشروط الجديدة.']),
@@ -258,7 +259,8 @@ COPY['ar']['legal'] = {
             ('7. حقوقك', ['يمكنك أن تطلب معرفة ما نحتفظ به عنك أو تصحيحه أو حذفه، وقد تكون لك حقوق إضافية بحسب أنظمة حماية البيانات في بلدك.',
                           'لتقديم طلب، راسلنا عبر قناتنا على تيليجرام، وسنرد خلال 30 يومًا.']),
             ('8. القاصرون', ['NEXUS CORE غير موجّه لمن هم دون 18 عامًا، ولا نجمع بيانات الأطفال عن علم.']),
-            ('9. التعديلات', ['عند تعديل هذه السياسة نحدّث التاريخ في أعلى الصفحة.']),
+            ('9. عملاء EA', ['لتشغيل ترخيص EA نحتفظ بما يلي: اسمك، ووسيلة تواصل (حساب تيليغرام أو بريد إلكتروني)، وباقتك وتواريخ الدفع، ورقم حساب MT5 واسم خادم الوسيط، والدولة عند كل فحص للترخيص. لا نحتفظ بعنوان IP؛ بل برمز مشفّر منه لمدة 30 يومًا لاكتشاف مشاركة المفاتيح. يُحفظ مفتاح الترخيص بصيغة مشفّرة فقط. لا نجمع كلمة مرور الوسيط أو رصيدك أو صفقاتك. تُحذف سجلات فحص الترخيص بعد 180 يومًا. نستخدم هذه البيانات فقط لتشغيل ترخيصك وحمايته ودعمك، ولا نبيعها أبدًا. راسلنا على تيليغرام للاطلاع على بياناتك أو تصحيحها أو حذفها؛ وحذفها ينهي الترخيص.']),
+            ('10. التعديلات', ['عند تعديل هذه السياسة نحدّث التاريخ في أعلى الصفحة.']),
         ]},
     'risk': {
         'desc': 'أهم مخاطر تداول الذهب بالرافعة المالية، وما يمكن لسجل نتائج NEXUS CORE أن يخبرك به وما لا يمكنه.',
@@ -327,7 +329,7 @@ COPY['vi'] = {
     'f_groups': [('Hỏi đáp về vàng (tiếng Anh)', ['what-is-xauusd', 'how-to-trade-gold', 'best-time-to-trade-gold', 'how-to-read-a-gold-trading-plan', 'how-much-to-risk-per-trade-gold', 'gold-lot-size-and-pip-value']),
                  ('Tin tức và giá vàng (tiếng Anh)', ['how-cpi-affects-gold', 'how-nfp-affects-gold', 'fed-rates-and-gold', 'gold-and-the-us-dollar', 'gold-and-real-yields', 'why-is-gold-falling'])],
     'f_nexus': 'NEXUS CORE',
-    'f_links': {'plan': 'Plan vàng mỗi ngày', 'record': 'Kết quả đã chấm', 'grading': 'Cách chấm plan', 'signals': 'Signal (danh sách chờ)',
+    'f_links': {'plan': 'Plan vàng mỗi ngày', 'record': 'Kết quả đã chấm', 'grading': 'Cách chấm plan', 'signals': 'VIP Plan',
                 'tg': 'Kênh Telegram', 'x': 'X', 'yt': 'YouTube'},
     'f_all': 'Tất cả câu hỏi (tiếng Anh)',
     'f_legal_h': 'Miễn trừ trách nhiệm và tóm tắt điều khoản',
@@ -366,7 +368,7 @@ COPY['vi']['legal'] = {
                                          'Bạn tự tuân thủ pháp luật nơi mình sống. Sản phẩm đòn bẩy như CFD bị hạn chế hoặc cấm ở một số nước.',
                                          'Bạn dùng nội dung với rủi ro của riêng mình và chỉ giao dịch bằng tiền chấp nhận mất được.',
                                          'Bạn không sao chép, bán lại hay đăng lại plan, biểu đồ, bài viết như của mình, và không tự động thu thập dữ liệu website. Chia sẻ đường link kèm tên NEXUS CORE thì luôn được hoan nghênh.']]),
-            ('7. Dịch vụ trả phí', ['Plan ngày miễn phí. Dịch vụ trả phí như Signal chưa mở bán. Khi ra mắt, dịch vụ đó sẽ có điều khoản riêng, hiện ra trước khi bạn thanh toán.']),
+            ('7. Dịch vụ trả phí', ['Plan ngày vẫn miễn phí. Chúng tôi bán thêm hai dịch vụ trả phí: VIP Plan, dịch vụ phân tích dành cho thành viên, và NEXUS CORE Gold EA, bản quyền phần mềm cho MetaTrader 5. Giá có trên trang Gold EA.', 'EA được điều chỉnh bởi Điều khoản bản quyền EA, bạn đồng ý trước khi thanh toán, áp dụng cùng các điều khoản này. EA là phần mềm bạn tự cài và điều khiển trong tài khoản của mình; mua EA không biến chúng tôi thành người tư vấn, môi giới hay quản lý tài khoản của bạn. VIP Plan chỉ là phân tích chung, giống nhau cho mọi thành viên, không có lệnh entry, dừng lỗ hay mục tiêu.', 'Mục 3, 5, 6 và 9 vẫn áp dụng cho dịch vụ trả phí. Dịch vụ trả phí không bán cho người cư trú tại Mỹ, Canada và Việt Nam, và có thể chưa mở ở các nước khác. Nơi chưa mở, chúng tôi không nhận thanh toán.']),
             ('8. Website khác', ['Đường link tới Telegram, X, YouTube hay website khác chỉ để tiện cho bạn. Các dịch vụ đó có điều khoản và quy định bảo mật riêng, chúng tôi không chịu trách nhiệm về chúng.']),
             ('9. Giới hạn trách nhiệm', ['Trong phạm vi pháp luật cho phép, NEXUS CORE không chịu trách nhiệm cho bất kỳ khoản lỗ hay thiệt hại nào, trực tiếp hay gián tiếp, do dùng hoặc dựa vào nội dung, kể cả lỗ khi giao dịch, lỗi kỹ thuật, lỗi dữ liệu, độ trễ hay biến động thị trường.']),
             ('10. Thay đổi', ['Chúng tôi có thể cập nhật điều khoản. Ngày ở đầu trang là phiên bản mới nhất. Nếu bạn tiếp tục dùng NEXUS CORE sau khi thay đổi, điều khoản mới sẽ áp dụng.']),
@@ -389,7 +391,8 @@ COPY['vi']['legal'] = {
             ('7. Quyền của bạn', ['Bạn có quyền hỏi chúng tôi đang giữ gì về bạn, yêu cầu sửa hoặc xoá. Tuỳ nơi bạn sống, bạn có thể có thêm quyền theo luật bảo vệ dữ liệu cá nhân ở đó.',
                                   'Để gửi yêu cầu, hãy nhắn cho chúng tôi qua kênh Telegram. Chúng tôi trả lời trong vòng 30 ngày.']),
             ('8. Trẻ vị thành niên', ['NEXUS CORE không dành cho người dưới 18 tuổi. Chúng tôi không cố ý thu thập dữ liệu của trẻ em.']),
-            ('9. Thay đổi', ['Khi chính sách thay đổi, chúng tôi cập nhật ngày ở đầu trang.']),
+            ('9. Khách mua EA', ['Để vận hành bản quyền EA, chúng tôi lưu: tên, một kênh liên hệ (Telegram hoặc email), gói và ngày thanh toán, số tài khoản MT5 và tên máy chủ sàn, và quốc gia của mỗi lần kiểm tra bản quyền. Chúng tôi không lưu địa chỉ IP; chỉ lưu một mã đã xáo trộn trong 30 ngày để phát hiện key bị chia sẻ. Key bản quyền chỉ lưu dạng mã hoá một chiều. Chúng tôi không thu mật khẩu sàn, số dư hay lệnh của bạn. Nhật ký kiểm tra bản quyền xoá sau 180 ngày. Dữ liệu chỉ dùng để vận hành, bảo vệ bản quyền và hỗ trợ bạn, không bao giờ bán. Nhắn Telegram để xem, sửa hoặc xoá dữ liệu; xoá dữ liệu sẽ chấm dứt bản quyền.']),
+            ('10. Thay đổi', ['Khi chính sách thay đổi, chúng tôi cập nhật ngày ở đầu trang.']),
         ]},
     'risk': {
         'desc': 'Những rủi ro chính khi giao dịch vàng có đòn bẩy, và bảng kết quả của NEXUS CORE cho biết được gì, không cho biết được gì.',
@@ -458,7 +461,7 @@ COPY['zh-hant'] = {
                  ('新聞與金價', ['how-cpi-affects-gold', 'how-nfp-affects-gold', 'fed-rates-and-gold', 'gold-and-the-us-dollar', 'gold-and-real-yields', 'why-is-gold-falling']),
                  ('看懂圖表', ['gold-support-and-resistance', 'supply-and-demand-zones-gold', 'liquidity-sweep-xauusd', 'how-to-spot-a-breakout-gold', 'how-to-avoid-fake-breakouts-gold', 'how-to-identify-gold-trend'])],
     'f_nexus': 'NEXUS CORE',
-    'f_links': {'plan': '每日黃金計畫', 'record': '成績紀錄', 'grading': '評分方式', 'signals': '訊號（候補名單）',
+    'f_links': {'plan': '每日黃金計畫', 'record': '成績紀錄', 'grading': '評分方式', 'signals': 'VIP Plan',
                 'tg': 'Telegram 頻道', 'x': 'X', 'yt': 'YouTube'},
     'f_all': '所有問答',
     'f_legal_h': '免責聲明與條款摘要',
@@ -497,7 +500,7 @@ COPY['zh-hant']['legal'] = {
                                '您會遵守所在地法規。差價合約等槓桿商品在部分地區受到限制或禁止。',
                                '您自行承擔使用本站內容的風險，並僅以可承受損失的資金交易。',
                                '您不得將本站計畫、圖表或文章複製、轉售或以自己名義重新發布，也不得以自動化方式擷取本站內容。歡迎附上 NEXUS CORE 名稱分享連結。']]),
-            ('七、付費服務', ['每日計畫為免費。訊號等付費服務目前尚未開放；未來推出時，將另訂條款並於付款前顯示。在取得專業法律意見前，付費服務不會對台灣及香港開放。']),
+            ('七、付費服務', ['每日計畫維持免費。我們另提供兩項付費服務：僅限會員的分析服務 VIP Plan，以及 MetaTrader 5 軟體授權 NEXUS CORE Gold EA。價格請見 Gold EA 頁面。', 'EA 適用《EA 授權條款》，您須於付款前同意，並與本條款一併適用。EA 是您在自己帳戶中安裝並控制的軟體；購買 EA 並不使我們成為您的顧問、經紀商或帳戶管理人。VIP Plan 僅為一般分析，所有會員內容相同，不提供進場、停損或目標指令。', '本條款第三、五、六及九條仍適用於付費服務。付費服務不向美國、加拿大及越南居民提供，其他國家或地區亦可能未開放；未開放之處，我們不收取費用。']),
             ('八、其他網站', ['連往 Telegram、X、YouTube 或其他網站的連結僅為方便您使用，這些服務有各自的條款與隱私規則，本站不對其負責。']),
             ('九、責任限制', ['在法律允許的範圍內，因使用或依賴本站內容所生之任何直接或間接損失或損害，包括交易虧損、技術故障、資料錯誤、延遲或市場狀況所致者，NEXUS CORE 概不負責。']),
             ('十、條款修訂', ['本站可能更新本條款，頁首日期即為最新版本。條款修訂後您繼續使用 NEXUS CORE，即表示您同意新條款。']),
@@ -520,7 +523,8 @@ COPY['zh-hant']['legal'] = {
             ('七、您的權利', ['您可以要求查詢、更正或刪除我們所保存關於您的資料。依您所在地的個人資料保護法規，您可能享有其他權利。',
                               '如需提出請求，請透過我們的 Telegram 頻道聯繫，我們會在 30 天內回覆。']),
             ('八、未成年人', ['NEXUS CORE 不適用於未滿 18 歲者，我們不會在知情的情況下蒐集兒童的資料。']),
-            ('九、政策修訂', ['本政策如有修訂，我們會更新頁首日期。']),
+            ('九、EA 客戶', ['為執行 EA 授權，我們保存：您的姓名、聯絡方式（Telegram 或電子郵件）、方案與付款日期、MT5 帳號與經紀商伺服器名稱，以及每次授權檢查的國家。我們不保存 IP 位址，只保存其雜湊碼 30 天，用於偵測金鑰共用。授權金鑰僅以雜湊形式儲存。我們不收集您的經紀商密碼、餘額或交易。授權檢查紀錄於 180 天後刪除。資料僅用於執行與保護您的授權及提供支援，絕不出售。如需查閱、更正或刪除資料，請透過 Telegram 聯絡我們；刪除資料將終止授權。']),
+            ('十、政策修訂', ['本政策如有修訂，我們會更新頁首日期。']),
         ]},
     'risk': {
         'desc': '以槓桿交易黃金的主要風險，以及 NEXUS CORE 成績紀錄能告訴您與不能告訴您的事。',

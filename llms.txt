@@ -82,6 +82,8 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [What is the gold price outlook for this week?](https://nexuscore.trade/en/learn/gold-weekly-outlook/): Nobody knows where gold will close this week, but a useful weekly outlook can be built from three things: the weekly and daily trend, the US data and Fed events
 - [What moves the gold price?](https://nexuscore.trade/en/learn/what-moves-the-gold-price/): The gold price is mainly moved by the US dollar, real interest rates (yields after inflation), expectations for Federal Reserve policy, safe-haven demand during
 - [How does the FOMC meeting affect gold?](https://nexuscore.trade/en/learn/how-fomc-affects-gold/): The FOMC sets US interest rates eight times a year. Gold reacts to the surprise, not the decision itself: a more hawkish message than expected (fewer cuts, high
+- [What is the gold price prediction for tomorrow?](https://nexuscore.trade/en/learn/gold-price-prediction-tomorrow/): A useful forecast for tomorrow is not one price but two or three scenarios: where gold is likely to go if a key level holds, where it goes if that level breaks,
+- [How does PCE inflation affect gold?](https://nexuscore.trade/en/learn/how-pce-affects-gold/): PCE is the inflation measure the Federal Reserve targets, released monthly by the US Bureau of Economic Analysis at 08:30 New York time. A hotter-than-expected 
 
 ## Why gold moved (recent days)
 
@@ -103,7 +105,7 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [今日黃金計畫（繁體中文）](https://nexuscore.trade/zh-hant/today/): the same plan in Traditional Chinese
 - [Terms of Use](https://nexuscore.trade/en/terms/), [Privacy Policy](https://nexuscore.trade/en/privacy/), [Risk Disclosure](https://nexuscore.trade/en/risk-disclosure/)
 - [Track record](https://nexuscore.trade/en/track-record/2026-11/): every plan this month and how it played out
-- [Signals](https://nexuscore.trade/en/signals/): members-only trade signals (waitlist)
+- [VIP Plan](https://nexuscore.trade/en/signals/): members-only daily analysis, 1–2 focused zones with real-time updates (USD 50/month)
 - [NEXUS CORE Gold EA](https://nexuscore.trade/en/ea/): MetaTrader 5 Expert Advisor that trades the published daily plan (licence via Telegram)
 - [Plan data (JSON)](https://nexuscore.trade/data/latest.json): machine-readable latest plan
 - [All plans with grades (JSON)](https://nexuscore.trade/data/history.json)

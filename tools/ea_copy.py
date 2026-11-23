@@ -249,3 +249,92 @@ EA = {
   title='NEXUS CORE Gold EA（MT5）：自動交易黃金計畫',
   desc='MT5 的 XAUUSD 專家顧問，自動交易 NEXUS CORE 每日免費黃金計畫，風險由你設定，績效公開。可免費模擬測試。'),
 }
+# New pricing copy (24/11/2026) – appended to tools/ea_copy.py
+PRICING = {
+ 'en': {
+  'plans': [
+   {'name': 'VIP Plan', 'tag': '', 'price': 'USD 50 / month', 'sub': 'or USD 129 for 3 months',
+    'pts': ['1–2 focused zones close to price, every trading day', 'Real-time updates on how price behaves at those zones', 'Private Telegram group', 'Analysis only: no entry, stop or target orders']},
+   {'name': 'Gold EA', 'tag': 'Most complete', 'price': 'USD 600 + USD 50 / month', 'sub': 'Licence once · data & updates monthly, or USD 500 / year',
+    'pts': ['Lifetime licence: 1 live + 3 demo accounts', 'Daily plan data, updates and support', 'VIP Plan included', '14-day refund if it fails on our side']},
+   {'name': 'Extra accounts', 'tag': '', 'price': '+ USD 20 / month', 'sub': 'per extra live account',
+    'pts': ['Add live accounts to your EA licence', 'Move a slot to another account up to 2× a year', 'Cancel an extra account any time']}],
+  'plan_btn': 'Get it on Telegram',
+  'plan_note': 'Prices in USD. The EA needs the monthly data service to open new trades; cancel any time on Telegram. The Founding member offer is closed. Not available to residents of the United States, Canada or Vietnam.',
+  'ack_h': 'Before you pay, you confirm that you:',
+  'ack': ['have read and accept the EA Licence Terms, including the USD 50 monthly data fee after the first month;',
+          'understand that trading gold CFDs with leverage is high risk, that the EA can lose money, and that hypothetical results do not predict real results;',
+          'understand this is software, not personal financial advice, and that you decide whether and how to use it;',
+          'are 18 or older and allowed to trade leveraged products where you live.'],
+  'eaterms': 'EA Licence Terms',
+  'faq_acc': 'Your licence covers 1 live account and 3 demo accounts. Extra live accounts are USD 20 a month each, and you can move a slot to another account up to 2 times a year.',
+  'faq_new': [('Why is there a monthly fee?', 'The EA opens trades from fresh market data our server publishes every day, plus updates and support. That service is USD 50 a month (or USD 500 a year). If you stop paying, the EA keeps managing open trades but stops opening new ones; pay again and it continues, with no need to buy the licence again.'),
+              ('Can I get a refund?', 'If the EA does not work because of a fault on our side and we cannot fix it, you can ask for a refund within 14 days. We do not refund trading losses. Your consumer rights are not affected.')],
+ },
+ 'vi': {
+  'plans': [
+   {'name': 'VIP Plan', 'tag': '', 'price': '50 USD / tháng', 'sub': 'hoặc 129 USD cho 3 tháng',
+    'pts': ['1–2 vùng tập trung sát giá mỗi ngày giao dịch', 'Cập nhật realtime hành vi giá tại các vùng đó', 'Nhóm Telegram riêng', 'Chỉ là phân tích: không đưa lệnh entry, dừng lỗ hay mục tiêu']},
+   {'name': 'Gold EA', 'tag': 'Đầy đủ nhất', 'price': '600 USD + 50 USD / tháng', 'sub': 'Bản quyền trả một lần · dữ liệu & cập nhật trả theo tháng, hoặc 500 USD / năm',
+    'pts': ['Bản quyền trọn đời: 1 tài khoản thật + 3 demo', 'Dữ liệu plan hằng ngày, cập nhật và hỗ trợ', 'Kèm VIP Plan', 'Hoàn tiền trong 14 ngày nếu lỗi do phía chúng tôi']},
+   {'name': 'Thêm tài khoản', 'tag': '', 'price': '+ 20 USD / tháng', 'sub': 'mỗi tài khoản thật thêm',
+    'pts': ['Thêm tài khoản thật vào bản quyền EA', 'Chuyển suất sang tài khoản khác tối đa 2 lần/năm', 'Huỷ tài khoản thêm bất cứ lúc nào']}],
+  'plan_btn': 'Mua qua Telegram',
+  'plan_note': 'Giá tính bằng USD. EA cần gói dữ liệu hằng tháng để vào lệnh mới; huỷ bất cứ lúc nào qua Telegram. Gói Founding đã đóng. Chưa bán cho người cư trú tại Mỹ, Canada và Việt Nam.',
+  'ack_h': 'Trước khi thanh toán, bạn xác nhận:',
+  'ack': ['đã đọc và đồng ý Điều khoản bản quyền EA, gồm phí dữ liệu 50 USD/tháng sau tháng đầu;',
+          'hiểu rằng giao dịch CFD vàng có đòn bẩy là rủi ro cao, EA có thể thua lỗ, và kết quả giả định không dự báo kết quả thật;',
+          'hiểu đây là phần mềm, không phải lời khuyên tài chính cá nhân, và bạn tự quyết định cách dùng;',
+          'bạn từ 18 tuổi và được phép giao dịch sản phẩm đòn bẩy nơi bạn sống.'],
+  'eaterms': 'Điều khoản bản quyền EA',
+  'faq_acc': 'Bản quyền gồm 1 tài khoản thật và 3 tài khoản demo. Mỗi tài khoản thật thêm 20 USD/tháng, và bạn chuyển suất sang tài khoản khác tối đa 2 lần mỗi năm.',
+  'faq_new': [('Vì sao có phí hằng tháng?', 'EA vào lệnh dựa trên dữ liệu thị trường mới mà máy chủ của chúng tôi phát mỗi ngày, kèm cập nhật và hỗ trợ. Dịch vụ này giá 50 USD/tháng (hoặc 500 USD/năm). Ngừng trả thì EA vẫn quản lý lệnh đang mở nhưng không vào lệnh mới; trả lại là chạy tiếp, không phải mua lại bản quyền.'),
+              ('Có được hoàn tiền không?', 'Nếu EA không chạy do lỗi phía chúng tôi và không khắc phục được, bạn yêu cầu hoàn tiền trong 14 ngày. Chúng tôi không hoàn tiền vì thua lỗ giao dịch. Quyền người tiêu dùng của bạn không bị ảnh hưởng.')],
+ },
+ 'ar': {
+  'plans': [
+   {'name': 'VIP Plan', 'tag': '', 'price': '50 دولارًا / شهريًا', 'sub': 'أو 129 دولارًا لثلاثة أشهر',
+    'pts': ['منطقة أو منطقتان مركّزتان قرب السعر في كل يوم تداول', 'تحديثات لحظية لسلوك السعر عند تلك المناطق', 'مجموعة تيليغرام خاصة', 'تحليل فقط: بلا أوامر دخول أو وقف أو أهداف']},
+   {'name': 'Gold EA', 'tag': 'الأكثر اكتمالًا', 'price': '600 دولار + 50 دولارًا / شهريًا', 'sub': 'ترخيص مرة واحدة · البيانات والتحديثات شهريًا، أو 500 دولار سنويًا',
+    'pts': ['ترخيص مدى الحياة: حساب حقيقي واحد + 3 حسابات تجريبية', 'بيانات الخطة اليومية والتحديثات والدعم', 'يشمل VIP Plan', 'استرداد خلال 14 يومًا إذا تعطّل بسبب خلل من جهتنا']},
+   {'name': 'حسابات إضافية', 'tag': '', 'price': '+ 20 دولارًا / شهريًا', 'sub': 'لكل حساب حقيقي إضافي',
+    'pts': ['أضف حسابات حقيقية إلى ترخيص EA', 'انقل الحصة إلى حساب آخر حتى مرتين سنويًا', 'ألغِ أي حساب إضافي في أي وقت']}],
+  'plan_btn': 'اطلب عبر تيليغرام',
+  'plan_note': 'الأسعار بالدولار الأمريكي. يحتاج EA إلى خدمة البيانات الشهرية لفتح صفقات جديدة؛ يمكنك الإلغاء في أي وقت عبر تيليغرام. عرض الأعضاء المؤسسين مغلق. غير متاح للمقيمين في الولايات المتحدة وكندا وفيتنام.',
+  'ack_h': 'قبل الدفع، تؤكد أنك:',
+  'ack': ['قرأت شروط ترخيص EA ووافقت عليها، بما فيها رسوم البيانات 50 دولارًا شهريًا بعد الشهر الأول؛',
+          'تدرك أن تداول عقود الفروقات على الذهب بالرافعة عالي المخاطر، وأن EA قد يخسر، وأن النتائج الافتراضية لا تتنبأ بالنتائج الحقيقية؛',
+          'تدرك أن هذا برنامج وليس نصيحة مالية شخصية، وأنك من يقرر كيفية استخدامه؛',
+          'عمرك 18 عامًا أو أكثر ومسموح لك بتداول المنتجات ذات الرافعة في بلدك.'],
+  'eaterms': 'شروط ترخيص EA',
+  'faq_acc': 'يشمل الترخيص حسابًا حقيقيًا واحدًا و3 حسابات تجريبية. كل حساب حقيقي إضافي 20 دولارًا شهريًا، ويمكنك نقل الحصة إلى حساب آخر حتى مرتين سنويًا.',
+  'faq_new': [('لماذا توجد رسوم شهرية؟', 'يفتح EA الصفقات بناءً على بيانات سوق جديدة ينشرها خادمنا يوميًا، مع التحديثات والدعم. تكلفة هذه الخدمة 50 دولارًا شهريًا (أو 500 دولار سنويًا). إذا توقفت عن الدفع يواصل EA إدارة الصفقات المفتوحة لكنه لا يفتح صفقات جديدة؛ ادفع مجددًا ليستمر دون شراء الترخيص من جديد.'),
+              ('هل يمكنني استرداد المبلغ؟', 'إذا لم يعمل EA بسبب خلل من جهتنا ولم نتمكن من إصلاحه، يمكنك طلب الاسترداد خلال 14 يومًا. لا نسترد بسبب خسائر التداول. حقوقك كمستهلك لا تتأثر.')],
+ },
+ 'zh-hant': {
+  'plans': [
+   {'name': 'VIP Plan', 'tag': '', 'price': '每月 50 美元', 'sub': '或 3 個月 129 美元',
+    'pts': ['每個交易日 1–2 個貼近價格的重點區域', '即時更新價格在這些區域的表現', '專屬 Telegram 群組', '僅為分析：不提供進場、停損或目標指令']},
+   {'name': 'Gold EA', 'tag': '最完整', 'price': '600 美元 + 每月 50 美元', 'sub': '授權一次付清 · 數據與更新按月付費，或每年 500 美元',
+    'pts': ['終身授權：1 個真實帳戶 + 3 個模擬帳戶', '每日計畫數據、更新與支援', '含 VIP Plan', '若因我方故障無法使用，14 天內可退款']},
+   {'name': '加購帳戶', 'tag': '', 'price': '+ 每月 20 美元', 'sub': '每個額外真實帳戶',
+    'pts': ['為 EA 授權加購真實帳戶', '每年最多 2 次將名額轉到其他帳戶', '可隨時取消加購帳戶']}],
+  'plan_btn': '透過 Telegram 購買',
+  'plan_note': '價格以美元計。EA 需要每月數據服務才能開新倉；可隨時透過 Telegram 取消。創始會員方案已結束。不向美國、加拿大及越南居民銷售。',
+  'ack_h': '付款前，您確認：',
+  'ack': ['已閱讀並同意 EA 授權條款，包括首月後每月 50 美元的數據費；',
+          '了解以槓桿交易黃金差價合約風險很高，EA 可能虧損，假設性結果無法預測真實結果；',
+          '了解這是軟體而非個人化財務建議，如何使用由您決定；',
+          '您已年滿 18 歲，且所在地允許交易槓桿產品。'],
+  'eaterms': 'EA 授權條款',
+  'faq_acc': '授權包含 1 個真實帳戶與 3 個模擬帳戶。每個額外真實帳戶每月 20 美元，每年最多可將名額轉到其他帳戶 2 次。',
+  'faq_new': [('為什麼有月費？', 'EA 依據我方伺服器每天發布的最新市場數據開倉，並包含更新與支援。此服務每月 50 美元（或每年 500 美元）。停止付費後，EA 仍會管理既有持倉，但不再開新倉；重新付費即可繼續，無需重新購買授權。'),
+              ('可以退款嗎？', '若因我方故障導致 EA 無法運作且無法修復，您可於 14 天內申請退款。我們不因交易虧損退款。您的消費者權利不受影響。')],
+ },
+}
+for _l, _p in PRICING.items():
+    _e = EA[_l]
+    _e.update({k: v for k, v in _p.items() if k not in ('faq_acc', 'faq_new')})
+    _f = list(_e['faq'])
+    _f[3] = (_f[3][0], _p['faq_acc'])
+    _e['faq'] = _f + _p['faq_new']

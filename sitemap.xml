@@ -333,6 +333,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/risk-disclosure/"/>
   </url>
   <url>
+    <loc>https://nexuscore.trade/en/ea/terms/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/ea/terms/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/ea/terms/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/ea/terms/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/vi/ea/terms/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/ea/terms/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/ea/terms/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/ea/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/ea/terms/"/>
+  </url>
+  <url>
     <loc>https://nexuscore.trade/en/plan/2026-11-23-newyork/</loc>
     <lastmod>2026-11-23T19:40:00+07:00</lastmod>
     <priority>0.7</priority>
@@ -1709,6 +1749,9 @@
     <loc>https://nexuscore.trade/en/learn/why-is-gold-falling/</loc>
     <lastmod>2026-11-12T08:00:00+07:00</lastmod>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/why-is-gold-falling/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/why-is-gold-falling/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/why-is-gold-falling/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/en/learn/why-is-gold-rising/</loc>
@@ -1879,6 +1922,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://nexuscore.trade/en/learn/gold-price-prediction-tomorrow/</loc>
+    <lastmod>2026-11-24T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/how-pce-affects-gold/</loc>
+    <lastmod>2026-11-24T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://nexuscore.trade/ar/learn/</loc>
     <lastmod>2026-11-23T19:40:00+07:00</lastmod>
     <priority>0.7</priority>
@@ -1975,6 +2028,14 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/invalidation-level/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/invalidation-level/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/invalidation-level/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/learn/why-is-gold-falling/</loc>
+    <lastmod>2026-11-24T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/why-is-gold-falling/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/why-is-gold-falling/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/why-is-gold-falling/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/zh-hant/learn/</loc>
