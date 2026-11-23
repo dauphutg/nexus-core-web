@@ -1,0 +1,46 @@
+{
+ "date": "2026-11-23",
+ "open": 3576.22,
+ "close": 3634.8,
+ "high": 3689.86,
+ "low": 3558.62,
+ "change": 58.58,
+ "change_pct": 1.64,
+ "biggest_hour": {
+  "start_vn": "2026-11-23 20:00",
+  "move": 37.28
+ },
+ "candles": 92,
+ "tag": "dollar",
+ "headline": {
+  "en": "Gold rose 1.64% in a rebound from a 14-month low as the dollar rally paused",
+  "ar": "ارتفع الذهب 1.64% مرتدًا من أدنى مستوى في 14 شهرًا مع توقف صعود الدولار",
+  "vi": "Vàng tăng 1.64%, hồi từ đáy 14 tháng khi đà tăng của USD tạm dừng",
+  "zh": "美元漲勢暫歇，金價自 14 個月低點反彈，上漲 1.64%"
+ },
+ "reasons": [
+  {
+   "en": "Gold bounced from a 3558.62 low after last week's steep drop; in Asian trade Dow Jones reported spot gold 2.0% higher at 3607.52, and Reuters said markets were awaiting key US inflation data.",
+   "ar": "ارتد الذهب من أدنى مستوى عند 3558.62 بعد الهبوط الحاد في الأسبوع الماضي؛ وخلال التداولات الآسيوية أفادت داو جونز بارتفاع الذهب الفوري 2.0% إلى 3607.52، وذكرت رويترز أن الأسواق تترقب بيانات التضخم الأمريكية الرئيسية.",
+   "vi": "Vàng bật lên từ đáy 3558.62 sau đợt giảm mạnh tuần trước; trong phiên Á, Dow Jones cho biết vàng giao ngay tăng 2.0% lên 3607.52, còn Reuters nói thị trường chờ số liệu lạm phát quan trọng của Mỹ.",
+   "zh": "金價在上週大跌後自 3558.62 低點反彈；亞洲盤時段道瓊報導現貨金上漲 2.0% 至 3607.52，路透則指市場等待美國關鍵通膨數據。"
+  },
+  {
+   "en": "The biggest hour started 20:00 Vietnam time, when gold gained 37.28; Reuters said gold climbed more than 2% as the dollar rally paused, and the rally peaked at 3689.86.",
+   "ar": "جاءت أكبر حركة في الساعة التي بدأت 20:00 بتوقيت فيتنام، إذ صعد الذهب 37.28 دولارًا؛ وذكرت رويترز أن الذهب ارتفع أكثر من 2% مع توقف صعود الدولار، وبلغ الارتفاع ذروته عند 3689.86.",
+   "vi": "Giờ biến động mạnh nhất bắt đầu 20:00 giờ VN, vàng tăng 37.28 USD; Reuters cho biết vàng tăng hơn 2% khi đà tăng của USD tạm dừng, và đỉnh ngày đạt 3689.86.",
+   "zh": "波動最大的一小時始於越南時間 20:00，金價上漲 37.28；路透指美元漲勢暫歇，金價升逾 2%，日內高點達 3689.86。"
+  },
+  {
+   "en": "Later in US trade Dow Jones said gold futures rebounded as Nvidia news lifted markets and dpa-AFX cited easing inflation worries as crude oil slumped; gold closed at 3634.8, below the high.",
+   "ar": "لاحقًا خلال التداولات الأمريكية ذكرت داو جونز أن عقود الذهب الآجلة ارتدت مع دعم أخبار إنفيديا للأسواق، وأشارت dpa-AFX إلى تراجع مخاوف التضخم مع هبوط النفط؛ وأغلق الذهب عند 3634.8 دون أعلى مستوى.",
+   "vi": "Cuối phiên Mỹ, Dow Jones cho biết vàng tương lai hồi phục khi tin Nvidia nâng đỡ thị trường, dpa-AFX nói lo ngại lạm phát giảm khi giá dầu lao dốc; vàng đóng cửa 3634.8, thấp hơn đỉnh ngày.",
+   "zh": "美盤稍後道瓊指輝達消息提振市場，黃金期貨反彈，dpa-AFX 則稱原油重挫令通膨憂慮緩解；金價收在 3634.8，低於日內高點。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (newswires)",
+  "TradingView news (dpa-AFX)"
+ ]
+}
