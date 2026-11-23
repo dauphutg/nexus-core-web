@@ -982,6 +982,7 @@ def today_page(lang):
                    f'<span><b class="num {"up" if nums["TR_NETPIPS"].startswith("+") else "down"}" dir="ltr">{esc(nums["TR_NETPIPS"])}</b> {esc(C(lang, "proof_net"))}</span>'
                    f'<span><b class="num" dir="ltr">{esc(nums["TR_TRADES"])}</b> {esc(C(lang, "proof_tr"))}</span></span>'
                    f'<span class="go">{esc(C(lang, "proof_go"))}</span>')
+    doc = doc.replace('<!-- /VIEW -->', ea_strip(lang) + '<!-- /VIEW -->', 1)
     title, desc, img, upd = plan_title(P, lang), plan_desc(P, lang), img_for(P, lang), updated_dt(P)
     # /today is the evergreen page for "XAUUSD analysis today"; the dated plan page keeps the dated title (F4, 21/11/2026)
     title, desc = TODAY_SEO[lang][0], TODAY_SEO[lang][1] + ' ' + plan_headline(P, lang)
@@ -1067,13 +1068,34 @@ def home_page(lang):
             f'<div class="b"><p>{esc(c["cmp_b_t"])}</p>{"".join(f"<div>{TICK}<span>{esc(x)}</span></div>" for x in c["cmp_b"])}</div></div>\n  </section>\n')
     nb = (f'  <section class="h-sec"><h2 class="h-h2">{esc(c["num_h2"])}</h2>\n'
           f'    <div class="h-nums">{"".join(f"<div><b>{esc(v.format(plans=nums["TR_PLANS"]))}</b><span>{esc(kk)}</span></div>" for v, kk in c["nums"])}</div>\n  </section>\n')
-    doc = set_view(doc, '  <div id="view-home">\n' + hero + pv + rec + pains + cmp_ + nb + '  </div>')
+    doc = set_view(doc, '  <div id="view-home">\n' + hero + pv + rec + ea_promo(lang) + pains + cmp_ + nb + '  </div>')
     title, desc = c['home_title'], c['home_desc']
     url = SITE + PATH[lang]
     page = {'@type': 'WebPage', '@id': url, 'url': url, 'name': title, 'description': desc, 'inLanguage': HL[lang],
             'isPartOf': {'@id': SITE + '/#website'}, 'about': {'@type': 'Thing', 'name': 'Gold (XAUUSD)'},
             'primaryImageOfPage': {'@type': 'ImageObject', 'url': img_for(p, lang)}}
     return finish(doc, head_tags(lang, title, desc, PATH, img_for(p, lang), og='website'), ld(page))
+
+
+def ea_promo(lang):
+    """Home-page band promoting the Gold EA (owner 23/11/2026 "quảng bá cả sản phẩm"). No performance figures."""
+    from ea_copy import TG
+    c = EA[lang]; m = c['promo']
+    tick = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>'
+    return (f'  <section class="h-sec"><div class="ea-promo"><div class="ea-glow" aria-hidden="true"></div><div class="ea-pin">'
+            f'<p class="ea-eye">{esc(m["eye"])}</p><h2>{esc(m["h"])}</h2><p class="ea-lede">{esc(m["p"])}</p>'
+            f'<ul class="ea-chips">{"".join("<li>" + tick + esc(x) + "</li>" for x in m["pts"])}</ul>'
+            f'<div class="ea-cta"><a class="ea-b gold big" href="{ea_path(lang)}">{esc(m["btn"])}{ARROW}</a>'
+            f'<a class="ea-b ghost big" href="{TG}" target="_blank" rel="noopener noreferrer">{esc(c["cta"])}</a></div>'
+            f'<p class="ea-rs">{esc(c["risk_short"])} {esc(c["hyp"])}</p></div></div></section>\n')
+
+
+def ea_strip(lang):
+    """One-line Gold EA link under the plan on /today/ and the dated plan pages."""
+    c = EA[lang]; m = c['promo']
+    return (f'  <a class="ea-strip" href="{ea_path(lang)}"><span class="ea-sdot" aria-hidden="true"></span><span class="t">{esc(m["strip"])}'
+            f'<small>{esc(c["risk_short"])} {esc(c["hyp"])}</small></span>'
+            f'<span class="go">{esc(m["strip_btn"])}{ARROW}</span></a>\n')
 
 
 def home_keys(p, lang):
@@ -1149,6 +1171,7 @@ def plan_page(k, lang):
     doc = hide(doc, 'next')
     doc = unhide(doc, 'result'); doc = fill(doc, 'result', result_block(k, lang))
     doc = unhide(doc, 'pnav'); doc = fill(doc, 'pnav', plan_nav(k, lang))
+    doc = doc.replace('<!-- /VIEW -->', ea_strip(lang) + '<!-- /VIEW -->', 1)
     title, desc, img, upd = plan_seo_title(p, lang), plan_desc(p, lang, g), img_for(p, lang), updated_dt(p)
     mod = dt.datetime.strptime(g['graded_utc'], '%Y-%m-%dT%H:%MZ').replace(tzinfo=dt.timezone.utc) if g and g.get('graded_utc') else upd
     url = SITE + paths[lang]

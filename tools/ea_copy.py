@@ -6,6 +6,8 @@ TG = 'https://t.me/MrQuy_XAU'
 
 EA = {
  'en': dict(
+  hyp='Track record results are hypothetical and are not results of the EA trading real money.',
+  promo=dict(eye='New · NEXUS CORE Gold EA', h='Want this plan on autopilot?', p='Our MetaTrader 5 Expert Advisor trades the same daily plan for you, with the risk you set, and steps aside for big news.', pts=['Same plan we publish free', 'Risk you control', 'Free demo testing'], btn='Discover the Gold EA', strip='Trade this plan automatically on MT5 with the NEXUS CORE Gold EA.', strip_btn='See the EA'),
   panel=['EA panel (illustration)', 'Licence', 'ACTIVE', 'Plan', 'Synced with today\'s plan', 'Risk per trade', 'Your setting', 'News filter', 'On', 'Protective stop', 'On every trade'],
   risk_short='Trading gold carries a high risk of loss. Not financial advice.',
   diff='The track record grades our published plans with hypothetical trades; it is not a record of the EA trading real money. Live results can differ because of spread, slippage, broker execution and your own settings.',
@@ -51,6 +53,8 @@ EA = {
   desc='An MT5 Expert Advisor for XAUUSD that trades the free NEXUS CORE daily gold plan for you, with risk you control and a public track record. Free demo testing.'),
 
  'vi': dict(
+  hyp='Kết quả Track Record là giả định, không phải kết quả EA giao dịch bằng tiền thật.',
+  promo=dict(eye='Mới · NEXUS CORE Gold EA', h='Muốn plan này tự chạy?', p='Expert Advisor trên MetaTrader 5 giao dịch đúng plan ngày thay bạn, theo mức rủi ro bạn đặt, và tự tránh tin mạnh.', pts=['Cùng plan chúng tôi đăng miễn phí', 'Rủi ro do bạn đặt', 'Dùng thử demo miễn phí'], btn='Tìm hiểu Gold EA', strip='Tự động giao dịch plan này trên MT5 với NEXUS CORE Gold EA.', strip_btn='Xem EA'),
   panel=['Bảng EA (minh hoạ)', 'License', 'ACTIVE', 'Plan', 'Đã đồng bộ plan hôm nay', 'Rủi ro mỗi lệnh', 'Theo cài đặt của bạn', 'Lọc tin', 'Bật', 'Cắt lỗ bảo vệ', 'Trên mọi lệnh'],
   risk_short='Giao dịch vàng có rủi ro thua lỗ cao. Không phải lời khuyên tài chính.',
   diff='Track Record chấm các plan đã công bố bằng lệnh giả định; đó không phải kết quả EA giao dịch bằng tiền thật. Kết quả thật có thể khác do spread, trượt giá, cách khớp lệnh của sàn và cài đặt của bạn.',
@@ -96,6 +100,8 @@ EA = {
   desc='Expert Advisor MT5 cho XAUUSD, tự giao dịch theo plan vàng miễn phí mỗi ngày của NEXUS CORE, rủi ro do bạn đặt, Track Record công khai. Dùng thử demo miễn phí.'),
 
  'ar': dict(
+  hyp='نتائج سجل النتائج افتراضية وليست نتائج تداول الـ EA بأموال حقيقية.',
+  promo=dict(eye='جديد · NEXUS CORE Gold EA', h='تريد هذه الخطة تعمل تلقائيًا؟', p='مستشارنا الخبير على ميتاتريدر 5 يتداول الخطة اليومية نفسها نيابةً عنك، بالمخاطرة التي تحددها، ويبتعد وقت الأخبار الكبرى.', pts=['الخطة نفسها التي ننشرها مجانًا', 'مخاطرة تحددها أنت', 'تجربة مجانية على حساب تجريبي'], btn='اكتشف الـ Gold EA', strip='تداول هذه الخطة تلقائيًا على MT5 مع NEXUS CORE Gold EA.', strip_btn='شاهد الـ EA'),
   panel=['لوحة الـ EA (توضيحية)', 'الترخيص', 'ACTIVE', 'الخطة', 'متزامنة مع خطة اليوم', 'المخاطرة لكل صفقة', 'حسب إعدادك', 'فلتر الأخبار', 'مفعّل', 'وقف حماية', 'على كل صفقة'],
   risk_short='ينطوي تداول الذهب على مخاطر خسارة عالية. ليست نصيحة مالية.',
   diff='يقيّم سجل النتائج خططنا المنشورة بصفقات افتراضية؛ وهو ليس سجلًا لتداول الـ EA بأموال حقيقية. قد تختلف النتائج الحقيقية بسبب الفارق السعري والانزلاق وتنفيذ الوسيط وإعداداتك.',
@@ -141,6 +147,8 @@ EA = {
   desc='مستشار خبير على MT5 لزوج XAUUSD يتداول خطة الذهب اليومية المجانية من NEXUS CORE نيابةً عنك، بمخاطرة تحددها وسجل نتائج علني. تجربة مجانية.'),
 
  'zh-hant': dict(
+  hyp='績效紀錄的結果為假設性結果，並非 EA 以真實資金交易的結果。',
+  promo=dict(eye='全新 · NEXUS CORE Gold EA', h='想讓這份計畫自動執行嗎？', p='我們的 MetaTrader 5 專家顧問會依你設定的風險，替你執行同一份每日計畫，並在重大新聞時避開。', pts=['與免費公開的計畫相同', '由你控制風險', '免費模擬帳戶測試'], btn='了解黃金 EA', strip='使用 NEXUS CORE Gold EA 在 MT5 上自動交易這份計畫。', strip_btn='查看 EA'),
   panel=['EA 面板（示意）', '授權', 'ACTIVE', '計畫', '已同步今日計畫', '每筆風險', '依你的設定', '新聞過濾', '開啟', '保護停損', '每筆交易皆有'],
   risk_short='黃金交易具有高度虧損風險，並非投資建議。',
   diff='績效紀錄以假設交易評分我們公開的計畫，並非 EA 以真實資金交易的紀錄。真實結果可能因點差、滑價、券商成交方式與你的設定而不同。',
