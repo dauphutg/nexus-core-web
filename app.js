@@ -224,6 +224,9 @@
       document.body.appendChild(d); setTimeout(function () { d.remove(); }, 2500);
     });
   });
+  // language dropdown: close when tapping outside or pressing Escape
+  document.addEventListener('click', function (ev) { var d = document.getElementById('lang-dd'); if (d && d.open && !d.contains(ev.target)) d.open = false; });
+  document.addEventListener('keydown', function (ev) { var d = document.getElementById('lang-dd'); if (ev.key === 'Escape' && d && d.open) { d.open = false; d.querySelector('summary').focus(); } });
   // one visit count per browser session (counts only – source, language, page; no IP, no id) → /api/stats for the weekly report
   try {
     if (!ME && !sessionStorage.getItem('nc_hit') && !/bot|crawl|spider|preview|lighthouse|headless/i.test(navigator.userAgent)) {

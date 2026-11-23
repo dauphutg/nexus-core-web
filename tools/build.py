@@ -684,7 +684,7 @@ def shell(lang, kind, paths):
     """Template with texts, tabs and language links filled in. paths = this page's address in each language."""
     doc = read('template.html')
     doc = (doc.replace('{{LANG}}', HL[lang]).replace('{{DIR}}', 'rtl' if lang == 'ar' else 'ltr').replace('{{HOME}}', PATH[lang])
-           .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{EA}}', ea_path(lang)).replace('{{KIND}}', kind)
+           .replace('{{TRACK}}', track_path(lang, CUR_MONTH)).replace('{{SIGNALS}}', signals_path(lang)).replace('{{EA}}', ea_path(lang)).replace('{{LANGCODE}}', {'en': 'EN', 'ar': 'عربي', 'vi': 'VI', 'zh-hant': '繁中'}[lang]).replace('{{KIND}}', kind)
            .replace('{{LEARN}}', learn_home(lang)).replace('{{TODAY}}', today_path(lang)).replace('{{FOOTER}}', footer_html(lang)))
     doc = re.sub(r'\{\{C:(\w+)\}\}', lambda m: esc(COPY[lang][m.group(1)]), doc)
     # each language loads only the font families it shows (Core Web Vitals, 21/11/2026): Latin pages no longer download

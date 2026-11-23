@@ -420,11 +420,13 @@ html,body{overflow-x:clip}
 .get-alerts{display:none;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:#E3B341;color:#14110A;font-size:14px;font-weight:700;white-space:nowrap}
 .get-alerts:hover{background:#F0C866;color:#14110A}
 @media (min-width:1080px){
-  .top .tabs{order:0;flex:1 1 auto;justify-content:center;margin:0}
-  .top .tabs a{border-bottom:0;padding:8px 14px}
+  .top-row{flex-wrap:nowrap}
+  .top .tabs{order:0;flex:1 1 auto;min-width:0;justify-content:center;margin:0}
+  .top .tabs a{border-bottom:0;padding:8px 12px}
   .get-alerts{display:inline-flex}
 }
-@media (min-width:1080px) and (max-width:1240px){.live{display:none}}
+/* 5 menu items since the Gold EA page (23/11/2026): the LIVE badge gives way so the header stays on one line */
+@media (min-width:1080px) and (max-width:1400px){.live{display:none}.top .tabs a{padding:8px 10px}}
 
 /* direction labels never rely on colour alone: text + arrow everywhere */
 .pill.sell::before,.sidebadge.sell::before,.hero.sell .bias-val::before,.mchip.sell::before{content:"↓ "}
@@ -752,3 +754,16 @@ html[data-theme="dark"] .al-time{background:var(--card)}
 .ea-risk p + p{margin-top:8px}
 html[data-theme="light"] .ea-hero{background:#fff}
 @media (max-width:640px){.ea-hero{padding:20px 16px}.ea-cta .btn{flex:1 1 100%}}
+
+/* language menu as one dropdown (23/11/2026, user: "phần ngôn ngữ gộp dạng thanh") */
+.lang-dd{position:relative}
+.lang-dd summary{list-style:none;display:flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:#C9D4E3;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.lang-dd summary::-webkit-details-marker{display:none}
+.lang-dd summary:hover{color:#fff;border-color:var(--gold-line)}
+.lang-dd[open] .chev{transform:rotate(180deg)}
+.lang-dd .lang{position:absolute;top:calc(100% + 6px);inset-inline-end:0;z-index:30;flex-direction:column;min-width:160px;padding:6px;border-radius:14px;background:var(--bar);border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.lang-dd .lang a{justify-content:flex-start;min-height:40px;padding:0 12px;font-size:14px;color:#C9D4E3}
+.lang-dd .lang a:hover{background:var(--soft);color:#fff}
+.lang-dd .lang [aria-pressed="true"]{background:var(--gold-bg);color:var(--gold-ink)}
+.get-alerts{min-height:40px}
+@media (max-width:480px){.lang-dd summary{padding:0 10px}}
