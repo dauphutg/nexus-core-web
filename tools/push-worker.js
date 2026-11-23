@@ -51,6 +51,22 @@ const unb64u = (s) => Uint8Array.from(atob(String(s).replace(/-/g, '+').replace(
 const cat = (...a) => { const o = new Uint8Array(a.reduce((n, x) => n + x.length, 0)); let i = 0; for (const x of a) { o.set(x, i); i += x.length; } return o; };
 const hex = (buf) => [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
 
+// Abuse throttle (audit 24/11/2026): the Origin header can be faked by a script, so sign-ups are also limited per IP
+// and per day. Counters live in the Cloudflare cache (no KV writes, no IP stored: only a SHA-256 of bucket + IP, kept 10 min).
+// KV free plan = 1,000 writes a day and visit counting already uses up to HIT_CAP, so a flood must never reach KV.
+async function allow(req, bucket, max, ttl, perIp = true) {
+  try {
+    const ip = perIp ? (req.headers.get('CF-Connecting-IP') || 'none') : 'all';
+    const h = hex(await crypto.subtle.digest('SHA-256', enc.encode(bucket + '|' + ip)));
+    const key = new Request(SITE + '/__rl/' + h);
+    const hit = await caches.default.match(key);
+    const n = hit ? (parseInt(await hit.text(), 10) || 0) : 0;
+    if (n >= max) return false;
+    await caches.default.put(key, new Response(String(n + 1), { headers: { 'Cache-Control': 'max-age=' + ttl } }));
+  } catch (e) { /* cache unavailable: do not block real visitors */ }
+  return true;
+}
+
 function cors(extra) {
   return Object.assign({ 'Access-Control-Allow-Origin': SITE, 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '86400', 'Vary': 'Origin',
@@ -202,6 +218,7 @@ export default {
       if (req.method === 'GET' && url.pathname === '/') return reply(200, 'NEXUS CORE push: ok');
       if (req.method === 'POST' && (url.pathname === '/subscribe' || url.pathname === '/unsubscribe')) {
         if (req.headers.get('Origin') !== SITE) return reply(403, 'forbidden');
+        if (url.pathname === '/subscribe' && !(await allow(req, 'sub', 10, 600))) return reply(429, 'slow down');
         const raw = await req.text();
         if (raw.length > 4000) return reply(413, 'too large');
         const d = JSON.parse(raw);
@@ -243,8 +260,10 @@ export default {
         if (d.website) return reply(200, 'ok');                       // hidden field: only bots fill it in
         const email = String(d.email || '').trim().toLowerCase();
         if (email.length > 254 || !/^[a-z0-9._%+-]{1,64}@[a-z0-9.-]{1,180}\.[a-z]{2,24}$/.test(email)) return reply(400, 'bad email');
+        if (!(await allow(req, 'wl', 5, 600))) return reply(429, 'slow down');
         const key = 'w:' + email;
         if (!(await env.SUBS.get(key))) {
+          if (!(await allow(req, 'wl-day-' + vnDate(), 200, 86400, false))) return reply(429, 'busy, try later');
           await env.SUBS.put(key, JSON.stringify({ l: LANGS.includes(d.lang) ? d.lang : 'en', t: new Date().toISOString(), src: cleanSrc(d.src), pg: cleanPage(d.page), c: country(req) }));
         }
         return reply(201, 'ok');
