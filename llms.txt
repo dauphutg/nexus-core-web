@@ -78,6 +78,9 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [How to backtest a gold trading strategy for free](https://nexuscore.trade/en/learn/how-to-backtest-a-gold-strategy/): Write your rules down first, then test them on past candles, manually with a bar-replay tool, or automatically with the free Strategy Tester in MetaTrader 5. Re
 - [How to trade gold on bank holidays and thin-liquidity days](https://nexuscore.trade/en/learn/trading-gold-on-holidays/): On US or UK bank holidays, gold still trades but with fewer participants, so moves can be slow and drift, or suddenly jump on small orders. Use smaller size, ex
 - [How to judge a gold analysis or signal service: the track record test](https://nexuscore.trade/en/learn/how-to-judge-gold-analysis-track-record/): Trust a gold analysis service only if it publishes every call before the move, keeps the losing ones on the record, defines in advance what counts as right or w
+- [What is the gold price outlook for this week?](https://nexuscore.trade/en/learn/gold-weekly-outlook/): Nobody knows where gold will close this week, but a useful weekly outlook can be built from three things: the weekly and daily trend, the US data and Fed events
+- [What moves the gold price?](https://nexuscore.trade/en/learn/what-moves-the-gold-price/): The gold price is mainly moved by the US dollar, real interest rates (yields after inflation), expectations for Federal Reserve policy, safe-haven demand during
+- [How does the FOMC meeting affect gold?](https://nexuscore.trade/en/learn/how-fomc-affects-gold/): The FOMC sets US interest rates eight times a year. Gold reacts to the surprise, not the decision itself: a more hawkish message than expected (fewer cuts, high
 
 ## Why gold moved (recent days)
 

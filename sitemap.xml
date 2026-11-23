@@ -1781,6 +1781,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://nexuscore.trade/en/learn/gold-weekly-outlook/</loc>
+    <lastmod>2026-11-23T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/gold-weekly-outlook/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/gold-weekly-outlook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/gold-weekly-outlook/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/what-moves-the-gold-price/</loc>
+    <lastmod>2026-11-23T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/how-fomc-affects-gold/</loc>
+    <lastmod>2026-11-23T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://nexuscore.trade/ar/learn/</loc>
     <lastmod>2026-11-23T13:48:00+07:00</lastmod>
     <priority>0.7</priority>
@@ -1811,6 +1829,9 @@
     <loc>https://nexuscore.trade/ar/learn/gold-weekly-outlook/</loc>
     <lastmod>2026-11-12T08:00:00+07:00</lastmod>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/gold-weekly-outlook/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/gold-weekly-outlook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/gold-weekly-outlook/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/ar/learn/how-to-trade-gold/</loc>
