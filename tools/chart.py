@@ -77,12 +77,12 @@ def render(outf, mob):
         ZL.append(ax.text(X1 - 1, (a + b) / 2, lab, ha='right', va='center', fontsize=(10 if main else 8.5) * K, color=edge,
                 fontweight='bold' if main else 'normal', zorder=8, bbox=dict(fc='white', ec='none', alpha=0.92, pad=0.6)))  # labels sit above the scenario arrows
         shown += [a, b]
-    # declutter (user 23/11/2026 "nhiều vùng watch quá, bỏ bớt"): every zone is drawn; then at most MAX_TG targets and
-    # MAX_WATCH watch levels, nearest to the price first, and none that sits on/within GAP dollars of something already drawn
-    MAX_TG, MAX_WATCH, GAP = 3, 2, 4.0
+    # declutter (user 23/11/2026 "nhiều vùng watch quá, bỏ bớt" → "xóa bớt đi"): every zone is drawn; then only Target 1
+    # and no watch levels (they stay in the plan text); nothing within GAP dollars of something already drawn
+    MAX_TG, MAX_WATCH, GAP = 1, 0, 4.0
     def free(a, b): return all(b < s0 - GAP or a > s1 + GAP for s0, s1 in taken)
     taken = [(min(z['lo'], z['hi']), max(z['lo'], z['hi'])) for z in P.get('zones') or []]
-    tgs = sorted((q for q in P.get('targets') or [] if vis((q['lo'] + q['hi']) / 2)), key=lambda q: abs((q['lo'] + q['hi']) / 2 - px))
+    tgs = sorted((q for q in P.get('targets') or [] if vis((q['lo'] + q['hi']) / 2)), key=lambda q: (str(q.get('label')) != 'T1', abs((q['lo'] + q['hi']) / 2 - px)))
     keep_tg = []
     for q in tgs:
         y = (q['lo'] + q['hi']) / 2
