@@ -31,11 +31,11 @@ SECTIONS = [
         '4.3 Any track record we publish is hypothetical unless we clearly say it is a real, verified account. Hypothetical results are calculated after the fact, do not include all trading costs, and do not predict future results. Past performance, real or hypothetical, is not a guarantee.',
         '4.4 Only trade with money you can afford to lose. You alone are responsible for every trade in your account, including trades placed by the EA.']),
     ('5. Fees, renewals and cancellation', [
-        '5.1 Licence fee: USD 600, paid once. It includes the first month of the data service.',
-        '5.2 Data and updates service: USD 50 per month or USD 500 per year, starting one month after purchase. It provides the daily market data the EA needs to open new trades, software updates, support and access to the VIP Plan. Extra live accounts: USD 20 per month each.',
+        '5.1 Licence fee: a one-off fee, confirmed to you in writing before you pay. It includes the first month of the data service.',
+        '5.2 Data and updates service: a monthly or yearly fee, confirmed to you in writing before you pay, starting one month after purchase. It provides the daily market data the EA needs to open new trades, software updates, support and access to the VIP Plan. Extra live accounts: a monthly fee each, also confirmed before you pay.',
         '5.3 The data service renews at the end of each period until you cancel. We remind you on Telegram at least 3 days before each renewal. You can cancel at any time by messaging us; it ends at the end of the period you have paid for, and you are not charged again.',
         '5.4 If a renewal is not paid, the EA stops opening new trades at its next licence check (within 6 hours) and keeps managing open trades. Your licence is not cancelled; paying again restores the service. You do not need to buy the licence again.',
-        '5.5 Prices are in US dollars and include any tax we must charge. Your bank, card or crypto provider may add its own fees or exchange costs.',
+        '5.5 Fees are in US dollars and include any tax we must charge. Your bank, card or crypto provider may add its own fees or exchange costs.',
         '5.6 We may change future fees with at least 30 days’ notice. A change never applies to a period you have already paid for, and you may cancel before it takes effect.']),
     ('6. Refunds, consumer rights and chargebacks', [
         '6.1 If the EA does not work because of a fault on our side (the licence server, the data service or the software) and we cannot fix it within a reasonable time, you may ask for a refund within 14 days of purchase. You may also ask for a pro-rata refund of the data service for any period it was unavailable for more than 72 hours in a row through our fault.',
@@ -84,7 +84,7 @@ SECTIONS = [
         '18.2 If we cannot resolve it, either of us may take it to a court or consumer body that has jurisdiction. If you are a consumer, you may always use the courts and consumer protection bodies of the country where you live, and its mandatory consumer laws continue to protect you.',
         '18.3 The governing law of these terms will be stated here once our business registration is published. Until then, and in any case, nothing in these terms removes any protection the law of your country gives you.']),
     ('19. General', [
-        '19.1 These terms, the order details shown before you pay and the Privacy Policy are the whole agreement about the EA.',
+        '19.1 These terms, the written order details (including the fees) we give you before you pay and the Privacy Policy are the whole agreement about the EA.',
         '19.2 If a court finds part of these terms invalid, the rest stays in force, and the invalid part is read down to the extent needed to make it valid.',
         '19.3 If we do not enforce a right straight away, we have not given it up.',
         '19.4 You may not transfer this licence without our written consent. We may transfer our rights and duties to a business that takes over the EA, if your rights are not reduced; we will tell you first.',

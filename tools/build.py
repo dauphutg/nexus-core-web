@@ -1617,7 +1617,7 @@ def llms():
               f'- [今日黃金計畫（繁體中文）]({SITE}/zh-hant/today/): the same plan in Traditional Chinese',
               f'- [Terms of Use]({SITE}{legal_path("en", "terms")}), [Privacy Policy]({SITE}{legal_path("en", "privacy")}), [Risk Disclosure]({SITE}{legal_path("en", "risk")})',
               f'- [Track record]({SITE}{track_path("en", CUR_MONTH)}): every plan this month and how it played out',
-              f'- [VIP Plan]({SITE}{signals_path("en")}): members-only daily analysis, 1–2 focused zones with real-time updates (USD 50/month)',
+              f'- [VIP Plan]({SITE}{signals_path("en")}): members-only daily analysis, 1–2 focused zones with real-time updates',
               f'- [NEXUS CORE Gold EA]({SITE}{ea_path("en")}): MetaTrader 5 Expert Advisor that trades the published daily plan (licence via Telegram)',
               f'- [Plan data (JSON)]({SITE}/data/latest.json): machine-readable latest plan',
               f'- [All plans with grades (JSON)]({SITE}/data/history.json)', '',
