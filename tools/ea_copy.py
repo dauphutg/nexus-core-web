@@ -6,6 +6,7 @@ TG = 'https://t.me/MrQuy_XAU'
 
 EA = {
  'en': dict(
+  panel=['EA panel (illustration)', 'Licence', 'ACTIVE', 'Plan', 'Synced with today\'s plan', 'Risk per trade', 'Your setting', 'News filter', 'On', 'Protective stop', 'On every trade'],
   risk_short='Trading gold carries a high risk of loss. Not financial advice.',
   diff='The track record grades our published plans with hypothetical trades; it is not a record of the EA trading real money. Live results can differ because of spread, slippage, broker execution and your own settings.',
   tab='Gold EA',
@@ -50,6 +51,7 @@ EA = {
   desc='An MT5 Expert Advisor for XAUUSD that trades the free NEXUS CORE daily gold plan for you, with risk you control and a public track record. Free demo testing.'),
 
  'vi': dict(
+  panel=['Bảng EA (minh hoạ)', 'License', 'ACTIVE', 'Plan', 'Đã đồng bộ plan hôm nay', 'Rủi ro mỗi lệnh', 'Theo cài đặt của bạn', 'Lọc tin', 'Bật', 'Cắt lỗ bảo vệ', 'Trên mọi lệnh'],
   risk_short='Giao dịch vàng có rủi ro thua lỗ cao. Không phải lời khuyên tài chính.',
   diff='Track Record chấm các plan đã công bố bằng lệnh giả định; đó không phải kết quả EA giao dịch bằng tiền thật. Kết quả thật có thể khác do spread, trượt giá, cách khớp lệnh của sàn và cài đặt của bạn.',
   tab='Gold EA',
@@ -94,6 +96,7 @@ EA = {
   desc='Expert Advisor MT5 cho XAUUSD, tự giao dịch theo plan vàng miễn phí mỗi ngày của NEXUS CORE, rủi ro do bạn đặt, Track Record công khai. Dùng thử demo miễn phí.'),
 
  'ar': dict(
+  panel=['لوحة الـ EA (توضيحية)', 'الترخيص', 'ACTIVE', 'الخطة', 'متزامنة مع خطة اليوم', 'المخاطرة لكل صفقة', 'حسب إعدادك', 'فلتر الأخبار', 'مفعّل', 'وقف حماية', 'على كل صفقة'],
   risk_short='ينطوي تداول الذهب على مخاطر خسارة عالية. ليست نصيحة مالية.',
   diff='يقيّم سجل النتائج خططنا المنشورة بصفقات افتراضية؛ وهو ليس سجلًا لتداول الـ EA بأموال حقيقية. قد تختلف النتائج الحقيقية بسبب الفارق السعري والانزلاق وتنفيذ الوسيط وإعداداتك.',
   tab='Gold EA',
@@ -138,6 +141,7 @@ EA = {
   desc='مستشار خبير على MT5 لزوج XAUUSD يتداول خطة الذهب اليومية المجانية من NEXUS CORE نيابةً عنك، بمخاطرة تحددها وسجل نتائج علني. تجربة مجانية.'),
 
  'zh-hant': dict(
+  panel=['EA 面板（示意）', '授權', 'ACTIVE', '計畫', '已同步今日計畫', '每筆風險', '依你的設定', '新聞過濾', '開啟', '保護停損', '每筆交易皆有'],
   risk_short='黃金交易具有高度虧損風險，並非投資建議。',
   diff='績效紀錄以假設交易評分我們公開的計畫，並非 EA 以真實資金交易的紀錄。真實結果可能因點差、滑價、券商成交方式與你的設定而不同。',
   tab='黃金 EA',

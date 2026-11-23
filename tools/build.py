@@ -1279,34 +1279,45 @@ def signals_page(lang):
 
 
 def ea_page(lang):
-    """NEXUS CORE Gold EA landing page (owner's brief 23/11/2026). Benefits only – no method, no internal numbers,
-    no performance figures (links to the Track Record instead); every buy/contact button goes to Telegram."""
+    """NEXUS CORE Gold EA landing page (owner's brief 23/11/2026; redesigned 23/11 23:05 "đẹp như zenbot").
+    Benefits only – no method, no internal numbers, no performance figures (links to the Track Record instead);
+    the panel on the right is a labelled illustration with no money figures; every buy/contact button goes to Telegram."""
     from ea_copy import EA as E_, TG
     c = E_[lang]
     paths = {l: ea_path(l) for l in LANGS}
     doc = shell(lang, 'ea', paths)
     tg = f'href="{TG}" target="_blank" rel="noopener noreferrer"'
-    chips = ''.join(f'<li>{esc(x)}</li>' for x in c['chips'])
-    feats = ''.join(f'<li class="card"><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for a, b in c['feats'])
-    steps = ''.join(f'<li class="card"><span class="ea-n num">{i + 1}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for i, (a, b) in enumerate(c['steps']))
+    I = lambda d: f'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{d}</svg>'
+    icons = ['<path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/>', '<path d="M12 3v18M5 8h14M7 8l-3 6h6zM17 8l-3 6h6z"/>',
+             '<path d="M4 5h16v11H8l-4 4zM9 9h6M9 12h4"/>', '<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+             '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/>', '<circle cx="8" cy="12" r="3.5"/><path d="M11.5 12H21M17 12v3M20 12v2"/>']
+    chips = ''.join(f'<li>{I("<path d=\"M5 12l4 4 10-10\"/>")}{esc(x)}</li>' for x in c['chips'])
+    pn = c['panel']
+    rows = ''.join(f'<div class="ea-row"><span>{esc(pn[k])}</span><b{" class=\"ok\"" if k == 1 else ""}>{esc(pn[k + 1])}</b></div>' for k in (1, 3, 5, 7, 9))
+    panel = (f'<div class="ea-panel" role="img" aria-label="{esc(pn[0])}"><div class="ea-ph"><span class="ea-dots"><i></i><i></i><i></i></span>'
+             f'<span>NEXUS CORE Gold EA · XAUUSD</span></div>{rows}<p class="ea-pcap">{esc(pn[0])}</p></div>')
+    feats = ''.join(f'<li class="ea-f"><span class="ea-ic">{I(icons[k])}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for k, (a, b) in enumerate(c['feats']))
+    steps = ''.join(f'<li><span class="ea-n num">{i + 1}</span><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for i, (a, b) in enumerate(c['steps']))
     plans = ''.join(
-        f'<li class="card ea-plan{" hot" if j == 2 else ""}">' + (f'<span class="ea-badge">{esc(tag)}</span>' if tag else '')
-        + f'<h3>{esc(name)}</h3><ul class="ticks">{"".join("<li>" + esc(x) + "</li>" for x in pts)}</ul>'
-        + f'<p class="muted small">{esc(c["price"])}</p><a class="btn{" solid" if j == 2 else ""} ea-btn" {tg}>{esc(c["plan_btn"])}</a></li>'
+        f'<li class="ea-plan{" hot" if j == 2 else ""}">' + (f'<span class="ea-badge">{esc(tag)}</span>' if tag else '')
+        + f'<h3>{esc(name)}</h3><p class="ea-price">{esc(c["price"])}</p><ul>{"".join("<li>" + I("<path d=\"M5 12l4 4 10-10\"/>") + esc(x) + "</li>" for x in pts)}</ul>'
+        + f'<a class="ea-b{" gold" if j == 2 else ""}" {tg}>{esc(c["plan_btn"])}</a></li>'
         for j, (name, tag, pts) in enumerate(c['plans']))
-    faq = ''.join(f'<details class="card ea-q"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in c['faq'])
+    faq = ''.join(f'<details class="ea-q"><summary>{esc(q)}<span aria-hidden="true">+</span></summary><p>{esc(a)}</p></details>' for q, a in c['faq'])
     body = (f'  <section id="view-ea" class="ea">\n'
-            f'    <div class="ea-hero card"><p class="eyebrow">{esc(c["eyebrow"])}</p><h1>{esc(c["h1"])}</h1><p class="lede">{esc(c["lede"])}</p>\n'
-            f'      <div class="ea-cta"><a class="btn big" {tg}>{esc(c["cta"])}{ARROW}</a><a class="btn alt" href="{today_path(lang)}">{esc(c["cta2"])}</a></div>\n'
-            f'      <ul class="ea-chips">{chips}</ul><p class="muted small ea-rs">{esc(c["risk_short"])}</p></div>\n'
-            f'    <h2>{esc(c["feat_h"])}</h2>\n    <ul class="ea-grid">{feats}</ul>\n'
-            f'    <h2>{esc(c["how_h"])}</h2>\n    <ol class="ea-grid ea-steps">{steps}</ol>\n'
-            f'    <h2>{esc(c["plans_h"])}</h2>\n    <ul class="ea-grid ea-plans">{plans}</ul>\n'
-            f'    <div class="card ea-see"><div><h3>{esc(c["see_h"])}</h3><p>{esc(c["see_p"])}</p></div>'
-            f'<div class="ea-cta"><a class="btn alt" href="{today_path(lang)}">{esc(c["see_today"])}</a><a class="btn alt" href="{track_path(lang, CUR_MONTH)}">{esc(c["see_track"])}</a></div></div>\n'
-            f'    <h2>{esc(c["faq_h"])}</h2>\n    <div class="stack-sm">{faq}</div>\n'
-            f'    <div class="card ea-end"><h3>{esc(c["end_h"])}</h3><p>{esc(c["end_p"])}</p><div class="ea-cta"><a class="btn big" {tg}>{esc(c["cta"])}{ARROW}</a></div></div>\n'
-            f'    <aside class="card ea-risk" role="note"><h3>{esc(c["risk_h"])}</h3><p>{esc(c["risk"])}</p><p>{esc(c["diff"])}</p>'
+            f'    <div class="ea-hero"><div class="ea-glow" aria-hidden="true"></div>\n'
+            f'      <div class="ea-hl"><p class="ea-eye">{esc(c["eyebrow"])}</p><h1>{esc(c["h1"])}</h1><p class="ea-lede">{esc(c["lede"])}</p>\n'
+            f'        <div class="ea-cta"><a class="ea-b gold big" {tg}>{esc(c["cta"])}{ARROW}</a><a class="ea-b ghost big" href="{today_path(lang)}">{esc(c["cta2"])}</a></div>\n'
+            f'        <ul class="ea-chips">{chips}</ul><p class="ea-rs">{esc(c["risk_short"])}</p></div>\n'
+            f'      {panel}\n    </div>\n'
+            f'    <div class="ea-sec"><h2>{esc(c["feat_h"])}</h2><ul class="ea-grid3">{feats}</ul></div>\n'
+            f'    <div class="ea-sec"><h2>{esc(c["how_h"])}</h2><ol class="ea-steps">{steps}</ol></div>\n'
+            f'    <div class="ea-sec"><h2>{esc(c["plans_h"])}</h2><ul class="ea-plans">{plans}</ul></div>\n'
+            f'    <div class="ea-see"><div><h3>{esc(c["see_h"])}</h3><p>{esc(c["see_p"])}</p></div>'
+            f'<div class="ea-cta"><a class="ea-b ghost" href="{today_path(lang)}">{esc(c["see_today"])}</a><a class="ea-b ghost" href="{track_path(lang, CUR_MONTH)}">{esc(c["see_track"])}</a></div></div>\n'
+            f'    <div class="ea-sec"><h2>{esc(c["faq_h"])}</h2><div class="ea-faq">{faq}</div></div>\n'
+            f'    <div class="ea-end"><div class="ea-glow" aria-hidden="true"></div><h2>{esc(c["end_h"])}</h2><p>{esc(c["end_p"])}</p><div class="ea-cta"><a class="ea-b gold big" {tg}>{esc(c["cta"])}{ARROW}</a></div></div>\n'
+            f'    <aside class="ea-risk" role="note"><h3>{esc(c["risk_h"])}</h3><p>{esc(c["risk"])}</p><p>{esc(c["diff"])}</p>'
             f'<p class="small"><a href="{legal_path(lang, "terms")}">{esc(c["terms"])}</a> · <a href="{legal_path(lang, "risk")}">{esc(c["riskdoc"])}</a></p></aside>\n'
             f'  </section>')
     doc = set_view(doc, body)
@@ -1316,7 +1327,6 @@ def ea_page(lang):
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in c['faq']]}
     return finish(doc, head_tags(lang, c['title'], c['desc'], paths, SITE + '/assets/logo-banner.png', og='website'),
                   ld(page_ld, fq, crumbs(lang, [('NEXUS CORE', PATH[lang]), (c['tab'], paths[lang])])))
-
 
 def example_box(kind, lang):
     """A live box built from the latest plan, so every Q&A page shows real, current numbers."""
