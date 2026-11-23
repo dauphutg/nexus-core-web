@@ -617,8 +617,8 @@ html[lang="ar"] .fh,html:lang(zh-Hant) .fh{letter-spacing:0;font-size:14px}
 .key .v{white-space:nowrap;font-size:15px}
 .panels.tabbed{min-height:240px}
 .bias-sub:empty{display:none}
-@media (max-width:480px){.top .tabs{gap:0}.top .tabs a{padding:8px 9px;font-size:15px}}
-@media (max-width:360px){.top .tabs a{padding:8px 6px;font-size:14px}}
+@media (max-width:480px){.top .tabs{gap:0;justify-content:space-between}.top .tabs a{padding:8px 6px;font-size:14px}}
+@media (max-width:360px){.top .tabs a{padding:8px 4px;font-size:13px}}
 html[data-theme="dark"] .next,html[data-theme="dark"] .cta-box{border:1px solid var(--line)}
 #hp-card .hero-keys{margin-top:6px} #hp-card .b-navy{margin-top:auto}
 
@@ -874,3 +874,5 @@ html[data-theme="light"] .ea p.ea-pnote{color:#3A4A5E}
 .sg-buy{display:flex;flex-direction:column;gap:.7rem;align-items:stretch}
 .sg-price{font-weight:700;font-size:1.05rem;margin:0}
 .sg-buy .btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:10px 16px;line-height:1.2}
+.sg-buy .btn.solid{color:#0B1A2C}
+html:lang(zh-Hant) .mchip.buy{color:#7A4500;background:#FBEBD3}html:lang(zh-Hant) .mchip.sell{color:#2F4A63;background:#E3ECF5}

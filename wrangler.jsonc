@@ -10,7 +10,7 @@
     "directory": "./public",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none",
+    "not_found_handling": "404-page",
     // the script only runs for the two entry pages; every other file is served straight from assets
     "run_worker_first": ["/", "/today", "/today/"]
   }

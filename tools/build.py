@@ -1523,6 +1523,18 @@ def learn_index(lang):
     return finish(doc, head_tags(lang, title, t(lang, 'ln_index_lede'), paths, SITE + '/assets/logo-banner.png', og='website', langs=LEARN_LANGS), ld(page_ld))
 
 
+NOT_FOUND = '''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Page not found | NEXUS CORE</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0B1A2C;color:#EEF3F9;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px}
+main{max-width:520px;text-align:center}h1{font-size:28px;margin:0 0 8px}p{color:#B4C2D4;margin:0 0 20px}
+a{display:inline-block;margin:6px;padding:12px 18px;border-radius:12px;background:#E3B341;color:#0B1A2C;font-weight:700;text-decoration:none}
+a.alt{background:transparent;color:#F0C866;border:1px solid #2A4566}nav{margin-top:10px}</style></head>
+<body><main><h1>Page not found</h1><p>This page does not exist or has moved. Today&#39;s gold plan is one tap away.</p>
+<a href="/today/">Today&#39;s gold plan</a><a class="alt" href="/en/learn/">Learn</a>
+<nav><a class="alt" href="/ar/">العربية</a><a class="alt" href="/vi/">Tiếng Việt</a><a class="alt" href="/zh-hant/">繁體中文</a></nav></main></body></html>
+'''
+
 EN_ROOT = '''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>NEXUS CORE: gold plan</title>
 <meta name="robots" content="noindex, follow"><link rel="canonical" href="https://nexuscore.trade/">
@@ -1705,6 +1717,22 @@ if __name__ == '__main__':
                       f'<meta http-equiv="refresh" content="0; url={esc(new)}"><link rel="canonical" href="{esc(new)}"><title>{esc(LEARN[lang][slug]["title"])}</title></head>'
                       f'<body><p><a href="{esc(new)}">{esc(LEARN[lang][slug]["title"])}</a></p></body></html>')
     write('en/index.html', EN_ROOT)
+    # guessable addresses that used to 404 (audit 24/11/2026): forward to the real page
+    def _stub(path, target, lang='en'):
+        if os.path.exists(os.path.join(ROOT, path.strip('/'), 'index.html')): return
+        write(path.strip('/') + '/index.html',
+              f'<!doctype html><html lang="{HL.get(lang, lang)}"><head><meta charset="utf-8"><meta name="robots" content="noindex, follow">'
+              f'<meta http-equiv="refresh" content="0; url={esc(target)}"><link rel="canonical" href="{esc(SITE + target)}"><title>NEXUS CORE</title></head>'
+              f'<body><p><a href="{esc(target)}">NEXUS CORE</a></p></body></html>')
+    _latest_move = max(MOVES, key=lambda m: m['date']) if MOVES else None
+    for lang in LANGS:
+        _stub(f"{PFX[lang]}/track-record/", track_path(lang, CUR_MONTH), lang)
+        _stub(f"{PFX[lang]}/plan/", today_path(lang), lang)
+        if _latest_move: _stub(f"{PFX[lang]}/why-gold-moved/", move_path(lang, _latest_move), lang)
+    _stub('/en/today/', '/today/')
+    for kind in ('ea', 'signals', 'learn', 'terms', 'privacy', 'risk-disclosure', 'track-record', 'why-gold-moved', 'plan'):
+        _stub(f'/{kind}/', f"/en/{kind}/")
+    write('404.html', NOT_FOUND)
     write('sitemap.xml', sitemap())
     write('llms.txt', llms())
     # data/ea-zones.json for the MT5 EA (tools/ea_zones.py, levels from tools/grade.py); printed before "built:" so that line stays last
