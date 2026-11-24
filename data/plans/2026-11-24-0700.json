@@ -1,0 +1,372 @@
+{
+ "date": "2026-11-24",
+ "edition": "0700",
+ "updated_vn": "2026-11-24 06:12",
+ "symbol": "XAUUSD",
+ "bias": "TWO_WAY",
+ "day_type": {
+  "vi": "Đi ngang 3611.5–3689.9, 2 chiều, độ tin thấp – không có vùng mạnh nên ưu tiên đứng ngoài, chỉ hành động khi có xác nhận; giá dễ đi ngang trước Core PCE ngày mai",
+  "en": "Range 3611.5–3689.9, two-way, low conviction – no high-grade zone, so standing aside is preferred and action needs confirmation; price tends to range ahead of tomorrow's Core PCE",
+  "ar": "نطاق عرضي 3611.5–3689.9 باتجاهين وبثقة منخفضة – لا توجد منطقة قوية، لذا يُفضَّل الانتظار ولا تحرك إلا بعد تأكيد؛ ويميل السعر إلى التحرك العرضي قبل بيانات PCE الأساسي غدًا",
+  "zh": "區間 3611.5–3689.9，雙向，信心偏低——無高評級區域，以觀望為主，需確認後才行動；明日核心 PCE 公布前價格易區間震盪"
+ },
+ "headline": {
+  "vi": "Đi ngang 3611.5–3690, 2 chiều: cản 3643–3650 / 3664–3672, đích 3624–3630 / 3611.5",
+  "en": "Two-way range 3611.5–3690: resistance 3643–3650 / 3664–3672, targets 3624–3630 / 3611.5",
+  "ar": "نطاق باتجاهين 3611.5–3690: مقاومة 3643–3650 / 3664–3672، والأهداف 3624–3630 / 3611.5",
+  "zh": "雙向區間 3611.5–3690：阻力 3643–3650／3664–3672，目標 3624–3630／3611.5"
+ },
+ "alert": {
+  "vi": "Hôm nay không có vùng mạnh hạng A – plan nghiêng đứng ngoài, các vùng hạng B chỉ dùng khi có xác nhận. Không có tin đỏ hôm nay; niềm tin tiêu dùng CB Mỹ phiên New York ở mức trung bình. Tránh giữa biên 3630–3643 và đừng mua đuổi khi giá chưa đóng M15 trên 3689.9. Tin đỏ: Core PCE + GDP Mỹ 25/11; Mỹ nghỉ lễ Tạ ơn 26/11.",
+  "en": "No high-grade (A) zone today – the plan leans toward standing aside, and the B-grade zones only apply with confirmation. No high-impact data today; US CB Consumer Confidence in New York is medium impact. Avoid the 3630–3643 mid-range and don't chase longs before an M15 close above 3689.9. Key release: US Core PCE + GDP on 25/11; the US is closed for Thanksgiving on 26/11.",
+  "ar": "لا توجد منطقة قوية من الفئة A اليوم – تميل الخطة إلى الانتظار، ولا تُستخدم مناطق الفئة B إلا بعد تأكيد. لا بيانات عالية التأثير اليوم؛ وثقة المستهلك الأمريكي (كونفرنس بورد) في جلسة نيويورك متوسطة التأثير. تجنّب منتصف النطاق 3630–3643 ولا تطارد الشراء قبل إغلاق M15 فوق 3689.9. أهم البيانات: PCE الأساسي والناتج المحلي الأمريكي في 25/11، وعطلة عيد الشكر الأمريكية في 26/11.",
+  "zh": "今日無 A 級強勢區域——計劃傾向觀望，B 級區域僅在確認後適用。今日無高影響數據；紐約盤美國世界大型企業研究會消費者信心僅為中等影響。避開區間中段 3630–3643，M15 未收在 3689.9 之上前勿追多。重點數據：11/25 美國核心 PCE 與 GDP；11/26 美國感恩節休市。"
+ },
+ "context": [
+  {
+   "k": {
+    "vi": "Xu hướng D1",
+    "en": "D1 trend",
+    "ar": "اتجاه D1",
+    "zh": "D1 趨勢"
+   },
+   "v": {
+    "vi": "Giảm – sóng giảm đang hồi; nến ngày 23/11 xanh nhưng râu trên dài, bị từ chối ở đỉnh 3689.9; giá còn cách xa đường trung bình ngày phía trên",
+    "en": "Bearish – the downtrend is in a corrective bounce; the 23/11 daily candle closed green but with a long upper wick rejected at 3689.9; price is still far below the daily moving average overhead",
+    "ar": "هابط – الموجة الهابطة في مرحلة ارتداد؛ أغلقت شمعة 23/11 اليومية خضراء لكن بظل علوي طويل رُفض عند 3689.9؛ ولا يزال السعر بعيدًا أسفل المتوسط اليومي في الأعلى",
+    "zh": "偏空——下跌波段處於反彈階段；11/23 日線收陽但上影線長，於 3689.9 遇阻；價格仍遠低於上方日線均線"
+   }
+  },
+  {
+   "k": {
+    "vi": "Cấu trúc H4",
+    "en": "H4 structure",
+    "ar": "هيكل H4",
+    "zh": "H4 結構"
+   },
+   "v": {
+    "vi": "Giảm nhưng đang hồi sau quá bán; H4 đã đóng trên đường trung bình ngắn H4, đỉnh 3689.9 chưa chạm tới đường trung bình H4 phía trên",
+    "en": "Bearish but rebounding from oversold; H4 has closed above its short moving average, while the 3689.9 high has not yet reached the H4 moving average overhead",
+    "ar": "هابط لكنه يرتد من التشبّع البيعي؛ أغلق H4 فوق متوسطه القصير، بينما لم تبلغ قمة 3689.9 بعدُ المتوسط المتحرك على H4 في الأعلى",
+    "zh": "偏空但自超賣反彈；H4 已收在短期均線之上，而高點 3689.9 尚未觸及上方 H4 均線"
+   }
+  },
+  {
+   "k": {
+    "vi": "Cấu trúc H1",
+    "en": "H1 structure",
+    "ar": "هيكل H1",
+    "zh": "H1 結構"
+   },
+   "v": {
+    "vi": "Hồi tăng từ đáy 3503, mốc cấu trúc 3611.5; từ đỉnh 3689.9 đỉnh thấp dần 3681 → 3676 → 3660; giá dưới đường trung bình H1 phía trên",
+    "en": "Rebounding from the 3503 low with 3611.5 as the structure level; lower highs from 3689.9: 3681 → 3676 → 3660; price is below the H1 moving average overhead",
+    "ar": "ارتداد صاعد من قاع 3503 مع مستوى هيكلي عند 3611.5؛ قمم هابطة من 3689.9: 3681 ← 3676 ← 3660؛ والسعر أسفل المتوسط المتحرك على H1 في الأعلى",
+    "zh": "自低點 3503 反彈，結構關鍵位 3611.5；自高點 3689.9 起高點逐步降低 3681 → 3676 → 3660；價格位於上方 H1 均線之下"
+   }
+  },
+  {
+   "k": {
+    "vi": "Động lượng H1",
+    "en": "H1 momentum",
+    "ar": "زخم H1",
+    "zh": "H1 動能"
+   },
+   "v": {
+    "vi": "Đêm qua bị bán 57 giá từ đỉnh 3689.9 về 3630 với đỉnh thấp dần – phân phối dưới cản; M15 đang giảm, giá kẹp giữa hai đường trung bình ngắn",
+    "en": "Overnight price was sold 57 points from 3689.9 to 3630 with lower highs – distribution under resistance; M15 is bearish and price is squeezed between short moving averages",
+    "ar": "تعرّض السعر ليلًا لبيع بنحو 57 نقطة من 3689.9 إلى 3630 مع قمم هابطة – توزيع أسفل المقاومة؛ وM15 هابط والسعر محصور بين متوسطات قصيرة",
+    "zh": "隔夜自 3689.9 回落 57 點至 3630，高點逐步降低——阻力下方出貨；M15 偏空，價格夾在短期均線之間"
+   }
+  },
+  {
+   "k": {
+    "vi": "Mức trong ngày",
+    "en": "Intraday level",
+    "ar": "مستوى اليوم",
+    "zh": "日內價位"
+   },
+   "v": {
+    "vi": "Giá mở cửa ngày 3637.9; đỉnh ngày trước 3689.9; đáy phiên Mỹ 3629.9; mốc cấu trúc H1 3611.5",
+    "en": "Daily open 3637.9; previous day high 3689.9; New York session low 3629.9; H1 structure level 3611.5",
+    "ar": "سعر افتتاح اليوم 3637.9؛ قمة اليوم السابق 3689.9؛ قاع جلسة نيويورك 3629.9؛ مستوى هيكل H1 عند 3611.5",
+    "zh": "日開盤價 3637.9；前日高點 3689.9；紐約盤低點 3629.9；H1 結構關鍵位 3611.5"
+   }
+  }
+ ],
+ "main_zone": {
+  "side": "SELL",
+  "lo": 3643,
+  "hi": 3650,
+  "grade": "B"
+ },
+ "invalidation": {
+  "vi": "Vế bán: M15 đóng trên 3660.7 → thôi bán ở 3643–3650, phía bán chỉ còn 3664–3672; M15 đóng trên 3689.9 và nến sau không quay lại → thôi bán, nhịp hồi hướng lên 3708.8 / 3806.2. Vế mua: M15 đóng dưới 3611.5 → thôi ý mua.",
+  "en": "Sell side: an M15 close above 3660.7 → no more selling at 3643–3650, only 3664–3672 remains; an M15 close above 3689.9 with no return on the next candle → the sell view is off and the rebound targets 3708.8 / 3806.2. Buy side: an M15 close below 3611.5 → the buy idea is off.",
+  "ar": "جانب البيع: إغلاق M15 فوق 3660.7 ← لا بيع عند 3643–3650 ويبقى 3664–3672 فقط؛ إغلاق M15 فوق 3689.9 دون عودة في الشمعة التالية ← تسقط رؤية البيع ويتجه الارتداد إلى 3708.8 / 3806.2. جانب الشراء: إغلاق M15 أسفل 3611.5 ← تسقط فكرة الشراء.",
+  "zh": "偏空方面：M15 收在 3660.7 之上 → 不再於 3643–3650 偏空，僅保留 3664–3672；M15 收在 3689.9 之上且下一根未回落 → 偏空觀點失效，反彈目標 3708.8／3806.2。偏多方面：M15 收在 3611.5 之下 → 偏多觀點失效。"
+ },
+ "void": 3660.7,
+ "targets": [
+  {
+   "label": "T1",
+   "lo": 3630,
+   "hi": 3630
+  },
+  {
+   "label": "T2",
+   "lo": 3611.5,
+   "hi": 3611.5
+  },
+  {
+   "label": "T3",
+   "lo": 3586.1,
+   "hi": 3586.1
+  },
+  {
+   "label": "T4",
+   "lo": 3576.2,
+   "hi": 3576.2
+  },
+  {
+   "label": "T5",
+   "lo": 3558.6,
+   "hi": 3558.6
+  },
+  {
+   "label": "T6",
+   "lo": 3668.4,
+   "hi": 3668.4
+  },
+  {
+   "label": "T7",
+   "lo": 3689.9,
+   "hi": 3689.9
+  },
+  {
+   "label": "T8",
+   "lo": 3708.8,
+   "hi": 3708.8
+  },
+  {
+   "label": "T9",
+   "lo": 3731.2,
+   "hi": 3731.2
+  },
+  {
+   "label": "T10",
+   "lo": 3806.2,
+   "hi": 3806.2
+  }
+ ],
+ "watch": [
+  {
+   "lo": 3629.8,
+   "hi": 3634,
+   "text": {
+    "vi": "Mức theo dõi, không phải vùng vào lệnh, không được chấm: hỗ trợ sát giá quanh đáy phiên Mỹ 3629.9. GIỮ → hồi lên 3643–3650 / 3664–3672; PHÁ (M15 đóng dưới 3629.8) → về 3611.5.",
+    "en": "Watch level, not a trade zone, not graded: near-term support around the 3629.9 New York low. HOLDS → a bounce to 3643–3650 / 3664–3672; BREAKS (M15 close below 3629.8) → down to 3611.5.",
+    "ar": "مستوى للمراقبة، وليس منطقة دخول، ولا يدخل في التقييم: دعم قريب حول قاع جلسة نيويورك 3629.9. صمود ← ارتداد إلى 3643–3650 / 3664–3672؛ كسر (إغلاق M15 أسفل 3629.8) ← هبوط إلى 3611.5.",
+    "zh": "觀察價位，並非交易區域，不納入評分：緊貼現價的支撐，位於紐約盤低點 3629.9 附近。守住 → 反彈至 3643–3650／3664–3672；跌破（M15 收在 3629.8 之下）→ 下看 3611.5。"
+   }
+  },
+  {
+   "lo": 3623,
+   "hi": 3630,
+   "text": {
+    "vi": "Mức theo dõi, không phải vùng vào lệnh, không được chấm: hỗ trợ ngược hướng ngày, chỉ quan sát. GIỮ → hồi về 3647; M15 đóng dưới 3620 → hết vai.",
+    "en": "Watch level, not a trade zone, not graded: support against the daily trend, observe only. HOLDS → a bounce to 3647; an M15 close below 3620 → no longer valid.",
+    "ar": "مستوى للمراقبة، وليس منطقة دخول، ولا يدخل في التقييم: دعم عكس الاتجاه اليومي، للمراقبة فقط. صمود ← ارتداد إلى 3647؛ إغلاق M15 أسفل 3620 ← يسقط دوره.",
+    "zh": "觀察價位，並非交易區域，不納入評分：與日線方向相反的支撐，僅供觀察。守住 → 反彈至 3647；M15 收在 3620 之下 → 失去作用。"
+   }
+  },
+  {
+   "lo": 3600.5,
+   "hi": 3614,
+   "text": {
+    "vi": "Mức theo dõi, không phải vùng vào lệnh, không được chấm: hỗ trợ quanh mốc cấu trúc H1 3611.5 và số tròn 3600; ngược hướng ngày nên chỉ quan sát. GIỮ → hồi về 3630; M15 đóng dưới 3597 → hết vai.",
+    "en": "Watch level, not a trade zone, not graded: support around the 3611.5 H1 structure level and the 3600 round number; against the daily trend, so observe only. HOLDS → a bounce to 3630; an M15 close below 3597 → no longer valid.",
+    "ar": "مستوى للمراقبة، وليس منطقة دخول، ولا يدخل في التقييم: دعم حول مستوى هيكل H1 عند 3611.5 والرقم الدائري 3600؛ عكس الاتجاه اليومي لذا للمراقبة فقط. صمود ← ارتداد إلى 3630؛ إغلاق M15 أسفل 3597 ← يسقط دوره.",
+    "zh": "觀察價位，並非交易區域，不納入評分：H1 結構關鍵位 3611.5 與整數關口 3600 附近支撐；與日線方向相反，僅供觀察。守住 → 反彈至 3630；M15 收在 3597 之下 → 失去作用。"
+   }
+  },
+  {
+   "lo": 3657.7,
+   "hi": 3660.7,
+   "text": {
+    "vi": "Mức theo dõi, không phải vùng vào lệnh, không được chấm: cản gần, đã bị chạm sớm trong đêm nên dễ bị quét. M15 đóng trên 3660.7 → thôi bán ở 3643–3650, phía bán chỉ còn 3664–3672.",
+    "en": "Watch level, not a trade zone, not graded: nearby resistance that was already tagged overnight, so it is prone to a sweep. An M15 close above 3660.7 → no more selling at 3643–3650; only 3664–3672 remains on the sell side.",
+    "ar": "مستوى للمراقبة، وليس منطقة دخول، ولا يدخل في التقييم: مقاومة قريبة لُمست مبكرًا خلال الليل لذا قد تُكسح بسهولة. إغلاق M15 فوق 3660.7 ← لا بيع عند 3643–3650، ويبقى 3664–3672 فقط في جانب البيع.",
+    "zh": "觀察價位，並非交易區域，不納入評分：鄰近阻力，隔夜已提前觸及，易被掃過。M15 收在 3660.7 之上 → 不再於 3643–3650 偏空，偏空僅保留 3664–3672。"
+   }
+  }
+ ],
+ "zones": [
+  {
+   "side": "SELL",
+   "lo": 3643,
+   "hi": 3650,
+   "grade": "B",
+   "status": {
+    "vi": "Vùng chính (hôm nay không có vùng hạng A, độ tin thấp); chưa chạm từ đầu ngày; hiệu lực phiên Á / London; huỷ nếu M15 đóng trên 3653",
+    "en": "Main zone (no A-grade zone today, low conviction); not touched since the daily open; valid Asia / London; void on an M15 close above 3653",
+    "ar": "المنطقة الرئيسية (لا توجد منطقة من الفئة A اليوم، والثقة منخفضة)؛ لم تُلمس منذ افتتاح اليوم؛ صالحة في آسيا / لندن؛ تُلغى بإغلاق M15 فوق 3653",
+    "zh": "主要區域（今日無 A 級區域，信心偏低）；開盤以來尚未觸及；亞洲盤／倫敦盤有效；M15 收在 3653 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3664,
+   "hi": 3672,
+   "grade": "B",
+   "status": {
+    "vi": "Cản trên, gồm các đỉnh hồi M15 đêm qua; chưa chạm; còn hiệu lực khi giá chưa phá 3689.9; hiệu lực phiên Á đến New York; huỷ nếu M15 đóng trên 3675",
+    "en": "Upper resistance including last night's M15 rebound highs; not touched; valid while 3689.9 holds; valid Asia through New York; void on an M15 close above 3675",
+    "ar": "مقاومة أعلى تضم قمم ارتداد M15 الليلة الماضية؛ لم تُلمس؛ صالحة ما دام 3689.9 صامدًا؛ صالحة من آسيا حتى نيويورك؛ تُلغى بإغلاق M15 فوق 3675",
+    "zh": "上方阻力，含昨夜 M15 反彈高點；尚未觸及；3689.9 未被突破前有效；亞洲盤至紐約盤有效；M15 收在 3675 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3687,
+   "hi": 3700,
+   "grade": "B",
+   "status": {
+    "vi": "Cản quanh đỉnh ngày 23/11 3689.9 và số tròn 3700; đã chạm hôm qua và cho nhịp giảm 57 giá, vẫn còn hiệu lực; hiệu lực London–New York sang Á; huỷ nếu M15 đóng trên 3703",
+    "en": "Resistance around the 23/11 day high of 3689.9 and the 3700 round number; touched yesterday and produced a 57-point drop, still valid; valid London–New York into Asia; void on an M15 close above 3703",
+    "ar": "مقاومة حول قمة يوم 23/11 عند 3689.9 والرقم الدائري 3700؛ لُمست أمس وأعطت هبوطًا بنحو 57 نقطة ولا تزال صالحة؛ صالحة من لندن ونيويورك حتى آسيا؛ تُلغى بإغلاق M15 فوق 3703",
+    "zh": "阻力位於 11/23 日高 3689.9 與整數關口 3700 附近；昨日已觸及並帶來 57 點回落，仍然有效；倫敦盤至紐約盤並延續至亞洲盤；M15 收在 3703 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3717.7,
+   "hi": 3727.4,
+   "grade": "B",
+   "status": {
+    "vi": "Cản xa; chưa chạm, có thể không chạm tới hôm nay; hiệu lực phiên New York sang Á; huỷ nếu M15 đóng trên 3735",
+    "en": "Distant resistance; not touched and may not be reached today; valid New York into Asia; void on an M15 close above 3735",
+    "ar": "مقاومة بعيدة؛ لم تُلمس وقد لا يبلغها السعر اليوم؛ صالحة من نيويورك حتى آسيا؛ تُلغى بإغلاق M15 فوق 3735",
+    "zh": "較遠阻力；尚未觸及，今日可能到不了；紐約盤至亞洲盤有效；M15 收在 3735 之上則失效"
+   }
+  },
+  {
+   "side": "BUY",
+   "lo": 3576.2,
+   "hi": 3589,
+   "grade": "A-BO",
+   "status": {
+    "vi": "Vùng mua lại mức phá cấu trúc 3586.1, gần giá mở cửa tuần 3576.2 – chỉ ghi giấy, ngược hướng ngày, không tính là vùng mạnh; chưa chạm; hiệu lực phiên Á đến New York; huỷ nếu M15 đóng dưới 3573",
+    "en": "Retest zone of the 3586.1 structure break near the 3576.2 weekly open – paper only, against the daily trend, not counted as a strong zone; not touched; valid Asia through New York; void on an M15 close below 3573",
+    "ar": "منطقة إعادة اختبار كسر الهيكل عند 3586.1 قرب افتتاح الأسبوع 3576.2 – للتسجيل الورقي فقط، عكس الاتجاه اليومي، ولا تُعدّ منطقة قوية؛ لم تُلمس؛ صالحة من آسيا حتى نيويورك؛ تُلغى بإغلاق M15 أسفل 3573",
+    "zh": "結構突破位 3586.1 的回測區域，靠近週開盤 3576.2——僅紙上記錄，與日線方向相反，不列為強勢區域；尚未觸及；亞洲盤至紐約盤有效；M15 收在 3573 之下則失效"
+   }
+  }
+ ],
+ "scenarios": [
+  {
+   "side": "SELL",
+   "prob": 55,
+   "path": [
+    3643,
+    3627,
+    3611.5
+   ],
+   "route": [
+    3643,
+    3627,
+    3611.5
+   ],
+   "branch": {
+    "at": 0,
+    "to": [
+     3668.4,
+     3627
+    ]
+   },
+   "text": {
+    "vi": "Chính: đi ngang 3611.5–3690 – phiên Á hồi thử 3643–3650 hoặc lên 3668.4 rồi bị từ chối → về 3624–3630 / 3611.5; phiên New York đi ngang chờ Core PCE ngày mai.",
+    "en": "Main: a 3611.5–3690 range – Asia bounces to test 3643–3650 or up to 3668.4 and is rejected → back to 3624–3630 / 3611.5; New York ranges ahead of tomorrow's Core PCE.",
+    "ar": "الرئيسي: نطاق عرضي 3611.5–3690 – ترتد جلسة آسيا لاختبار 3643–3650 أو حتى 3668.4 ثم تُرفض ← العودة إلى 3624–3630 / 3611.5؛ وتتحرك نيويورك عرضيًا بانتظار PCE الأساسي غدًا.",
+    "zh": "主要：3611.5–3690 區間震盪——亞洲盤反彈測試 3643–3650 或上探 3668.4 後遇阻 → 回落至 3624–3630／3611.5；紐約盤區間整理，等待明日核心 PCE。"
+   }
+  },
+  {
+   "side": "BUY",
+   "prob": 45,
+   "path": [
+    3689.9,
+    3708.8,
+    3731.2
+   ],
+   "route": [
+    3689.9,
+    3708.8,
+    3717.7,
+    3731.2
+   ],
+   "text": {
+    "vi": "Phụ: M15 đóng trên 3689.9 và không quay lại → hồi lên 3708.8 / 3717.7–3727.4 / 3731.2; hoặc M15 đóng dưới 3611.5 → về 3586 / 3576.",
+    "en": "Alternative: an M15 close above 3689.9 that holds → a rebound to 3708.8 / 3717.7–3727.4 / 3731.2; or an M15 close below 3611.5 → down to 3586 / 3576.",
+    "ar": "بديل: إغلاق M15 فوق 3689.9 دون عودة ← ارتداد إلى 3708.8 / 3717.7–3727.4 / 3731.2؛ أو إغلاق M15 أسفل 3611.5 ← هبوط إلى 3586 / 3576.",
+    "zh": "次要：M15 收在 3689.9 之上且未回落 → 反彈至 3708.8／3717.7–3727.4／3731.2；或 M15 收在 3611.5 之下 → 下看 3586／3576。"
+   }
+  }
+ ],
+ "range": {
+  "lo": 3611.5,
+  "hi": 3689.9
+ },
+ "news": [
+  {
+   "time": "24/11 22:00",
+   "impact": "medium",
+   "text": {
+    "vi": "Niềm tin tiêu dùng CB (Mỹ)",
+    "en": "US CB Consumer Confidence",
+    "ar": "ثقة المستهلك الأمريكي (كونفرنس بورد)",
+    "zh": "美國世界大型企業研究會消費者信心"
+   }
+  },
+  {
+   "time": "25/11 00:25",
+   "impact": "medium",
+   "text": {
+    "vi": "Phát biểu của Thống đốc BOC Macklem",
+    "en": "BOC Governor Macklem speaks",
+    "ar": "كلمة محافظ بنك كندا ماكليم",
+    "zh": "加拿大央行總裁 Macklem 講話"
+   }
+  },
+  {
+   "time": "25/11 20:30",
+   "impact": "high",
+   "text": {
+    "vi": "Core PCE m/m + GDP sơ bộ q/q (Mỹ)",
+    "en": "US Core PCE m/m + Prelim GDP q/q",
+    "ar": "مؤشر PCE الأساسي الشهري + الناتج المحلي الأولي الفصلي (أمريكا)",
+    "zh": "美國核心 PCE 月率＋GDP 季率初值"
+   }
+  },
+  {
+   "time": "26/11",
+   "impact": "holiday",
+   "text": {
+    "vi": "Mỹ nghỉ lễ Tạ ơn",
+    "en": "US Thanksgiving holiday",
+    "ar": "عطلة عيد الشكر في أمريكا",
+    "zh": "美國感恩節休市"
+   }
+  }
+ ],
+ "next_update": {
+  "vi": "Cập nhật 13:45 VN hôm nay",
+  "en": "Update at 13:45 VN today",
+  "ar": "تحديث الساعة 13:45 بتوقيت فيتنام اليوم",
+  "zh": "今日越南時間 13:45 更新"
+ },
+ "chart": {
+  "vi": "data/charts/2026-11-24-0700-vi.png",
+  "en": "data/charts/2026-11-24-0700-en.png"
+ }
+}
