@@ -1,0 +1,47 @@
+{
+ "date": "2026-11-24",
+ "open": 3637.87,
+ "close": 3556.36,
+ "high": 3678.49,
+ "low": 3546.64,
+ "change": -81.51,
+ "change_pct": -2.24,
+ "biggest_hour": {
+  "start_vn": "2026-11-24 22:00",
+  "move": -52.89
+ },
+ "candles": 92,
+ "tag": "fed",
+ "headline": {
+  "en": "Gold drops 2.2% as hawkish Fed bets and rising real yields weigh",
+  "ar": "الذهب يهبط 2.2% مع رهانات على تشدد الفيدرالي وارتفاع العوائد الحقيقية",
+  "vi": "Vàng giảm 2,2% do kỳ vọng Fed diều hâu và lợi suất thực tăng",
+  "zh": "金價下跌2.2%，市場押注聯準會偏鷹且實質殖利率走高"
+ },
+ "reasons": [
+  {
+   "en": "Gold fell $81.51 (-2.24%) from 3637.87 to 3556.36 as Reuters and dpa-AFX headlines pointed to growing bets on a hawkish Fed, with US inflation data in focus.",
+   "ar": "تراجع الذهب 81.51 دولار (-2.24%) من 3637.87 إلى 3556.36، إذ أشارت عناوين رويترز وdpa-AFX إلى تزايد الرهانات على تشدد الاحتياطي الفيدرالي مع ترقب بيانات التضخم الأمريكية.",
+   "vi": "Vàng mất 81,51 USD (-2,24%), từ 3637,87 xuống 3556,36, khi tin Reuters và dpa-AFX cho thấy kỳ vọng Fed diều hâu tăng, thị trường chờ số liệu lạm phát Mỹ.",
+   "zh": "金價下跌81.51美元（-2.24%），由3637.87跌至3556.36；路透與dpa-AFX標題指出市場加碼押注聯準會偏鷹，焦點在美國通膨數據。"
+  },
+  {
+   "en": "The sharpest hour came at 15:00 UTC (10:00 New York) with a $52.89 drop, as a Wells Fargo note flagged renewed pressure on gold from rising real yields.",
+   "ar": "جاءت أحدّ ساعة عند 15:00 بتوقيت UTC (10:00 بتوقيت نيويورك) بهبوط 52.89 دولار، فيما أشارت مذكرة لـWells Fargo إلى ضغط متجدد على الذهب من ارتفاع العوائد الحقيقية.",
+   "vi": "Giờ giảm mạnh nhất là 15:00 UTC (10:00 New York), mất 52,89 USD, trong lúc Wells Fargo nhận định lợi suất thực tăng đang gây áp lực trở lại lên vàng.",
+   "zh": "跌幅最大的一小時在UTC 15:00（紐約10:00），下跌52.89美元；同時Wells Fargo指出實質殖利率走高再度壓抑金價。"
+  },
+  {
+   "en": "Gold gave back the gains of the Nvidia-driven rally from the prior session after topping at 3678.49; dpa-AFX also cited profit-taking.",
+   "ar": "تخلّى الذهب عن مكاسب الارتفاع المدفوع بأخبار إنفيديا في الجلسة السابقة بعد أن بلغ ذروة 3678.49، كما أشارت dpa-AFX إلى جني الأرباح.",
+   "vi": "Sau khi lên đỉnh 3678,49, vàng trả lại phần tăng của đợt bật lên nhờ tin Nvidia phiên trước; dpa-AFX cũng nêu yếu tố chốt lời.",
+   "zh": "金價觸及3678.49高點後，回吐前一交易時段由輝達消息帶動的漲幅；dpa-AFX亦提到獲利了結。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (dpa-AFX)",
+  "TradingView news (Seeking Alpha)",
+  "TradingView news (newswires)"
+ ]
+}
