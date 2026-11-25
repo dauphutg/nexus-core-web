@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="gf" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/style.css?v=20261124d">
-<link rel="stylesheet" href="nhap.css?v=2">
+<link rel="stylesheet" href="nhap.css?v=3">
 <script src="/theme.js?v=20261124d"></script>
-<script src="nhap.js?v=2" defer></script>
+<script src="nhap.js?v=3" defer></script>
 </head>
 <body data-page="nhap">
 <header class="top">
@@ -67,9 +67,14 @@
         <p class="bias-sub" id="bias-sub"></p>
         <div class="hero-keys" id="hero-keys"></div>
       </div>
-      <figure class="chart nb-ladder" id="ladder-card">
-        <div id="ladder"></div>
-        <figcaption class="chart-hint">Trái: plan đang chạy · Phải: bản nháp · Vạch vàng: giá lúc lập bản nháp · Xám: mức theo dõi</figcaption>
+      <figure class="chart nb-ladder nb-candle" id="chart-card">
+        <div class="nb-ov" role="group" aria-label="Vùng vẽ trên nến">
+          <span class="nb-ov-t">Nến H1 · vẽ vùng của</span>
+          <button type="button" data-ov="nhap" aria-pressed="true">Bản nháp</button>
+          <button type="button" data-ov="plan" aria-pressed="false">Plan đang chạy</button>
+        </div>
+        <div id="candles"></div>
+        <figcaption class="chart-hint" id="candle-hint">Nến H1 XAUUSD giờ Việt Nam · vạch đứng: giờ lập · vạch vàng ngang: giá lúc lập</figcaption>
       </figure>
     </div>
 
@@ -85,6 +90,10 @@
     <div class="panels tabbed" id="panels">
       <div class="panel" id="p-diff" role="tabpanel" aria-labelledby="t-diff" tabindex="0">
         <h2>Lệch ở đâu</h2>
+        <figure class="chart nb-ladder nb-ladder-card">
+          <div id="ladder"></div>
+          <figcaption class="chart-hint">Thang giá · Trái: plan đang chạy · Phải: bản nháp · Vạch vàng: giá lúc lập bản nháp · Xám: mức theo dõi</figcaption>
+        </figure>
         <div id="diff" class="pgrid"></div>
         <p class="nb-note">Máy tự tính. "Trùng" = cùng chiều và chồng nhau. "Kề" = cùng chiều, hai mép cách nhau không quá 3 giá — ngưỡng 3 giá là máy đặt, anh chưa duyệt. Mức theo dõi của plan đang chạy không có chiều nên chỉ so theo giá. Chưa chấm vùng nào chạm hay đạt 2R.</p>
       </div>

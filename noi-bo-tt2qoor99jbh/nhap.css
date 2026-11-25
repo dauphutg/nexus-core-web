@@ -52,3 +52,18 @@ html[data-theme="dark"] .nb-pw button{background:var(--gold);color:rgb(20,17,10)
 .row .v.sell{color:var(--sell);font-weight:600} .row .v.buy{color:var(--buy);font-weight:600}
 .row .v.mut{color:var(--ink3)}
 .row.sec .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:700}
+/* biểu đồ nến */
+.nb-candle{display:flex;flex-direction:column;gap:8px}
+.nb-ov{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:4px 6px 0}
+.nb-ov-t{font-size:13px;color:var(--ink3);margin-inline-end:4px}
+.nb-ov button{min-height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink2);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.nb-ov button[aria-pressed="true"]{background:rgb(12,34,55);border-color:rgb(12,34,55);color:rgb(255,255,255)}
+html[data-theme="dark"] .nb-ov button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:rgb(20,17,10)}
+.nb-ov button:disabled{opacity:.45;cursor:default}
+.nb-ladder .cu{fill:var(--buy);stroke:var(--buy)} .nb-ladder .cd{fill:var(--sell);stroke:var(--sell)}
+.nb-ladder .wick{stroke-width:1}
+.nb-ladder .lapl{stroke:var(--ink3);stroke-width:1;stroke-dasharray:3 4}
+.nb-ladder .zl{font-size:15px;font-weight:600}
+.nb-ladder .zl.sell{fill:var(--sell)} .nb-ladder .zl.buy{fill:var(--buy)} .nb-ladder .zl.watch{fill:var(--ink3)}
+.nb-ladder .lastl{stroke:var(--ink2);stroke-width:1;stroke-dasharray:2 3}
+.nb-ladder-card{margin-bottom:14px;padding:10px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
