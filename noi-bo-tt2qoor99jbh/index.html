@@ -1,49 +1,108 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="referrer" content="no-referrer">
-<title>So plan – nội bộ</title>
-<link rel="stylesheet" href="nhap.css">
-<script src="nhap.js" defer></script>
+<meta name="theme-color" content="rgb(12,34,55)">
+<title>VIP Plan – nội bộ</title>
+<link rel="icon" href="/assets/icon.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="gf" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/style.css?v=20261124d">
+<link rel="stylesheet" href="nhap.css?v=2">
+<script src="/theme.js?v=20261124d"></script>
+<script src="nhap.js?v=2" defer></script>
 </head>
-<body>
-<header class="bar">
-  <b>So plan đang chạy ↔ bản nháp</b>
-  <span class="grow"></span>
-  <label>Ngày <select id="s-date"></select></label>
-  <label>Bản <select id="s-ed"></select></label>
-  <button id="b-lock" type="button" hidden>Khoá lại</button>
+<body data-page="nhap">
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/vi/"><picture><source type="image/webp" srcset="/assets/logo-head.webp"><img src="/assets/logo-head.png" alt="NEXUS CORE" width="222" height="46"></picture></a>
+    <div class="top-right">
+      <span class="nb-tag">Nội bộ</span>
+      <button type="button" class="theme" id="theme-btn" aria-label="Đổi nền sáng/tối" title="Đổi nền sáng/tối">
+        <svg class="i-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="nb-lock" id="b-lock" hidden>Khoá lại</button>
+    </div>
+  </div>
 </header>
 
-<main>
-  <section id="lock" class="card lock">
-    <h2>Nhập mật khẩu để xem bản nháp</h2>
-    <p class="mut">Bản nháp được mã hoá. Mật khẩu chỉ dùng trong trình duyệt này để mở khoá, không gửi đi đâu và không được lưu.</p>
-    <form id="f-pw" autocomplete="off">
-      <input id="pw" type="password" autocomplete="current-password" placeholder="Mật khẩu" required>
-      <button type="submit">Mở khoá</button>
-    </form>
-    <p id="pw-msg" class="msg" role="alert" hidden></p>
-  </section>
+<main class="wrap" id="app">
+  <section id="view-plan">
+    <div class="plan-head">
+      <div>
+        <p class="eyebrow mx"><span>XAUUSD</span><span>Bản nháp AI mới</span><span id="nb-lap">—</span></p>
+        <h1>VIP Plan <span class="d" id="nb-day">—</span></h1>
+        <label class="nb-date">Ngày <select id="s-date" aria-label="Chọn ngày"></select></label>
+      </div>
+      <div class="editions" id="editions" role="group" aria-label="Chọn bản">
+        <button type="button" class="ed" data-ed="0700"><span class="k">Phiên Á</span><span class="v num">07:00</span></button>
+        <button type="button" class="ed" data-ed="1345"><span class="k">Phiên Âu</span><span class="v num">13:45</span></button>
+        <button type="button" class="ed" data-ed="1930"><span class="k">Phiên Mỹ</span><span class="v num">19:30</span></button>
+      </div>
+    </div>
 
-  <p id="state" class="mut"></p>
+    <div class="alert" id="lock">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <div class="al">
+        <div class="al-t"><b class="al-h">Bản nháp đang khoá</b></div>
+        <p>Mật khẩu chỉ dùng trong trình duyệt này để mở khoá, không gửi đi đâu và không được lưu. Đóng tab là khoá lại.</p>
+        <form id="f-pw" class="nb-pw" autocomplete="off">
+          <input id="pw" type="password" autocomplete="current-password" placeholder="Mật khẩu" aria-label="Mật khẩu" required>
+          <button type="submit">Mở khoá</button>
+        </form>
+        <p id="pw-msg" class="nb-msg" role="alert" hidden></p>
+      </div>
+    </div>
+    <p id="state" class="nb-state" role="status"></p>
 
-  <div class="cols">
-    <section class="card" id="col-plan"><h2>Plan đang chạy</h2><div class="body"></div></section>
-    <section class="card" id="col-nhap"><h2>Bản nháp</h2><div class="body"></div></section>
-  </div>
+    <div class="sum">
+      <div class="hero card neutral" id="bias-card">
+        <div class="hero-top"><p class="eyebrow">Phía bản nháp</p><span class="mchip" id="main-chip"></span></div>
+        <p class="bias-val" id="bias-val">—</p>
+        <div class="headline" id="headline"></div>
+        <p class="bias-sub" id="bias-sub"></p>
+        <div class="hero-keys" id="hero-keys"></div>
+      </div>
+      <figure class="chart nb-ladder" id="ladder-card">
+        <div id="ladder"></div>
+        <figcaption class="chart-hint">Trái: plan đang chạy · Phải: bản nháp · Vạch vàng: giá lúc lập bản nháp · Xám: mức theo dõi</figcaption>
+      </figure>
+    </div>
 
-  <section class="card" id="ladder-card"><h2>Thang giá</h2>
-    <p class="mut">Cột trái: vùng của plan đang chạy. Cột phải: vùng của bản nháp. Vạch ngang: giá lúc lập bản nháp. Đỏ = bán, xanh = mua, xám = mức theo dõi.</p>
-    <div id="ladder"></div>
-  </section>
+    <div class="ptabs-bar">
+      <div class="ptabs on" id="ptabs" role="tablist" aria-label="Chi tiết">
+        <button type="button" role="tab" id="t-diff" aria-controls="p-diff" data-p="diff">Lệch ở đâu</button>
+        <button type="button" role="tab" id="t-zones" aria-controls="p-zones" data-p="zones">Các vùng</button>
+        <button type="button" role="tab" id="t-levels" aria-controls="p-levels" data-p="levels">Mốc giá</button>
+        <button type="button" role="tab" id="t-plan" aria-controls="p-plan" data-p="plan">Plan đang chạy</button>
+      </div>
+    </div>
 
-  <section class="card" id="diff-card"><h2>LỆCH Ở ĐÂU</h2>
-    <div id="diff"></div>
-    <p class="mut small">Máy tự tính. "Trùng" = cùng chiều và chồng nhau. "Kề" = cùng chiều, hai mép chạm nhau hoặc cách nhau không quá 3 giá. Ngưỡng 3 giá là máy đặt, anh chưa duyệt. Mức theo dõi của plan đang chạy không có chiều nên chỉ so theo giá. Chưa chấm vùng nào chạm hay đạt 2R.</p>
+    <div class="panels tabbed" id="panels">
+      <div class="panel" id="p-diff" role="tabpanel" aria-labelledby="t-diff" tabindex="0">
+        <h2>Lệch ở đâu</h2>
+        <div id="diff" class="pgrid"></div>
+        <p class="nb-note">Máy tự tính. "Trùng" = cùng chiều và chồng nhau. "Kề" = cùng chiều, hai mép cách nhau không quá 3 giá — ngưỡng 3 giá là máy đặt, anh chưa duyệt. Mức theo dõi của plan đang chạy không có chiều nên chỉ so theo giá. Chưa chấm vùng nào chạm hay đạt 2R.</p>
+      </div>
+      <div class="panel" id="p-zones" role="tabpanel" aria-labelledby="t-zones" tabindex="0">
+        <h2>Các vùng của bản nháp</h2>
+        <div id="zones" class="pgrid"></div>
+      </div>
+      <div class="panel" id="p-levels" role="tabpanel" aria-labelledby="t-levels" tabindex="0">
+        <h2>Mốc giá</h2>
+        <div class="card list" id="levels"></div>
+      </div>
+      <div class="panel" id="p-plan" role="tabpanel" aria-labelledby="t-plan" tabindex="0">
+        <h2>Plan đang chạy</h2>
+        <div class="card list" id="plan"></div>
+      </div>
+    </div>
+
+    <p class="nb-note nb-foot">Trang này ẩn khỏi menu và sitemap (không phải khoá). Bản nháp trên máy chủ ở dạng mã hoá, chỉ mở được bằng mật khẩu của anh.</p>
   </section>
 </main>
 </body>

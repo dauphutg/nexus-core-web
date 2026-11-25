@@ -1,35 +1,54 @@
-:root{--bg:rgb(13,17,23);--card:rgb(21,27,35);--line:rgb(38,45,54);--tx:rgb(230,237,243);--mut:rgb(139,148,158);--sell:rgb(240,119,108);--buy:rgb(63,185,138);--gold:rgb(227,179,65);--sellbg:rgba(240,119,108,.22);--buybg:rgba(63,185,138,.22);--wbg:rgba(139,148,158,.22)}
-@media (prefers-color-scheme:light){:root{--bg:rgb(245,247,250);--card:rgb(255,255,255);--line:rgb(223,229,236);--tx:rgb(27,35,48);--mut:rgb(91,103,119);--sell:rgb(192,57,43);--buy:rgb(18,128,90);--gold:rgb(154,107,0);--sellbg:rgba(192,57,43,.16);--buybg:rgba(18,128,90,.16);--wbg:rgba(91,103,119,.16)}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-.bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:2}
-.grow{flex:1}
-main{max-width:1100px;margin:0 auto;padding:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
-h2{font-size:15px;margin:0 0 10px}
-h3{font-size:13px;margin:14px 0 6px;color:var(--mut);font-weight:600}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.cols .card{margin-bottom:14px}
-.mut{color:var(--mut)}.small{font-size:12.5px}
-select,input,button{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
-button{cursor:pointer;font-weight:600}
-.lock form{display:flex;gap:8px;flex-wrap:wrap}.lock input{flex:1;min-width:200px}
-.lock button{background:var(--gold);color:rgb(27,20,0);border-color:var(--gold)}
-.msg{color:var(--sell);font-weight:600;margin:.6rem 0 0}
-table{width:100%;border-collapse:collapse}
-td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;font-variant-numeric:tabular-nums}
-th{color:var(--mut);font-weight:500;font-size:12.5px}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0}
-.kv dt{color:var(--mut)}.kv dd{margin:0;font-variant-numeric:tabular-nums}
-.sell{color:var(--sell);font-weight:700}.buy{color:var(--buy);font-weight:700}
-.none{color:var(--mut);font-style:italic}
-.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 8px;font-size:12px;color:var(--mut)}
-.tag.same{border-color:var(--buy);color:var(--buy)}.tag.diff{border-color:var(--sell);color:var(--sell)}
-#diff ul{margin:4px 0 0;padding-left:20px}#diff li{margin:3px 0}
-#ladder svg{display:block;width:100%;height:auto;max-width:760px;margin:0 auto}
-#ladder text{fill:var(--tx);font:12px system-ui,sans-serif}
-#ladder .ax{fill:var(--mut)}#ladder .grid{stroke:var(--line)}
-#ladder .z-sell{fill:var(--sellbg);stroke:var(--sell)}#ladder .z-buy{fill:var(--buybg);stroke:var(--buy)}#ladder .z-watch{fill:var(--wbg);stroke:var(--mut);stroke-dasharray:4 3}
-#ladder .px{stroke:var(--gold);stroke-width:2}#ladder .pxt{fill:var(--gold);font-weight:700}
-@media (max-width:760px){.cols{grid-template-columns:1fr}}
-textarea{width:100%;font:12px/1.4 ui-monospace,Consolas,monospace;color:var(--tx);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;word-break:break-all}
+/* Trang nội bộ VIP Plan: dùng chung /style.css của trang today; file này chỉ thêm phần riêng. Màu viết bằng rgb()/biến. */
+.nb-tag{padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-ink);background:var(--gold-bg);border:1px solid var(--gold-line)}
+.nb-lock{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.nb-lock:hover{border-color:var(--gold-line)}
+.nb-date{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;color:var(--ink2)}
+.nb-date select{min-height:38px;padding:0 10px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px}
+button.ed{font:inherit;color:var(--ink);text-align:start;cursor:pointer}
+button.ed:disabled{opacity:.45;cursor:default}
+button.ed:not(:disabled):not(.on):hover{border-color:var(--gold-line)}
+.nb-pw{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.nb-pw input{flex:1 1 220px;min-height:42px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.nb-pw button{min-height:42px;padding:0 18px;border:0;border-radius:12px;background:rgb(12,34,55);color:rgb(255,255,255);font:inherit;font-weight:600;cursor:pointer}
+html[data-theme="dark"] .nb-pw button{background:var(--gold);color:rgb(20,17,10)}
+.nb-msg{margin-top:8px;color:var(--sell);font-weight:600}
+.nb-state{color:var(--ink3);font-size:14px;min-height:0}
+.nb-state:empty{display:none}
+.nb-note{font-size:13px;color:var(--ink3);line-height:1.55}
+.nb-foot{margin-top:28px}
+.hero.neutral .bias-val{color:var(--ink3)}
+.headline .hl1{font-size:17px;font-weight:600;color:var(--ink)}
+.headline .hl{list-style:none;margin:6px 0 0;padding:0;color:var(--ink2)}
+.bias-sub{color:var(--ink2);font-size:15px;line-height:1.55}
+.px{font-weight:700;color:var(--ink)}
+/* thang giá */
+.nb-ladder{padding:10px}
+.nb-ladder svg{display:block;width:100%;height:auto}
+.nb-ladder .grid{stroke:var(--line);stroke-width:1}
+.nb-ladder text{fill:var(--ink2);font-size:15px;font-family:inherit}
+.nb-ladder .ax{fill:var(--ink3);font-size:13px}
+.nb-ladder .hd{fill:var(--ink);font-size:15px;font-weight:700}
+.nb-ladder .z-sell{fill:var(--sell-bg);stroke:var(--sell-line)}
+.nb-ladder .z-buy{fill:var(--buy-bg);stroke:var(--buy-line)}
+.nb-ladder .z-watch{fill:var(--soft);stroke:var(--line);stroke-dasharray:4 3}
+.nb-ladder .z-main{stroke:var(--gold);stroke-width:2}
+.nb-ladder .pxl{stroke:var(--gold);stroke-width:2;stroke-dasharray:6 4}
+.nb-ladder .pxt{fill:var(--gold-ink);font-weight:700}
+.nb-ladder .mid{stroke:var(--line);stroke-width:1}
+/* thẻ lệch + vùng */
+.nb-card{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:20px}
+.nb-card h3{margin:0;font-size:15px;font-weight:700;color:var(--ink)}
+.nb-card .ideas{margin:0}
+.nb-card .none{color:var(--ink3);font-size:14px;margin:0}
+.nb-card.wide{grid-column:1 / -1}
+.tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-inline-end:8px}
+.tag.same{background:var(--buy-bg);color:var(--buy)} .tag.diff{background:var(--sell-bg);color:var(--sell)}
+.nb-zone{display:flex;flex-direction:column;gap:8px;padding:18px 20px;border-radius:20px}
+.nb-zone .zh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.nb-zone .zr{font-size:18px;font-weight:700;color:var(--ink)}
+.nb-zone .g{margin-inline-start:auto;font-size:12px;color:var(--ink3);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
+.nb-zone .s{font-size:14px;color:var(--ink2)}
+.nb-zone.is-main{border-color:var(--gold-line);background:linear-gradient(90deg,var(--gold-bg),transparent 60%),var(--card)}
+.row .v.sell{color:var(--sell);font-weight:600} .row .v.buy{color:var(--buy);font-weight:600}
+.row .v.mut{color:var(--ink3)}
+.row.sec .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:700}
