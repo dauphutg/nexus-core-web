@@ -19,8 +19,8 @@
    "bias": "SELL",
    "lean": null,
    "main_zone": "3539.6–3550",
-   "result": null,
-   "r": null,
+   "result": "hit",
+   "r": 1.1,
    "url": "https://nexuscore.trade/en/plan/2026-11-25-london/"
   },
   {
