@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Cài khoá – nội bộ</title>
+<link rel="stylesheet" href="../nhap.css">
+<script src="caidat.js" defer></script>
+</head>
+<body>
+<header class="bar"><b>Cài khoá xem bản nháp (làm một lần)</b></header>
+<main>
+  <section class="card lock">
+    <h2>1. Đặt mật khẩu</h2>
+    <p class="mut">Trang này chạy hoàn toàn trong trình duyệt của anh và không gửi gì ra mạng. Mật khẩu ít nhất 14 ký tự; nên dùng một câu dài dễ nhớ. Quên mật khẩu thì không khôi phục được, chỉ cài lại khoá mới.</p>
+    <form id="f" autocomplete="off">
+      <input id="p1" type="password" autocomplete="new-password" placeholder="Mật khẩu (từ 14 ký tự)" required>
+      <input id="p2" type="password" autocomplete="new-password" placeholder="Gõ lại mật khẩu" required>
+      <button type="submit">Tạo khoá</button>
+    </form>
+    <p id="msg" class="msg" role="alert" hidden></p>
+  </section>
+  <section class="card" id="out-card" hidden>
+    <h2>2. Chép khối dưới đây và dán cho Claude</h2>
+    <p class="mut">Khối này gồm khoá công khai và khoá riêng đã được bọc bằng mật khẩu của anh. Nó KHÔNG chứa mật khẩu và để công khai được. Đừng gửi mật khẩu vào chat.</p>
+    <textarea id="out" readonly rows="10" spellcheck="false"></textarea>
+    <p><button id="copy" type="button">Sao chép khối khoá</button> <span id="ok" class="mut"></span></p>
+  </section>
+</main>
+</body>
+</html>

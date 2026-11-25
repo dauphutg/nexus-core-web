@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>So plan – nội bộ</title>
+<link rel="stylesheet" href="nhap.css">
+<script src="nhap.js" defer></script>
+</head>
+<body>
+<header class="bar">
+  <b>So plan đang chạy ↔ bản nháp</b>
+  <span class="grow"></span>
+  <label>Ngày <select id="s-date"></select></label>
+  <label>Bản <select id="s-ed"></select></label>
+  <button id="b-lock" type="button" hidden>Khoá lại</button>
+</header>
+
+<main>
+  <section id="lock" class="card lock">
+    <h2>Nhập mật khẩu để xem bản nháp</h2>
+    <p class="mut">Bản nháp được mã hoá. Mật khẩu chỉ dùng trong trình duyệt này để mở khoá, không gửi đi đâu và không được lưu.</p>
+    <form id="f-pw" autocomplete="off">
+      <input id="pw" type="password" autocomplete="current-password" placeholder="Mật khẩu" required>
+      <button type="submit">Mở khoá</button>
+    </form>
+    <p id="pw-msg" class="msg" role="alert" hidden></p>
+  </section>
+
+  <p id="state" class="mut"></p>
+
+  <div class="cols">
+    <section class="card" id="col-plan"><h2>Plan đang chạy</h2><div class="body"></div></section>
+    <section class="card" id="col-nhap"><h2>Bản nháp</h2><div class="body"></div></section>
+  </div>
+
+  <section class="card" id="ladder-card"><h2>Thang giá</h2>
+    <p class="mut">Cột trái: vùng của plan đang chạy. Cột phải: vùng của bản nháp. Vạch ngang: giá lúc lập bản nháp. Đỏ = bán, xanh = mua, xám = mức theo dõi.</p>
+    <div id="ladder"></div>
+  </section>
+
+  <section class="card" id="diff-card"><h2>LỆCH Ở ĐÂU</h2>
+    <div id="diff"></div>
+    <p class="mut small">Máy tự tính. "Trùng" = cùng chiều và chồng nhau. "Kề" = cùng chiều, hai mép chạm nhau hoặc cách nhau không quá 3 giá. Ngưỡng 3 giá là máy đặt, anh chưa duyệt. Mức theo dõi của plan đang chạy không có chiều nên chỉ so theo giá. Chưa chấm vùng nào chạm hay đạt 2R.</p>
+  </section>
+</main>
+</body>
+</html>
