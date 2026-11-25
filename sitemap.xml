@@ -90,7 +90,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/en/track-record/2026-11/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
@@ -101,7 +101,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/ar/track-record/2026-11/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
@@ -112,7 +112,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/vi/track-record/2026-11/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
@@ -123,7 +123,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/zh-hant/track-record/2026-11/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/track-record/2026-11/"/>
@@ -374,7 +374,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/en/plan/2026-11-25-newyork/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-25-newyork/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-25-newyork/"/>
@@ -384,7 +384,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/ar/plan/2026-11-25-newyork/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-25-newyork/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-25-newyork/"/>
@@ -394,7 +394,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/vi/plan/2026-11-25-newyork/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-25-newyork/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-25-newyork/"/>
@@ -404,7 +404,7 @@
   </url>
   <url>
     <loc>https://nexuscore.trade/zh-hant/plan/2026-11-25-newyork/</loc>
-    <lastmod>2026-11-25T19:40:00+07:00</lastmod>
+    <lastmod>2026-11-25T22:16:00+00:00</lastmod>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/plan/2026-11-25-newyork/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/plan/2026-11-25-newyork/"/>
@@ -1613,6 +1613,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/plan/2026-11-11-newyork/"/>
   </url>
   <url>
+    <loc>https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/</loc>
+    <lastmod>2026-11-25T17:00:00-05:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/why-gold-moved/2026-11-25-yields/</loc>
+    <lastmod>2026-11-25T17:00:00-05:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/vi/why-gold-moved/2026-11-25-yields/</loc>
+    <lastmod>2026-11-25T17:00:00-05:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/zh-hant/why-gold-moved/2026-11-25-yields/</loc>
+    <lastmod>2026-11-25T17:00:00-05:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://nexuscore.trade/vi/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/why-gold-moved/2026-11-25-yields/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/"/>
+  </url>
+  <url>
     <loc>https://nexuscore.trade/en/why-gold-moved/2026-11-24-fed/</loc>
     <lastmod>2026-11-24T17:00:00-05:00</lastmod>
     <priority>0.6</priority>
@@ -2078,6 +2118,9 @@
     <loc>https://nexuscore.trade/en/learn/why-is-gold-rising/</loc>
     <lastmod>2026-11-12T08:00:00+07:00</lastmod>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/why-is-gold-rising/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/why-is-gold-rising/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/why-is-gold-rising/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/en/learn/how-cpi-affects-gold/</loc>
@@ -2263,6 +2306,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://nexuscore.trade/en/learn/gold-trading-plan-new-york-session/</loc>
+    <lastmod>2026-11-26T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/en/learn/how-to-trade-gold-on-news-days/</loc>
+    <lastmod>2026-11-26T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://nexuscore.trade/ar/learn/</loc>
     <lastmod>2026-11-25T19:40:00+07:00</lastmod>
     <priority>0.7</priority>
@@ -2368,6 +2421,14 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/why-is-gold-falling/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://nexuscore.trade/zh-hant/learn/why-is-gold-falling/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/why-is-gold-falling/"/>
+  </url>
+  <url>
+    <loc>https://nexuscore.trade/ar/learn/why-is-gold-rising/</loc>
+    <lastmod>2026-11-26T08:00:00+07:00</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexuscore.trade/en/learn/why-is-gold-rising/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://nexuscore.trade/ar/learn/why-is-gold-rising/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexuscore.trade/en/learn/why-is-gold-rising/"/>
   </url>
   <url>
     <loc>https://nexuscore.trade/zh-hant/learn/</loc>

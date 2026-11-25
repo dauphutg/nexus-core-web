@@ -24,12 +24,12 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 
 ## Track record (November 2026)
 
-- Plans published: 31; graded: 30; zone reached: 27; Target 1 reached: 11; invalidated: 8; total: +15.4R
+- Plans published: 31; graded: 31; zone reached: 29; Target 1 reached: 11; invalidated: 10; total: +13.4R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
-- [2026-11-25 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-25-newyork/): TWO-WAY, leaning SELL, main zone 3559.7–3569.1: Pending
+- [2026-11-25 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-25-newyork/): TWO-WAY, leaning SELL, main zone 3559.7–3569.1: Invalidated -2R
 - [2026-11-25 Pre-London update](https://nexuscore.trade/en/plan/2026-11-25-london/): SELL, main zone 3539.6–3550: Target 1 reached +1.1R
 - [2026-11-25 Asia plan](https://nexuscore.trade/en/plan/2026-11-25-asia/): TWO-WAY, leaning SELL, main zone 3570.4–3579.4: Mixed +0.93R
 - [2026-11-24 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-24-newyork/): TWO-WAY, leaning SELL, main zone 3628.2–3641: Target 1 reached +0.99R
@@ -83,9 +83,12 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [How does PCE inflation affect gold?](https://nexuscore.trade/en/learn/how-pce-affects-gold/): PCE is the inflation measure the Federal Reserve targets, released monthly by the US Bureau of Economic Analysis at 08:30 New York time. A hotter-than-expected 
 - [How do you plan a gold trade for the London session?](https://nexuscore.trade/en/learn/gold-trading-plan-london-session/): The London session opens at 08:00 London time and usually brings the first big volume of the day to gold. A London plan starts from what Asia did: the Asian hig
 - [How does PPI affect gold?](https://nexuscore.trade/en/learn/how-ppi-affects-gold/): The Producer Price Index measures prices received by US producers and is released monthly by the Bureau of Labor Statistics at 08:30 New York time. A hotter PPI
+- [How do you plan a gold trade for the New York session?](https://nexuscore.trade/en/learn/gold-trading-plan-new-york-session/): The New York session brings US data at 08:30 New York time and the overlap with London, usually the most volatile hours for gold. A New York plan starts from wh
+- [How do you trade gold on news days?](https://nexuscore.trade/en/learn/how-to-trade-gold-on-news-days/): On news days, plan before the release and act after it. Mark the zones on both sides, cut position size, avoid entering in the minute of the release when spread
 
 ## Why gold moved (recent days)
 
+- [2026-11-25: Gold ends up 0.84% after rebounding from a 1-year low as yields and dollar slip](https://nexuscore.trade/en/why-gold-moved/2026-11-25-yields/) (+0.84%)
 - [2026-11-24: Gold drops 2.2% as hawkish Fed bets and rising real yields weigh](https://nexuscore.trade/en/why-gold-moved/2026-11-24-fed/) (-2.24%)
 - [2026-11-23: Gold rose 1.64% in a rebound from a 14-month low as the dollar rally paused](https://nexuscore.trade/en/why-gold-moved/2026-11-23-dollar/) (+1.64%)
 - [2026-11-20: Gold fell 2.6% to a near 15-month low as Fed rate-hike bets and a market rout weighed](https://nexuscore.trade/en/why-gold-moved/2026-11-20-fed/) (-2.6%)
@@ -95,7 +98,6 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [2026-11-16: Gold fell 0.75% to a more than one-year low as a firm dollar and Fed-hike bets weighed](https://nexuscore.trade/en/why-gold-moved/2026-11-16-dollar/) (-0.75%)
 - [2026-11-13: Gold edged up 0.14% as an Asian technical rebound faded under Fed rate-hike bets](https://nexuscore.trade/en/why-gold-moved/2026-11-13-technical/) (+0.14%)
 - [2026-11-12: Gold sank 2.85% to a 1-year low on a Fed-driven dollar rally and fading US-Iran deal hopes](https://nexuscore.trade/en/why-gold-moved/2026-11-12-dollar/) (-2.85%)
-- [2026-11-11: Gold fell 1.18% as hawkish Fed remarks and a firmer dollar erased early gains](https://nexuscore.trade/en/why-gold-moved/2026-11-11-fed/) (-1.18%)
 
 ## Pages
 
