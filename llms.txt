@@ -4,34 +4,35 @@
 
 NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three times each trading day: before the Asia session (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). Each plan gives the bias, the main zone, targets, the level that invalidates the view, scenarios with rough probabilities, and the economic calendar. Every plan is graded in public on 15-minute candles after it expires: wins, losses and misses all stay on the record. Analysis only, not financial advice.
 
-## Latest plan (2026-11-24, Pre-New York plan, updated 2026-11-24 19:40 GMT+7)
+## Latest plan (2026-11-25, Asia plan, updated 2026-11-25 06:14 GMT+7)
 
-- Permanent page: https://nexuscore.trade/en/plan/2026-11-24-newyork/
+- Permanent page: https://nexuscore.trade/en/plan/2026-11-25-asia/
 - Bias: TWO-WAY, leaning SELL
-- Summary: Two-way, bearish lean: resistance 3628⁠–⁠3641 / 3659.6⁠–⁠3678.5; below 3607.5 opens 3586 / 3576
-- Main zone: SELL 3628.2–3641
-- Target T1: 3611.5
-- Target T2: 3600
-- Target T3: 3586.1
-- Target T4: 3576.2
-- Target T5: 3659.6
-- Target T6: 3689.9
-- Target T7: 3697.1
-- Target T8: 3731.2
-- Target T9: 3806.2
-- Expected range: 3607–3680
-- View is wrong if: Sell side: an M15 close above 3645 → no more selling at 3628⁠–⁠3641, only 3659.6⁠–⁠3678.5 remains; an M15 close above 3689.9 (yesterday's New York high) with no return on the next candle → the sell view is off and the rebound targets 3697.1 / 3806.2. Below: an M15 close under 3607.5 → H1 structure turns bearish, price heads to 3600 / 3586 / 3576.
-- Main scenario (~55%, SELL): Main: a 3607⁠–⁠3680 range ahead of tomorrow's Core PCE, a bounce tests 3628⁠–⁠3641 or 3659.6⁠–⁠3678.5 and is sold back to 3611.5 / 3600.
-- Alternate scenario (~30%, SELL): Alternative: an M15 close below 3607.5 that holds → H1 structure turns bearish, down to 3586 / 3576.
-- Alternate scenario (~15%, BUY): Low-odds branch: an M15 close above 3689.9 → the sell view is off, rebound to 3697 / 3717.7.
+- Summary: Two-way, bearish lean: resistance 3570.4⁠–⁠3579.4; an M15 close below 3546.6 opens 3514 / 3503
+- Main zone: SELL 3570.4–3579.4
+- Target T1: 3546.6
+- Target T2: 3540
+- Target T3: 3514
+- Target T4: 3503
+- Target T5: 3500
+- Target T6: 3582.7
+- Target T7: 3611.5
+- Target T8: 3632.1
+- Target T9: 3643.3
+- Target T10: 3678.5
+- Expected range: 3500–3678.5
+- View is wrong if: Sell side: an M15 close above 3582.7 → no more selling at 3570.4⁠–⁠3579.4, sells only on a deeper bounce into 3594⁠–⁠3606 / 3606⁠–⁠3616; an M15 close above 3632.1 → the sell view is dropped, wide range, no new shorts. Breakdown side: an M15 close back above 3562.9 after breaking 3546.6 → the breakout zone is void.
+- Main scenario (~50%, SELL): Branch A: before the data, a 3546⁠–⁠3580 range or technical bounce that may test 3570.4⁠–⁠3579.4; a hot Core PCE (bad for gold) / an M15 close more than 1 point below 3546.6 → the 3546.6⁠–⁠3562.9 breakout zone, down to 3514 / 3503 / 3500. Direction is confirmed by the H4 close after the release.
+- Alternate scenario (~50%, BUY): Branch B: a soft or in-line Core PCE / price holds above 3546.6 and an M15 close above 3582.7 → a bounce into 3594⁠–⁠3616 that gets sold again; an M15 close above 3632.1 → the sell view is dropped, sideways, bounce to 3663⁠–⁠3678.
 
 ## Track record (November 2026)
 
-- Plans published: 28; graded: 28; zone reached: 24; Target 1 reached: 9; invalidated: 7; total: +13.4R
+- Plans published: 29; graded: 28; zone reached: 24; Target 1 reached: 9; invalidated: 7; total: +13.4R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
+- [2026-11-25 Asia plan](https://nexuscore.trade/en/plan/2026-11-25-asia/): TWO-WAY, leaning SELL, main zone 3570.4–3579.4: Pending
 - [2026-11-24 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-24-newyork/): TWO-WAY, leaning SELL, main zone 3628.2–3641: Target 1 reached +0.99R
 - [2026-11-24 Pre-London update](https://nexuscore.trade/en/plan/2026-11-24-london/): TWO-WAY, leaning SELL, main zone 3634–3641: Closed at session end +0.4R
 - [2026-11-24 Asia plan](https://nexuscore.trade/en/plan/2026-11-24-asia/): TWO-WAY, main zone 3643–3650: Invalidated -2R
@@ -43,7 +44,6 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [2026-11-20 Asia plan](https://nexuscore.trade/en/plan/2026-11-20-asia/): TWO-WAY, leaning SELL, main zone 3655–3666: Zone not reached 0R
 - [2026-11-19 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-19-newyork/): TWO-WAY, leaning SELL, main zone 3755–3764: Zone not reached 0R
 - [2026-11-19 Pre-London update](https://nexuscore.trade/en/plan/2026-11-19-london/): TWO-WAY, leaning SELL, main zone 3755–3764: Zone not reached 0R
-- [2026-11-19 Asia plan](https://nexuscore.trade/en/plan/2026-11-19-asia/): TWO-WAY, leaning SELL, main zone 3796–3806: Target 1 reached +2.4R
 
 ## Gold trading Q&A
 
