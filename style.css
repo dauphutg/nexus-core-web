@@ -824,6 +824,14 @@ html[data-theme="light"] .ea-risk p{color:#3A4A5E}
 .ea-sdot{width:10px;height:10px;border-radius:50%;background:#E3B341;box-shadow:0 0 0 4px rgba(227,179,65,.2)}
 @media (max-width:640px){.ea-promo{padding:28px 18px}.ea-promo .ea-cta .ea-b{flex:1 1 100%}}
 .ea-strip small{display:block;margin-top:4px;font-weight:400;font-size:12px;color:#8FA3BC}
+/* VIP Plan link under the plan (27/11/2026) */
+.vip-strip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding:16px 20px;border-radius:16px;background:var(--gold-bg);border:1px solid var(--gold-line);color:var(--ink)!important;text-decoration:none}
+.vip-strip:hover{border-color:var(--gold)}
+.vip-strip .t{flex:1 1 260px;font-weight:600}
+.vip-strip small{display:block;margin-top:4px;font-weight:400;font-size:12px;color:var(--ink3)}
+.vip-strip .go{display:inline-flex;align-items:center;gap:8px;color:var(--gold-ink);font-weight:700;white-space:nowrap}
+.vip-tag{padding:4px 9px;border-radius:8px;background:var(--gold);color:rgb(20,17,10);font-size:12px;font-weight:800;letter-spacing:.06em}
+.vip-strip + .ea-strip{margin-top:10px}
 /* EA page: pain points, comparison, trust (23/11/2026) */
 .ea-pains{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .ea-pains li{display:flex;gap:12px;align-items:flex-start;padding:18px 20px;border-radius:16px;background:#0C1D31;border:1px solid #1E3754;color:#C9D4E3}

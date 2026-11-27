@@ -987,7 +987,7 @@ def today_page(lang):
                    f'<span><b class="num {"up" if nums["TR_NETPIPS"].startswith("+") else "down"}" dir="ltr">{esc(nums["TR_NETPIPS"])}</b> {esc(C(lang, "proof_net"))}</span>'
                    f'<span><b class="num" dir="ltr">{esc(nums["TR_TRADES"])}</b> {esc(C(lang, "proof_tr"))}</span></span>'
                    f'<span class="go">{esc(C(lang, "proof_go"))}</span>')
-    doc = doc.replace('<!-- /VIEW -->', ea_strip(lang) + '<!-- /VIEW -->', 1)
+    doc = doc.replace('<!-- /VIEW -->', vip_strip(lang) + ea_strip(lang) + '<!-- /VIEW -->', 1)
     title, desc, img, upd = plan_title(P, lang), plan_desc(P, lang), img_for(P, lang), updated_dt(P)
     # /today is the evergreen page for "XAUUSD analysis today"; the dated plan page keeps the dated title (F4, 21/11/2026)
     title, desc = TODAY_SEO[lang][0], TODAY_SEO[lang][1] + ' ' + plan_headline(P, lang)
@@ -1095,6 +1095,21 @@ def ea_promo(lang):
             f'<p class="ea-rs">{esc(c["risk_short"])} {esc(c["hyp"])}</p></div></div></section>\n')
 
 
+VIP_STRIP = {  # VIP Plan link under the plan (approved 27/11/2026); goes to the VIP page, which carries the terms and eligibility note
+    'en': ('VIP Plan: one or two focused zones close to price, updated as price moves.', 'Members only · terms apply.', 'See VIP Plan'),
+    'ar': ('خطة VIP: منطقة أو منطقتان مركّزتان قرب السعر، مع تحديث أثناء حركة السعر.', 'للأعضاء فقط · تطبق الشروط.', 'اطّلع على خطة VIP'),
+    'vi': ('VIP Plan: 1–2 vùng sát giá, cập nhật theo giá khi giá chạy.', 'Dành cho thành viên · áp dụng điều khoản.', 'Xem VIP Plan'),
+    'zh-hant': ('VIP 計畫：每天一至兩個貼近價格的重點區域，隨價格走勢即時更新。', '僅限會員 · 適用條款。', '查看 VIP 計畫'),
+}
+
+
+def vip_strip(lang):
+    """One-line VIP Plan link under the plan on /today/ and the dated plan pages (27/11/2026)."""
+    a, b, c = VIP_STRIP[lang]
+    return (f'  <a class="vip-strip" href="{signals_path(lang)}"><span class="vip-tag">VIP</span><span class="t">{esc(a)}'
+            f'<small>{esc(b)}</small></span><span class="go">{esc(c)}{ARROW}</span></a>\n')
+
+
 def ea_strip(lang):
     """One-line Gold EA link under the plan on /today/ and the dated plan pages."""
     c = EA[lang]; m = c['promo']
@@ -1176,7 +1191,7 @@ def plan_page(k, lang):
     doc = hide(doc, 'next')
     doc = unhide(doc, 'result'); doc = fill(doc, 'result', result_block(k, lang))
     doc = unhide(doc, 'pnav'); doc = fill(doc, 'pnav', plan_nav(k, lang))
-    doc = doc.replace('<!-- /VIEW -->', ea_strip(lang) + '<!-- /VIEW -->', 1)
+    doc = doc.replace('<!-- /VIEW -->', vip_strip(lang) + ea_strip(lang) + '<!-- /VIEW -->', 1)
     title, desc, img, upd = plan_seo_title(p, lang), plan_desc(p, lang, g), img_for(p, lang), updated_dt(p)
     mod = dt.datetime.strptime(g['graded_utc'], '%Y-%m-%dT%H:%MZ').replace(tzinfo=dt.timezone.utc) if g and g.get('graded_utc') else upd
     url = SITE + paths[lang]
