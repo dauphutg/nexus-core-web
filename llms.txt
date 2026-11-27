@@ -4,33 +4,38 @@
 
 NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three times each trading day: before the Asia session (07:00 GMT+7), before London (13:45 GMT+7) and before New York (19:30 GMT+7). Each plan gives the bias, the main zone, targets, the level that invalidates the view, scenarios with rough probabilities, and the economic calendar. Every plan is graded in public on 15-minute candles after it expires: wins, losses and misses all stay on the record. Analysis only, not financial advice.
 
-## Latest plan (2026-11-26, Pre-New York plan, updated 2026-11-26 19:39 GMT+7)
+## Latest plan (2026-11-27, Asia plan, updated 2026-11-27 06:12 GMT+7)
 
-- Permanent page: https://nexuscore.trade/en/plan/2026-11-26-newyork/
-- Bias: TWO-WAY
-- Summary: Two-way 3551⁠–⁠3607 on US holiday; lower edge 3551⁠–⁠3562; The view is wrong on M15 close below 3549
-- Main zone: BUY 3551–3562
-- Target T1: 3580
-- Target T2: 3590
+- Permanent page: https://nexuscore.trade/en/plan/2026-11-27-asia/
+- Bias: TWO-WAY, leaning SELL
+- Summary: Two-way 3551⁠–⁠3591, lean sell on rallies into 3573⁠–⁠3591; The view is wrong on M15 close above 3594
+- Main zone: SELL 3583.5–3591
+- Target T1: 3583.5
+- Target T2: 3586.8
 - Target T3: 3607.2
-- Target T4: 3624.7
+- Target T4: 3615.6
 - Target T5: 3637.9
-- Target T6: 3540.5
-- Target T7: 3528
-- Target T8: 3503
-- Expected range: 3551–3607
-- View is wrong if: Lower edge 3551⁠–⁠3562: an M15 close below 3549 with no recovery on the next candle → off, down to 3528⁠–⁠3541 / 3503. Upper edge: an M15 close above 3609 that holds on the next candle → off, up to 3612⁠–⁠3625.
-- Main scenario (~60%, BUY): Main: range 3551⁠–⁠3593: the 3551.3 low holds, then a swing back to 3580⁠–⁠3590, capped by an H1 moving average.
-- Alternate scenario (~25%, SELL): Alternate: an M15 close below 3549 → down to 3528⁠–⁠3541, possibly 3503 into the Asia session.
-- Alternate scenario (~15%, BUY): Remaining: an M15 close above 3609 → a test of 3612⁠–⁠3625.
+- Target T6: 3646.8
+- Target T7: 3559.7
+- Target T8: 3551.3
+- Target T9: 3540.5
+- Target T10: 3528
+- Target T11: 3503
+- Target T12: 3426.8
+- Expected range: 3551.3–3591
+- View is wrong if: Sell side: an M15 close above 3594 that holds on the next candle → selling 3573⁠–⁠3591 is off, price heads to 3600⁠–⁠3617. Breakdown side: an M15 close below 3550.3 followed by a close back above 3559.7 → failed breakdown.
+- Main scenario (~55%, SELL): Main: range 3551⁠–⁠3591: a bounce into 3573⁠–⁠3591 gets rejected, then back to 3560 / 3551.
+- Alternate scenario (~30%, SELL): Alternate: an M15 close below 3550.3 → a retest of the 3546⁠–⁠3551.3 breakdown zone, then 3540.5 / 3528 (possibly 3503 into the Asia session).
+- Alternate scenario (~15%, BUY): Remaining: an M15 close above 3594 that holds → the H4 bounce extends to 3600⁠–⁠3617.
 
 ## Track record (November 2026)
 
-- Plans published: 34; graded: 33; zone reached: 31; Target 1 reached: 12; invalidated: 10; total: +15R
+- Plans published: 35; graded: 33; zone reached: 31; Target 1 reached: 12; invalidated: 10; total: +15R
 - Full list and grading rules: https://nexuscore.trade/en/track-record/2026-11/
 
 ## Recent plans
 
+- [2026-11-27 Asia plan](https://nexuscore.trade/en/plan/2026-11-27-asia/): TWO-WAY, leaning SELL, main zone 3583.5–3591: Pending
 - [2026-11-26 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-26-newyork/): TWO-WAY, main zone 3551–3562: Pending
 - [2026-11-26 Pre-London update](https://nexuscore.trade/en/plan/2026-11-26-london/): TWO-WAY, main zone 3551–3567.7: Closed at session end +0.03R
 - [2026-11-26 Asia plan](https://nexuscore.trade/en/plan/2026-11-26-asia/): TWO-WAY, leaning BUY, main zone 3557.8–3567.7: Target 1 reached +1.52R
@@ -42,7 +47,6 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [2026-11-24 Asia plan](https://nexuscore.trade/en/plan/2026-11-24-asia/): TWO-WAY, main zone 3643–3650: Invalidated -2R
 - [2026-11-23 Pre-New York plan](https://nexuscore.trade/en/plan/2026-11-23-newyork/): TWO-WAY, leaning SELL, main zone 3626–3639: Mixed -0.73R
 - [2026-11-23 Pre-London update](https://nexuscore.trade/en/plan/2026-11-23-london/): TWO-WAY, leaning SELL, main zone 3625–3637.5: Target 1 reached +1.25R
-- [2026-11-23 Asia plan](https://nexuscore.trade/en/plan/2026-11-23-asia/): TWO-WAY, leaning SELL, main zone 3625–3637.5: Mixed +2.6R
 
 ## Gold trading Q&A
 
@@ -87,6 +91,8 @@ NEXUS CORE AI publishes a free, AI-built trading plan for gold (XAUUSD) three ti
 - [How does PPI affect gold?](https://nexuscore.trade/en/learn/how-ppi-affects-gold/): The Producer Price Index measures prices received by US producers and is released monthly by the Bureau of Labor Statistics at 08:30 New York time. A hotter PPI
 - [How do you plan a gold trade for the New York session?](https://nexuscore.trade/en/learn/gold-trading-plan-new-york-session/): The New York session brings US data at 08:30 New York time and the overlap with London, usually the most volatile hours for gold. A New York plan starts from wh
 - [How do you trade gold on news days?](https://nexuscore.trade/en/learn/how-to-trade-gold-on-news-days/): On news days, plan before the release and act after it. Mark the zones on both sides, cut position size, avoid entering in the minute of the release when spread
+- [How does gold trade in the Asian session?](https://nexuscore.trade/en/learn/asian-session-gold/): The Asian session (roughly 07:00 to 15:00 GMT+7) is usually the quietest part of the day for gold, with smaller ranges than London or New York. It often builds 
+- [How do you use an economic calendar for gold trading?](https://nexuscore.trade/en/learn/how-to-use-economic-calendar-gold/): Filter the calendar to US dollar events with high and medium impact, convert the times to your own time zone, and note the forecast and the previous value for e
 
 ## Why gold moved (recent days)
 
