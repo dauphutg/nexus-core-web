@@ -2,30 +2,40 @@
  "v": 1,
  "rules": 5,
  "date": "2026-11-27",
- "edition": "1345",
- "updated_vn": "2026-11-27 13:51",
+ "edition": "1930",
+ "updated_vn": "2026-11-27 19:50",
  "daily_close_vn": "2026-11-28 05:00",
  "bias": "TWO_WAY",
  "zones": [
   {
-   "side": "SELL",
-   "lo": 3663.0,
-   "hi": 3678.5,
-   "edge": 3663.0,
-   "void": 3696.0,
-   "t1": 3646.8,
+   "side": "BUY",
+   "lo": 3661.0,
+   "hi": 3667.0,
+   "edge": 3667.0,
+   "void": 3652.0,
+   "t1": 3685.4,
    "main": true,
+   "grade": "C"
+  },
+  {
+   "side": "SELL",
+   "lo": 3677.0,
+   "hi": 3692.0,
+   "edge": 3677.0,
+   "void": 3696.0,
+   "t1": 3654,
+   "main": false,
    "grade": "B"
   },
   {
    "side": "SELL",
-   "lo": 3683.0,
-   "hi": 3692.5,
-   "edge": 3683.0,
-   "void": 3696.0,
-   "t1": 3678.5,
+   "lo": 3734.0,
+   "hi": 3746.0,
+   "edge": 3734.0,
+   "void": 3750.0,
+   "t1": 3731.2,
    "main": false,
-   "grade": "B"
+   "grade": "A"
   }
  ]
 }
