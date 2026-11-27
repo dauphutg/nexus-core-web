@@ -1,0 +1,380 @@
+{
+ "date": "2026-11-27",
+ "edition": "1345",
+ "updated_vn": "2026-11-27 13:51",
+ "symbol": "XAUUSD",
+ "bias": "TWO_WAY",
+ "lean": "SELL",
+ "day_type": {
+  "vi": "Đảo nhịp trong ngày – nhịp hồi H4 mạnh ngược xu hướng ngày; hai chiều, bán chỉ ở cản lớn 3663–3692 sau xác nhận; không có vùng hạng A",
+  "en": "Intraday reversal – a strong H4 bounce against the daily trend; two-way, selling only at the major 3663–3692 resistance after confirmation; no A-grade zone",
+  "ar": "انعكاس داخل اليوم – ارتداد قوي على H4 عكس الاتجاه اليومي؛ باتجاهين، والبيع فقط عند المقاومة الكبرى 3663–3692 بعد التأكيد؛ لا توجد منطقة من الفئة A",
+  "zh": "日內反轉——H4 強勢反彈，逆日線趨勢；雙向，僅在確認後於 3663–3692 主要阻力偏空；無 A 級區域"
+ },
+ "headline": {
+  "vi": "Hai chiều sau cú hồi mạnh; bán chỉ ở cản 3663–3692 khi có xác nhận, huỷ trên 3696",
+  "en": "Two-way after a sharp rally; sell only at 3663–3692 on confirmation, void above 3696",
+  "ar": "اتجاهان بعد صعود حاد؛ البيع فقط عند 3663–3692 بتأكيد، ويُلغى فوق 3696",
+  "zh": "急漲後雙向；僅在確認後於 3663–3692 偏空，3696 之上觀點失效"
+ },
+ "alert": {
+  "vi": "Ngày sau lễ Tạ ơn – Mỹ đóng cửa sớm, thanh khoản mỏng nhưng giá đã chạy một chiều tăng khoảng 1 biên độ ngày (3557.7 → 3666.7), đang quá mua. Không có vùng hạng A – chỉ vào sau xác nhận; tránh bán đuổi giữa 3646.8–3663, mua đuổi khi quá mua, và các khoảng 3629.3–3637.9, 3692.5–3720. Hôm nay không có tin đỏ; hội nghị thượng đỉnh EU tại Brussels có thể công bố kết quả trong ngày (chưa có giờ).",
+  "en": "Day after Thanksgiving – early US close and thin liquidity, yet price has run one-way higher by about one daily range (3557.7 → 3666.7) and is overbought. No A-grade zone – confirmation only; avoid chasing shorts in the 3646.8–3663 mid-range, chasing longs while overbought, and the 3629.3–3637.9 and 3692.5–3720 gaps. No high-impact releases today; the EU summit in Brussels may publish its conclusions during the day (time not set).",
+  "ar": "اليوم التالي لعيد الشكر – إغلاق أمريكي مبكر وسيولة ضعيفة، ومع ذلك صعد السعر باتجاه واحد بنحو مدى يومي كامل (3557.7 ← 3666.7) وهو في منطقة تشبع شرائي. لا توجد منطقة من الفئة A – بتأكيد فقط؛ تجنّب مطاردة البيع في منتصف النطاق 3646.8–3663، ومطاردة الشراء أثناء التشبع، والفجوتين 3629.3–3637.9 و3692.5–3720. لا بيانات عالية التأثير اليوم؛ وقد تصدر قمة الاتحاد الأوروبي في بروكسل استنتاجاتها خلال اليوم (دون موعد محدد).",
+  "zh": "感恩節翌日——美國提早收市、流動性稀薄，但價格已單邊上漲約一個日均波幅（3557.7 → 3666.7），處於超買。無 A 級區域——僅在確認後操作；避免在 3646.8–3663 中段追空、超買時追多，並避開 3629.3–3637.9 與 3692.5–3720。今日無高影響數據；布魯塞爾歐盟峰會或於日內公布結論（時間未定）。"
+ },
+ "context": [
+  {
+   "k": {
+    "vi": "Xu hướng D1",
+    "en": "D1 trend",
+    "ar": "اتجاه D1",
+    "zh": "D1 趨勢"
+   },
+   "v": {
+    "vi": "Giảm – giá vẫn dưới đường trung bình ngày; nến ngày hôm nay xanh mạnh (+86 giá) đang hồi về vùng đỉnh ngày 22–23/11",
+    "en": "Bearish – price remains below the daily moving average; today's daily candle is strongly green (+86) and rallying back toward the 22–23/11 highs",
+    "ar": "هابط – السعر ما زال أسفل المتوسط اليومي؛ شمعة اليوم خضراء قوية (+86) ترتد نحو قمم 22–23/11",
+    "zh": "偏空——價格仍在日線均線之下；今日日線為強陽線（+86），正反彈至 11/22–23 高點區域"
+   }
+  },
+  {
+   "k": {
+    "vi": "Cấu trúc H4",
+    "en": "H4 structure",
+    "ar": "هيكل H4",
+    "zh": "H4 結構"
+   },
+   "v": {
+    "vi": "Nhịp hồi phá cấu trúc lên qua 3607.2 và vượt đường trung bình H4; cấu trúc H4 lớn vẫn giảm với mốc 3689.9",
+    "en": "The bounce broke structure above 3607.2 and cleared an H4 moving average; the larger H4 structure is still down, keyed at 3689.9",
+    "ar": "الارتداد كسر الهيكل فوق 3607.2 وتجاوز متوسط H4؛ الهيكل الأكبر على H4 ما زال هابطًا ومفتاحه 3689.9",
+    "zh": "反彈突破 3607.2 結構並站上 H4 均線；較大的 H4 結構仍向下，關鍵位 3689.9"
+   }
+  },
+  {
+   "k": {
+    "vi": "Cấu trúc H1",
+    "en": "H1 structure",
+    "ar": "هيكل H1",
+    "zh": "H1 結構"
+   },
+   "v": {
+    "vi": "Giá đã vượt mốc cấu trúc H1 3646.8 và nằm trên các đường trung bình H1; M15 cấu trúc tăng (phá lên 3637.3)",
+    "en": "Price has cleared the 3646.8 H1 structure level and sits above the H1 moving averages; M15 structure is up (break above 3637.3)",
+    "ar": "تجاوز السعر مستوى هيكل H1 عند 3646.8 وهو فوق متوسطات H1؛ هيكل M15 صاعد (كسر فوق 3637.3)",
+    "zh": "價格已突破 H1 結構位 3646.8，位於 H1 均線之上；M15 結構向上（突破 3637.3）"
+   }
+  },
+  {
+   "k": {
+    "vi": "Động lượng H1",
+    "en": "H1 momentum",
+    "ar": "زخم H1",
+    "zh": "H1 動能"
+   },
+   "v": {
+    "vi": "Quá mua trên H1 và M15 sau nhịp tăng một mạch; dễ chững lại hoặc đi ngang trước khi chọn hướng",
+    "en": "Overbought on H1 and M15 after a one-way run; prone to stall or range before choosing direction",
+    "ar": "تشبع شرائي على H1 وM15 بعد صعود متواصل؛ عرضة للتوقف أو التحرك العرضي قبل اختيار الاتجاه",
+    "zh": "單邊上漲後 H1 與 M15 均超買；選擇方向前易停滯或震盪"
+   }
+  },
+  {
+   "k": {
+    "vi": "Mức trong ngày",
+    "en": "Intraday level",
+    "ar": "مستوى اليوم",
+    "zh": "日內價位"
+   },
+   "v": {
+    "vi": "Giá mở cửa ngày 3566.2; đáy/đỉnh hôm nay 3557.7 / 3666.7; giá mở cửa ngày cũ 3637.9 vừa bị vượt; đỉnh ngày 23/11 3678.5, đỉnh ngày 22/11 3689.9",
+    "en": "Daily open 3566.2; today's low/high 3557.7 / 3666.7; the older 3637.9 daily open has just been cleared; 23/11 high 3678.5, 22/11 high 3689.9",
+    "ar": "سعر افتتاح اليوم 3566.2؛ قاع/قمة اليوم 3557.7 / 3666.7؛ سعر افتتاح يومي سابق عند 3637.9 تم تجاوزه للتو؛ قمة 23/11 عند 3678.5 وقمة 22/11 عند 3689.9",
+    "zh": "日開盤價 3566.2；今日低／高點 3557.7／3666.7；先前日開盤價 3637.9 剛被突破；11/23 高點 3678.5，11/22 高點 3689.9"
+   }
+  }
+ ],
+ "main_zone": {
+  "side": "SELL",
+  "lo": 3663,
+  "hi": 3678.5,
+  "grade": "B"
+ },
+ "invalidation": {
+  "vi": "Phía bán: M15 đóng trên 3696 và nến kế giữ → thôi bán ở 3663–3692, chỉ mua khi hồi về 3687–3692, đích 3722–3727. Phía mua (chỉ ghi giấy): M15 đóng dưới 3632 và nến kế giữ → thôi chờ tăng, bán khi hồi lên 3637.9–3646.8, đích 3624 / 3616.",
+  "en": "Sell side: an M15 close above 3696 that holds on the next candle → selling 3663–3692 is off; buy only on a pullback to 3687–3692, targeting 3722–3727. Buy side (paper only): an M15 close below 3632 that holds on the next candle → the upside is off; sell a bounce into 3637.9–3646.8, targeting 3624 / 3616.",
+  "ar": "جانب البيع: إغلاق M15 فوق 3696 يصمد في الشمعة التالية ← يُلغى البيع في 3663–3692، والشراء فقط عند التراجع إلى 3687–3692 بهدف 3722–3727. جانب الشراء (على الورق فقط): إغلاق M15 أسفل 3632 يصمد في الشمعة التالية ← يُلغى توقع الصعود، والبيع عند الارتداد إلى 3637.9–3646.8 بهدف 3624 / 3616.",
+  "zh": "偏空一側：M15 收在 3696 之上且下一根守住 → 3663–3692 偏空觀點失效，僅在回落至 3687–3692 時偏多，目標 3722–3727。偏多一側（僅紙上記錄）：M15 收在 3632 之下且下一根守住 → 上行觀點失效，反彈至 3637.9–3646.8 偏空，目標 3624／3616。"
+ },
+ "void": 3696,
+ "targets": [
+  {
+   "label": "T1",
+   "lo": 3666.7,
+   "hi": 3666.7
+  },
+  {
+   "label": "T2",
+   "lo": 3678.5,
+   "hi": 3678.5
+  },
+  {
+   "label": "T3",
+   "lo": 3689.9,
+   "hi": 3689.9
+  },
+  {
+   "label": "T4",
+   "lo": 3700,
+   "hi": 3700
+  },
+  {
+   "label": "T5",
+   "lo": 3722,
+   "hi": 3722
+  },
+  {
+   "label": "T6",
+   "lo": 3646.8,
+   "hi": 3646.8
+  },
+  {
+   "label": "T7",
+   "lo": 3637.9,
+   "hi": 3637.9
+  },
+  {
+   "label": "T8",
+   "lo": 3624,
+   "hi": 3624
+  },
+  {
+   "label": "T9",
+   "lo": 3607.2,
+   "hi": 3607.2
+  },
+  {
+   "label": "T10",
+   "lo": 3591,
+   "hi": 3591
+  }
+ ],
+ "watch": [
+  {
+   "lo": 3600,
+   "hi": 3618,
+   "text": {
+    "vi": "Mức theo dõi, không phải vùng vào lệnh, không được chấm: hỗ trợ quanh đỉnh ngày 26/11 3607.2 và số tròn 3600 – đã bị thử 6 lần trong 5 ngày nên chỉ là mục tiêu; mức M15 xét phá cấu trúc là 3624.3, hiện chưa bị phá.",
+    "en": "Watch level, not a trade zone, not graded: support around the 3607.2 26/11 high and the 3600 round number – tested 6 times in 5 days, so it is a target only; the M15 structure break level is 3624.3, not broken yet.",
+    "ar": "مستوى للمراقبة، وليس منطقة دخول، ولا يدخل في التقييم: دعم حول قمة 26/11 عند 3607.2 والرقم الدائري 3600 – اختُبر 6 مرات خلال 5 أيام لذا هو هدف فقط؛ مستوى كسر هيكل M15 هو 3624.3 ولم يُكسر بعد.",
+    "zh": "觀察價位，並非交易區域，不納入評分：11/26 高點 3607.2 與整數關口 3600 附近支撐——5 日內測試 6 次，僅視為目標；M15 結構判斷位 3624.3，尚未跌破。"
+   }
+  },
+  {
+   "lo": 3722,
+   "hi": 3727,
+   "text": {
+    "vi": "Mức theo dõi, không phải vùng vào lệnh, không được chấm: vùng cung M15 phía trên, chỉ tính tới khi M15 đóng trên 3696.",
+    "en": "Watch level, not a trade zone, not graded: M15 supply overhead, relevant only after an M15 close above 3696.",
+    "ar": "مستوى للمراقبة، وليس منطقة دخول، ولا يدخل في التقييم: عرض M15 في الأعلى، ولا يُعتبر إلا بعد إغلاق M15 فوق 3696.",
+    "zh": "觀察價位，並非交易區域，不納入評分：上方 M15 供給區，須 M15 收在 3696 之上才納入考量。"
+   }
+  }
+ ],
+ "zones": [
+  {
+   "side": "SELL",
+   "lo": 3663,
+   "hi": 3678.5,
+   "grade": "B",
+   "status": {
+    "vi": "Vùng chính (không có vùng hạng A, chỉ vào sau xác nhận): vùng cung H1 và mép dưới vùng cung H4, đỉnh ngày 23/11 3678.5; đã chạm sớm lúc đỉnh 3666.7 (phiên Á) – yếu hơn; thử 2 lần trong 5 ngày; phiên London–New York; huỷ nếu M15 đóng trên 3682",
+    "en": "Main zone (no A-grade zone, confirmation only): H1 supply and the lower edge of H4 supply, with the 3678.5 23/11 high; touched early at the 3666.7 high (Asia session) – weaker; tested twice in 5 days; London–New York; void on an M15 close above 3682",
+    "ar": "المنطقة الرئيسية (لا توجد منطقة من الفئة A، بتأكيد فقط): عرض H1 والحافة السفلى لعرض H4 مع قمة 23/11 عند 3678.5؛ لُمست مبكرًا عند قمة 3666.7 (جلسة آسيا) – أضعف؛ اختُبرت مرتين خلال 5 أيام؛ لندن–نيويورك؛ تُلغى بإغلاق M15 فوق 3682",
+    "zh": "主要區域（無 A 級區域，僅在確認後適用）：H1 供給區與 H4 供給區下緣，含 11/23 高點 3678.5；亞洲盤已於高點 3666.7 提早觸及——力道較弱；5 日內測試 2 次；倫敦盤–紐約盤；M15 收在 3682 之上則失效"
+   }
+  },
+  {
+   "side": "SELL",
+   "lo": 3683,
+   "hi": 3692.5,
+   "grade": "B",
+   "status": {
+    "vi": "Cản lớn: mốc cấu trúc H4 3689.9 (đỉnh ngày 22/11) cùng vùng cung M15 và số tròn 3700 phía trên; thử 1 lần trong 5 ngày; chưa chạm, có thể không chạm (thanh khoản mỏng); chỉ dùng khi có xác nhận; phiên London–New York sang Á; huỷ nếu M15 đóng trên 3696",
+    "en": "Major resistance: the 3689.9 H4 structure level (22/11 high) with M15 supply and the 3700 round number above; tested once in 5 days; not touched, may not be reached (thin liquidity); confirmation only; London–New York into Asia; void on an M15 close above 3696",
+    "ar": "مقاومة كبرى: مستوى هيكل H4 عند 3689.9 (قمة 22/11) مع عرض M15 والرقم الدائري 3700 أعلاه؛ اختُبرت مرة واحدة خلال 5 أيام؛ لم تُلمس وقد لا تُلمس (سيولة ضعيفة)؛ بتأكيد فقط؛ لندن–نيويورك حتى آسيا؛ تُلغى بإغلاق M15 فوق 3696",
+    "zh": "主要阻力：H4 結構位 3689.9（11/22 高點）、M15 供給區及上方整數關口 3700；5 日內測試 1 次；尚未觸及，可能觸及不到（流動性稀薄）；僅在確認後適用；倫敦盤–紐約盤至亞洲盤；M15 收在 3696 之上則失效"
+   }
+  },
+  {
+   "side": "BUY",
+   "lo": 3637.9,
+   "hi": 3646.8,
+   "grade": "C",
+   "status": {
+    "vi": "Hỗ trợ mức vừa phá: giá mở cửa ngày cũ 3637.9 và vùng cung H1 cũ vừa đổi vai; ngược xu hướng ngày – chỉ theo dõi, ghi giấy; chưa thử lại; phiên London–New York; huỷ nếu M15 đóng dưới 3632",
+    "en": "Broken-level support: the older 3637.9 daily open and a former H1 supply that has just flipped; against the daily trend – watch only, paper; not retested yet; London–New York; void on an M15 close below 3632",
+    "ar": "دعم المستوى المكسور: افتتاح يومي سابق عند 3637.9 وعرض H1 سابق انقلب دوره للتو؛ عكس الاتجاه اليومي – للمراقبة فقط وعلى الورق؛ لم يُعَد اختباره بعد؛ لندن–نيويورك؛ يُلغى بإغلاق M15 أسفل 3632",
+    "zh": "突破位支撐：先前日開盤價 3637.9 與剛轉換角色的舊 H1 供給區；逆日線趨勢——僅觀察、紙上記錄；尚未回測；倫敦盤–紐約盤；M15 收在 3632 之下則失效"
+   }
+  },
+  {
+   "side": "BUY",
+   "lo": 3624,
+   "hi": 3629.3,
+   "grade": "C",
+   "status": {
+    "vi": "Hỗ trợ sâu hơn (vùng cầu M15 sau cú phá lên), ngược xu hướng ngày – chỉ theo dõi; thử 2 lần trong 5 ngày; phiên London–New York; huỷ nếu M15 đóng dưới 3620",
+    "en": "Deeper support (M15 demand after the upside break), against the daily trend – watch only; tested twice in 5 days; London–New York; void on an M15 close below 3620",
+    "ar": "دعم أعمق (طلب M15 بعد الكسر الصاعد)، عكس الاتجاه اليومي – للمراقبة فقط؛ اختُبر مرتين خلال 5 أيام؛ لندن–نيويورك؛ يُلغى بإغلاق M15 أسفل 3620",
+    "zh": "較深支撐（向上突破後的 M15 需求區），逆日線趨勢——僅觀察；5 日內測試 2 次；倫敦盤–紐約盤；M15 收在 3620 之下則失效"
+   }
+  }
+ ],
+ "scenarios": [
+  {
+   "side": "SELL",
+   "prob": 50,
+   "path": [
+    3663,
+    3646.8,
+    3637.9
+   ],
+   "route": [
+    3663,
+    3646.8,
+    3637.9
+   ],
+   "text": {
+    "vi": "Chính: quá mua, đi ngang 3638–3667 trong phiên London, thử lại 3663–3678.5 bị từ chối rồi về 3646.8 / 3637.9.",
+    "en": "Main: overbought, ranging 3638–3667 through the London session; a retest of 3663–3678.5 is rejected, then back to 3646.8 / 3637.9.",
+    "ar": "الرئيسي: تشبع شرائي وتحرك عرضي 3638–3667 خلال جلسة لندن؛ إعادة اختبار 3663–3678.5 تُرفض ثم عودة إلى 3646.8 / 3637.9.",
+    "zh": "主要：超買，倫敦盤於 3638–3667 震盪；回測 3663–3678.5 受壓後回落至 3646.8／3637.9。"
+   }
+  },
+  {
+   "side": "BUY",
+   "prob": 30,
+   "path": [
+    3678.5,
+    3687.8
+   ],
+   "route": [
+    3687.8
+   ],
+   "text": {
+    "vi": "Phụ: tiếp tục lên 3683–3692.5 (mốc cấu trúc H4) rồi bị từ chối.",
+    "en": "Alternate: extends higher into 3683–3692.5 (the H4 structure level), then gets rejected.",
+    "ar": "البديل: يواصل الصعود إلى 3683–3692.5 (مستوى هيكل H4) ثم يُرفض.",
+    "zh": "次要：續漲至 3683–3692.5（H4 結構位）後受壓。"
+   }
+  },
+  {
+   "side": "SELL",
+   "prob": 20,
+   "path": [
+    3632,
+    3624,
+    3607
+   ],
+   "route": [
+    3632,
+    3624,
+    3607
+   ],
+   "text": {
+    "vi": "Còn lại: M15 đóng dưới 3632 → về 3624 / 3607.",
+    "en": "Remaining: an M15 close below 3632 → 3624 / 3607.",
+    "ar": "الباقي: إغلاق M15 أسفل 3632 ← 3624 / 3607.",
+    "zh": "其餘：M15 收在 3632 之下 → 3624／3607。"
+   }
+  }
+ ],
+ "range": {
+  "lo": 3607,
+  "hi": 3692.5
+ },
+ "news": [
+  {
+   "time": "27/11 14:45",
+   "impact": "low",
+   "text": {
+    "vi": "CPI + GDP sơ bộ (Pháp)",
+    "en": "French Prelim CPI + GDP",
+    "ar": "مؤشر أسعار المستهلك والناتج المحلي الأوليان (فرنسا)",
+    "zh": "法國 CPI＋GDP 初值"
+   }
+  },
+  {
+   "time": "27/11 15:00",
+   "impact": "low",
+   "text": {
+    "vi": "CPI nhanh (Tây Ban Nha)",
+    "en": "Spanish Flash CPI",
+    "ar": "مؤشر أسعار المستهلك السريع (إسبانيا)",
+    "zh": "西班牙 CPI 快報"
+   }
+  },
+  {
+   "time": "27/11 15:55",
+   "impact": "low",
+   "text": {
+    "vi": "Thất nghiệp (Đức)",
+    "en": "German Unemployment Change",
+    "ar": "تغير البطالة (ألمانيا)",
+    "zh": "德國失業人數變化"
+   }
+  },
+  {
+   "time": "27/11 17:33",
+   "impact": "low",
+   "text": {
+    "vi": "Đấu giá trái phiếu 10 năm (Ý)",
+    "en": "Italian 10-y Bond Auction",
+    "ar": "مزاد السندات لأجل 10 سنوات (إيطاليا)",
+    "zh": "義大利 10 年期公債標售"
+   }
+  },
+  {
+   "time": "27/11 19:40",
+   "impact": "low",
+   "text": {
+    "vi": "Phát biểu của Nagel (Bundesbank)",
+    "en": "Bundesbank's Nagel speaks",
+    "ar": "كلمة ناغل (البنك المركزي الألماني)",
+    "zh": "德國央行 Nagel 講話"
+   }
+  },
+  {
+   "time": "27/11 20:30",
+   "impact": "low",
+   "text": {
+    "vi": "Cán cân thương mại hàng hoá + tồn kho bán buôn (Mỹ)",
+    "en": "US Goods Trade Balance + Prelim Wholesale Inventories",
+    "ar": "الميزان التجاري للسلع + مخزونات الجملة الأولية (أمريكا)",
+    "zh": "美國商品貿易帳＋批發庫存初值"
+   }
+  },
+  {
+   "time": "27/11",
+   "impact": "low",
+   "text": {
+    "vi": "Hội nghị thượng đỉnh EU (Brussels) – công bố kết quả, chưa có giờ",
+    "en": "EU summit (Brussels) – conclusions due, time not set",
+    "ar": "قمة الاتحاد الأوروبي (بروكسل) – صدور الاستنتاجات، دون موعد محدد",
+    "zh": "歐盟峰會（布魯塞爾）——公布結論，時間未定"
+   }
+  }
+ ],
+ "next_update": {
+  "vi": "Plan tối 19:30 VN ngày 27/11",
+  "en": "Evening plan at 19:30 VN on 27/11",
+  "ar": "خطة المساء الساعة 19:30 بتوقيت فيتنام يوم 27/11",
+  "zh": "越南時間 11/27 19:30 晚間計畫"
+ },
+ "chart": {
+  "vi": "data/charts/2026-11-27-1345-vi.png",
+  "en": "data/charts/2026-11-27-1345-en.png"
+ }
+}
