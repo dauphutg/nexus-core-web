@@ -19,8 +19,8 @@
    "bias": "TWO_WAY",
    "lean": "SELL",
    "main_zone": "3583.5–3591",
-   "result": null,
-   "r": null,
+   "result": "mixed",
+   "r": -1.52,
    "url": "https://nexuscore.trade/en/plan/2026-11-27-asia/"
   },
   {
@@ -30,8 +30,8 @@
    "bias": "TWO_WAY",
    "lean": null,
    "main_zone": "3551–3562",
-   "result": null,
-   "r": null,
+   "result": "hit",
+   "r": 0.67,
    "url": "https://nexuscore.trade/en/plan/2026-11-26-newyork/"
   },
   {

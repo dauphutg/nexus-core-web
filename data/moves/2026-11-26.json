@@ -1,0 +1,45 @@
+{
+ "date": "2026-11-26",
+ "open": 3583.51,
+ "close": 3566.3,
+ "high": 3607.24,
+ "low": 3551.34,
+ "change": -17.2,
+ "change_pct": -0.48,
+ "biggest_hour": {
+  "start_vn": "2026-11-26 17:00",
+  "move": -19.18
+ },
+ "candles": 82,
+ "tag": "fed",
+ "headline": {
+  "en": "Gold slips 0.48% as Fed rate-hike fears linger after hot US inflation data",
+  "ar": "الذهب يتراجع 0.48% مع استمرار مخاوف رفع الفائدة من الفيدرالي بعد بيانات تضخم أمريكية قوية",
+  "vi": "Vàng giảm 0,48% khi lo ngại Fed tăng lãi suất kéo dài sau số liệu lạm phát Mỹ nóng",
+  "zh": "美國通膨數據偏熱，聯準會升息疑慮未散，金價下跌0.48%"
+ },
+ "reasons": [
+  {
+   "en": "Gold opened at 3583.51 and dipped to 3551.34 early in Asia as Reuters reported hot US inflation cementing Fed hike bets; Dow Jones also cited rate-hike bets.",
+   "ar": "افتتح الذهب عند 3583.51 وتراجع إلى 3551.34 في وقت مبكر من الجلسة الآسيوية، إذ أفادت رويترز بأن التضخم الأمريكي المرتفع رسّخ رهانات رفع الفائدة من الفيدرالي، وأشارت داو جونز أيضًا إلى رهانات رفع الفائدة.",
+   "vi": "Vàng mở cửa 3583,51 và có lúc giảm về 3551,34 đầu phiên Á khi Reuters đưa tin lạm phát Mỹ nóng củng cố kỳ vọng Fed tăng lãi suất; Dow Jones cũng nêu kỳ vọng tăng lãi suất.",
+   "zh": "金價開盤於3583.51，亞洲盤早段一度跌至3551.34；路透報導美國通膨偏熱，鞏固市場對聯準會升息的押注，道瓊亦提及升息預期。"
+  },
+  {
+   "en": "Prices rebounded to 3607.24 by 02:30 UTC; Reuters later said gold steadied after an over 1-year low, but Dow Jones noted US inflation data kept fueling rate-hike bets.",
+   "ar": "ارتد السعر إلى 3607.24 بحلول 02:30 بتوقيت UTC؛ ثم ذكرت رويترز أن الذهب استقر عقب أدنى مستوى في أكثر من عام، لكن داو جونز أشارت إلى أن بيانات التضخم الأمريكية واصلت تغذية رهانات رفع الفائدة.",
+   "vi": "Giá hồi lên 3607,24 lúc 02:30 UTC; sau đó Reuters cho biết vàng ổn định sau đáy hơn 1 năm, nhưng Dow Jones nhận định số liệu lạm phát Mỹ tiếp tục củng cố kỳ vọng tăng lãi suất.",
+   "zh": "金價於UTC 02:30前反彈至3607.24；其後路透稱金價在觸及逾一年低點後趨穩，但道瓊指出美國通膨數據持續推升升息押注。"
+  },
+  {
+   "en": "The biggest hourly drop, $19.18 from 10:00 UTC, had no specific headline; Reuters later said gold drifted lower on Fed hike fears, and spot closed at 3566.30, down $17.20.",
+   "ar": "لم يرتبط أكبر هبوط في ساعة واحدة، بمقدار 19.18 دولار بدءًا من 10:00 بتوقيت UTC، بخبر محدد؛ ثم ذكرت رويترز أن الذهب انجرف نحو الانخفاض بسبب مخاوف رفع الفائدة، وأغلق السعر الفوري عند 3566.30 متراجعًا 17.20 دولار.",
+   "vi": "Giờ giảm mạnh nhất, 19,18 USD từ 10:00 UTC, không trùng với tin cụ thể nào; sau đó Reuters cho biết vàng trượt dần vì lo ngại Fed tăng lãi suất, giá giao ngay đóng cửa 3566,30, giảm 17,20 USD.",
+   "zh": "單小時最大跌幅出現在UTC 10:00起，下跌19.18美元，未見對應的具體新聞；其後路透稱金價因聯準會升息疑慮而走低，現貨收在3566.30，下跌17.20美元。"
+  }
+ ],
+ "sources": [
+  "TradingView news (Reuters)",
+  "TradingView news (newswires)"
+ ]
+}
