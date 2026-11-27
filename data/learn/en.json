@@ -178,7 +178,7 @@
   "slug": "best-time-to-trade-gold",
   "example": "session",
   "q": "What is the best time to trade gold? Asia, London and New York sessions",
-  "title": "Best time to trade gold (XAUUSD): sessions explained",
+  "title": "Best Time to Trade Gold: Asia, London & New York Hours",
   "answer": "Gold is usually most active when London and New York are both open — roughly 13:00 to 17:00 UTC in winter (one hour earlier in summer) — and around US data releases at 8:30 New York time. The Asia session is typically calmer and often builds the range that London and New York later break.",
   "sections": [
    {
@@ -220,7 +220,8 @@
    "gold-average-daily-range"
   ],
   "publish": "2026-11-11",
-  "order": 3
+  "order": 3,
+  "desc": "When is the best time to trade gold? The London–New York overlap (13:00–17:00 UTC in winter) and US data at 8:30 ET bring the biggest XAUUSD moves."
  },
  {
   "slug": "how-to-read-a-gold-trading-plan",
@@ -381,7 +382,7 @@
   "slug": "how-cpi-affects-gold",
   "example": "news",
   "q": "How does CPI affect the gold price?",
-  "title": "How US CPI inflation data moves gold (XAUUSD)",
+  "title": "CPI Effect on Gold: How US Inflation Data Moves XAUUSD",
   "answer": "US CPI is released by the Bureau of Labor Statistics at 8:30 New York time. A hotter-than-expected reading usually lifts US yields and the dollar and cuts the odds of Fed rate cuts, which tends to push gold down; a cooler reading tends to lift gold. What matters is the surprise versus the forecast, especially in core CPI.",
   "sections": [
    {
@@ -430,7 +431,8 @@
    "gold-and-real-yields"
   ],
   "publish": "2026-11-12",
-  "order": 2
+  "order": 2,
+  "desc": "How the US CPI report affects gold: a hot reading usually lifts yields and the dollar and pushes gold down; a soft one helps. Release time and typical reaction."
  },
  {
   "slug": "how-nfp-affects-gold",
@@ -1893,7 +1895,7 @@
   "publish": "2026-11-24",
   "order": 1,
   "q": "How does PCE inflation affect gold?",
-  "title": "How the PCE inflation report affects gold",
+  "title": "Core PCE Price Index (m/m) Effect on Gold Explained",
   "answer": "PCE is the inflation measure the Federal Reserve targets, released monthly by the US Bureau of Economic Analysis at 08:30 New York time. A hotter-than-expected core PCE usually lifts yields and the dollar and weighs on gold, because it makes rate cuts less likely; a softer reading usually helps gold. The reaction is often smaller than for CPI because CPI comes out first and markets already estimate PCE from it.",
   "sections": [
    {
@@ -1936,7 +1938,8 @@
    "how-ppi-affects-gold",
    "fed-rates-and-gold",
    "how-to-use-economic-calendar-gold"
-  ]
+  ],
+  "desc": "How the core PCE price index (m/m) moves gold: a hotter-than-forecast reading usually lifts yields and the dollar and pushes XAUUSD down; a softer one helps gold."
  },
  {
   "slug": "gold-trading-plan-london-session",
